@@ -7,7 +7,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'VALIC',
+  title: 'CompileX',
   tagline: 'Empowering Innovation Through Open-Source Compiler Excellence',
   favicon: 'img/favicon.ico',
 
