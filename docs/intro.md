@@ -4,6 +4,12 @@
 
 A compiler is a specialized program that translates high-level programming code written by developers into low-level machine code or intermediate code that can be executed by a computer's processor. This process typically involves several stages, such as parsing, optimization, and code generation. Compilers play a crucial role in software development as they allow developers to write code in human-readable languages, which are then transformed into instructions that a machine can understand and execute.
 
+### Compiler Stages
+
+Here’s a visual representation of the stages involved in the compilation process:
+
+![Compiler Stages](../static/img/compiler_workflow.svg)
+
 ### Key Roles of a Compiler
 - **Translation**: Converts code from a source language (like C, C++, or Python) to a target language (such as machine code or an intermediate representation).
 - **Optimization**: Improves the performance and efficiency of the generated code by removing redundancies and applying advanced optimization techniques.
