@@ -8,8 +8,9 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Compiler frameworks like LLVM, GCC, MLIR, and TVM are designed with powerful 
+        abstractions that simplify the process of code compilation, optimization, and 
+        machine learning model deployment, making them easier to adopt and integrate.
       </>
     ),
   },
@@ -18,18 +19,21 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Compiler frameworks like <code>LLVM</code>,<code>GCC</code>, <code>MLIR</code>, and <code>TVM</code> are designed to handle
+        the complexities of code optimization and hardware targeting, so you can 
+        focus on building better software, languages, and machine learning models 
+        without getting bogged down by low-level details.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by Open Source',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        LLVM, GCC, TVM, and MLIR. These open-source projects have revolutionized the fields of compilers, 
+        machine learning, and system optimization, allowing developers to harness cutting-edge technology 
+        while contributing to a shared global ecosystem.
       </>
     ),
   },
