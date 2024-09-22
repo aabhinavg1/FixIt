@@ -7,12 +7,12 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'CompileX',
-  tagline: 'Empowering Innovation Through Open-Source Compiler Excellence',
+  title: 'GanDiv',
+  tagline: 'Generalized Analysis for Dynamic Compiler Verification, Validation, and Optimization',
   favicon: 'img/favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://valic.netlify.app',
+  url: 'https://https://gandiv.netlify.app/',
   // Set the base pathname under which your site is served
   baseUrl: '/',
 
