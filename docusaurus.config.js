@@ -17,8 +17,8 @@ const config = {
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  organizationName: 'your-github-username', // Your GitHub org/user name.
-  projectName: 'your-repo-name', // Your repo name.
+  organizationName: 'aabhinavg1', // Your GitHub org/user name.
+  projectName: 'FixIt', // Your repo name.
 
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
@@ -36,7 +36,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl:
-            'https://github.com/your-github-username/your-repo/edit/main/',
+            'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -45,7 +45,7 @@ const config = {
             xslt: true,
           },
           editUrl:
-            'https://github.com/your-github-username/your-repo/edit/main/',
+            'https://github.com/aabhinavg1/FixIt/edit/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -76,7 +76,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/your-github-username/your-repo',
+            href: 'https://github.com/aabhinavg1/FixIt',
             label: 'GitHub',
             position: 'right',
           },
@@ -98,16 +98,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'LLVM',
+                href: 'https://llvm.org/docs/',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discordapp.com/invite/gandiv',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/gandiv',
               },
             ],
           },
