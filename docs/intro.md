@@ -1,3 +1,4 @@
+
 # Introduction to Compilers
 
 ## What is a Compiler?
@@ -48,3 +49,27 @@ LLVM's open-source nature has fostered a large and active community of contribut
 ## Conclusion
 
 The shift towards LLVM marks a new era in compiler technology, one characterized by flexibility, reusability, and performance. As computing environments become more diverse, and performance demands increase, LLVM’s modular and cross-platform design makes it the go-to solution for many modern compiler developers. By providing a robust, open-source foundation, LLVM is helping to drive innovation in compiler design and programming language development.
+
+---
+
+## Compiler Workflow
+
+1. **Lexical Analysis**: The source code is broken into tokens (such as keywords, identifiers, literals).
+2. **Syntax Analysis**: The tokens are analyzed according to the grammatical structure of the programming language.
+3. **Semantic Analysis**: Ensures that the syntax follows logical rules (e.g., type checking).
+4. **Intermediate Code Generation**: Converts the code into an intermediate representation.
+5. **Optimization**: Improves the intermediate code without changing its output.
+6. **Code Generation**: Transforms optimized intermediate code into machine code.
+7. **Linking**: Combines multiple object files into a single executable.
+
+```mermaid
+graph TD;
+    A[Source Code] -->|Lexical Analysis| B[Tokens];
+    B -->|Syntax Analysis| C[Parse Tree];
+    C -->|Semantic Analysis| D[Abstract Syntax Tree];
+    D -->|Intermediate Code Generation| E[Intermediate Representation];
+    E -->|Optimization| F[Optimized Intermediate Code];
+    F -->|Code Generation| G[Machine Code];
+    G -->|Linking| H[Executable];
+```
+
