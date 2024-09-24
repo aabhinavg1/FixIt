@@ -62,7 +62,7 @@ const config = {
     ({
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'VALIC',
+        title: 'GanDiv',
         logo: {
           alt: 'VALIC Logo',
           src: 'img/logo.svg',
@@ -108,6 +108,10 @@ const config = {
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/gandiv',
+              },
+              {
+                label: 'LinKedin',
+                href: 'https://www.linkedin.com/in/abhinavcompilerllvm/'
               },
             ],
           },
