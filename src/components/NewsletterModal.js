@@ -9,16 +9,24 @@ const NewsletterModal = ({ onClose }) => {
     e.preventDefault();
     console.log(`Email submitted: ${email}`);
 
-    // Replace this with your API call to store the email in your database
-    // Example:
-    // await fetch('/api/subscribe', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ email }),
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
+    try {
+      const response = await fetch('/.netlify/functions/send-email', { // Update to point to the serverless function
+        method: 'POST',
+        body: JSON.stringify({ email }), // Send email in request body
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    setEmail(''); // Clear input after submission
-    onClose(); // Close the modal after submission
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+
+      const result = await response.json();
+      console.log(result.message); // Log success message from server
+      setEmail(''); // Clear input after submission
+      onClose(); // Close the modal after submission
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
   };
 
   return (
