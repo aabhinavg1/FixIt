@@ -1,34 +1,31 @@
 ---
-sidebar_position: 3
----
-
-# Create a Blog Post
-
-Docusaurus creates a **page for each blog post**, but also a **blog index page**, a **tag system**, an **RSS** feed...
-
-## Create your first Post
-
-Create a file at `blog/2021-02-28-greetings.md`:
-
-```md title="blog/2021-02-28-greetings.md"
----
-slug: greetings
-title: Greetings!
+slug: intro-to-llvm
+title: Introduction to LLVM
 authors:
-  - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
-    url: https://github.com/JoelMarcey
-    image_url: https://github.com/JoelMarcey.png
-  - name: Sébastien Lorber
-    title: Docusaurus maintainer
-    url: https://sebastienlorber.com
-    image_url: https://github.com/slorber.png
-tags: [greetings]
+  - name: [Your Name]
+    title: Compiler Engineer
+    url: https://github.com/aabhinavg1
+tags: [LLVM, compilers, introduction]
 ---
 
-Congratulations, you have made your first post!
+## What is LLVM?
 
-Feel free to play around and edit this post as much as you like.
-```
+LLVM (Low-Level Virtual Machine) is a robust compiler infrastructure designed for optimizing programs during their compilation. Initially developed as a research project, LLVM has grown into a vast ecosystem that supports various stages of compiling source code into machine code. 
 
-A new blog post is now available at [http://localhost:3000/blog/greetings](http://localhost:3000/blog/greetings).
+The LLVM project includes:
+- **LLVM Core**: The compiler's core infrastructure for code generation and optimization.
+- **Clang**: A front-end for C, C++, and Objective-C.
+- **LLD**: The LLVM linker.
+- **LLDB**: A powerful debugger built using the LLVM infrastructure.
+
+## Where is LLVM Used?
+
+LLVM is widely used across different platforms and industries, such as:
+- **Compilers**: LLVM is the backbone of many modern compilers like Clang.
+- **Operating Systems**: It helps in building OS components efficiently, like in Apple's macOS and iOS.
+- **Graphics and Game Development**: Graphics APIs like Vulkan use LLVM-based shaders.
+- **Research**: Used as a base for compiler research and advanced programming language implementations.
+
+## Why Learn LLVM?
+
+Understanding LLVM opens the door to a wide range of possibilities in compiler development, program analysis, and performance optimization. Its modular architecture allows you to create custom compiler passes and manipulate intermediate representations (IR), giving you control over the compilation process.
