@@ -124,7 +124,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/your-github-username/your-repo',
+                href: 'https://github.com/aabhinavg1/FixIt',
               },
             ],
           },
