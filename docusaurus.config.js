@@ -12,7 +12,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://https://compilersutra.com/',
+  url: 'https://compilersutra.com/',
   // Set the base pathname under which your site is served
   baseUrl: '/',
 
