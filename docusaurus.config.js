@@ -129,7 +129,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} VALIC, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.`,
       },
       prism: {
         theme: prismThemes.github,
