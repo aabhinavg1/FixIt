@@ -53,17 +53,18 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        // Add Google Analytics plugin here
-        plugins: [
-          [
-            '@docusaurus/plugin-google-analytics',
-            {
-              trackingID: 'G-CJDGBRKJ5W',
-              anonymizeIP: true, // Optional
-            },
-          ],
-        ],
       }),
+    ],
+  ],
+
+  // Add the Google Analytics plugin here
+  plugins: [
+    [
+      '@docusaurus/plugin-google-analytics',
+      {
+        trackingID: 'G-CJDGBRKJ5W',
+        anonymizeIP: true, // Optional
+      },
     ],
   ],
 
@@ -121,7 +122,7 @@ const config = {
               },
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/in/abhinavcompilerllvm/'
+                href: 'https://www.linkedin.com/in/abhinavcompilerllvm/',
               },
             ],
           },
