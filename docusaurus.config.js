@@ -53,6 +53,16 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        // Add Google Analytics plugin here
+        plugins: [
+          [
+            '@docusaurus/plugin-google-analytics',
+            {
+              trackingID: 'G-CJDGBRKJ5W',
+              anonymizeIP: true, // Optional
+            },
+          ],
+        ],
       }),
     ],
   ],
@@ -110,7 +120,7 @@ const config = {
                 href: 'https://twitter.com/CompilerSutra',
               },
               {
-                label: 'LinKedin',
+                label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/abhinavcompilerllvm/'
               },
             ],
