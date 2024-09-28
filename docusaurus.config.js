@@ -7,12 +7,12 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'GanDiv',
-  tagline: 'Generalized Analysis for Dynamic Compiler Verification, Validation, and Optimization',
+  title: 'CompilerSutra',
+  tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
   favicon: 'img/favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://gandiv.netlify.app/',
+  url: 'https://https://compilersutra.com/',
   // Set the base pathname under which your site is served
   baseUrl: '/',
 
@@ -62,7 +62,7 @@ const config = {
     ({
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'GanDiv',
+        title: 'CompilerSutra',
         logo: {
           alt: 'VALIC Logo',
           src: 'img/logo.svg',
@@ -107,7 +107,7 @@ const config = {
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/gandiv',
+                href: 'https://twitter.com/CompilerSutra',
               },
               {
                 label: 'LinKedin',
