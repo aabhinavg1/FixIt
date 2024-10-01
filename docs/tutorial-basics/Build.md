@@ -11,34 +11,97 @@ Before you start building LLVM and Clang, make sure the following software is in
 - **Ninja** (recommended for faster builds)
 - **Python** (for running tests)
 - **Git** (optional for version control)
+ ## Installing Dependencies
 
-### Installing Dependencies
+    <details>
+    <summary>Linux</summary>
 
-- **Ubuntu**:
-  ```bash
-  sudo apt-get install cmake ninja-build python3 git
-  ```
+    ```bash
+    sudo apt-get install cmake ninja-build python3 git
+    ```
+    </details>
 
-- **macOS**:
-  Install dependencies using Homebrew:
-  ```bash
-  brew install cmake ninja python git
-  ```
+     <details>
+    <summary>Windows</summary>
 
-## Cloning the LLVM Project
+    :::note
+    With [Visual Studio](https://llvm.org/docs/GettingStartedVS.html#requirements)
+    :::
 
-Clone the LLVM project from GitHub. This includes Clang and other subprojects:
+    ```bash
+    With WSL
+    sudo apt update
+    sudo apt install build-essential cmake ninja-build python3
 
-```bash
-git clone https://github.com/llvm/llvm-project.git
-cd llvm-project
-```
+    ````
 
-If you want to build a specific release, check out the corresponding tag. For example:
+    </details>
 
-```bash
-git checkout llvmorg-16.0.0
-```
+
+
+    <details>
+    <summary>MacOS</summary>
+
+    ```bash
+    brew install cmake ninja python git
+    ```
+    </details>
+
+
+    ## Cloning the LLVM Project
+    Clone the LLVM project from GitHub. This includes Clang and other subprojects
+      ```bash
+    git clone https://github.com/llvm/llvm-project.git
+    cd llvm-project
+    ```
+
+    If you want to build a specific release, check out the corresponding tag. For example:
+    ```bash
+    git checkout llvmorg-16.0.0
+    ```
+    ## Configuring the Build
+    Create a separate directory for building the project:
+
+    ```bash
+    mkdir build
+    cd build
+    ```
+    <details>
+    <summary>Linux</summary>
+
+    ```bash
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
+      -DLLVM_ENABLE_PROJECTS="clang;lld" \
+      -DLLVM_TARGETS_TO_BUILD="X86;AMDGPU" \
+      ../llvm
+
+    ```
+    </details>
+
+    <details>
+    <summary>macOS</summary>
+
+    ```bash
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
+      -DLLVM_ENABLE_PROJECTS="clang;lld" \
+      -DLLVM_TARGETS_TO_BUILD="X86;AMDGPU" \
+      ../llvm
+    ```
+    </details>
+
+    <details>
+    <summary>Windows</summary>
+
+    ```bash
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
+      -DLLVM_ENABLE_PROJECTS="clang;lld" \
+      -DLLVM_TARGETS_TO_BUILD="X86;AMDGPU" \
+      ../llvm
+    ```
+  :::note
+    for the [visual Studio](https://llvm.org/docs/GettingStartedVS.html#getting-started)
+  :::
+    </details>
 
 ## Configuring the Build
 
@@ -49,18 +112,23 @@ mkdir build
 cd build
 ```
 
-Configure the build using **CMake**. It's recommended to use **Ninja** as the build system for faster builds:
+
 
 ```bash
 cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release ../llvm
 ```
 
-### Common CMake Options:
+:::note
 
 - `-DLLVM_ENABLE_PROJECTS=clang`: This enables Clang to be built alongside LLVM.
 - `-DCMAKE_BUILD_TYPE=Release`: Builds LLVM in release mode with optimizations.
 - `-DLLVM_TARGETS_TO_BUILD=X86`: You can specify the target architecture(s). Replace `X86` with your desired architecture (e.g., `ARM`, `AArch64`).
 
+[For other Cmake flag please visit](https://llvm.org/docs/CMake.html#options-and-variables)
+Configure the build using **CMake**. It's recommended to use **Ninja** as the build system for faster builds.
+
+If on windows you are facing any issue with the ninja build try with the Visual studio build or use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+:::
 ## Building LLVM with Clang
 
 Once the configuration is complete, build the project:
@@ -100,6 +168,40 @@ Or with Make:
 ```bash
 make clean
 ```
+
+
+## Short Summary
+
+1. **Prerequisites**: Install CMake, Ninja, Python, and Git.
+
+2. **Install Dependencies**:
+   - **Linux**: 
+     ```bash
+     sudo apt-get install cmake ninja-build python3 git
+     ```
+   - **Windows (WSL)**: 
+     ```bash
+     sudo apt update && sudo apt install build-essential cmake ninja-build python3
+     ```
+   - **macOS**: 
+     ```bash
+     brew install cmake ninja python git
+     ```
+
+3. **Clone the LLVM Project**: 
+   ```bash
+   git clone https://github.com/llvm/llvm-project.git
+   cd llvm-project
+   git checkout llvmorg-1.0.0  # Optional for specific version
+
+4. **Configure and Build**
+```bash
+mkdir build
+cd build
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="X86;AMDGPU" ../llvm
+ninja
+```
+
 
 ## Additional Resources
 
