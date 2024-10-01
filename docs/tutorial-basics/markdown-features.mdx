@@ -1,152 +1,194 @@
+# LLVM IR Tutorial: From Beginner to Expert
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Basic Concepts](#basic-concepts)
+   - What is LLVM IR?
+   - Why Use LLVM IR?
+3. [Installation and Setup](#installation-and-setup)
+   - Install LLVM
+   - First Steps with `clang`
+4. [LLVM IR Basics](#llvm-ir-basics)
+   - LLVM IR Structure
+   - LLVM Types
+   - Basic Operations
+5. [Intermediate Concepts](#intermediate-concepts)
+   - Functions in LLVM IR
+   - Memory Management
+   - Control Flow
+6. [Advanced Topics](#advanced-topics)
+   - Optimization Techniques
+   - Extending LLVM
+7. [LLVM Passes and Transformations](#llvm-passes-and-transformations)
+8. [Conclusion](#conclusion)
+
 ---
-sidebar_position: 4
+
+## Introduction
+
+LLVM Intermediate Representation (LLVM IR) is a low-level programming language similar to assembly, but with a higher-level abstraction. It serves as a universal format for representing code during the compilation process, from high-level languages (like C, C++, Rust) down to machine code.
+
+---
+## Basic Concepts
+
+### What is LLVM IR?
+
+LLVM IR is a strongly-typed, language-agnostic, assembly-like language. It is designed to be an intermediate step in the process of compiling source code to machine code.
+
+### Why Use LLVM IR?
+
+- **Portability**: LLVM IR can be generated from any high-level language and then compiled to machine code for different architectures.
+- **Optimization**: LLVM provides powerful optimizations at both compile-time and run-time.
+- **Modularity**: You can write custom passes and analyses for IR, enabling custom optimizations.
+
 ---
 
-# Markdown Features
+## Installation and Setup
 
-Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
+### Install LLVM
 
-## Front Matter
+To work with LLVM IR, you need to install the LLVM suite. The easiest way to install LLVM is through package managers.
 
-Markdown documents have metadata at the top called [Front Matter](https://jekyllrb.com/docs/front-matter/):
+**For Ubuntu:**
 
-```text title="my-doc.md"
-// highlight-start
+```bash
+sudo apt-get update
+sudo apt-get install llvm clang
+```
+
+**For MacOS:**
+
+```bash
+brew install llvm
+```
+
+### First Steps with `clang`
+
+Once LLVM is installed, you can use `clang` to generate LLVM IR from C or C++ code.
+
+Example:
+
+```bash
+clang -S -emit-llvm hello.c -o hello.ll
+```
+
+This command generates an LLVM IR file `hello.ll` from the `hello.c` source file.
+
 ---
-id: my-doc-id
-title: My document title
-description: My document description
-slug: /my-custom-url
----
-// highlight-end
 
-## Markdown heading
+## LLVM IR Basics
 
-Markdown text with [links](./hello.md)
-```
+### LLVM IR Structure
 
-## Links
+LLVM IR consists of a series of instructions organized into functions. Each function contains basic blocks, which are sequences of instructions with one entry point and one exit point.
 
-Regular Markdown links are supported, using url paths or relative file paths.
+Example of a simple LLVM IR:
 
-```md
-Let's see how to [Create a page](/create-a-page).
-```
-
-```md
-Let's see how to [Create a page](./create-a-page.md).
-```
-
-**Result:** Let's see how to [Create a page](./create-a-page.md).
-
-## Images
-
-Regular Markdown images are supported.
-
-You can use absolute paths to reference images in the static directory (`static/img/docusaurus.png`):
-
-```md
-![Docusaurus logo](/img/docusaurus.png)
-```
-
-![Docusaurus logo](/img/docusaurus.png)
-
-You can reference images relative to the current file as well. This is particularly useful to colocate images close to the Markdown files using them:
-
-```md
-![Docusaurus logo](./img/docusaurus.png)
-```
-
-## Code Blocks
-
-Markdown code blocks are supported with Syntax highlighting.
-
-````md
-```jsx title="src/components/HelloDocusaurus.js"
-function HelloDocusaurus() {
-  return <h1>Hello, Docusaurus!</h1>;
+```llvm
+define i32 @main() {
+entry:A
+  %0 = alloca i32, align 4
+  store i32 0, i32* %0, align 4
+  ret i32 0
 }
 ```
-````
 
-```jsx title="src/components/HelloDocusaurus.js"
-function HelloDocusaurus() {
-  return <h1>Hello, Docusaurus!</h1>;
+### LLVM Types
+
+LLVM IR is strongly typed. Every instruction operates on values of a specific type, and all types must be explicitly declared.
+
+- `i32`: 32-bit integer
+- `i8*`: Pointer to an 8-bit integer (equivalent to `char*` in C)
+
+### Basic Operations
+
+LLVM IR supports a variety of basic operations, such as arithmetic and logical operations, memory manipulation, and control flow.
+
+```llvm
+%1 = add i32 %a, %b    ; Add two integers
+%2 = mul i32 %x, %y    ; Multiply two integers
+```
+
+---
+
+## Intermediate Concepts
+
+### Functions in LLVM IR
+
+Functions in LLVM IR are defined using the `define` keyword, and their arguments and return types are specified explicitly.
+
+Example:
+
+```llvm
+define i32 @add(i32 %a, i32 %b) {
+entry:
+  %result = add i32 %a, %b
+  ret i32 %result
 }
 ```
 
-## Admonitions
+### Memory Management
 
-Docusaurus has a special syntax to create admonitions and callouts:
+Memory management in LLVM IR is performed using instructions like `alloca` (allocate memory on the stack) and `load`/`store` for reading and writing values to memory.
 
-```md
-:::tip My tip
-
-Use this awesome feature option
-
-:::
-
-:::danger Take care
-
-This action is dangerous
-
-:::
+```llvm
+%ptr = alloca i32  ; Allocate memory for an i32
+store i32 42, i32* %ptr  ; Store 42 into the allocated memory
+%val = load i32, i32* %ptr  ; Load the value from memory
 ```
 
-:::tip My tip
+### Control Flow
 
-Use this awesome feature option
+Control flow in LLVM IR is managed through labels and branching instructions like `br` and `ret`.
 
-:::
-
-:::danger Take care
-
-This action is dangerous
-
-:::
-
-## MDX and React Components
-
-[MDX](https://mdxjs.com/) can make your documentation more **interactive** and allows using any **React components inside Markdown**:
-
-```jsx
-export const Highlight = ({children, color}) => (
-  <span
-    style={{
-      backgroundColor: color,
-      borderRadius: '20px',
-      color: '#fff',
-      padding: '10px',
-      cursor: 'pointer',
-    }}
-    onClick={() => {
-      alert(`You clicked the color ${color} with label ${children}`)
-    }}>
-    {children}
-  </span>
-);
-
-This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
-
-This is <Highlight color="#1877F2">Facebook blue</Highlight> !
+```llvm
+br label %condition   ; Unconditional branch
+br i1 %cond, label %true, label %false  ; Conditional branch
+ret i32 %result       ; Return from function
 ```
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{
-      backgroundColor: color,
-      borderRadius: '20px',
-      color: '#fff',
-      padding: '10px',
-      cursor: 'pointer',
-    }}
-    onClick={() => {
-      alert(`You clicked the color ${color} with label ${children}`);
-    }}>
-    {children}
-  </span>
-);
+---
 
-This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+## Advanced Topics
 
-This is <Highlight color="#1877F2">Facebook blue</Highlight> !
+### Optimization Techniques
+
+LLVM provides several optimization techniques that you can apply to the IR code. Some common ones are constant folding, dead code elimination, and loop unrolling.
+
+- Use the `opt` tool to apply optimization passes:
+
+```bash
+opt -O3 <input.ll> -o <optimized.ll>
+```
+
+### Extending LLVM
+
+You can write custom passes and transformations in LLVM to extend its functionality. A pass operates on LLVM IR and can either analyze or transform it.
+
+Creating a pass involves:
+1. Writing the pass in C++.
+2. Registering the pass with LLVM.
+3. Applying it to IR code using `opt`.
+
+---
+
+## LLVM Passes and Transformations
+
+LLVM provides several built-in passes for optimizations, such as:
+
+- **Dead Code Elimination**: Removes code that is not used.
+- **Constant Propagation**: Replaces variables that have constant values with the constants themselves.
+
+Example of applying a pass:
+
+```bash
+opt -mem2reg <input.ll> -o <output.ll>
+```
+
+The `mem2reg` pass promotes memory to register, simplifying the IR.
+
+---
+
+## Conclusion
+
+LLVM IR is a flexible and powerful intermediate representation that bridges the gap between high-level languages and machine code. Its modularity allows developers to extend and customize it to suit specific needs, making it a vital tool in the world of compiler development.

@@ -1,23 +1,78 @@
----
-sidebar_position: 6
----
+# Pre-requisites for Learning LLVM
 
-# Congratulations!
+Before you start learning LLVM, it's essential to have a solid foundation in several key areas. This guide will help you understand what to focus on to make your learning experience smoother and more effective.
 
-You have just learned the **basics of Docusaurus** and made some changes to the **initial template**.
+## 1. Programming Fundamentals
 
-Docusaurus has **much more to offer**!
+- **C/C++ Proficiency**: LLVM is primarily written in C++, so you should be comfortable with:
+  - Basic syntax and data structures
+  - Object-oriented programming concepts
+  - Memory management and pointers
+  - Standard Template Library (STL)
 
-Have **5 more minutes**? Take a look at **[versioning](../tutorial-extras/manage-docs-versions.md)** and **[i18n](../tutorial-extras/translate-your-site.md)**.
+## 2. Compiler Theory Basics
 
-Anything **unclear** or **buggy** in this tutorial? [Please report it!](https://github.com/facebook/docusaurus/discussions/4610)
+Understanding the fundamentals of compilers will give you context for LLVM’s purpose and functionality:
 
-## What's next?
+- **Basic Compiler Structure**:
+  - Lexical analysis
+  - Parsing (syntax analysis)
+  - Semantic analysis
+  - Intermediate representation (IR)
+  - Code generation
+  - Optimization techniques
 
-- Read the [official documentation](https://docusaurus.io/)
-- Modify your site configuration with [`docusaurus.config.js`](https://docusaurus.io/docs/api/docusaurus-config)
-- Add navbar and footer items with [`themeConfig`](https://docusaurus.io/docs/api/themes/configuration)
-- Add a custom [Design and Layout](https://docusaurus.io/docs/styling-layout)
-- Add a [search bar](https://docusaurus.io/docs/search)
-- Find inspirations in the [Docusaurus showcase](https://docusaurus.io/showcase)
-- Get involved in the [Docusaurus Community](https://docusaurus.io/community/support)
+- **Understanding of Compiler Passes**: 
+  - How passes work in a compiler and their role in optimization.
+
+## 3. Computer Architecture
+
+A good grasp of computer architecture will help you understand how compilers interact with hardware:
+
+- **Basic Computer Organization**: 
+  - Understanding CPU, memory hierarchy, and instruction sets.
+  
+- **Assembly Language**: 
+  - Familiarity with assembly language for at least one architecture (e.g., x86 or ARM).
+
+- **Instruction Sets and Calling Conventions**:
+  - Learn how functions are called and how parameters are passed.
+
+## 4. Software Development Practices
+
+- **Version Control**:
+  - Familiarity with Git for managing code repositories and version control.
+
+- **Build Systems**:
+  - Understanding of build systems like CMake or Makefile.
+
+- **Debugging Tools**:
+  - Familiarity with debugging tools (e.g., GDB) to troubleshoot your code.
+
+## 5. Familiarity with LLVM Ecosystem
+
+- **Basic Understanding of LLVM**: 
+  - What LLVM is and its components (LLVM IR, Clang, LLVM tools).
+  
+- **Hands-on with LLVM Tools**:
+  - Explore basic LLVM tools like `clang`, `llc`, and `opt`.
+  
+- **Documentation and Resources**:
+  - Familiarize yourself with the official LLVM documentation and community resources.
+
+## 6. Recommended Resources
+
+- **Books**:
+  - "Compilers: Principles, Techniques, and Tools" (Dragon Book)
+  - "Engineering a Compiler" by Keith D. Cooper and Linda Torczon
+
+- **Online Courses**:
+  - Look for online courses on compiler construction or systems programming.
+
+- **LLVM Resources**:
+  - [LLVM Official Documentation](https://llvm.org/docs/)
+  - [LLVM GitHub Repository](https://github.com/llvm/llvm-project)
+
+## Conclusion
+
+By covering these foundational topics, you will be better equipped to dive into LLVM and leverage its capabilities effectively. Take your time to explore each area, and don't hesitate to revisit them as needed while you learn.
