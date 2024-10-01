@@ -1,88 +1,89 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Translate your site
+# Translating C Code to Executable using LLVM
 
-Let's translate `docs/intro.md` to French.
+LLVM provides a suite of tools to compile and execute code, including transforming C code into an executable format. This document outlines the basic steps involved in compiling a C file using LLVM tools such as `clang`, `llvm-as`, and `llc`.
 
-## Configure i18n
+## Table of Contents
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+- [Overview](#overview)
+- [Step 1: Write a Basic C Program](#step-1-write-a-basic-c-program)
+- [Step 2: Compile the C Code to LLVM IR](#step-2-compile-the-c-code-to-llvm-ir)
+- [Step 3: Generate LLVM Assembly](#step-3-generate-llvm-assembly)
+- [Step 4: Convert LLVM IR to Machine Code](#step-4-convert-llvm-ir-to-machine-code)
+- [Step 5: Link and Create Executable](#step-5-link-and-create-executable)
+- [Conclusion](#conclusion)
+- [Summary of Steps](#summary-of-steps)
 
-```js title="docusaurus.config.js"
-export default {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
+## Overview
+
+LLVM (Low-Level Virtual Machine) is a collection of modular and reusable compiler and toolchain technologies. The process of translating C code into an executable involves several steps, from compiling the C code to generating intermediate representations (IR) and finally creating machine code that can be executed.
+
+## Step 1: Write a Basic C Program
+
+Create a simple C program, `hello.c`, as follows:
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
 ```
 
-## Translate a doc
+## Step 2: Compile the C Code to LLVM IR
+Use clang to compile the C file into an LLVM Intermediate Representation (IR):
+```bash
+clang -S -emit-llvm hello.c -o hello.ll
+```
+This command produces an LLVM IR file (hello.ll).
 
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
+## Step 3: Generate LLVM Assembly
+
+Once you have the LLVM IR file, you can generate LLVM assembly code using the `llvm-as` tool:
 
 ```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
-
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
+llvm-as hello.ll -o hello.bc
 ```
 
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
+## Step 4: Convert LLVM IR to Machine Code
 
-## Start your localized site
-
-Start your site on the French locale:
+Next, convert the LLVM bytecode into machine code using the `llc` tool. This step will generate an assembly file for your target architecture.
 
 ```bash
-npm run start -- --locale fr
+llc hello.bc -o hello.s
 ```
 
-Your localized site is accessible at [http://localhost:3000/fr/](http://localhost:3000/fr/) and the `Getting Started` page is translated.
+## Step 5: Link and Create Executable
 
-:::caution
-
-In development, you can only use one locale at a time.
-
-:::
-
-## Add a Locale Dropdown
-
-To navigate seamlessly across languages, add a locale dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The locale dropdown now appears in your navbar:
-
-![Locale Dropdown](./img/localeDropdown.png)
-
-## Build your localized site
-
-Build your site for a specific locale:
+Once you have the assembly file, the final step is to link it and create an executable. You can use either `clang` or `gcc` for this purpose:
 
 ```bash
-npm run build -- --locale fr
+clang hello.s -o hello
 ```
 
-Or build your site to include all the locales at once:
+This command compiles the assembly file (`hello.s`) and links it with the C standard library to create an executable named `hello`.
+
+You can run your program using the following command:
 
 ```bash
-npm run build
+./hello
 ```
+
+## Conclusion
+In this document, we have walked through the steps required to translate C code into an executable using LLVM tools. By writing a simple C program, compiling it to LLVM Intermediate Representation, generating LLVM assembly, converting the assembly to machine code, and finally linking it to create an executable, you can harness the power of LLVM for your C projects. This process illustrates the modularity and versatility of LLVM in the compilation pipeline, enabling you to optimize and analyze your code effectively.
+
+
+### Summary of Steps
+
+1. **Write a Basic C Program**: Create a simple `hello.c` file.
+2. **Compile the C Code to LLVM IR**: Use `clang` to generate an LLVM IR file (`hello.ll`).
+3. **Generate LLVM Assembly**: Convert LLVM IR to bytecode using `llvm-as` (`hello.bc`).
+4. **Convert LLVM IR to Machine Code**: Use `llc` to generate assembly code (`hello.s`).
+5. **Link and Create Executable**: Create the executable with `clang` or `gcc` (`hello`).
+
+This structure should provide a clear and concise guide for users looking to translate C code to executable using LLVM tools. Let me know if you need any additional modifications or information!
+
