@@ -51,7 +51,7 @@ This command builds the website and pushes it to the `gh-pages` branch of your G
 
 Contributions are welcome! Here are a few ways you can get involved:
 
-1. **Create tutorials or improve documentation**: If you have expertise in compilers, feel free to contribute by writing tutorials, improving the existing content, or helping to expand the knowledge base.
+1. **Create tutorials or improve documentation**: If you have expertise in compilers, feel free to contribute by writing tutorials, improving the existing content, or helping to expand the knowledge ase.
 
 2. **Report issues**: If you find any bugs or issues on the website, open an issue in the [GitHub repository](https://github.com/aabhinavg1/FixIt/tree/main).
 
