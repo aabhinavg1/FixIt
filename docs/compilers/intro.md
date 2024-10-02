@@ -9,7 +9,7 @@ A compiler is a specialized program that translates high-level programming code 
 
 Here’s a visual representation of the stages involved in the compilation process:
 
-![Compiler Stages](../static/img/compiler_workflow.svg)
+![Compiler Stages](../../static/img/compiler_workflow.svg)
 
 ### Key Roles of a Compiler
 - **Translation**: Converts code from a source language (like C, C++, or Python) to a target language (such as machine code or an intermediate representation).
