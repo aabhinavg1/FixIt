@@ -13,7 +13,6 @@ const config = {
 
   // Set the production URL of your site here
   url: 'https://compilersutra.com/',
-  // Set the base pathname under which your site is served
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -147,6 +146,32 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+
+  // Adding GTM Scripts in Head and Body
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {
+        async: true,
+        src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
+      },
+    },
+    {
+      tagName: 'script',
+      innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N8G7MKF9');`,
+    },
+  ],
+  bodyTags: [
+    {
+      tagName: 'noscript',
+      innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8G7MKF9"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+    },
+  ],
 };
 
 export default config;
