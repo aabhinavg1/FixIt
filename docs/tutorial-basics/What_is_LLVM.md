@@ -10,7 +10,7 @@ tags: [LLVM, compilers, introduction]
 
 ## What is LLVM?
 
-LLVM (Low-Level Virtual Machine) is a robust compiler infrastructure designed for optimizing programs during their compilation. Initially developed as a research project, LLVM has grown into a vast ecosystem that supports various stages of compiling source code into machine code. 
+LLVM (Low-Level Virtual Machine) is a robust compiler infrastructure which is designed to support life long program analysis and transformation for any program by providing high-level information to compiler during runtime, link-time, and in idle time between the runs optimizing programs during compilation. Initially developed as a research project, LLVM has grown into a vast ecosystem that supports various stages of compiling source code into machine code. 
 
 The LLVM project includes:
 - **LLVM Core**: The compiler's core infrastructure for code generation and optimization.
