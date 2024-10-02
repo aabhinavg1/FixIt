@@ -1,6 +1,6 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
+// @type JSDoc annotations allow editor autocompletion and type checking
+// (when paired with @ts-check).
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from 'prism-react-renderer';
@@ -13,6 +13,7 @@ const config = {
 
   // Set the production URL of your site here
   url: 'https://compilersutra.com/',
+  // Set the base pathname under which your site is served
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -139,13 +140,13 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.`,
+        copyright: Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
     }),
-
+};
 
 export default config;
