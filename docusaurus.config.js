@@ -1,3 +1,8 @@
+// @ts-check
+// @type JSDoc annotations allow editor autocompletion and type checking
+// (when paired with @ts-check).
+// See: https://docusaurus.io/docs/api/docusaurus-config
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CompilerSutra',
@@ -26,17 +31,20 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
+          sidebarPath: require.resolve('./sidebars.js'), // Reference the sidebars.js file
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
+        // Remove the blog section
+        /*
         blog: {
-          showReadingTime: false,
+          showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
+        */
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -84,10 +92,26 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'llvmTutorialSidebar', // Updated sidebar ID for LLVM tutorials
             position: 'left',
-            label: 'Tutorial',
+            label: 'LLVM_Tutorial', // Updated label
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'gpuTutorialSidebar', // Added sidebar ID for GPU tutorials
+            position: 'left',
+            label: 'GPU_Tutorial', // Added label for GPU tutorials
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'compilersSidebar', // Added sidebar ID for compilers tutorials
+            position: 'left',
+            label: 'Compilers', // Added label for compilers
+          },
+          // Remove the blog link
+          /*
+          { to: '/blog', label: 'Blog', position: 'left' },
+          */
           {
             href: 'https://github.com/aabhinavg1/FixIt',
             label: 'GitHub',
@@ -103,8 +127,16 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'LLVM_Tutorial',
+                to: '/docs/llvm_basic/Build', // Change the path to your actual tutorial path
+              },
+              {
+                label: 'GPU_Tutorial',
+                to: '/docs/gpu/introduction', // Change the path to your actual tutorial path
+              },
+              {
+                label: 'Compilers',
+                to: '/docs/compilers/intro', // Added link for compilers tutorial
               },
             ],
           },
@@ -132,6 +164,13 @@ const config = {
           {
             title: 'More',
             items: [
+              // Remove the blog link
+              /*
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
+              */
               {
                 label: 'GitHub',
                 href: 'https://github.com/aabhinavg1/FixIt',
