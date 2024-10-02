@@ -149,7 +149,7 @@ const config = {
             ],
           },
         ],
-        copyright: Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.,
+          copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
       },
     }),
 };
