@@ -3,8 +3,6 @@
 // (when paired with @ts-check).
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import { themes as prismThemes } from 'prism-react-renderer';
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CompilerSutra',
@@ -35,8 +33,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/aabhinavg1/FixIt/edit/main/',
+          editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -44,8 +41,7 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl:
-            'https://github.com/aabhinavg1/FixIt/edit/main/',
+          editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -141,10 +137,6 @@ const config = {
           },
         ],
         copyright: Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
       },
     }),
 };
