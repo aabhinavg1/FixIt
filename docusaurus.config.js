@@ -11,7 +11,6 @@ const config = {
 
   // Set the production URL of your site here
   url: 'https://compilersutra.com/',
-  // Set the base pathname under which your site is served
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -42,9 +41,6 @@ const config = {
             xslt: true,
           },
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -67,11 +63,27 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/docusaurus-social-card.jpg',
+      // SEO Metadata
+      metadata: [
+        { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture. Tutorials, guides, and insights for modern compilers.' },
+        { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Compiler Optimization, Compiler Design, LLVM Backend, LLVM IR, GPU Compiler, MLIR Tutorial, TVM Compiler' },
+        { property: 'og:title', content: 'CompilerSutra | LLVM, MLIR, TVM, and GPU Compiler Architecture' },
+        { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture. Learn how these technologies power modern compilers and optimizations.' },
+        { property: 'og:image', content: 'https://compilersutra.com/img/CompilerSutra.png' },
+        { property: 'og:url', content: 'https://compilersutra.com/' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'CompilerSutra | Comprehensive Guides on LLVM, MLIR, TVM, and GPU' },
+        { name: 'twitter:description', content: 'Explore in-depth tutorials and articles on LLVM, MLIR, TVM, and GPU compiler optimization.' },
+        { name: 'twitter:image', content: 'https://compilersutra.com/img/twitter-card.png' },
+      ],
+
+      image: 'img/llvm-compiler-social-card.jpg', // Default Open Graph image
+
       navbar: {
         title: 'CompilerSutra',
         logo: {
-          alt: 'VALIC Logo',
+          alt: 'CompilerSutra Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -89,6 +101,7 @@ const config = {
           },
         ],
       },
+
       footer: {
         style: 'dark',
         links: [
