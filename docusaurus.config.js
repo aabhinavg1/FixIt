@@ -1,8 +1,3 @@
-// @ts-check
-// @type JSDoc annotations allow editor autocompletion and type checking
-// (when paired with @ts-check).
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CompilerSutra',
@@ -35,7 +30,7 @@ const config = {
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -93,7 +88,6 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/aabhinavg1/FixIt',
             label: 'GitHub',
@@ -139,17 +133,13 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/aabhinavg1/FixIt',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra, Inc.`,
+        copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
       },
     }),
 };

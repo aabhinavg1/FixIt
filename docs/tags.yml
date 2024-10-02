@@ -1,0 +1,19 @@
+llvm:
+  label: LLVM
+  permalink: /llvm
+  description: Tag for articles, tutorials, and resources related to the LLVM compiler infrastructure, which provides a modern, modular compiler framework for various programming languages.
+
+mlir:
+  label: MLIR
+  permalink: /mlir
+  description: Tag for content focused on Multi-Level Intermediate Representation (MLIR), a flexible and extensible compiler infrastructure that supports the development of domain-specific compilers.
+
+gpu:
+  label: GPU
+  permalink: /gpu
+  description: Tag for discussions and information about Graphics Processing Units (GPUs), including programming models, architectures, and performance optimization techniques for graphics and general-purpose computing.
+
+cpu:
+  label: CPU
+  permalink: /cpu
+  description: Tag for content related to Central Processing Units (CPUs), covering architecture, design, performance, and programming techniques for efficient computation in general-purpose computing.
