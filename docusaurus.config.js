@@ -34,17 +34,6 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'), // Reference the sidebars.js file
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
-        // Remove the blog section
-        /*
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
-        },
-        */
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -61,6 +50,19 @@ const config = {
         anonymizeIP: true, // Optional
       },
     ],
+    // Adding PWA support
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: true,
+        offlineModeActivationStrategies: ['appInstalled', 'queryString', 'standalone'],
+        pwaHead: [
+          { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
+          { tagName: 'meta', name: 'theme-color', content: '#ffffff' },
+          { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
+        ],
+      },
+    ],
   ],
 
   themeConfig:
@@ -68,10 +70,10 @@ const config = {
     ({
       // SEO Metadata
       metadata: [
-        { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture. Tutorials, guides, and insights for modern compilers.' },
-        { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Compiler Optimization, Compiler Design, LLVM Backend, LLVM IR, GPU Compiler, MLIR Tutorial, TVM Compiler' },
+        { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture.' },
+        { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Optimization' },
         { property: 'og:title', content: 'CompilerSutra | LLVM, MLIR, TVM, and GPU Compiler Architecture' },
-        { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture. Learn how these technologies power modern compilers and optimizations.' },
+        { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture.' },
         { property: 'og:image', content: 'https://compilersutra.com/img/CompilerSutra.png' },
         { property: 'og:url', content: 'https://compilersutra.com/' },
         { property: 'og:type', content: 'website' },
@@ -108,10 +110,6 @@ const config = {
             position: 'left',
             label: 'Compilers', // Added label for compilers
           },
-          // Remove the blog link
-          /*
-          { to: '/blog', label: 'Blog', position: 'left' },
-          */
           {
             href: 'https://github.com/aabhinavg1/FixIt',
             label: 'GitHub',
@@ -128,15 +126,15 @@ const config = {
             items: [
               {
                 label: 'LLVM_Tutorial',
-                to: '/docs/llvm_basic/Build', // Change the path to your actual tutorial path
+                to: '/docs/llvm_basic/Build',
               },
               {
                 label: 'GPU_Tutorial',
-                to: '/docs/gpu/introduction', // Change the path to your actual tutorial path
+                to: '/docs/gpu/introduction',
               },
               {
                 label: 'Compilers',
-                to: '/docs/compilers/intro', // Added link for compilers tutorial
+                to: '/docs/compilers/intro',
               },
             ],
           },
@@ -164,13 +162,6 @@ const config = {
           {
             title: 'More',
             items: [
-              // Remove the blog link
-              /*
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              */
               {
                 label: 'GitHub',
                 href: 'https://github.com/aabhinavg1/FixIt',
