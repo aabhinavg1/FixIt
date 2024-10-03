@@ -1,0 +1,22 @@
+{
+    "name": "CompilerSutra",
+    "short_name": "CSutra",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "description": "Unleashing Compiler Power for Cutting-Edge Innovation",
+    "icons": [
+      {
+        "src": "/img/icon-192x192.svg",  // Updated to SVG
+        "sizes": "192x192",
+        "type": "image/svg+xml"  // Changed to SVG type
+      },
+      {
+        "src": "/img/icon-512x512.svg",  // Updated to SVG
+        "sizes": "192x192",
+        "type": "image/svg+xml"  // Changed to SVG type
+      }
+    ]
+  }
+  

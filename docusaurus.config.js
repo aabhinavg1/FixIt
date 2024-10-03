@@ -57,7 +57,7 @@ const config = {
         debug: true,
         offlineModeActivationStrategies: ['appInstalled', 'queryString', 'standalone'],
         pwaHead: [
-          { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
+          { tagName: 'link', rel: 'icon', href: '/img/CompilerSutra.png' },
           { tagName: 'meta', name: 'theme-color', content: '#ffffff' },
           { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
         ],
