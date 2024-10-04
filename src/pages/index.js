@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import NewsletterModal from '@site/src/components/NewsletterModal'; // Import the modal component
+import { FaBell, FaTwitter } from 'react-icons/fa'; // Import icons
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -24,21 +25,37 @@ function HomepageHeader({ setModalOpen }) {
           <Link className="button button--secondary button--lg" to="/docs/compilers/intro">
             Compiler Frameworks and Toolchains ⏱️
           </Link>
-          <Link className="button button--secondary button--lg" to="https://github.com/aabhinavg1/FixIt">
-            GitHub
-          </Link>
-          {/* Subscribe button with emoji */}
-          <button
-            onClick={() => setModalOpen(true)} // This will now set the modal open
-            className={clsx(styles.subscribeButton, 'button button--primary')}
-          >
-            Subscribe
-          </button>
+
+          {/* Button Container for Notify and Follow buttons */}
+          <div className={styles.buttonContainer}>
+            {/* Bell button to open the modal */}
+            <button
+              onClick={() => setModalOpen(true)}
+              className={clsx(styles.bellButton, 'button button--secondary')}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <FaBell style={{ marginRight: '5px' }} />
+              Notify
+            </button>
+
+            {/* Twitter follow button */}
+            <Link 
+              to="https://twitter.com/CompilerSutra" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={clsx(styles.twitterButton, 'button button--secondary')}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <FaTwitter style={{ marginRight: '5px' }} />
+              Follow
+            </Link>
+          </div>
         </div>
       </div>
     </header>
   );
 }
+
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
