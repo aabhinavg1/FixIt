@@ -1,3 +1,20 @@
+---
+id: comprehensive-cpp-tutorial
+title: Comprehensive C++ Tutorial with Practical Applications
+description: A detailed and structured guide to learning C++ with real-world applications, object-oriented programming, modern features, and industry standards.
+keywords:
+  - C++
+  - C++ tutorial
+  - Object-Oriented Programming
+  - Modern C++
+  - Build Systems
+  - STL
+  - Industry Best Practices
+slug: /cpp-tutorial
+sidebar_label: Comprehensive C++ Tutorial
+---
+
+
 # Comprehensive C++ Tutorial with Practical Applications
 
 Welcome to the **Comprehensive C++ Tutorial with Practical Applications**! This repository will soon feature a detailed and structured C++ guide covering a wide range of topics, from beginner to advanced concepts. Whether you're just starting with C++ or looking to refine your skills, this guide is designed for you.
