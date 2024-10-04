@@ -20,25 +20,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* Stack buttons vertically */
 }
 
-/* Styles for the Subscribe button */
-.subscribeButton {
-  background-color: red; /* Change the background color to red */
-  color: white; /* Change text color to white for better contrast */
-  margin-left: 10px; /* Add a margin of 10 pixels from GitHub */
-  display: flex;
-  align-items: center; /* Center the icon and text vertically */
+.buttonContainer {
+  display: flex; /* Display notify and follow in a single line */
+  justify-content: center; /* Center them horizontally */
+  gap: 10px; /* Space between the buttons */
+  margin-top: 20px; /* Space above the buttons */
+}
+
+/* Styles for Notify button */
+.bellButton {
+  background-color: #f0f0f0; /* Light grey background */
+  color: black; /* Black text */
   padding: 0.5rem 1rem; /* Add padding for better click area */
   border: none; /* Remove default button border */
   border-radius: 5px; /* Add slight rounding to corners */
   cursor: pointer; /* Change cursor to pointer */
   font-weight: bold; /* Make the text bold */
+  display: flex; /* Display flex for icon alignment */
+  align-items: center; /* Center the icon and text vertically */
 }
 
-/* Styles for the emoji icon inside the Subscribe button */
-.subscribeButton::before {
-  content: '📧'; /* Adding an email icon using emoji */
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 20px; /* Adjust size of the emoji */
+/* Styles for Twitter Follow button */
+.twitterButton {
+  background-color: #1DA1F2; /* Twitter blue */
+  color: white; /* White text */
+  padding: 0.5rem 1rem; /* Add padding for better click area */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add slight rounding to corners */
+  cursor: pointer; /* Change cursor to pointer */
+  font-weight: bold; /* Make the text bold */
+  display: flex; /* Display flex for icon alignment */
+  align-items: center; /* Center the icon and text vertically */
 }
