@@ -51,7 +51,7 @@ const sidebars = {
           type: 'category',
           label: 'Basic',
           items: [
-            'c++/basic/intro',                   // Document ID for basic/intro.md
+            'c++/basic/comprehensive-cpp-tutorial',                   // Document ID for basic/intro.md
           ],
         },
         {
