@@ -28,7 +28,7 @@ const sidebars = {
         'llvm_basic/Build',                      // Document ID for Build.md
         'llvm_basic/What_is_LLVM',               // Document ID for What_is_LLVM.md
         'llvm_basic/Why_LLVM',                   // Document ID for Why_LLVM.md
-        'llvm_basic/congratulations',             // Document ID for congratulations.md
+        'llvm_basic/congratulations',            // Document ID for congratulations.md
         'llvm_basic/deploy-your-site',           // Document ID for deploy-your-site.md
         'llvm_basic/markdown-features',          // Document ID for markdown-features.mdx
       ],
@@ -39,6 +39,42 @@ const sidebars = {
       items: [
         'llvm_extras/manage_llvm_version',       // Document ID for manage_llvm_version.md
         'llvm_extras/translate-your-site',       // Document ID for translate-your-site.md
+      ],
+    },
+  ],
+  cppTutorialSidebar: [
+    {
+      type: 'category',
+      label: 'C++ Tutorials',
+      items: [
+        {
+          type: 'category',
+          label: 'Basic',
+          items: [
+            'c++/basic/intro',                   // Document ID for basic/intro.md
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Intermediate',
+          items: [
+            'c++/intermediate/intro',            // Document ID for intermediate/intro.md
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced',
+          items: [
+            'c++/advance/intro',                 // Document ID for advance/intro.md
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Standard',
+          items: [
+            'c++/standard/intro',                // Document ID for standard/intro.md
+          ],
+        },
       ],
     },
   ],
