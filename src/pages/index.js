@@ -1,4 +1,3 @@
-// src/pages/index.js
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -10,8 +9,10 @@ import NewsletterModal from '@site/src/components/NewsletterModal'; // Import th
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-function HomepageHeader() {
+// Updated HomepageHeader to accept setModalOpen as a prop
+function HomepageHeader({ setModalOpen }) {
   const { siteConfig } = useDocusaurusContext();
+  
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -23,6 +24,16 @@ function HomepageHeader() {
           <Link className="button button--secondary button--lg" to="/docs/compilers/intro">
             Compiler Frameworks and Toolchains ⏱️
           </Link>
+          <Link className="button button--secondary button--lg" to="https://github.com/aabhinavg1/FixIt">
+            GitHub
+          </Link>
+          {/* Subscribe button with emoji */}
+          <button
+            onClick={() => setModalOpen(true)} // This will now set the modal open
+            className={clsx(styles.subscribeButton, 'button button--primary')}
+          >
+            Subscribe
+          </button>
         </div>
       </div>
     </header>
@@ -31,21 +42,17 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
 
-  const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      <HomepageHeader setModalOpen={setModalOpen} /> {/* Pass setModalOpen here */}
       <main>
         <HomepageFeatures />
-        <button onClick={handleModalOpen} className="button button--primary">
-          Subscribe to Newsletter
-        </button>
         {isModalOpen && <NewsletterModal onClose={handleModalClose} />} {/* Show the modal */}
       </main>
     </Layout>
