@@ -1,24 +1,32 @@
-// local-server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3001;
+
+// Enable CORS for all origins
+app.use(cors({
+    origin: 'http://localhost:3000', // Your frontend URL
+}));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.use(bodyParser.json());
 
 // Endpoint to save email
 app.post('/save-email', (req, res) => {
-  const { email } = req.body;
+  const { email } = req.body; // Extract email from request body
 
   if (!email || !email.includes('@')) {
     return res.status(400).json({ message: 'Invalid email' });
   }
 
   // Save the email to a local file
-  const filePath = path.join(__dirname, 'emails.txt'); // Adjust the path if necessary
+  const filePath = path.join(__dirname, 'emails.txt');
   fs.appendFile(filePath, `${email}\n`, (err) => {
     if (err) {
       console.error('Error saving email:', err);
