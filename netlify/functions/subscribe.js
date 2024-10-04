@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
 
     try {
       // Send the email to the local server
-      await axios.post('http://localhost:3001/save-email', { email });
+      await axios.post('https://compilersutraserver.glitch.me/save-email', { email });
 
       console.log(`Email subscribed: ${email}`);
 
