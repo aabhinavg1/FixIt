@@ -1,41 +1,43 @@
-// src/components/NewsletterModal.js
 import React, { useState } from 'react';
-import './NewsletterModal.css';
+import styles from './NewsletterModal.module.css'; // Ensure the correct path to your CSS module
 
 const NewsletterModal = ({ onClose }) => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`Email submitted: ${email}`);
+    setLoading(true);
 
     try {
-      const response = await fetch('/.netlify/functions/send-email', { // Update to point to the serverless function
+      // Update the fetch URL to use the correct Netlify function endpoint
+      const response = await fetch('https://www.compilersutra.com/.netlify/functions/subscribe', { // Adjusted endpoint
         method: 'POST',
-        body: JSON.stringify({ email }), // Send email in request body
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
+      if (response.ok) {
+        alert('Thank you for subscribing!');
+        setEmail(''); // Clear the input field
+        onClose(); // Close the modal after successful submission
+      } else {
+        alert('Something went wrong, please try again.');
       }
-
-      const result = await response.json();
-      console.log(result.message); // Log success message from server
-      setEmail(''); // Clear input after submission
-      onClose(); // Close the modal after submission
     } catch (error) {
-      console.error('Error sending email:', error);
+      alert('Error: ' + error.message);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="close-button" onClick={onClose}>
-          &times;
-        </button>
-        <h2>Subscribe to Our Newsletter</h2>
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <button className={styles.closeButton} onClick={onClose}>&times;</button>
+        <h2>Subscribe to our Newsletter</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -44,7 +46,9 @@ const NewsletterModal = ({ onClose }) => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit">Subscribe</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Subscribing...' : 'Subscribe'}
+          </button>
         </form>
       </div>
     </div>
