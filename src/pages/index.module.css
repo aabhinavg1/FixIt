@@ -3,7 +3,7 @@
  * and scoped locally.
  */
 
-.heroBanner {
+ .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -20,4 +20,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Styles for the Subscribe button */
+.subscribeButton {
+  background-color: red; /* Change the background color to red */
+  color: white; /* Change text color to white for better contrast */
+  margin-left: 10px; /* Add a margin of 10 pixels from GitHub */
+  display: flex;
+  align-items: center; /* Center the icon and text vertically */
+  padding: 0.5rem 1rem; /* Add padding for better click area */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add slight rounding to corners */
+  cursor: pointer; /* Change cursor to pointer */
+  font-weight: bold; /* Make the text bold */
+}
+
+/* Styles for the emoji icon inside the Subscribe button */
+.subscribeButton::before {
+  content: '📧'; /* Adding an email icon using emoji */
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 20px; /* Adjust size of the emoji */
 }
