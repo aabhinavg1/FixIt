@@ -111,6 +111,12 @@ const config = {
             label: 'Compilers', // Added label for compilers
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'cppTutorialSidebar', // Added sidebar ID for C++ tutorials
+            position: 'left',
+            label: 'C++ Tutorials', // Added label for C++ tutorials
+          },
+          {
             href: 'https://github.com/aabhinavg1/FixIt',
             label: 'GitHub',
             position: 'right',
@@ -135,6 +141,10 @@ const config = {
               {
                 label: 'Compilers',
                 to: '/docs/compilers/intro',
+              },
+              {
+                label: 'C++ Tutorials',
+                to: '/docs/c++/basic/intro',
               },
             ],
           },
