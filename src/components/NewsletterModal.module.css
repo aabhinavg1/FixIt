@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Increased background opacity for better focus */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,12 +12,13 @@
 }
 
 .modalContent {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px; /* Slightly larger border-radius for smoother edges */
+  width: 350px; /* Increased width for better input form */
   text-align: center;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for a subtle pop-out effect */
 }
 
 .closeButton {
@@ -28,6 +29,12 @@
   position: absolute;
   top: 10px;
   right: 15px;
+  color: #666; /* Slightly lighter color for the close button */
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: #000; /* Darker color on hover */
 }
 
 form {
@@ -38,17 +45,63 @@ form {
 
 input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px; /* Slightly larger padding for better text visibility */
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px; /* Increased font size for readability */
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #28a745; /* Highlight input border on focus */
+  outline: none; /* Remove default focus outline */
 }
 
 button {
-  background-color: #28a745; /* Green background for subscribe button */
+  background-color: #28a745; /* Green background for the subscribe button */
   color: white;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+button:disabled {
+  background-color: #ccc; /* Disabled state for the button */
+  cursor: not-allowed;
+}
+
+/* Success Message Styles */
+.successMessage {
+  color: #28a745; /* Green color to indicate success */
+  background-color: #e9f5ec; /* Light green background */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #28a745;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Error Message Styles */
+.errorMessage {
+  color: #dc3545; /* Red color to indicate error */
+  background-color: #f8d7da; /* Light red background */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #dc3545;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
 }
