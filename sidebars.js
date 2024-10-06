@@ -39,6 +39,7 @@ const sidebars = {
       items: [
         'llvm_extras/manage_llvm_version',       // Document ID for manage_llvm_version.md
         'llvm_extras/translate-your-site',       // Document ID for translate-your-site.md
+        'llvm_extras/llvm-guide',          //Document ID for More_about_LLVM
       ],
     },
   ],

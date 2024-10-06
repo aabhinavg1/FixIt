@@ -9,8 +9,8 @@ import { FaBell, FaTwitter } from 'react-icons/fa'; // Import icons
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import MaintenancePopup from '@site/src/components/MaintenancePopup'; // Import the maintenance popup
 
-// Updated HomepageHeader to accept setModalOpen as a prop
 function HomepageHeader({ setModalOpen }) {
   const { siteConfig } = useDocusaurusContext();
   
@@ -25,10 +25,7 @@ function HomepageHeader({ setModalOpen }) {
           <Link className="button button--secondary button--lg" to="/docs/compilers/intro">
             Compiler Frameworks and Toolchains ⏱️
           </Link>
-
-          {/* Button Container for Notify and Follow buttons */}
           <div className={styles.buttonContainer}>
-            {/* Bell button to open the modal */}
             <button
               onClick={() => setModalOpen(true)}
               className={clsx(styles.bellButton, 'button button--secondary')}
@@ -37,8 +34,6 @@ function HomepageHeader({ setModalOpen }) {
               <FaBell style={{ marginRight: '5px' }} />
               Notify
             </button>
-
-            {/* Twitter follow button */}
             <Link 
               to="https://twitter.com/CompilerSutra" 
               target="_blank" 
@@ -56,21 +51,24 @@ function HomepageHeader({ setModalOpen }) {
   );
 }
 
-
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
+  const [isPopupVisible, setPopupVisible] = useState(true); // State for popup visibility
 
   const handleModalClose = () => setModalOpen(false);
+  const handlePopupClose = () => setPopupVisible(false); // Close the popup
 
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader setModalOpen={setModalOpen} /> {/* Pass setModalOpen here */}
+      description="Description will go into a meta tag in <head />"
+    >
+      <HomepageHeader setModalOpen={setModalOpen} />
       <main>
         <HomepageFeatures />
-        {isModalOpen && <NewsletterModal onClose={handleModalClose} />} {/* Show the modal */}
+        {isModalOpen && <NewsletterModal onClose={handleModalClose} />}
+        {isPopupVisible && <MaintenancePopup onClose={handlePopupClose} />} {/* Show the popup */}
       </main>
     </Layout>
   );
