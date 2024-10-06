@@ -6,25 +6,97 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-color-primary: #2e8555; /* Primary color */
+  --ifm-color-primary-dark: #29784c; /* Darker variant */
+  --ifm-color-primary-darker: #277148; /* Darkest variant */
+  --ifm-color-primary-darkest: #205d3b; /* Darkest variant */
+  --ifm-color-primary-light: #33925d; /* Lighter variant */
+  --ifm-color-primary-lighter: #359962; /* Lightest variant */
+  --ifm-color-primary-lightest: #3cad6e; /* Lightest variant */
+  --ifm-code-font-size: 95%; /* Code font size */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1); /* Highlighted code line background */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #25c2a0; /* Dark mode primary color */
+  --ifm-color-primary-dark: #21af90; /* Darker variant */
+  --ifm-color-primary-darker: #1fa588; /* Darkest variant */
+  --ifm-color-primary-darkest: #1a8870; /* Darkest variant */
+  --ifm-color-primary-light: #29d5b0; /* Lighter variant */
+  --ifm-color-primary-lighter: #32d8b4; /* Lightest variant */
+  --ifm-color-primary-lightest: #4fddbf; /* Lightest variant */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3); /* Highlighted code line background in dark mode */
+}
+
+/* Body styles for light and dark themes */
+body {
+  background-color: #f9f9f9; /* Light background for the main body */
+  color: #333; /* Dark text color */
+}
+
+[data-theme='dark'] {
+  background-color: #1a1a1a; /* Dark background for dark mode */
+  color: #f9f9f9; /* Light text color for dark mode */
+}
+
+/* Button styles */
+button {
+  background-color: var(--ifm-color-primary); /* Use the primary color */
+  color: white; /* White text for buttons */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for comfort */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+  background-color: var(--ifm-color-primary-dark); /* Darken on hover */
+}
+
+/* Link styles */
+a {
+  color: var(--ifm-color-primary);
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for emphasis */
+}
+
+/* Maintenance Popup styles */
+.maintenance-popup {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--ifm-color-primary);
+  padding: 20px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Make sure it is above other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.maintenance-popup h2 {
+  color: var(--ifm-color-primary);
+}
+
+.maintenance-popup button {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.maintenance-popup button:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .maintenance-popup {
+    width: 90%; /* Responsive width for smaller screens */
+    padding: 15px;
+  }
 }
