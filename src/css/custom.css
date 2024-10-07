@@ -64,6 +64,43 @@ a:hover {
   text-decoration: underline; /* Underline on hover for emphasis */
 }
 
+/* Tutorials Navigation Styles */
+.tutorials-nav {
+  background-color: var(--ifm-color-primary-light); /* Background for the nav */
+  padding: 20px; /* Add padding around the nav */
+}
+
+/* Style for the unordered list */
+.tutorials-list {
+  list-style-type: none; /* Remove bullet points */
+  display: flex; /* Use flexbox for alignment */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: space-between; /* Evenly space items */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Style for list items */
+.tutorials-list li {
+  margin: 10px; /* Add margin around items */
+}
+
+/* Style for the links */
+.tutorials-list a {
+  display: inline-block; /* Treat links as block elements */
+  padding: 12px 20px; /* Padding for comfort */
+  border-radius: 5px; /* Rounded corners */
+  background-color: var(--ifm-color-primary); /* Use primary color for buttons */
+  color: white; /* White text */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for links */
+.tutorials-list a:hover {
+  background-color: var(--ifm-color-primary-dark); /* Darken on hover */
+}
+
 /* Maintenance Popup styles */
 .maintenance-popup {
   background-color: rgba(255, 255, 255, 0.9);
