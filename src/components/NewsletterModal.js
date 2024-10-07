@@ -12,8 +12,8 @@ const NewsletterModal = ({ onClose }) => {
     setMessage(''); // Reset message on new submission
 
     try {
-      // First, check if the email is already subscribed
-      const checkResponse = await fetch('https://www.compilersutra.com/.netlify/functions/subscribers');
+      // Check if the email is already subscribed
+      const checkResponse = await fetch('https://compilersutraserver.glitch.me/subscribers');
       
       if (!checkResponse.ok) {
         throw new Error('Failed to check subscription status.');
