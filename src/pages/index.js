@@ -4,16 +4,15 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import NewsletterModal from '@site/src/components/NewsletterModal'; // Import the modal component
-import { FaBell, FaTwitter } from 'react-icons/fa'; // Import icons
-
+import NewsletterModal from '@site/src/components/NewsletterModal';
+import MaintenancePopup from '@site/src/components/MaintenancePopup';
+import { FaBell, FaTwitter } from 'react-icons/fa'; 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import MaintenancePopup from '@site/src/components/MaintenancePopup'; // Import the maintenance popup
 
-function HomepageHeader({ setModalOpen }) {
+function HomepageHeader({ onNotifyClick }) {
   const { siteConfig } = useDocusaurusContext();
-  
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -27,7 +26,7 @@ function HomepageHeader({ setModalOpen }) {
           </Link>
           <div className={styles.buttonContainer}>
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={onNotifyClick}
               className={clsx(styles.bellButton, 'button button--secondary')}
               style={{ display: 'flex', alignItems: 'center' }}
             >
@@ -53,22 +52,19 @@ function HomepageHeader({ setModalOpen }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
-  const [isPopupVisible, setPopupVisible] = useState(true); // State for popup visibility
-
-  const handleModalClose = () => setModalOpen(false);
-  const handlePopupClose = () => setPopupVisible(false); // Close the popup
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isPopupVisible, setPopupVisible] = useState(true);
 
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <HomepageHeader setModalOpen={setModalOpen} />
+      <HomepageHeader onNotifyClick={() => setModalOpen(true)} />
       <main>
         <HomepageFeatures />
-        {isModalOpen && <NewsletterModal onClose={handleModalClose} />}
-        {isPopupVisible && <MaintenancePopup onClose={handlePopupClose} />} {/* Show the popup */}
+        {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
+        {isPopupVisible && <MaintenancePopup onClose={() => setPopupVisible(false)} />}
       </main>
     </Layout>
   );
