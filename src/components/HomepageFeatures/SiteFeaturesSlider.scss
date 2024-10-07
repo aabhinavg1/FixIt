@@ -1,0 +1,61 @@
+.homepage-slider-container {
+    position: relative;
+    text-align: center;
+  
+    figure {
+      margin: 0;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  
+    p {
+      font-size: 1.2em;
+      margin: 1em 0;
+    }
+  
+    .homepage-slider-dots {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+  
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: gray;
+        margin: 0 5px;
+        display: inline-block;
+  
+        &[data-active='true'] {
+          background: blue; // Active dot color
+        }
+      }
+    }
+  
+    .homepage-slider-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 2em;
+        padding: 0 15px;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: blue; // Change color on hover
+        }
+      }
+  
+      .slider-feature-name {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+    }
+  }
+  
