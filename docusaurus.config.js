@@ -182,6 +182,187 @@ const config = {
         copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
       },
     }),
+
+  // Add self-referencing hreflang tags
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/c++/advance/intro/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/c++/intermediate/intro/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/c++/standard/intro/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/compilers/intro/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/compilers/know_your_compilers/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/cpp-tutorial/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/gpu/introduction/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/gpu/optimizations/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/build/',
+        hreflang: 'en-US',
+      },
+    },
+    // New hreflang entries for the additional URLs
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/congratulations/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/deploy-your-site/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/intro-to-llvm/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/markdown-features/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_basic/why_llvm/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_extras/llvm-guide/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_extras/manage_llvm_version/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/llvm_extras/translate-your-site/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/tags/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/tags/compilers/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/tags/introduction/',
+        hreflang: 'en-US',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        href: 'https://www.compilersutra.com/docs/tags/llvm/',
+        hreflang: 'en-US',
+      },
+    },
+  ],
 };
 
-export default config;
+module.exports = config;
