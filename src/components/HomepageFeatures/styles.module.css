@@ -1,11 +1,129 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  margin: 30px 0; /* Increased top and bottom margin */
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.titleBox {
+  background-color: #007bff; /* Title box color */
+  color: white; /* Title text color */
+  padding: 12px 24px; /* Increased padding for the title box */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center;
+  margin-bottom: 15px; /* Increased space between title box and circle */
+}
+
+.circleContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Adjusted height to fit larger circle */
+  margin-bottom: 30px; /* Add margin below each circle container */
+}
+
+.circleContainer:first-of-type {
+  margin-bottom: 50px; /* Increase gap between Did You Know? and Brush Up Concepts */
+}
+
+.circleContent {
+  width: 320px; /* Increased width of the circular content */
+  height: 320px; /* Increased height of the circular content */
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px; /* Increased padding for better content fitting */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.circleContent p {
+  margin: 0; /* Remove default margin */
+  font-size: 1.1em; /* Increased font size for better visibility */
+}
+
+.circleButtons {
+  position: absolute;
+  bottom: -50px; /* Set the bottom position to be outside the circle */
+  display: flex;
+  justify-content: center; /* Centered buttons */
+  width: 100%;
+  gap: 20px; /* Increased space between buttons */
+}
+
+.arrowButton {
+  background-color: #007bff; /* Button color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 50%; /* Circular buttons */
+  width: 45px; /* Increased button width */
+  height: 45px; /* Increased button height */
+  font-size: 20px; /* Font size */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.arrowButton:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center; /* Center the social buttons */
+  margin-top: 15px; /* Increased space above the buttons */
+}
+
+.socialIcon {
+  width: 35px; /* Adjust logo size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 15px; /* Increased space between logos */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .features {
+    padding: 0 10px; /* Add padding on small screens */
+  }
+
+  .circleContainer {
+    height: auto; /* Allow height to adjust based on content */
+    margin-bottom: 40px; /* Increased spacing below the circle */
+  }
+
+  .circleContainer:first-of-type {
+    margin-bottom: 60px; /* Further increase gap on mobile */
+  }
+
+  .circleContent {
+    width: 280px; /* Adjust width for smaller screens */
+    height: 280px; /* Adjust height for smaller screens */
+  }
+
+  .circleButtons {
+    bottom: -40px; /* Adjust button position for smaller screens */
+  }
+
+  .arrowButton {
+    width: 40px; /* Adjust button size for smaller screens */
+    height: 40px; /* Adjust button size for smaller screens */
+    font-size: 18px; /* Smaller font size for buttons */
+  }
+
+  .socialLinks {
+    flex-direction: column; /* Stack icons vertically on small screens */
+  }
+
+  .socialIcon {
+    margin: 5px 0; /* Space between stacked icons */
+  }
+  .note {
+    font-size: 1em; /* Slightly larger for emphasis */
+    color: #007acc; /* A shade of blue for visibility */
+    text-align: center;
+    margin-bottom: 1.5rem; /* Add space below the note */
+    font-weight: bold; /* Make it bold for better visibility */
+  }
+  
 }
