@@ -144,7 +144,7 @@ const config = {
               },
               {
                 label: 'C++ Tutorials',
-                to: '/docs/c++/basic/intro',
+                to: '/docs/cpp-tutorial',
               },
             ],
           },
