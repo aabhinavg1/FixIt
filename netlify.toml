@@ -1,0 +1,8 @@
+[build]
+  publish = "build"  # Adjust to your actual build output folder
+  command = "npm run build"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "all"
