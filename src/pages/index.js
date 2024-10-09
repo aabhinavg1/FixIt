@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -52,8 +52,15 @@ function HomepageHeader({ onNotifyClick }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(true); // Set to true to open the modal by default
   const [isPopupVisible, setPopupVisible] = useState(true);
+
+  useEffect(() => {
+    // Automatically open the modal on component mount
+    if (!isModalOpen) {
+      setModalOpen(true);
+    }
+  }, []);
 
   return (
     <Layout
