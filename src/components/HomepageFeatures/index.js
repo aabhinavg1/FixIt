@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import CookieConsent from 'react-cookie-consent'; // Ensure you have this package installed
 
 // Define the features for the Did You Know section
 const didYouKnowFeatures = [
@@ -120,38 +121,44 @@ const socialLinks = [
   },
 ];
 
+// SocialLinks component to render the social links
 const SocialLinks = () => (
   <div className={styles.socialLinks}>
     {socialLinks.map(link => (
-      <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer">
+      <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Follow us on ${link.name}`}>
         <img src={useBaseUrl(link.logo)} alt={link.name} className={styles.socialIcon} />
       </a>
     ))}
   </div>
 );
 
+// Main HomepageFeatures component
 export default function HomepageFeatures() {
   const [didYouKnowIndex, setDidYouKnowIndex] = useState(0);
   const [brushUpIndex, setBrushUpIndex] = useState(0);
-  const numDidYouKnowFeatures = didYouKnowFeatures.length;
-  const numBrushUpFeatures = brushUpFeatures.length;
+  const [cookieAccepted, setCookieAccepted] = useState(false); // State for cookie consent
 
   // Handlers for Did You Know section
   const handleNextDidYouKnow = () => {
-    setDidYouKnowIndex((didYouKnowIndex + 1) % numDidYouKnowFeatures);
+    setDidYouKnowIndex((prevIndex) => (prevIndex + 1) % didYouKnowFeatures.length);
   };
 
   const handlePrevDidYouKnow = () => {
-    setDidYouKnowIndex((didYouKnowIndex - 1 + numDidYouKnowFeatures) % numDidYouKnowFeatures);
+    setDidYouKnowIndex((prevIndex) => (prevIndex - 1 + didYouKnowFeatures.length) % didYouKnowFeatures.length);
   };
 
   // Handlers for Brush Up Concepts section
   const handleNextBrushUp = () => {
-    setBrushUpIndex((brushUpIndex + 1) % numBrushUpFeatures);
+    setBrushUpIndex((prevIndex) => (prevIndex + 1) % brushUpFeatures.length);
   };
 
   const handlePrevBrushUp = () => {
-    setBrushUpIndex((brushUpIndex - 1 + numBrushUpFeatures) % numBrushUpFeatures);
+    setBrushUpIndex((prevIndex) => (prevIndex - 1 + brushUpFeatures.length) % brushUpFeatures.length);
+  };
+
+  // Handler for cookie consent
+  const handleCookieAccept = () => {
+    setCookieAccepted(true); // Set cookie accepted to true
   };
 
   return (
@@ -168,8 +175,8 @@ export default function HomepageFeatures() {
                 <p>{didYouKnowFeatures[didYouKnowIndex].description}</p>
               </div>
               <div className={styles.circleButtons}>
-                <button onClick={handlePrevDidYouKnow} className={styles.arrowButton}>&lt;</button>
-                <button onClick={handleNextDidYouKnow} className={styles.arrowButton}>&gt;</button>
+                <button onClick={handlePrevDidYouKnow} className={styles.arrowButton} aria-label="Previous Fact">&lt;</button>
+                <button onClick={handleNextDidYouKnow} className={styles.arrowButton} aria-label="Next Fact">&gt;</button>
               </div>
             </div>
           </div>
@@ -183,8 +190,8 @@ export default function HomepageFeatures() {
                 <p>{brushUpFeatures[brushUpIndex].description}</p>
               </div>
               <div className={styles.circleButtons}>
-                <button onClick={handlePrevBrushUp} className={styles.arrowButton}>&lt;</button>
-                <button onClick={handleNextBrushUp} className={styles.arrowButton}>&gt;</button>
+                <button onClick={handlePrevBrushUp} className={styles.arrowButton} aria-label="Previous Concept">&lt;</button>
+                <button onClick={handleNextBrushUp} className={styles.arrowButton} aria-label="Next Concept">&gt;</button>
               </div>
             </div>
           </div>
@@ -195,6 +202,20 @@ export default function HomepageFeatures() {
             <SocialLinks />
           </div>
         </div>
+        {!cookieAccepted && ( // Render CookieConsent only if not accepted
+          <CookieConsent 
+            location="bottom"
+            buttonText="I understand"
+            cookieName="myAwesomeCookieName"
+            style={{ background: "#2B373B", color: "#ffffff" }}
+            buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+            expires={150}
+            onAccept={handleCookieAccept} // Call handler on accept
+          >
+            This website uses cookies to enhance the user experience.{" "}
+            <span style={{ fontSize: "10px" }}>This message will disappear in 150 days.</span>
+          </CookieConsent>
+        )}
       </div>
     </section>
   );
