@@ -43,6 +43,13 @@
   font-size: 1.1em; /* Increased font size for better visibility */
 }
 
+/* Dark mode styles for circle content */
+[data-theme='dark'] .circleContent {
+  background-color: #2a2a2a; /* Dark background color */
+  color: #f9f9f9; /* Light text color */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Lighter shadow for visibility */
+}
+
 .circleButtons {
   position: absolute;
   bottom: -50px; /* Set the bottom position to be outside the circle */
@@ -69,6 +76,15 @@
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
+/* Dark mode styles for buttons */
+[data-theme='dark'] .arrowButton {
+  background-color: #007acc; /* Dark mode button color */
+}
+
+[data-theme='dark'] .arrowButton:hover {
+  background-color: #0056b3; /* Keep same hover effect */
+}
+
 .socialLinks {
   display: flex;
   justify-content: center; /* Center the social buttons */
@@ -79,6 +95,11 @@
   width: 35px; /* Adjust logo size as needed */
   height: auto; /* Maintain aspect ratio */
   margin: 0 15px; /* Increased space between logos */
+}
+
+/* Dark mode styles for social icons */
+[data-theme='dark'] .socialIcon {
+  filter: brightness(0) invert(1); /* Invert colors for dark mode */
 }
 
 /* Responsive styles */
@@ -118,6 +139,7 @@
   .socialIcon {
     margin: 5px 0; /* Space between stacked icons */
   }
+
   .note {
     font-size: 1em; /* Slightly larger for emphasis */
     color: #007acc; /* A shade of blue for visibility */
@@ -125,5 +147,4 @@
     margin-bottom: 1.5rem; /* Add space below the note */
     font-weight: bold; /* Make it bold for better visibility */
   }
-  
 }
