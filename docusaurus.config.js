@@ -41,8 +41,16 @@ const config = {
     ],
   ],
 
-  // Add the Google Analytics plugin here
   plugins: [
+    [
+      '@docusaurus/theme-mermaid',
+      {
+        // This will enable Mermaid diagrams in Markdown files
+        markdown: {
+          mermaid: true,
+        },
+      },
+    ],
     [
       '@docusaurus/plugin-google-analytics',
       {
@@ -50,7 +58,6 @@ const config = {
         anonymizeIP: true, // Optional
       },
     ],
-    // Adding PWA support
     [
       '@docusaurus/plugin-pwa',
       {
@@ -63,132 +70,135 @@ const config = {
         ],
       },
     ],
+    // Adding Vercel Analytics Plugin
+    [
+      'vercel-analytics',
+      {
+        debug: true,
+        mode: 'auto',
+      },
+    ],
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // SEO Metadata
-      metadata: [
-        { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture.' },
-        { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Optimization' },
-        { property: 'og:title', content: 'CompilerSutra | LLVM, MLIR, TVM, and GPU Compiler Architecture' },
-        { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture.' },
-        { property: 'og:image', content: 'https://compilersutra.com/img/CompilerSutra.png' },
-        { property: 'og:url', content: 'https://compilersutra.com/' },
-        { property: 'og:type', content: 'website' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'CompilerSutra | Comprehensive Guides on LLVM, MLIR, TVM, and GPU' },
-        { name: 'twitter:description', content: 'Explore in-depth tutorials and articles on LLVM, MLIR, TVM, and GPU compiler optimization.' },
-        { name: 'twitter:image', content: 'https://compilersutra.com/img/twitter-card.png' },
-      ],
+  themeConfig: {
+    metadata: [
+      { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture.' },
+      { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Optimization' },
+      { property: 'og:title', content: 'CompilerSutra | LLVM, MLIR, TVM, and GPU Compiler Architecture' },
+      { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture.' },
+      { property: 'og:image', content: 'https://compilersutra.com/img/CompilerSutra.png' },
+      { property: 'og:url', content: 'https://compilersutra.com/' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'CompilerSutra | Comprehensive Guides on LLVM, MLIR, TVM, and GPU' },
+      { name: 'twitter:description', content: 'Explore in-depth tutorials and articles on LLVM, MLIR, TVM, and GPU compiler optimization.' },
+      { name: 'twitter:image', content: 'https://compilersutra.com/img/twitter-card.png' },
+    ],
+    image: 'img/llvm-compiler-social-card.jpg', // Default Open Graph image
 
-      image: 'img/llvm-compiler-social-card.jpg', // Default Open Graph image
-
-      navbar: {
-        title: 'CompilerSutra',
-        logo: {
-          alt: 'CompilerSutra Logo',
-          src: 'img/logo.svg',
+    navbar: {
+      title: 'CompilerSutra',
+      logo: {
+        alt: 'CompilerSutra Logo',
+        src: 'img/logo.svg',
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'llvmTutorialSidebar', // Updated sidebar ID for LLVM tutorials
+          position: 'left',
+          label: 'LLVM_Tutorial', // Updated label
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'llvmTutorialSidebar', // Updated sidebar ID for LLVM tutorials
-            position: 'left',
-            label: 'LLVM_Tutorial', // Updated label
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'gpuTutorialSidebar', // Added sidebar ID for GPU tutorials
-            position: 'left',
-            label: 'GPU_Tutorial', // Added label for GPU tutorials
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'compilersSidebar', // Added sidebar ID for compilers tutorials
-            position: 'left',
-            label: 'Compilers', // Added label for compilers
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'cppTutorialSidebar', // Added sidebar ID for C++ tutorials
-            position: 'left',
-            label: 'C++ Tutorials', // Added label for C++ tutorials
-          },
-          {
-            href: 'https://github.com/aabhinavg1/FixIt',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
-            href: 'https://topmate.io/compilersutra/',
-            label: 'Mentor',
-            position: 'right',
-          },
-        ],
-      },
+        {
+          type: 'docSidebar',
+          sidebarId: 'gpuTutorialSidebar', // Added sidebar ID for GPU tutorials
+          position: 'left',
+          label: 'GPU_Tutorial', // Added label for GPU tutorials
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'compilersSidebar', // Added sidebar ID for compilers tutorials
+          position: 'left',
+          label: 'Compilers', // Added label for compilers
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'cppTutorialSidebar', // Added sidebar ID for C++ tutorials
+          position: 'left',
+          label: 'C++ Tutorials', // Added label for C++ tutorials
+        },
+        {
+          href: 'https://github.com/aabhinavg1/FixIt',
+          label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://topmate.io/compilersutra/',
+          label: 'Mentor',
+          position: 'right',
+        },
+      ],
+    },
 
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'LLVM_Tutorial',
-                to: '/docs/llvm_basic/Build',
-              },
-              {
-                label: 'GPU_Tutorial',
-                to: '/docs/gpu/introduction',
-              },
-              {
-                label: 'Compilers',
-                to: '/docs/compilers/intro',
-              },
-              {
-                label: 'C++ Tutorials',
-                to: '/docs/cpp-tutorial',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'LLVM',
-                href: 'https://llvm.org/docs/',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/gandiv',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/CompilerSutra',
-              },
-              {
-                label: 'Mentor',
-                href: 'https://topmate.io/compilersutra/',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/aabhinavg1/FixIt',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
-      },
-    }),
-
-  // Add self-referencing hreflang tags
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'LLVM_Tutorial',
+              to: '/docs/llvm_basic/Build',
+            },
+            {
+              label: 'GPU_Tutorial',
+              to: '/docs/gpu/introduction',
+            },
+            {
+              label: 'Compilers',
+              to: '/docs/compilers/intro',
+            },
+            {
+              label: 'C++ Tutorials',
+              to: '/docs/cpp-tutorial',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'LLVM',
+              href: 'https://llvm.org/docs/',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discordapp.com/invite/gandiv',
+            },
+            {
+              label: 'Twitter',
+              href: 'https://twitter.com/CompilerSutra',
+            },
+            {
+              label: 'Mentor',
+              href: 'https://topmate.io/compilersutra/',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/aabhinavg1/FixIt',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
+    },
+  },
+  
   headTags: [
     {
       tagName: 'link',
@@ -198,7 +208,6 @@ const config = {
         hreflang: 'en-US',
       },
     },
-    // ... other hreflang tags ...
   ],
 };
 
