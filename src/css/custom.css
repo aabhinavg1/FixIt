@@ -168,4 +168,23 @@ a:hover {
     width: 100%; /* Full width for links */
     text-align: center; /* Center align text */
   }
+  .mermaid {
+    display: block; /* Ensure the mermaid container is a block element */
+    max-width: 100%; /* Prevent overflow */
+    margin: 0 auto; /* Center it */
+  }
+  /* Example styling for the 404 page */
+div {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1 {
+  color: #e74c3c;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
 }
