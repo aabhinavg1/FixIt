@@ -54,6 +54,7 @@ const sidebars = {
           items: [
             'c++/basic/comprehensive-cpp-tutorial',                   // Document ID for basic/intro.md
             'c++/basic/cpp_tutorial_with_cmake',
+            'c++/basic/oop-in-cpp'
           ],
         },
         {
