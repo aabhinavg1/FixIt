@@ -137,6 +137,12 @@ const config = {
           label: 'Mentor',
           position: 'right',
         },
+        {
+         href: 'https://www.youtube.com/@codeforpython',
+         label: 'YouTube',
+          position: 'right'
+        }
+
       ],
     },
 
@@ -182,6 +188,11 @@ const config = {
             {
               label: 'Mentor',
               href: 'https://topmate.io/compilersutra/',
+            },
+            {
+              label: 'YouTube',
+              href: 'https://www.youtube.com/@codeforpython',
+
             },
           ],
         },
