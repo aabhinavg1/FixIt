@@ -1,5 +1,5 @@
 ---
-title: Differences between C++11 and C++14
+title: Intro to C++11 vs C++14
 description: Explore the key differences, improvements, and optimizations between C++11 and C++14, including features like relaxed constexpr, variable templates, and generic lambdas.
 keywords:
   - C++11
@@ -15,51 +15,83 @@ keywords:
 
 # Introduction
 
-C++11, introduced in 2011, marked a significant overhaul of the C++ language, bringing in numerous features to improve coding efficiency, performance, and simplicity. C++14, introduced three years later in 2014, was a more incremental update aimed at refining the innovations brought by C++11. While C++11 laid the groundwork for modern C++, C++14 made subtle but impactful refinements that enhanced developer productivity and language flexibility.
+In this article we are going to discuss about the ``C++11`` vs ``C++14`` which is the common topic in the C++ interview question. Lets dive deep in the ocean of the difference of ``C++11`` and ``C++14``. 
+``C++11``, was introduced in 2011, marked a significant ``overhaul`` of the C++ language, which is bringing in the  numerous features whose aim is to improve ``coding efficiency``, ``performance``, and ``simplicity``
+
+``C++14``was introduced three years later in 2014, was a more incremental update aimed at refining the innovations brought by ``C++11``. While C++11 laid the ``groundwork for modern C++``, ``C++14`` made subtle but impactful refinements which help to enhanced developer ``productivity`` and ``language flexibility``.
+
+## Summary of Key Differences
+
+| Feature                  | C++11                                      | C++14                                      |
+|--------------------------|--------------------------------------------|--------------------------------------------|
+| `constexpr`              | Limited to trivial functions                | Relaxed rules, supports complex logic      |
+| Variable Templates        | Not available                              | Introduced variable templates               |
+| Lambda Expressions        | Explicit parameter types                   | Generic lambdas with `auto` parameters     |
+| Auto Return Type Deduction| Requires explicit return type              | Automatic deduction of return types        |
+| `std::make_unique`       | Not available                              | Introduced for safer dynamic memory usage  |
+| New Algorithms            | Basic algorithms                           | Additional algorithms with lambda support  |
 
 ## 1. Improvements and Fixes in C++14
 
-C++11 was a major release that changed how C++ programs were written, while C++14 was a relatively minor update but with useful refinements. Some of the changes in C++14 focused on enhancing the new features in C++11 by fixing issues and improving usability.
+``C++11`` was a major release that changed how C++ programs were written, while C++14 was a relatively minor update but with useful refinements. 
+Some of the changes in ``C++14`` focused on enhancing the new features in C++11 by fixing issues and improving usability.
 
 ### 1.1 Relaxed constexpr
 In C++11, `constexpr` was quite restrictive. It could only contain a single return statement or trivial operations. C++14 relaxed these constraints, allowing for more complex expressions and loops in `constexpr` functions, making `constexpr` much more powerful and enabling compile-time computation in cases previously not possible.
 
 ### 1.2 Variable Templates
-C++14 introduced variable templates, allowing the definition of templated variables, particularly useful for defining constants. In C++11, `constexpr` functions or static members were used for this purpose, but variable templates provide a more concise syntax.
+C++14 introduced ``variable templates``,  allowing the definition of templated variables, particularly useful for defining constants. In C++11, `constexpr` functions or static members were used for this purpose, but variable templates provide a more ``concise syntax``.
 
 ### 1.3 Generic Lambdas
-C++11 introduced lambda functions as a powerful way to define anonymous functions in code. C++14 enhanced these with generic lambdas, allowing template-like behavior within lambdas by using `auto` for parameter types, eliminating the need to explicitly specify them.
+C++11 introduced ``lambda functions`` as a powerful way to define anonymous functions in code. 
+``C++14`` enhanced these with ``generic lambdas``, allowing template-like behavior within lambdas by using `auto` for parameter types, eliminating the need to explicitly specify them.
 
 ## 2. Differences in Language Features
 
 ### 2.1 Lambda Expressions and Generic Lambdas
-In C++11, lambda expressions were introduced to define anonymous functions directly within code, but parameter types had to be explicitly declared. C++14 introduced generic lambdas, allowing the use of `auto` for parameters, making lambdas more flexible and template-like.
+In ``C++11``, lambda expressions were introduced to define anonymous functions directly within code, but parameter types had to be explicitly declared.
+``C++14`` introduced generic lambdas, allowing the use of `auto` for parameters, making lambdas more ``flexible`` and ``template-like``.
 
 Example:
-- C++11: `auto lambda = [](int x, int y) { return x + y; };`
-- C++14: `auto lambda = [](auto x, auto y) { return x + y; };`
+- C++11: 
+```cpp
+    auto lambda = [](int x, int y) { return x + y; };
+```
+- C++14: 
+```cpp
+    auto lambda = [](auto x, auto y) { return x + y; };
+```
 
 ### 2.2 constexpr Enhancements
 The restrictions on `constexpr` functions in C++11 allowed only a single return statement or simple operations. C++14 relaxed these to include more complex logic, such as loops and multiple statements.
 
 Example:
-- C++11: `constexpr int square(int x) { return x * x; }`
+- C++11: 
+```cpp
+    constexpr int square(int x) { return x * x; }
+```    
 - C++14: 
-  ```cpp
-  constexpr int factorial(int n) {
-      int result = 1;
-      for (int i = 1; i <= n; ++i)
-          result *= i;
-      return result;
-  }
-  ```
+```cpp
+    constexpr int factorial(int n) {
+        int result = 1;
+        for (int i = 1; i <= n; ++i)
+            result *= i;
+        return result;
+    }
+```
 
 ### 2.3 Auto Return Type Deduction
 In C++11, `auto` simplified variable declaration but required explicit return types in functions. C++14 introduced automatic return type deduction for functions, making code cleaner and reducing redundancy.
 
 Example:
-- C++11: `auto add(int x, int y) -> int { return x + y; }`
-- C++14: `auto add(int x, int y) { return x + y; }`
+- C++11: 
+```cpp
+    auto add(int x, int y) -> int { return x + y; }
+```
+- C++14: 
+```cpp 
+    auto add(int x, int y) { return x + y; }
+```
 
 ## 3. Performance and Optimizations
 Both C++11 and C++14 were designed with performance in mind, but C++14 introduced further optimization and allowed for more concise code, contributing to performance improvements.
@@ -83,8 +115,14 @@ The enhancements in C++14, such as better handling of lambdas and `constexpr` fu
 C++14 introduced `std::make_unique`, a safer and more convenient way to create objects managed by `std::unique_ptr`, following the example of `std::make_shared` from C++11.
 
 Example:
-- C++11: `std::unique_ptr<int> ptr(new int(5));`
-- C++14: `auto ptr = std::make_unique<int>(5);`
+- C++11: 
+```cpp
+    std::unique_ptr<int> ptr(new int(5));
+```
+- C++14: 
+```cpp
+    auto ptr = std::make_unique<int>(5);
+```
 
 ### 4.2 std::integer_sequence and Related Features
 `std::integer_sequence` facilitates operations like unpacking arguments in a type-safe manner, improving template metaprogramming efficiency.
@@ -111,3 +149,7 @@ Relaxed constraints on `constexpr` allow more computations at compile-time, bene
 # Conclusion
 
 The differences between C++11 and C++14 are evolutionary rather than revolutionary. C++11 redefined the language, while C++14 refined and polished that vision, making C++ more powerful, flexible, and easier to use. Developers will benefit from C++14’s increased performance, cleaner syntax, and tools for handling complex problems more effectively.
+## Reference 
+- [C++ History](https://en.cppreference.com/w/cpp/language/history)
+- [C++11 Features](https://en.cppreference.com/w/cpp/11)
+- [C++14 Features](https://en.cppreference.com/w/cpp/14)
