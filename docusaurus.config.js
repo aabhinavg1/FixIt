@@ -45,7 +45,6 @@ const config = {
     [
       '@docusaurus/theme-mermaid',
       {
-        // This will enable Mermaid diagrams in Markdown files
         markdown: {
           mermaid: true,
         },
@@ -70,7 +69,6 @@ const config = {
         ],
       },
     ],
-    // Adding Vercel Analytics Plugin
     [
       'vercel-analytics',
       {
@@ -105,27 +103,27 @@ const config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'llvmTutorialSidebar', // Updated sidebar ID for LLVM tutorials
+          sidebarId: 'llvmTutorialSidebar',
           position: 'left',
-          label: 'LLVM_Tutorial', // Updated label
+          label: 'LLVM Tutorials',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'gpuTutorialSidebar', // Added sidebar ID for GPU tutorials
+          sidebarId: 'gpuTutorialSidebar',
           position: 'left',
-          label: 'GPU_Tutorial', // Added label for GPU tutorials
+          label: 'GPU Tutorials',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'compilersSidebar', // Added sidebar ID for compilers tutorials
+          sidebarId: 'compilersSidebar',
           position: 'left',
-          label: 'Compilers', // Added label for compilers
+          label: 'Compilers',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'cppTutorialSidebar', // Added sidebar ID for C++ tutorials
+          sidebarId: 'cppTutorialSidebar',
           position: 'left',
-          label: 'C++ Tutorials', // Added label for C++ tutorials
+          label: 'C++ Tutorials',
         },
         {
           href: 'https://github.com/aabhinavg1/FixIt',
@@ -138,11 +136,10 @@ const config = {
           position: 'right',
         },
         {
-         href: 'https://www.youtube.com/@codeforpython',
-         label: 'YouTube',
-          position: 'right'
-        }
-
+          href: 'https://www.youtube.com/@codeforpython',
+          label: 'YouTube',
+          position: 'right',
+        },
       ],
     },
 
@@ -153,11 +150,11 @@ const config = {
           title: 'Docs',
           items: [
             {
-              label: 'LLVM_Tutorial',
+              label: 'LLVM Tutorials',
               to: '/docs/llvm_basic/Build',
             },
             {
-              label: 'GPU_Tutorial',
+              label: 'GPU Tutorials',
               to: '/docs/gpu/introduction',
             },
             {
@@ -174,11 +171,11 @@ const config = {
           title: 'Community',
           items: [
             {
-              label: 'LLVM',
+              label: 'LLVM Documentation',
               href: 'https://llvm.org/docs/',
             },
             {
-              label: 'Discord',
+              label: 'Discord Community',
               href: 'https://discordapp.com/invite/gandiv',
             },
             {
@@ -186,13 +183,12 @@ const config = {
               href: 'https://twitter.com/CompilerSutra',
             },
             {
-              label: 'Mentor',
+              label: 'Mentorship',
               href: 'https://topmate.io/compilersutra/',
             },
             {
-              label: 'YouTube',
+              label: 'YouTube Channel',
               href: 'https://www.youtube.com/@codeforpython',
-
             },
           ],
         },
@@ -209,7 +205,7 @@ const config = {
       copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
     },
   },
-  
+
   headTags: [
     {
       tagName: 'link',
