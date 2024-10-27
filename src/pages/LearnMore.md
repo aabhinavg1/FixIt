@@ -18,5 +18,5 @@ CompilerSutra is dedicated to providing high-quality resources and tutorials for
 
 Whether you're a beginner or an expert, there's a place for you in our community. Explore our resources, participate in discussions, and share your knowledge.
 
-- [Join Our Community](community)
+- [Join Our Community](https://www.compilersutra.com/community/))
 - [Subscribe to Our Newsletter](https://compilersutra.com/)
