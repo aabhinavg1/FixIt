@@ -247,7 +247,7 @@ const Curriculum = () => {
         </SupportDescription>
 
         <ButtonContainer>
-          <SupportButton primary href="/learn-more">Learn More</SupportButton>
+          <SupportButton primary href="https://www.compilersutra.com/learnmore/">Learn More</SupportButton>
           <SupportButton href="https://github.com/sponsors/aabhinavg1">Become a Sponsor or Donate</SupportButton>
         </ButtonContainer>
       </SupportSection>
