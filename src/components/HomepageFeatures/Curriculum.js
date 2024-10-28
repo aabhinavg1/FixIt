@@ -62,7 +62,6 @@ const CurriculumItem = styled.div`
   
   /* Animation */
   animation: ${({ index }) => {
-    // Determine animation direction based on index
     if (index % 2 === 0) {
       return slideInFromRight;
     } else if (index % 3 === 0) {
@@ -70,30 +69,30 @@ const CurriculumItem = styled.div`
     } else {
       return slideInFromLeft;
     }
-  }} 0.5s ease-out forwards; /* Duration and easing for animation */
+  }} 0.5s ease-out forwards;
 
   /* Hover Effects */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for smooth effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.05); /* Scale up on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-    background-color: #e8f0fe; /* Change background color on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #e8f0fe;
   }
 `;
 
 // Item Title Styles
 const ItemTitle = styled.h4`
   font-size: 1rem;
-  margin: 10px 0; /* Space between title and content */
+  margin: 10px 0;
 
   a {
-    color: #007bff; /* Link color */
-    text-decoration: none; /* No underline */
+    color: #007bff;
+    text-decoration: none;
   }
 
   a:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
   }
 `;
 
@@ -101,31 +100,31 @@ const ItemTitle = styled.h4`
 const Shape = styled.div`
   width: 60px;
   height: 60px;
-  border-radius: 50%; /* Circular shape */
-  background-color: #2a2a72; /* Color for the shape */
-  color: #fff; /* Text color */
-  font-size: 1.5rem; /* Size of the icon/text */
+  border-radius: 50%;
+  background-color: #2a2a72;
+  color: #fff;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 15px auto; /* Center and add space below */
+  margin: 0 auto 15px auto;
 `;
 
 // Support Section Styled Components
 const SupportSection = styled.div`
   margin-top: 40px;
   padding: 20px;
-  background-color: #fff3e4; /* Changed to cream color */
+  background-color: #fff3e4;
   border-radius: 8px;
   color: #333;
   text-align: center;
-  max-width: 300px; /* Make the support box smaller */
-  margin: 40px auto; /* Center the support section */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
-  transition: transform 0.3s ease; /* Add transition for hover effect */
+  max-width: 300px;
+  margin: 40px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.03); /* Scale slightly on hover */
+    transform: scale(1.03);
   }
 `;
 
@@ -160,14 +159,14 @@ const SupportButton = styled.a`
 
   &:hover {
     background-color: ${({ primary }) => (primary ? '#005bb5' : '#000')};
-    transform: translateX(4px); /* Move right on hover */
+    transform: translateX(4px);
   }
 `;
 
 // Arrow Icon
 const ArrowIcon = styled.span`
   margin-left: 8px;
-  transition: transform 0.3s ease; /* Smooth transition for the arrow */
+  transition: transform 0.3s ease;
 `;
 
 const SupportButtonWithArrow = styled(SupportButton)`
@@ -175,31 +174,63 @@ const SupportButtonWithArrow = styled(SupportButton)`
   align-items: center;
 
   &:hover ${ArrowIcon} {
-    transform: translateX(2px); /* Arrow movement on hover */
+    transform: translateX(2px);
   }
 `;
 
 // Heart Icon
 const HeartIcon = styled.span`
   font-size: 1.5rem;
-  color: #333; /* Updated heart color */
+  color: #333;
   margin-right: 5px;
+`;
+
+// Contribute Box Styled Components
+const ContributeBox = styled.div`
+  margin-top: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f0fe 0%, #ffffff 100%);
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  color: #333;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  &:before {
+    content: '🤝';
+    font-size: 2rem;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
+const ContributeMessage = styled.p`
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 // Curriculum Component
 const Curriculum = () => {
+  const curriculumItems = [
+    { title: "Compiler Tutorial", link: "/docs/compilers/intro", description: "Foundations of compiler theory and design.", icon: "📚" },
+    { title: "LLVM Tutorial", link: "/docs/llvm_basic/intro-to-llvm", description: "Learn the core LLVM infrastructure and tools.", icon: "🛠️" },
+    { title: "C++ Projects", link: "/docs/cpp-tutorial", description: "Hands-on projects to strengthen your C++ skills.", icon: "💻" },
+    { title: "MLIR & Optimization", link: "/docs/MLIR/intro", description: "Delve into MLIR, optimization, and code generation.", icon: "⚙️" },
+    { title: "C++ Basics", link: "/docs/cpp-tutorial", description: "Learn the foundational concepts of C++ programming.", icon: "🔍" },
+    { title: "C++ Advanced", link: "/docs/c++/advance/intro", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
+  ];
+
   return (
     <CurriculumSection id="curriculum">
       <h2>Learn Everything You Need to Know</h2>
       <CurriculumGrid>
-        {[
-          { title: "Compiler Tutorial", link: "/docs/compilers/intro", description: "Foundations of compiler theory and design.", icon: "📚" },
-          { title: "LLVM Tutorial", link: "/docs/llvm_basic/intro-to-llvm", description: "Learn the core LLVM infrastructure and tools.", icon: "🛠️" },
-          { title: "C++ Projects", link: "/docs/cpp-tutorial", description: "Hands-on projects to strengthen your C++ skills.", icon: "💻" },
-          { title: "MLIR & Optimization", link: "/docs/MLIR/intro", description: "Delve into MLIR, optimization, and code generation.", icon: "⚙️" },
-          { title: "C++ Basics", link: "/docs/cpp-tutorial", description: "Learn the foundational concepts of C++ programming.", icon: "🔍" },
-          { title: "C++ Advanced", link: "/docs/c++/advance/intro", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
-        ].map((item, index) => (
+        {curriculumItems.map((item, index) => (
           <CurriculumItem key={item.title} index={index}>
             <Shape>{item.icon}</Shape>
             <ItemTitle><a href={item.link}>{item.title}</a></ItemTitle>
@@ -216,19 +247,18 @@ const Curriculum = () => {
         </SupportDescription>
 
         <ButtonContainer>
-          <SupportButton href="LearnMore" target="_blank">
-            Learn More
-          </SupportButton>
-          <SupportButtonWithArrow
-            href="https://github.com/sponsors/aabhinavg1"
-            target="_blank"
-            primary
-          >
-            Donate Now
-            <ArrowIcon>➡️</ArrowIcon> {/* Arrow icon for "Donate Now" */}
-          </SupportButtonWithArrow>
+          <SupportButton primary href="/learn-more">Learn More</SupportButton>
+          <SupportButton href="https://github.com/sponsors/aabhinavg1">Become a Sponsor or Donate</SupportButton>
         </ButtonContainer>
       </SupportSection>
+
+      {/* Contribute Box */}
+      <ContributeBox>
+        <ContributeMessage>
+          🤝 Feel free to contribute! Check out our GitHub repository: 
+          <a href="https://github.com/aabhinavg1/FixIt" target="_blank" rel="noopener noreferrer"> GitHub</a>
+        </ContributeMessage>
+      </ContributeBox>
     </CurriculumSection>
   );
 };
