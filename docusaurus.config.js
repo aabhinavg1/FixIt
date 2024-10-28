@@ -155,7 +155,7 @@ const config = {
             },
             {
               label: 'GPU Tutorials',
-              to: '/docs/gpu/introduction',
+              to: '/docs/The_Graphic_Rendering_Pipeline',
             },
             {
               label: 'Compilers',
