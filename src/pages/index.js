@@ -5,8 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import NewsletterModal from '@site/src/components/NewsletterModal';
-import MaintenancePopup from '@site/src/components/MaintenancePopup';
-import { FaBell, FaTwitter } from 'react-icons/fa'; 
+import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
@@ -15,20 +14,21 @@ function HomepageHeader({ onNotifyClick }) {
 
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
+      <div className={clsx("container", styles.headerContainer)}>
+        <Heading as="h1" className={clsx("hero__title", styles.heroTitle)}>
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/compilers/intro">
+        <p className={clsx("hero__subtitle", styles.heroSubtitle)}>
+          {siteConfig.tagline}
+        </p>
+        <div className={clsx(styles.buttons, styles.responsiveButtonContainer)}>
+          <Link className={clsx("button button--secondary button--lg", styles.primaryButton)} to="/docs/compilers/intro">
             Compiler Frameworks and Toolchains ⏱️
           </Link>
-          <div className={styles.buttonContainer}>
+          <div className={clsx(styles.buttonContainer, styles.responsiveButtonGroup)}>
             <button
               onClick={onNotifyClick}
               className={clsx(styles.bellButton, 'button button--secondary')}
-              style={{ display: 'flex', alignItems: 'center' }}
             >
               <FaBell style={{ marginRight: '5px' }} />
               Notify
@@ -38,7 +38,6 @@ function HomepageHeader({ onNotifyClick }) {
               target="_blank" 
               rel="noopener noreferrer" 
               className={clsx(styles.twitterButton, 'button button--secondary')}
-              style={{ display: 'flex', alignItems: 'center' }}
             >
               <FaTwitter style={{ marginRight: '5px' }} />
               Follow
@@ -52,11 +51,9 @@ function HomepageHeader({ onNotifyClick }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(true); // Set to true to open the modal by default
-  const [isPopupVisible, setPopupVisible] = useState(true);
+  const [isModalOpen, setModalOpen] = useState(true);
 
   useEffect(() => {
-    // Automatically open the modal on component mount
     if (!isModalOpen) {
       setModalOpen(true);
     }
@@ -68,10 +65,10 @@ export default function Home() {
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader onNotifyClick={() => setModalOpen(true)} />
-      <main>
+      <main className={styles.mainContent}>
         <HomepageFeatures />
         {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
-        {isPopupVisible && <MaintenancePopup onClose={() => setPopupVisible(false)} />}
+        {/* Contribution message has been removed */}
       </main>
     </Layout>
   );

@@ -1,38 +1,14 @@
-/* src/components/MaintenancePopup.module.css */
-.popup {
-    background-color: #ff4444; /* Red background */
-    border: 2px solid #d70000; /* Darker red border */
-    padding: 15px;
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000; /* Make sure it is above other content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center align items vertically */
-    justify-content: space-between; /* Space between text and button */
-    width: 80%; /* Adjust the width */
-    color: white; /* Text color */
-    font-weight: bold; /* Bold text */
-    border-radius: 8px; /* Rounded corners */
-  }
-  
-  .notice {
-    font-size: 16px; /* Adjust font size */
-  }
-  
-  .closeButton {
-    background-color: #fff; /* White button color */
-    color: #ff4444; /* Red text color for button */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 14px; /* Adjust button font size */
-  }
-  
-  .closeButton:hover {
-    background-color: #f5f5f5; /* Light grey on hover */
-  }
-  
+.note {
+  padding: 1rem;
+  background-color: #f8f9fa; /* Light grey background for note */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Slightly rounded corners */
+  color: #333; /* Dark text color */
+  text-align: center; /* Center the text */
+  margin: 1rem; /* Space around the note */
+  position: relative; /* Allows for absolute positioning of any icons if needed */
+}
+
+.notice {
+  font-weight: bold; /* Make the notice text bold */
+}
