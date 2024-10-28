@@ -1,18 +1,16 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
- .heroBanner {
+.heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: #282c34; /* Dark background for better contrast */
+  color: #ffffff; /* White text for readability */
+  animation: fadeIn 1s ease-in; /* Fade-in effect for the banner */
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2rem; /* Reduced padding for smaller screens */
   }
 }
 
@@ -20,38 +18,126 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* Stack buttons vertically */
+  flex-direction: column; /* Stack buttons vertically on mobile */
+  gap: 1rem; /* Space between buttons */
 }
 
 .buttonContainer {
-  display: flex; /* Display notify and follow in a single line */
+  display: flex; /* Display notify and follow buttons side by side */
   justify-content: center; /* Center them horizontally */
-  gap: 10px; /* Space between the buttons */
-  margin-top: 20px; /* Space above the buttons */
+  gap: 1rem; /* Space between the buttons */
+  margin-top: 1.5rem; /* Space above the buttons */
 }
 
-/* Styles for Notify button */
-.bellButton {
-  background-color: #f0f0f0; /* Light grey background */
-  color: black; /* Black text */
-  padding: 0.5rem 1rem; /* Add padding for better click area */
+/* Common button styles */
+.bellButton, .twitterButton {
+  padding: 0.6rem 1.2rem; /* Larger padding for improved touch target */
   border: none; /* Remove default button border */
-  border-radius: 5px; /* Add slight rounding to corners */
-  cursor: pointer; /* Change cursor to pointer */
-  font-weight: bold; /* Make the text bold */
-  display: flex; /* Display flex for icon alignment */
-  align-items: center; /* Center the icon and text vertically */
+  border-radius: 6px; /* Slight rounding of corners */
+  cursor: pointer; /* Pointer cursor for buttons */
+  font-weight: bold; /* Bold text for emphasis */
+  display: flex; /* Flex for icon and text alignment */
+  align-items: center; /* Center icon and text vertically */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to buttons */
+  animation: bounceIn 0.5s ease; /* Bounce-in animation */
 }
 
-/* Styles for Twitter Follow button */
+/* Notify button specific styles */
+.bellButton {
+  background-color: #f8f9fa; /* Light grey background */
+  color: #000000; /* Black text */
+}
+
+.bellButton:hover {
+  background-color: #e0e0e0; /* Slightly darker grey on hover */
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Twitter Follow button specific styles */
 .twitterButton {
   background-color: #1DA1F2; /* Twitter blue */
-  color: white; /* White text */
-  padding: 0.5rem 1rem; /* Add padding for better click area */
-  border: none; /* Remove default button border */
-  border-radius: 5px; /* Add slight rounding to corners */
-  cursor: pointer; /* Change cursor to pointer */
-  font-weight: bold; /* Make the text bold */
-  display: flex; /* Display flex for icon alignment */
-  align-items: center; /* Center the icon and text vertically */
+  color: #ffffff; /* White text */
 }
+
+.twitterButton:hover {
+  background-color: #0d8ddf; /* Darker Twitter blue on hover */
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Responsive font sizes for header */
+.heroTitle {
+  font-size: 2.5rem; /* Default size for title */
+  margin: 0.5rem 0; /* Margin around title */
+  animation: slideInDown 0.6s ease-out; /* Slide-in animation for title */
+}
+
+.heroSubtitle {
+  font-size: 1.2rem; /* Default size for subtitle */
+  margin-top: 0.5rem; /* Space above subtitle */
+  color: #d1d1d1; /* Subtle grey for subtitle */
+  animation: slideInUp 0.6s ease-out; /* Slide-in animation for subtitle */
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem; /* Smaller title on mobile */
+  }
+  .heroSubtitle {
+    font-size: 1rem; /* Smaller subtitle on mobile */
+  }
+}
+
+/* Additional media query for very small screens */
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.8rem; /* Further reduced title size */
+  }
+  .heroSubtitle {
+    font-size: 0.9rem; /* Further reduced subtitle size */
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+  
