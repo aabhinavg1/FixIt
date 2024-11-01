@@ -151,7 +151,7 @@ const config = {
           items: [
             {
               label: 'LLVM Tutorials',
-              to: '/docs/llvm_basic/Build',
+              to: '/docs/llvm/llvm_basic/Build',
             },
             {
               label: 'GPU Tutorials',
