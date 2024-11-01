@@ -25,21 +25,21 @@ const sidebars = {
       type: 'category',
       label: 'LLVM Tutorials',
       items: [
-        'llvm_basic/Build',                      // Document ID for Build.md
-        'llvm_basic/What_is_LLVM',               // Document ID for What_is_LLVM.md
-        'llvm_basic/Why_LLVM',                   // Document ID for Why_LLVM.md
-        'llvm_basic/congratulations',            // Document ID for congratulations.md
-        'llvm_basic/deploy-your-site',           // Document ID for deploy-your-site.md
-        'llvm_basic/markdown-features',          // Document ID for markdown-features.mdx
+        'llvm/llvm_basic/Build',                      // Document ID for Build.md
+        'llvm/llvm_basic/What_is_LLVM',               // Document ID for What_is_LLVM.md
+        'llvm/llvm_basic/Why_LLVM',                   // Document ID for Why_LLVM.md
+        'llvm/llvm_basic/congratulations',            // Document ID for congratulations.md
+        'llvm/llvm_basic/deploy-your-site',           // Document ID for deploy-your-site.md
+        'llvm/llvm_basic/markdown-features',          // Document ID for markdown-features.mdx
       ],
     },
     {
       type: 'category',
       label: 'LLVM Extras',
       items: [
-        'llvm_extras/manage_llvm_version',       // Document ID for manage_llvm_version.md
-        'llvm_extras/translate-your-site',       // Document ID for translate-your-site.md
-        'llvm_extras/llvm-guide',          //Document ID for More_about_LLVM
+        'llvm/llvm_extras/manage_llvm_version',       // Document ID for manage_llvm_version.md
+        'llvm/llvm_extras/translate-your-site',       // Document ID for translate-your-site.md
+        'llvm/llvm_extras/llvm-guide',          //Document ID for More_about_LLVM
       ],
     },
   ],

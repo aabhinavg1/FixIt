@@ -218,12 +218,12 @@ const ContributeMessage = styled.p`
 // Curriculum Component
 const Curriculum = () => {
   const curriculumItems = [
-    { title: "Compiler Tutorial", link: "/docs/compilers/intro", description: "Foundations of compiler theory and design.", icon: "📚" },
-    { title: "LLVM Tutorial", link: "/docs/llvm_basic/intro-to-llvm", description: "Learn the core LLVM infrastructure and tools.", icon: "🛠️" },
-    { title: "C++ Projects", link: "/docs/cpp-tutorial", description: "Hands-on projects to strengthen your C++ skills.", icon: "💻" },
+    { title: "Compiler Tutorial", link: "/docs/compilers/compiler", description: "Foundations of compiler theory and design.", icon: "📚" },
+    { title: "LLVM Tutorial", link: "/docs/llvm/intro-to-llvm", description: "Learn the core LLVM infrastructure and tools.", icon: "🛠️" },
+    { title:  "Projects", link: "/docs/Project", description: "Hands-on projects to strengthen your C++ skills.", icon: "💻" },
     { title: "MLIR & Optimization", link: "/docs/MLIR/intro", description: "Delve into MLIR, optimization, and code generation.", icon: "⚙️" },
-    { title: "C++ Basics", link: "/docs/cpp-tutorial", description: "Learn the foundational concepts of C++ programming.", icon: "🔍" },
-    { title: "C++ Advanced", link: "/docs/c++/advance/intro", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
+    { title: "AI in Computer Science", link: "/docs/Ai", description: "Learn the foundational concepts of C++ programming.", icon: "🔍" },
+    { title: "C++ Tutorial", link: "/docs/c++/c++_main_file", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
   ];
 
   return (
