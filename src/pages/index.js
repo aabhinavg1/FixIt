@@ -22,7 +22,7 @@ function HomepageHeader({ onNotifyClick }) {
           {siteConfig.tagline}
         </p>
         <div className={clsx(styles.buttons, styles.responsiveButtonContainer)}>
-          <Link className={clsx("button button--secondary button--lg", styles.primaryButton)} to="/docs/compilers/intro">
+          <Link className={clsx("button button--secondary button--lg", styles.primaryButton)} to="/docs/llvm/intro-to-llvm">
             Compiler Frameworks and Toolchains ⏱️
           </Link>
           <div className={clsx(styles.buttonContainer, styles.responsiveButtonGroup)}>
