@@ -5,8 +5,13 @@ const sidebars = {
       type: 'category',
       label: 'Compilers',
       items: [
-        'compilers/intro',                      // Document ID for intro.md
-        'compilers/Know_Your_Compilers',        // Document ID for Know_Your_Compilers.md
+        'compilers/compiler',                      // Document ID for intro.md
+        'compilers/CPU/index',        // Document ID for Know_Your_Compilers.md
+        'compilers/GPU/index',
+        'compilers/back_end/index',
+        'compilers/flag/index',
+        'compilers/front_end/index',
+        'compilers/other_arch/index',
       ],
     },
   ],
@@ -25,6 +30,7 @@ const sidebars = {
       type: 'category',
       label: 'LLVM Tutorials',
       items: [
+        'llvm/intro-to-llvm',
         'llvm/llvm_basic/Build',                      // Document ID for Build.md
         'llvm/llvm_basic/What_is_LLVM',               // Document ID for What_is_LLVM.md
         'llvm/llvm_basic/Why_LLVM',                   // Document ID for Why_LLVM.md
@@ -52,16 +58,14 @@ const sidebars = {
           type: 'category',
           label: 'Basic',
           items: [
-            'c++/basic/comprehensive-cpp-tutorial',                   // Document ID for basic/intro.md
-            'c++/basic/cpp_tutorial_with_cmake',
-            'c++/basic/oop-in-cpp'
+            'c++/c++_main_file',                   // Document ID for basic/intro.md
           ],
         },
         {
           type: 'category',
           label: 'Intermediate',
           items: [
-            'c++/intermediate/intro',            // Document ID for intermediate/intro.md
+            'c++/intermediate/index',
           ],
         },
         {
@@ -75,7 +79,7 @@ const sidebars = {
           type: 'category',
           label: 'Standard',
           items: [
-            'c++/standard/intro',                // Document ID for standard/intro.md
+            'c++/standard/index',
           ],
         },
       ],

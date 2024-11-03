@@ -151,7 +151,7 @@ const config = {
           items: [
             {
               label: 'LLVM Tutorials',
-              to: '/docs/llvm/llvm_basic/Build',
+              to: '/docs/llvm/intro-to-llvm',
             },
             {
               label: 'GPU Tutorials',
@@ -159,11 +159,11 @@ const config = {
             },
             {
               label: 'Compilers',
-              to: '/docs/compilers/intro',
+              to: '/docs/compilers/compiler',
             },
             {
               label: 'C++ Tutorials',
-              to: '/docs/cpp-tutorial',
+              to: '/docs/c++/c++_main_file',
             },
           ],
         },
