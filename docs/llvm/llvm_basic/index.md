@@ -22,7 +22,7 @@ Welcome to the **LLVM Documentation** section! This guide is designed to provide
 
 ---
 
-## 🎉 Special Guides and Features
+## 🎉 Pass
 
 - **[Congratulations!](congratulations.md)**  
   A celebratory guide to acknowledge your LLVM journey so far! Discover next steps, advanced topics, and resources to deepen your expertise.
