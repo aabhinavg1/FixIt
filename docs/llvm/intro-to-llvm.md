@@ -9,7 +9,7 @@ Start with the core concepts of LLVM, including Intermediate Representation (IR)
 ---
 
 ## 🔧 Intermediate
-**[Developing custom LLVM passes and optimizations.](#)**  
+**[Developing custom LLVM passes and optimizations.](./Intermediate/What_Is_LLVM_Passes.md)**  
 Expand your knowledge with custom pass development, static analysis, and optimizations.
 
 ---
