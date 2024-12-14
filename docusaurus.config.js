@@ -1,21 +1,15 @@
 // @ts-check
-// @type JSDoc annotations allow editor autocompletion and type checking
-// (when paired with @ts-check).
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CompilerSutra',
   tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
   favicon: 'img/favicon.ico',
 
-  // Set the production URL of your site here
   url: 'https://compilersutra.com/',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  organizationName: 'aabhinavg1', // Your GitHub org/user name.
-  projectName: 'FixIt', // Your repo name.
+  organizationName: 'aabhinavg1',
+  projectName: 'FixIt',
 
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
@@ -28,10 +22,9 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'), // Reference the sidebars.js file
+          sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
         theme: {
@@ -79,21 +72,6 @@ const config = {
   ],
 
   themeConfig: {
-    metadata: [
-      { name: 'description', content: 'CompilerSutra: Dive into the world of LLVM, MLIR, TVM, GPU optimizations, and compiler architecture.' },
-      { name: 'keywords', content: 'LLVM, MLIR, TVM, GPU, Compiler, Optimization' },
-      { property: 'og:title', content: 'CompilerSutra | LLVM, MLIR, TVM, and GPU Compiler Architecture' },
-      { property: 'og:description', content: 'Comprehensive guides and tutorials on LLVM, MLIR, TVM, and GPU compiler architecture.' },
-      { property: 'og:image', content: 'https://compilersutra.com/img/CompilerSutra.png' },
-      { property: 'og:url', content: 'https://compilersutra.com/' },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'CompilerSutra | Comprehensive Guides on LLVM, MLIR, TVM, and GPU' },
-      { name: 'twitter:description', content: 'Explore in-depth tutorials and articles on LLVM, MLIR, TVM, and GPU compiler optimization.' },
-      { name: 'twitter:image', content: 'https://compilersutra.com/img/twitter-card.png' },
-    ],
-    image: 'img/llvm-compiler-social-card.jpg', // Default Open Graph image
-
     navbar: {
       title: 'CompilerSutra',
       logo: {
@@ -215,7 +193,24 @@ const config = {
         hreflang: 'en-US',
       },
     },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preload',
+        href: '/path/to/critical-resource.js',
+        as: 'script',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preload',
+        href: '/path/to/critical-style.css',
+        as: 'style',
+      },
+    },
   ],
+
 };
 
 module.exports = config;
