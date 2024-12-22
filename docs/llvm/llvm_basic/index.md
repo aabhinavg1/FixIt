@@ -15,11 +15,19 @@ tags:
   - LLVM Development
 
 ---
-
 # Passes and Implementation
-  This mostly talks abou the custom llvm pass how we can create you can follow it if any difficulty mail at (email)[tiwariabhinavak@gmail.com]
 
-1.[Creating an LLVM Pass to Count Functions in C/C++ Code](./pass/Function_Count_Pass.md)
+This section focuses on custom LLVM passes, detailing how to create them effectively. If you encounter any difficulties, feel free to reach out via email at [info@compilersutra.com](mailto:info@compilersutra.com).
+
+## Tutorials and Resources
+
+1. [Creating an LLVM Pass to Count Functions in C/C++ Code](./pass/Function_Count_Pass.md)  
+   Learn how to develop a custom LLVM pass that counts the number of functions in a C/C++ codebase. This tutorial provides step-by-step guidance, complete with examples and best practices for implementation. Ensure you follow along with the setup instructions to avoid any issues.
+   
+2. [Creating an LLVM Pass to Count Instructions in the Pass](./pass/Instruction_Count_Pass.md)  
+   Discover how to implement an LLVM pass that counts the number of instructions executed in the analyzed code. This guide includes practical examples, configuration steps, and tips for effective usage.
+
+
 
 # 📘 LLVM Documentation
 
