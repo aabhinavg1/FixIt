@@ -104,6 +104,13 @@ const config = {
           label: 'C++ Tutorials',
         },
         {
+        type: 'docSidebar',
+        sidebarId: 'mcqSidebar',
+        position: 'left',
+        label: 'MCQ',
+      },
+        
+        {
           href: 'https://github.com/aabhinavg1/FixIt',
           label: 'GitHub',
           position: 'right',

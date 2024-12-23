@@ -85,6 +85,17 @@ const sidebars = {
       ],
     },
   ],
+  mcqSidebar: [
+    {
+      type: 'category',
+      label: 'MCQs',
+      items: [
+        // Add links to your MCQ pages here
+        // Example:
+        'mcq/cpp_mcqs', // Link to the C++ MCQ document
+      ],
+    },
+  ],
 };
 
 module.exports = sidebars;
