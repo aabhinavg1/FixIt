@@ -26,6 +26,7 @@ int main() {
 }`}
   options={['0 1 2', '1 2 3', '0 1 2 3', '1 2 3 4']}
   answer="0 1 2"
+  
 />
 
 
@@ -52,13 +53,28 @@ int main() {
   options={['To stop the execution of the current loop iteration and move to the next iteration', 'To exit the loop entirely', 'To break out of a function', 'To jump to the end of the function']}
   answer="To stop the execution of the current loop iteration and move to the next iteration"
 />
-
 <Question
-  question="8).What is the output of the following C++ code?"
+  question="8) What is the output of the following C++ code?"
 
+  code={`#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 3; i++) {
+        if (i == 0) {
+            cout << i << " ";
+        } else if (i == 1) {
+            cout << i << " ";
+        } else {
+            cout << i << " ";
+        }
+    }
+    return 0;
+}`}
   options={['0 1 2', '1 2 3', '0 1 2 3', '0 1 2 3 4']}
   answer="0 1 2"
 />
+
 
 <Question
   question="9).What will be printed if the following C++ code is executed?"

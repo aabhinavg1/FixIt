@@ -1,77 +1,88 @@
-  
-  .mcq-options {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Space between options */
-  }
-  
-  .mcq-option {
-    padding: 18px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .mcq-option:hover {
-    background-color: #efefef;
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .mcq-option.selected {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-    transform: scale(1.03);
-  }
-  
-  .mcq-option.correct {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-    transform: scale(1.03);
-  }
-  
-  .mcq-answer {
-    margin-top: 30px; /* Increased space to separate answers from options */
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .correct-answer {
-    color: #4CAF50;
-  }
-  
-  .incorrect-answer {
-    color: #f44336;
-  }
-  
-  .answer-divider {
-    margin-top: 30px; /* Increased space for line separation */
-    border: none;
-    border-top: 2px solid #ddd;
-    margin-bottom: 30px; /* Increased space after the line */
-  }
-  .code-block {
-    background-color: #2d2d2d;
-    color: #f8f8f2;
-    padding: 15px;
-    border-radius: 5px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    overflow-x: auto;
-    margin-top: 15px;
-  }
-  .answer-divider {
-    margin-top: 30px;
-    border: none;
-    border-top: 2px solid #ddd;
-    margin-bottom: 30px;
-  }
-  
+.mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Slightly increased spacing for better readability */
+}
+
+.mcq-option {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Softer and more modern shadow */
+}
+
+.mcq-option:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px); /* Subtle lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.mcq-option.selected {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  transform: scale(1.03);
+  font-weight: bold;
+}
+
+.mcq-option.correct {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  transform: scale(1.03); /* Consistent feedback for correct option */
+  font-weight: bold;
+}
+
+.mcq-option.incorrect {
+  background-color: #f44336;
+  color: white;
+  border: 1px solid #f44336;
+  transform: scale(1.03); /* Consistent feedback for incorrect option */
+  font-weight: bold;
+}
+
+.mcq-option.highlight-correct {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  transform: scale(1.03);
+}
+
+.mcq-answer {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.correct-answer {
+  color: #4CAF50;
+}
+
+.incorrect-answer {
+  color: #f44336;
+}
+
+.answer-divider {
+  margin: 40px 0; /* Added more spacing for visual clarity */
+  border: none;
+  border-top: 2px solid #ddd;
+}
+
+.code-block {
+  background-color: #000000; /* Pure black for high contrast */
+  color: #f8f8f2; /* Light color for better readability */
+  padding: 15px;
+  border-radius: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px; /* Optimized for smaller blocks */
+  overflow-x: auto;
+  margin-top: 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word; /* Handles long strings gracefully */
+}
