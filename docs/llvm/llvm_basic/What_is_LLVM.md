@@ -1,11 +1,32 @@
 ---
-slug: intro-to-llvm
-title: Introduction to LLVM
-authors:
-  - name: [Your Name]
-    title: Compiler Engineer
-    url: https://github.com/aabhinavg1
-tags: [LLVM, compilers, introduction]
+title: "LLVM Tutorial - Learn LLVM Step by Step"
+slug: "intro-to-llvm"
+description: "Comprehensive guide to understanding LLVM: From function passes to creating your own LLVM passes and developing a compiler pass. Ideal for learners and developers."
+keywords:
+  - LLVM Tutorial
+  - LLVM Function Pass
+  - LLVM Pass Creation
+  - Compiler Pass Development
+  - Function Analysis in LLVM
+  - LLVM for Beginners
+  - Advanced LLVM Techniques
+  - LLVM Optimization
+  - Writing Compiler Passes
+  - Clang and LLVM Integration
+  - LLVM Architecture and Design
+tags:
+  - LLVM
+  - Compiler Development
+  - Compiler Pass
+  - LLVM Development
+  - Compiler Optimization
+  - Clang
+  - Programming Tutorials
+  - Open Source Compiler
+  - LLVM IR
+  - Machine Learning in LLVM
+---
+
 ---
 
 ## What is LLVM?
