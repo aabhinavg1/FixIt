@@ -18,21 +18,14 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
       with:
-        # Ensures submodules are properly initialized
-        submodules: true
+        submodules: false # We handle submodules explicitly below
 
-    - name: Add submodule for newsletter_modal
+    - name: Clone newsletter_modal Submodule
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
-        echo "Initializing submodule with PAT_TOKEN..."
-        git submodule add https://x-access-token:${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-      shell: bash
-
-    - name: Verify Submodule Status
-      run: |
-        echo "Verifying submodule status..."
-        git submodule status
+        echo "Cloning the newsletter_modal repository as a submodule..."
+        git clone https://x-access-token:${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
       shell: bash
 
     - name: Set up Node.js ${{ matrix.node-version }}
