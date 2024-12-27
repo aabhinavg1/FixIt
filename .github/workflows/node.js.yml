@@ -22,13 +22,22 @@ jobs:
 
     - name: Set up SSH keys for GitHub
       run: |
+        # Create the .ssh directory if it doesn't exist
         mkdir -p ~/.ssh
-        echo "${{ secrets.GITHUB_SSH_KEY }}" > ~/.ssh/id_rsa
+        
+        # Add SSH private key from GitHub secrets
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        
+        # Set proper permissions for the private key
         chmod 600 ~/.ssh/id_rsa
+        
+        # Add GitHub to the list of known hosts to prevent SSH warnings
         ssh-keyscan github.com >> ~/.ssh/known_hosts
 
     - name: Add submodule for newsletter_modal
-      run: git submodule add git@github.com:aabhinavg1/newletter_modal.git src/components/newsletter_modal
+      run: |
+        # Try to add the submodule using SSH
+        git submodule add git@github.com:aabhinavg1/newletter_modal.git src/components/newsletter_modal
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
