@@ -13,6 +13,13 @@ if (!isNetlify) {
 
 // Environment variable for Personal Access Token (PAT)
 const PAT_TOKEN = process.env.PAT_TOKEN;
+
+// Check if the PAT_TOKEN is provided
+if (!PAT_TOKEN) {
+  throw new Error('GitHub Personal Access Token (PAT) is missing. Please set it in the environment variables.');
+}
+
+// Construct the repository URL using the PAT_TOKEN
 const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newsletter_modal.git`;
 const CLONE_DIR = path.resolve(__dirname, 'src/pages/newsletter_modal_updated');
 
@@ -29,20 +36,11 @@ deleteDirectory(CLONE_DIR);
 
 // Clone the private repository
 console.log('Cloning the private repository...');
-execSync(`git clone ${REPO_URL} ${CLONE_DIR}`, { stdio: 'inherit' });
-
-// Optionally, you can copy or process files as needed
-console.log('Copying files...');
-const sourceDir = path.resolve(CLONE_DIR);
-const destinationDir = path.resolve(__dirname, 'src/pages/newsletter_modal_updated/');
-
-fs.readdirSync(sourceDir).forEach(file => {
-  const sourceFile = path.join(sourceDir, file);
-  const destinationFile = path.join(destinationDir, file);
-  if (!fs.existsSync(destinationFile)) {
-    fs.copyFileSync(sourceFile, destinationFile);
-    console.log(`Copied ${file}`);
-  }
-});
+try {
+  execSync(`git clone ${REPO_URL} ${CLONE_DIR}`, { stdio: 'inherit' });
+  console.log('Repository cloned successfully.');
+} catch (error) {
+  throw new Error('Failed to clone the repository. Check if the PAT is correct and has the necessary permissions.');
+}
 
 console.log('Repository cloned and files copied successfully.');
