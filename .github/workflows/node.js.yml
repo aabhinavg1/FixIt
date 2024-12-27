@@ -14,15 +14,18 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
-        submodules: true
+        submodules: true  # This will checkout the submodules if needed
 
-    - name: Clone the newsletter_modal repository
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Ensure the PAT_TOKEN is available here
+    - name: Set up Git credentials for submodule cloning
       run: |
-        echo "Cloning the newsletter_modal repository..."
-        # Use the PAT for authentication directly in the URL
-        git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        echo "https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com" > ~/.git-credentials
+        git config --global credential.helper store
+
+    - name: Clone the newsletter_modal repository as a submodule
+      run: |
+        echo "Cloning the newsletter_modal repository as a submodule..."
+        # Add the submodule with the proper URL, use the stored credentials
+        git submodule add https://github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
         git submodule update --init --recursive
 
     - name: Set up Node.js
