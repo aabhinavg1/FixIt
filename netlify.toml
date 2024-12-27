@@ -2,8 +2,5 @@
   command = "npm run build"
   publish = "build"
 
-[context.production.environment]
-  PAT_TOKEN = "${PAT_TOKEN}"
-
-[context.deploy-preview.environment]
-  PAT_TOKEN = "${PAT_TOKEN}"
+[build.environment]
+  NODE_VERSION = "23.05"
