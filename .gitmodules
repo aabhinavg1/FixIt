@@ -1,3 +1,4 @@
 [submodule "src/newsletter_modal"]
-    path = src/newsletter_modal
-    url = https://github.com/aabhinavg1/newsletter_modal.git
+        path = src/newsletter_modal
+        url = https://aabhinavg1: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@github.com/aabhinavg1/newletter_modal.git
+➜
