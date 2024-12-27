@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "npm install && npm run prebuild && docusaurus build",  
+    "build": "npm install && npm run prebuild && docusaurus build"
     "prebuild": "node prebuild.js", 
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -42,6 +42,7 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
+    "react-router-dom": "^6.0.0", 
     "react-syntax-highlighter": "^15.6.1",
     "sqlite3": "^5.1.7",
     "styled-components": "^6.1.13"
