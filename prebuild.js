@@ -2,6 +2,15 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
+// Check if the script is running in a Netlify environment
+const isNetlify = process.env.NETLIFY === 'true';
+
+// If not running on Netlify, exit early
+if (!isNetlify) {
+  console.log('Not running on Netlify. Skipping git operations.');
+  process.exit(0);
+}
+
 // Environment variable for Personal Access Token (PAT)
 const PAT_TOKEN = process.env.PAT_TOKEN;
 const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newsletter_modal.git`;
