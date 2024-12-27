@@ -18,6 +18,9 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
 
+    - name: Debug PAT_TOKEN value
+      run: echo "PAT_TOKEN=${{ secrets.PAT_TOKEN }}"
+
     - name: Add and initialize submodule for newsletter_modal
       run: |
         git submodule add https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
