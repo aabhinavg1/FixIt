@@ -17,9 +17,9 @@ if (!PAT_TOKEN) {
   throw new Error('PAT_TOKEN is not set or empty!');
 }
 
-console.log(`Using PAT_TOKEN: ${PAT_TOKEN}`);
+console.log('Using PAT_TOKEN securely');
 
-// Construct the repository URL using the PAT_TOKEN
+// Construct the repository URL (with token embedded for authentication)
 const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git`; // Correct repository name
 const CLONE_DIR = path.resolve(__dirname, 'src/pages/newsletter_modal_updated');
 
@@ -34,7 +34,7 @@ const deleteDirectory = (dirPath) => {
 // Delete the directory if it exists
 deleteDirectory(CLONE_DIR);
 
-// Clone the private repository
+// Clone the private repository with the PAT token embedded in the URL
 console.log('Cloning the private repository...');
 try {
   execSync(`git clone ${REPO_URL} ${CLONE_DIR}`, { stdio: 'inherit' });
@@ -43,4 +43,11 @@ try {
   throw new Error('Failed to clone the repository. Check if the PAT is correct and has the necessary permissions.');
 }
 
-console.log('Repository cloned and files copied successfully.');
+// Cleanup: Delete .git/config file containing PAT_TOKEN
+const gitConfigPath = path.join(CLONE_DIR, '.git', 'config');
+if (fs.existsSync(gitConfigPath)) {
+  console.log('Removing .git/config to delete PAT_TOKEN');
+  fs.rmSync(gitConfigPath);
+}
+
+console.log('Repository cloned and sensitive data cleaned up successfully.');
