@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import NewsletterModal from '@site/src/components/NewsletterModal';
+import NewsletterModal from '@site/src/components/newsletter_modal/NewsletterModal.js';
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
