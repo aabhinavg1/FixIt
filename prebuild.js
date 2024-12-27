@@ -26,7 +26,7 @@ if (!PAT_TOKEN) {
 }
 
 // Construct the repository URL using the PAT_TOKEN
-const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newsletter_modal.git`;
+const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git`;
 const CLONE_DIR = path.resolve(__dirname, 'src/pages/newsletter_modal_updated');
 
 // Function to delete the directory if it exists
