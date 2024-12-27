@@ -25,8 +25,15 @@ jobs:
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
-        env
+        echo "Initializing submodule with PAT_TOKEN..."
         git submodule add https://x-access-token:${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+      shell: bash
+
+    - name: Verify Submodule Status
+      run: |
+        echo "Verifying submodule status..."
+        git submodule status
+      shell: bash
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
