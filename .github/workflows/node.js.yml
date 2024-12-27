@@ -2,26 +2,31 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
+      with:
+        # Ensures submodules are properly initialized
+        submodules: true
 
     - name: Add submodule for newsletter_modal
-      run: git submodule add https://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@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+      env:
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      run: |
+        env
+        git submodule add https://x-access-token:${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
