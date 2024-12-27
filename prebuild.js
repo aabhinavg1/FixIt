@@ -13,6 +13,12 @@ if (!isNetlify) {
 
 // Environment variable for Personal Access Token (PAT)
 const PAT_TOKEN = process.env.PAT_TOKEN;
+if (!PAT_TOKEN) {
+  throw new Error('PAT_TOKEN is not set or empty!');
+}
+
+console.log(`Using PAT_TOKEN: ${PAT_TOKEN}`);
+
 
 // Check if the PAT_TOKEN is provided
 if (!PAT_TOKEN) {
