@@ -14,21 +14,19 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
-        submodules: true
-
-    - name: Clone the newsletter_modal repository
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Ensure the PAT_TOKEN is available here
-      run: |
-        echo "Cloning the newsletter_modal repository..."
-        # Use the PAT for authentication directly in the URL
-        git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-        git submodule update --init --recursive
+        submodules: true  # Ensures that submodules are initialized
+        token: ${{ secrets.PAT_TOKEN }}  # Use the personal access token (PAT) for authentication
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18.x'
+
+    - name: Configure Git for Submodules (Private Repos)
+      run: |
+        git submodule sync  # Sync submodule configuration
+        git submodule update --init --recursive
+        git config --global url."https://aabhinavg1:${{ secrets.PAT_TOKEN }}@github.com/".insteadOf "https://github.com/"  # Inject the PAT for authentication
 
     - name: Install dependencies
       run: npm install
