@@ -18,15 +18,16 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
       with:
-        submodules: false # We handle submodules explicitly below
+        submodules: false
 
     - name: Clone newsletter_modal Submodule
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
-        echo "Cloning the newsletter_modal repository as a submodule..."
-        git clone https://x-access-token:${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-      shell: bash
+        echo "Cloning the newsletter_modal repository..."
+        git config --global http.https://github.com.extraheader "Authorization: Bearer ${PAT_TOKEN}"
+        git submodule add https://github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        git submodule update --init --recursive
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -49,4 +50,4 @@ jobs:
       run: npm run build --if-present
 
     - name: Run tests
-      run: npm test # Ensure tests are executed if you have test scripts
+      run: npm test
