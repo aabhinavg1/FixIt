@@ -18,8 +18,10 @@ jobs:
 
     - name: Clone the newsletter_modal repository
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Make sure the token is stored in Secrets
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        ABC: ${{ secrets.ABC }} $# Make sure the token is stored in Secrets
       run: |
+       echo $ABC
         echo "Cloning the newsletter_modal repository..."
         # Set up Git to use the PAT for authentication
         git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
