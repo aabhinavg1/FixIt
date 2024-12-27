@@ -21,9 +21,8 @@ jobs:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Ensure the PAT_TOKEN is available here
       run: |
         echo "Cloning the newsletter_modal repository..."
-        # Initialize the submodule manually with authentication
-        git submodule add https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-        git submodule update --init --recursive  # Update the submodule after adding
+        # Clone the repository with PAT authentication
+        git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
