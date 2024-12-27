@@ -8,23 +8,20 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
 
-    - name: Debug PAT_TOKEN value
-      run: echo "PAT_TOKEN=${{ secrets.PAT_TOKEN }}"
-
-    - name: Add and initialize submodule for newsletter_modal
-      run: |
-        git submodule add https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-        git submodule update --init --recursive
+    - name: Add submodule for newsletter_modal
+      run: git submodule add https://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@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -47,4 +44,4 @@ jobs:
       run: npm run build --if-present
 
     - name: Run tests
-      run: npm test
+      run: npm test # Ensure tests are executed if you have test scripts
