@@ -2,33 +2,32 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
+      with:
+        submodules: false
 
-    - name: Set up SSH keys for GitHub
+    - name: Clone newsletter_modal Submodule
+      env:
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.GITHUB_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-    - name: Add submodule for newsletter_modal
-      run: git submodule add git@github.com:aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        echo "Cloning the newsletter_modal repository..."
+        git config --global http.https://github.com.extraheader "Authorization: Bearer ${PAT_TOKEN}"
+        git submodule add https://github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        git submodule update --init --recursive
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -51,4 +50,4 @@ jobs:
       run: npm run build --if-present
 
     - name: Run tests
-      run: npm test # Ensure tests are executed if you have test scripts
+      run: npm test
