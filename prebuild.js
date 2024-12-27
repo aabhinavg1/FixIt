@@ -7,6 +7,17 @@ const PAT_TOKEN = process.env.PAT_TOKEN;
 const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newsletter_modal.git`;
 const CLONE_DIR = path.resolve(__dirname, 'src/pages/newsletter_modal_updated');
 
+// Function to delete the directory if it exists
+const deleteDirectory = (dirPath) => {
+  if (fs.existsSync(dirPath)) {
+    console.log(`Deleting existing directory: ${dirPath}`);
+    fs.rmSync(dirPath, { recursive: true, force: true });
+  }
+};
+
+// Delete the directory if it exists
+deleteDirectory(CLONE_DIR);
+
 // Clone the private repository
 console.log('Cloning the private repository...');
 execSync(`git clone ${REPO_URL} ${CLONE_DIR}`, { stdio: 'inherit' });
