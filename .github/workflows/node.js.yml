@@ -14,16 +14,21 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
-        submodules: false
+        submodules: false  # Avoid cloning submodules (we'll manually clone the private repo)
 
     - name: Clone the newsletter_modal repository
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Ensure the PAT_TOKEN is available here
       run: |
         echo "Cloning the newsletter_modal repository..."
-        # Use the PAT for authentication directly in the URL
-        git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal_updated
-        git submodule update --init --recursive
+        # Clone the private repository and place it in the desired location within the public repo
+        git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal_updated
+
+    - name: Copy private repository code into public repo
+      run: |
+        echo "Copying private repository code into public repository..."
+        mkdir -p ./src/components/newsletter_modal_updated  # Ensure directory exists
+        cp -r src/components/newsletter_modal_updated/* ./src/components/newsletter_modal_updated/
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
