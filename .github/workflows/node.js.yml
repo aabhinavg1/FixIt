@@ -18,11 +18,11 @@ jobs:
 
     - name: Clone the newsletter_modal repository
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Make sure the token is stored in Secrets
       run: |
         echo "Cloning the newsletter_modal repository..."
-        git config --global url."https://$PAT_TOKEN@github.com/".insteadOf "https://github.com/"
-        git submodule add https://github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        # Set up Git to use the PAT for authentication
+        git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
         git submodule update --init --recursive
 
     - name: Set up Node.js
