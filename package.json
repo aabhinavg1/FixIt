@@ -5,7 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "npm run prebuild && docusaurus build",  // Run the prebuild script before the regular build
+    "prebuild": "node prebuild.js",  // Custom prebuild script for cloning the repository
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
