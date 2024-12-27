@@ -27,8 +27,16 @@ jobs:
     - name: Copy private repository code into public repo
       run: |
         echo "Copying private repository code into public repository..."
-        mkdir -p ./src/components/newsletter_modal_updated  # Ensure directory exists
-        cp -r src/components/newsletter_modal_updated/* ./src/components/newsletter_modal_updated/
+        mkdir -p ./src/components/newsletter_modal_updated  # Ensure target directory exists
+
+        # Check if the file already exists, if not, copy it
+        for file in src/components/newsletter_modal_updated/*; do
+          if [ ! -e "./$file" ]; then
+            cp -r "$file" ./src/components/newsletter_modal_updated/
+          else
+            echo "$file already exists, skipping copy."
+          fi
+        done
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
