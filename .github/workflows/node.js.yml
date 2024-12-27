@@ -14,7 +14,7 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
-        submodules: false
+        submodules: false  # We're not using submodules, so no need to initialize them
 
     - name: Clone the newsletter_modal repository
       env:
@@ -22,8 +22,8 @@ jobs:
       run: |
         echo "Cloning the newsletter_modal repository..."
         # Use the PAT for authentication directly in the URL
-        git clone  https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-        
+        git clone https://$PAT_TOKEN@github.com/aabhinavg1/newsletter_modal.git src/components/newsletter_modal
+
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
