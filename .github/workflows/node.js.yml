@@ -18,11 +18,13 @@ jobs:
 
     - name: Set up Git credentials for cloning
       run: |
+        # Set up Git to use the Personal Access Token (PAT) stored in GitHub Secrets
         git config --global credential.helper store
-        echo "https://$PAT_TOKEN:@github.com" > ~/.git-credentials
+        echo "https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com" > ~/.git-credentials
 
     - name: Add the newsletter_modal repository as a submodule
       run: |
+        # Add the submodule manually using the PAT for authentication
         echo "Adding the newsletter_modal repository as a submodule..."
         git submodule add https://github.com/aabhinavg1/newsletter_modal.git src/components/newsletter_modal
         git submodule update --init --recursive
