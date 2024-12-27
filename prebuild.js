@@ -19,14 +19,8 @@ if (!PAT_TOKEN) {
 
 console.log(`Using PAT_TOKEN: ${PAT_TOKEN}`);
 
-
-// Check if the PAT_TOKEN is provided
-if (!PAT_TOKEN) {
-  throw new Error('GitHub Personal Access Token (PAT) is missing. Please set it in the environment variables.');
-}
-
 // Construct the repository URL using the PAT_TOKEN
-const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newletter_modal.git`;
+const REPO_URL = `https://${PAT_TOKEN}@github.com/aabhinavg1/newsletter_modal.git`; // Correct repository name
 const CLONE_DIR = path.resolve(__dirname, 'src/pages/newsletter_modal_updated');
 
 // Function to delete the directory if it exists
