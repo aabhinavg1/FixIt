@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,15 +19,10 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
 
-    - name: Set up SSH keys for GitHub
+    - name: Add and initialize submodule for newsletter_modal
       run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.GITHUB_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-    - name: Add submodule for newsletter_modal
-      run: git submodule add git@github.com:aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        git submodule add https://github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
+        git submodule update --init --recursive
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
