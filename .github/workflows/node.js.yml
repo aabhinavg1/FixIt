@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "Cloning the newsletter_modal repository..."
         # Clone the private repository and place it in the desired location within the public repo
-        git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git /src/pages/newsletter_modal_updated
+        git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
 
     - name: Copy private repository code into public repo
       run: |
