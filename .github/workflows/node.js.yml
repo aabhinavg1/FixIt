@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Test Environment Variable
 
 on:
   push:
@@ -13,27 +13,12 @@ jobs:
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4
-      with:
-        submodules: false
 
-    - name: Clone the newsletter_modal repository
+    - name: Set up test variable
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        ABC: ${{ secrets.ABC }} $# Make sure the token is stored in Secrets
+        TEST_VAR: ${{ secrets.TEST_VAR }}  # Ensure you have added this secret in GitHub Secrets
       run: |
-       echo $ABC
-        echo "Cloning the newsletter_modal repository..."
-        # Set up Git to use the PAT for authentication
-        git submodule add https://$PAT_TOKEN@github.com/aabhinavg1/newletter_modal.git src/components/newsletter_modal
-        git submodule update --init --recursive
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18.x'
-
-    - name: Install dependencies
-      run: npm install
+        echo "TEST_VAR is: $TEST_VAR"  # This will print the value of the TEST_VAR variable
 
     - name: Build the project
-      run: npm run build
+      run: echo "This is a test to check environment variable"
