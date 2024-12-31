@@ -34,43 +34,6 @@ const config = {
     ],
   ],
 
-  plugins: [
-    [
-      '@docusaurus/theme-mermaid',
-      {
-        markdown: {
-          mermaid: true,
-        },
-      },
-    ],
-    [
-      '@docusaurus/plugin-google-analytics',
-      {
-        trackingID: 'G-CJDGBRKJ5W',
-        anonymizeIP: true, // Optional
-      },
-    ],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: ['appInstalled', 'queryString', 'standalone'],
-        pwaHead: [
-          { tagName: 'link', rel: 'icon', href: '/img/CompilerSutra.png' },
-          { tagName: 'meta', name: 'theme-color', content: '#ffffff' },
-          { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
-        ],
-      },
-    ],
-    [
-      'vercel-analytics',
-      {
-        debug: true,
-        mode: 'auto',
-      },
-    ],
-  ],
-
   themeConfig: {
     navbar: {
       title: 'CompilerSutra',
@@ -104,25 +67,23 @@ const config = {
           label: 'C++ Tutorials',
         },
         {
-        type: 'docSidebar',
-        sidebarId: 'mcqSidebar',
-        position: 'left',
-        label: 'MCQ',
-      },
-        
+          type: 'dropdown',
+          label: 'MCQ',
+          position: 'left',
+          items: [
+            {
+              label: 'Practice MCQ',
+              to: '/docs/mcq/cpp_mcqs',
+            },
+            {
+              label: 'Practice Interview Question',
+              to: '/docs/mcq/interview_question/cpp_interview_mcqs',
+            },
+          ],
+        },
         {
           href: 'https://github.com/aabhinavg1/FixIt',
           label: 'GitHub',
-          position: 'right',
-        },
-        {
-          href: 'https://topmate.io/compilersutra/',
-          label: 'Mentor',
-          position: 'right',
-        },
-        {
-          href: 'https://www.youtube.com/@codeforpython',
-          label: 'YouTube',
           position: 'right',
         },
       ],
@@ -142,14 +103,8 @@ const config = {
               label: 'GPU Tutorials',
               to: '/docs/The_Graphic_Rendering_Pipeline',
             },
-            {
-              label: 'Compilers',
-              to: '/docs/compilers/compiler',
-            },
-            {
-              label: 'C++ Tutorials',
-              to: '/docs/c++/c++_main_file',
-            },
+            { label: 'Compilers', to: '/docs/compilers/compiler' },
+            { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
           ],
         },
         {
@@ -160,20 +115,8 @@ const config = {
               href: 'https://llvm.org/docs/',
             },
             {
-              label: 'Discord Community',
-              href: 'https://discordapp.com/invite/gandiv',
-            },
-            {
               label: 'Twitter',
               href: 'https://twitter.com/CompilerSutra',
-            },
-            {
-              label: 'Mentorship',
-              href: 'https://topmate.io/compilersutra/',
-            },
-            {
-              label: 'YouTube Channel',
-              href: 'https://www.youtube.com/@codeforpython',
             },
           ],
         },
@@ -187,37 +130,9 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra, Inc.`,
+      copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra.`,
     },
   },
-
-  headTags: [
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'alternate',
-        href: 'https://www.compilersutra.com/',
-        hreflang: 'en-US',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preload',
-        href: '/path/to/critical-resource.js',
-        as: 'script',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preload',
-        href: '/path/to/critical-style.css',
-        as: 'style',
-      },
-    },
-  ],
-
 };
 
 module.exports = config;
