@@ -38,8 +38,12 @@ Welcome to the **LLVM Documentation** section! This guide is designed to provide
 - **[What is LLVM?](What_is_LLVM.md)**  
   Discover the essentials of LLVM, its role in compiler development, and why it’s a powerful choice for building modular and reusable compiler frameworks.
 
-- **[Why LLVM?](Why_LLVM.md)**  
+- **[Know LLVM?](Why_LLVM.md)**  
   Understand the key reasons behind LLVM's popularity, from its flexibility and optimizations to its wide range of applications in compilers, tools, and beyond.
+
+- **[Why LLVM?](Why_What_Is_LLVM.md)**  
+Discover why LLVM is a game-changer in the world of compilers, offering unmatched flexibility, powerful optimizations, and cross-platform capabilities for building modern tools and technologies.
+
 
 ---
 
