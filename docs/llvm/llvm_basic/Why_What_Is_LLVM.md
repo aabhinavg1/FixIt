@@ -125,14 +125,14 @@ A new solution always comes with new challenges first in implementation and then
 
 > — **KarmicTechnology**                                     
 > _This quote is originally written by [karmicTechnology],
-> _published on_ **[date]._
+> _published on_ **[27/01/2025]._
 :::
 ---
 :::note
 > "The journey of ``problem-solving`` is ``destinationless`` as every solution opens a doors to new problem.
 > —**KarmicTechnology**                                 
 > _This quote is originally written by [karmicTechnology],
-> _published on_ **[date]._
+> _published on_ **[27/01/2025]._
 :::
 ---
 
