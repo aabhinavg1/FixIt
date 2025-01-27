@@ -49,6 +49,8 @@ const sidebars = {
             'llvm/llvm_basic/congratulations',// Completing the basics
             'llvm/llvm_basic/deploy-your-site', // Deployment guide
             'llvm/llvm_basic/markdown-features', // Markdown usage in LLVM docs
+            'llvm/llvm_basic/Why_What_Is_LLVM', // Markdown usage in LLVM docs
+
           ],
         },
         {
