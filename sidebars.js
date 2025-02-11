@@ -60,6 +60,8 @@ const sidebars = {
             'llvm/llvm_extras/manage_llvm_version', // Managing LLVM versions
             'llvm/llvm_extras/translate-your-site', // Translation guide
             'llvm/llvm_extras/llvm-guide',         // Additional LLVM guides
+            'llvm/llvm_extras/disable_pass',         // Additional LLVM guides
+
           ],
         },
       ],
