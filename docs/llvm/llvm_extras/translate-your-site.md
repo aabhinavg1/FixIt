@@ -26,10 +26,6 @@ tags:
   - Machine Learning in LLVM
 ---
 
----
-sidebar_position: 3
----
-
 # Translating C Code to Executable using LLVM
 
 LLVM provides a suite of tools to compile and execute code, including transforming C code into an executable format. This document outlines the basic steps involved in compiling a C file using LLVM tools such as `clang`, `llvm-as`, and `llc`.
