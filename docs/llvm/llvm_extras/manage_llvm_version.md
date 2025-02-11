@@ -1,5 +1,5 @@
 ---
-title: "LLVM Tutorial - Learn LLVM Step by Step"
+title: "LLVM Tutorial - Basic LLVM Tool"
 description: "Comprehensive guide to understanding LLVM: From function passes to creating your own LLVM passes and developing a compiler pass. Ideal for learners and developers."
 keywords:
   - LLVM Tutorial
