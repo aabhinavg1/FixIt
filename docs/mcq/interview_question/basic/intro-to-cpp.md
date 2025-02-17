@@ -1,5 +1,5 @@
 ---
-title: "Top 50 C++ Interview Questions for Freshers with Answers"
+title: "C++ Interview Questions for Freshers with Answers"
 description: "Comprehensive guide to basic C++ interview questions for freshers. Test your knowledge with detailed questions and answers tailored for programming beginners."
 keywords:
   - C++ Interview Questions
@@ -9,7 +9,7 @@ keywords:
   - Interview Preparation
 ---
 
-# Top 50 C++ Interview Questions for Freshers
+# C++ Interview Questions 
 
 Welcome to this comprehensive guide on the top C++ interview questions tailored for freshers. Each question comes with a collapsible section where you can view the answer by clicking.
 
