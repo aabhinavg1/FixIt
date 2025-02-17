@@ -1,5 +1,5 @@
 ---
-title: "Top 10 Essential C++ Interview Questions for Freshers"
+title: "Essential C++ Interview Questions for Data Type and Variable"
 description: "Prepare for your C++ interviews with this guide to the most frequently asked questions and their detailed answers. Perfect for beginners aiming to understand C++ basics."
 keywords:
   - C++ Interview Questions
@@ -9,7 +9,7 @@ keywords:
   - Data Types and Variables in C++
 ---
 
-# Top 10 Essential C++ Interview Questions for Freshers
+# Essential C++ Interview Questions for Freshers
 
 ## 1. What are the basic data types in C++?
 C++ provides the following primitive data types:

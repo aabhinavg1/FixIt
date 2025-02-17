@@ -1,5 +1,5 @@
 ---
-title: "Top 10 Essential C++ Interview Questions for Freshers"
+title: "Essential C++ Interview Questions for Recursion"
 description: "Explore recursion in C++ with examples, base and recursive cases, and how it can be used to solve problems."
 keywords:
   - Recursion in C++
@@ -9,7 +9,7 @@ keywords:
   - Programming Interview Preparation
   - C++ Concepts for Interviews
 ---
-# Understanding Recursion in C++
+# Question on the Recursion in C++
 
 ## What is Recursion?
 

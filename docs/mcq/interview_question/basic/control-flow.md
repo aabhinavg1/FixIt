@@ -1,5 +1,5 @@
 ---
-title: "Top 10 Essential C++ Interview Questions for Freshers"
+title: "Essential C++ Interview Questions on Control Flow"
 description: "Prepare for your C++ interviews with this comprehensive guide to control flow and other frequently asked questions. Perfect for beginners aiming to understand C++ concepts and ace their interviews."
 keywords:
   - C++ Interview Questions
@@ -11,7 +11,7 @@ keywords:
   - C++ Jump Statements Guide
 ---
 
-# Top 10 Essential C++ Interview Questions for Freshers
+# Essential C++ Interview Questions for Freshers
 
 ## 1. What are the control flow statements in C++?
 C++ provides three types of control flow statements:
