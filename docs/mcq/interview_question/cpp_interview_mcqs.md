@@ -37,13 +37,13 @@ Prepare for your C++ coding interviews with our expert-curated collection of C++
 ## 📋 Table of Contents
 
 ### 🟢 Basic C++ Interview Questions
-- [Introduction to C++: Basics and Key Concepts](./basic/intro-to-cpp.md)
+- [Introduction to C++: Basics and Key Concepts and OOPS](./basic/intro-to-cpp.md)
 - [Data Types, Variables, and Constants](./basic/data-types-variables.md)
 - [Control Flow Statements: if-else, switch-case](./basic/control-flow.md)
 - [Functions, Recursion, and Function Overloading](./basic/functions-recursion.md)
-- [Arrays, Strings, and Memory Allocation](./questions/basic/arrays-strings.md)
-- [Pointers, References, and Memory Management](./questions/basic/pointers-references.md)
-- [C++ Input/Output Operations](./questions/basic/io-operations.md)
+- [Arrays, Strings, and Memory Allocation](./basic/arrays-strings.md)
+- [Pointers, References, and Memory Management](./basic/pointers-references.md)
+- [C++ Input/Output Operations](./basic/io-operations.md)
 
 ### 🟡 Intermediate C++ Interview Questions
 - [Object-Oriented Programming (OOP) in C++](./questions/intermediate/oop.md)

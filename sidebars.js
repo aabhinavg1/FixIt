@@ -185,6 +185,10 @@ const sidebars = {
             'mcq/interview_question/basic/intro-to-cpp',
             'mcq/interview_question/basic/control-flow',
             'mcq/interview_question/basic/functions-recursion',
+            'mcq/interview_question/basic/arrays-strings',
+            'mcq/interview_question/basic/io-operations',
+            'mcq/interview_question/basic/pointers-references'
+
 
 
           ],
