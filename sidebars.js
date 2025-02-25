@@ -61,6 +61,7 @@ const sidebars = {
             'llvm/llvm_extras/translate-your-site', // Translation guide
             'llvm/llvm_extras/llvm-guide',         // Additional LLVM guides
             'llvm/llvm_extras/disable_pass',         // Additional LLVM guides
+            'llvm/llvm_extras/llvm_pass_timing',
 
           ],
         },
