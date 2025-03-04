@@ -28,13 +28,26 @@ const config = {
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
   ],
 
+  themes: ['@docusaurus/theme-mermaid'], // ✅ Enable Mermaid
+
+  markdown: {
+    mermaid: true, // ✅ Enable Mermaid in Markdown
+  },
+
   themeConfig: {
+    mermaid: {
+      theme: { light: 'neutral', dark: 'forest' }, // ✅ Set light & dark themes
+      options: {
+        maxTextSize: 5000000, // ✅ Optimize large diagrams
+      },
+    },
+
     navbar: {
       title: 'CompilerSutra',
       logo: {
@@ -42,50 +55,21 @@ const config = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'llvmTutorialSidebar',
-          position: 'left',
-          label: 'LLVM Tutorials',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'gpuTutorialSidebar',
-          position: 'left',
-          label: 'GPU Tutorials',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'compilersSidebar',
-          position: 'left',
-          label: 'Compilers',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'cppTutorialSidebar',
-          position: 'left',
-          label: 'C++ Tutorials',
-        },
+        { type: 'docSidebar', sidebarId: 'llvmTutorialSidebar', position: 'left', label: 'LLVM Tutorials' },
+        { type: 'docSidebar', sidebarId: 'tvmTutorialSidebar', position: 'left', label: 'TVM Tutorials' },
+        { type: 'docSidebar', sidebarId: 'gpuTutorialSidebar', position: 'left', label: 'GPU Tutorials' },
+        { type: 'docSidebar', sidebarId: 'compilersSidebar', position: 'left', label: 'Compilers' },
+        { type: 'docSidebar', sidebarId: 'cppTutorialSidebar', position: 'left', label: 'C++ Tutorials' },
         {
           type: 'dropdown',
           label: 'MCQ',
           position: 'left',
           items: [
-            {
-              label: 'Practice MCQ',
-              to: '/docs/mcq/cpp_mcqs',
-            },
-            {
-              label: 'Practice Interview Question',
-              to: '/docs/mcq/interview_question/cpp_interview_mcqs',
-            },
+            { label: 'Practice MCQ', to: '/docs/mcq/cpp_mcqs' },
+            { label: 'Practice Interview Question', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
           ],
         },
-        {
-          href: 'https://github.com/aabhinavg1/FixIt',
-          label: 'GitHub',
-          position: 'right',
-        },
+        { href: 'https://github.com/aabhinavg1/FixIt', label: 'GitHub', position: 'right' },
       ],
     },
 
@@ -95,14 +79,8 @@ const config = {
         {
           title: 'Docs',
           items: [
-            {
-              label: 'LLVM Tutorials',
-              to: '/docs/llvm/intro-to-llvm',
-            },
-            {
-              label: 'GPU Tutorials',
-              to: '/docs/The_Graphic_Rendering_Pipeline',
-            },
+            { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
+            { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline' },
             { label: 'Compilers', to: '/docs/compilers/compiler' },
             { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
           ],
@@ -110,27 +88,18 @@ const config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'LLVM Documentation',
-              href: 'https://llvm.org/docs/',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/CompilerSutra',
-            },
+            { label: 'LLVM Documentation', href: 'https://llvm.org/docs/' },
+            { label: 'Twitter', href: 'https://twitter.com/CompilerSutra' },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/aabhinavg1/FixIt',
-            },
+            { label: 'GitHub', href: 'https://github.com/aabhinavg1/FixIt' },
           ],
         },
       ],
-      copyright: `Copyright \u00A9 ${new Date().getFullYear()} CompilerSutra.`,
+      copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra.`,
     },
   },
 };

@@ -107,6 +107,59 @@ const sidebars = {
       ],
     },
   ],
+ //Sibebar for TVM 
+ tvmTutorialSidebar: [
+  {
+    type: 'category',
+    label: 'TVM Tutorials',
+    collapsed: false,
+    items: [
+      'tvm/tvm-for-beginners',
+      {
+        type: 'category',
+        label: 'TVM Basics',
+        collapsed: false,
+        items: [
+          'tvm/basics/installation',
+          'tvm/basics/first-model',
+          'tvm/basics/autotuning',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'TVM Intermediate',
+        collapsed: false,
+        items: [
+          'tvm/intermediate/graph-optimizations',
+          'tvm/intermediate/schedule-tuning',
+          'tvm/intermediate/relay',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'TVM Advanced',
+        collapsed: false,
+        items: [
+          'tvm/advanced/custom-pass',
+          'tvm/advanced/hardware-targets',
+          'tvm/advanced/meta-scheduler',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'TVM Deployment',
+        collapsed: false,
+        items: [
+          'tvm/deployment/runtime',
+          'tvm/deployment/edge',
+          'tvm/deployment/cloud',
+        ],
+      },
+    ],
+  },
+],
+
+
 
   // Sidebar for MCQs and Interview Questions
   mcqSidebar: [
