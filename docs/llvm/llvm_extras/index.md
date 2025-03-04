@@ -43,10 +43,9 @@ Welcome to the **LLVM Advanced Documentation** section! This guide includes deta
   Learn how to convert your ``C code`` to the ``executable`` by converting to `LLVM IR.`
 
 
-- **[Enable and Disable LLVM Passes](./disable_llvm_pass.md)**  
-  A guide on controlling LLVM optimization passes in your compilation pipeline.  
-  Learn how to **enable** or **disable** specific `LLVM passes` to fine-tune optimizations for your program.
-
+- **[How to see time of each pass llvm](./LLVM_Pass_Timing.md)**  
+A guide on ``measuring and analyzing`` the execution time of ``LLVM optimization passes``.
+Learn how to track and analyze LLVM pass timings to optimize compilation performance and identify bottlenecks.
 
 ---
 
