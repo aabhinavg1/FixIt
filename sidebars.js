@@ -14,6 +14,7 @@ const sidebars = {
         'compilers/flag/index',               // Compiler flags and optimizations
         'compilers/front_end/index',          // Frontend concepts and tutorials
         'compilers/other_arch/index',         // Tutorials for other architectures
+        'compilers/gcc_vs_llvm'
       ],
     },
   ],
