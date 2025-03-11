@@ -107,7 +107,7 @@ const config = {
     },
   },
 
-  // ✅ Add Google AdSense and Google Analytics Script
+  // ✅ Updated Scripts for Google AdSense, Google Tag Manager, and Google Analytics
   scripts: [
     {
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
@@ -116,19 +116,16 @@ const config = {
       'data-ad-client': 'ca-pub-4507855210682789',
     },
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-CJDGBRKJ5W',
+      src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
     },
     {
-      // Google Analytics Tracking Script
+      src: '/js/google-tag-manager.js', // ✅ External file for GTM
       async: true,
-      src: 'data:text/javascript',
-      content: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-CJDGBRKJ5W');
-      `,
+    },
+    {
+      src: '/js/google-analytics.js', // ✅ External file for GA
+      async: true,
     },
   ],
 };
