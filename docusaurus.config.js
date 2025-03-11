@@ -107,13 +107,28 @@ const config = {
     },
   },
 
-  // ✅ Add Google AdSense Script
+  // ✅ Add Google AdSense and Google Analytics Script
   scripts: [
     {
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
       async: true,
       crossorigin: 'anonymous',
       'data-ad-client': 'ca-pub-4507855210682789',
+    },
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-CJDGBRKJ5W',
+      async: true,
+    },
+    {
+      // Google Analytics Tracking Script
+      async: true,
+      src: 'data:text/javascript',
+      content: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CJDGBRKJ5W');
+      `,
     },
   ],
 };
