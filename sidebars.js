@@ -28,6 +28,7 @@ const sidebars = {
       items: [
         'gpu/introduction',                   // Introduction to GPU concepts
         'gpu/optimizations',                  // GPU-specific optimization techniques
+        'gpu/evolution-of-parallel-programming'
       ],
     },
   ],
