@@ -1,5 +1,5 @@
 ---
-title: "Essential C++ Interview Questions on Control Flow"
+title: "C++ Interview Questions on Control Flow"
 description: "Prepare for your C++ interviews with this comprehensive guide to control flow and other frequently asked questions. Perfect for beginners aiming to understand C++ concepts and ace their interviews."
 keywords:
   - C++ Interview Questions

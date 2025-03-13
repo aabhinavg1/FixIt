@@ -46,8 +46,8 @@ Prepare for your C++ coding interviews with our expert-curated collection of C++
 - [C++ Input/Output Operations](./basic/io-operations.md)
 
 ### 🟡 Intermediate C++ Interview Questions
-- [Object-Oriented Programming (OOP) in C++](./questions/intermediate/oop.md)
-- [Classes, Objects, and Encapsulation](./questions/intermediate/classes-objects.md)
+- [Object-Oriented Programming (OOP) in C++](./intermediate/oop.md)
+- [Classes, Objects, and Encapsulation](./intermediate/classes-objects.md)
 - [Constructors, Destructors, and Object Lifecycle](./questions/intermediate/constructors-destructors.md)
 - [Inheritance, Polymorphism, and Virtual Functions](./questions/intermediate/inheritance-polymorphism.md)
 - [Operator Overloading and Function Overloading](./questions/intermediate/operator-overloading.md)

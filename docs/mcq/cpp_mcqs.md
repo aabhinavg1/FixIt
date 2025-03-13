@@ -42,7 +42,7 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Input and Output](./questions/basic/io.md)
 
 ### 🟡 Intermediate C++ Concepts
-- [Object-Oriented Programming (OOP)](./questions/intermediate/oop)
+- [Object-Oriented Programming (OOP)](./questions/intermediate/oop.md)
 - [Classes and Objects](./questions/intermediate/classes-objects.md)
 - [Constructors and Destructors](./questions/intermediate/constructors-destructors.md)
 - [Inheritance](./questions/intermediate/inheritance.md)
