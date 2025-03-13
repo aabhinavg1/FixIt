@@ -1,3 +1,73 @@
+---
+description: "Top multiple-choice questions (MCQs) on C++ Classes and Objects for interview preparation. Covers constructors, access specifiers, friend functions, and object creation."
+keywords:
+  - C++
+  - C++ MCQs
+  - C++ Questions
+  - C++ Programming
+  - C++ Interview Questions
+  - C++ Quiz
+  - C++ Multiple Choice Questions
+  - C++ Objective Questions
+  - C++ Basics
+  - C++ Concepts
+  - C++ Fundamentals
+  - C++ Exam Questions
+  - C++ Test Questions
+  - C++ Online Test
+  - C++ Practice Questions
+  - Learn C++
+  - C++ Data Structures
+  - C++ STL
+  - Object-Oriented Programming
+  - OOP in C++
+  - C++ Functions
+  - C++ Classes
+  - C++ Objects
+  - C++ Constructors
+  - C++ Destructors
+  - C++ Access Specifiers
+  - C++ Scope Resolution Operator
+  - C++ Friend Function
+  - C++ Inheritance
+  - C++ Polymorphism
+  - C++ Abstraction
+  - C++ Encapsulation
+  - Advanced C++ Topics
+  - Multi-threading in C++
+  - Competitive Programming in C++
+  - C++ Coding Interview Questions
+
+tags:
+  - C++
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Online Test
+  - C++ Quiz
+  - C++ Objective Questions
+  - C++ OOP
+  - C++ Classes
+  - C++ Objects
+  - C++ Functions
+  - C++ Programming Questions
+  - Learn C++
+  - C++ Test
+  - C++ Beginner Guide
+  - C++ Coding Questions
+  - C++ Technical Interview
+  - C++ Coding Interview
+  - OOP in C++
+  - C++ Constructors
+  - C++ Destructors
+  - C++ Polymorphism
+  - C++ Virtual Functions
+  - C++ Competitive Programming
+  - Data Structures in C++
+  - Algorithms in C++
+  - STL in C++
+  - C++ Performance Optimization
+---
+
 import { Question } from '../../Question';
 
 # Inheritance
