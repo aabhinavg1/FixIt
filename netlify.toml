@@ -1,9 +1,3 @@
 [build]
   command = "npm run build"
   publish = "build"
-
-[[redirects]]
-  from = "https://www.compilersutra.com/*"
-  to = "https://compilersutra.com/:splat"
-  status = 301
-  force = true
