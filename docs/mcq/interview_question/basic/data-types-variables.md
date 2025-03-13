@@ -1,5 +1,5 @@
 ---
-title: "Essential C++ Interview Questions for Data Type and Variable"
+title: "C++ Interview Questions(Data Type and Variable)"
 description: "Prepare for your C++ interviews with this guide to the most frequently asked questions and their detailed answers. Perfect for beginners aiming to understand C++ basics."
 keywords:
   - C++ Interview Questions

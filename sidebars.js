@@ -235,7 +235,7 @@ const sidebars = {
         // Adding Interview Questions under Basic category
         {
           type: 'category',
-          label: 'Basic Interview Questions',
+          label: 'Interview Questions',
           items: [
             'mcq/interview_question/cpp_interview_mcqs',
             'mcq/interview_question/basic/intro-to-cpp',
@@ -243,7 +243,15 @@ const sidebars = {
             'mcq/interview_question/basic/functions-recursion',
             'mcq/interview_question/basic/arrays-strings',
             'mcq/interview_question/basic/io-operations',
-            'mcq/interview_question/basic/pointers-references'
+            'mcq/interview_question/basic/pointers-references',
+            'mcq/interview_question/intermediate/classes-object',
+            'mcq/interview_question/intermediate/constructors-destructors',
+            'mcq/interview_question/intermediate/oop',
+            'mcq/interview_question/intermediate/exception-handling',
+            'mcq/interview_question/intermediate/memory-management',
+            'mcq/interview_question/intermediate/operator-overloading',
+          
+
 
 
 

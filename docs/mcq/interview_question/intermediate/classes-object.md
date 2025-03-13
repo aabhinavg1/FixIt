@@ -1,5 +1,5 @@
 ---
-title: "C++ Interview Question Class and Object"
+title: "Classes and Objects"
 description: "Prepare for C++ interviews with our in-depth guide to essential C++ interview questions on classes and objects. Learn key OOP concepts, encapsulation, constructors, destructors, and object-oriented programming in C++. Ideal for beginners and professionals."
 keywords:
 - "C++ Interview Questions"
