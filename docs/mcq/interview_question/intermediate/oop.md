@@ -3,6 +3,7 @@ title: "Essential C++ Interview Questions on (Object-Oriented Programming)"
 description: "Prepare for C++ interviews with this guide to essential C++ interview questions on Object-Oriented Programming (OOP). Learn about classes, objects, inheritance, polymorphism, encapsulation, and abstraction."
 keywords:
 - "C++ Interview Questions"
+- "C++ MCQ for Placement"
 - "C++ Object-Oriented Programming"
 - "C++ OOP"
 - "C++ Classes and Objects"

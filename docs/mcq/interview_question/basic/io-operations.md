@@ -1,7 +1,14 @@
 ---
 title: "C++ Interview Questions on I/O Operations"
 description: "Top C++ interview questions on input and output operations, including file handling, cin vs getline, and error handling in C++."
-keywords: ["C++ Interview Questions", "C++ I/O Operations", "File Handling in C++", "cin vs getline", "cerr vs clog", "C++ Streams"]
+keywords: 
+- "C++ Interview Questions"
+- C++ MCQ for Placement
+- "C++ I/O Operations"
+- "File Handling in C++"
+-  "cin vs getline" 
+- "cerr vs clog" 
+- "C++ Streams"
 ---
 
 # C++ Interview Questions on I/O Operations

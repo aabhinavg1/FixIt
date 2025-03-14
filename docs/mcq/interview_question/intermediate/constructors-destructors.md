@@ -3,6 +3,7 @@ title: "C++ Interview Questions(Constructors and Destructors)"
 description: "Prepare for C++ interviews with this guide to essential C++ interview questions on constructors and destructors. Learn about default, parameterized, copy, move constructors, and best practices."
 keywords:
 - "C++ Interview Questions"
+- "C++ MCQ for Placement"
 - "C++ Constructors and Destructors"
 - "C++ Object Lifecycle"
 - "C++ Copy Constructor"

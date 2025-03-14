@@ -4,6 +4,7 @@ description: "Prepare for C++ interviews with this guide to essential C++ interv
 keywords:
 - "C++ Interview Questions"
 - "C++ Inheritance"
+- "C++ MCQ for Placement"
 - "C++ Polymorphism"
 - "C++ Virtual Functions"
 - "C++ Method Overriding"

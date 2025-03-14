@@ -6,6 +6,7 @@ keywords:
   - C++ MCQs
   - C++ Questions
   - C++ Programming
+  - C++ MCQ for Placement
   - C++ Tutorial
   - Basic C++ Concepts
   - Advanced C++ Topics

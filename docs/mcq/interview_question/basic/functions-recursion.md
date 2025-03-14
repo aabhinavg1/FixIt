@@ -3,6 +3,7 @@ title: "Recursion"
 description: "Explore recursion in C++ with examples, base and recursive cases, and how it can be used to solve problems."
 keywords:
   - Recursion in C++
+  - C++ MCQ for Placement
   - C++ Recursive Functions
   - Recursive Algorithms
   - Base and Recursive Case
