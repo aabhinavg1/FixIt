@@ -1,4 +1,5 @@
 ---
+title: "C++ Polymorphism MCQs"
 description: "Top multiple-choice questions (MCQs) on C++ Classes and Objects for interview preparation. Covers constructors, access specifiers, friend functions, and object creation."
 keywords:
   - C++
