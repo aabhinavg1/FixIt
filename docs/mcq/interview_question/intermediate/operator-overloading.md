@@ -3,6 +3,7 @@ title: "Essential C++ Interview Questions(Operator Overloading)"
 description: "Prepare for C++ interviews with this guide to essential C++ interview questions on operator overloading. Learn how to overload operators, use friend functions, and implement best practices."
 keywords:
 - "C++ Interview Questions"
+- "C++ MCQ for Placement"
 - "C++ Operator Overloading"
 - "C++ Overloaded Operators"
 - "C++ Friend Functions"

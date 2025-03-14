@@ -4,7 +4,9 @@ description: "Prepare for C++ interviews with this guide to essential C++ interv
 keywords:
 - "C++ Interview Questions"
 - "C++ Memory Management"
+- "C++ MCQ for Placement"
 - "C++ Dynamic Allocation"
+- "C++ MCQ for Placement"
 - "C++ Smart Pointers"
 - "C++ Memory Leaks"
 - "C++ Heap vs Stack"

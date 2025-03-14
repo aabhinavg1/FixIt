@@ -3,6 +3,7 @@ title: "Essential C++ Interview Questions on Pointers and References – Master 
 description: "Ace your C++ interviews with our comprehensive guide to the top essential C++ interview questions on pointers and references. Learn key concepts, pointer arithmetic, reference binding, memory management, and common pitfalls. Perfect for beginners and anyone looking to level up their C++ interview preparation."
 keywords:
   - "C++ Interview Questions"
+  - "C++ MCQ for Placement"
   - "C++ Pointers and References"
   - "C++ Memory Management"
   - "C++ Pointer Arithmetic"

@@ -4,6 +4,7 @@ description: "Prepare for your C++ interviews with this guide to the most freque
 keywords:
   - C++ Interview Questions
   - C++ Basics for Freshers
+  - C++ MCQ for Placement
   - Programming Interview Preparation
   - C++ Concepts Explained
   - Data Types and Variables in C++

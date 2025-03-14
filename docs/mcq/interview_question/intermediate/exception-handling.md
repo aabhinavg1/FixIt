@@ -3,6 +3,7 @@ title: "C++ Interview Questions(Exception Handling)"
 description: "Prepare for C++ interviews with this guide to essential C++ interview questions on exception handling. Learn about try-catch blocks, exception hierarchy, custom exceptions, and best practices."
 keywords:
 - "C++ Interview Questions"
+- "C++ MCQ for Placement"
 - "C++ Exception Handling"
 - "C++ Try Catch"
 - "C++ Error Handling"
