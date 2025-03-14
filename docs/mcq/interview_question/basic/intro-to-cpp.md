@@ -3,6 +3,7 @@ title: "C++ Interview Questions for Freshers with Answers"
 description: "Comprehensive guide to basic C++ interview questions for freshers. Test your knowledge with detailed questions and answers tailored for programming beginners."
 keywords:
   - C++ Interview Questions
+  - C++ MCQ for Placement
   - Basic C++ MCQs
   - Programming for Freshers
   - C++ Basics
