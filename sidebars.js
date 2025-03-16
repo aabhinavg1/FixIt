@@ -5,7 +5,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Compilers',
-      collapsed: false,
+      collapsed: true,
       items: [
         'compilers/compiler',                 // Overview of compilers
         'compilers/CPU/index',                // Tutorials specific to CPU compilers
@@ -24,7 +24,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'GPU Tutorials',
-      collapsed: false,
+      collapsed: true,
       items: [
         'gpu/introduction',                   // Introduction to GPU concepts
         'gpu/optimizations',                  // GPU-specific optimization techniques
@@ -38,7 +38,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'LLVM Tutorials',
-      collapsed: false,
+      collapsed: true,
       items: [
         'llvm/intro-to-llvm',                 // Overview of LLVM
         {
@@ -76,7 +76,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'C++ Tutorials',
-      collapsed: false,
+      collapsed: true,
       items: [
         {
           type: 'category',
@@ -114,13 +114,13 @@ const sidebars = {
   {
     type: 'category',
     label: 'TVM Tutorials',
-    collapsed: false,
+    collapsed: true,
     items: [
       'tvm/tvm-for-beginners',
       {
         type: 'category',
         label: 'TVM Basics',
-        collapsed: false,
+        collapsed: true,
         items: [
           'tvm/basics/installation',
           'tvm/basics/first-model',
@@ -130,7 +130,7 @@ const sidebars = {
       {
         type: 'category',
         label: 'TVM Intermediate',
-        collapsed: false,
+        collapsed: true,
         items: [
           'tvm/intermediate/graph-optimizations',
           'tvm/intermediate/schedule-tuning',
@@ -140,7 +140,7 @@ const sidebars = {
       {
         type: 'category',
         label: 'TVM Advanced',
-        collapsed: false,
+        collapsed: true,
         items: [
           'tvm/advanced/custom-pass',
           'tvm/advanced/hardware-targets',
@@ -150,7 +150,7 @@ const sidebars = {
       {
         type: 'category',
         label: 'TVM Deployment',
-        collapsed: false,
+        collapsed: true,
         items: [
           'tvm/deployment/runtime',
           'tvm/deployment/edge',
@@ -168,7 +168,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'MCQs',
-      collapsed: false,
+      collapsed: true,
       items: [
         {
           type: 'category',
@@ -250,11 +250,17 @@ const sidebars = {
             'mcq/interview_question/intermediate/exception-handling',
             'mcq/interview_question/intermediate/memory-management',
             'mcq/interview_question/intermediate/operator-overloading',
-          
 
+          ],
+        },
 
+        //Adding mcq with the standard
 
-
+        {
+          type: 'category',
+          label: 'Standatd Questions',
+          items: [
+            'mcq/interview_question/cpp11/cpp11',
           ],
         },
       ],
