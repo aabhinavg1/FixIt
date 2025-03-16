@@ -1,0 +1,1078 @@
+---
+id: intro
+title: C++11 Docs
+description: A detailed and structured guide to learning C++11 with documentation study, object-oriented programming, modern features, and industry standards which we need to learn about the C++11 standard.
+keywords:
+  - C++
+  - C++ tutorial
+  - Object-Oriented Programming
+  - Modern C++
+  - Build Systems
+  - STL
+  - Industry Best Practices
+  - C++11
+slug: /C++11
+sidebar_label: C++11
+---
+
+
+# C++11:
+When new beginner hears the word ``C++11`` for him it like a technical jargon whom beginner things to learn and know. But you know what ``C++11`` know as ``C++11`` because it was introduce in the year 2011 nothing much scientific about the name . 
+
+## Understanding C++11
+``Version of the C++`` Programming language which standardized in ``2011`` is name as "C++11". Without much thinking put one thing in a mind that "C++11" simply refers the year of its introduction without any ``complex scientific implication``.
+
+## What is their in C++11?
+C++11 is an updated version of ``C++`` which get ``standardized in 2011`` this standarization has introduced ``modern features`` to make programming ``easier``, ``safer``, and ``faster``. Here are a few key highlights:
+
+1. **Smart Pointers** – Manage memory automatically, so you don’t need to use `new` and `delete`.
+2. **Lambdas** – Small, inline functions for quick use.
+3. **`auto` Keyword** – Lets the compiler figure out variable types.
+4. **Range-based `for` Loops** – A simpler way to loop through collections.
+5. **`nullptr`** – A better, safer replacement for `NULL`.
+6. **Concurrency** – Basic support for multi-threading with tools like `std::thread`.
+7. **Move Semantics** – Makes copying big objects faster.
+
+
+## Overview:
+As I am just learning and sharing my knowledge and everyone do the same. All the content on this blog has been derived from the various sources (see the [Reference] section) for more details about the reference taken to write this article. A salute to all of the open source enthusiast and the knowledge sharing people who belive in the concept of ``knowledge should be free``.
+
+## Features:
+C++11 includes the following new language features:-
+- [attributes](#attributes)
+- [auto](#auto)
+- [char32_t and char16_t](#char32_t-and-char16_t)
+- [converting constructors](#converting-constructors)
+- [constexpr](#constexpr)
+- [decltype](#decltype)
+- [default functions](#default-functions)
+- [deleted functions](#deleted-functions)
+- [delegating constructors](#delegating-constructors)
+- [explicit conversion functions](#explicit-conversion-functions)
+- [explicit virtual overrides](#explicit-virtual-overrides)
+- [final specifier](#final-specifier)
+- [forwarding references](#forwarding-references)
+- [initializer lists](#initializer-lists)
+- [inline-namespaces](#inline-namespaces)
+- [lambda expressions](#lambda-expressions)
+- [move semantics](#move-semantics)
+- [noexcept specifier](#noexcept-specifier)
+- [non-static data member initializers](#non-static-data-member-initializers)
+- [nullptr](#nullptr)
+- [range-based for loops](#range-based-for-loops)
+- [raw string literals](#raw-string-literals)
+- [ref-qualified member functions](#ref-qualified-member-functions)
+- [right angle brackets](#right-angle-brackets)
+- [rvalue references](#rvalue-references)
+- [special member functions for move semantics](#special-member-functions-for-move-semantics)
+- [static assertions](#static-assertions)
+- [strongly-typed enums](#strongly-typed-enums)
+- [trailing return types](#trailing-return-types)
+- [type aliases](#type-aliases)
+- [user-defined literals](#user-defined-literals)
+- [variadic templates](#variadic-templates)
+
+
+C++11 includes the following new library features:
+- [memory model](#memory-model)
+- [smart pointers](#smart-pointers)
+- [std::array](#stdarray)
+- [std::async](#stdasync)
+- [std::begin/end](#stdbeginend)
+- [std::chrono](#stdchrono)
+- [std::forward](#stdforward)
+- [std::make_shared](#stdmake_shared)
+- [std::move](#stdmove)
+- [std::ref](#stdref)
+- [std::thread](#stdthread)
+- [std::tie](#stdtie)
+- [std::to_string](#stdto_string)
+- [tuples](#tuples)
+- [type traits](#type-traits)
+- [unordered containers](#unordered-containers)
+
+## C++11 Language Features:
+### Attributes:
+In C++11, **attributes** provide metadata to the compiler for optimizations and behavior control. They are written in `[[ ]]` and can be applied to functions, variables, etc.
+
+### Common Attributes:
+- `[[noreturn]]`: Marks functions that don’t return.
+- `[[deprecated]]`: Marks functions or types as deprecated.
+- `[[nodiscard]]`: Warns if the return value is ignored.
+- `[[maybe_unused]]`: Suppresses warnings for unused variables.
+
+**Example:**
+```cpp
+[[deprecated]] void old_function() { }
+[[nodiscard]] int compute() { return 42; }
+```
+
+Attributes help with optimizations, error checking, and warnings.
+
+### auto:
+Variables declared with the `auto` keyword enable the compiler to automatically determine their data type based on the expression assigned to them during initialization. This feature simplifies code by reducing the need for explicit type declarations, allowing for cleaner and more concise syntax.
+
+For instance, if you initialize a variable with an integer value, the compiler will deduce its type as `int`. Similarly, if you assign a floating-point number, it will infer the type as `float` or `double` accordingly. This not only saves developers time but also helps prevent type-related errors by ensuring that the variable’s type is consistently derived from its initial value.
+
+Moreover, `auto` enhances code maintainability, especially in cases involving complex types, such as iterators or lambda expressions, where the type might be cumbersome to write out explicitly. 
+
+**Example:**
+
+```cpp
+auto count = 10;          // count is deduced as int
+auto price = 19.99;       // price is deduced as double
+auto name = "CompilerSutra";   // name is deduced as const char*
+auto variable = { 0 };           // std::initializer_list<int>
+auto required_initializer;       // as here no data type is initialized so compile will throw error as{required_initiailizer}
+```
+In each case, the compiler takes the initializer's type and assigns it to the variable, allowing developers to focus more on the logic rather than type management.
+
+### char32_t and char16_t:
+`char16_t` and `char32_t` are types introduced in C++11 to represent UTF-16 and UTF-32 encoded characters, respectively. They enable the representation of a wide range of Unicode characters, making it easier to handle international text. 
+
+**Example:**
+
+```cpp
+char16_t utf16_char = u'你';  // A Unicode character in UTF-16
+char32_t utf32_char = U'😊';  // A Unicode character in UTF-32
+```
+
+### converting constructors:
+Converting constructors are special constructors in C++ that allow for implicit conversion from one type to another when initializing an object. They provide a way to create an object of a class from an object of a different type, enabling flexible type conversions without requiring an explicit cast.
+
+For example, if you have a class `Point` that represents a 2D point using integer coordinates, you could define a converting constructor that accepts a `double` to facilitate the creation of a `Point` object from a `double` representing a point's coordinate. 
+
+**Example:**
+
+```cpp
+class Point {
+public:
+    int x, y;
+
+    // Converting constructor
+    Point(double coord) {
+        x = static_cast<int>(coord);
+        y = static_cast<int>(coord);
+    }
+};
+
+Point p = 5.7; // Implicit conversion from double to Point
+```
+### constexpr:
+`constexpr` is a keyword introduced in C++11 that indicates that a function or variable can be evaluated at compile time. This allows for optimizations and can lead to more efficient code by enabling the compiler to perform computations during the compilation process instead of at runtime.
+
+Using `constexpr` can significantly improve performance, especially in contexts where the result of a computation is needed repeatedly and can be determined beforehand. 
+
+**Example:**
+
+```cpp
+constexpr int square(int x) {
+    return x * x;  // This function can be evaluated at compile time
+}
+
+constexpr int result = square(5); // result is evaluated at compile time
+```
+### decltype:
+`decltype` is a keyword introduced in C++11 that allows you to query the type of an expression at compile time. This feature is particularly useful in template programming and when working with complex types, as it helps to avoid manual type declarations and enhances type safety.
+### Key Features:
+- **Type Deduction:** `decltype` deduces the type of an expression without evaluating it. This is useful for ensuring that variables and return types are correctly typed based on existing expressions.
+- **constexpr and Reference:**: `decltype` preserves the type properties of the expression, including constness and reference qualifiers. For example, if you use `decltype` on an lvalue, it yields a reference type; if you use it on an rvalue, it yields a non-reference type.
+
+**Example:**
+
+```cpp
+int x = 42;
+decltype(x) y = 10;         // y is deduced to be of type int
+
+const int& z = x;
+decltype(z) w = z;          // w is deduced to be const int& (a reference type)
+```
+
+### Default functions:
+In C++11, a default function is a member function that the compiler automatically provides if no user-defined version is declared, including constructors, destructors, and copy/move assignment operators. Developers can explicitly request a default implementation by using the `= default;` syntax, which allows for cleaner code while ensuring correct behavior in resource management and object copying. 
+
+**Example:**
+
+```cpp
+class MyClass {
+public:
+    // Default constructor
+    MyClass() = default;
+
+    // Default destructor
+    ~MyClass() = default;
+
+    // Defaulted copy constructor
+    MyClass(const MyClass&) = default;
+
+    // Defaulted copy assignment operator
+    MyClass& operator=(const MyClass&) = default;
+};
+```
+
+### Deleted functions:
+In C++11, deleted functions are member functions explicitly marked as deleted using the `= delete;` syntax to prevent certain operations, such as copying or moving objects. This feature helps enforce design decisions by disallowing operations that may lead to undefined behavior or logical errors. When a deleted function is called, the compiler generates a compile-time error, making it clear that the operation is not permitted. This is particularly useful for classes that manage resources, where copying or moving may not make sense. Overall, deleted functions enhance code safety and maintainability by providing clear boundaries around object management. 
+
+**Example:**
+```cpp
+class NonCopyable {
+public:
+    NonCopyable() = default;
+    NonCopyable(const NonCopyable&) = delete;            // Disable copy constructor
+    NonCopyable& operator=(const NonCopyable&) = delete; // Disable copy assignment
+};
+
+NonCopyable obj1;
+NonCopyable obj2 = obj1; // Error: use of deleted function
+```
+### Delegating constructors:
+In C++11, constructors can call other constructors within the same class using an initializer list, a feature known as delegating constructors. This allows one constructor to invoke another, facilitating code reuse and reducing duplication of initialization logic. By delegating initialization, developers can create cleaner and more maintainable code, as common setup tasks can be centralized in one place.
+
+**Example:**
+
+```cpp
+class Circle {
+public:
+    double radius;
+
+    // Delegating constructor
+    Circle() : Circle(1.0) { } // Calls the parameterized constructor
+
+    Circle(double r) : radius(r) { } // Parameterized constructor
+};
+
+Circle defaultCircle; // Initializes with radius=1.0
+```
+In this example, the default constructor of `Circle` delegates to the parameterized constructor, ensuring consistent initialization of the `radius` member variable while minimizing code redundancy.
+
+### Explicit conversion functions:
+In C++11, conversion functions can be marked as explicit using the `explicit` specifier, which prevents implicit type conversions and enhances type safety. This allows developers to control how and when conversions are performed, reducing the risk of unintentional or erroneous conversions that could lead to bugs.
+- **Explicit Conversion Functions**: By declaring a conversion function as `explicit`, it ensures that the conversion can only be invoked through a direct cast or explicit call, preventing automatic or implicit conversions.
+- **Improved Type Safety**: This feature helps in maintaining type integrity, as it requires developers to be intentional when converting between types.
+
+**Example:**
+
+```cpp
+class Distance {
+public:
+    explicit Distance(int meters) : meters(meters) { }
+    int meters;
+};
+
+// Implicit conversion will cause a compile-time error
+// Distance d = 5; // Error: cannot convert int to Distance
+
+// Explicit conversion is allowed
+Distance d = Distance(5); // OK: explicit conversion
+```
+
+In this example, the constructor of `Distance` is marked as explicit, which prevents implicit conversion from `int` to `Distance`. This means that developers must explicitly create a `Distance` object when converting from an `int`, thereby enhancing type safety and reducing potential errors in the code.
+
+### Explicit virtual overrides:
+In C++11, the `override` specifier can be used to indicate that a virtual function is intended to override a virtual function in a base class. This feature enhances code safety by ensuring that the derived class function indeed overrides a base class function. If the specified function does not correctly override a parent's virtual function, the compiler will generate an error, helping to catch mistakes early in the development process.
+- **Clarifies Intent**: The `override` specifier makes the developer's intent clear, indicating that the function is meant to override a virtual function from a base class.
+- **Compiler Error for Mismatches**: If there is a mismatch, such as a signature difference or if the base function is not virtual, the compiler will issue an error, reducing the likelihood of subtle bugs.
+
+**Example:**
+
+```cpp
+class Base {
+public:
+    virtual void display() { } // Virtual function in base class
+};
+
+class Derived : public Base {
+public:
+    void display() override { } // Correctly overrides Base::display
+
+    // Uncommenting the following line will cause a compiler error
+    // void show() override { } // Error: 'show' does not override any base class method
+};
+```
+
+In this example, the `display` function in the `Derived` class correctly uses the `override` specifier to indicate it is overriding the `display` function from the `Base` class. If the `Derived` class were to declare a function that does not actually override a base class function, the compiler would produce an error, thus helping maintain correct polymorphic behavior.
+
+### Final specifier:
+In C++11, the `final` specifier is used to indicate that a virtual function cannot be overridden in any derived class or that a class itself cannot be inherited from. This feature is useful for enforcing design constraints and maintaining the integrity of class hierarchies by preventing further modifications to certain functionalities.
+- **Prevent Overriding**: When applied to a virtual function, the `final` specifier prevents any derived class from overriding that function, ensuring the behavior remains consistent and cannot be altered.
+- **Prevent Inheritance**: When applied to a class, the `final` specifier prevents any other class from inheriting from it, which can be useful for utility classes or when implementing the singleton design pattern.
+
+**Example:**
+
+```cpp
+class Base {
+public:
+    virtual void display() final { // This function cannot be overridden
+        // Implementation
+    }
+};
+
+class Derived : public Base {
+public:
+    // Uncommenting the following line will cause a compiler error
+    // void display() override { } // Error: 'display' is final
+};
+
+class FinalClass final { // This class cannot be inherited
+public:
+    void show() { }
+};
+
+// Uncommenting the following line will cause a compiler error
+// class AnotherClass : public FinalClass { }; // Error: 'FinalClass' is final
+```
+
+In this example:
+- The `display` function in the `Base` class is marked as `final`, which prevents any derived class from overriding it.
+- The `FinalClass` cannot be inherited from, ensuring its functionality remains unchanged and cannot be extended. Attempting to override a final function or inherit from a final class will result in a compile-time error, thus enforcing the intended constraints in the class design.
+
+## Forwarding references: 
+In C++11, **forwarding references** make it easier to write functions that can accept any type of argument and keep it in its original form (whether it's a regular variable or a temporary value).
+
+**How forwading reference work**
+1. **Syntax**: Forwarding references are written as `T&&` in a **template function**.
+
+**Example:**
+
+   ```cpp
+   template <typename T>
+   void myFunction(T&& arg);
+   ```
+
+2. **Why They’re Useful**: With forwarding references, a function can accept both:
+   - **Lvalues** (like variables you can assign to).
+   - **Rvalues** (temporary values that only exist for a moment).
+
+3. **Using `std::forward`**: When you pass the argument to another function, **`std::forward`** keeps its original form:
+   - If it’s a regular variable, it stays a regular variable.
+   - If it’s a temporary, it stays a temporary.
+
+   ```cpp
+   template <typename T>
+   void myFunction(T&& arg) {
+       anotherFunction(std::forward<T>(arg));  // Keeps "arg" in its original form
+   }
+   ```
+
+**Simple Example:**
+Here’s a quick example:
+
+```cpp
+#include <iostream>
+#include <utility>
+
+void process(int& x) {
+    std::cout << "Regular variable\n";
+}
+
+void process(int&& x) {
+    std::cout << "Temporary value\n";
+}
+
+template <typename T>
+void forwarder(T&& arg) {
+    process(std::forward<T>(arg));  // Keeps "arg" in its original form
+}
+
+int main() {
+    int x = 10;
+    forwarder(x);        // Calls the regular variable version
+    forwarder(20);       // Calls the temporary value version
+}
+```
+:::note
+Forwarding references let functions handle all types of arguments in the most efficient way. By using `std::forward`, you keep the argument's original type, whether it's a variable or a temporary value.
+:::
+
+
+
+### Initializer Lists:
+In C++11, initializer lists allow flexible object initialization, particularly for containers and custom classes, using `{}` braces. The `std::initializer_list` template enables constructors to accept a list of values directly:
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <initializer_list>
+
+class MyClass {
+public:
+    MyClass(std::initializer_list<int> values) {
+        for (int value : values) std::cout << value << " ";
+    }
+};
+
+int main() {
+    MyClass obj = {1, 2, 3}; // Initializes with 1, 2, 3
+    return 0;
+}
+```
+
+This improves readability and consistency across different types.
+
+### Inline Namespaces:
+Inline namespaces in C++11 allow nested namespaces to be treated as if they are part of the enclosing (parent) namespace. This is useful for versioning and ensuring backward compatibility.
+
+When a namespace is declared as `inline`, its contents are automatically accessible from the enclosing namespace, without requiring explicit qualification.
+
+**Example:**
+
+```cpp
+namespace MyLib {
+    inline namespace V1 {
+        void func() {
+            std::cout << "V1::func" << std::endl;
+        }
+    }
+
+    namespace V2 {
+        void func() {
+            std::cout << "V2::func" << std::endl;
+        }
+    }
+}
+
+int main() {
+    MyLib::func();    // Calls V1::func by default
+    MyLib::V2::func(); // Calls V2::func explicitly
+    return 0;
+}
+```
+
+In this example, `MyLib::func()` refers to `V1::func()` by default because `V1` is an inline namespace. This feature is useful for library versioning.
+
+### Lambda Expressions:
+Lambda expressions in C++11 provide a way to create anonymous functions, useful for short, inline functions especially in algorithms and callback scenarios. The syntax is `[capture](parameters) -> return_type { body; }`, where:
+
+- **Capture**: Specifies variables to capture from the surrounding scope.
+- **Parameters**: Defines parameters like a regular function.
+- **Return Type**: Optional, often deduced automatically.
+- **Body**: The function logic.
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    int factor = 2;
+
+    // Lambda that doubles each element and prints it
+    std::for_each(vec.begin(), vec.end(), [factor](int &n) {
+        n *= factor;
+        std::cout << n << " ";
+    });
+    // Output: 2 4 6 8 10
+
+    return 0;
+}
+```
+
+This lambda captures `factor` by value and modifies each element in `vec`, doubling its value and printing it.
+
+### Move Semantics:
+Move semantics in C++11 optimize performance by allowing resources to be transferred (moved) rather than copied, useful for objects with heavy resources. They rely on **rvalue references (`T&&`)** and **`std::move`** to enable moves instead of deep copies.
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <vector>
+
+class MyClass {
+    std::vector<int> data;
+public:
+    MyClass(std::vector<int> d) : data(std::move(d)) {} // Move constructor
+};
+
+int main() {
+    std::vector<int> v = {1, 2, 3};
+    MyClass obj(std::move(v)); // Moves `v`'s data to `obj`
+    return 0;
+}
+```
+
+Using `std::move`, the resources from `v` are moved to `obj` without copying, saving memory and time.
+
+### Noexcept Specifier:
+The `noexcept` specifier in C++11 is used to indicate that a function is guaranteed not to throw exceptions. It helps with optimization, as the compiler can assume the function won’t throw and potentially avoid extra exception-handling code.
+
+**Example:**
+
+```cpp
+void func() noexcept {
+    // This function is guaranteed not to throw
+}
+
+void mayThrow() noexcept(false) {
+    throw std::runtime_error("Error");
+}
+
+int main() {
+    func();       // Safe to call without try-catch
+    // mayThrow(); // Calling this would throw an exception
+    return 0;
+}
+```
+
+Using `noexcept` is beneficial for move constructors and destructors, where throwing exceptions can cause issues.
+
+### Non-Static Data Member Initializers:
+In C++11, non-static data member initializers (NSDMI) allow you to initialize member variables directly in the class definition. This feature simplifies initialization and makes code cleaner, especially when default values are needed for members.
+
+**Example:**
+
+```cpp
+#include <iostream>
+
+class MyClass {
+    int x = 10;         // Directly initializes `x` to 10
+    double y = 5.5;     // Directly initializes `y` to 5.5
+
+public:
+    void print() const {
+        std::cout << "x: " << x << ", y: " << y << std::endl;
+    }
+};
+
+int main() {
+    MyClass obj;
+    obj.print();  // Output: x: 10, y: 5.5
+    return 0;
+}
+```
+
+Here, `x` and `y` are initialized directly within the class. This eliminates the need to initialize them in constructors, improving readability and maintainability.
+
+### Nullptr:
+In C++11, `nullptr` is introduced as a new keyword to represent a null pointer. It replaces the traditional `NULL`, providing a type-safe way to represent null pointers and avoiding ambiguity with integer `0`.
+
+**Example:**
+
+```cpp
+#include <iostream>
+
+void func(int* ptr) {
+    if (ptr == nullptr) {
+        std::cout << "Null pointer received" << std::endl;
+    } else {
+        std::cout << "Pointer is not null" << std::endl;
+    }
+}
+
+int main() {
+    int* p = nullptr; // Using nullptr instead of NULL or 0
+    func(p);          // Output: Null pointer received
+    return 0;
+}
+```
+
+Using `nullptr` improves clarity and avoids issues with overload resolution, as it’s explicitly a pointer type, unlike `NULL` which could be interpreted as an integer.
+
+### Range-Based For Loops:
+In C++11, range-based for loops provide a simpler and more readable way to iterate over elements in a collection, such as arrays, vectors, and other containers. This loop automatically iterates through each element, reducing boilerplate code.
+
+**Syntax:**
+
+```cpp
+for (element_type variable : collection) {
+    // Use variable in the loop
+}
+```
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+
+    // Range-based for loop
+    for (int num : vec) {
+        std::cout << num << " ";
+    }
+    // Output: 1 2 3 4 5
+
+    return 0;
+}
+```
+
+In this example, `num` takes each value from `vec` sequentially, allowing you to access elements directly without needing an iterator or index variable.
+
+### Raw String Literals:
+Raw string literals in C++11 allow you to define strings without escaping special characters like backslashes or quotes, making them useful for regular expressions, file paths, or multiline strings. They are enclosed in `R"delimiter(string)delimiter"`, where `delimiter` is an optional identifier, allowing you to avoid conflicts with characters in the string itself.
+
+**Syntax:**
+```cpp
+R"delimiter(string)delimiter"
+```
+
+**Example:**
+
+```cpp
+#include <iostream>
+
+int main() {
+    const char* str = R"(C:\Users\Name\Documents\file.txt)";
+    std::cout << str << std::endl; // Output: C:\Users\Name\Documents\file.txt
+
+    const char* multilineStr = R"(
+    This is a
+    multiline
+    string.)";
+    std::cout << multilineStr << std::endl;
+
+    return 0;
+}
+```
+
+**Key Points:**
+- **No escaping**: Special characters like `\` don't need escaping.
+- **Multiline strings**: You can include newlines directly within the string.
+- **Custom delimiter**: You can use a custom delimiter to avoid conflicts with characters inside the string.
+
+Raw string literals make working with complex strings easier and more readable.
+
+
+### Ref-Qualified Member Functions:
+In C++11, **ref-qualified member functions** allow you to define different behavior for lvalue and rvalue references. This feature provides more control over how member functions are invoked based on whether the object is an lvalue (an object with a name) or an rvalue (a temporary object).
+
+**Syntax:**
+You can qualify a member function with either `&` (for lvalue references) or `&&` (for rvalue references) to specify its behavior.
+
+**Example:**
+
+```cpp
+#include <iostream>
+
+class MyClass {
+public:
+    void show() & {  // Called for lvalues
+        std::cout << "Lvalue version" << std::endl;
+    }
+
+    void show() && { // Called for rvalues
+        std::cout << "Rvalue version" << std::endl;
+    }
+};
+
+int main() {
+    MyClass obj;
+    obj.show();    // Lvalue version
+
+    MyClass().show(); // Rvalue version
+    return 0;
+}
+```
+
+**Key Points:**
+- `void show() &`: Invoked when the object is an lvalue.
+- `void show() &&`: Invoked when the object is an rvalue.
+- This feature allows overloading based on value categories (lvalues vs rvalues).
+
+### Right Angle Brackets:
+In C++11, **right-angle brackets (`>>`)** can sometimes cause ambiguity in template code due to the parser interpreting them as the end of a shift operator (`>>`) rather than the closing of a template argument list. To resolve this, C++11 introduced a rule that allows `>>` to be interpreted as two consecutive right-angle brackets when used in templates.
+
+**Problem (Before C++11):**
+In previous C++ versions, the following code would result in a parsing ambiguity:
+
+```cpp
+std::vector<std::vector<int>> matrix;
+```
+
+Here, `>>` could be mistakenly interpreted as the shift operator (`>>`) rather than two consecutive right-angle brackets used to close the template arguments.
+
+**Solution (C++11):**
+C++11 eliminates this ambiguity by treating `>>` as two right-angle brackets when used in template declarations. The following code now works without issues:
+
+```cpp
+std::vector<std::vector<int>> matrix; // No ambiguity
+```
+
+**Key Takeaways:**
+- **Before C++11**: `>>` could be interpreted as a shift operator.
+- **In C++11 and beyond**: `>>` is now correctly interpreted as two right-angle brackets for template declarations, resolving parsing ambiguity.
+
+### Rvalue References
+In C++11, **rvalue references** (`T&&`) allow binding to temporary objects (rvalues), enabling **move semantics** and **perfect forwarding**.
+
+- **Move Semantics**: Efficiently transfer resources without copying (using `std::move()`).
+- **Perfect Forwarding**: Forward arguments while preserving their lvalue or rvalue nature.
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <utility>
+
+class MyClass {
+public:
+    MyClass(std::vector<int>&& vec) : data(std::move(vec)) {} // Move constructor
+    void display() { for (int i : data) std::cout << i << " "; }
+
+private:
+    std::vector<int> data;
+};
+
+int main() {
+    std::vector<int> v = {1, 2, 3};
+    MyClass obj(std::move(v)); // Move resources
+    obj.display();  // Output: 1 2 3
+    return 0;
+}
+```
+
+This feature improves performance by avoiding unnecessary copying of temporary objects.
+
+### Special Member Functions for Move Semantics:
+In C++11, **special member functions** are provided to enable **move semantics**, allowing efficient transfer of resources (instead of copying them) when objects are moved. These include:
+
+1. **Move Constructor**: Transfers ownership of resources from one object to another.
+2. **Move Assignment Operator**: Moves resources from one object to another already existing object.
+3. **Destructor**: Used to release resources when the object is destroyed.
+
+**1. Move Constructor**:
+The move constructor transfers ownership of resources from a temporary object to a new object.
+
+```cpp
+MyClass(MyClass&& other) noexcept : data(std::move(other.data)) {
+    // Move the resources from `other` to `this`
+}
+```
+
+**2. Move Assignment Operator**:
+The move assignment operator moves resources from one object to another already existing object.
+
+```cpp
+MyClass& operator=(MyClass&& other) noexcept {
+    if (this != &other) {
+        data = std::move(other.data); // Move assignment
+    }
+    return *this;
+}
+```
+
+**3. Destructor**:
+Releases resources when the object is destroyed. Although not directly related to move semantics, the destructor must handle moved-from objects properly.
+
+```cpp
+~MyClass() {
+    // Release resources (if any)
+}
+```
+
+**Example:**
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <utility> // for std::move
+
+class MyClass {
+    std::vector<int> data;
+public:
+    // Move constructor
+    MyClass(MyClass&& other) noexcept : data(std::move(other.data)) {}
+
+    // Move assignment operator
+    MyClass& operator=(MyClass&& other) noexcept {
+        if (this != &other) {
+            data = std::move(other.data);
+        }
+        return *this;
+    }
+
+    // Destructor (No explicit action needed here in this case)
+    ~MyClass() {}
+
+    void display() const {
+        for (int val : data) std::cout << val << " ";
+    }
+};
+
+int main() {
+    MyClass obj1;
+    obj1 = MyClass();  // Move assignment
+    obj1.display();
+}
+```
+
+**Key Points:**
+- **Move Constructor**: Transfers resources from a temporary object.
+- **Move Assignment Operator**: Moves resources between existing objects.
+- **Destructor**: Cleans up resources when the object is destroyed (important for moved-from objects).
+  
+These special functions allow more efficient handling of objects by avoiding deep copies and instead transferring ownership of resources.
+
+
+### Static Assertions:
+
+**Static assertions** in C++11 allow you to validate conditions at **compile time** using the `static_assert` keyword. They are particularly useful for enforcing constraints, checking assumptions, or validating template parameters during compilation, preventing potential runtime errors.
+
+#### Syntax:
+```cpp
+static_assert(condition, "error message");
+```
+- **`condition`**: A constant expression that must evaluate to `true` at compile time.
+- **`error message`**: A string literal displayed when the assertion fails.
+
+#### Example
+
+```cpp
+#include <iostream>
+
+int main() {
+    static_assert(sizeof(void*) == 8, "Error: This program requires a 64-bit system.");
+
+    std::cout << "Program compiled successfully on a 64-bit system!" << std::endl;
+    return 0;
+}
+```
+
+#### Explanation:
+1. **Condition**: The `static_assert` checks if the size of a pointer (`void*`) is 8 bytes, which is true for a 64-bit system.
+2. **If True**: The program compiles and runs normally.
+3. **If False**: The compiler halts and shows the error message:  
+   `Error: This program requires a 64-bit system.`
+
+This ensures the program won't run on unsupported architectures.
+
+### Strongly-Typed Enums:
+
+In C++11, **strongly typed enums** (introduced with the `enum class` keyword) enhance the functionality of traditional enums by adding stricter type safety, scoping, and control over the underlying type.
+
+
+#### Key Features of Strongly Typed Enums:
+1. **Type-Safe**:
+   - Strongly typed enums prevent implicit conversions to integers, avoiding unintended comparisons or arithmetic operations.
+
+2. **Scoped**:
+   - Enum values are scoped to their enumeration, so they don't pollute the global namespace.
+
+3. **Customizable Underlying Type**:
+   - You can specify the underlying type (e.g., `int`, `char`, `uint8_t`), which is useful for memory efficiency.
+
+
+#### Syntax:
+```cpp
+enum class EnumName : UnderlyingType {
+    Value1,
+    Value2,
+    Value3
+};
+```
+- **`EnumName`**: The name of the enum.
+- **`UnderlyingType`**: Optional. Defaults to `int` but can be specified explicitly.
+
+
+#### Example:
+
+```cpp
+#include <iostream>
+
+enum class Color : uint8_t { Red, Green, Blue };  // Strongly typed enum with uint8_t
+enum class TrafficLight { Red, Yellow, Green };  // Defaults to int
+
+int main() {
+    Color favorite = Color::Blue;       // Scoped enum requires "Color::"
+    TrafficLight signal = TrafficLight::Red;
+
+    // Access enum values
+    if (favorite == Color::Blue) {
+        std::cout << "Favorite color is blue." << std::endl;
+    }
+
+    if (signal == TrafficLight::Red) {
+        std::cout << "Stop at the red light." << std::endl;
+    }
+
+    // Error: No implicit conversion to int
+    // int colorValue = Color::Red;  // Uncommenting this will cause a compilation error
+
+    // Explicit casting is required to convert to the underlying type
+    std::cout << "Underlying value of Color::Red: " << static_cast<int>(Color::Red) << std::endl;
+
+    return 0;
+}
+```
+
+
+#### Key Differences from Traditional Enums:
+| Feature                | **Traditional Enums**               | **Strongly Typed Enums (`enum class`)** |
+|------------------------|-------------------------------------|----------------------------------------|
+| Type-Safety            | Implicit conversion to integers    | No implicit conversions               |
+| Namespace Pollution    | Enum values pollute the global scope | Enum values are scoped to the enum    |
+| Underlying Type Control | Default is `int`                  | Can specify the underlying type       |
+
+
+#### Output:
+```
+Favorite color is blue.
+Stop at the red light.
+Underlying value of Color::Red: 0
+```
+
+Using **strongly typed enums** improves code clarity, prevents bugs, and offers better type safety compared to traditional enums.
+
+### Trailing Return Types:
+
+**Trailing return types** in C++11 allow you to specify the return type of a function after the parameter list using the `->` syntax. This is particularly useful in cases where the return type depends on the function parameters, such as with templates or `decltype`.
+
+
+#### Syntax:
+
+```cpp
+auto function_name(parameters) -> return_type {
+    // Function body
+}
+```
+
+- `auto`: Used as a placeholder for the return type in the function declaration.
+- `-> return_type`: Specifies the actual return type after the parameter list.
+
+#### Advantages:
+1. **Improved Readability**:
+   - Keeps the function name and parameters together, making it easier to read complex return types.
+   
+2. **Flexibility with `decltype`**:
+   - Allows return types to be computed based on parameter types using `decltype`.
+
+3. **Required for Lambdas**:
+   - Trailing return types are mandatory for specifying return types in generic lambdas.
+
+#### Example 1: Basic Usage
+```cpp
+#include <iostream>
+
+// Function using trailing return type
+auto add(int a, int b) -> int {
+    return a + b;
+}
+
+int main() {
+    std::cout << "Sum: " << add(5, 3) << std::endl;
+    return 0;
+}
+```
+
+#### Output:
+```
+Sum: 8
+```
+
+
+#### Example 2: Using `decltype` for Deduced Return Type
+```cpp
+#include <iostream>
+#include <vector>
+
+// Function deduces return type based on parameter types
+template <typename T1, typename T2>
+auto multiply(T1 a, T2 b) -> decltype(a * b) {
+    return a * b;
+}
+
+int main() {
+    std::cout << "Product: " << multiply(4, 5.5) << std::endl;  // deduces double
+    return 0;
+}
+```
+
+#### Output:
+```
+Product: 22
+```
+
+### Example 3: Trailing Return Type with Lambdas
+```cpp
+#include <iostream>
+
+int main() {
+    auto lambda = [](int x, int y) -> double {
+        return x + y + 0.5;
+    };
+
+    std::cout << "Result: " << lambda(3, 4) << std::endl;
+    return 0;
+}
+```
+
+#### Output:
+```
+Result: 7.5
+```
+
+#### When to Use Trailing Return Types:
+- When the return type depends on template parameters or parameter types.
+- For complex return types (e.g., iterators or lambda expressions).
+- To improve readability in functions with long parameter lists. 
+
+Trailing return types provide additional clarity and flexibility compared to specifying return types before the function name.
+
+### Type Aliases
+Coming soon...
+
+### User-Defined Literals
+Coming soon...
+
+### Variadic Templates
+Coming soon...
+
+### New Library Features
+
+### Memory Model
+Coming soon...
+
+### Smart Pointers
+Coming soon...
+
+### std::array
+Coming soon...
+
+### std::async
+Coming soon...
+
+### std::begin/end
+Coming soon...
+
+### std::chrono
+Coming soon...
+
+### std::forward
+Coming soon...
+
+### std::make_shared
+Coming soon...
+
+### std::move
+Coming soon...
+
+### std::ref
+Coming soon...
+
+### std::thread
+Coming soon...
+
+### std::tie
+Coming soon...
+
+### std::to_string
+Coming soon...
+
+### Tuples
+Coming soon...
+
+### Type Traits
+Coming soon...
+
+### Unordered Containers
+Coming soon...
+
+### Reference:
+Coming Soon...
