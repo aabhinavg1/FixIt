@@ -33,6 +33,18 @@ const sidebars = {
     },
   ],
 
+  //side bar for the DSA
+  dataStructureSidebar: [
+    {
+      type: 'category',
+      label: 'DSA',
+      collapsed: true,
+      items: [
+        'DSA/DSA',
+      ],
+    },
+  ],
+
   // Sidebar for LLVM Tutorials
   llvmTutorialSidebar: [
     {
