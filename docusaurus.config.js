@@ -64,6 +64,8 @@ const config = {
         { type: 'docSidebar', sidebarId: 'gpuTutorialSidebar', position: 'left', label: 'GPU Tutorials' },
         { type: 'docSidebar', sidebarId: 'compilersSidebar', position: 'left', label: 'Compilers' },
         { type: 'docSidebar', sidebarId: 'cppTutorialSidebar', position: 'left', label: 'C++ Tutorials' },
+        { type: 'docSidebar', sidebarId: 'dataStructureSidebar', position: 'left', label: 'DSA' },
+
         {
           type: 'dropdown',
           label: 'MCQ',
@@ -87,6 +89,8 @@ const config = {
             { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline' },
             { label: 'Compilers', to: '/docs/compilers/compiler' },
             { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
+            { label: 'DSA', to: '/docs/DSA/DSA' },
+
           ],
         },
         {
@@ -100,8 +104,17 @@ const config = {
           title: 'More',
           items: [
             { label: 'GitHub', href: 'https://github.com/aabhinavg1/FixIt' },
+            { label: 'About us', href: 'https://www.compilersutra.com/about_us/'},
+            {label: 'Sponsor Us', href:'https://github.com/sponsors/aabhinavg1'},
+            {label:'ContactUs' , href:'https://www.linkedin.com/in/abhinavcompilerllvm/'}
           ],
         },
+        {
+          title: 'Subscribe',
+          items: [
+            {label:'For Weekly Update', href:'/newsletter'}
+          ],
+        },  
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra.`,
     },

@@ -19,7 +19,6 @@ const HomepageFeatures = () => {
       <Hero />
       <Features />
       <Curriculum />
-      <Footer />
     </Container>
   );
 };
