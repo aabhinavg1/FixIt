@@ -37,13 +37,23 @@ const sidebars = {
   dataStructureSidebar: [
     {
       type: 'category',
-      label: 'DSA',
+      label: 'Getting Started',
       collapsed: true,
       items: [
         'DSA/DSA',
-      ],
+        'DSA/introduction-to-dsa'
+      ]
     },
+    {
+      type: 'category',
+      label: 'Linear DSA',
+      collapsed: true,
+      items: [
+        'DSA/Linear_DSA'
+      ]
+    }
   ],
+  
 
   // Sidebar for LLVM Tutorials
   llvmTutorialSidebar: [
@@ -185,6 +195,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Basic MCQs',
+          collapsed: true,
           items: [
             'mcq/cpp_mcqs',                  // C++ MCQs
             'mcq/questions/basic/array-and-strings',
