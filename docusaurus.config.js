@@ -141,11 +141,11 @@ const config = {
       async: true,
     },
     {
-      src: '/js/structured.js', // ✅ External file for structured data
+      src: '/js/structured.html', // ✅ External file for structured data
       async: true,
     },
     {
-    src: '/js/llvm.js', // ✅ External file for structured data
+    src: '/js/llvm.html', // ✅ External file for structured data
     async: true,
     },
   ],
