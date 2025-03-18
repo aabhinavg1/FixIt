@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Schema Test - CompilerSutra</title>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is LLVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LLVM is a collection of modular and reusable compiler and toolchain technologies used for building compilers and optimizing code. It provides a flexible intermediate representation (IR) that allows multiple frontends and backends."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between LLVM and GCC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LLVM is a modular compiler infrastructure focused on optimization and multi-target support, while GCC is a monolithic compiler emphasizing stability and broad language support. LLVM uses a Just-In-Time (JIT) compiler approach, whereas GCC follows an Ahead-Of-Time (AOT) compilation model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is MLIR, and why is it important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MLIR (Multi-Level Intermediate Representation) is a flexible compiler framework developed as part of LLVM. It provides a structured IR system to support optimizations across different domains, such as deep learning compilers, hardware accelerators, and traditional CPU/GPU compilation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does TVM differ from LLVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TVM is an open-source deep learning compiler stack designed for optimizing machine learning workloads. Unlike LLVM, which is a general-purpose compiler infrastructure, TVM is specifically built for optimizing AI models across different hardware backends."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the key stages of compilation in LLVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The key stages of LLVM compilation include: 1. Lexical Analysis (Tokenization), 2. Parsing (AST Generation), 3. LLVM IR Generation, 4. Optimization (IR Level), 5. Code Generation (Assembly), 6. Linking to produce executable binaries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is JIT compilation useful in LLVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Just-In-Time (JIT) compilation in LLVM allows for dynamic code generation and optimization at runtime. This is especially useful in interpreters, high-performance computing, and machine learning frameworks where code execution patterns are data-dependent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I install LLVM on Linux?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To install LLVM on Linux, use: `sudo apt update && sudo apt install llvm clang` for Ubuntu, or `sudo dnf install llvm clang` for Fedora. For a source-based installation, clone the LLVM repo and follow the build instructions using CMake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Clang, and how does it relate to LLVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clang is a frontend for the LLVM compiler infrastructure that supports C, C++, and Objective-C. It translates source code into LLVM Intermediate Representation (IR), which is then optimized and converted into machine code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does LLVM optimize code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LLVM optimizes code using a series of IR-level transformations such as constant propagation, loop unrolling, function inlining, and dead code elimination. These optimizations improve execution speed and reduce code size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use LLVM for GPU programming?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, LLVM provides backends for GPU targets such as AMDGPU and NVPTX (for NVIDIA). MLIR and TVM also extend LLVM's capabilities for optimizing deep learning models on GPUs."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <h1>FAQ Page - CompilerSutra</h1>
+    <p>This page contains structured FAQ data for LLVM, GCC, MLIR, and TVM.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+        <li><strong>What is LLVM?</strong> LLVM is a collection of compiler tools for building compilers and optimizing code.</li>
+        <li><strong>What is MLIR?</strong> MLIR is an LLVM-based framework for multi-level intermediate representations.</li>
+        <li><strong>How does TVM differ from LLVM?</strong> TVM is optimized for AI workloads, while LLVM is a general-purpose compiler infrastructure.</li>
+        <li><strong>What are the key stages of compilation?</strong> Tokenization, AST generation, LLVM IR, Optimization, Assembly, and Linking.</li>
+        <li><strong>How can I install LLVM?</strong> Use `sudo apt install llvm clang` for Linux or build it from source.</li>
+    </ul>
+</body>
+</html>
