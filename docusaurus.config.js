@@ -140,6 +140,14 @@ const config = {
       src: '/js/google-analytics.js', // ✅ External file for GA
       async: true,
     },
+    {
+      src: '/js/structured.js', // ✅ External file for structured data
+      async: true,
+    },
+    {
+    src: '/js/llvm.js', // ✅ External file for structured data
+    async: true,
+    },
   ],
 };
 
