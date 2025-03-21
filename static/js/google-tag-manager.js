@@ -21,7 +21,10 @@ gtag('consent', 'default', {
   'analytics_storage': 'denied', 
   'personalization_storage': 'denied', 
   'functionality_storage': 'granted', 
-  'security_storage': 'granted'
+  'security_storage': 'granted',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'regions': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE']
 });
 
 // Initialize Google Analytics (but prevent auto page view tracking)
@@ -31,8 +34,20 @@ gtag('config', 'G-4PW5BRLTHD', { 'send_page_view': false });
 // Function to update consent when user accepts
 function grantConsent() {
   gtag('consent', 'update', {
-      'ad_storage': 'granted',
-      'analytics_storage': 'granted',
-      'personalization_storage': 'granted'
+    'ad_storage': 'granted',
+    'analytics_storage': 'granted',
+    'personalization_storage': 'granted',
+    'ad_user_data': 'granted',
+    'ad_personalization': 'granted'
   });
 }
+
+// Function to check user's consent and apply changes
+function checkUserConsent() {
+  if (localStorage.getItem('user_consent') === 'granted') {
+    grantConsent();
+  }
+}
+
+// Run the check on page load
+checkUserConsent();
