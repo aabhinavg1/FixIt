@@ -4,13 +4,10 @@ const config = {
   title: 'CompilerSutra',
   tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
   favicon: 'img/favicon.ico',
-
   url: 'https://compilersutra.com/',
   baseUrl: '/',
-
   organizationName: 'aabhinavg1',
   projectName: 'FixIt',
-
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
@@ -34,22 +31,21 @@ const config = {
     ],
   ],
 
-  themes: ['@docusaurus/theme-mermaid'], // ✅ Enable Mermaid
-
+  themes: ['@docusaurus/theme-mermaid'],
   markdown: {
-    mermaid: true, // ✅ Enable Mermaid in Markdown
+    mermaid: true,
   },
 
   themeConfig: {
     mermaid: {
-      theme: { light: 'neutral', dark: 'forest' }, // ✅ Set light & dark themes
+      theme: { light: 'neutral', dark: 'forest' },
       options: {
-        maxTextSize: 5000000, // ✅ Optimize large diagrams
+        maxTextSize: 5000000,
       },
     },
 
     metadata: [
-      { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' }, // ✅ Add Google Site Verification
+      { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' },
     ],
 
     navbar: {
@@ -65,7 +61,6 @@ const config = {
         { type: 'docSidebar', sidebarId: 'compilersSidebar', position: 'left', label: 'Compilers' },
         { type: 'docSidebar', sidebarId: 'cppTutorialSidebar', position: 'left', label: 'C++ Tutorials' },
         { type: 'docSidebar', sidebarId: 'dataStructureSidebar', position: 'left', label: 'DSA' },
-
         {
           type: 'dropdown',
           label: 'MCQ',
@@ -90,7 +85,6 @@ const config = {
             { label: 'Compilers', to: '/docs/compilers/compiler' },
             { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
             { label: 'DSA', to: '/docs/DSA/DSA' },
-
           ],
         },
         {
@@ -105,22 +99,21 @@ const config = {
           items: [
             { label: 'GitHub', href: 'https://github.com/aabhinavg1/FixIt' },
             { label: 'About us', href: 'https://www.compilersutra.com/about_us/'},
-            {label: 'Sponsor Us', href:'https://github.com/sponsors/aabhinavg1'},
-            {label:'ContactUs' , href:'https://www.linkedin.com/in/abhinavcompilerllvm/'}
+            { label: 'Sponsor Us', href: 'https://github.com/sponsors/aabhinavg1' },
+            { label: 'Contact Us', href: 'https://www.linkedin.com/in/abhinavcompilerllvm/' },
           ],
         },
         {
           title: 'Subscribe',
           items: [
-            {label:'For Weekly Update', href:'/newsletter'}
+            { label: 'For Weekly Update', href: '/newsletter' },
           ],
-        },  
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra.`,
     },
   },
 
-  // ✅ Updated Scripts for Google AdSense, Google Tag Manager, and Google Analytics
   scripts: [
     {
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
@@ -129,26 +122,24 @@ const config = {
       'data-ad-client': 'ca-pub-4507855210682789',
     },
     {
+      src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
+      async: true,
+      id: "cookieyes",
+    },
+    {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
     },
-    {
-      src: '/js/google-tag-manager.js', // ✅ External file for GTM
-      async: true,
-    },
-    {
-      src: '/js/google-analytics.js', // ✅ External file for GA
-      async: true,
-    },
-    {
-      src: '/js/structured.html', // ✅ External file for structured data
-      async: true,
-    },
-    {
-    src: '/js/llvm.html', // ✅ External file for structured data
-    async: true,
-    },
+    { src: '/js/google-tag-manager.js', async: true },
+    { src: '/js/google-analytics.js', async: true },
+    { src: '/js/structured.js', async: true }, // Ensure correct file extension
+    { src: '/js/llvm.js', async: true }, // Ensure correct file extension
   ],
+
+  // Inject AdSense script separately in custom JavaScript
+  customFields: {
+    adsenseClient: 'ca-pub-4507855210682789',
+  },
 };
 
 module.exports = config;
