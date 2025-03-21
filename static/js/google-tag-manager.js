@@ -12,10 +12,12 @@
 // Ensure dataLayer exists
 window.dataLayer = window.dataLayer || [];
 
-// Define gtag function
-function gtag() { dataLayer.push(arguments); }
+// Define gtag function if not already defined
+function gtag() {
+  window.dataLayer.push(arguments);
+}
 
-// Set default consent mode (deny analytics & ads until user accepts)
+// ✅ Set default consent mode (deny analytics & ads until user accepts)
 gtag('consent', 'default', {
   'ad_storage': 'denied', 
   'analytics_storage': 'denied', 
@@ -27,12 +29,13 @@ gtag('consent', 'default', {
   'regions': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE']
 });
 
-// Initialize Google Analytics (but prevent auto page view tracking)
+// ✅ Initialize Google Analytics (but prevent auto page view tracking)
 gtag('js', new Date());
 gtag('config', 'G-4PW5BRLTHD', { 'send_page_view': false });
 
-// Function to update consent when user accepts
+// ✅ Function to update consent when user accepts
 function grantConsent() {
+  console.log("Granting consent...");
   gtag('consent', 'update', {
     'ad_storage': 'granted',
     'analytics_storage': 'granted',
@@ -40,14 +43,24 @@ function grantConsent() {
     'ad_user_data': 'granted',
     'ad_personalization': 'granted'
   });
+  localStorage.setItem('user_consent', 'granted'); // Save user consent
 }
 
-// Function to check user's consent and apply changes
+// ✅ Function to check user's consent and apply changes
 function checkUserConsent() {
   if (localStorage.getItem('user_consent') === 'granted') {
+    console.log("User has already granted consent. Updating...");
     grantConsent();
+  } else {
+    console.log("User consent not granted. Default settings applied.");
   }
 }
 
-// Run the check on page load
-checkUserConsent();
+// ✅ Run the check on page load
+document.addEventListener("DOMContentLoaded", checkUserConsent);
+
+// ✅ Optional: Add a button to manually accept cookies
+document.getElementById("acceptCookies")?.addEventListener("click", function() {
+  grantConsent();
+  alert("Consent granted!");
+});
