@@ -109,6 +109,13 @@ const config = {
             { label: 'For Weekly Update', href: '/newsletter' },
           ],
         },
+        {
+          title: 'Cookies',
+          items: [
+            { label: 'Accept Cookies', href: '#', id: 'acceptCookies' },
+            { label: 'Revoke Consent', href: '#', id: 'revokeCookies' },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CompilerSutra.`,
     },
@@ -130,6 +137,7 @@ const config = {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
     },
+    {src :'/js/contest.js', async: true},
     { src: '/js/google-tag-manager.js', async: true },
     { src: '/js/google-analytics.js', async: true },
     { src: '/js/structured.js', async: true }, // Ensure correct file extension
