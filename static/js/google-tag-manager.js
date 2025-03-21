@@ -19,10 +19,10 @@ function gtag() {
 
 // ✅ Set default consent mode (deny analytics & ads until user accepts)
 gtag('consent', 'default', {
-  'ad_storage': 'denied', 
-  'analytics_storage': 'denied', 
-  'personalization_storage': 'denied', 
-  'functionality_storage': 'granted', 
+  'ad_storage': 'denied',
+  'analytics_storage': 'denied',
+  'personalization_storage': 'denied',
+  'functionality_storage': 'granted',
   'security_storage': 'granted',
   'ad_user_data': 'denied',
   'ad_personalization': 'denied',
@@ -59,7 +59,7 @@ function checkUserConsent() {
 // ✅ Run the check on page load
 document.addEventListener("DOMContentLoaded", checkUserConsent);
 
-// ✅ Optional: Add a button to manually accept cookies
+// ✅ Optional: Add a button to manually accept cookies (example for testing)
 document.getElementById("acceptCookies")?.addEventListener("click", function() {
   grantConsent();
   alert("Consent granted!");
