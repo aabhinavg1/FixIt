@@ -27,7 +27,7 @@ function updateConsent(consentGiven) {
   if (consentGiven) {
     // ✅ Load Google Analytics if consent is granted
     gtag('js', new Date());
-    gtag('config', 'G-4PW5BRLTHD', { 'send_page_view': false }); // Replace with your GA4 ID
+    gtag('config', 'G-CJDGBRKJ5W', { 'send_page_view': false }); // Replace with your GA4 ID
   }
 }
 
@@ -60,4 +60,4 @@ document.addEventListener("DOMContentLoaded", function () {
   j.async = true;
   j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
   f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'G-4PW5BRLTHD');
+})(window, document, 'script', 'dataLayer', 'G-CJDGBRKJ5W');
