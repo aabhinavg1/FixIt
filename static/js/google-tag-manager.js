@@ -17,7 +17,7 @@ function gtag() {
   window.dataLayer.push(arguments);
 }
 
-// ✅ Set default consent mode (deny analytics & ads until user accepts)
+// ✅ Set default consent mode **only for EEA users**
 gtag('consent', 'default', {
   'ad_storage': 'denied',
   'analytics_storage': 'denied',
@@ -26,10 +26,10 @@ gtag('consent', 'default', {
   'security_storage': 'granted',
   'ad_user_data': 'denied',
   'ad_personalization': 'denied',
-  'regions': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE']
+  'regions': ['EEA'] // ✅ Restricting consent mode **only** to EEA users
 });
 
-// ✅ Initialize Google Analytics (but prevent auto page view tracking)
+// ✅ Initialize Google Analytics (prevent auto page view tracking)
 gtag('js', new Date());
 gtag('config', 'G-4PW5BRLTHD', { 'send_page_view': false });
 
@@ -59,7 +59,7 @@ function checkUserConsent() {
 // ✅ Run the check on page load
 document.addEventListener("DOMContentLoaded", checkUserConsent);
 
-// ✅ Optional: Add a button to manually accept cookies (example for testing)
+// ✅ Optional: Add a button to manually accept cookies
 document.getElementById("acceptCookies")?.addEventListener("click", function() {
   grantConsent();
   alert("Consent granted!");
