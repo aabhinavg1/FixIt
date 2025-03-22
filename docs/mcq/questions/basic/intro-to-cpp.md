@@ -104,9 +104,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="17). What is the syntax for a C++ comment?"
+  question="17). What is the syntax for a C++ multiple-line comment?"
   options={['/* Comment */', '# Comment', '// Comment', '<!-- Comment -->']}
-  answer="// Comment"
+  answer="/* Comment */"
 />
 
 <Question
