@@ -41,7 +41,8 @@ const sidebars = {
       collapsed: true,
       items: [
         'DSA/DSA',
-        'DSA/introduction-to-dsa'
+        'DSA/introduction-to-dsa',
+        'DSA/Mathematical_Foundation',
       ]
     },
     {
@@ -49,7 +50,7 @@ const sidebars = {
       label: 'Linear DSA',
       collapsed: true,
       items: [
-        'DSA/Linear_DSA'
+        'DSA/Linear_DSA',
       ]
     }
   ],

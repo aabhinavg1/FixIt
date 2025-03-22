@@ -30,7 +30,7 @@ This blog provides **step-by-step tutorials, real-world applications, LeetCode p
 
 ### 🟢 **Getting Started**
 1. **[Introduction to DSA](./introduction-to-dsa)**
-2. **[Mathematical Foundations](#mathematical-foundations)**
+2. **[Mathematical Foundations](./Mathematical_Foundation.md)**
 3. **[Time & Space Complexity Analysis](#time--space-complexity-analysis)**
 4. **[Bit Manipulation Techniques](#bit-manipulation-techniques)**
 
