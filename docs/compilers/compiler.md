@@ -11,9 +11,8 @@ Welcome to the **Compiler Documentation**! Explore each stage and component of t
   Dive deeper into the details of different compilers and understand their unique features.
 
 
-- **[GCC vs LLVM](gcc_vs_llvm.md)**  
-  Dive deeper into the details of difference between gcc and llvm.
-
+- **[CPP vs C Compiler Clang ](./clang-c-vs-cpp-compilation.md)**  
+Comparison of Clang's C and C++ compilation, covering parsing, AST, LLVM IR, optimizations, and code generation differences.
 ## Sections
 
 - **[Flags](flag/index.md)**: Explore the various compiler flags and their effects on code optimization, debugging, and performance tuning.
