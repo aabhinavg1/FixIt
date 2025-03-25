@@ -146,6 +146,7 @@ const config = {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
     },
+    { src: '/js/adsense.js', async: true },
     {src :'/js/contest.js', async: true},
     { src: '/js/google-tag-manager.js', async: true },
     { src: '/js/google-analytics.js', async: true },
