@@ -33,6 +33,11 @@ keywords:
   - C++ Inheritance
   - C++ Polymorphism
   - C++ Abstraction
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
   - C++ Encapsulation
   - Advanced C++ Topics
   - Multi-threading in C++

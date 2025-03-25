@@ -8,6 +8,11 @@ keywords:
   - C++ Programming
   - C++ Interview Questions
   - C++ Quiz
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
   - C++ Multiple Choice Questions
   - C++ Objective Questions
   - C++ Basics
