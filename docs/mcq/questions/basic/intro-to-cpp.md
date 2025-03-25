@@ -20,6 +20,7 @@ keywords:
 - control flow
 - loops
 ---
+
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 // C++ Introduction Quiz
@@ -46,9 +47,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="4).Which of the following is the correct way to print 'Hello, World!' in C++?"
-  options={['print("Hello, World!");', 'echo "Hello, World!";', 'cout << "Hello, World!";', 'console.log("Hello, World!");']}
-  answer="cout << 'Hello, World!';"
+  question="4).Which of the folloowing is the correct function to give output on console in C++?"
+  options={['print', 'cin', 'echo', 'cout']}
+  answer="cout"
 />
 
 <Question
@@ -96,9 +97,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="12). What is the default value of a local variable in C++?"
-  options={['0', 'null', 'undefined', 'It throws an error.']}
-  answer="It throws an error."
+  question="12). What does `return 0` do in `main()` function?"
+  options={['Returns 0 to the console', 'Ends the program successfully', 'Causes an error', 'Stops all loops']}
+  answer="Ends the program successfully"
 />
 
 <Question
@@ -138,33 +139,38 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="19). Which operator is used to access a member of a class in C++?"
-  options={['.', '->', '&', '*']}
-  answer="."
+  question="19). Which of the following is not a valid datatype in C++?"
+  options={['char', 'real', 'double', 'bool']}
+  answer="real"
 />
 
 <Question
-  question="20). Which of the following is used to declare a constant in C++?"
-  options={['const int x = 10;', 'int x const = 10;', 'constant int x = 10;', 'x = const 10;']}
-  answer="const int x = 10;"
+  question="20). What does the `continue` statement do in a loop?"
+  options={['Exits the loop immediately', 'Skips the current iteration and moves to the next', 'Restarts the loop from the beginning', 'Terminates the program']}
+  answer="Skips the current iteration and moves to the next"
 />
 
 <Question
-  question="21). Which of the following is true about functions in C++?"
-  options={['A function must always return a value', 'A function can return no value (void)', 'A function cannot take parameters', 'A function can only return a string']}
-  answer="A function can return no value (void)"
+  question="21).  What is C++ primarily known for?"
+  options={['Web development', 'Game development and system programming', 'Mobile application development', 'Database management']}
+  answer="Game development and system programming"
+/>
+<Question
+  question="22). What is the default return-type of main()?"
+  options={[
+    "int",
+    "float",
+    "void",
+    "char"
+  ]}
+  answer="int"
 />
 
-<Question
-  question="22). Which of the following is used to include a standard library in C++?"
-  options={['#import <iostream>', '#include <iostream>', 'include <iostream>', 'import <iostream>']}
-  answer="#include <iostream>"
-/>
 
 <Question
-  question="23). Which of the following is a valid identifier in C++?"
-  options={['123abc', '_myVariable', 'int', 'return']}
-  answer="_myVariable"
+  question="23). In C++, which function is used to obtain the length of a string?"
+  options={['length()', 'size()', 'strlen()', 'Both 1 and 2']}
+  answer="Both 1 and 2"
 />
 
 <Question
@@ -174,9 +180,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="25). Which of the following types is used for dynamic memory allocation?"
-  options={['malloc', 'alloc', 'new', 'allocmem']}
-  answer="new"
+  question="25). What is the purpose of `break` statement in a loop?"
+  options={['Skip from the current iteration and move to the next', 'Exits the loop immediately', 'Restart the loop from beginning', 'Terminates the entire program']}
+  answer="Exits the loop immediately"
 />
 
 <Question
@@ -222,9 +228,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="33). What will the following code output?\n\n`int a = 5; int b = 10; cout << a + b;`"
-  options={['5', '10', '15', 'Error']}
-  answer="15"
+  question="33). From which language were the object-oriented programming concepts in C++ primarily inspired?"
+  options={['C', 'java', 'Simula', 'python']}
+  answer="Simula"
 />
 
 <Question
@@ -246,9 +252,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 />
 
 <Question
-  question="37). How can you initialize a constant in C++?"
-  options={['const int a = 5;', 'int const a = 5;', 'Both of the above', 'None of the above']}
-  answer="Both of the above"
+  question="37). What does the `++` operator do?"
+  options={['Increments a variable by 1', 'Adds two numbers', 'Concatenates strings', 'Creates a new variable']}
+  answer=" Increments a variable by 1"
 />
 
 <Question
@@ -256,11 +262,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['const int* ptr;', 'int* const ptr;', 'const int* const ptr;', 'All of the above']}
   answer="All of the above"
 />
-
 <Question
-  question="39). Which of the following is the correct way to print to the console in C++?"
-  options={['print("Hello World");', 'printf("Hello World");', 'cout << "Hello World";', 'console.log("Hello World");']}
-  answer="cout << 'Hello World';"
+  question="39). Which loop is guaranteed to execute at least once?"
+  options={['for loop', 'while loop', 'do-while loop', 'if-else']}
+  answer="do-while loop"
 />
 
 <Question
