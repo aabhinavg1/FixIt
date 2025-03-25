@@ -1,3 +1,27 @@
+---
+title: Control Flow C++ MCQ
+keywords: 
+- C++
+- learning C++ 
+- basics
+- control statement
+- if else
+- cpp mcq
+- cpp mcq questions
+- cpp interview questions
+- c++ mcq
+- advanced c++ interview questions
+- c++ mcq questions and answers
+- C++ programming
+- cpp mcqs
+- mcq in c++
+- variables
+- functions
+- c++ mcq test
+- pointers
+- control flow
+- loops
+---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 

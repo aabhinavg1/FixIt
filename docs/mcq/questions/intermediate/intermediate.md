@@ -10,6 +10,11 @@ keywords:
   - compiler optimization
   - online resources
   - tutorials
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
   - LLVM
   - education
 ---

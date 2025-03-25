@@ -11,6 +11,11 @@ keywords:
   - C++ Multiple Choice Questions
   - C++ Objective Questions
   - C++ Basics
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
   - C++ Concepts
   - C++ Fundamentals
   - C++ Exam Questions

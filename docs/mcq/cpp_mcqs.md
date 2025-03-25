@@ -5,8 +5,14 @@ keywords:
   - C++
   - C++ MCQs
   - C++ Questions and Answers
+  - c++ multiple choice questions
   - C++ Programming MCQs
   - C++ Quiz
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
   - C++ Objective Questions
   - C++ Interview Questions
   - C++ MCQs for Competitive Exams
