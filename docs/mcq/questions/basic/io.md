@@ -1,3 +1,26 @@
+---
+title: Input Output C++ Learning Guide
+keywords: 
+- C++
+- learning C++ 
+- basics
+- cpp mcq
+- cpp mcq questions
+- cpp interview questions
+- c++ mcq
+- advanced c++ interview questions
+- c++ mcq questions and answers
+- C++ programming
+- cpp mcqs
+- mcq in c++
+- variables
+- functions
+- c++ mcq test
+- pointers
+- control flow
+- loops
+---
+
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
   <Question
