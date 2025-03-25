@@ -1,23 +1,26 @@
 ---
-title: "C++ Introduction Quiz"
-description: "A set of multiple-choice questions (MCQs) to test your knowledge of C++ basics."
-Keyword: 
- - C++
- - Programming
- - MCQ
- - Quiz
- - C++ Basics Quiz
- - C++ Programming Test
- - C++ Multiple Choice Questions
- - C++ Interview Questions
- - C++ Beginner Quiz
- - C++ Syntax MCQ
- - C++ Concepts Quiz
- - C++ Exam Questions
- - C++ Practice Test
-
-tags: ["C++", "Programming", "MCQ", "Quiz"]
+title: Intro to the C++ Learning Guide
+keywords: 
+- C++
+- learning C++ 
+- basics
+- cpp mcq
+- cpp mcq questions
+- cpp interview questions
+- c++ mcq
+- advanced c++ interview questions
+- c++ mcq questions and answers
+- C++ programming
+- cpp mcqs
+- mcq in c++
+- variables
+- functions
+- c++ mcq test
+- pointers
+- control flow
+- loops
 ---
+
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 // C++ Introduction Quiz
