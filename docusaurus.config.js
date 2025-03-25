@@ -128,6 +128,15 @@ const config = {
       crossorigin: 'anonymous',
       'data-ad-client': 'ca-pub-4507855210682789',
     },
+
+    {
+      src: 'https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js',
+      async: true,
+      customElement: 'amp-auto-ads',
+    },
+
+    { src: '/js/amp-auto-ads.js', async: true },
+
     {
       src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
       async: true,
