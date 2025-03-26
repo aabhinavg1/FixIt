@@ -1,3 +1,8 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "script-src 'self' https://pagead2.googlesyndication.com https://cdn.ampproject.org 'unsafe-inline' 'unsafe-eval';"
