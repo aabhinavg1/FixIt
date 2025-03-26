@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import OriginalLayout from "@theme-original/Layout";
+import { useLocation } from "@docusaurus/router"; // Import for route changes
 
 export default function Layout(props) {
+  const location = useLocation(); // Detect page changes
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Check if AMP script is already present
@@ -13,15 +16,16 @@ export default function Layout(props) {
         document.head.appendChild(script);
       }
 
-      // Add AMP Auto Ads only if not already present
-      if (!document.querySelector("amp-auto-ads")) {
-        const ampAutoAds = document.createElement("amp-auto-ads");
-        ampAutoAds.setAttribute("type", "adsense");
-        ampAutoAds.setAttribute("data-ad-client", "ca-pub-4507855210682789");
-        document.body.appendChild(ampAutoAds);
-      }
+      // Remove existing AMP ads before adding new ones to prevent duplicates
+      document.querySelectorAll("amp-auto-ads").forEach((ad) => ad.remove());
+
+      // Add AMP Auto Ads
+      const ampAutoAds = document.createElement("amp-auto-ads");
+      ampAutoAds.setAttribute("type", "adsense");
+      ampAutoAds.setAttribute("data-ad-client", "ca-pub-4507855210682789");
+      document.body.appendChild(ampAutoAds);
     }
-  }, []);
+  }, [location.pathname]); // Runs effect on every page change
 
   return <OriginalLayout {...props} />;
 }
