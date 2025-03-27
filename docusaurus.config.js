@@ -137,7 +137,13 @@ const config = {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
     },
+    {
+      src: "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js",
+      async: true,
+      "custom-element": "amp-auto-ads",
+    },
     {src :'/js/contest.js', async: true},
+    {src: '/js/amp-auto-ads.js', async: true},
     { src: '/js/google-tag-manager.js', async: true },
     { src: '/js/google-analytics.js', async: true },
     { src: '/js/structured.js', async: true }, // Ensure correct file extension
