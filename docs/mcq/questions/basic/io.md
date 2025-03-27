@@ -159,15 +159,15 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
     question="23). What will be the output of the following code? "
-    code= "#include <iostream>
+    code= {`#include <iostream>
           using namespace std;
           int main() {
             int x = 5;
             cout << x++ * ++x;
             return 0;
-          }"
+          }`}
     options={['30', '35', '25', 'Undefined behavior']}
-    answer="30"
+    answer="35"
 />
 
 <Question
@@ -178,33 +178,33 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
     question="25). What is the output of the following code? "
-    code="#include <iostream>
+    code={`#include <iostream>
           using namespace std;
           int main() {
             char arr[] = 'Hello';
             cout << arr[1] + arr[4];
             return 0;
-          }"
+          }`}
     options={['H', 'o', '181', 'Compilation Error']}
-    answer="181"
+    answer="Compilation Error"
 />
 
 <Question
     question="26). What will be the output of the following code? "
-    code="#include <iostream>
+    code={`#include <iostream>
           using namespace std;
           class A {
           public:
-              A() { cout << \'A\'; }
+              A() { cout << 'A'; }A() { cout << "A"; }
           };
           class B : public A {
           public:
-              B() { cout << \'B\'; }
+              B() { cout << "B"; }
           };
-          int main() {
+          int main() {int main() {int main() {int main() {
               B obj;
               return 0;
-          }"
+          }`}
     options={['A', 'B', 'AB', 'BA']}
     answer="AB"
 />
@@ -212,27 +212,27 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
     question="27). What will be the output of this C++ program?" 
-    code="#include <iostream>
+    code={`#include <iostream>
           using namespace std;
           int main() {
               int a = 10, b = 0;
               try {
                   if (b == 0)
-                      throw \'Division by zero error\';
+                      throw "Division by zero error";
                   cout << a / b;
               }
               catch (const char* msg) {
                   cout << msg;
               }
               return 0;
-          }"
+          }`}
     options={['0', '10', 'Division by zero error', 'Compilation Error']}
     answer="Division by zero error"
 />
 
 <Question
     question="28). What is the output of the following code?"
-    code="#include <iostream>
+    code={`#include <iostream> 
           using namespace std;
           void func(int& x) {
               x = x * 2;
@@ -242,7 +242,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
               func(a);
               cout << a;
               return 0;
-    }"
+    }`}
     options={['5', '10', '0', 'Compilation Error']}
     answer="10"
 />
@@ -255,12 +255,12 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
     question="30). What will be the output of the following program?"
-    code="#include <iostream>
+    code={`#include <iostream>
           using namespace std;
           int main() {
             cout << 'C++ ' << 2024;
             return 0;
-          }"
-    options={['C++2024', 'C++ 2024', 'C++\n2024', 'Compilation Error']}
+          }`}
+    options={['C++2024', 'C++ 2024', 'C++  2024', 'Compilation Error']}
     answer="C++ 2024"
 />
