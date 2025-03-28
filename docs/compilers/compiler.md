@@ -13,6 +13,11 @@ Welcome to the **Compiler Documentation**! Explore each stage and component of t
 
 - **[CPP vs C Compiler Clang ](./clang-c-vs-cpp-compilation.md)**  
 Comparison of Clang's C and C++ compilation, covering parsing, AST, LLVM IR, optimizations, and code generation differences.
+
+- **[Compiler Verification and Validation](./Verification_Vs_Validation.md)**
+Compiler verification and validation are crucial processes in ensuring that a compiler functions correctly and reliably. These processes help detect errors in compilation, code optimization, and code generation.
+
+
 ## Sections
 
 - **[Flags](flag/index.md)**: Explore the various compiler flags and their effects on code optimization, debugging, and performance tuning.

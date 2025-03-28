@@ -15,7 +15,8 @@ const sidebars = {
         'compilers/front_end/index',          // Frontend concepts and tutorials
         'compilers/other_arch/index',         // Tutorials for other architectures
         'compilers/gcc_vs_llvm',             // Tutorials for gcc vs llvm
-        'compilers/clang-c-vs-cpp-compilation', //Tutorials for clang c vs cpp~
+        'compilers/clang-c-vs-cpp-compilation', //Tutorials for clang c vs cpp
+        'compilers/Verification_Vs_Validation' // Tutorial for the verification vs validation
       ],
     },
   ],
