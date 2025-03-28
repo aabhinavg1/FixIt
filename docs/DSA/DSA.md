@@ -18,11 +18,25 @@ keywords:
 
 tags: ["DSA", "Algorithms", "Data Structures", "LeetCode", "Competitive Programming", "Compiler Design", "Embedded Systems", "AI", "Blockchain", "Database Indexing"]
 ---
+import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 
+## 📚 Recommended Books
+
+<div>
+  <DSA_Book_Recommendation />
+</div>
+
+---
 # 📌 Data Structures and Algorithms (DSA) - The Ultimate Guide  
 
-Welcome to the **DSA Blog**, your **one-stop guide** for mastering **Data Structures and Algorithms**!  
-This blog provides **step-by-step tutorials, real-world applications, LeetCode problems**, and **DSA usage in different domains like Compiler Design and Embedded Systems**.
+Welcome to the **DSA Blog**—your complete guide to **Data Structures and Algorithms (DSA)**! 🚀  
+
+This blog offers **easy-to-follow tutorials, real-world examples, and problem-solving techniques** to help you understand DSA step by step.  
+
+Whether you're preparing for **coding interviews**, solving **LeetCode problems**, or exploring how DSA is used in **Compiler Design, Embedded Systems, AI, Blockchain, and more**, you'll find everything you need here.  
+
+Gain **practical knowledge, expert tips, and hands-on experience** to improve your problem-solving skills and succeed in competitive programming! 💡  
+
 
 ---
 
