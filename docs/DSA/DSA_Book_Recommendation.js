@@ -40,12 +40,50 @@ const books = [
     ],
     amazonLink: "https://amzn.to/4l29Uix",
   },
+  {
+    title: "Introduction to the Theory of Computation",
+    author: "Michael Sipser",
+    description:
+      "A fundamental book on theoretical computer science, covering automata theory, complexity theory, and computation models.",
+    features: [
+      "Covers automata, formal languages, and Turing machines",
+      "Explains computational complexity classes like P, NP, and PSPACE",
+      "Mathematical rigor with practical problem-solving approaches",
+      "Widely used in university courses and competitive exams",
+    ],
+    amazonLink: "https://amzn.to/4jdICDS", // Replace with actual link
+  },
+  {
+    title: "Algorithms",
+    author: "Robert Sedgewick & Kevin Wayne",
+    description:
+      "A detailed introduction to algorithms and data structures, with a focus on practical implementation and efficiency.",
+    features: [
+      "Comprehensive coverage of fundamental algorithms",
+      "Graph algorithms, sorting, searching, and string processing",
+      "Real-world applications and Java implementations",
+      "Great for both students and professionals",
+    ],
+    amazonLink: "https://amzn.to/4jiQUdY", // Replace with actual link
+  },
+  {
+    title: "The Art of Computer Programming",
+    author: "Donald Knuth",
+    description:
+      "A classic reference on algorithms and programming techniques, covering fundamental mathematical and algorithmic concepts in depth.",
+    features: [
+      "In-depth analysis of algorithms with mathematical proofs",
+      "Sorting, searching, and advanced combinatorial algorithms",
+      "Covers both theoretical and practical aspects of computing",
+      "Considered an essential read for serious programmers and researchers",
+    ],
+    amazonLink: "https://amzn.to/43BWymO", // Replace with actual link
+  },
 ];
 
 export default function DSA_Book_Recommendation() {
   return (
     <div style={{ padding: "10px" }}>
-      {/* 🔹 Amazon Affiliate Tip */}
       <div style={{ background: "#fffae6", padding: "10px", borderRadius: "5px", marginBottom: "10px" }}>
         <strong>📢 Amazon Affiliate Tip:</strong>  
         If you purchase through these links, we may earn a small commission at no extra cost to you.  

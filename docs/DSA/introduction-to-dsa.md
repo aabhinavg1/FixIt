@@ -40,14 +40,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 
-## 📚 Recommended Books
+## **📚 Recommended Books**  
 
-<div>
-  <DSA_Book_Recommendation />
-</div>
+
+  <div>  
+    <DSA_Book_Recommendation />  
+  </div>  
 
 ---
 
+
+---
 # Introduction to Data Structures and Algorithms (DSA)
 
 # What is DSA?
