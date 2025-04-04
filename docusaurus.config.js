@@ -71,6 +71,7 @@ const config = {
           ],
         },
         { href: 'https://github.com/aabhinavg1/FixIt', label: 'GitHub', position: 'right' },
+        { href: 'https://compilersutra.quora.com', label: 'ASK Questions', position: 'right' }, // Added Quora link
       ],
     },
 
@@ -142,12 +143,12 @@ const config = {
       async: true,
       "custom-element": "amp-auto-ads",
     },
-    {src :'/js/contest.js', async: true},
-    {src: '/js/amp-auto-ads.js', async: true},
+    { src: '/js/contest.js', async: true },
+    { src: '/js/amp-auto-ads.js', async: true },
     { src: '/js/google-tag-manager.js', async: true },
     { src: '/js/google-analytics.js', async: true },
-    { src: '/js/structured.js', async: true }, // Ensure correct file extension
-    { src: '/js/llvm.js', async: true }, // Ensure correct file extension
+    { src: '/js/structured.js', async: true },
+    { src: '/js/llvm.js', async: true },
   ],
 
   // Inject AdSense script separately in custom JavaScript

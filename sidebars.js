@@ -33,6 +33,14 @@ const sidebars = {
         'gpu/evolution-of-parallel-programming'
       ],
     },
+    {
+      type: 'category',
+      label: 'Getting Started',
+      collapsed: true,
+      items: [
+        'gpu/Parallel_Programming/Intro_to_Parallel_Programming',
+      ],
+    }
   ],
 
   //side bar for the DSA

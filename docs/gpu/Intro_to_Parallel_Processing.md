@@ -53,9 +53,15 @@ tags:
   - Hardware Acceleration
 
 ---
+import Parallel_Programming from './Parallel_Programming/Parallel_Progamming_Book.js';
+
+<div>  
+    <Parallel_Programming />  
+  </div>  
 
 # Evolution of Parallel Programming: A New Era in Computing
 
+---
 ## Introduction
 
 A natural question that comes to mind is: why even bother with parallel programming? In the 1970s, 1980s, and even part of the 1990s, single-threaded programming, also known as serial programming, was the norm. You wrote a program to accomplish a task, and once completed, the job was done. However, certain computationally intensive tasks, such as particle simulations and image processing, demanded significantly more processing power. 
