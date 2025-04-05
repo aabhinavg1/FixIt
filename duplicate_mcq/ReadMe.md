@@ -76,6 +76,5 @@ The script will:
 ---
 
 ## Author
-
-Your Name Here  
-[GitHub](#) | [LinkedIn](#)
+ 
+[Website](https://compilersutra.com) | [LinkedIn](https://www.linkedin.com/in/abhinavcompilerllvm/)
