@@ -1,4 +1,7 @@
 # requirements.txt
 
 # No external dependencies required.
-# Uses only Python standard libraries: sys, re, collections
+# This script only uses Python standard libraries:
+# - sys
+# - re
+# - collections.defaultdict
