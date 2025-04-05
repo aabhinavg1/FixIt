@@ -1,0 +1,4 @@
+# requirements.txt
+
+# No external dependencies required.
+# Uses only Python standard libraries: sys, re, collections
