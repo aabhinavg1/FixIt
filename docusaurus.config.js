@@ -70,6 +70,7 @@ const config = {
             { label: 'Practice Interview Question', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
           ],
         },
+        {href: '/newsletter', label: 'Subscribe' , position: 'right' },
         { href: 'https://github.com/aabhinavg1/FixIt', label: 'GitHub', position: 'right' },
         { href: 'https://compilersutra.quora.com', label: 'ASK Questions', position: 'right' }, // Added Quora link
       ],
