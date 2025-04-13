@@ -55,7 +55,7 @@ MLIR's architecture consists of several key components:
 To begin exploring MLIR, you can follow these steps:
 
 1. **Set Up MLIR**:
-   - Refer to the [MLIR Getting Started Guide](https://mlir.llvm.org/docs/GettingStarted/) for instructions on how to build and run MLIR locally.
+   - Refer to the [MLIR Getting Started Guide](https://mlir.llvm.org/getting_started/) for instructions on how to build and run MLIR locally.
 
 2. **Explore MLIR Tutorials**:
    - The official [MLIR Tutorials](https://mlir.llvm.org/docs/Tutorials/) provide hands-on experience with creating custom dialects and operations.
@@ -64,7 +64,7 @@ To begin exploring MLIR, you can follow these steps:
    - The complete [MLIR Documentation](https://mlir.llvm.org/docs/) offers insights into the design and implementation of MLIR, including detailed explanations of its components.
 
 4. **Join the MLIR Community**:
-   - Participate in discussions and contribute to the project through the [MLIR Community page](https://mlir.llvm.org/community/). Engaging with other users and developers can provide valuable support and feedback.
+   - Participate in discussions and contribute to the project through the [MLIR Community page](https://mlir.llvm.org/). Engaging with other users and developers can provide valuable support and feedback.
 
 ## Applications of MLIR
 
@@ -83,7 +83,7 @@ MLIR represents a significant advancement in compiler technology, providing the 
 ## Further Reading
 
 - [MLIR Overview](https://mlir.llvm.org/docs/)
-- [MLIR for Machine Learning](https://mlir.llvm.org/docs/MLIRForMachineLearning/)
+- [MLIR for Machine Learning](https://mlir.llvm.org)
 - [Research Papers on MLIR](https://mlir.llvm.org/docs/)
 
 Feel free to reach out if you have any questions or need further assistance in your MLIR journey!
