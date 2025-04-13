@@ -30,7 +30,8 @@ const sidebars = {
       items: [
         'gpu/introduction',                   // Introduction to GPU concepts
         'gpu/optimizations',                  // GPU-specific optimization techniques
-        'gpu/evolution-of-parallel-programming'
+        'gpu/evolution-of-parallel-programming',
+        'gpu/CPU_Vs_GPU'
       ],
     },
     {
