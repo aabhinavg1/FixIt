@@ -806,66 +806,93 @@ If your workload involves heavy computation on large data sets, repeated mathema
 When it comes to choosing between a **CPU** (Central Processing Unit) and a **GPU** (Graphics Processing Unit), understanding their core differences can help in making informed decisions. Let’s explore some frequently asked questions about these two powerful components.
 
 <details>
-<summary>What is the main difference between a CPU and a GPU?</summary>
-The primary difference lies in the design and purpose of each component. A **CPU** is designed for general-purpose tasks, like running applications, operating systems, and handling single-threaded computations. It excels at performing complex logic and operations. On the other hand, a **GPU** is built for highly parallel tasks such as rendering images and videos or performing computations in machine learning. It’s designed to handle thousands of threads simultaneously, making it perfect for tasks that require processing large chunks of data in parallel.
+<summary><strong>Q:</strong> What is the main difference between a CPU and a GPU?</summary>
+
+The primary difference lies in the design and purpose of each component. A **CPU** is designed for general-purpose tasks, like running applications, operating systems, and handling single-threaded computations. It excels at performing complex logic and operations. On the other hand, a **GPU** is built for highly parallel tasks such as rendering images and videos or performing computations in machine learning.
+
 </details>
 
 <details>
-<summary>When should I use a CPU over a GPU?</summary>
+<summary><strong>Q:</strong> When should I use a CPU over a GPU?</summary>
+
 You should choose a **CPU** when your task involves:
-- Running general applications and operating systems
-- Performing single-threaded computations or complex logic-heavy processes
-- Handling tasks that don’t require extensive parallel processing
-- Managing input/output operations or dealing with a lot of branching decisions in the program
+
+- Running general applications and operating systems  
+- Performing single-threaded computations or complex logic-heavy processes  
+- Handling tasks that don’t require extensive parallel processing  
+- Managing input/output operations or dealing with a lot of branching decisions in the program  
+
 </details>
 
 <details>
-<summary>When should I use a GPU over a CPU?</summary>
-On the other hand, a **GPU** is the right choice for tasks that need:
-- High levels of parallel processing, such as deep learning, scientific simulations, or machine learning
-- Graphics rendering, video editing, or tasks that require intensive image processing
-- Handling tasks with repetitive computations that can be split into parallel jobs
+<summary><strong>Q:</strong> When should I use a GPU over a CPU?</summary>
+
+A **GPU** is the right choice for tasks that need:
+
+- High levels of parallel processing (e.g., deep learning, scientific simulations)  
+- Graphics rendering, video editing, or intensive image processing  
+- Tasks with repetitive computations that can be parallelized  
+
 </details>
 
 <details>
-<summary>Can a GPU replace a CPU?</summary>
-A **GPU** cannot replace a **CPU**. While a GPU excels at parallel computations, it’s not designed to handle general-purpose computing tasks that a CPU is optimized for. A CPU manages critical system operations, runs the operating system, handles logic-heavy tasks, and coordinates with other hardware components. A system needs both a CPU and a GPU to function optimally.
+<summary><strong>Q:</strong> Can a GPU replace a CPU?</summary>
+
+A **GPU** cannot replace a **CPU**. While a GPU excels at parallel computations, it’s not designed to handle general-purpose computing tasks. The CPU runs the OS, coordinates hardware, and handles logic-heavy tasks.
+
 </details>
 
 <details>
-<summary>Do GPUs only work for gaming?</summary>
-**GPUs** are not limited to gaming. Although they are widely known for their role in rendering graphics in video games, GPUs are also used in:
-- Machine learning and artificial intelligence (AI) for training models
-- Cryptocurrency mining
-- Scientific research and simulations (e.g., weather forecasting, fluid dynamics)
-Thus, GPUs are not confined to just gaming but are essential in various high-performance computing tasks.
+<summary><strong>Q:</strong> Do GPUs only work for gaming?</summary>
+
+**No**. GPUs are used in:
+
+- Machine learning & AI  
+- Cryptocurrency mining  
+- Scientific research (e.g., weather forecasting)  
+
+They're essential in many high-performance computing domains.
+
 </details>
 
 <details>
-<summary>Which is better for gaming, CPU or GPU?</summary>
-For **gaming**, the **GPU** is the most critical component because it’s responsible for rendering the game’s graphics. However, the **CPU** still plays an important role in processing the game’s logic, handling input, and managing system-level tasks. A well-balanced system with a powerful CPU and GPU will result in a superior gaming experience.
+<summary><strong>Q:</strong> Which is better for gaming, CPU or GPU?</summary>
+
+The **GPU** is crucial for rendering graphics, but the **CPU** handles logic, physics, and game input. Both need to be balanced for smooth gameplay.
+
 </details>
 
 <details>
-<summary>Is it possible to use both CPU and GPU together?</summary>
-Yes, **CPUs and GPUs** often work together in modern computing systems. In this configuration, the **CPU** handles general computing tasks and the operating system, while the **GPU** accelerates computationally intensive tasks like rendering graphics or processing large datasets. This collaboration is common in gaming systems, workstations, and supercomputing environments.
+<summary><strong>Q:</strong> Is it possible to use both CPU and GPU together?</summary>
+
+Yes, modern systems use both. The **CPU** manages the OS and general tasks; the **GPU** handles heavy computation like graphics and ML acceleration.
+
 </details>
 
 <details>
-<summary>How do CPUs and GPUs affect machine learning?</summary>
-In **machine learning**, the **CPU** is suitable for running smaller models or performing inference on trained models. However, when it comes to training large, complex models, the **GPU** shines. GPUs are able to handle large-scale parallel computations, speeding up the training process significantly. This is why GPUs are commonly used for tasks such as neural network training, data analytics, and AI applications.
+<summary><strong>Q:</strong> How do CPUs and GPUs affect machine learning?</summary>
+
+- **CPU**: Good for inference or small-scale training  
+- **GPU**: Ideal for training large models due to parallel processing  
+
 </details>
 
 <details>
-<summary>Can I upgrade my CPU for better GPU performance?</summary>
-Upgrading your **CPU** does not directly affect the **GPU’s performance** since both components are generally independent in terms of their functions. However, it’s essential to ensure that your CPU is powerful enough to avoid becoming a **bottleneck** for the GPU. If your CPU is too slow, it might limit the full potential of the GPU. If you're looking for better graphics performance, it’s the **GPU** that needs an upgrade.
+<summary><strong>Q:</strong> Can I upgrade my CPU for better GPU performance?</summary>
+
+Not directly, but a weak **CPU** can bottleneck **GPU** performance. A balanced system ensures optimal GPU usage.
+
 </details>
 
 <details>
-<summary>Which is more energy-efficient, CPU or GPU?</summary>
-In terms of energy efficiency, **CPUs** are generally more efficient when handling tasks that don’t require massive parallel processing. However, for workloads like machine learning or graphics rendering, **GPUs** tend to be more energy-efficient, as they deliver better performance per watt, thanks to their ability to handle many parallel tasks simultaneously. Power consumption depends on the workload at hand — for general-purpose tasks, CPUs consume less power, but for tasks like deep learning or simulations, GPUs provide a better balance of power consumption and performance.
-</details>
+<summary><strong>Q:</strong> Which is more energy-efficient, CPU or GPU?</summary>
 
+- **CPU**: More efficient for general tasks  
+- **GPU**: More efficient for parallel tasks like ML or rendering  
+
+Energy efficiency depends on the workload.
+
+</details>
 ---
 
 This FAQ section gives readers clarity on common queries related to **CPUs and GPUs** and provides them with the information needed to understand when and why to use each component in different scenarios.
