@@ -78,7 +78,7 @@ At this level, you'll explore advanced topics such as optimization techniques, c
 
 ### Research Papers
 - **"Optimizing Compilers for Modern Architectures" by Andrew W. Appel and Jens Palsberg**  
-  [Link to Paper](https://www.cs.princeton.edu/~appel/modern-compiler-optimizations.pdf)
+  [Link to Paper](https://eden.dei.uc.pt/~amilcar/pdf/CompilerInJava.pdf)
 
 ### Online Resources
 - [Advanced Compiler Design and Implementation](https://www.amazon.com/Advanced-Compiler-Design-Implementation-Elsevier/dp/1558603204) - A comprehensive resource covering advanced topics in compiler design.

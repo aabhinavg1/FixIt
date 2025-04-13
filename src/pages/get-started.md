@@ -66,11 +66,11 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
    - Official guide for CUDA programming, offering insights into GPU architecture and parallel programming techniques.
 
 3. **OpenCL Programming Guide**: 
-   - [OpenCL Programming Guide](https://www.opengroup.org/opencl/)
+   - [OpenCL Programming Guide](https://ptgmedia.pearsoncmg.com/images/9780321749642/samplepages/0321749642.pdf)
    - A comprehensive guide to OpenCL, the open standard for parallel programming of heterogeneous systems.
 
 4. **GPU Gems**: 
-   - [GPU Gems](https://developer.nvidia.com/gpu-gems)
+   - [GPU Gems](https://developer.nvidia.com/gpugems/gpugems/contributors)
    - A collection of books that cover advanced techniques for GPU programming.
 
 5. **Hands-On GPU Programming with Python** by David A. Pacheco
@@ -84,10 +84,10 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
 2. **MLIR Tutorial**: [MLIR Tutorial](https://mlir.llvm.org/docs/Tutorials/)
    - Step-by-step tutorials on how to use MLIR for building custom compiler solutions.
 
-3. **The LLVM MLIR Project**: [LLVM MLIR](https://llvm.org/mlir/)
+3. **The LLVM MLIR Project**: [LLVM MLIR](https://mlir.llvm.org/)
    - Explore the MLIR project within the LLVM community for more resources, including research papers and discussions.
 
-4. **Building a Simple Language with MLIR**: [Tutorial](https://mlir.llvm.org/docs/Tutorials/BuildingASimpleLanguage/)
+4. **Building a Simple Language with MLIR**: [Tutorial](https://mlir.llvm.org/docs/Tutorials/Toy/)
    - A practical guide to create a simple programming language using MLIR, which can help in understanding the framework better.
 
 ### Machine Learning and Compilers
@@ -95,7 +95,7 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
 1. **Machine Learning for Compiler Optimization**:
    - Research papers and resources discussing the integration of machine learning techniques in optimizing compilers. [ACM Digital Library](https://dl.acm.org/) can be a good place to find such papers.
 
-2. **MLIR for Machine Learning**: [MLIR Workshop](https://mlir.llvm.org/docs/MLIRForMachineLearning/)
+2. **MLIR for Machine Learning**: [MLIR Workshop](https://mlir.llvm.org/)
    - A workshop that focuses on using MLIR for machine learning applications, providing insights into how to leverage MLIR in this domain.
 
 3. **TensorFlow Compiler (XLA)**:
@@ -120,7 +120,7 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
 - **Clang Documentation**: [Clang Docs](https://clang.llvm.org/docs/)
   - Specific documentation for Clang, a front-end compiler for the C family of programming languages.
 
-- **Programming Languages: Principles and Paradigms**: [MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-035-computer-language-engineering-fall-2005/)
+- **Programming Languages: Principles and Paradigms**: [MIT OpenCourseWare](https://ocw.mit.edu/courses/6-821-programming-languages-fall-2002/)
   - A free course offering a solid introduction to the principles behind programming languages.
 
 - **CS50: Introduction to Computer Science**: [Harvard's CS50 Course](https://cs50.harvard.edu/)
@@ -128,19 +128,19 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
 
 ## Recommended Online Courses
 
-1. **Compilers**: [Coursera - Stanford University](https://www.coursera.org/learn/compilers)
+1. **Compilers**: [Course - Stanford University](hhttps://online.stanford.edu/courses/soe-ycscs1-compilers)
    - A comprehensive course covering all aspects of compiler design, including lexical analysis, parsing, and optimization.
 
 2. **Programming Languages**: [edX - Harvard University](https://www.edx.org/course/cs50s-introduction-to-artificial-intelligence-with-python)
    - This course introduces the fundamentals of programming languages, focusing on their design and implementation.
 
-3. **LLVM Tutorial**: [LLVM Developer’s Guide](https://llvm.org/docs/tutorial/MyFirstLanguage/)
+3. **LLVM Tutorial**: [LLVM Developer’s Guide](https://llvm.org/docs/ProgrammersManual.html)
    - A step-by-step tutorial to create a simple programming language using LLVM.
 
-4. **GPU Programming and Architecture**: [Coursera - University of Washington](https://www.coursera.org/learn/gpu-programming)
+4. **GPU Programming and Architecture**: [Coursera - University of Washington](https://www.coursera.org/specializations/gpu-programming/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_india_gpu-programming_jhu_ftcof_specializations_px_dr_bau_gg_sem_pr_in_all_m_hyb_24-11_x&campaignid=21892913656&adgroupid=170209083516&device=c&keyword=gpu%20programing&matchtype=p&network=g&devicemodel=&creativeid=720429472929&assetgroupid=&targetid=kwd-1948079756861&extensionid=&placement=&gad_source=1&gbraid=0AAAAADdKX6ZfkddlxmDXMt-epfxfMTOyN&gclid=Cj0KCQjwnui_BhDlARIsAEo9GutCec6OHhTKUQv4MHbcXOVKZBWM26vU73DDi7l3wnK8vNZPcB1oj28aAhfEEALw_wcB&utm_medium=sem&utm_source=gg&utm_campaign=b2c_india_gpu-programming_jhu_ftcof_specializations_px_dr_bau_gg_sem_pr_in_all_m_hyb_24-11_x&campaignid=21892913656&adgroupid=170209083516&device=c&keyword=gpu%20programing&matchtype=p&network=g&devicemodel=&creativeid=720429472929&assetgroupid=&targetid=kwd-1948079756861&extensionid=&placement=&gad_source=1&gbraid=0AAAAADdKX6ZfkddlxmDXMt-epfxfMTOyN&gclid=Cj0KCQjwnui_BhDlARIsAEo9GutCec6OHhTKUQv4MHbcXOVKZBWM26vU73DDi7l3wnK8vNZPcB1oj28aAhfEEALw_wcB)
    - Learn the fundamentals of GPU programming, including architectures and programming models.
 
-5. **MLIR for Machine Learning**: [MLIR Workshop](https://mlir.llvm.org/docs/MLIRForMachineLearning/)
+5. **MLIR for Machine Learning**: [MLIR Workshop](https://mlir.llvm.org/)
    - A workshop that focuses on using MLIR for machine learning applications.
 
 ## Practical Tools and Resources
@@ -163,7 +163,7 @@ Welcome to your journey in Compiler Development! Here are some essential resourc
 ## Free Online Resources
 
 - **The Little Schemer**: 
-   - A unique book that teaches programming and language concepts through the Scheme programming language. [The Little Schemer](https://www.purplemath.com/modules/little.htm)
+   - A unique book that teaches programming and language concepts through the Scheme programming language. [The Little Schemer](https://vpb.smallyu.net/[Type]%20books/The%20Little%20Schemer.pdf)
 
 - **The Rust Programming Language**: 
    - Free book on Rust that covers systems programming and compiler concepts. [The Rust Book](https://doc.rust-lang.org/book/)

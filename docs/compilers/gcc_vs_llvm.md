@@ -236,14 +236,14 @@ Both LLVM and GCC are powerful in their own right. The choice depends on specifi
 ### 1. Which is faster, LLVM or GCC?  
 [LLVM](https://llvm.org/) is generally faster in just-in-time (JIT) compilation, while [GCC](https://gcc.gnu.org/) is better for ahead-of-time (AOT) compilation. LLVM's modular design makes it more efficient for modern applications.  
 
-For a detailed comparison, read our [LLVM vs GCC Performance Analysis](https://compilersutra.com/docs/llvm-vs-gcc-performance).  
+For a detailed comparison, read our [LLVM vs GCC Performance Analysis](https://www.compilersutra.com/docs/compilers/gcc_vs_llvm/).  
 
 ### 2. Why is LLVM preferred over GCC?  
 LLVM is modular, has better error reporting, and supports JIT compilation. It is widely used in modern compilers like [Clang](https://clang.llvm.org/), [Rust](https://www.rust-lang.org/), and [Swift](https://www.swift.org/).  
 
 Want to learn how LLVM works? Check out:  
 - [LLVM Official Website](https://llvm.org/)  
-- [Introduction to LLVM](https://compilersutra.com/docs/introduction-to-llvm)  
+- [Introduction to LLVM](https://www.compilersutra.com/docs/llvm/intro-to-llvm)  
 - [LLVM Tutorial: Getting Started](https://www.compilersutra.com/docs/llvm/intro-to-llvm)  
 - [LLVM Basics – Congratulations!](https://www.compilersutra.com/docs/llvm/llvm_basic/congratulations)  
 
@@ -252,7 +252,7 @@ No, GCC does not directly support LLVM IR. However, tools like `llvm-gcc` (depre
 
 For more on LLVM IR, explore:  
 - [LLVM IR Basics](http://localhost:3000/docs/llvm/llvm_basic/markdown-features)  
-- [LLVM IR Optimization Techniques](https://compilersutra.com/docs/llvm-ir-optimization)  
+- [LLVM IR Optimization Techniques](https://www.compilersutra.com/docs/llvm/intermediate/middlend/middleend/)  
 - [Generating LLVM IR from C++](http://localhost:3000/docs/llvm/llvm_basic/Build)  
 - [LLVM IR Documentation (Official)](https://llvm.org/docs/Frontend/PerformanceTips.html)  
 
