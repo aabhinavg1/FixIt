@@ -83,3 +83,126 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['const float pi = 3.14;', 'float pi const = 3.14;', 'constant float pi = 3.14;', 'pi = const 3.14;']}
   answer="const float pi = 3.14;"
 />
+
+<Question
+  question="11).Which keyword is used to define a constant integer in C++?"
+  options={['const', 'define', 'static', 'immutable']}
+  answer="const"
+/>
+
+<Question
+  question="12).What is the result of using an uninitialized local variable in C++?"
+  options={['Undefined behavior', 'It is set to 0', 'Compilation error', 'Null value']}
+  answer="Undefined behavior"
+/>
+
+<Question
+  question="13).What does the keyword `constexpr` indicate in C++?"
+  options={['A compile-time constant', 'A run-time constant', 'A variable', 'A pointer']}
+  answer="A compile-time constant"
+/>
+
+<Question
+  question="14).Which symbol is used to denote a reference variable in C++?"
+  options={['&', '*', '@', '#']}
+  answer="&"
+/>
+
+<Question
+  question="15).What will the following code output?"
+  code={`const int x = 5;\n// x = 10;\ncout << x;`}
+  options={['5', '10', 'Compilation Error', 'Runtime Error']}
+  answer="5"
+/>
+
+<Question
+  question="16).What is a variable in C++?"
+  options={['A name given to a storage location', 'A keyword', 'A type of function', 'None of the above']}
+  answer="A name given to a storage location"
+/>
+
+<Question
+  question="17).Which of the following statements is true about `static` variables in C++?"
+  options={['They retain value between function calls', 'They are reinitialized every time', 'They are global', 'They can’t be used in functions']}
+  answer="They retain value between function calls"
+/>
+
+<Question
+  question="18).Which of the following is not a valid variable name in C++?"
+  options={['_count', '2value', 'value_2', 'val2']}
+  answer="2value"
+/>
+
+<Question
+  question="19).Which keyword is used to create a symbolic constant in preprocessor?"
+  options={['#define', 'const', 'immutable', 'fixed']}
+  answer="#define"
+/>
+
+<Question
+  question="20).Which modifier limits the visibility of a variable to the file it is declared in?"
+  options={['static', 'const', 'extern', 'private']}
+  answer="static"
+/>
+
+<Question
+  question="21).Which of the following can be used to initialize a constant reference?"
+  options={['An lvalue', 'A temporary value', 'A literal', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="22).What is the scope of a global variable in C++?"
+  options={['Throughout the program', 'Inside one function', 'Inside one file', 'Only in main()']}
+  answer="Throughout the program"
+/>
+
+<Question
+  question="23).What does the `extern` keyword signify?"
+  options={['A variable is declared but defined elsewhere', 'It is a private variable', 'It is a constant', 'None of the above']}
+  answer="A variable is declared but defined elsewhere"
+/>
+
+<Question
+  question="24).What type will the variable `auto x = 42;` be?"
+  options={['int', 'float', 'double', 'Depends on compiler settings']}
+  answer="int"
+/>
+
+<Question
+  question="25).Can a constant variable be initialized later after its declaration?"
+  options={['No', 'Yes, only inside a function', 'Yes, with #define', 'Depends on the value']}
+  answer="No"
+/>
+
+<Question
+  question="26).What will this code produce?"
+  code={`int x = 10;\nint &ref = x;\nref = 20;\ncout << x;`}
+  options={['10', '20', 'Error', 'Undefined']}
+  answer="20"
+/>
+
+<Question
+  question="27).What does `static const int x = 100;` mean?"
+  options={['A constant with internal linkage', 'A global constant', 'An undefined constant', 'A pointer to const']}
+  answer="A constant with internal linkage"
+/>
+
+<Question
+  question="28).What happens if you try to modify a `const` variable?"
+  options={['Compile-time error', 'It modifies the value', 'Runtime warning', 'Nothing']}
+  answer="Compile-time error"
+/>
+
+<Question
+  question="29).Which of the following keywords is used to create a read-only constant at compile time?"
+  options={['constexpr', 'static', 'mutable', 'final']}
+  answer="constexpr"
+/>
+
+<Question
+  question="30).What is the output of the code below?"
+  code={`int x = 5;\nconst int* p = &x;\n// *p = 6;\ncout << *p;`}
+  options={['6', '5', 'Error', '0']}
+  answer="5"
+/>

@@ -8,12 +8,12 @@ keywords:
   - Object-Oriented Programming
   - Modern C++
   - Build Systems
+  - Introduction to C++
   - STL
   - Industry Best Practices
 slug: /cpp-tutorial
 sidebar_label: Comprehensive C++ Tutorial
 ---
-
 
 # Comprehensive C++ Tutorial with Practical Applications
 
@@ -26,7 +26,7 @@ Here’s a sneak peek of the topics we will cover:
 1. **Introduction to C++**
    - Overview of C++ and its importance
    - Modern applications of C++
-   - Key features from C++11 to C++20
+   - Key features from C++11 to C++20      
 
 2. **Setting Up the Environment**
    - Installing compilers and IDEs
