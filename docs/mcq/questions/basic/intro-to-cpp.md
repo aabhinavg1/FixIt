@@ -1,5 +1,5 @@
 ---
-title: Intro to the C++ Learning Guide
+title: Basic C++ MCQ
 keywords: 
 - C++
 - learning C++ 

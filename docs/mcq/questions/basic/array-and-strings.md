@@ -102,3 +102,127 @@ return 0;
     answer="int arr[3][3];"
   />
 
+  <Question
+    question="11).Which header file is needed to use the strlen() function in C++?"
+    options={['<string>', '<cstring>', '<cstdlib>', '<iostream>']}
+    answer="<cstring>"
+  />
+
+  <Question
+    question="12).How do you declare a string object in C++?"
+    options={['string s;', 'String s;', 'str s;', 'text s;']}
+    answer="string s;"
+  />
+
+  <Question
+    question="13).What is the index of the first element in a C++ array?"
+    options={['1', '0', '-1', 'Depends on array type']}
+    answer="0"
+  />
+
+  <Question
+    question="14).Which of these is a valid way to declare and initialize a string in C++?"
+    options={['string s("Hello");', 'string s = "Hello";', 'string s; s = "Hello";', 'All of the above']}
+    answer="All of the above"
+  />
+
+  <Question
+    question="15).What does the following code print?"
+    code={`string str = "Hello";\ncout << str.length();`}
+    options={['4', '5', '6', 'Error']}
+    answer="5"
+  />
+
+  <Question
+    question="16).Which of the following correctly copies one C++ string object to another?"
+    options={['s1 = s2;', 'strcpy(s1, s2);', 'copy(s1, s2);', 'None of the above']}
+    answer="s1 = s2;"
+  />
+
+  <Question
+    question="17).Which of the following is not a valid operation on a C++ string object?"
+    options={['Appending with +', 'Comparing with ==', 'Using strlen()', 'Using size()']}
+    answer="Using strlen()"
+  />
+
+  <Question
+    question="18).What will the following code output?"
+    code={`int arr[4] = {1, 2, 3};\ncout << arr[3];`}
+    options={['0', '3', 'Garbage value', 'Error']}
+    answer="0"
+  />
+
+  <Question
+    question="19).What does `sizeof(arr)/sizeof(arr[0])` give for an array?"
+    options={['Number of elements in arr', 'Size of first element', 'Total memory', 'None of the above']}
+    answer="Number of elements in arr"
+  />
+
+  <Question
+    question="20).How do you pass an array to a function in C++?"
+    options={['By value', 'By reference', 'As a pointer', 'All of the above']}
+    answer="All of the above"
+  />
+
+  <Question
+    question="21).What will this code output?"
+    code={`char str[] = "Hi";\ncout << sizeof(str);`}
+    options={['2', '3', '4', 'Undefined']}
+    answer="3"
+  />
+
+  <Question
+    question="22).Which of the following methods checks if a C++ string is empty?"
+    options={['str.empty()', 'str.isEmpty()', 'empty(str)', 'str == ""']}
+    answer="str.empty()"
+  />
+
+  <Question
+    question="23).What is the output of this code?"
+    code={`string s = "Code";\ns += "Sutra";\ncout << s;`}
+    options={['Code Sutra', 'CodeSutra', 'Error', 'SutraCode']}
+    answer="CodeSutra"
+  />
+
+  <Question
+    question="24).Which function is used to compare two strings in C-style?"
+    options={['strcmp()', 'compare()', 'equals()', '==']}
+    answer="strcmp()"
+  />
+
+  <Question
+    question="25).Which function returns the capacity of a C++ string?"
+    options={['size()', 'length()', 'capacity()', 'max_size()']}
+    answer="capacity()"
+  />
+
+  <Question
+    question="26).What will this code return?"
+    code={`int arr[5] = {10, 20, 30, 40, 50};\ncout << arr[4];`}
+    options={['40', '50', '60', 'Error']}
+    answer="50"
+  />
+
+  <Question
+    question="27).Which function appends a string at the end of another in C++ STL?"
+    options={['append()', 'push()', 'add()', 'concat()']}
+    answer="append()"
+  />
+
+  <Question
+    question="28).How many dimensions can an array in C++ have?"
+    options={['Up to 2', 'Up to 3', 'Up to 10', 'As many as memory allows']}
+    answer="As many as memory allows"
+  />
+
+  <Question
+    question="29).What is the default value of an int array element in C++ (non-static, uninitialized)?"
+    options={['0', 'Garbage value', 'null', 'Undefined']}
+    answer="Garbage value"
+  />
+
+  <Question
+    question="30).Which keyword is used to get the number of characters in a string in C++?"
+    options={['length', 'size', 'length()', 'None of the above']}
+    answer="length()"
+  />
