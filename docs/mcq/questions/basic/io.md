@@ -1,5 +1,5 @@
 ---
-title: Input Output C++ Learning Guide
+title: Input Output C++ MCQs
 keywords: 
 - C++
 - learning C++ 

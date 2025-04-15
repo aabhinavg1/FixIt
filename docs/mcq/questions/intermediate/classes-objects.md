@@ -132,3 +132,133 @@ import { Question } from '../../Question';
   options={['Destructor', 'Constructor', 'Friend function', 'None of the above']}
   answer="Destructor"
 />
+
+<Question
+  question="11).What is constructor overloading in C++?"
+  options={['Using multiple constructors with different parameters', 'Using multiple constructors with same parameters', 'Using constructor in a loop', 'None of the above']}
+  answer="Using multiple constructors with different parameters"
+/>
+
+<Question
+  question="12).Which of the following is true about destructors in C++?"
+  options={['They have the same name as class preceded with ~', 'They can be overloaded', 'They can have parameters', 'They return a value']}
+  answer="They have the same name as class preceded with ~"
+/>
+
+<Question
+  question="13).What is the output of accessing a private member of a class directly outside the class?"
+  options={['Compile-time error', 'Runtime error', 'Zero', 'Undefined behavior']}
+  answer="Compile-time error"
+/>
+
+<Question
+  question="14).Which of the following can access private members of a class?"
+  options={['Friend function', 'Public member function', 'Constructor', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="15).How many times is a constructor called?"
+  options={['Once when the object is created', 'Every time a function is called', 'When the class is declared', 'None of the above']}
+  answer="Once when the object is created"
+/>
+
+<Question
+  question="16).Which of the following allows data sharing between two objects of the same class?"
+  options={['Static members', 'Private members', 'Constructor', 'Destructor']}
+  answer="Static members"
+/>
+
+<Question
+  question="17).Which of the following is true about a static member function?"
+  options={['It can be called using class name', 'It can access only static members', 'It doesn’t need an object to be called', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="18).How can you make a function inline in a class?"
+  options={['Define it inside the class definition', 'Use the inline keyword outside class', 'Declare it as static', 'None of the above']}
+  answer="Define it inside the class definition"
+/>
+
+<Question
+  question="19).What does the `this` pointer represent in a class?"
+  options={['Current object’s address', 'Class’s base address', 'Address of derived object', 'None of the above']}
+  answer="Current object’s address"
+/>
+
+<Question
+  question="20).What is the purpose of using 'const' after a member function declaration?"
+  options={['To prevent the function from modifying class members', 'To protect the return type', 'To make the class immutable', 'None of the above']}
+  answer="To prevent the function from modifying class members"
+/>
+
+<Question
+  question="21).What is an object in C++?"
+  options={['An instance of a class', 'A function call', 'A template', 'A header file']}
+  answer="An instance of a class"
+/>
+
+<Question
+  question="22).Can a class have a pointer to itself?"
+  options={['Yes', 'No', 'Only for friend classes', 'Only for static classes']}
+  answer="Yes"
+/>
+
+<Question
+  question="23).What is the output of the following code?"
+  code={`class A {
+  public:
+    A() { cout << "A"; }
+    ~A() { cout << "B"; }
+};
+
+int main() {
+  A obj;
+  return 0;
+}`}
+  options={['A', 'B', 'AB', 'BA']}
+  answer="AB"
+/>
+
+<Question
+  question="24).Which operator is used to overload class behavior in C++?"
+  options={['::', '->', 'new', 'operator']}
+  answer="operator"
+/>
+
+<Question
+  question="25).How is memory allocated to class objects in C++?"
+  options={['During object creation', 'At compile time', 'Only if constructor is defined', 'Manually using malloc']}
+  answer="During object creation"
+/>
+
+<Question
+  question="26).What is the role of a copy constructor in a class?"
+  options={['It creates a new object as a copy of an existing object', 'It assigns default values', 'It calls the destructor', 'None of the above']}
+  answer="It creates a new object as a copy of an existing object"
+/>
+
+<Question
+  question="27).Which of the following keywords is used to make a class member accessible to derived classes but not outside?"
+  options={['protected', 'private', 'public', 'friend']}
+  answer="protected"
+/>
+
+<Question
+  question="28).Which of the following is a user-defined type?"
+  options={['class', 'int', 'float', 'bool']}
+  answer="class"
+/>
+
+<Question
+  question="29).What is the size of an empty class in C++?"
+  options={['1 byte', '0 byte', 'Depends on compiler', 'Undefined']}
+  answer="1 byte"
+/>
+
+<Question
+  question="30).Which of the following best describes encapsulation?"
+  options={['Wrapping data and functions into a single unit', 'Separating logic from data', 'Inheriting members from another class', 'Overloading operators']}
+  answer="Wrapping data and functions into a single unit"
+/>

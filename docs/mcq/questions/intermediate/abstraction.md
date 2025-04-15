@@ -128,3 +128,129 @@ import { Question } from '../../Question';
   options={['Using interfaces', 'Using private members', 'Using inline functions', 'None of the above']}
   answer="Using interfaces"
 />
+
+<Question
+  question="11).Which of the following makes a class abstract in C++?"
+  options={['At least one pure virtual function', 'All methods must be private', 'It inherits another class', 'It uses virtual inheritance']}
+  answer="At least one pure virtual function"
+/>
+
+<Question
+  question="12).How do you declare a pure virtual function?"
+  options={['virtual void func();', 'virtual void func() = 0;', 'void virtual func();', 'pure virtual void func();']}
+  answer="virtual void func() = 0;"
+/>
+
+<Question
+  question="13).Can you have pointers to abstract classes?"
+  options={['Yes', 'No', 'Only if they point to derived classes', 'Only inside main()']}
+  answer="Yes"
+/>
+
+<Question
+  question="14).What is the purpose of a pure virtual destructor?"
+  options={['To prevent deletion of derived objects', 'To enforce destruction through base pointers', 'To make the class abstract and allow cleanup', 'None of the above']}
+  answer="To make the class abstract and allow cleanup"
+/>
+
+<Question
+  question="15).What is the output of this C++ code?"
+  code={`class A {
+public:
+    virtual void show() = 0;
+};
+
+class B : public A {};`}
+  options={['No error', 'Compiler error', 'Runtime error', 'Undefined behavior']}
+  answer="Compiler error"
+/>
+
+<Question
+  question="16).Can an abstract class have member variables?"
+  options={['Yes', 'No', 'Only static members', 'Only private members']}
+  answer="Yes"
+/>
+
+<Question
+  question="17).Which of the following statements is true about abstract classes?"
+  options={['You can’t create a pointer to them', 'They must only contain pure virtual functions', 'They can have both implemented and pure virtual methods', 'They can’t be inherited']}
+  answer="They can have both implemented and pure virtual methods"
+/>
+
+<Question
+  question="18).How can abstraction be achieved in C++?"
+  options={['Using classes and access specifiers', 'Using templates', 'Using friend functions', 'Using arrays']}
+  answer="Using classes and access specifiers"
+/>
+
+<Question
+  question="19).Which of the following C++ features supports abstraction the most?"
+  options={['Operator overloading', 'Inheritance', 'Polymorphism', 'Access specifiers']}
+  answer="Access specifiers"
+/>
+
+<Question
+  question="20).In C++, which type of member function helps in abstraction?"
+  options={['Friend function', 'Virtual function', 'Inline function', 'Global function']}
+  answer="Virtual function"
+/>
+
+<Question
+  question="21).Which statement is true about abstract base classes in C++?"
+  options={['They must be inherited', 'They can only have private members', 'They are instantiated directly', 'They can’t have a constructor']}
+  answer="They must be inherited"
+/>
+
+<Question
+  question="22).What is the role of a virtual table (vtable) in abstraction?"
+  options={['It stores abstract classes', 'It maintains a list of all base classes', 'It helps resolve function calls at runtime', 'It enables template instantiation']}
+  answer="It helps resolve function calls at runtime"
+/>
+
+<Question
+  question="23).Can you override a pure virtual function in a derived class?"
+  options={['Yes, it’s mandatory', 'No, it must remain pure', 'Only in private scope', 'Only if declared inline']}
+  answer="Yes, it’s mandatory"
+/>
+
+<Question
+  question="24).What is the result if a derived class does not override all pure virtual functions of the base class?"
+  options={['It becomes abstract itself', 'It throws a runtime error', 'It compiles but fails to run', 'None of the above']}
+  answer="It becomes abstract itself"
+/>
+
+<Question
+  question="25).Which of the following access specifiers is most useful in achieving abstraction?"
+  options={['private', 'public', 'protected', 'inline']}
+  answer="private"
+/>
+
+<Question
+  question="26).Which of these best demonstrates abstraction?"
+  options={['A function that performs I/O operations', 'A class with only private data and public methods', 'A global variable', 'A static function']}
+  answer="A class with only private data and public methods"
+/>
+
+<Question
+  question="27).Is it possible to create an array of pointers to an abstract base class?"
+  options={['Yes, if they point to derived class objects', 'No', 'Only if the base class is not pure virtual', 'Only in templates']}
+  answer="Yes, if they point to derived class objects"
+/>
+
+<Question
+  question="28).Which of the following is NOT related to abstraction?"
+  options={['Encapsulation', 'Hiding details', 'Function overloading', 'Interface design']}
+  answer="Function overloading"
+/>
+
+<Question
+  question="29).What type of error will occur if you don’t override a pure virtual function in a concrete class?"
+  options={['Syntax error', 'Runtime error', 'Compiler error', 'Linker error']}
+  answer="Compiler error"
+/>
+
+<Question
+  question="30).How does abstraction improve software design?"
+  options={['Increases memory usage', 'Improves data visibility', 'Reduces complexity by hiding internal implementation', 'Allows access to low-level system calls']}
+  answer="Reduces complexity by hiding internal implementation"
+/>
