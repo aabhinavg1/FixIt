@@ -1,3 +1,43 @@
+---
+id: intro
+
+title: Standars in C++
+
+description: Overview of the C++11 standard, introducing modern features such as auto type deduction, lambda expressions, range-based for loops, smart pointers, and enhancements to performance and code clarity in C++ programming.
+
+keywords:
+- C++11
+- Modern C++
+- C++ Standards
+- Lambda Expressions
+- Smart Pointers
+- auto Keyword
+- Range-based for Loop
+- Rvalue References
+- Move Semantics
+- nullptr
+- Type Inference
+- Uniform Initialization
+- C++ Performance
+- C++ Features
+- C++ Evolution
+
+tags: 
+- C++
+- C++11
+- Programming Languages
+- Modern C++
+- C++ Features
+- Object-Oriented Programming
+- Language Standards
+- Software Development
+- C++ Syntax
+- Code Optimization
+- Static Typing
+- Memory Management
+- Compiler Features
+- Type Inference
+---
 # 🌟 Standard C++ Topics
 
 Welcome to the essential section of C++ programming! Here, you’ll learn about the C++ Standard Library and the conventions that will help you write more efficient and effective code.

@@ -1,3 +1,51 @@
+---
+id: optimization
+title: C++ Optimization Techniques
+description: |
+  Discover essential C++ optimization techniques to write faster, more efficient, and memory-conscious programs. This guide covers compile-time and run-time optimizations, cache-aware programming, memory layout strategies, algorithmic improvements, and compiler-level tuning. Ideal for performance-critical applications in systems programming, gaming, embedded development, and competitive coding.
+keywords:
+  - C++ Optimization
+  - Performance Tuning in C++
+  - C++ Memory Optimization
+  - Cache-Friendly Programming
+  - Compiler Optimizations
+  - Inline Functions in C++
+  - Loop Unrolling in C++
+  - Move Semantics Optimization
+  - STL Optimization Techniques
+  - C++ Efficiency Tips
+  - Time Complexity in C++
+  - C++ Speed Hacks
+  - Performance-Critical C++
+  - C++ Benchmarking
+  - High-Performance C++ Code
+  - Avoiding Memory Leaks
+  - CPU Cache Optimization
+  - Profiling Tools for C++
+  - Modern C++ Optimization
+
+tags:
+  - C++ Optimization
+  - Performance Tuning
+  - Memory Efficiency
+  - Cache Optimization
+  - Compiler Flags
+  - Loop Unrolling
+  - STL Optimization
+  - Move Semantics
+  - Inline Functions
+  - Fast C++ Code
+  - C++ Benchmarking
+  - Time and Space Complexity
+  - Profiling C++ Code
+  - High-Performance C++
+  - Competitive Programming
+  - System-Level C++
+  - Embedded Optimization
+  - Real-Time C++
+  - Optimization Techniques
+---
+
 import { Question } from '../../Question';
 
 # C++ Optimization Techniques

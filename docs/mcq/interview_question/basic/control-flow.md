@@ -10,6 +10,24 @@ keywords:
   - Conditional Statements in C++
   - Loops and Control Flow in C++
   - C++ Jump Statements Guide
+tags:
+  - Control Flow
+  - Conditional Statements
+  - Loops
+  - If-Else
+  - Switch Statements
+  - For Loops
+  - While Loops
+  - Do-While Loops
+  - Branching
+  - Program Logic
+  - Flow Control
+  - Decision Making
+  - Algorithm Design
+  - Loop Optimization
+  - Code Structure
+  - Programming Fundamentals
+  - Iteration
 ---
 
 # Essential C++ Interview Questions for Freshers

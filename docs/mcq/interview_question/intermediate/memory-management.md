@@ -1,19 +1,48 @@
 ---
-title: "Essential C++ Interview Questions(Memory Management)"
-description: "Prepare for C++ interviews with this guide to essential C++ interview questions on memory management. Learn about dynamic memory allocation, smart pointers, memory leaks, and best practices."
+id: memory-management
+title: Essential C++ Interview Questions on Memory Management
+description: |
+  This guide focuses on essential C++ interview questions related to memory management. Learn about dynamic memory allocation, memory leaks, pointers, smart pointers, memory deallocation, and garbage collection in C++. These concepts are crucial for any C++ developer and are commonly tested in interviews. Prepare to answer questions on stack vs heap memory, memory optimization techniques, and more.
 keywords:
-- "C++ Interview Questions"
-- "C++ Memory Management"
-- "C++ MCQ for Placement"
-- "C++ Dynamic Allocation"
-- "C++ MCQ for Placement"
-- "C++ Smart Pointers"
-- "C++ Memory Leaks"
-- "C++ Heap vs Stack"
-- "C++ new and delete"
-- "C++ Best Practices"
-- "C++ Memory Optimization"
-- "Master C++ Memory Management Concepts"
+  - C++ Interview Questions
+  - Memory Management in C++
+  - C++ Pointers
+  - Dynamic Memory Allocation in C++
+  - Memory Deallocation
+  - C++ Memory Leaks
+  - C++ Smart Pointers
+  - C++ Stack and Heap
+  - C++ Memory Optimization
+  - C++ Garbage Collection
+  - C++ Memory Allocation
+  - C++ Memory Management Best Practices
+  - C++ Memory Management Interview
+  - C++ New and Delete Operators
+  - C++ Memory Pooling
+  - C++ Destructor and Destructor Calls
+  - C++ Memory Usage
+  - C++ Interview Preparation
+
+tags:
+  - C++ Interview Questions
+  - Memory Management in C++
+  - C++ Pointers
+  - Dynamic Memory Allocation
+  - C++ Memory Leaks
+  - C++ Smart Pointers
+  - Stack and Heap in C++
+  - C++ Memory Deallocation
+  - C++ Garbage Collection
+  - Memory Management Techniques
+  - C++ Memory Allocation
+  - C++ Memory Management Best Practices
+  - C++ Interview Preparation
+  - C++ New and Delete
+  - C++ Memory Optimization
+  - C++ Destructor Calls
+  - C++ Performance Optimization
+  - C++ Memory Pooling
+
 ---
 
 # **Essential C++ Interview Questions on Memory Management**

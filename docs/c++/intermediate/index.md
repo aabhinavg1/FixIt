@@ -1,3 +1,55 @@
+---
+id: IntermediateCpp
+title: Intermediate C++ - Dive Deeper into Advanced C++ Concepts
+description: |
+  Take your C++ skills to the next level with this intermediate-level tutorial. Explore topics such as object-oriented programming (OOP), advanced memory management, pointers, templates, and the Standard Template Library (STL). This guide is ideal for programmers who are familiar with the basics of C++ and are looking to master more complex aspects of the language to write efficient, optimized code.
+keywords:
+  - Intermediate C++
+  - C++ Advanced Concepts
+  - Object-Oriented Programming
+  - Memory Management in C++
+  - C++ Templates
+  - C++ Standard Template Library (STL)
+  - C++ Smart Pointers
+  - C++ Lambda Expressions
+  - C++ Inheritance
+  - C++ Polymorphism
+  - C++ Exception Handling
+  - C++ Multithreading
+  - C++ File I/O
+  - C++ Data Structures
+  - C++ Algorithms
+  - C++ Design Patterns
+  - C++ Function Pointers
+  - C++ Type Casting
+  - C++ Template Specialization
+  - C++ Move Semantics
+
+tags:
+  - Intermediate C++
+  - Advanced C++ Concepts
+  - Object-Oriented Programming (OOP)
+  - Memory Management
+  - C++ Templates
+  - C++ STL
+  - C++ Smart Pointers
+  - C++ Lambda Expressions
+  - C++ Inheritance
+  - C++ Polymorphism
+  - C++ Exception Handling
+  - Multithreading in C++
+  - C++ File I/O
+  - C++ Algorithms
+  - C++ Design Patterns
+  - Function Pointers in C++
+  - C++ Type Casting
+  - C++ Move Semantics
+  - C++ Data Structures
+  - C++ for Intermediate Programmers
+  - C++ Performance Optimization
+  - C++ Memory Management Techniques
+
+---
 # 🌟 Intermediate C++ Topics
 
 Welcome back to your C++ programming journey! This section is filled with more complex concepts that will deepen your understanding and sharpen your coding skills.

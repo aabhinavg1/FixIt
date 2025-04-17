@@ -1,4 +1,30 @@
+---
+id: IntroductionToCompilers
+title: Introduction to Compilers - Understanding the Basics and Functionality
+description: |
+  Get an overview of compiler fundamentals in this beginner-friendly guide. Learn the essential stages of compilation, the role of a compiler in software development, and how it transforms human-readable code into machine-readable instructions. This guide is perfect for newcomers to programming and compiler design.
+keywords:
+  - Compiler
+  - Compilation Process
+  - Compiler Basics
+  - Programming Languages
+  - Code Transformation
+  - Code Generation
+  - Syntax Analysis
+  - Compiler Phases
+  - Compiler Theory
+  - Software Development
+  - Machine Code
+tags:
+  - Compiler Basics
+  - Programming
+  - Software Development
+  - Compiler Theory
+  - Code Transformation
+  - Programming Languages
 
+
+---
 # Introduction to Compilers
 
 ## What is a Compiler?

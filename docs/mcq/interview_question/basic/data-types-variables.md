@@ -8,6 +8,29 @@ keywords:
   - Programming Interview Preparation
   - C++ Concepts Explained
   - Data Types and Variables in C++
+tags:
+  - Data Types
+  - Variables
+  - Primitive Data Types
+  - Integer
+  - Float
+  - Double
+  - Char
+  - Boolean
+  - String
+  - Variable Declaration
+  - Variable Scope
+  - Type Casting
+  - Constants
+  - Data Structures
+  - Type Inference
+  - Dynamic Typing
+  - Static Typing
+  - Memory Allocation
+  - Variable Initialization
+  - Type Safety
+  - Variable Naming
+
 ---
 
 # Essential C++ Interview Questions for Freshers

@@ -1,3 +1,45 @@
+---
+id: smart-pointers
+title: Smart Pointers in C++
+description: |
+  Learn about smart pointers in C++, a modern and safe way to manage dynamic memory. This guide covers `unique_ptr`, `shared_ptr`, and `weak_ptr`, explaining ownership semantics, memory safety, and use-cases to prevent memory leaks and dangling pointers. Ideal for developers transitioning from raw pointers to modern C++ practices.
+keywords:
+  - Smart Pointers in C++
+  - C++ unique_ptr
+  - C++ shared_ptr
+  - C++ weak_ptr
+  - Dynamic Memory Management
+  - Memory Safety in C++
+  - C++ Ownership Semantics
+  - Avoid Memory Leaks in C++
+  - RAII in C++
+  - C++ Resource Management
+  - C++ Best Practices
+  - Modern C++ Memory Handling
+  - Pointer Alternatives
+  - Automatic Memory Cleanup
+  - C++11 Smart Pointers
+  - C++ Reference Counting
+  - Safe Memory Allocation
+
+tags:
+  - Smart Pointers
+  - unique_ptr
+  - shared_ptr
+  - weak_ptr
+  - C++ Memory Management
+  - RAII
+  - Modern C++
+  - C++ Best Practices
+  - Automatic Resource Management
+  - Safe Pointer Usage
+  - Memory Safety
+  - C++11 Features
+  - C++ Resource Ownership
+  - No Memory Leaks
+  - Reference Counting
+
+---
 import { Question } from '../../Question';
 
 # Smart Pointers

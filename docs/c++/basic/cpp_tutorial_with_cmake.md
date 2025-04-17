@@ -1,22 +1,40 @@
 ---
-id: cpp_tutorial_with_cmake
-title: Comprehensive C++ Tutorial with Basic CMake
-description: Learn the basics of C++ and set up a CMake project from scratch. Understand the importance of C++ in modern development, including object-oriented programming, modern C++ features, and how CMake simplifies building and managing projects.
-keywords: 
-  - C++ tutorial
-  - C++ basics
-  - C++ build systems
-  - CMake tutorial
-  - Object-Oriented Programming
-  - Modern C++
-  - STL
-  - Industry best practices
-author: CompilerSutra
-date: 2024-10-09
-tags: 
+id: cpp-tutorial-with-cmake
+title: C++ Tutorial with CMake
+description: |
+  This tutorial provides a complete walkthrough of setting up and building C++ projects using CMake. Learn the basics of creating `CMakeLists.txt` files, organizing project structure, linking libraries, and compiling code efficiently. Ideal for beginners and intermediate developers who want to modernize their C++ development workflow using CMake.
+keywords:
   - C++
   - CMake
-  - build systems
+  - CMake Tutorial
+  - Modern C++ Development
+  - C++ Project Structure
+  - C++ Build System
+  - CMakeLists
+  - Linking Libraries
+  - C++ Compilation
+  - Build Automation
+  - Cross-Platform Development
+  - C++ Tools
+  - C++ Workflow
+  - CMake for Beginners
+  - C++ Project Setup
+
+tags:
+  - C++
+  - CMake
+  - Build System
+  - CMakeLists
+  - Linking Libraries
+  - Project Setup
+  - Build Automation
+  - Cross-Platform
+  - Modern C++ Workflow
+  - C++ Compilation
+  - Cpp CMake
+
+author: CompilerSutra
+date: 2024-10-09
 slug: /cpp_tutorial_with_cmake
 sidebar_label: cpp_tutorial_with_cmake 
 ---

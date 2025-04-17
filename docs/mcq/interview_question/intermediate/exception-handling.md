@@ -1,18 +1,48 @@
 ---
-title: "C++ Interview Questions(Exception Handling)"
-description: "Prepare for C++ interviews with this guide to essential C++ interview questions on exception handling. Learn about try-catch blocks, exception hierarchy, custom exceptions, and best practices."
+id: CppInterviewQuestionsExceptionHandling
+title: C++ Interview Questions on Exception Handling
+description: |
+  This guide covers essential C++ interview questions on exception handling, an important feature in C++ for handling runtime errors and ensuring program stability. Learn how to use try, catch, throw, and custom exception classes. Understand exception safety, the types of exceptions, and how to properly manage exceptions in your C++ code to prevent crashes and undefined behavior. This guide will help you prepare for technical interviews focused on error handling and robust program design.
 keywords:
-- "C++ Interview Questions"
-- "C++ MCQ for Placement"
-- "C++ Exception Handling"
-- "C++ Try Catch"
-- "C++ Error Handling"
-- "C++ Custom Exceptions"
-- "Exception Safety in C++"
-- "C++ Standard Exceptions"
-- "C++ Exception Hierarchy"
-- "C++ Interview Guide"
-- "Master C++ Exception Handling Concepts"
+  - C++ Interview Questions
+  - Exception Handling in C++
+  - C++ Try Catch Block
+  - C++ Throw Statement
+  - C++ Custom Exceptions
+  - C++ Exception Safety
+  - C++ Exception Handling Best Practices
+  - C++ Exception Hierarchy
+  - C++ Standard Exception Class
+  - C++ Exception Handling Interview
+  - C++ Runtime Errors
+  - C++ Error Handling
+  - C++ Exception Types
+  - C++ Exception Handling Techniques
+  - C++ Throwing Exceptions
+  - C++ Catching Exceptions
+  - C++ Handling Multiple Exceptions
+  - C++ RAII in Exception Handling
+  - C++ Interview Preparation
+
+tags:
+  - C++ Interview Questions
+  - Exception Handling in C++
+  - C++ Try Catch
+  - C++ Throw Statement
+  - C++ Custom Exceptions
+  - C++ Exception Safety
+  - C++ Error Handling
+  - C++ Exception Hierarchy
+  - C++ Standard Exception Class
+  - C++ Exception Types
+  - C++ Exception Handling Techniques
+  - C++ Runtime Errors
+  - C++ Exception Handling Best Practices
+  - C++ RAII
+  - C++ Multiple Exceptions
+  - C++ Interview Preparation
+  - C++ Error Management
+
 ---
 
 # **Essential C++ Interview Questions on Exception Handling**

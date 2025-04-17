@@ -2,13 +2,45 @@
 title: "Recursion"
 description: "Explore recursion in C++ with examples, base and recursive cases, and how it can be used to solve problems."
 keywords:
-  - Recursion in C++
-  - C++ MCQ for Placement
-  - C++ Recursive Functions
+  - Recursion
+  - Recursive Functions
+  - Base Case
+  - Recursive Call
+  - Algorithm Design
+  - Divide and Conquer
+  - Backtracking
+  - Stack
+  - Function Call Stack
+  - Depth-First Search (DFS)
+  - Tail Recursion
+  - Memoization
+  - Dynamic Programming
+  - Recursive Tree
+  - Problem Solving
+  - Divide and Conquer Algorithm
   - Recursive Algorithms
-  - Base and Recursive Case
-  - Programming Interview Preparation
-  - C++ Concepts for Interviews
+  - Recursion vs Iteration
+
+tags:
+  - Recursion
+  - Recursive Functions
+  - Base Case
+  - Algorithm Design
+  - Problem Solving
+  - Divide and Conquer
+  - Backtracking
+  - Function Call Stack
+  - Stack
+  - Depth-First Search
+  - Tail Recursion
+  - Memoization
+  - Dynamic Programming
+  - Recursive Algorithms
+  - Recursive Tree
+  - Recursive Problem Solving
+  - Algorithm Optimization
+  - Recursion vs Iteration
+
 ---
 # Question on the Recursion in C++
 

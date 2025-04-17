@@ -1,24 +1,45 @@
 ---
+id: intro-to-cpp
 title: Basic C++ MCQ
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+description: |
+  Test your knowledge of basic C++ concepts with this set of multiple choice questions (MCQs). Covering topics like variables, functions, pointers, control flow, and loops, this quiz is designed for beginners and those preparing for C++ interviews. A great way to assess your understanding of fundamental C++ programming concepts and prepare for real-world challenges.
+keywords:
+  - C++
+  - learning C++
+  - basics
+  - cpp mcq
+  - cpp mcq questions
+  - cpp interview questions
+  - c++ mcq
+  - advanced c++ interview questions
+  - c++ mcq questions and answers
+  - C++ programming
+  - cpp mcqs
+  - mcq in c++
+  - variables
+  - functions
+  - c++ mcq test
+  - pointers
+  - control flow
+  - loops
+
+tags:
+  - C++ Basics
+  - C++ MCQs
+  - C++ Interview Questions
+  - Programming Quiz
+  - C++ Functions
+  - C++ Variables
+  - C++ Pointers
+  - Control Flow in C++
+  - C++ Loops
+  - Beginner C++
+  - C++ Programming Test
+  - C++ Syntax
+  - C++ Coding Challenge
+  - Learning C++
+  - C++ Programming Fundamentals
+
 ---
 
 import { Question } from '../../Question';  // Adjust the path to your Question.js component

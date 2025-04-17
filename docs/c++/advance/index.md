@@ -1,3 +1,45 @@
+---
+title: Advanced C++
+
+description: A deep dive into advanced C++ concepts including templates, memory management, STL, metaprogramming, move semantics, and modern best practices introduced in C++11 and beyond.
+
+id: advanced-cpp
+
+tags:
+- C++  
+- Advanced C++  
+- C++11  
+- C++14  
+- C++17  
+- Templates  
+- STL  
+- Memory Management  
+- Modern C++  
+- Move Semantics  
+- Multithreading  
+- Smart Pointers  
+- Lambda Functions  
+- Compile-Time Programming  
+- Object-Oriented Programming
+
+keywords:
+- Advanced C++ Tutorials  
+- Template Programming in C++  
+- C++ Memory Management  
+- C++ STL Advanced  
+- Move Semantics Explained  
+- Smart Pointers in C++  
+- Multithreading in C++  
+- Lambda Expressions  
+- C++11 Features  
+- Compile-Time Metaprogramming  
+- Best Practices in Modern C++  
+- Type Inference  
+- RAII in C++  
+- Function Objects and Functors  
+- Advanced Object-Oriented Concepts
+
+---
 # 🌟 Advanced C++ Topics
 
 Welcome to the advanced realm of C++ programming! This section is designed for experienced programmers ready to take their skills to the next level.

@@ -1,25 +1,47 @@
 ---
 id: basic
 title: Basic C++ Learning Guide
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+description: |
+  Start your journey into C++ with this basic learning guide. Covering fundamental topics such as data types, operators, control flow, functions, and object-oriented programming, this guide provides a solid foundation for anyone new to programming or transitioning to C++. It's designed for beginners who want to grasp core C++ concepts and start building simple programs quickly.
+keywords:
+  - C++ Basics
+  - C++ for Beginners
+  - Data Types in C++
+  - C++ Operators
+  - Control Flow in C++
+  - Functions in C++
+  - Object-Oriented Programming C++
+  - C++ Loops
+  - Conditional Statements C++
+  - Arrays in C++
+  - C++ Syntax
+  - Introduction to C++
+  - C++ Variables
+  - C++ Operators and Expressions
+  - C++ Program Structure
+  - C++ Functions and Methods
+  - Beginner C++ Tutorials
+  - Simple C++ Programs
+  - First C++ Program
+
+tags:
+  - C++ Basics
+  - Beginner C++
+  - Data Types
+  - C++ Operators
+  - Control Flow
+  - Loops in C++
+  - Conditional Statements
+  - Functions in C++
+  - OOP Basics
+  - C++ Syntax
+  - Arrays
+  - C++ for Beginners
+  - Intro to C++
+  - C++ Program Structure
+  - Learning C++ Step-by-Step
+  - C++ Programming Fundamentals
+
 ---
 
 # Learning Basic C++
@@ -41,7 +63,7 @@ Welcome to the journey of learning C++! Here are some key topics that will help 
 5. **[Arrays and Strings](array-and-strings.md)**  
    Explore arrays and strings, which are essential for handling collections of data in C++.
 
-6. **[Pointers and Strings](pointers-strings.md)**  
+6. [Pointers and Strings](pointers-strings.md)**  
    Understand pointers in C++ and how they relate to memory management, as well as how to manipulate strings.
 
 7. **[Control Flow](control-flow.md)**  

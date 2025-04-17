@@ -1,3 +1,45 @@
+---
+id: multithreading
+title: Multi-threading Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge of multi-threading with this set of Multiple Choice Questions (MCQs). Learn about thread creation, synchronization, race conditions, thread safety, deadlock, and various concurrency mechanisms. These questions help reinforce your understanding of multi-threading concepts and their application in building efficient and thread-safe applications.
+keywords:
+  - Multi-threading
+  - Thread Creation
+  - Synchronization
+  - Thread Safety
+  - Deadlock
+  - Race Conditions
+  - Thread Pools
+  - Concurrency Mechanisms
+  - Synchronization Primitives
+  - Mutex
+  - Condition Variables
+  - Parallelism
+  - Multi-threading MCQs
+  - Concurrency Concepts
+  - Thread Management
+  - Parallel Programming
+  - Concurrency Test
+
+tags:
+  - Multi-threading
+  - Thread Creation
+  - Synchronization
+  - Thread Safety
+  - Deadlock
+  - Race Conditions
+  - Thread Pools
+  - Concurrency Mechanisms
+  - Mutex
+  - Condition Variables
+  - Parallelism
+  - Concurrency MCQs
+  - Thread Management
+  - Parallel Programming
+  - Concurrency Concepts
+
+---
 import { Question } from '../../Question';
 
 # Multi-threading

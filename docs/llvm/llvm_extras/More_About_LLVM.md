@@ -9,6 +9,25 @@ keywords:
   - "compiler framework"
   - "SSA"
   - "LLVM architecture"
+
+tags: 
+- LLVM
+- Compiler Design
+- Intermediate Representation
+- Code Optimization
+- Static Analysis
+- Code Generation
+- Low-Level Programming
+- IR Passes
+- Programming Tools
+- Backend Development
+- Systems Programming
+- Toolchain
+- JIT Compilation
+- Code Transformation
+- Open Source
+
+
 ---
 
 # 🔍 Unlocking the Power of LLVM

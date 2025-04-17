@@ -1,18 +1,44 @@
 ---
-title: "Classes and Objects"
-description: "Prepare for C++ interviews with our in-depth guide to essential C++ interview questions on classes and objects. Learn key OOP concepts, encapsulation, constructors, destructors, and object-oriented programming in C++. Ideal for beginners and professionals."
+id: ClassesObjects
+title: Classes and Objects
+description: |
+  This guide focuses on essential C++ interview questions about classes and objects — the fundamental building blocks of object-oriented programming. Learn how classes encapsulate data and behavior, how to create and manipulate objects, and understand key concepts like member functions, access specifiers, constructors, destructors, and more. Prepare for interviews by mastering class design, object instantiation, and object-oriented principles in C++.
 keywords:
-- "C++ Interview Questions"
-- "C++ MCQ for Placement"
-- "C++ Classes and Objects"
-- "C++ OOP Concepts"
-- "Encapsulation in C++"
-- "C++ Constructors and Destructors"
-- "C++ Object-Oriented Programming"
-- "OOP in C++ Interview"
-- "C++ Class Design"
-- "C++ Interview Guide"
-- "Master C++ OOP Concepts"
+  - C++ Interview Questions
+  - Classes and Objects in C++
+  - C++ Class Definition
+  - C++ Object Instantiation
+  - C++ Member Functions
+  - C++ Access Specifiers
+  - C++ Public Private Protected
+  - C++ Object-Oriented Programming
+  - C++ Constructors and Destructors
+  - C++ Class Best Practices
+  - C++ Data Members
+  - C++ Encapsulation
+  - C++ Class Design
+  - C++ Instance Variables
+  - C++ Interview Preparation
+  - C++ Code Reusability
+  - C++ Class Declaration
+
+tags:
+  - C++ Interview Questions
+  - Classes in C++
+  - Objects in C++
+  - Object-Oriented Programming
+  - C++ Member Functions
+  - Access Specifiers in C++
+  - Public Private Protected in C++
+  - Constructors and Destructors
+  - Encapsulation in C++
+  - C++ Class Design
+  - C++ Object Instantiation
+  - C++ Instance Variables
+  - C++ Data Members
+  - C++ Reusability
+  - C++ Interview Preparation
+
 ---
 
 # **Essential C++ Interview Questions on Classes and Objects**

@@ -1,3 +1,50 @@
+---
+id: algorithm
+title: C++ and Algorithms
+description: |
+  This guide explores the use of C++ for implementing a wide range of algorithms, from basic sorting and searching to advanced graph, dynamic programming, and greedy techniques. Understand how the Standard Template Library (STL) supports algorithm development and boosts performance. Ideal for coding interview prep, competitive programming, and building a strong foundation in problem-solving using C++.
+keywords:
+  - Algorithms in C++
+  - C++ STL Algorithms
+  - C++ Sorting Algorithms
+  - C++ Searching Algorithms
+  - Graph Algorithms in C++
+  - Dynamic Programming in C++
+  - C++ Greedy Algorithms
+  - C++ Backtracking
+  - Recursion in C++
+  - C++ Competitive Programming
+  - C++ Interview Prep
+  - Algorithm Design in C++
+  - Time Complexity in C++
+  - C++ Problem Solving
+  - STL Functions
+  - Binary Search C++
+  - Merge Sort C++
+  - Dijkstra Algorithm C++
+  - C++ Algorithm Techniques
+
+tags:
+  - C++ Algorithms
+  - STL Algorithms
+  - Sorting and Searching
+  - Graph Algorithms
+  - Dynamic Programming
+  - Greedy Algorithms
+  - Backtracking
+  - Recursion
+  - C++ STL
+  - Competitive Programming
+  - C++ Problem Solving
+  - Time and Space Complexity
+  - C++ Interview Preparation
+  - Algorithm Optimization
+  - Data Structures and Algorithms
+  - Binary Search
+  - C++ Coding Challenges
+  - Algorithm Techniques
+
+---
 import { Question } from '../../Question';
 
 # C++ and Algorithms

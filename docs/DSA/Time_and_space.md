@@ -2,7 +2,7 @@
 title: "Time and Space Complexity in DSA - Complete Guide"
 description: "A comprehensive guide to understanding time and space complexity in Data Structures and Algorithms (DSA). Learn Big-O notation, performance optimization, real-world examples, and analysis tools."
 ## Keywords 
-Keywords: 
+keywords: 
 - Time Complexity  
 - Space Complexity  
 - Big-O Notation  
@@ -31,7 +31,7 @@ Keywords:
 - Algorithmic Paradigms  
 
 ## Tags  
-Tags:  
+tags:  
 - Time Complexity  
 - Space Complexity  
 - Big-O Notation  

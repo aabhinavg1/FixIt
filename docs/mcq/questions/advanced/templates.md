@@ -1,3 +1,46 @@
+---
+id: templates
+title: Templates Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge of templates in programming with this set of Multiple Choice Questions (MCQs). This guide covers function templates, class templates, template specialization, and template metaprogramming. Learn how templates provide flexibility and code reuse in your programs, and understand the benefits of generic programming.
+keywords:
+  - Templates
+  - Function Templates
+  - Class Templates
+  - Template Specialization
+  - Template Metaprogramming
+  - C++ Templates
+  - Generic Programming
+  - Type Deduction
+  - Template Arguments
+  - Template Parameters
+  - Template Instantiation
+  - SFINAE (Substitution Failure Is Not An Error)
+  - Variadic Templates
+  - Template Functions
+  - Template Classes
+  - Template MCQs
+  - Template Knowledge Test
+
+tags:
+  - Templates
+  - Function Templates
+  - Class Templates
+  - Template Specialization
+  - Template Metaprogramming
+  - C++ Templates
+  - Generic Programming
+  - Type Deduction
+  - Template Parameters
+  - Template Instantiation
+  - SFINAE
+  - Variadic Templates
+  - Template Functions
+  - Template Classes
+  - Template MCQs
+  - Template Concepts
+
+---
 import { Question } from '../../Question';
 
 # Templates

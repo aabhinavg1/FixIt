@@ -1,24 +1,50 @@
 ---
-title: Array and String C++ Learning Guide
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: array-and-strings
+title: Array and String MCQs
+description: |
+  This guide covers the fundamentals and advanced techniques for working with arrays and strings in C++. Learn how to manipulate fixed-size arrays, dynamic arrays, and C-style strings, as well as leverage the power of `std::array`, `std::vector`, and `std::string` for safer, more efficient coding. Ideal for beginners and intermediates preparing for interviews or building foundational logic.
+keywords:
+  - Arrays in C++
+  - Strings in C++
+  - std::array C++
+  - std::vector C++
+  - std::string C++
+  - Dynamic Arrays in C++
+  - Fixed Size Arrays
+  - C-style Strings
+  - Character Arrays
+  - C++ String Functions
+  - Array Manipulation
+  - String Reversal C++
+  - Palindrome Check C++
+  - Substrings in C++
+  - Two-Pointer Technique
+  - C++ Interview Questions
+  - Basic Data Structures in C++
+  - String Matching Algorithms
+  - String to Integer Conversion
+  - C++ Practice Problems
+
+tags:
+  - Arrays
+  - Strings
+  - C++ Vectors
+  - std::array
+  - std::string
+  - Dynamic Memory
+  - C++ Basics
+  - String Algorithms
+  - C++ Interview Prep
+  - Data Structures
+  - C-style Strings
+  - Array Operations
+  - Substrings
+  - Character Arrays
+  - Two-Pointer Technique
+  - Coding Practice
+  - Beginner C++
+  - Intermediate C++
+
 ---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 

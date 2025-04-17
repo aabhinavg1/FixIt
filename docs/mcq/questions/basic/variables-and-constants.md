@@ -1,24 +1,47 @@
 ---
-title: Variable and Constant C++ Learning Guide
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: variables-and-constants
+title: Variable and Constant C++ Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge of variables and constants in C++ with this set of Multiple Choice Questions (MCQs). This quiz covers topics such as variable types, initialization, constant variables, and scope. It’s perfect for beginners who want to understand variable declaration, initialization, and how constants work in C++. Also useful for those preparing for C++ interviews to strengthen foundational knowledge.
+keywords:
+  - C++ Variables
+  - C++ Constants
+  - Variable Declaration in C++
+  - Constant Variables in C++
+  - C++ Initialization
+  - C++ Scope of Variables
+  - C++ const Keyword
+  - C++ Variable Types
+  - C++ const int
+  - C++ Constant Expressions
+  - C++ Programming Basics
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Variable Scope
+  - C++ const Keyword Usage
+  - C++ Data Types
+  - C++ Variable Naming
+  - C++ Const Pointers
+
+tags:
+  - C++ Variables
+  - C++ Constants
+  - Variable Declaration
+  - Constant Variables
+  - C++ const Keyword
+  - C++ Variable Types
+  - C++ Initialization
+  - Variable Scope
+  - C++ const int
+  - C++ Programming Fundamentals
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Data Types
+  - Constant Expressions
+  - C++ Basic Programming
+  - C++ Variable Naming Conventions
+  - C++ Scope of Variables
+
 ---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 

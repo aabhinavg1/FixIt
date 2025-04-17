@@ -1,3 +1,48 @@
+---
+id: stl
+title: "STL: Standard Template Library Multiple Choice Questions (MCQs)"
+description: "Test your understanding of the Standard Template Library (STL) in this set of Multiple Choice Questions (MCQs). This guide covers various components of STL including containers, iterators, algorithms, and function objects. Understand how to efficiently use data structures such as vectors, maps, and sets, as well as how STL provides powerful algorithms for sorting, searching, and modifying data."
+
+keywords:
+  - STL
+  - Standard Template Library
+  - C++ Containers
+  - C++ Iterators
+  - C++ Algorithms
+  - C++ Function Objects
+  - C++ Vectors
+  - C++ Maps
+  - C++ Sets
+  - C++ Lists
+  - C++ Stacks
+  - C++ Queues
+  - C++ Pair
+  - C++ Algorithm Functions
+  - STL Containers MCQs
+  - STL Iterators MCQs
+  - STL Algorithms MCQs
+  - STL Function Objects MCQs
+
+tags:
+  - STL
+  - Standard Template Library
+  - C++ Containers
+  - C++ Iterators
+  - C++ Algorithms
+  - C++ Function Objects
+  - Vectors
+  - Maps
+  - Sets
+  - Lists
+  - Stacks
+  - Queues
+  - Pair
+  - Algorithm Functions
+  - STL MCQs
+  - C++ Data Structures
+  - STL Concepts
+
+---
 import { Question } from '../../Question';
 
 # STL: Standard Template Library

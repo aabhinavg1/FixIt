@@ -1,24 +1,48 @@
 ---
-title: Data Type C++ MCQ
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: data-types
+title: Data Type C++ Multiple Choice Questions (MCQs)
+description: |
+  This collection of C++ Multiple Choice Questions (MCQs) covers fundamental data types in C++, including `int`, `char`, `float`, `double`, `bool`, and user-defined types like `struct`, `union`, and `enum`. It also touches on type conversions, pointers, and references, making it ideal for beginners and intermediate learners to test their knowledge on C++ data handling.
+keywords:
+  - C++ Data Types
+  - C++ MCQs
+  - C++ Primitive Data Types
+  - C++ int
+  - C++ char
+  - C++ float
+  - C++ double
+  - C++ bool
+  - C++ struct
+  - C++ union
+  - C++ enum
+  - Type Conversion in C++
+  - C++ Pointers and References
+  - C++ Type Modifiers
+  - C++ Data Handling
+  - C++ Data Storage
+  - C++ Memory Allocation
+  - C++ Variable Types
+  - C++ Interview Questions
+
+tags:
+  - C++ Data Types
+  - C++ MCQs
+  - Primitive Data Types
+  - C++ Quiz
+  - C++ Interview Questions
+  - Data Handling in C++
+  - C++ int
+  - C++ char
+  - C++ float
+  - C++ double
+  - C++ bool
+  - C++ Structs and Unions
+  - Type Conversion
+  - C++ Type Modifiers
+  - C++ Memory Management
+  - C++ Variable Types
+  - C++ Reference Types
+
 ---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 

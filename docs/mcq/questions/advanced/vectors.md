@@ -1,3 +1,45 @@
+---
+id: vectors
+title: Vectors and Dynamic Arrays Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge of vectors and dynamic arrays with this set of Multiple Choice Questions (MCQs). Learn how vectors provide dynamic resizing of arrays, manage memory automatically, and offer various functions to manipulate and access data. Understand how dynamic arrays work and how they differ from static arrays, offering flexibility in memory management.
+keywords:
+  - Vectors
+  - Dynamic Arrays
+  - C++ Vectors
+  - Dynamic Memory Allocation
+  - Memory Management
+  - Array vs Vector
+  - Dynamic Array Operations
+  - Vector Operations
+  - C++ Array Functions
+  - C++ Vector Functions
+  - Array Resizing
+  - Dynamic Array Size
+  - C++ Containers
+  - Vector Memory Management
+  - C++ Memory Management
+  - Vector vs Array
+  - Vectors MCQs
+  - Dynamic Arrays MCQs
+
+tags:
+  - Vectors
+  - Dynamic Arrays
+  - C++ Vectors
+  - Dynamic Memory Allocation
+  - Memory Management
+  - Vector Operations
+  - Array Resizing
+  - C++ Arrays
+  - Dynamic Array Functions
+  - C++ Containers
+  - Vector Functions
+  - C++ Memory Management
+  - Vectors MCQs
+  - Dynamic Arrays MCQs
+
+---
 import { Question } from '../../Question';
 
 # Vectors and Dynamic Arrays

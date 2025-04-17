@@ -70,7 +70,8 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Control Flow: if-else, switch-case](./questions/basic/control-flow.md)
 - [Loops: for, while, do-while](./questions/basic/loops.md)
 - [Functions](./questions/basic/functions.md)
-- [Arrays and Strings](./questions/basic/arrays-and-strings.md)
+- [Arrays and Strings](./questions/basic/array-and-strings.md)
+- [Pointer and Strings](./questions/basic/pointers-strings.md)
 - [Pointers and References](./questions/basic/pointers-and-references.md)
 - [Input and Output](./questions/basic/io.md)
 

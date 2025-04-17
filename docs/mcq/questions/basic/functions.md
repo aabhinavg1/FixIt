@@ -1,24 +1,44 @@
 ---
-title: Functions in C++ MCQs
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- fuctions in C++
+id: functions
+title: Functions in C++ Multiple Choice Questions (MCQs)
+description: |
+  This set of C++ Multiple Choice Questions (MCQs) focuses on functions in C++, covering function declarations, definitions, arguments, return types, and various advanced topics such as recursion, function overloading, and inline functions. Ideal for learners to test their understanding of C++ function fundamentals and advanced usage.
+keywords:
+  - C++ Functions
+  - Function Declaration in C++
+  - Function Definition in C++
+  - Function Overloading in C++
+  - Inline Functions in C++
+  - C++ Recursion
+  - C++ Function Pointers
+  - Return Types in C++
+  - C++ Argument Passing
+  - C++ Variable Arguments
+  - C++ Function Templates
+  - C++ Call by Value
+  - C++ Call by Reference
+  - C++ Function Scope
+  - C++ Lambda Functions
+  - C++ Interview Questions
+  - C++ MCQs
+
+tags:
+  - C++ Functions
+  - Function Overloading
+  - C++ Recursion
+  - Function Pointers
+  - Inline Functions
+  - C++ MCQs
+  - C++ Call by Value
+  - C++ Call by Reference
+  - C++ Argument Passing
+  - Variable Arguments in C++
+  - C++ Function Templates
+  - C++ Lambda Expressions
+  - C++ Interview Questions
+  - Function Scope in C++
+  - C++ Programming Challenges
+
 ---
 
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
