@@ -1,3 +1,30 @@
+---
+title: "Know Your Compiler"
+description:  "Discover the inner workings of compilers in this insightful guide. From basic concepts to advanced features, learn how compilers transform source code into executable programs, optimize code, and handle different programming languages. Ideal for both beginners and experienced programmers looking to deepen their understanding of compiler technology."
+
+keywords:
+  - Compiler
+  - Source Code
+  - Compiler Design
+  - Optimization
+  - Programming Languages
+  - Compiler Architecture
+  - Code Generation
+  - Code Optimization
+  - Compiler Features
+  - Compiler Theory
+  - Compiler Tools
+
+tags:
+  - Compiler Design
+  - Programming
+  - Software Development
+  - Code Optimization
+  - Compiler Technology
+  - Programming Languages
+
+
+---
 
 ### Compiler Stages with Clang
 Newbies who have just started their journey in compiler development often have a basic understanding of how a compiler works. They know it isn't just a mysterious black box. But have you ever wondered how each stage in the compiler pipeline looks and works?

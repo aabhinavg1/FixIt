@@ -1,26 +1,48 @@
 ---
-title: Control Flow C++ MCQ
-keywords: 
-- C++
-- learning C++ 
-- basics
-- control statement
-- if else
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: control-flow
+title: Control Flow C++ Multiple Choice Questions (MCQs)
+description: |
+  This collection of C++ Multiple Choice Questions (MCQs) focuses on control flow concepts, including loops, conditional statements, branching, and decision-making. Perfect for beginners and intermediate learners to test their knowledge on essential C++ control structures such as `if-else`, `switch`, `for`, `while`, and `do-while` loops.
+keywords:
+  - C++ Control Flow
+  - C++ Loops
+  - C++ Conditional Statements
+  - C++ Decision Making
+  - C++ Branching
+  - If-Else in C++
+  - Switch Statement in C++
+  - For Loop in C++
+  - While Loop in C++
+  - Do-While Loop in C++
+  - C++ MCQs
+  - C++ Quiz
+  - C++ Interview Questions
+  - C++ Syntax
+  - Flow Control C++
+  - C++ Basics Quiz
+  - C++ Programming Test
+  - C++ Exam Questions
+  - C++ Testing
+
+tags:
+  - Control Flow
+  - C++ Loops
+  - Conditional Statements
+  - C++ MCQs
+  - C++ Test
+  - C++ Interview Questions
+  - Programming Quiz
+  - C++ Syntax
+  - C++ Quiz Questions
+  - C++ Beginners
+  - C++ Practice
+  - C++ For Loop
+  - C++ While Loop
+  - C++ Decision Making
+  - C++ Switch Statement
+  - C++ Programming Challenge
+  - C++ Testing and Practice
+
 ---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 

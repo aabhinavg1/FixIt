@@ -1,22 +1,39 @@
 ---
-title: "Getting Started with OOPS Concept"
-description: "A comprehensive guide to resources, books, tutorials, and tools for beginners in compiler development, C++, GPU programming, MLIR, and machine learning."
-keywords: 
-  - compiler development
-  - C++ programming
-  - GPU programming
-  - MLIR
-  - machine learning
-  - compiler optimization
-  - online resources
-  - tutorials
-  - cpp mcq
-  - cpp mcq questions
-  - cpp interview questions
-  - c++ mcq
-  - advanced c++ interview questions
-  - LLVM
-  - education
+id: getting-started-with-oops-concept
+title: Getting Started with OOPS Concept
+description: |
+  This beginner-friendly guide introduces the fundamental concepts of Object-Oriented Programming (OOP) in C++. Learn the four core principles—encapsulation, abstraction, inheritance, and polymorphism—through real-world examples and C++ implementations. Whether you're new to OOP or revisiting the basics, this is the perfect place to start your object-oriented journey.
+keywords:
+  - Object-Oriented Programming in C++
+  - OOP Concepts
+  - C++ Classes and Objects
+  - Encapsulation in C++
+  - Inheritance in C++
+  - Polymorphism in C++
+  - Abstraction in C++
+  - C++ OOP Examples
+  - C++ Object-Oriented Basics
+  - C++ for Beginners
+  - Introduction to OOP
+  - OOP Fundamentals
+  - OOP in Programming
+  - C++ Class Design
+  - C++ Object-Oriented Approach
+
+tags:
+  - OOP in C++
+  - Encapsulation
+  - Abstraction
+  - Inheritance
+  - Polymorphism
+  - C++ Basics
+  - Object-Oriented Design
+  - Classes and Objects
+  - C++ OOP Examples
+  - Programming Fundamentals
+  - C++ for Beginners
+  - OOPS Concept Tutorial
+
 ---
 
 # Intermediate C++ Concepts

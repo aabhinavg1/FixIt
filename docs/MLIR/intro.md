@@ -1,6 +1,8 @@
 ---
 title: "Introduction to MLIR"
 description: "Learn about MLIR, its architecture, features, and how it can be utilized in building advanced compiler infrastructures."
+
+
 keywords: 
   - MLIR
   - multi-level intermediate representation
@@ -9,6 +11,20 @@ keywords:
   - machine learning
   - optimization
   - extensibility
+
+tags:
+  - MLIR
+  - Compiler Design
+  - Intermediate Representation
+  - Machine Learning
+  - Compiler Infrastructure
+  - Programming Languages
+  - Optimization
+  - LLVM
+  - Code Generation
+  - MLIR Basics
+
+
 author: "CompilerSutra"
 date: "2024-10-28"
 ---

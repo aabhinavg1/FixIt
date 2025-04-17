@@ -1,3 +1,29 @@
+---
+id: Compiler
+title: Know Your Compiler - A Comprehensive Guide to Understanding Compilers and Their Features
+description: |
+  Discover the inner workings of compilers in this insightful guide. From basic concepts to advanced features, learn how compilers transform source code into executable programs, optimize code, and handle different programming languages. Ideal for both beginners and experienced programmers looking to deepen their understanding of compiler technology.
+keywords:
+  - Compiler
+  - Source Code
+  - Compiler Design
+  - Optimization
+  - Programming Languages
+  - Compiler Architecture
+  - Code Generation
+  - Code Optimization
+  - Compiler Features
+  - Compiler Theory
+  - Compiler Tools
+tags:
+  - Compiler Design
+  - Programming
+  - Software Development
+  - Code Optimization
+  - Compiler Technology
+  - Programming Languages
+
+---
 # 🔍 Know Your Compilers
 
 Welcome to the **Compiler Documentation**! Explore each stage and component of the compiler, from front-end parsing to architecture-specific optimizations for GPU, CPU, and more.

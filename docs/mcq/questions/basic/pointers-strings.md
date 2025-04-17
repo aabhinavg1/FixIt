@@ -1,28 +1,46 @@
 ---
-title: Pointer and String C++ Learning Guide
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcq questions
-- c++ quiz question with answers
-- mcq for c++
-- c++ mcq online test with answer
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: pointers-strings
+title: Pointer and String C++ Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge of pointers and strings in C++ with this set of Multiple Choice Questions (MCQs). This quiz covers topics such as pointer arithmetic, dynamic memory allocation, pointer-to-pointer, and string manipulation in C++. It is ideal for beginners and those preparing for C++ interviews, helping you solidify your understanding of two key concepts in C++ programming.
+keywords:
+  - C++ Pointers
+  - C++ Strings
+  - Pointer Arithmetic
+  - Dynamic Memory Allocation
+  - Pointer-to-Pointer in C++
+  - C++ String Manipulation
+  - C++ String Functions
+  - C++ Memory Management
+  - C++ String Handling
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Pointer Concepts
+  - C++ String Methods
+  - C++ Programming
+  - C++ Pointers and Arrays
+  - C++ Char Arrays
+  - C++ Pointer to Array
+  - String Manipulation C++
+
+tags:
+  - C++ Pointers
+  - C++ Strings
+  - Pointer Arithmetic
+  - Dynamic Memory Allocation
+  - Pointer-to-Pointer
+  - C++ String Functions
+  - C++ String Handling
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Memory Management
+  - C++ Char Arrays
+  - String Manipulation in C++
+  - C++ Programming
+  - C++ Arrays and Pointers
+  - C++ Pointer Basics
+  - C++ String Manipulation Techniques
+
 ---
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 

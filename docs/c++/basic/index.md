@@ -1,3 +1,49 @@
+---
+id: BasicCppTopics
+title: Basic C++ Topics - Understanding the Fundamentals of C++ Programming
+description: |
+  This guide covers the fundamental topics every beginner needs to know to get started with C++ programming. From understanding variables, data types, and operators to mastering control flow, loops, and functions, this tutorial will give you a solid foundation in C++ programming. Learn the essential building blocks of C++ and how to write your first C++ program with ease.
+keywords:
+  - Basic C++ Topics
+  - C++ Programming Basics
+  - C++ Syntax
+  - Variables in C++
+  - Data Types in C++
+  - C++ Operators
+  - Control Flow in C++
+  - Loops in C++
+  - C++ Functions
+  - Arrays in C++
+  - C++ Input/Output
+  - C++ Conditionals
+  - C++ Statements
+  - C++ Expressions
+  - C++ Beginners Guide
+  - Introduction to C++
+  - C++ for Beginners
+  - C++ Basics Tutorial
+
+tags:
+  - Basic C++ Topics
+  - C++ Programming Basics
+  - C++ Syntax
+  - Variables in C++
+  - Data Types in C++
+  - Operators in C++
+  - Control Flow in C++
+  - Loops in C++
+  - Functions in C++
+  - Arrays in C++
+  - C++ Input/Output
+  - C++ Conditionals
+  - Statements and Expressions
+  - C++ for Beginners
+  - Introduction to C++
+  - C++ Basics Tutorial
+  - C++ Fundamentals
+  - C++ Programming Essentials
+
+---
 # 🌟 Basic C++ Topics
 
 Welcome to the world of C++ programming! Dive into these foundational topics and unlock the potential of this powerful language.

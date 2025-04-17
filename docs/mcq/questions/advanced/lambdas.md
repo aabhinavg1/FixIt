@@ -1,3 +1,41 @@
+---
+id: lambdas
+title: Lambda Functions
+description: |
+  Lambda functions are a powerful feature in modern programming, providing a concise way to define anonymous functions. This guide explores how to use lambda functions, capture variables from the surrounding scope, and pass them as arguments to other functions. Learn about lambda expressions, syntax, and the flexibility they offer in functional programming and other paradigms.
+keywords:
+  - Lambda Functions
+  - Anonymous Functions
+  - Functional Programming
+  - Lambda Expressions
+  - Function Objects
+  - Closures
+  - Variable Capture
+  - Higher-Order Functions
+  - Functional Techniques
+  - Lambda Syntax
+  - Lambda Parameters
+  - Immutable and Mutable Captures
+  - Lambda in Algorithms
+  - Lambda Expressions in Programming
+  - Functional Programming Techniques
+
+tags:
+  - Lambda Functions
+  - Anonymous Functions
+  - Functional Programming
+  - Lambda Expressions
+  - Closures
+  - Variable Capture
+  - Higher-Order Functions
+  - Function Objects
+  - Immutable Captures
+  - Mutable Captures
+  - Lambda Syntax
+  - Functional Programming Techniques
+  - Lambda Parameters
+
+---
 import { Question } from '../../Question';
 
 # Lambda Functions

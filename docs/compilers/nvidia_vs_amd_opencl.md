@@ -1,3 +1,30 @@
+---
+id: NvidiaVsAmdOpenCL
+title: NVIDIA vs AMD OpenCL - A Comparison of GPU Performance and OpenCL Support
+description: |
+  Explore the differences between NVIDIA and AMD GPUs when it comes to OpenCL support and performance. This guide compares how each company’s hardware handles OpenCL, highlighting key features, performance metrics, and the overall ecosystem for developers. Learn which GPU offers better performance for your OpenCL-based applications and how to choose the best option for your needs.
+keywords:
+  - NVIDIA
+  - AMD
+  - OpenCL
+  - GPU Performance
+  - Hardware Comparison
+  - Graphics Processing Units
+  - GPU Architecture
+  - OpenCL Support
+  - Parallel Computing
+  - AMD vs NVIDIA
+  - OpenCL Optimization
+tags:
+  - NVIDIA
+  - AMD
+  - OpenCL
+  - GPU Performance
+  - Parallel Computing
+  - Hardware Comparison
+  - Graphics Processing Units
+
+---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

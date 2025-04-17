@@ -127,3 +127,103 @@ import { Question } from '../../Question';
   options={['When an object goes out of scope', 'When a new object is created', 'When a constructor is called', 'None of the above']}
   answer="When an object goes out of scope"
 />
+<Question
+  question="11).Can a constructor be declared as virtual in C++?"
+  options={['Yes', 'No', 'Only in abstract classes', 'Depends on the compiler']}
+  answer="No"
+/>
+<Question
+  question="12).What is constructor overloading?"
+  options={['Using different names for multiple constructors', 'Having multiple constructors with different parameter lists', 'Creating virtual constructors', 'None of the above']}
+  answer="Having multiple constructors with different parameter lists"
+/>
+<Question
+  question="13).Which constructor is invoked when an object is initialized using another object?"
+  options={['Default constructor', 'Parameterized constructor', 'Copy constructor', 'Move constructor']}
+  answer="Copy constructor"
+/>
+<Question
+  question="14).Which constructor is called when an object is initialized with `std::move()`?"
+  options={['Default constructor', 'Copy constructor', 'Move constructor', 'None']}
+  answer="Move constructor"
+/>
+<Question
+  question="15).Which keyword is used to define a constructor outside the class?"
+  options={['this', 'new', '::', 'extern']}
+  answer="::"
+/>
+<Question
+  question="16).What is a parameterized constructor?"
+  options={['A constructor that takes arguments', 'A constructor with no parameters', 'A constructor with a return type', 'None of the above']}
+  answer="A constructor that takes arguments"
+/>
+<Question
+  question="17).Can a constructor be private in C++?"
+  options={['Yes', 'No', 'Only for abstract classes', 'Only for static classes']}
+  answer="Yes"
+/>
+<Question
+  question="18).When is the copy constructor called?"
+  options={['When an object is passed by value', 'When an object is returned by value', 'When an object is explicitly copied', 'All of the above']}
+  answer="All of the above"
+/>
+<Question
+  question="19).Which of the following does NOT invoke the destructor?"
+  options={['Object goes out of scope', 'delete is used on object pointer', 'Program crashes', 'Object is created']}
+  answer="Object is created"
+/>
+<Question
+  question="20).What happens if you don’t define a destructor in your class?"
+  options={['Compiler provides a default destructor', 'Objects cannot be destroyed', 'It causes a runtime error', 'None of the above']}
+  answer="Compiler provides a default destructor"
+/>
+<Question
+  question="21).Can you explicitly call a destructor?"
+  options={['Yes, using object.~ClassName()', 'No, destructors are always implicit', 'Only for static objects', 'None of the above']}
+  answer="Yes, using object.~ClassName()"
+/>
+<Question
+  question="22).Which constructor is invoked when no arguments are passed during object creation?"
+  options={['Copy constructor', 'Default constructor', 'Move constructor', 'Destructor']}
+  answer="Default constructor"
+/>
+<Question
+  question="23).Can a class have both a copy and a move constructor?"
+  options={['Yes', 'No', 'Only one is allowed', 'Depends on object type']}
+  answer="Yes"
+/>
+<Question
+  question="24).What does the compiler do if you define a copy constructor but not a destructor?"
+  options={['Generates a default destructor', 'Throws a compile-time error', 'Deletes the destructor', 'Generates a move constructor automatically']}
+  answer="Generates a default destructor"
+/>
+<Question
+  question="25).What is the syntax for a move constructor?"
+  options={['ClassName(ClassName&& obj)', 'ClassName(const ClassName& obj)', 'ClassName(ClassName obj)', 'ClassName(ClassName* obj)']}
+  answer="ClassName(ClassName&& obj)"
+/>
+<Question
+  question="26).What is the rule of three in C++?"
+  options={['Define copy constructor, assignment operator, and destructor together', 'Use only three constructors', 'Only three objects allowed in a class', 'None of the above']}
+  answer="Define copy constructor, assignment operator, and destructor together"
+/>
+<Question
+  question="27).Which of the following best describes constructor initialization list?"
+  options={['Initializes data members before constructor body executes', 'Is used for destructors', 'Used to create arrays', 'None of the above']}
+  answer="Initializes data members before constructor body executes"
+/>
+<Question
+  question="28).Which operator is implicitly deleted if a class has a move constructor but not a copy constructor?"
+  options={['Copy assignment operator', 'Destructor', 'Default constructor', 'New operator']}
+  answer="Copy assignment operator"
+/>
+<Question
+  question="29).What happens when you assign one object to another after creation?"
+  options={['Copy assignment operator is called', 'Copy constructor is called', 'Move constructor is called', 'Destructor is called']}
+  answer="Copy assignment operator"
+/>
+<Question
+  question="30).Can destructors be overloaded in C++?"
+  options={['Yes', 'No', 'Only with templates', 'Only in base classes']}
+  answer="No"
+/>

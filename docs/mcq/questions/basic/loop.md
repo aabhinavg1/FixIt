@@ -1,24 +1,45 @@
 ---
-title: Loop C++ Learning Guide
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: loop
+title: Loop C++ Multiple Choice Questions (MCQs)
+description: |
+  This set of C++ Multiple Choice Questions (MCQs) focuses on loops in C++. Test your knowledge on `for`, `while`, `do-while`, nested loops, and loop control statements like `break`, `continue`, and `return`. Whether you're a beginner or preparing for a C++ interview, these questions will help reinforce your understanding of loop structures in C++.
+keywords:
+  - C++ Loops
+  - C++ for loop
+  - C++ while loop
+  - C++ do-while loop
+  - Nested Loops in C++
+  - Loop Control Statements
+  - C++ break statement
+  - C++ continue statement
+  - Looping in C++
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Programming
+  - Looping Constructs
+  - C++ Looping Techniques
+  - C++ Exam Questions
+  - C++ Quiz
+  - C++ Coding Challenges
+
+tags:
+  - C++ Loops
+  - C++ for loop
+  - C++ while loop
+  - C++ do-while loop
+  - Loop Control
+  - Nested Loops
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Break and Continue
+  - C++ Programming
+  - Loop Structures
+  - Looping Constructs
+  - C++ Quiz
+  - C++ Exam Questions
+  - C++ Coding Practice
+  - C++ Loop Techniques
+
 ---
 
 import { Question } from '../../Question';  // Adjust the path based on your project structure

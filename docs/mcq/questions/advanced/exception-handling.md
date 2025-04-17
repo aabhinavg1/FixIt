@@ -1,3 +1,46 @@
+---
+id: exception-handling
+title: Exception Handling
+description: |
+  Exception handling is a crucial concept in modern programming. This guide explores the mechanisms for managing runtime errors in a safe and controlled manner. Learn how to use `try`, `catch`, and `throw` to handle exceptions, define custom exception classes, and manage multiple exceptions. This topic is essential for writing robust, error-resistant applications.
+keywords:
+  - Exception Handling
+  - try-catch
+  - throw
+  - Custom Exceptions
+  - Error Handling
+  - Exception Classes
+  - Runtime Errors
+  - Exception Handling Mechanisms
+  - Exception Safety
+  - Error Management
+  - Exception Types
+  - Standard Exception
+  - try block
+  - catch block
+  - Exception Propagation
+  - noexcept
+  - Exception Handling Best Practices
+  - Exception Handling Techniques
+
+tags:
+  - Exception Handling
+  - try-catch
+  - throw
+  - Custom Exceptions
+  - Error Handling
+  - Runtime Errors
+  - Exception Classes
+  - Exception Propagation
+  - Exception Safety
+  - Error Management
+  - Exception Types
+  - Standard Exception
+  - Exception Handling Best Practices
+  - noexcept
+  - Robust Programming
+
+---
 import { Question } from '../../Question';
 
 # Exception Handling

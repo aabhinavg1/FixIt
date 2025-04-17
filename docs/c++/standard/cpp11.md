@@ -2,15 +2,40 @@
 id: intro
 title: C++11 Docs
 description: A detailed and structured guide to learning C++11 with documentation study, object-oriented programming, modern features, and industry standards which we need to learn about the C++11 standard.
-keywords:
-  - C++
-  - C++ tutorial
-  - Object-Oriented Programming
-  - Modern C++
-  - Build Systems
-  - STL
-  - Industry Best Practices
-  - C++11
+tags:  
+- C++  
+- C++11  
+- Modern C++  
+- Programming Language  
+- Software Development  
+- C++ Standards  
+- Lambda Functions  
+- Smart Pointers  
+- Move Semantics  
+- Auto Keyword  
+- Type Inference  
+- Concurrency  
+- Multithreading  
+- Range-based Loops  
+- Rvalue References  
+
+keywords:  
+- C++11 Features  
+- New Additions in C++11  
+- Lambda in C++  
+- C++ Smart Pointers  
+- Memory Management in C++  
+- Move Semantics  
+- Auto and Decltype  
+- C++ Concurrency  
+- Multithreading in C++  
+- C++ Performance  
+- Type Inference in C++  
+- Range Loops  
+- Rvalue vs Lvalue  
+- C++ Programming  
+- Modern Programming Techniques  
+
 slug: /C++11
 sidebar_label: C++11
 ---

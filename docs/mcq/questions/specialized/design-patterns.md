@@ -1,3 +1,50 @@
+---
+id: design-patterns
+title: C++ Design Patterns
+description: |
+  This guide explores common and powerful design patterns implemented in C++, helping you write clean, modular, and scalable software. Learn about creational, structural, and behavioral patterns such as Singleton, Factory, Observer, Strategy, Adapter, and more. Ideal for developers looking to strengthen their architecture and design skills using modern C++ techniques.
+keywords:
+  - C++ Design Patterns
+  - Software Design in C++
+  - Singleton Pattern C++
+  - Factory Pattern C++
+  - Observer Pattern C++
+  - Strategy Pattern C++
+  - Adapter Pattern C++
+  - Creational Patterns C++
+  - Structural Patterns C++
+  - Behavioral Patterns C++
+  - Design Patterns in Programming
+  - Modern C++ Architecture
+  - Reusable Code in C++
+  - C++ Design Principles
+  - SOLID Principles in C++
+  - Clean Code C++
+  - C++ OOP Best Practices
+  - Scalable C++ Applications
+  - C++ Interview Preparation
+
+tags:
+  - Design Patterns
+  - C++ Design Patterns
+  - Singleton Pattern
+  - Factory Pattern
+  - Observer Pattern
+  - Strategy Pattern
+  - Adapter Pattern
+  - Creational Patterns
+  - Structural Patterns
+  - Behavioral Patterns
+  - C++ Architecture
+  - Software Design
+  - Clean Code
+  - Reusable Components
+  - OOP Best Practices
+  - SOLID in C++
+  - Modern C++
+  - C++ Interview Preparation
+
+---
 import { Question } from '../../Question';
 
 # C++ Design Patterns

@@ -1,16 +1,51 @@
 ---
-id: advanced-questions
-title: Advanced C++ Questions
+id: AdvancedCppInterviewQuestions
+title: Advanced C++ Interview Questions
+description: |
+  This guide contains a curated set of advanced C++ interview questions that challenge your understanding of high-level concepts in modern C++. Topics include smart pointers, move semantics, perfect forwarding, multi-threading, memory models, templates, STL internals, and advanced object-oriented and functional programming features. Ideal for experienced developers preparing for senior-level technical interviews.
 keywords:
-  - C++
-  - advanced C++
-  - concurrency
-  - lambdas
-  - multithreading
-  - templates
-  - STL
-  - move semantics
-  - exception handling
+  - Advanced C++ Interview Questions
+  - Modern C++
+  - C++11 C++14 C++17 C++20
+  - Smart Pointers in C++
+  - Move Semantics
+  - Rvalue References
+  - Perfect Forwarding
+  - Lambda Expressions
+  - C++ Multi-threading
+  - C++ Memory Model
+  - Template Metaprogramming
+  - STL Internals
+  - C++ Design Patterns
+  - C++ Virtual Tables
+  - Function Objects
+  - Advanced Object-Oriented Concepts
+  - Functional Programming in C++
+  - C++ Type Traits
+  - Compile-Time Computation
+  - C++ Performance Optimization
+
+tags:
+  - Advanced C++
+  - C++11/14/17/20
+  - Smart Pointers
+  - Move Semantics
+  - Rvalue References
+  - Perfect Forwarding
+  - Lambda Functions
+  - C++ Concurrency
+  - C++ Memory Model
+  - STL Internals
+  - Template Metaprogramming
+  - Design Patterns in C++
+  - C++ Type Traits
+  - Compile-Time Programming
+  - Functional C++
+  - VTables and Polymorphism
+  - Senior C++ Interviews
+  - Performance Optimization
+  - Advanced OOP in C++
+
 ---
 
 # Advanced C++ Topics

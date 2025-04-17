@@ -13,6 +13,25 @@ keywords:
 - "C++ Class Design"
 - "C++ Interview Guide"
 - "Master C++ OOP Concepts"
+tags:
+  - Arrays
+  - Strings
+  - Data Structures
+  - Programming Concepts
+  - Algorithms
+  - Memory Management
+  - String Manipulation
+  - Array Operations
+  - Collections
+  - Multi-dimensional Arrays
+  - Dynamic Arrays
+  - Array Sorting
+  - String Searching
+  - String Concatenation
+  - Data Handling
+  - Coding Fundamentals
+  - Array Traversal
+  - String Parsing
 ---
 
 # **Essential C++ Interview Questions on Classes and Objects**

@@ -1,18 +1,50 @@
 ---
-title: "Essential C++ Interview Questions on (Object-Oriented Programming)"
-description: "Prepare for C++ interviews with this guide to essential C++ interview questions on Object-Oriented Programming (OOP). Learn about classes, objects, inheritance, polymorphism, encapsulation, and abstraction."
+id: oop
+title: Essential C++ Interview Questions on Object-Oriented Programming (OOP)
+description: |
+  This guide covers essential C++ interview questions on Object-Oriented Programming (OOP). Understand the key OOP concepts like classes, objects, inheritance, polymorphism, abstraction, and encapsulation in C++. These concepts are fundamental to C++ programming and often come up in interviews. Prepare for questions on OOP principles, design patterns, and how they are implemented in C++ to write clean, maintainable, and scalable code.
 keywords:
-- "C++ Interview Questions"
-- "C++ MCQ for Placement"
-- "C++ Object-Oriented Programming"
-- "C++ OOP"
-- "C++ Classes and Objects"
-- "C++ Inheritance"
-- "C++ Polymorphism"
-- "C++ Encapsulation"
-- "C++ Abstraction"
-- "C++ Virtual Functions"
-- "Master C++ OOP Concepts"
+  - C++ Interview Questions
+  - Object-Oriented Programming in C++
+  - OOP Concepts in C++
+  - C++ Classes and Objects
+  - C++ Inheritance
+  - C++ Polymorphism
+  - C++ Abstraction
+  - C++ Encapsulation
+  - C++ Virtual Functions
+  - C++ Constructors and Destructors
+  - C++ Function Overloading
+  - C++ Operator Overloading
+  - C++ Design Patterns
+  - C++ Inheritance Types
+  - C++ Interfaces
+  - C++ Class Design
+  - C++ OOP Best Practices
+  - C++ Interview Preparation
+
+tags:
+  - C++ Interview Questions
+  - Object-Oriented Programming (OOP) in C++
+  - C++ Classes
+  - C++ Objects
+  - Inheritance in C++
+  - Polymorphism in C++
+  - Abstraction in C++
+  - Encapsulation in C++
+  - Virtual Functions in C++
+  - C++ Constructors and Destructors
+  - Function Overloading in C++
+  - Operator Overloading in C++
+  - C++ Design Patterns
+  - C++ Interfaces
+  - C++ Class Design
+  - C++ Best Practices
+  - OOP Principles in C++
+  - C++ Object Modeling
+  - C++ Performance Optimization
+  - C++ Interview Preparation
+
 ---
 
 # **Essential C++ Interview Questions on Object-Oriented Programming**

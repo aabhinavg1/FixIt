@@ -3,11 +3,47 @@ title: "C++ Interview Questions for Freshers with Answers"
 description: "Comprehensive guide to basic C++ interview questions for freshers. Test your knowledge with detailed questions and answers tailored for programming beginners."
 keywords:
   - C++ Interview Questions
-  - C++ MCQ for Placement
-  - Basic C++ MCQs
-  - Programming for Freshers
+  - Freshers Interview
   - C++ Basics
-  - Interview Preparation
+  - C++ Programming
+  - C++ Interview Preparation
+  - C++ Syntax
+  - Object-Oriented Programming (OOP)
+  - Pointers in C++
+  - C++ Functions
+  - C++ Arrays
+  - C++ Loops
+  - C++ Classes and Objects
+  - C++ Memory Management
+  - C++ Standard Library
+  - C++ Data Structures
+  - C++ Algorithms
+  - C++ Interview Tips
+  - C++ Coding Challenges
+  - C++ for Beginners
+
+tags:
+  - C++ Interview Questions
+  - Interview for Freshers
+  - C++ Basics
+  - C++ Programming
+  - C++ Syntax
+  - Object-Oriented Programming
+  - Pointers in C++
+  - C++ Functions
+  - C++ Arrays
+  - C++ Loops
+  - C++ Classes and Objects
+  - C++ Memory Management
+  - C++ Standard Library
+  - C++ Data Structures
+  - C++ Algorithms
+  - C++ Interview Preparation
+  - C++ Coding Challenges
+  - C++ for Beginners
+  - Programming Interviews
+  - C++ Interview Tips
+
 ---
 
 # C++ Interview Questions 

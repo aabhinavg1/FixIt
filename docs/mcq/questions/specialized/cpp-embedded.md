@@ -1,3 +1,52 @@
+---
+id: cpp-embedded
+title: C++ for Embedded Systems
+description: |
+  This guide introduces the use of C++ in embedded systems programming, focusing on low-level hardware control, memory optimization, and real-time performance. Learn how to apply object-oriented principles in resource-constrained environments, understand embedded-specific C++ features, and explore best practices for writing efficient, portable, and maintainable firmware using C++.
+keywords:
+  - C++ for Embedded Systems
+  - Embedded C++
+  - Embedded Firmware Development
+  - Low-Level Programming in C++
+  - Memory Optimization in C++
+  - C++ Microcontrollers
+  - Real-Time Systems in C++
+  - Object-Oriented Embedded Programming
+  - Embedded C++ Best Practices
+  - Hardware Control in C++
+  - Interrupt Handling in C++
+  - Bare-Metal C++
+  - Embedded Software Architecture
+  - C++ for IoT Devices
+  - C++ Performance Tuning
+  - Embedded Drivers in C++
+  - C++ and RTOS
+  - C++ in Automotive Systems
+  - Safe C++ for Embedded
+  - Portable Embedded Code in C++
+
+tags:
+  - Embedded Systems
+  - Embedded C++
+  - Real-Time Programming
+  - C++ Firmware
+  - Microcontroller Programming
+  - Memory-Efficient C++
+  - C++ for IoT
+  - C++ Low-Level Programming
+  - RTOS in C++
+  - Embedded Drivers
+  - Safe Embedded Code
+  - Hardware Abstraction in C++
+  - Bare-Metal Programming
+  - Object-Oriented Firmware
+  - Automotive Embedded
+  - Portable C++ Code
+  - C++ Best Practices
+  - Performance Optimization
+  - Interrupts and Timers
+
+---
 import { Question } from '../../Question';
 
 # C++ for Embedded Systems

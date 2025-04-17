@@ -1,24 +1,48 @@
 ---
-title: Input Output C++ MCQs
-keywords: 
-- C++
-- learning C++ 
-- basics
-- cpp mcq
-- cpp mcq questions
-- cpp interview questions
-- c++ mcq
-- advanced c++ interview questions
-- c++ mcq questions and answers
-- C++ programming
-- cpp mcqs
-- mcq in c++
-- variables
-- functions
-- c++ mcq test
-- pointers
-- control flow
-- loops
+id: io
+title: Input Output C++ Multiple Choice Questions (MCQs)
+description: |
+  Test your knowledge on C++ Input and Output operations with this set of Multiple Choice Questions (MCQs). The questions cover topics like `cin`, `cout`, file handling, streams, and error handling, essential for any C++ programmer. Ideal for beginners and those preparing for C++ interviews, this quiz will help you strengthen your understanding of I/O operations in C++.
+keywords:
+  - C++ Input and Output
+  - C++ cin
+  - C++ cout
+  - C++ File Handling
+  - C++ Streams
+  - C++ Input
+  - C++ Output
+  - C++ Error Handling
+  - C++ I/O Operations
+  - C++ MCQs
+  - C++ Interview Questions
+  - C++ Programming
+  - C++ Input-Output Quiz
+  - C++ File Streams
+  - C++ I/O Functions
+  - C++ Stream Manipulators
+  - C++ I/O Techniques
+  - C++ Text File Handling
+  - C++ Binary File Handling
+
+tags:
+  - C++ Input and Output
+  - C++ MCQs
+  - C++ File Handling
+  - C++ Streams
+  - cin and cout
+  - C++ File Streams
+  - C++ Error Handling
+  - C++ I/O Functions
+  - C++ Interview Questions
+  - Programming Quiz
+  - C++ Input
+  - C++ Output
+  - C++ Text File Handling
+  - C++ Binary Files
+  - Stream Manipulators
+  - Beginner C++
+  - C++ Programming Fundamentals
+
 ---
 
 import { Question } from '../../Question';  // Adjust the path to your Question.js component

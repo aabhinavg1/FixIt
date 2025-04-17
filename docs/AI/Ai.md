@@ -1,3 +1,45 @@
+---
+title: Introduction to Artificial Intelligence
+
+description: A foundational overview of Artificial Intelligence, exploring its history, core concepts, major domains, and its transformative impact across industries and everyday life.
+
+id: introduction-to-artificial-intelligence
+
+tags:
+- Artificial Intelligence  
+- AI  
+- Machine Learning  
+- Deep Learning  
+- Neural Networks  
+- Computer Vision  
+- Natural Language Processing  
+- AI Ethics  
+- Automation  
+- Robotics  
+- Supervised Learning  
+- Unsupervised Learning  
+- AI Applications  
+- Intelligent Systems  
+- Data Science
+
+keywords:
+- Introduction to AI  
+- History of Artificial Intelligence  
+- Machine Learning Basics  
+- Deep Learning Concepts  
+- AI in Healthcare  
+- Natural Language Processing  
+- AI for Beginners  
+- Future of AI  
+- AI Tools and Techniques  
+- Neural Networks Explained  
+- Robotics and Automation  
+- Supervised vs Unsupervised Learning  
+- AI Ethics and Responsibility  
+- Real-world AI Use Cases  
+- Data-Driven Intelligence
+
+---
 # 🎓 AI Applications
 
 Welcome to the **AI Applications** section! Choose from the categories below to explore how artificial intelligence is transforming various fields and learn about its powerful applications:

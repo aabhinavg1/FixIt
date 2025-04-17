@@ -1,16 +1,51 @@
 ---
-title: Intro to C++11 vs C++14
-description: Explore the key differences, improvements, and optimizations between C++11 and C++14, including features like relaxed constexpr, variable templates, and generic lambdas.
+id: IntroToCpp11VsCpp14
+title: Introduction to C++11 vs C++14 - Key Differences and Enhancements
+description: |
+  Discover the key differences between C++11 and C++14 in this comprehensive guide. Learn about the new features and improvements introduced in C++14 that build upon the foundation set by C++11. This tutorial compares both versions and highlights the changes in syntax, performance, and functionality to help you understand which version is best suited for your development needs.
 keywords:
   - C++11
   - C++14
-  - C++ differences
-  - constexpr
-  - variable templates
-  - generic lambdas
-  - compile-time computation
-  - C++ standard library
-  - C++ performance optimization
+  - C++ Language Features
+  - C++ Comparison
+  - C++ Syntax
+  - C++11 Features
+  - C++14 Features
+  - C++ Performance
+  - C++ Lambda Expressions
+  - C++ Auto Keyword
+  - C++ Type Inference
+  - C++ Smart Pointers
+  - C++ Move Semantics
+  - C++ Multithreading
+  - C++ Compile-Time Features
+  - C++ Static Assertions
+  - C++14 Improvements
+  - C++11 vs C++14
+  - C++ Coding Standards
+
+tags:
+  - C++11
+  - C++14
+  - C++ Language Features
+  - C++ Comparison
+  - C++ Syntax
+  - C++ Features
+  - C++ Performance
+  - C++ Lambda Expressions
+  - C++ Auto Keyword
+  - C++ Type Inference
+  - C++ Smart Pointers
+  - C++ Move Semantics
+  - C++ Multithreading
+  - C++ Compile-Time Features
+  - C++ Static Assertions
+  - C++14 Enhancements
+  - C++11 Features
+  - C++ Coding Standards
+  - C++ Standards Comparison
+  - C++ Language Evolution
+
 ---
 
 # Introduction

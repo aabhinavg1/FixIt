@@ -2,6 +2,8 @@
 title: "Understanding LLVM Passes and Their Types"
 description: "Learn about LLVM passes, their purpose, and the different types used in compiler optimizations. Explore frontend, middle-end, and backend passes in detail."
 keywords: [LLVM, Passes, Compiler Optimization, Frontend Passes, Backend Passes, Middle-End Passes, IR, Code Transformation]
+tags: [LLVM, Compiler Passes, LLVM Passes, Optimization, Compiler Design, Intermediate Representation, Code Transformation, Static Analysis, IR Passes, LLVM Internals]
+
 
 ---
 

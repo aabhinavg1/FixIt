@@ -1,3 +1,45 @@
+---
+id: move-semantics
+title: Move Semantics and Rvalue References Multiple Choice Questions (MCQs)
+description: |
+  Test your understanding of move semantics and rvalue references in this set of Multiple Choice Questions (MCQs). Learn how move semantics enable efficient resource management by transferring ownership instead of copying, and understand the significance of rvalue references in modern programming. These MCQs cover topics such as move constructors, move assignment operators, and the use of `std::move`.
+keywords:
+  - Move Semantics
+  - Rvalue References
+  - Move Constructor
+  - Move Assignment Operator
+  - Resource Management
+  - Efficient Memory Management
+  - Rvalue References in Programming
+  - std::move
+  - C++ Move Semantics
+  - Memory Efficiency
+  - Move Semantics MCQs
+  - Rvalue References MCQs
+  - C++ Interview Questions
+  - Move Semantics Concepts
+  - Move Semantics in Modern Programming
+  - Move Semantics Test
+  - C++ Resource Transfer
+
+tags:
+  - Move Semantics
+  - Rvalue References
+  - Move Constructor
+  - Move Assignment Operator
+  - Resource Management
+  - Rvalue References in Programming
+  - std::move
+  - Memory Efficiency
+  - C++ Move Semantics
+  - Efficient Memory Management
+  - Move Semantics MCQs
+  - Rvalue References MCQs
+  - C++ Interview Questions
+  - Move Semantics Concepts
+  - Move Semantics in Modern Programming
+
+---
 import { Question } from '../../Question';
 
 # Move Semantics and Rvalue References
