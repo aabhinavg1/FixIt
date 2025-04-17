@@ -7,13 +7,13 @@ const sidebars = {
       label: 'Compilers',
       collapsed: true,
       items: [
-        'compilers/compiler',                 // Overview of compilers
-        'compilers/CPU/index',                // Tutorials specific to CPU compilers
-        'compilers/GPU/index',                // Tutorials specific to GPU compilers
-        'compilers/back_end/index',           // Backend concepts and tutorials
-        'compilers/flag/index',               // Compiler flags and optimizations
-        'compilers/front_end/index',          // Frontend concepts and tutorials
-        'compilers/other_arch/index',         // Tutorials for other architectures
+        'compilers/Compiler',                 // Overview of compilers
+        'compilers/CPU/cpu-compilers',                // Tutorials specific to CPU compilers
+        'compilers/GPU/gpu-compilers',                // Tutorials specific to GPU compilers
+        'compilers/back_end/introduction-to-backend-compilers',           // Backend concepts and tutorials
+        'compilers/flag/compiler-flags',               // Compiler flags and optimizations
+        'compilers/front_end/compiler-frontend',          // Frontend concepts and tutorials
+        'compilers/other_arch/other-architectures',         // Tutorials for other architectures
         'compilers/gcc_vs_llvm',             // Tutorials for gcc vs llvm
         'compilers/clang-c-vs-cpp-compilation', //Tutorials for clang c vs cpp
         'compilers/Verification_Vs_Validation' // Tutorial for the verification vs validation
@@ -29,7 +29,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/introduction',                   // Introduction to GPU concepts
-        'gpu/optimizations',                  // GPU-specific optimization techniques
+        'gpu/OptimizationOfGPU',                  // GPU-specific optimization techniques
         'gpu/evolution-of-parallel-programming',
         'gpu/CPU_Vs_GPU'
       ],
@@ -117,14 +117,14 @@ const sidebars = {
           type: 'category',
           label: 'Basic',
           items: [
-            'c++/c++_main_file',               // Basic C++ introduction
+            'c++/CppTutorial',               // Basic C++ introduction
           ],
         },
         {
           type: 'category',
           label: 'Intermediate',
           items: [
-            'c++/intermediate/index',          // Intermediate C++ concepts
+            'c++/intermediate/IntermediateCpp',          // Intermediate C++ concepts
           ],
         },
         {
@@ -138,7 +138,7 @@ const sidebars = {
           type: 'category',
           label: 'Standard',
           items: [
-            'c++/standard/index',             // C++ Standard Library topics
+            'c++/standard/intro',             // C++ Standard Library topics
           ],
         },
       ],
@@ -234,7 +234,7 @@ const sidebars = {
             'mcq/questions/intermediate/file-handling',
             'mcq/questions/intermediate/friend-functions',
             'mcq/questions/intermediate/inheritance',
-            'mcq/questions/intermediate/intermediate',
+            'mcq/questions/intermediate/getting-started-with-oops-concept',
             'mcq/questions/intermediate/memory-management',
             'mcq/questions/intermediate/oop',
             'mcq/questions/intermediate/operator-overloading',
@@ -245,8 +245,8 @@ const sidebars = {
           type: 'category',
           label: 'Advanced MCQs',
           items: [
-            'mcq/questions/advanced/concurrency',
-            'mcq/questions/advanced/cpp-features',
+            'mcq/questions/advanced/concurrency-and-synchronization',
+            'mcq/questions/advanced/cpp-features-11-14-17-20',
             'mcq/questions/advanced/exception-handling',
             'mcq/questions/advanced/lambdas',
             'mcq/questions/advanced/move-semantics',
@@ -280,10 +280,11 @@ const sidebars = {
             'mcq/interview_question/basic/arrays-strings',
             'mcq/interview_question/basic/io-operations',
             'mcq/interview_question/basic/pointers-references',
-            'mcq/interview_question/intermediate/classes-object',
-            'mcq/interview_question/intermediate/constructors-destructors',
+            'mcq/interview_question/intermediate/ClassesObjects',
+            'mcq/interview_question/intermediate/CppInterviewQuestionsConstructorsDestructors',
+            'mcq/interview_question/intermediate/EssentialCppInterviewQuestionsInheritancePolymorphism',
             'mcq/interview_question/intermediate/oop',
-            'mcq/interview_question/intermediate/exception-handling',
+            'mcq/interview_question/intermediate/CppInterviewQuestionsExceptionHandling',
             'mcq/interview_question/intermediate/memory-management',
             'mcq/interview_question/intermediate/operator-overloading',
 
