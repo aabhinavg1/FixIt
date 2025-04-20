@@ -61,6 +61,8 @@ const config = {
         { type: 'docSidebar', sidebarId: 'compilersSidebar', position: 'left', label: 'Compilers' },
         { type: 'docSidebar', sidebarId: 'cppTutorialSidebar', position: 'left', label: 'C++ Tutorials' },
         { type: 'docSidebar', sidebarId: 'dataStructureSidebar', position: 'left', label: 'DSA' },
+        { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'project' },
+
         {
           type: 'dropdown',
           label: 'MCQ',

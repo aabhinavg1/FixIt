@@ -57,6 +57,7 @@ const sidebars = {
         'DSA/Time_and_space'
       ]
     },
+    
     {
       type: 'category',
       label: 'Linear DSA',
@@ -196,7 +197,26 @@ const sidebars = {
   },
 ],
 
-
+// sidebar for the project
+projectSidebar: [
+  {
+  type: 'category',
+  label: 'project',
+  collapsed: true,
+  items: [
+    'project/Project',
+  ],
+},
+{
+  type: 'category',
+  label: 'Python Automation Project',
+  collapsed: true,
+  items: [
+  'project/python_automation/python_automation',
+  'project/python_automation/automate_boring_stuff/system-specs-collector/system_spec_collector'
+  ]
+},
+],
 
   // Sidebar for MCQs and Interview Questions
   mcqSidebar: [
