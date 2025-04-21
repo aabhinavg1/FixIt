@@ -129,3 +129,103 @@ import { Question } from '../../Question';
   options={['It protects object integrity', 'It allows data hiding', 'It provides a clear interface', 'All of the above']}
   answer="All of the above"
 />
+<Question
+  question="11).What keyword is used to define a class in C++?"
+  options={['struct', 'class', 'object', 'None of the above']}
+  answer="class"
+/>
+<Question
+  question="12).What does encapsulation primarily prevent?"
+  options={['Code duplication', 'Unauthorized data access', 'Memory leaks', 'None of the above']}
+  answer="Unauthorized data access"
+/>
+<Question
+  question="13).Which of these helps achieve encapsulation?"
+  options={['Access specifiers', 'Loops', 'Constructors', 'Destructors']}
+  answer="Access specifiers"
+/>
+<Question
+  question="14).Encapsulation improves:"
+  options={['Code security', 'Code reusability', 'Both A and B', 'None of the above']}
+  answer="Both A and B"
+/>
+<Question
+  question="15).Encapsulation leads to:"
+  options={['Modular code', 'Less maintenance', 'Improved debugging', 'All of the above']}
+  answer="All of the above"
+/>
+<Question
+  question="16).Which of these is NOT an access specifier in C++?"
+  options={['public', 'private', 'internal', 'protected']}
+  answer="internal"
+/>
+<Question
+  question="17).What does a setter function do?"
+  options={['Retrieves data', 'Sets or modifies data', 'Deletes data', 'Initializes the object']}
+  answer="Sets or modifies data"
+/>
+<Question
+  question="18).Which access specifier should be used to allow limited class access in inheritance?"
+  options={['private', 'public', 'protected', 'default']}
+  answer="protected"
+/>
+<Question
+  question="19).Encapsulation helps in achieving which of the following OOP goals?"
+  options={['Modularity', 'Code readability', 'Data abstraction', 'All of the above']}
+  answer="All of the above"
+/>
+<Question
+  question="20).How does encapsulation help with testing?"
+  options={['Makes unit testing easier', 'Reduces runtime', 'Avoids object creation', 'None of the above']}
+  answer="Makes unit testing easier"
+/>
+<Question
+  question="21).What is the best practice when using private members?"
+  options={['Access them directly', 'Expose them through public methods', 'Make them global', 'None of the above']}
+  answer="Expose them through public methods"
+/>
+<Question
+  question="22).What is true about encapsulation in relation to debugging?"
+  options={['Encapsulation helps isolate errors', 'It hides all error logs', 'It slows down debugging', 'None of the above']}
+  answer="Encapsulation helps isolate errors"
+/>
+<Question
+  question="23).Which combination best represents encapsulation?"
+  options={['Data + Inheritance', 'Data + Logic', 'Data + Methods + Access control', 'None of the above']}
+  answer="Data + Methods + Access control"
+/>
+<Question
+  question="24).Which of these violates the principle of encapsulation?"
+  options={['Using getter/setter', 'Making variables public', 'Keeping data private', 'Using protected members']}
+  answer="Making variables public"
+/>
+<Question
+  question="25).Friend functions can access:"
+  options={['Only private members', 'Only public members', 'Both private and protected members', 'None of the above']}
+  answer="Both private and protected members"
+/>
+<Question
+  question="26).Encapsulation restricts:"
+  options={['Access to certain parts of the object', 'Memory usage', 'Looping constructs', 'Inheritance of methods']}
+  answer="Access to certain parts of the object"
+/>
+<Question
+  question="27).In C++, what is an example of encapsulation?"
+  options={['Class with private variables and public methods', 'Global variables', 'Public functions only', 'None of the above']}
+  answer="Class with private variables and public methods"
+/>
+<Question
+  question="28).Which one of the following is a benefit of encapsulation?"
+  options={['Improved object manipulation externally', 'Simplified data manipulation', 'Control over data', 'All of the above']}
+  answer="Control over data"
+/>
+<Question
+  question="29).Encapsulation enables:"
+  options={['Tight coupling', 'Loose coupling', 'No coupling', 'Complex coupling']}
+  answer="Loose coupling"
+/>
+<Question
+  question="30).Which principle does encapsulation enforce most directly?"
+  options={['Open/Closed Principle', 'Single Responsibility Principle', 'Information Hiding', 'Polymorphism']}
+  answer="Information Hiding"
+/>
