@@ -128,3 +128,103 @@ import { Question } from '../../Question';
   options={['An error occurs', 'A new file is created', 'The program crashes', 'None of the above']}
   answer="An error occurs"
 />
+<Question
+  question="11).Which class in C++ is used for both reading and writing to files?"
+  options={['fstream', 'ifstream', 'ofstream', 'file']}
+  answer="fstream"
+/>
+<Question
+  question="12).Which operator is used to write data into a file?"
+  options={['<<', '>>', '=', '->']}
+  answer="<<"
+/>
+<Question
+  question="13).Which operator is used to read data from a file?"
+  options={['>>', '<<', '=', '->']}
+  answer=">>"
+/>
+<Question
+  question="14).What is the purpose of ios::binary?"
+  options={['Open file in binary mode', 'Open file in text mode', 'Close file automatically', 'None of the above']}
+  answer="Open file in binary mode"
+/>
+<Question
+  question="15).What does the seekg() function do?"
+  options={['Moves the get pointer', 'Moves the put pointer', 'Closes the file', 'Flushes the buffer']}
+  answer="Moves the get pointer"
+/>
+<Question
+  question="16).What does the seekp() function do?"
+  options={['Moves the put pointer', 'Moves the get pointer', 'Checks file end', 'Flushes the file']}
+  answer="Moves the put pointer"
+/>
+<Question
+  question="17).What does tellg() return?"
+  options={['Current position of get pointer', 'Current position of put pointer', 'File size', 'None of the above']}
+  answer="Current position of get pointer"
+/>
+<Question
+  question="18).What does tellp() return?"
+  options={['Current position of put pointer', 'Current position of get pointer', 'File name', 'None of the above']}
+  answer="Current position of put pointer"
+/>
+<Question
+  question="19).Which function is used to write a block of binary data to a file?"
+  options={['write()', 'put()', 'insert()', 'send()']}
+  answer="write()"
+/>
+<Question
+  question="20).Which function is used to read a block of binary data from a file?"
+  options={['read()', 'get()', 'scan()', 'receive()']}
+  answer="read()"
+/>
+<Question
+  question="21).What does the flush() function do?"
+  options={['Flushes output buffer to file', 'Flushes memory cache', 'Closes the file', 'None of the above']}
+  answer="Flushes output buffer to file"
+/>
+<Question
+  question="22).Which file mode is used to truncate an existing file before writing?"
+  options={['ios::trunc', 'ios::app', 'ios::ate', 'ios::binary']}
+  answer="ios::trunc"
+/>
+<Question
+  question="23).Which file mode opens the file and moves the pointer to the end?"
+  options={['ios::ate', 'ios::in', 'ios::out', 'ios::binary']}
+  answer="ios::ate"
+/>
+<Question
+  question="24).What is the return type of is_open()?"
+  options={['bool', 'int', 'void', 'string']}
+  answer="bool"
+/>
+<Question
+  question="25).Can we open a file in multiple modes simultaneously?"
+  options={['Yes, using bitwise OR (|)', 'No', 'Only for read/write', 'Only for binary']}
+  answer="Yes, using bitwise OR (|)"
+/>
+<Question
+  question="26).What is the default file mode for ofstream?"
+  options={['ios::out', 'ios::in', 'ios::binary', 'ios::app']}
+  answer="ios::out"
+/>
+<Question
+  question="27).Which method writes a single character to a file?"
+  options={['put()', 'write()', 'insert()', 'append()']}
+  answer="put()"
+/>
+<Question
+  question="28).Which method reads a single character from a file?"
+  options={['get()', 'read()', 'scan()', 'take()']}
+  answer="get()"
+/>
+<Question
+  question="29).Which function should be used to check for file read errors?"
+  options={['fail()', 'check()', 'verify()', 'error()']}
+  answer="fail()"
+/>
+<Question
+  question="30).Which of the following best practices should be followed with file handling?"
+  options={['Always close the file after use', 'Ignore file errors', 'Never check file mode', 'Use magic numbers']}
+  answer="Always close the file after use"
+/>
