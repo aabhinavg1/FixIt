@@ -16,7 +16,8 @@ const sidebars = {
         'compilers/other_arch/other-architectures',         // Tutorials for other architectures
         'compilers/gcc_vs_llvm',             // Tutorials for gcc vs llvm
         'compilers/clang-c-vs-cpp-compilation', //Tutorials for clang c vs cpp
-        'compilers/Verification_Vs_Validation' // Tutorial for the verification vs validation
+        'compilers/Verification_Vs_Validation', // Tutorial for the verification vs validation
+        'compilers/build_your_compiler', // build compiler in 100 lines
       ],
     },
   ],
