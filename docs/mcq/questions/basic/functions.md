@@ -222,3 +222,64 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['Yes', 'No', 'Only member functions', 'Only inline functions']}
   answer="No"
 />
+
+
+<Question
+question="31).What is the purpose of the 'inline' keyword in function declaration?"
+  options={['To make the function recursive', 'To suggest compiler to expand function code at call site', 'To make the function global', 'To prevent function overloading']}
+  answer="To suggest compiler to expand function code at call site"
+/>
+
+<Question
+  question="32).What is a lambda function in C++?"
+  options={['A function defined inside another function', 'An anonymous function object', 'A virtual function', 'A recursive function']}
+  answer="An anonymous function object"
+/>
+
+<Question
+  question="33). What is the return type of a function that doesn't return anything?"
+  options={['null', 'int', 'void', 'none']}
+  answer="void"
+/>
+
+<Question
+  question="34).Which storage class specifier makes a function visible only within its translation unit?"
+  options={['static', 'extern', 'auto', 'register']}
+  answer="static"
+/>
+
+<Question
+  question="35).How many values can a C++ function return directly using the return statement?"
+  options={['Only 1', 'Up to 3', 'Unlimited', 'Depends on compiler']}
+  answer="Only 1"
+/>
+
+<Question
+  question="36).What is function hiding in C++?"
+  options={['When a derived class function hides base class functions with same name', 'Making functions private', 'Using anonymous functions', 'When functions are optimized away by compiler']}
+  answer="When a derived class function hides base class functions with same name"
+/>
+
+
+<Question
+ question="37).Which of these function declarations is invalid?"
+ options={['int func(int);', 'int func(int x);', 'int func(int x = 5);', 'int func(x);']}
+ answer="int func(x);"
+/>
+
+<Question
+ question="38).Which of these is NOT a valid function qualifier in C++?"
+ options={['const', 'volatile', 'mutable', 'override']}
+ answer="mutable"
+/>
+
+<Question 
+  question="39).What does a pure virtual function in C++ imply about its class?" 
+  options={['The class cannot be instantiated', 'The class must be final', 'The class must be derived', 'The class is abstract']} answer="The class is abstract" 
+/> 
+
+<Question
+  question="40).Which of these function declarations uses perfect forwarding?"
+  options={['void func(T&& t);', 'void func(T& t);', 'void func(const T& t);', 'void func(T t);']}
+  answer="void func(T&& t);"
+/>
