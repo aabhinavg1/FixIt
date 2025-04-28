@@ -128,3 +128,122 @@ import { Question } from '../../Question';
   options={['To access base class members', 'To call the base class constructor', 'Both A and B', 'None of the above']}
   answer="None of the above"
 />
+<Question
+  question="11).What type of inheritance occurs when a class is derived from more than one base class?"
+  options={['Hierarchical inheritance', 'Multiple inheritance', 'Single inheritance', 'Hybrid inheritance']}
+  answer="Multiple inheritance"
+/>
+
+<Question
+  question="12).In C++, how can you prevent a class from being inherited?"
+  options={['Using sealed keyword', 'Using private inheritance', 'Declaring the class as final', 'Making the constructor private']}
+  answer="Declaring the class as final"
+/>
+
+<Question
+  question="13).In multilevel inheritance, which class acts both as a derived and base class?"
+  options={['Intermediate class', 'Primary class', 'Secondary class', 'Top class']}
+  answer="Intermediate class"
+/>
+
+<Question
+  question="14).Which inheritance type creates a diamond problem?"
+  options={['Single', 'Multiple', 'Multilevel', 'Hierarchical']}
+  answer="Multiple"
+/>
+
+<Question
+  question="15).Which access specifier allows a derived class to access protected members of a base class?"
+  options={['private', 'protected', 'public', 'internal']}
+  answer="protected"
+/>
+
+<Question
+  question="16).Which constructor is called first during the creation of a derived class object?"
+  options={['Derived class constructor', 'Base class constructor', 'Friend class constructor', 'Sibling class constructor']}
+  answer="Base class constructor"
+/>
+
+<Question
+  question="17).Which concept allows the same function name to behave differently in different classes?"
+  options={['Overriding', 'Overloading', 'Encapsulation', 'Virtualization']}
+  answer="Overriding"
+/>
+
+<Question
+  question="18).What happens if a derived class has no constructor?"
+  options={['Base class constructor is not called', 'Base class constructor is called automatically', 'Compilation error occurs', 'Program crashes']}
+  answer="Base class constructor is called automatically"
+/>
+
+<Question
+  question="19).Which member of the base class is never inherited by the derived class?"
+  options={['Public members', 'Protected members', 'Private members', 'Static members']}
+  answer="Private members"
+/>
+
+<Question
+  question="20).In C++, which inheritance visibility mode makes public members of the base class become private in the derived class?"
+  options={['public', 'private', 'protected', 'virtual']}
+  answer="private"
+/>
+
+<Question
+  question="21).What is hybrid inheritance?"
+  options={['Inheritance involving only two classes', 'Inheritance combining multiple types of inheritance', 'Inheritance without constructors', 'None of the above']}
+  answer="Inheritance combining multiple types of inheritance"
+/>
+
+<Question
+  question="22).Which feature is primarily used to achieve runtime polymorphism in C++ inheritance?"
+  options={['Function Overloading', 'Operator Overloading', 'Virtual Functions', 'Templates']}
+  answer="Virtual Functions"
+/>
+
+<Question
+  question="23).What is the order of destructor calls in case of inheritance?"
+  options={['Base to Derived', 'Derived to Base', 'Random', 'Depends on compiler']}
+  answer="Derived to Base"
+/>
+
+<Question
+  question="24).When can a derived class access the private members of a base class?"
+  options={['Directly', 'By using friend functions', 'By making them protected', 'It cannot access them']}
+  answer="By using friend functions"
+/>
+
+<Question
+  question="25).Which inheritance type best represents a tree-like hierarchy?"
+  options={['Single', 'Hierarchical', 'Multilevel', 'Multiple']}
+  answer="Hierarchical"
+/>
+
+<Question
+  question="26).What is a pure virtual function?"
+  options={['A function with no implementation', 'A function that must be overridden', 'A function marked with =0', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="27).What is the size of a derived class object compared to its base class?"
+  options={['Always smaller', 'Always larger', 'Depends on number of members added', 'Always same']}
+  answer="Depends on number of members added"
+/>
+
+<Question
+  question="28).Which keyword is used to inherit constructors from base class in C++11?"
+  options={['base', 'constructor', 'using', 'inherits']}
+  answer="using"
+/>
+
+<Question
+  question="29).What happens if you call a base class function using a derived class object?"
+  options={['Base class version is invoked', 'Derived class version is invoked', 'Both are invoked', 'Compilation error']}
+  answer="Base class version is invoked"
+/>
+
+<Question
+  question="30).Which type of function must a derived class implement if it inherits a pure virtual function?"
+  options={['Normal function', 'Static function', 'Constructor', 'Pure virtual function']}
+  answer="Pure virtual function"
+/>
