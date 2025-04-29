@@ -312,7 +312,10 @@ answer="Both A and B"
 
 <Question
 question="33). What is the output of this code?"
-code={`int i = 10; do { cout << i-- << " "; } while (i > 8);`}
+code={`int i = 10; 
+do { cout << i-- << " "; }
+ while (i > 8);`
+ }
 options={['10 9', '10 9 8', '9 8', 'Infinite loop']}
 answer="10 9"
 />
@@ -325,7 +328,13 @@ answer="It makes code harder to maintain"
 
 <Question
 question="35). What is the output?"
-code={`int x = 2; switch(x) { case 1: x++; case 2: x++; case 3: x++; default: x++; } cout << x; `}
+code={`int x = 2;
+ switch(x) 
+ { case 1: x++;
+  case 2: x++; 
+  case 3: x++; 
+  default: x++; } 
+  cout << x; `}
 options={['2', '3', '5', '6']}
 answer="5"
 />
@@ -338,14 +347,20 @@ answer="i += 0.5"
 
 <Question
 question="37). What does this code print?"
-code={`for (int i = 0; i < 3; i++) continue; cout << i; `}
+code={`for (int i = 0; i < 3; i++) 
+continue; 
+cout << i; `}
 options={['012', '2', 'Compilation error', 'Nothing']}
 answer="Compilation error"
 />
 
 <Question
 question="38). How many times is 'Hello' printed?"
-code={`int x = 3; while (x--) { cout << "Hello "; x--; }`}
+code={`int x = 3;
+ while (x--)
+  { cout << "Hello "; 
+  x--; }`
+  }
 options={['1', '2', '3', 'Infinite']}
 answer="1"
 />
