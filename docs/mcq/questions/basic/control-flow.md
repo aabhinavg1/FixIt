@@ -292,3 +292,72 @@ if x == 1
   options={['1 2 3 4 5', '1 3 5', '1 2 4', '2 4 6']}
   answer="1 3 5"
 />
+
+<Question
+question="31). What is the output of the following code?"
+code={`int x = 5;
+if (x == 0) 
+    cout << "Zero"; 
+else 
+    cout << "Non-zero"; `}
+options={['Zero', 'Non-zero', 'Compilation error', 'Runtime error']}
+answer="Non-zero"
+/>
+
+<Question
+question="32). Which loop will execute exactly 5 times?"
+options={['for (int i=1; i<=5; i++)', 'for (int i=0; i<5; i++)', 'Both A and B', 'None of the above']}
+answer="Both A and B"
+/>
+
+<Question
+question="33). What is the output of this code?"
+code={`int i = 10; do { cout << i-- << " "; } while (i > 8);`}
+options={['10 9', '10 9 8', '9 8', 'Infinite loop']}
+answer="10 9"
+/>
+
+<Question
+question="34). Which statement about the goto keyword is true?"
+options={['It is preferred over loops', 'It can jump to any function', 'It makes code harder to maintain', 'It is mandatory for control flow']}
+answer="It makes code harder to maintain"
+/>
+
+<Question
+question="35). What is the output?"
+code={`int x = 2; switch(x) { case 1: x++; case 2: x++; case 3: x++; default: x++; } cout << x; `}
+options={['2', '3', '5', '6']}
+answer="5"
+/>
+
+<Question
+question="36). Which of these is NOT a valid loop control variable modification?"
+options={['i++', 'i *= 2', 'i += 0.5', 'i = i * i']}
+answer="i += 0.5"
+/>
+
+<Question
+question="37). What does this code print?"
+code={`for (int i = 0; i < 3; i++) continue; cout << i; `}
+options={['012', '2', 'Compilation error', 'Nothing']}
+answer="Compilation error"
+/>
+
+<Question
+question="38). How many times is 'Hello' printed?"
+code={`int x = 3; while (x--) { cout << "Hello "; x--; }`}
+options={['1', '2', '3', 'Infinite']}
+answer="1"
+/>
+
+<Question
+question="39). Which is equivalent to: if (!condition) ?"
+options={['if (condition == false)', 'if (condition != true)', 'if (condition == 0)', 'All of the above']}
+answer="All of the above"
+/>
+
+<Question
+question="40). Which control flow structure is missing in C++?"
+options={['unless', 'until', 'elif', 'Both A and B']}
+answer="Both A and B"
+/>
