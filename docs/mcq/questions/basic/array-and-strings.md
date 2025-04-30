@@ -24,7 +24,8 @@ keywords:
   - String Matching Algorithms
   - String to Integer Conversion
   - C++ Practice Problems
-
+  - CPP MCQ Question
+  - C For the Interview
 tags:
   - Arrays
   - Strings
