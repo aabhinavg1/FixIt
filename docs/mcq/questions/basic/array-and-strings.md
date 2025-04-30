@@ -252,3 +252,111 @@ return 0;
     options={['length', 'size', 'length()', 'None of the above']}
     answer="length()"
   />
+
+  <Question
+    question="31).What will be the output of the following code?"
+    code={`#include <iostream>
+      using namespace std;
+      int main() {
+        int arr[5] = {1};
+          for(int i = 0; i < 5; i++) {
+            cout << arr[i] << " ";
+        }
+        return 0;
+      }`}
+    options={['1 0 0 0 0', '1 1 1 1 1', '0 0 0 0 0', '1 garbage garbage garbage garbage']}
+    answer="1 0 0 0 0"
+/>
+
+<Question
+  question="32).What will be the output of the following code?"
+  code={` #include <iostream>
+   using namespace std; 
+   int main() { 
+    int arr[3] = {1, 2, 3}; 
+    cout << *(arr + 1);
+     return 0;
+      } `}
+  options={['1', '2', '3', 'Address of arr[1]']}
+  answer="2"
+/>
+
+<Question
+  question="33).Which of these correctly declares and initializes a C++ string with 5 'a' characters?"
+  options={[
+    "string s(5, 'a');",
+    'string s = "aaaaa";',
+    "string s; s.assign(5, 'a');",
+    "All of the above"
+  ]}
+  answer="All of the above"
+/>
+
+
+<Question
+question="34).What does this code output?"
+  code={`#include <iostream>
+   #include <cstring> 
+   using namespace std;
+    int main() {
+       char str[10] = "Hello"; 
+       cout << strlen(str); 
+       return 0;
+        }`}
+  options={['5', '6', '10', 'Undefined']}
+  answer="5"
+/>
+
+<Question
+  question="35).How do you correctly deallocate a dynamically allocated array in C++?"
+  options={['delete arr;', 'delete[] arr;', 'free(arr);', 'Both B and C']}
+  answer="delete[] arr;"
+/>
+
+<Question
+  question="36).What is the value of arr[2] after this code executes?"
+  code={`int arr[5] = {10, 20}; arr[2] = arr[0] + arr[1];`}
+  options={['0', '10', '20', '30']}
+  answer="30"
+/>
+
+
+<Question
+  question="37).Which function is used to find a substring in a C++ string object?"
+  options={['find()', 'search()', 'substr()', 'locate()']}
+  answer="find()"
+  />
+
+<Question
+  question="38).What is the output of this code?"
+    code={`#include <iostream> 
+    using namespace std; 
+    int main() { 
+      string s1 = "C++";
+      string s2 = s1; 
+      s1[0] = 'P'; 
+      cout << s2; 
+      return 0; 
+      }`}
+  options={['P++', 'C++', 'Error', 'Undefined']}
+  answer="C++"
+  />
+
+<Question
+  question="39).What is the correct way to pass an array to a function without specifying its size?"
+  options={['void func(int arr[])', 'void func(int* arr)', 'Both A and B', 'None of the above']}
+  answer="Both A and B"
+  />
+
+<Question
+  question="40).What does this code output?"
+    code={`#include <iostream>
+    using namespace std;
+    int main() { 
+      int arr[] = {1, 2, 3, 4, 5}; 
+      cout << *(arr + 3);
+      return 0; 
+      }`}
+  options={['1', '3', '4', 'Address of arr[3]']}
+  answer="4"
+  />
