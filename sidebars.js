@@ -30,7 +30,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/introduction',                   // Introduction to GPU concepts
-        'gpu/OptimizationOfGPU',                  // GPU-specific optimization techniques
+        'gpu/optimizations',                  // GPU-specific optimization techniques
         'gpu/evolution-of-parallel-programming',
         'gpu/CPU_Vs_GPU'
       ],
@@ -42,8 +42,17 @@ const sidebars = {
       items: [
         'gpu/Parallel_Programming/Intro_to_Parallel_Programming',
       ],
+    },
+    {
+      type: 'category',                       //opencl turoial 
+      label: 'Opencl',
+      collapsed: true,
+      items: [
+        'gpu/opencl/opencl',
+      ],
     }
   ],
+  
 
   //side bar for the DSA
   dataStructureSidebar: [
