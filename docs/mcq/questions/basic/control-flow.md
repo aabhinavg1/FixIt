@@ -24,64 +24,64 @@ keywords:
   - C++ Exam Questions
   - C++ Testing
   - C++ interview questions
-- C++ coding interview
-- C++ interview prep
-- C++ programming interview
-- C++ interview answers
-- C++ concepts
-- C++ object-oriented programming (OOP)
-- C++ algorithms
-- C++ data structures
-- C++ multi-threading
-- C++ STL (Standard Template Library)
-- Interview questions for C++ developers
-- C++ technical interviews
-- C++ memory management
-- C++ dynamic memory allocation
-- C++ inheritance and polymorphism
-- C++ class and object design
-- C++ constructor and destructor behavior
-- C++ virtual functions and dynamic dispatch
-- C++ function overloading and overriding
-- C++ operator overloading techniques
-- C++ smart pointers (std::unique_ptr, std::shared_ptr)
-- C++ concurrency and synchronization
-- C++ mutex and locks
-- C++ threads and thread safety
-- C++ exception handling and best practices
-- C++ copy and move semantics
-- C++ lambda functions and captures
-- C++ template programming and specialization
-- C++ iterators and range-based loops
-- C++ vector and list operations
-- C++ map, set, and unordered_map
-- C++ algorithmic complexity analysis (Big O notation)
-- C++ memory leak detection and prevention
-- C++ static and dynamic libraries
-- C++ file input/output (fstream, ifstream, ofstream)
-- C++ multi-threaded programming patterns
-- C++ design patterns (Singleton, Factory, etc.)
-- C++ compiler optimizations
-- C++ modern features (C++11, C++14, C++17, C++20)
-- C++ move constructor and move assignment
-- C++ RAII (Resource Acquisition Is Initialization)
-- C++ dynamic polymorphism using virtual functions
-- C++ performance tuning and profiling
-- C++ code debugging techniques
-- C++ pointer arithmetic and memory access
-- C++ type traits and SFINAE
-- C++ operator precedence and associativity
-- C++ class templates and template metaprogramming
-- C++ custom memory allocators
-- C++ concurrency models (thread, async, futures)
-- C++ atomic operations and lock-free data structures
-- C++ error handling using try-catch blocks
-- C++ namespace and scope resolution
-- C++ constexpr and consteval
-- C++ file handling and serialization
-- C++ dynamic casting and runtime type identification (RTTI)
-- C++ const correctness and const references
-- C++ vector vs array vs linked list
+  - C++ coding interview
+  - C++ interview prep
+  - C++ programming interview
+  - C++ interview answers
+  - C++ concepts
+  - C++ object-oriented programming (OOP)
+  - C++ algorithms
+  - C++ data structures
+  - C++ multi-threading
+  - C++ STL (Standard Template Library)
+  - Interview questions for C++ developers
+  - C++ technical interviews
+  - C++ memory management
+  - C++ dynamic memory allocation
+  - C++ inheritance and polymorphism
+  - C++ class and object design
+  - C++ constructor and destructor behavior
+  - C++ virtual functions and dynamic dispatch
+  - C++ function overloading and overriding
+  - C++ operator overloading techniques
+  - C++ smart pointers (std::unique_ptr, std::shared_ptr)
+  - C++ concurrency and synchronization
+  - C++ mutex and locks
+  - C++ threads and thread safety
+  - C++ exception handling and best practices
+  - C++ copy and move semantics
+  - C++ lambda functions and captures
+  - C++ template programming and specialization
+  - C++ iterators and range-based loops
+  - C++ vector and list operations
+  - C++ map, set, and unordered_map
+  - C++ algorithmic complexity analysis (Big O notation)
+  - C++ memory leak detection and prevention
+  - C++ static and dynamic libraries
+  - C++ file input/output (fstream, ifstream, ofstream)
+  - C++ multi-threaded programming patterns
+  - C++ design patterns (Singleton, Factory, etc.)
+  - C++ compiler optimizations
+  - C++ modern features (C++11, C++14, C++17, C++20)
+  - C++ move constructor and move assignment
+  - C++ RAII (Resource Acquisition Is Initialization)
+  - C++ dynamic polymorphism using virtual functions
+  - C++ performance tuning and profiling
+  - C++ code debugging techniques
+  - C++ pointer arithmetic and memory access
+  - C++ type traits and SFINAE
+  - C++ operator precedence and associativity
+  - C++ class templates and template metaprogramming
+  - C++ custom memory allocators
+  - C++ concurrency models (thread, async, futures)
+  - C++ atomic operations and lock-free data structures
+  - C++ error handling using try-catch blocks
+  - C++ namespace and scope resolution
+  - C++ constexpr and consteval
+  - C++ file handling and serialization
+  - C++ dynamic casting and runtime type identification (RTTI)
+  - C++ const correctness and const references
+  - C++ vector vs array vs linked list
 
 
 tags:

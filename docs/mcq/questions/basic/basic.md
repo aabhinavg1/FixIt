@@ -23,6 +23,8 @@ keywords:
   - Beginner C++ Tutorials
   - Simple C++ Programs
   - First C++ Program
+  - C++ interview questions
+
 
 tags:
   - C++ Basics
