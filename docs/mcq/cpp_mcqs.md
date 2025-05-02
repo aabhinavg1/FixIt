@@ -68,7 +68,7 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Data Types](./questions/basic/data-types.md)
 - [Variables and Constants](./questions/basic/variables-and-constants.md)
 - [Control Flow: if-else, switch-case](./questions/basic/control-flow.md)
-- [Loops: for, while, do-while](./questions/basic/loops.md)
+- [Loops: for, while, do-while](./questions/basic/loop.md)
 - [Functions](./questions/basic/functions.md)
 - [Arrays and Strings](./questions/basic/array-and-strings.md)
 - [Pointer and Strings](./questions/basic/pointers-strings.md)
