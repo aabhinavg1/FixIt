@@ -288,3 +288,102 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['C++2024', 'C++ 2024', 'C+2024', 'Compilation Error']}
     answer="C++ 2024"
 />
+
+<Question
+    question="31).What will be the output of the following code?"
+    code={`#include <iostream>
+          using namespace std;
+          int main() {
+            cout << "Hello" << ends << "World";
+            return 0;}`}
+    options={['HelloWorld','Hello World','Hello\0World','Compilation Error']}
+    answer="HelloWorld"
+    />
+
+ <Question
+    question="32).Which manipulator is used to change the fill character in cout?"
+    options={['setfill()','fill()','setw()','padding()']}
+    answer="setfill()"
+  />
+
+ <Question
+    question="33).What will cout << showpos << 25; print?"
+    options={['25','+25','25.0','Error']}
+    answer="+25"
+  />
+
+<Question
+    question="34)How do you read an entire line (including spaces) from cin?"
+    options={['cin >> line;','getline(cin, line);','cin.read(line);','cin.getline(line);']}
+    answer="getline(cin, line);"
+/>
+
+<Question
+    question="35)What will be the output of this code?"
+    code={`#include <iostream>
+          using namespace std;
+          int main() {
+          cout << hex << 255;
+          return 0;
+        }`}
+    options={['255','0xFF','ff','0x255']}
+    answer="ff"
+/>
+
+<Question
+    question=" 36)Which function is used to check if cin has encountered an error?"
+    options={['cin.good()','cin.fail()','cin.bad()','All of the above']}
+    answer="All of the above"
+/>
+
+<Question
+    question="37)What does cout << noshowpoint << 10.0; print?"
+    options={['10.0','10','10.','None of the above']}
+    answer="10"
+/>
+
+<Question
+    question="38)What is the purpose of cin.ignore(n, ch)?"
+    options={['Ignores n characters or until ch is encountered','Skips the next n lines','Clears the input buffer completely','None of the above']}
+    answer="Ignores n characters or until ch is encountered"
+/>
+
+<Question
+    question="39)Which manipulator is used to align output to the left?"
+    options={['left','right','adjustleft','setleft']}
+    answer="left"
+/>
+
+<Question
+    question="40)What will cout << boolalpha << true; print?"
+    options={['1','True','true','Yes']}
+    answer="true"
+/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
