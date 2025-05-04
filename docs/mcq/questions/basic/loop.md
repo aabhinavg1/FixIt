@@ -351,3 +351,139 @@ while (i <= 3) {
   ]}
   answer="while (true) {}"
 />
+
+<Question
+  question="31). What is the output of this `for` loop with a step of 2?"
+  code={` #include <iostream>
+  using namespace std;
+  int main() {
+    for (int i = 2; i <= 6; i += 2) {
+        cout << i << " ";
+    }
+    return 0;
+  }`}
+  options={['1 3 5', '2 4 6', '2 3 4 5 6', '2 4 6 8']}
+  answer="2 4 6"
+/>
+
+<Question
+  question="32). What is the primary purpose of a loop in programming?"
+  options={[
+    'To execute code sequentially without repetition',
+    'To repeat a block of code until a condition is met',
+    'To store multiple values in a single variable',
+    'To define functions'
+  ]}
+  answer="To repeat a block of code until a condition is met"
+/>
+
+<Question
+  question="33). Which loop type is most suitable when the number of iterations is unknown?"
+  options={[
+    'for loop',
+    'while loop',
+    'do-while loop',
+    'range-based for loop'
+  ]}
+  answer="while loop"
+/>
+
+<Question
+  question="34). What is the output of this `continue` example?"
+  code={`#include <iostream>
+  using namespace std;
+    int main() {
+    for (int i = 1; i <= 4; i++) {
+        if (i == 2) continue;
+        cout << i << " ";
+    }
+    return 0;
+  }`}
+  options={['1 2 3 4', '1 3 4', '2', '1 3']}
+  answer="1 3 4"
+/>
+
+<Question
+  question="35). Which loop is guaranteed to terminate?"
+  options={[
+    'for (int i = 0; i < 5; i++) { }',
+    'while (true) { break; }',
+    'int i=0; while(i<5) { cout << i; }',
+    'do { } while (1 == 1);'
+  ]}
+  answer="for (int i = 0; i < 5; i++) { }"
+/>
+
+<Question
+  question="36). What does this single-iteration loop print?"
+  code={`#include <iostream>
+  using namespace std;
+  int main() {
+    for (int i = 1; i <= 1; i++) {
+        cout << i << " ";
+    }
+    return 0;
+  }`}
+  options={['0', '1', '1 2', 'Nothing']}
+  answer="1"
+/>
+
+<Question
+  question="37). How to fix this infinite loop?"
+  code={`#include <iostream>
+  using namespace std;
+    int main() {
+    int i = 0;
+    while (i < 5) {
+        cout << i << " ";
+  }}`}
+  options={[
+    'Add i++ inside loop',
+    'Change while to for',
+    'Remove cout',
+    'Change condition to i > 5'
+  ]}
+  answer="Add i++ inside loop"
+/>
+
+<Question
+  question="38). What is the output of this zero-iteration loop?"
+  code={`#include <iostream>
+  using namespace std;
+    int main() {
+    for (int i = 0; i < 0; i++) {
+        cout << i << " ";
+    }
+    return 0;
+  }`}
+  options={['0', '1', 'No output', 'Infinite zeros']}
+  answer="No output"
+/>
+
+<Question
+  question="39). What is the key difference between `break` and `continue`?"
+  options={[
+    'break exits the program, continue skips one line',
+    'break exits the loop, continue skips to next iteration',
+    'Both terminate the loop immediately',
+    'continue exits the loop, break skips one iteration'
+  ]}
+  answer="break exits the loop, continue skips to next iteration"
+/>
+
+<Question
+  question="40). What is the key difference between these loops?"
+  code={`while (false) {
+    /* code */
+    }   // vs
+    do {
+    /* code */
+  } while (false);`}
+  options={[
+    'Both behave identically',
+    'First runs once, second never runs',
+    'First never runs, second runs once',
+    'Both cause compile errors'
+  ]}
+  answer="First never runs, second runs once"
+/>
