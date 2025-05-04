@@ -354,3 +354,63 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['class MyClass {};', 'class MyClass() {};', 'MyClass class {};', 'None of the above']}
   answer="class MyClass {};"
 />
+
+<Question
+  question="51). Which of the following is not a valid C++ loop?"
+  options={['for', 'while', 'do-while', 'repeat-until']}
+  answer="repeat-until"
+/>
+
+<Question
+  question="52). Which header file is required to use std::string in C++?"
+  options={['<cstring>', '<string>', '<string.h>', '<iostream>']}
+  answer="<string>"
+/>
+
+<Question
+  question="53). What is the purpose of the 'namespace' keyword in C++?"
+  options={['To declare a new class', 'To group related code and prevent naming conflicts', 'To import external libraries', 'To define global variables']}
+  answer="To group related code and prevent naming conflicts"
+/>
+
+<Question
+  question="54). What is the correct way to declare a reference variable in C++?"
+  options={['int &x = y;', 'int x = &y;', 'reference int x = y;', 'int *x = y;']}
+  answer="int &x = y;"
+/>
+
+<Question
+  question="55). Which of the following is not a valid C++ access modifier?"
+  options={['public', 'private', 'protected', 'internal']}
+  answer="internal"
+/>
+
+<Question
+  question="56). What is the correct syntax for declaring a pure virtual function in C++?"
+  options={['virtual void func() = 0;', 'void virtual func() = 0;', 'pure virtual void func();', 'abstract void func();']}
+  answer="virtual void func() = 0;"
+/>
+
+<Question
+  question="57). Which of the following is not a valid C++ STL container?"
+  options={['vector', 'array', 'list', 'tuple']}
+  answer="tuple"
+/>
+
+<Question
+  question="58). Which of the following is not a valid C++ smart pointer?"
+  options={['unique_ptr', 'shared_ptr', 'weak_ptr', 'raw_ptr']}
+  answer="raw_ptr"
+/>
+
+<Question
+  question="59). Which of the following is true about C++ inheritance?"
+  options={['A derived class can inherit from multiple base classes', 'Private inheritance is the default', 'Constructors are inherited', 'Destructors cannot be virtual']}
+  answer="A derived class can inherit from multiple base classes"
+/>
+
+<Question
+  question="60). What is the purpose of the 'alignas' specifier in C++?"
+  options={['To specify alignment requirements', 'To align text output', 'To create aligned arrays', 'To format code']}
+  answer="To specify alignment requirements"
+/>
