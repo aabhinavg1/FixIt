@@ -41,6 +41,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/Parallel_Programming/Intro_to_Parallel_Programming',
+        'gpu/what_is_gpu'
       ],
     },
     {
