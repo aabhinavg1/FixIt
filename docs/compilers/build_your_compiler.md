@@ -37,7 +37,7 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Table of Contents
+## Table of Contents
 1. [Build Your First Compiler with LLVM](#build-your-first-compiler-with-llvm-in-100-lines)
 2. [Prerequisites](#prerequisites)
      - [Ubuntu / Debian](#)
