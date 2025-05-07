@@ -13,6 +13,7 @@ const sidebars = {
         'compilers/back_end/introduction-to-backend-compilers',           // Backend concepts and tutorials
         'compilers/flag/compiler-flags',               // Compiler flags and optimizations
         'compilers/front_end/compiler-frontend',          // Frontend concepts and tutorials
+        'compilers/front_end/role_of_parser',
         'compilers/other_arch/other-architectures',         // Tutorials for other architectures
         'compilers/gcc_vs_llvm',             // Tutorials for gcc vs llvm
         'compilers/clang-c-vs-cpp-compilation', //Tutorials for clang c vs cpp
@@ -50,6 +51,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/opencl/opencl',
+        'gpu/opencl/basic/what_is_opencl',
       ],
     }
   ],
