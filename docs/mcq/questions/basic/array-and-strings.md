@@ -421,3 +421,95 @@ question="34).What does this code output?"
   options={['1', '3', '4', 'Address of arr[3]']}
   answer="4"
   />
+
+  <Question
+  question="41).What does the following code print?"
+  code={`#include <iostream>
+  using namespace std;
+  int main() {
+    string s = "abc";
+    s += 'd';
+    cout << s;
+    return 0;
+  }`}
+  options={['abcd', 'abc d', 'abc', 'abcd\n']}
+  answer="abcd"
+/>
+
+<Question
+  question="42).What is the output of this code?"
+  code={`#include <iostream>
+  using namespace std;
+  int main() {
+    int arr[3] = {1, 2, 3};
+    cout << *(arr + 2);
+    return 0;
+  }`}
+  options={['1', '2', '3', 'Garbage value']}
+  answer="3"
+/>
+
+<Question
+  question="43).Which of the following is true about character arrays in C++?"
+  options={[
+    'They must be null-terminated to be treated as strings',
+    'They can store integers',
+    'They automatically convert to std::string',
+    'They are always dynamically allocated'
+  ]}
+  answer="They must be null-terminated to be treated as strings"
+/>
+
+<Question
+  question="44).How do you resize a std::string in C++?"
+  options={['resize()', 'length()', 'size()', 'None of the above']}
+  answer="resize()"
+/>
+
+<Question
+  question="45).What does this code print?"
+  code={`#include <iostream>
+  using namespace std;
+  int main() {
+    int arr[] = {5, 10, 15};
+    cout << sizeof(arr)/sizeof(arr[0]);
+    return 0;
+  }`}
+  options={['2', '3', '4', '5']}
+  answer="3"
+/>
+
+<Question
+  question="46).Which of these methods appends one string to another in C++?"
+  options={['+= operator', 'append()', 'Both A and B', 'None of the above']}
+  answer="Both A and B"
+/>
+
+<Question
+  question="47).Which of the following accesses the last element of a string named str?"
+  options={['str.back()', 'str[str.length() - 1]', 'str.at(str.size() - 1)', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="48).What happens if you access arr[10] in an array of size 5?"
+  options={['Returns 0', 'Compiles but gives garbage value', 'Throws an error', 'Returns -1']}
+  answer="Compiles but gives garbage value"
+/>
+
+<Question
+  question="49).What is the difference between size() and capacity() of a C++ string?"
+  options={[
+    'size() is number of characters; capacity() is allocated storage',
+    'Both give same value',
+    'capacity() is always smaller',
+    'size() includes null terminator'
+  ]}
+  answer="size() is number of characters; capacity() is allocated storage"
+/>
+
+<Question
+  question="50).Which C++ keyword is used to create a dynamic array?"
+  options={['malloc', 'new', 'alloc', 'create']}
+  answer="new"
+/>

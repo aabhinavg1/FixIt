@@ -283,3 +283,63 @@ question="31).What is the purpose of the 'inline' keyword in function declaratio
   options={['void func(T&& t);', 'void func(T& t);', 'void func(const T& t);', 'void func(T t);']}
   answer="void func(T&& t);"
 />
+
+<Question
+  question="41).What does the 'noexcept' specifier indicate in a C++ function?"
+  options={['The function does not return', 'The function may throw exceptions', 'The function does not throw exceptions', 'The function must return an exception']}
+  answer="The function does not throw exceptions"
+/>
+
+<Question
+  question="42).Which of the following is used to define a function outside a class in C++?"
+  options={['Using :: operator', 'Using -> operator', 'Using the & symbol', 'Using the this pointer']}
+  answer="Using :: operator"
+/>
+
+<Question
+  question="43).What is the default return type of a function in C++ if none is specified?"
+  options={['int', 'void', 'float', 'It causes a compile error']}
+  answer="int"
+/>
+
+<Question
+  question="44).Which of the following allows a function to accept arguments of any type?"
+  options={['Templates', 'Function pointers', 'Lambda expressions', 'Virtual functions']}
+  answer="Templates"
+/>
+
+<Question
+  question="45).Which function qualifier prevents a member function from modifying any class member?"
+  options={['const', 'static', 'inline', 'final']}
+  answer="const"
+/>
+
+<Question
+  question="46).Which of the following is true about function pointers in C++?"
+  options={['They point to data variables', 'They can store the address of any variable', 'They point to functions of specific signature', 'They are not allowed in C++']}
+  answer="They point to functions of specific signature"
+/>
+
+<Question
+  question="47).How can you define a recursive lambda function in C++11 or later?"
+  options={['Using auto keyword', 'Using std::function', 'Using global variable', 'You can’t define recursive lambdas']}
+  answer="Using std::function"
+/>
+
+<Question
+  question="48).Which of the following allows changing a function’s behavior at runtime in C++?"
+  options={['Virtual functions', 'Const functions', 'Inline functions', 'Static functions']}
+  answer="Virtual functions"
+/>
+
+<Question
+  question="49).What happens if you declare a function but never define it?"
+  options={['It is ignored by the compiler', 'It causes a runtime error', 'It causes a linker error', 'The function returns 0 by default']}
+  answer="It causes a linker error"
+/>
+
+<Question
+  question="50).Which of the following is NOT a valid way to pass arguments to a function?"
+  options={['Pass by value', 'Pass by reference', 'Pass by name', 'Pass by pointer']}
+  answer="Pass by name"
+/>
