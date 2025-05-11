@@ -302,3 +302,159 @@ int main() {
   options={['2', '3', 'abc', 'Error']}
   answer="3"
 />
+
+<Question
+  question="31).What is the default value of an uninitialized pointer in C++?"
+  options={['nullptr', '0', 'Random address', 'Error']}
+  answer="nullptr"
+/>
+
+<Question
+  question="32).What does the expression `*ptr++` do in C++?"
+  options={['Dereferences ptr, then increments the pointer', 'Increments the pointer, then dereferences it', 'Increments ptr by 1 byte', 'None of the above']}
+  answer="Dereferences ptr, then increments the pointer"
+/>
+
+<Question
+  question="33).What happens if you try to dereference a pointer to a local variable after the function has returned?"
+  options={['Segmentation fault', 'The pointer will hold the last valid value', 'It will print a garbage value', 'It will not compile']}
+  answer="Segmentation fault"
+/>
+
+<Question
+  question="34).Which of the following can a pointer in C++ point to?"
+  options={['An integer', 'A float', 'A string', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="35).Which of these is a valid way to declare a constant pointer in C++?"
+  options={['int* const ptr;', 'const int* ptr;', 'int* ptr const;', 'None of the above']}
+  answer="int* const ptr;"
+/>
+
+<Question
+  question="36).What does the following code print?"
+  code={`#include <iostream>
+  using namespace std;
+
+  int main() {
+  int x = 5;
+  int* ptr = &x;
+  *ptr = 10;
+  cout << x;
+  return 0;
+  }`}
+  options={['5', '10', 'Error', 'None of the above']}
+  answer="10"
+/>
+
+<Question
+  question="37).How would you declare a pointer to a pointer in C++?"
+  options={['int** ptr;', 'pointer int* ptr;', 'int* ptr*;', 'None of the above']}
+  answer="int** ptr;"
+/>
+
+<Question
+  question="38).What is the output of the following code?"
+  code={`#include <iostream>
+  using namespace std;
+
+  int main() {
+  int arr[] = {1, 2, 3};
+  int* ptr = arr;
+  cout << *(ptr + 1);
+  return 0;
+  }`}
+  options={['1', '2', '3', 'Error']}
+  answer="2"
+/>
+
+<Question
+  question="39).Which of the following is true about a `nullptr` in C++?"
+  options={['It is a constant pointer to a memory address', 'It is used to initialize a pointer to null', 'It cannot be dereferenced', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="40).What is the correct way to declare a pointer to a constant in C++?"
+  options={['const int* ptr;', 'int* const ptr;', 'const int ptr*;', 'None of the above']}
+  answer="const int* ptr;"
+/>
+
+<Question
+  question="41).What is the purpose of `delete[]` in C++?"
+  options={['It deallocates memory for a dynamically allocated array', 'It frees a single dynamically allocated object', 'It marks the pointer as deleted', 'None of the above']}
+  answer="It deallocates memory for a dynamically allocated array"
+/>
+
+<Question
+  question="42).Which function is used to dynamically allocate memory for a single object in C++?"
+  options={['new', 'malloc', 'calloc', 'None of the above']}
+  answer="new"
+/>
+
+<Question
+  question="43).What will happen if you call `delete` on a pointer that points to an array?"
+  options={['Memory leak', 'Undefined behavior', 'It will delete the array correctly', 'Error']}
+  answer="Undefined behavior"
+/>
+
+<Question
+  question="44).What does the following code print?"
+  code={`#include <iostream>
+  using namespace std;
+
+  int main() {
+  string s = "C++";
+  char* ptr = &s[0];
+  cout << ptr;
+  return 0;
+  }`}
+  options={['C+', 'C++', '++', 'Error']}
+  answer="C++"
+/>
+
+<Question
+  question="45).What is the purpose of `memset()` in C++?"
+  options={['To set all bytes of a memory block to a specific value', 'To initialize a pointer to null', 'To clear the memory of a pointer', 'None of the above']}
+  answer="To set all bytes of a memory block to a specific value"
+/>
+
+<Question
+  question="46).How do you declare a constant reference to a string in C++?"
+  options={['const string& str;', 'string& const str;', 'const string str&;', 'None of the above']}
+  answer="const string& str;"
+/>
+
+<Question
+  question="47).What does `&ptr` return in C++?"
+  options={['The address stored in ptr', 'The value stored at ptr', 'The address of the pointer variable', 'None of the above']}
+  answer="The address of the pointer variable"
+/>
+
+<Question
+  question="48).Which of the following is true about C++ string manipulation?"
+  options={['Strings in C++ are mutable', 'Strings in C++ are immutable', 'String literals are pointers', 'Both A and C']}
+  answer="Both A and C"
+/>
+
+<Question
+  question="49).What happens when you try to assign one pointer to another in C++?"
+  options={['The two pointers will point to the same address', 'It causes a compilation error', 'The memory at that address is copied', 'None of the above']}
+  answer="The two pointers will point to the same address"
+/>
+
+<Question
+  question="50).What will the following code print?"
+  code={`#include <iostream>
+  using namespace std;
+
+  int main() {
+  string str = "Example";
+  cout << str.substr(2, 4);
+  return 0;
+  }`}
+  options={['Ex', 'ampl', 'xam', 'Error']}
+  answer="ampl"
+/>
