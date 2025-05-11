@@ -229,3 +229,129 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['6', '5', 'Error', '0']}
   answer="5"
 />
+
+<Question
+  question="31).What is the default value of a global int variable in C++?"
+  options={['0', 'undefined', 'garbage', 'null']}
+  answer="0"
+/>
+
+<Question
+  question="32).What happens if you declare a variable as volatile in C++?"
+  options={['The compiler avoids optimizations on it', 'It becomes constant', 'It is stored in a register', 'It cannot be modified']}
+  answer="The compiler avoids optimizations on it"
+/>
+
+<Question
+  question="33).What does the mutable keyword do in C++?"
+  options={['Allows modification of a member in a const object', 'Makes a variable constant', 'Prevents variable modification', 'Declares a static variable']}
+  answer="Allows modification of a member in a const object"
+/>
+
+<Question
+  question="34).Which of the following is the correct way to declare a constant pointer to an integer?"
+  options={['int *const p;', 'const int *p;', 'int const *p;', 'const *int p;']}
+  answer="int *const p;"
+/>
+
+<Question
+  question="35).What is the output of the following code?"
+  code={' int x = 5;\nint *p = &x;\n*p = 10;\ncout << x;'}
+  options={['5', '10', 'Error', 'Undefined']}
+  answer="10"
+/>
+
+<Question
+  question="36).Which of the following is a valid way to define a constant in C++?"
+  options={['#define PI 3.14', 'const float PI = 3.14;', 'Both A and B', 'None of the above']}
+  answer="Both A and B"
+/>
+
+<Question
+  question="37).What is the scope of a variable declared inside a block {} in C++?"
+  options={['Block scope', 'Global scope', 'File scope', 'Function scope']}
+  answer="Block scope"
+/>
+
+<Question
+  question="38).Which of the following is not a valid way to initialize a variable in C++?"
+  options={['int x(5);', 'int x = 5;', 'int x {5};', 'int x -> 5;']}
+  answer="int x -> 5;"
+/>
+
+<Question
+  question="39).What is the output of the following code?"
+  code={'const int x = 5;\nint *p = (int*)&x;\n*p = 10;\ncout << x;'}
+  options={['5', '10', 'Undefined behavior', 'Compilation error']}
+  answer="5"
+/>
+
+<Question
+  question="40).Which of the following is true about auto keyword in C++?"
+  options={['It deduces the type at compile time', 'It makes a variable dynamic', 'It is used for constants', 'It is obsolete in C++']}
+  answer="It deduces the type at compile time"
+/>
+
+<Question
+  question="41).What is the output of the following code?"
+  code={' int x = 5;\nconst int &ref = x;\nx = 10;\ncout << ref;'}
+  options={['5', '10', 'Error', 'Undefined']}
+  answer="10"
+/>
+
+<Question
+  question="42).Which of the following is not a valid floating-point literal in C++?"
+  options={['3.14', '3.14f', '3.14L', '3.14D']}
+  answer="3.14D"
+/>
+
+<Question
+  question="43).What is the difference between const and constexpr in C++?"
+  options={['constexpr is evaluated at compile time', 'const is only for integers', 'No difference', 'constexpr is runtime-only']}
+  answer="constexpr is evaluated at compile time"
+/>
+
+<Question
+  question="44).Which of the following is not a valid storage class specifier in C++?"
+  options={['auto', 'register', 'dynamic', 'extern']}
+  answer="dynamic"
+/>
+
+<Question
+  question="45).What is the output of the following code?"
+  code={'const int x = 5;\nint y = x + 2;\ncout << y;'}
+  options={['7', '5', 'Error', 'Undefined']}
+  answer="7"
+/>
+
+<Question
+  question="46).Which of the following is true about wchar_t in C++?"
+  options={['It is used for wide characters', 'It is the same as char', 'It is deprecated', 'It is a floating-point type']}
+  answer="It is used for wide characters"
+/>
+
+<Question
+  question="47).What is the output of the following code?"
+  code={' int x = 10;\nint *p = nullptr;\np = &x;\ncout << *p;'}
+  options={['10', '0', 'Error', 'Undefined']}
+  answer="10"
+/>
+
+<Question
+  question="48).Which of the following is not a valid way to declare a constant pointer to a constant integer?"
+  options={['const int *const p;', 'int const *const p;', 'const int const *p;', 'int const * p const;']}
+  answer="const int const *p;"
+/>
+
+<Question
+  question="49).What is the output of the following code?"
+  code={' int x = 5;\nint &&rref = 10;\nrref = x;\ncout << rref;'}
+  options={['5', '10', 'Error', 'Undefined']}
+  answer="5"
+/>
+
+<Question
+  question="50).Which of the following is not a valid storage class specifier in C++?"
+  options={['auto', 'register', 'dynamic', 'extern']}
+  answer="dynamic"
+/>
