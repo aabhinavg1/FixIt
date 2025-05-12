@@ -254,3 +254,122 @@ class B : public A {};`}
   options={['Increases memory usage', 'Improves data visibility', 'Reduces complexity by hiding internal implementation', 'Allows access to low-level system calls']}
   answer="Reduces complexity by hiding internal implementation"
 />
+
+<Question
+question="31).What is the primary goal of abstraction in C++?"
+options={['To optimize performance', 'To hide complex implementation details', 'To increase code duplication', 'To reduce function calls']}
+answer="To hide complex implementation details"
+/>
+
+<Question
+question="32).Which of the following is NOT a benefit of abstraction?"
+options={['Code reusability', 'Better security through data hiding', 'Faster execution speed', 'Simplified maintenance']}
+answer="Faster execution speed"
+/>
+
+<Question
+question="33).In C++, how is an abstract class different from a concrete class?"
+options={['Abstract classes cannot have member variables', 'Abstract classes cannot be instantiated', 'Abstract classes must have all methods pure virtual', 'Abstract classes cannot be inherited']}
+answer="Abstract classes cannot be instantiated"
+/>
+
+<Question
+question="34).What happens if a derived class doesn't implement all pure virtual functions?"
+options={['It becomes an abstract class', 'It causes a runtime error', 'The compiler ignores unimplemented functions', 'It automatically uses base class implementations']}
+answer="It becomes an abstract class"
+/>
+
+<Question
+question="35).Which access specifier is most commonly used to enforce abstraction?"
+options={['public', 'private', 'protected', 'friend']}
+answer="private"
+/>
+
+<Question
+question="36).Which principle of OOP is most closely related to abstraction?"
+options={['Encapsulation', 'Inheritance', 'Polymorphism', 'All of the above']}
+answer="All of the above"
+/>
+
+<Question
+question="37).What is the relationship between abstraction and interfaces in C++?"
+options={['Interfaces are a way to achieve abstraction', 'Abstraction prevents interfaces', 'Interfaces replace abstract classes', 'They are unrelated concepts']}
+answer="Interfaces are a way to achieve abstraction"
+/>
+
+<Question
+question="38).Which of the following demonstrates abstraction?"
+options={['Using std::vector without knowing its internal implementation', 'Creating global variables', 'Using goto statements', 'Manual memory management with new/delete']}
+answer="Using std::vector without knowing its internal implementation"
+/>
+
+<Question
+question="39).Which principle of OOP is most closely related to abstraction?"
+options={['Encapsulation', 'Inheritance', 'Polymorphism', 'All of the above']}
+answer="All of the above"
+/>
+
+<Question
+question="40).Can an abstract class inherit from a concrete class?"
+options={['No, abstract classes must be base classes', 'Yes, inheritance is independent of abstraction', 'Only if the concrete class is final', 'Only in template metaprogramming']}
+answer="Yes, inheritance is independent of abstraction"
+/>
+
+<Question
+question="41).What is the purpose of making a class abstract?"
+options={['To define a common interface for derived classes', 'To prevent all forms of inheritance', 'To optimize memory allocation', 'To enable RTTI']}
+answer="To define a common interface for derived classes"
+/>
+
+<Question
+question="42).How does abstraction relate to polymorphism?"
+options={['They are competing concepts', 'Abstraction enables polymorphism', 'Polymorphism prevents abstraction', 'They are identical concepts']}
+answer="Abstraction enables polymorphism"
+/>
+
+<Question
+question="43).Can abstract classes have friend functions?"
+options={['No', 'Yes', 'Only static friends', 'Only for other abstract classes']}
+answer="Yes"
+/>
+
+<Question
+question="44).What is the minimum requirement for a class to be abstract?"
+options={['At least one private member', 'One pure virtual function', 'No public methods', 'Virtual inheritance']}
+answer="One pure virtual function"
+/>
+<Question
+question="45).Which design pattern heavily relies on abstraction?"
+options={['Singleton', 'Factory Method', 'CRTP', 'RAII']}
+answer="Factory Method"
+/>
+
+<Question
+question="46).Can a class be abstract without any pure virtual functions?"
+options={['Yes, by making all constructors private', 'No, pure virtual functions are required', 'Only in C++20', 'Only if all methods are static']}
+answer="Yes, by making all constructors private"
+/>
+
+<Question
+question="47).What is the advantage of using abstract base classes over concrete base classes?"
+options={['Better performance', 'Stricter interface enforcement', 'Smaller memory footprint', 'Faster compilation']}
+answer="Stricter interface enforcement"
+/>
+
+<Question
+question="48).Which keyword combination creates an abstract class?"
+options={['abstract class', 'virtual base', 'class with = 0 methods', 'interface']}
+answer="class with = 0 methods"
+/>
+
+<Question
+question="49).Can abstract classes have static methods?"
+options={['No', 'Yes', 'Only if pure virtual', 'Only in namespaces']}
+answer="Yes"
+/>
+
+<Question
+question="50).What happens if you try to delete an abstract class pointer?"
+options={['Undefined behavior', 'Compiler error', 'Only works if destructor is virtual', 'Automatic derived class cleanup']}
+answer="Only works if destructor is virtual"
+/>
