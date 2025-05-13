@@ -229,3 +229,123 @@ import { Question } from '../../Question';
   options={['Open/Closed Principle', 'Single Responsibility Principle', 'Information Hiding', 'Polymorphism']}
   answer="Information Hiding"
 />
+
+<Question
+question="31).Which of the following best describes encapsulation?"
+options={['Hiding implementation details', 'Exposing all class members', 'Avoiding method usage', 'None of the above']}
+answer="Hiding implementation details"
+/>
+
+<Question
+question="32).What is the default access specifier for class members in C++?"
+options={['public', 'private', 'protected', 'None of the above']}
+answer="private"
+/>
+
+<Question
+question="33).Which keyword allows a function to access private members of a class?"
+options={['friend', 'static', 'const', 'None of the above']}
+answer="friend"
+/>
+
+<Question
+question="34).Encapsulation is closely related to which concept?"
+options={['Data abstraction', 'Operator overloading', 'Function overloading', 'None of the above']}
+answer="Data abstraction"
+/>
+
+<Question
+question="35).Why are getter and setter methods used?"
+options={['To directly expose private data', 'To control access to private data', 'To replace constructors', 'None of the above']}
+answer="To control access to private data"
+/>
+
+<Question
+question="36).Which of the following violates encapsulation?"
+options={['Using private members', 'Declaring all members public', 'Using protected members', 'None of the above']}
+answer="Declaring all members public"
+/>
+
+<Question
+question="37).What is the advantage of making data members private?"
+options={['Prevents unauthorized modifications', 'Increases execution speed', 'Reduces code size', 'None of the above']}
+answer="Prevents unauthorized modifications"
+/>
+
+<Question
+question="38).How does encapsulation support code maintenance?"
+options={['By allowing changes without affecting other code', 'By reducing variable names', 'By increasing code duplication', 'None of the above']}
+answer="By allowing changes without affecting other code"
+/>
+
+<Question
+question="39).Which of the following is an example of encapsulation?"
+options={['A class with only public methods', 'A class with private data and public interfaces', 'A struct with all public members', 'None of the above']}
+answer="A class with private data and public interfaces"
+/>
+
+<Question
+question="40).What is a mutator function?"
+options={['A function that retrieves data', 'A function that modifies data', 'A function that deletes objects', 'None of the above']}
+answer="A function that modifies data"
+/>
+
+<Question
+question="41).Which access specifier is most restrictive?"
+options={['public', 'protected', 'private', 'None of the above']}
+answer="private"
+/>
+
+<Question
+question="42).Encapsulation helps in achieving:"
+options={['Security', 'Flexibility', 'Both A and B', 'None of the above']}
+answer="Both A and B"
+/>
+
+<Question
+question="43).What is the role of private methods in encapsulation?"
+options={['To expose internal logic', 'To hide helper functions', 'To replace public methods', 'None of the above']}
+answer="To hide helper functions"
+/>
+
+<Question
+question="44).Which of the following is NOT a benefit of encapsulation?"
+options={['Code reusability', 'Increased complexity', 'Better control over data', 'None of the above']}
+answer="Increased complexity"
+/>
+
+<Question
+question="45).How does encapsulation relate to data integrity?"
+options={['Ensures data is valid before modification', 'Allows unrestricted data changes', 'Ignores data validation', 'None of the above']}
+answer="Ensures data is valid before modification"
+/>
+
+<Question
+question="46).What happens if a class has no access specifiers?"
+options={['Members default to public', 'Members default to private', 'Members default to protected', 'None of the above']}
+answer="Members default to private"
+/>
+
+<Question
+question="47).Which principle is violated if encapsulation is ignored?"
+options={['DRY (Don’t Repeat Yourself)', 'KISS (Keep It Simple, Stupid)', 'Information Hiding', 'None of the above']}
+answer="Information Hiding"
+/>
+
+<Question
+question="48).Why should data members be private?"
+options={['To allow direct external access', 'To restrict uncontrolled modifications', 'To improve compiler optimizations', 'None of the above']}
+answer="To restrict uncontrolled modifications"
+/>
+
+<Question
+question="49).What is the purpose of an accessor method?"
+options={['To modify private data', 'To read private data', 'To delete private data', 'None of the above']}
+answer="To read private data"
+/>
+
+<Question
+question="50).Which of the following is true about encapsulation?"
+options={['It increases coupling between classes', 'It reduces dependencies between classes', 'It prevents inheritance', 'None of the above']}
+answer="It reduces dependencies between classes"
+/>
