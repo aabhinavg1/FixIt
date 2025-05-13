@@ -123,3 +123,299 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only for integer strings', 'None of the above']}
   answer="Yes"
 />
+
+<Question
+  question="11).Which operator is typically overloaded to output an object?"
+  options={['<<', '>>', '+', '==']}
+  answer="<<"
+/>
+
+<Question
+  question="12).Which operator is used to compare objects?"
+  options={['==', '&&', '=', '+=']}
+  answer="=="
+/>
+
+<Question
+  question="13).What is required to overload the `<<` operator for `cout`?"
+  options={['It must be a friend function', 'It must be a member function', 'It must be private', 'It must return void']}
+  answer="It must be a friend function"
+/>
+
+<Question
+  question="14).Which of the following operators must be overloaded as a friend function?"
+  options={['<<', '>>', 'Both', 'None']}
+  answer="Both"
+/>
+
+<Question
+  question="15).Which type of function is used to overload binary operators for two different types?"
+  options={['Friend function', 'Member function', 'Static function', 'Constructor']}
+  answer="Friend function"
+/>
+
+<Question
+  question="16).Can you overload the `[]` operator?"
+  options={['Yes', 'No', 'Only for strings', 'Only in structs']}
+  answer="Yes"
+/>
+
+<Question
+  question="17).What is the correct signature for overloading the + operator?"
+  options={['ReturnType operator+(const ClassName& obj)', 'operator+ ReturnType(const ClassName& obj)', '+ operator ReturnType(ClassName obj)', 'None of the above']}
+  answer="ReturnType operator+(const ClassName& obj)"
+/>
+
+<Question
+  question="18).Which of the following is true about overloading the assignment (=) operator?"
+  options={['It must return a reference to the class', 'It returns void', 'It must be static', 'It can’t be overloaded']}
+  answer="It must return a reference to the class"
+/>
+
+<Question
+  question="19).Can the `->` operator be overloaded?"
+  options={['Yes', 'No', 'Only in structs', 'Only in unions']}
+  answer="Yes"
+/>
+
+<Question
+  question="20).Can the `new` and `delete` operators be overloaded?"
+  options={['Yes', 'No', 'Only new', 'Only delete']}
+  answer="Yes"
+/>
+
+<Question
+  question="21).Which operator can be overloaded as a unary operator?"
+  options={['-', '*', '++', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="22).What is the output of the following?"
+  code={`#include <iostream.h>
+  using namespace std;
+  class Test {
+  int x;
+  public:
+    Test(int a): x(a) {}
+    Test operator+(const Test& t) {
+    return Test(x + t.x);
+  }
+  void show() { std::cout << x; }
+  };
+
+  int main() {
+  Test a(2), b(3);
+  Test c = a + b;
+  c.show();
+  }`}
+  options={['5', '23', '6', 'Error']}
+  answer="5"
+/>
+
+<Question
+  question="23).Which of the following operators cannot be overloaded?"
+  options={['.*', '::', '?:', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="24).What should an overloaded comparison operator return?"
+  options={['bool', 'int', 'void', 'char']}
+  answer="bool"
+/>
+
+<Question
+  question="25).What is the primary advantage of operator overloading?"
+  options={['Improves code readability', 'Increases complexity', 'Consumes more memory', 'Decreases performance']}
+  answer="Improves code readability"
+/>
+
+<Question
+  question="26).Can you overload the function call operator `()`?"
+  options={['Yes', 'No', 'Only in functions', 'Only if it returns void']}
+  answer="Yes"
+/>
+
+<Question
+  question="27).What is the result of this code?"
+  code={` #include <iostream.h>
+  using namespace std;
+  class Complex {
+  int real;
+  public:
+    Complex(int r): real(r) {}
+    Complex operator++() {
+    return Complex(++real);
+  }
+  int get() { return real; }
+  };
+
+  int main() {
+  Complex c(5);
+  Complex d = ++c;
+  std::cout << d.get();
+  }`}
+  options={['6', '5', '0', 'Error']}
+  answer="6"
+/>
+
+<Question
+  question="28).Which is the correct way to overload postfix increment operator?"
+  options={['ReturnType operator++(int)', 'ReturnType operator++()', 'ReturnType ++operator()', 'ReturnType ++(int)operator']}
+  answer="ReturnType operator++(int)"
+/>
+
+<Question
+  question="29).Why is `int` used in postfix increment overloading?"
+  options={['To differentiate it from prefix', 'To store the result', 'For memory allocation', 'None of the above']}
+  answer="To differentiate it from prefix"
+/>
+
+<Question
+  question="30).Which of these operators can be overloaded as member functions?"
+  options={['[]', '()', '=', 'All of the above']}
+  answer="All of the above"
+/>
+
+<Question
+  question="31).Can `==` be overloaded to compare two objects?"
+  options={['Yes', 'No', 'Only for integers', 'Only for built-in types']}
+  answer="Yes"
+/>
+
+<Question
+  question="32).Is it mandatory to overload `operator=` in all classes?"
+  options={['No', 'Yes', 'Only if there’s a constructor', 'Only in templates']}
+  answer="No"
+/>
+
+<Question
+  question="33).Can a friend function access private members?"
+  options={['Yes', 'No', 'Only static members', 'Only public members']}
+  answer="Yes"
+/>
+
+<Question
+  question="34).Choose the correct overloaded `<<` operator definition:"
+  options={[
+    'friend std::ostream& operator<<(std::ostream&, const ClassName&);',
+    'void operator<<(ClassName, std::ostream);',
+    'ClassName operator<<(ostream&, int);',
+    'None of the above'
+  ]}
+  answer="friend std::ostream& operator<<(std::ostream&, const ClassName&);"
+/>
+
+<Question
+  question="35).What is returned by a typical overloaded `<<` operator?"
+  options={['std::ostream&', 'void', 'Class object', 'char']}
+  answer="std::ostream&"
+/>
+
+<Question
+  question="36).Can we overload `+` to perform string concatenation for a custom class?"
+  options={['Yes', 'No', 'Only for std::string', 'Only for char arrays']}
+  answer="Yes"
+/>
+
+<Question
+  question="37).Is it possible to overload an operator multiple times?"
+  options={['Yes', 'No', 'Only with inheritance', 'Only for arithmetic operators']}
+  answer="Yes"
+/>
+
+<Question
+  question="38).What is the best practice while overloading `=`?"
+  options={['Check for self-assignment', 'Use dynamic_cast', 'Return void', 'Make it static']}
+  answer="Check for self-assignment"
+/>
+
+<Question
+  question="39).What does the following code output?"
+  code={` #include <iostream.h>
+  using namespace std;
+  class Sample {
+  int x;
+  public:
+    Sample(int val): x(val) {}
+    Sample operator*(const Sample& s) {
+    return Sample(x * s.x);
+  }
+  void print() { std::cout << x; }
+  };
+
+  int main() {
+  Sample a(4), b(5);
+  Sample c = a * b;
+  c.print();
+  }`}
+  options={['20', '9', '25', 'Error']}
+  answer="20"
+/>
+
+<Question
+  question="40).Is it possible to restrict access to an overloaded operator?"
+  options={['Yes, by using access specifiers', 'No, always public', 'Only for =', 'Only in templates']}
+  answer="Yes, by using access specifiers"
+/>
+
+<Question
+  question="41).What does the keyword `mutable` allow in operator overloading?"
+  options={['Modification in const function', 'Use in friend function', 'Overload `=` operator', 'None of the above']}
+  answer="Modification in const function"
+/>
+
+<Question
+  question="42).Can overloaded operators be inherited?"
+  options={['Yes', 'No', 'Only in base class', 'Only if virtual']}
+  answer="Yes"
+/>
+
+<Question
+  question="43).Which operator is commonly overloaded for memory management?"
+  options={['new and delete', 'malloc and free', '++ and --', 'None']}
+  answer="new and delete"
+/>
+
+<Question
+  question="44).Can overloading lead to ambiguity?"
+  options={['Yes', 'No', 'Only in templates', 'Only with multiple inheritance']}
+  answer="Yes"
+/>
+
+<Question
+  question="45).Which operator is overloaded for dereferencing a pointer object?"
+  options={['*', '->', '&', '!']}
+  answer="*"
+/>
+
+<Question
+  question="46).How many arguments does a binary operator overload take when defined as member function?"
+  options={['One', 'Two', 'None', 'Three']}
+  answer="One"
+/>
+
+<Question
+  question="47).How many arguments does a unary operator overload take when defined as friend function?"
+  options={['One', 'Two', 'None', 'Three']}
+  answer="One"
+/>
+
+<Question
+  question="48).Which concept is closely related to operator overloading?"
+  options={['Polymorphism', 'Encapsulation', 'Abstraction', 'Recursion']}
+  answer="Polymorphism"
+/>
+
+<Question
+  question="49).Overloading which operator allows object to be used like a function?"
+  options={['()', '[]', '*', '&']}
+  answer="()"
+/>
+
+<Question
+  question="50).Which of the following is used for custom object comparison in STL containers?"
+  options={['operator<', 'operator+', 'operator==', 'operator=']}
+  answer="operator<"
+/>
