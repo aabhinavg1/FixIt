@@ -419,3 +419,14 @@ import { Question } from '../../Question';
   options={['operator<', 'operator+', 'operator==', 'operator=']}
   answer="operator<"
 />
+
+<Question
+  question="51) How can you use a custom comparison function with an STL `std::sort` algorithm?"
+  options={[
+    'By overloading operator=',
+    'By passing a comparison function as a third argument',
+    'By defining a destructor',
+    'By using operator++'
+  ]}
+  answer="By passing a comparison function as a third argument"
+/>
