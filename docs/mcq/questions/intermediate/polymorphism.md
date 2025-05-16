@@ -436,3 +436,13 @@ import { Question } from '../../Question';
   answer="It cannot be called directly"
 />
 
+<Question
+  question="51) What happens if a class contains at least one pure virtual function?"
+  options={[
+    'It becomes an abstract class',
+    'It cannot have any data members',
+    'It must not have a constructor',
+    'It cannot be inherited'
+  ]}
+  answer="It becomes an abstract class"
+/>
