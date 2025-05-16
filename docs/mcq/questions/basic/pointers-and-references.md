@@ -1,5 +1,5 @@
 ---
-id: pointers-references
+id: pointers-and-references
 title: Pointer and References C++ Multiple Choice Questions (MCQs)
 description: |
   Test your knowledge of pointers and references in C++ with this set of Multiple Choice Questions (MCQs). This quiz covers topics such as pointer arithmetic, dynamic memory allocation, pointer-to-pointer, and references in C++. It is ideal for beginners and those preparing for C++ interviews, helping you solidify your understanding of two key concepts in C++ programming.
