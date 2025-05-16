@@ -262,3 +262,124 @@ int main() {
   options={['Wrapping data and functions into a single unit', 'Separating logic from data', 'Inheriting members from another class', 'Overloading operators']}
   answer="Wrapping data and functions into a single unit"
 />
+
+<Question
+question="31).What is the correct syntax to declare a class in C++?"
+options={['class MyClass {};', 'MyClass class {};', 'object MyClass {};', 'struct MyClass {};']}
+answer="class MyClass {};"
+/>
+
+<Question
+question="32).How do you create an object of class 'Car'?"
+options={['Car myCar;', 'new Car();', 'Car = new object;', 'object Car myCar;']}
+answer="Car myCar;"
+/>
+
+<Question
+question="33).What is the default access specifier for class members if not specified?"
+options={['public', 'private', 'protected', 'friend']}
+answer="private"
+/>
+
+<Question
+question="34).Which operator is used to access members of an object (not a pointer)?"
+options={['->', '::', '.', '*']}
+answer="."
+/>
+
+<Question
+question="35).Can a class have multiple constructors?"
+options={['No', 'Yes (constructor overloading)', 'Only if they are static', 'Only in derived classes']}
+answer="Yes (constructor overloading)"
+/>
+
+<Question
+question="36).How do you define a member function outside the class?"
+options={['ClassName::function() {}', 'function() ClassName {}', 'ClassName.function() {}', 'extern function() {}']}
+answer="ClassName::function() {}"
+/>
+
+<Question
+question="37).Which keyword allows a function to access private members of a class without being a member?"
+options={['static', 'const', 'friend', 'extern']}
+answer="friend"
+/>
+
+<Question
+question="38).How is a static member variable declared inside a class?"
+options={['static int x;', 'int static x;', 'static x int;', 'int x static;']}
+answer="static int x;"
+/>
+
+<Question
+question="39).Where must a static member variable be defined outside the class?"
+options={['In a header file', 'In the global scope', 'Inside main()', 'Nowhere (it’s auto-defined)']}
+answer="In the global scope"
+/>
+
+<Question
+question="40).What is the size of an empty class object?"
+options={['0 bytes', '1 byte', '4 bytes', 'Depends on compiler']}
+answer="1 byte"
+/>
+
+<Question
+question="41).When is an object destroyed in C++?"
+options={['When it goes out of scope', 'When the program ends', 'When delete is called (for dynamic objects)', 'All of the above']}
+answer="All of the above"
+/>
+
+<Question
+question="42).Can a class have an object of itself as a member?"
+options={['Yes', 'No', 'Only if static', 'Only as a pointer']}
+answer="Only as a pointer"
+/>
+
+<Question
+question="43).What is the output of this code?"
+code={'class Test { public: Test() { cout << "A"; } ~Test() { cout << "B"; } }; int main() { Test t; return 0; }'}
+options={['A', 'B', 'AB', 'BA']}
+answer="AB"
+/>
+
+<Question
+question="44).Which of these is NOT a class member type?"
+options={['static', 'const', 'friend', 'mutable']}
+answer="friend"
+/>
+
+<Question
+question="45).Which of the following is true about nested classes?"
+options={['They can access private members of the outer class', 'They cannot be instantiated', 'They must be static', 'None of the above']}
+answer="None of the above"
+/>
+
+<Question
+question="46).What is the correct way to declare a class template?"
+options={['template <class T> class ClassName {};', 'class template <T> ClassName {};', 'template ClassName <class T> {};', 'None of the above']}
+answer="template <class T> class ClassName {};"
+/>
+
+<Question
+question="47).What is the correct way to overload the + operator for a class?"
+options={['ClassName operator+(ClassName obj);', 'operator+ ClassName(ClassName obj);', '+ operator ClassName(ClassName obj);', 'None of the above']}
+answer="ClassName operator+(ClassName obj);"
+/>
+
+<Question
+question="48).How do you initialize class members using a constructor?"
+options={['Using an initializer list', 'Using assignment inside constructor', 'Both A and B', 'None of the above']}
+answer="Both A and B"
+/>
+
+<Question
+question="49).What happens if a class has no constructor defined?"
+options={['Compiler provides a default constructor', 'Compilation error', 'Runtime error', 'Class cannot be used']}
+answer="Compiler provides a default constructor"
+/>
+
+<Question
+question="50).Which keyword is used to prevent a class from being inherited?"
+options={['final', 'static', 'const', 'private']}
+answer="final"
+/>
