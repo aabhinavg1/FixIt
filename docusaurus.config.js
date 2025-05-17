@@ -73,8 +73,9 @@ const config = {
           ],
         },
         {href: '/newsletter', label: 'Subscribe' , position: 'right' },
-        { href: 'https://github.com/aabhinavg1/FixIt', label: 'GitHub', position: 'right' },
-        { href: 'https://compilersutra.quora.com', label: 'ASK Questions', position: 'right' }, // Added Quora link
+        { href: 'https://www.youtube.com/@compilersutra', label: 'youtube ', position: 'right' }, // Added Quora link
+        { href: 'https://compilersutra.quora.com', label: '?', position: 'right' }, // Added Quora link
+
       ],
     },
 
