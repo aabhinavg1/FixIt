@@ -54,6 +54,12 @@ tags:
   - C++ Debugging Techniques
   - C++ Best Practices
 ---
+import AdBanner from '@site/src/components/AdBanner';
+
+<div>
+<AdBanner />
+</div>
+
 
 # C++ Multiple Choice Questions (MCQs)
 
@@ -88,6 +94,11 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Memory Management: malloc, free, new, delete](./questions/intermediate/memory-management.md)
 - [File Handling](./questions/intermediate/file-handling.md)
 
+<div>
+<AdBanner />
+</div>
+
+
 ### 🔴 Advanced C++ Concepts
 - [STL: Standard Template Library](./questions/advanced/stl.md)
 - [Vectors and Dynamic Arrays](./questions/advanced/vectors-and-dynamic-arrays.md)
@@ -108,6 +119,10 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 
 ---
 
+<div>
+<AdBanner />
+</div>
+
 ## 💡 Why Practice C++ MCQs?
 
 - **Test Your Knowledge**: Assess your understanding of various C++ concepts.
@@ -116,6 +131,7 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - **Stay Updated**: Learn modern C++ features and best practices.
 
 ---
+
 
 ## 🛠 How to Use This Repository?
 
