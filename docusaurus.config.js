@@ -124,11 +124,13 @@ const config = {
       async: true,
       crossorigin: 'anonymous',
       'data-ad-client': 'ca-pub-4507855210682789',
+      defer: true,
     },
     {
       src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
       async: true,
       id: "cookieyes",
+      defer: true,
     },
     {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
@@ -138,8 +140,8 @@ const config = {
     {
       src: "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js",
       async: true,
-      defer: true,
       "custom-element": "amp-auto-ads",
+      defer: true,
     },
     { src: '/js/contest.js', async: true, defer: true},
     { src: '/js/amp-auto-ads.js', async: true, defer: true },
