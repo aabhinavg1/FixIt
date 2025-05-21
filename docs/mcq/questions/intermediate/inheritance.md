@@ -247,3 +247,103 @@ import { Question } from '../../Question';
   options={['Normal function', 'Static function', 'Constructor', 'Pure virtual function']}
   answer="Pure virtual function"
 />
+<Question
+  question="31).What is the default inheritance visibility mode for classes in C++?"
+  options={['private', 'public', 'protected', 'None of the above']}
+  answer="private"
+/>
+<Question
+  question="32).Can a derived class override a non-virtual base class function?"
+  options={['Yes, but it won’t be polymorphic', 'No', 'Yes, always polymorphic', 'Only if base class is abstract']}
+  answer="Yes, but it won’t be polymorphic"
+/>
+<Question
+  question="33).Which function call mechanism is used for virtual functions in inheritance?"
+  options={['Static binding', 'Early binding', 'Late binding', 'Function overloading']}
+  answer="Late binding"
+/>
+<Question
+  question="34).Which keyword is used to make a class abstract in C++?"
+  options={['abstract', 'virtual', 'pure', 'None explicitly; use pure virtual functions']}
+  answer="None explicitly; use pure virtual functions"
+/>
+<Question
+  question="35).Which of the following is true about destructors in inheritance?"
+  options={['Base class destructors should be virtual', 'Derived class destructors are called first', 'Both A and B', 'None of the above']}
+  answer="Both A and B"
+/>
+<Question
+  question="36).Which access specifier inheritance hides base class public members in derived class?"
+  options={['private', 'protected', 'public', 'virtual']}
+  answer="private"
+/>
+<Question
+  question="37).What is object slicing in inheritance?"
+  options={['When base part of derived object is copied to base class object', 'When virtual function is sliced off', 'Compiler optimization', 'Derived object deleting base object']}
+  answer="When base part of derived object is copied to base class object"
+/>
+<Question
+  question="38).Which type of inheritance is best suited for modeling real-world relationships?"
+  options={['Single', 'Hierarchical', 'Multilevel', 'Hybrid']}
+  answer="Hierarchical"
+/>
+<Question
+  question="39).How can a derived class constructor explicitly call a base class constructor?"
+  options={['Using constructor initializer list', 'Using super keyword', 'Using static block', 'Using override keyword']}
+  answer="Using constructor initializer list"
+/>
+<Question
+  question="40).Which feature allows dynamic method resolution in inheritance?"
+  options={['Templates', 'Static casting', 'Virtual functions', 'Constructor overloading']}
+  answer="Virtual functions"
+/>
+<Question
+  question="41).Which of the following results from improper handling of diamond problem?"
+  options={['Ambiguity in base members', 'Object slicing', 'Memory leak', 'Stack overflow']}
+  answer="Ambiguity in base members"
+/>
+<Question
+  question="42).In which inheritance does a derived class inherit from two or more base classes?"
+  options={['Single', 'Multilevel', 'Multiple', 'Hierarchical']}
+  answer="Multiple"
+/>
+<Question
+  question="43).Can a constructor be virtual in C++?"
+  options={['Yes', 'No', 'Only for abstract classes', 'Only in inheritance']}
+  answer="No"
+/>
+<Question
+  question="44).Which class in a hybrid inheritance may need to be declared virtual to avoid ambiguity?"
+  options={['Leaf class', 'Intermediate class', 'Top-level base class', 'Any derived class']}
+  answer="Top-level base class"
+/>
+<Question
+  question="45).What happens if the base class has a virtual destructor and the derived class doesn’t?"
+  options={['Base destructor is called correctly', 'Undefined behavior', 'Derived destructor won’t be called', 'Compilation error']}
+  answer="Base destructor is called correctly"
+/>
+<Question
+  question="46).What does the ‘protected’ inheritance mode mean?"
+  options={['Public members become protected', 'Protected and public members stay public', 'Private members become public', 'All members become private']}
+  answer="Public members become protected"
+/>
+<Question
+  question="47).Which method allows calling an overridden base class method in the derived class?"
+  options={['BaseClass::method()', 'this->method()', 'override()', 'super.method()']}
+  answer="BaseClass::method()"
+/>
+<Question
+  question="48).Why should destructors be virtual in base classes with inheritance?"
+  options={['To ensure derived class destructors are called', 'To optimize memory', 'To enable polymorphism', 'To override constructors']}
+  answer="To ensure derived class destructors are called"
+/>
+<Question
+  question="49).Which type of inheritance forms a chain of classes, each derived from the previous one?"
+  options={['Hierarchical', 'Multilevel', 'Multiple', 'Hybrid']}
+  answer="Multilevel"
+/>
+<Question
+  question="50).In a class hierarchy, what does the term 'is-a' relationship imply?"
+  options={['Composition', 'Inheritance', 'Aggregation', 'Friendship']}
+  answer="Inheritance"
+/>
