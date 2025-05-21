@@ -487,3 +487,113 @@ while (i <= 3) {
   ]}
   answer="First never runs, second runs once"
 />
+<Question
+  question="41). What will be the output of the following C++ code?"
+  code={`#include <iostream>
+using namespace std;
+
+int main() {
+  int x = 5;
+  if (x == 5) {
+    cout << "Equal";
+  }
+  return 0;
+}`}
+  options={['Equal', 'Not Equal', 'Error', 'Nothing']}
+  answer="Equal"
+/>
+
+<Question
+  question="42). How many times will this loop execute?"
+  code={`int count = 0;
+for (int i = 0; i < 4; i++) {
+  count++;
+}`}
+  options={['3', '4', '5', 'Infinite']}
+  answer="4"
+/>
+
+<Question
+  question="43). What will be the result of the following code?"
+  code={`int a = 3;
+int b = 4;
+if (a > b)
+  cout << "A";
+else
+  cout << "B";`}
+  options={['A', 'B', 'AB', 'Nothing']}
+  answer="B"
+/>
+
+<Question
+  question="44). What is the output of this code using nested loops?"
+  code={`for (int i = 0; i < 2; i++) {
+  for (int j = 0; j < 2; j++) {
+    cout << i << j << " ";
+  }
+}`}
+  options={['00 01 10 11', '00 01 01 10', '00 10 01 11', '00 01 10 11']}
+  answer="00 01 10 11"
+/>
+
+<Question
+  question="45). Which of the following loop structures will never execute?"
+  options={[
+    'while (false) { cout << "Hi"; }',
+    'do { cout << "Hi"; } while (false);',
+    'for (int i = 1; i < 1; i++) { cout << "Hi"; }',
+    'All of the above except do-while'
+  ]}
+  answer="All of the above except do-while"
+/>
+
+<Question
+  question="46). What does this code print?"
+  code={`int x = 10;
+while (x > 5) {
+  x -= 2;
+  cout << x << " ";
+}`}
+  options={['8 6 4', '8 6', '10 8 6', '8 6 4 2']}
+  answer="8 6"
+/>
+
+<Question
+  question="47). What does the default keyword do in a switch statement?"
+  options={[
+    'Specifies the first case to execute',
+    'Acts as a fallback if no other case matches',
+    'Skips all cases',
+    'Throws an exception'
+  ]}
+  answer="Acts as a fallback if no other case matches"
+/>
+
+<Question
+  question="48). Which of the following is NOT a valid control flow statement in C++?"
+  options={['break', 'skip', 'continue', 'goto']}
+  answer="skip"
+/>
+
+<Question
+  question="49). What will this code print?"
+  code={`int x = 1;
+if (x) {
+  cout << "True";
+} else {
+  cout << "False";
+}`}
+  options={['True', 'False', '0', '1']}
+  answer="True"
+/>
+
+<Question
+  question="50). What is the result of this loop?"
+  code={`int sum = 0;
+for (int i = 1; i <= 3; i++) {
+  sum += i;
+}
+cout << sum;`}
+  options={['3', '6', '5', '7']}
+  answer="6"
+/>
