@@ -228,3 +228,102 @@ import { Question } from '../../Question';
   options={['Friend functions are part of class\'s public interface', 'Friend functions are not members of a class', 'Friend functions cannot be overloaded', 'Friend functions cannot be templates']}
   answer="Friend functions are not members of a class"
 />
+<Question
+  question="31).Can a friend function be declared as a friend in multiple classes simultaneously?"
+  options={['Yes', 'No', 'Only in related classes', 'Only if classes are inherited']}
+  answer="Yes"
+/>
+<Question
+  question="32).Can a friend function be defined as a template?"
+  options={['Yes', 'No', 'Only with virtual functions', 'Only with abstract classes']}
+  answer="Yes"
+/>
+<Question
+  question="33).What is required to access private members of two different classes using one function?"
+  options={['Declare the function as friend in both classes', 'Use protected members', 'Use inheritance', 'None of the above']}
+  answer="Declare the function as friend in both classes"
+/>
+<Question
+  question="34).How many times can a friend function be declared in a class?"
+  options={['Once', 'Twice', 'As many times as needed', 'None of the above']}
+  answer="As many times as needed"
+/>
+<Question
+  question="35).Can a global function be made a friend of a class?"
+  options={['Yes', 'No', 'Only static functions', 'Only member functions']}
+  answer="Yes"
+/>
+<Question
+  question="36).What is the main disadvantage of friend functions?"
+  options={['Break encapsulation', 'Slower execution', 'Less readability', 'None of the above']}
+  answer="Break encapsulation"
+/>
+<Question
+  question="37).Can a friend function call private member functions of the class?"
+  options={['Yes', 'No', 'Only if defined inside the class', 'Only if friend class']}
+/>
+<Question
+  question="38).How is a friend function invoked?"
+  options={['Like a normal function', 'Using class name', 'Using object reference', 'None of the above']}
+  answer="Like a normal function"
+/>
+<Question
+  question="39).Can friend functions be declared static?"
+  options={['No', 'Yes', 'Only if inside class', 'Only if it’s a template']}
+  answer="No"
+/>
+<Question
+  question="40).Can a member function of one class be a friend of another class?"
+  options={['Yes', 'No', 'Only if base class', 'Only if derived class']}
+  answer="Yes"
+/>
+<Question
+  question="41).Which of the following best describes the use of friend functions?"
+  options={['To provide access to unrelated functions', 'To implement encapsulation', 'To manage memory', 'None of the above']}
+  answer="To provide access to unrelated functions"
+/>
+<Question
+  question="42).Is it necessary to define a friend function immediately after declaration?"
+  options={['No', 'Yes', 'Only in template classes', 'Only for inline functions']}
+  answer="No"
+/>
+<Question
+  question="43).Which of the following has more access privileges?"
+  options={['Friend function', 'Public member function', 'Constructor', 'Destructor']}
+  answer="Friend function"
+/>
+<Question
+  question="44).When are friend functions most useful?"
+  options={['When two classes need mutual access', 'For deep copying only', 'To avoid inheritance', 'In abstract classes']}
+  answer="When two classes need mutual access"
+/>
+<Question
+  question="45).Can a friend function be virtual?"
+  options={['No', 'Yes', 'Only in abstract classes', 'Only if declared inside the class']}
+  answer="No"
+/>
+<Question
+  question="46).Do friend functions contribute to the class size?"
+  options={['No', 'Yes', 'Only if inlined', 'Depends on compiler']}
+  answer="No"
+/>
+<Question
+  question="47).Which access specifier must a friend function be declared under?"
+  options={['Any (public, protected, private)', 'Only public', 'Only private', 'Only protected']}
+  answer="Any (public, protected, private)"
+/>
+<Question
+  question="48).Can a friend function be declared in a struct?"
+  options={['Yes', 'No', 'Only in classes', 'Only with typedefs']}
+  answer="Yes"
+/>
+<Question
+  question="49).What is the relationship between the class and a friend function?"
+  options={['Loose coupling', 'Tight coupling', 'Inheritance', 'Composition']}
+  answer="Loose coupling"
+/>
+<Question
+  question="50).If a friend function modifies the private data of a class, is it considered safe OOP practice?"
+  options={['No, it violates encapsulation', 'Yes, always safe', 'Depends on compiler', 'Yes, if virtual']}
+  answer="No, it violates encapsulation"
+/>
