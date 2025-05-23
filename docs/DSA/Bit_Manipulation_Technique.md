@@ -114,14 +114,16 @@ Learning bit manipulation techniques not only deepens your understanding of how 
 
 ---
 
-<div>
-<AdBanner />
-</div>
 
 
 :::important
 Incorporating bit manipulation techniques into your coding toolkit is essential when working on ``performance-critical`` applications or when you ``need to squeeze every bit`` of efficiency out of your code. Whether you're developing for resource-constrained devices or simply looking to level up your algorithmic skills, mastering bit manipulation can give you a clear edge.
 :::
+
+<div>
+<AdBanner />
+</div>
+
 
 ## Table of Contents
 
@@ -133,7 +135,6 @@ Incorporating bit manipulation techniques into your coding toolkit is essential 
 * [Tips for Practice](#tips-for-practice)
 * [Bit Manipulation: Interview Questions and Answers](#bit-manipulation-interview-questions-and-answers)
 
----
 
 
 <div>
