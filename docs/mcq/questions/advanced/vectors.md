@@ -40,6 +40,7 @@ tags:
   - Dynamic Arrays MCQs
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Vectors and Dynamic Arrays
@@ -95,6 +96,10 @@ import { Question } from '../../Question';
   answer="The amount of memory allocated for the vector"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11). What does the vector::clear() function do?"
   options={['Removes all elements', 'Deletes the vector', 'Sets all elements to 0', 'Frees memory']}
@@ -146,6 +151,10 @@ import { Question } from '../../Question';
   answer="Undefined behavior"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21). What is the default value of elements in a vector of int when initialized with vector<int> v(5);?"
   options={['0', '1', 'Undefined', 'Compilation Error']}
@@ -196,6 +205,11 @@ import { Question } from '../../Question';
   options={['= operator', 'assign()', 'copy()', 'Both A and B']}
   answer="Both A and B"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31). What does v.capacity() return after calling v.reserve(100)?"
   options={['At least 100', 'Exactly 100', 'Size of vector', '0']}
@@ -246,6 +260,11 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only with const', 'Only with pointers']}
   answer="Yes"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). Which of the following is NOT a valid way to declare a vector?"
   options={['vector<int> v;', 'vector v<int>;', 'vector<int> v(10);', 'vector<int> v = {1,2,3};']}
@@ -296,3 +315,7 @@ import { Question } from '../../Question';
   options={['It reallocates memory on capacity overflow', 'It always allocates fixed size', 'It never reallocates', 'None']}
   answer="It reallocates memory on capacity overflow"
 />
+
+<div>
+<AdBanner />
+</div>
