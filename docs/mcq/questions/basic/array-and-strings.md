@@ -107,10 +107,10 @@ tags:
   - Intermediate C++
 
 ---
+
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
-
-  
   <Question
     question="1).Which of the following is the correct syntax to declare an array in C++?"
     options={['int arr[];', 'int[] arr;', 'array<int> arr;', 'None of the above']}
@@ -188,6 +188,10 @@ return 0;
     options={['int arr[3][3];', 'int arr[3,3];', 'int arr[3, 3] = {};', 'None of the above']}
     answer="int arr[3][3];"
   />
+  
+<div>
+<AdBanner />
+</div>
 
   <Question
     question="11).Which header file is needed to use the strlen() function in C++?"
@@ -251,6 +255,10 @@ return 0;
     answer="All of the above"
   />
 
+<div>
+<AdBanner />
+</div>
+
   <Question
     question="21).What will this code output?"
     code={`char str[] = "Hi";\ncout << sizeof(str);`}
@@ -313,6 +321,10 @@ return 0;
     options={['length', 'size', 'length()', 'None of the above']}
     answer="length()"
   />
+
+<div>
+<AdBanner />
+</div>
 
   <Question
     question="31).What will be the output of the following code?"
@@ -422,6 +434,10 @@ question="34).What does this code output?"
   answer="4"
   />
 
+<div>
+<AdBanner />
+</div>
+
   <Question
   question="41).What does the following code print?"
   code={`#include <iostream>
@@ -513,3 +529,7 @@ question="34).What does this code output?"
   options={['malloc', 'new', 'alloc', 'create']}
   answer="new"
 />
+
+<div>
+<AdBanner />
+</div>
