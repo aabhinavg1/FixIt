@@ -43,6 +43,7 @@ tags:
   - STL Concepts
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # STL: Standard Template Library
@@ -98,6 +99,10 @@ import { Question } from '../../Question';
   answer="std::vector"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11). Which container maintains sorted order automatically?"
   options={['std::set', 'std::vector', 'std::stack', 'std::queue']}
@@ -148,6 +153,10 @@ import { Question } from '../../Question';
   options={['Removes consecutive duplicates', 'Sorts the container', 'Erases all elements', 'Finds unique keys']}
   answer="Removes consecutive duplicates"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21). Which of these is not a sequence container?"
@@ -200,6 +209,10 @@ import { Question } from '../../Question';
   answer="Adds element at end"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31). What type of container is std::priority_queue?"
   options={['Container adapter', 'Sequence container', 'Associative container', 'None']}
@@ -251,6 +264,10 @@ import { Question } from '../../Question';
   answer="<algorithm>"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). Which container is best for fast lookup by key?"
   options={['std::map', 'std::vector', 'std::deque', 'std::list']}
@@ -301,3 +318,7 @@ import { Question } from '../../Question';
   options={['<utility>', '<pair>', '<tuple>', '<functional>']}
   answer="<utility>"
 />
+
+<div>
+<AdBanner />
+</div>
