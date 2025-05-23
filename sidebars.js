@@ -67,7 +67,8 @@ const sidebars = {
         'DSA/DSA',
         'DSA/introduction-to-dsa',
         'DSA/Mathematical_Foundation',
-        'DSA/Time_and_space'
+        'DSA/Time_and_space',
+        'DSA/Bit_Manipulation_Technique',
       ]
     },
     
