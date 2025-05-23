@@ -1,5 +1,5 @@
 ---
-title: "Bit Manipulation Techniques - Essential Guide"
+title: "Bit Manipulation Techniques - Essential Guide 2025"
 description: "Master bit manipulation in programming. Learn core bitwise operations, use cases, optimization tricks, and code examples in Python and C++."
 keywords: 
 - Bit Manipulation  
@@ -28,22 +28,22 @@ keywords:
 - Python Bit Tricks  
 - System-Level Programming  
 - Bitmasking Techniques  
-  - Data Structures
-  - Algorithms
-  - DSA for Interviews
-  - Competitive Programming
-  - Sorting Algorithms
-  - Dynamic Programming
-  - Coding Interviews
-  - Problem Solving
-  - Interview Preparation
-  - DSA Concepts
-  - Algorithm Design
-  - Time Complexity
-  - Space Complexity
-  - Data Structure Basics
-  - Advanced DSA Techniques
-  - Coding Challenges
+- Data Structures
+- Algorithms
+- DSA for Interviews
+- Competitive Programming
+- Sorting Algorithms
+- Dynamic Programming
+- Coding Interviews
+- Problem Solving
+- Interview Preparation
+- DSA Concepts
+- Algorithm Design
+- Time Complexity
+- Space Complexity
+- Data Structure Basics
+- Advanced DSA Techniques
+- Coding Challenges
 
 tags:  
 - Bit Manipulation  
@@ -62,8 +62,6 @@ tags:
 - Problem Solving  
 - CS Fundamentals  
 
-slug: "/bit-manipulation-techniques"
-
 ---
 
   <div>  
@@ -73,25 +71,57 @@ slug: "/bit-manipulation-techniques"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
+import AdBanner from '@site/src/components/AdBanner';
+
+
+<div>
+<AdBanner />
+</div>
 
 
 # Bit Manipulation Techniques
+<br>
+</br>
 
-Bit manipulation is the technique of directly working with the binary representation of data using bitwise operations such as AND (`&`), OR (`|`), XOR (`^`), NOT (`~`), and bit shifts (`<<`, `>>`). 
+Bit manipulation is the technique of directly working with the binary representation i.e (0 and 1) of data using ***bitwise operations*** such as 
 
-At its core, it allows programmers to control, modify, and analyze individual bits within integers, making it a fundamental skill in low-level programming.
+>*AND (`&`), OR (`|`), XOR (`^`), NOT (`~`), and bit shifts (`<<`, `>>`)* .
+<br>
+</br>
+At its core, it allows ***programmers to control***, modify, and analyze individual bits within integers, making it a fundamental skill in low-level programming.
+<br>
+</br>
 
-This approach is not only elegant but also incredibly efficient. In scenarios where performance and memory are critical — such as embedded systems, device drivers, cryptography, graphics rendering, and competitive programming — bit manipulation offers solutions that are faster and leaner than traditional methods. For instance, it can help pack multiple boolean flags into a single variable, toggle values with a single operation, or replace costly arithmetic operations with quick bit shifts.
+> ***This approach is not only elegant but also incredibly efficient.***
+<br>
+</br>
 
-Learning bit manipulation techniques not only deepens your understanding of how computers work at the hardware level but also empowers you to write more optimized, resource-efficient code. As systems become more complex and performance demands rise, mastering these low-level operations becomes an essential tool in every developer’s toolkit.
+
+In scenarios where performance and memory are critical  such as ``embedded systems``, ``device drivers``, ``cryptography``, ``graphics rendering``, and ``competitive programming`` to <u>**show off in the interview and also when we need to optimize our code**</u>. 
+
+This bit manipulation offers solutions that are faster and leaner than traditional methods. For instance, it can help pack multiple ``boolean flags`` into a ``single variable``, ``toggle values`` with a ``single operation``, or replace costly arithmetic operations with quick bit shifts.
+
+:::caution
+Learning bit manipulation techniques not only deepens your understanding of how **computers work at the hardware level** but also empowers you to write more **optimized, resource-efficient code**. As systems become more complex and performance demands rise, mastering these low-level operations becomes an essential tool in every developer’s toolkit.
+
+
+---
 
 - **Compact data storage** using bit masks
 - **Fast toggling or checking** of boolean flags
 - **Efficient arithmetic tricks** (e.g., multiplication/division by powers of two using shifts)
 - **Improved performance** in algorithmically intensive tasks like cryptography, graphics, and game engines
 
+---
 
-Incorporating bit manipulation techniques into your coding toolkit is essential when working on performance-critical applications or when you need to squeeze every bit of efficiency out of your code. Whether you're developing for resource-constrained devices or simply looking to level up your algorithmic skills, mastering bit manipulation can give you a clear edge.
+<div>
+<AdBanner />
+</div>
+
+
+:::important
+Incorporating bit manipulation techniques into your coding toolkit is essential when working on ``performance-critical`` applications or when you ``need to squeeze every bit`` of efficiency out of your code. Whether you're developing for resource-constrained devices or simply looking to level up your algorithmic skills, mastering bit manipulation can give you a clear edge.
+:::
 
 ## Table of Contents
 
@@ -105,11 +135,17 @@ Incorporating bit manipulation techniques into your coding toolkit is essential 
 
 ---
 
+
+<div>
+<AdBanner />
+</div>
+
+
 ##  What is Bit Manipulation?
 
-Bit manipulation is a programming technique that involves the use of bitwise operators to perform operations at the binary level. These operations directly manipulate bits—the most fundamental units of data in computing—using operators like `&` (AND), `|` (OR), `^` (XOR), `~` (NOT), `<<` (left shift), and `>>` (right shift).
+Bit manipulation is a programming technique that involves the use of ***bitwise operators*** to perform operations at the binary level. These operations directly manipulate bitsthe most fundamental units of data in computingusing operators like `&` (AND), `|` (OR), `^` (XOR), `~` (NOT), `<<` (left shift), and `>>` (right shift).
 
-By working directly with bits, programmers can achieve highly efficient solutions, especially for problems involving flags, sets, powers of two, or arithmetic shortcuts. Bit manipulation is widely used in embedded systems, cryptography, competitive programming, and optimization-heavy tasks where performance and memory usage are critical.
+By working directly with ***bits***, programmers can achieve highly efficient solutions, especially for problems involving flags, sets, powers of two, or arithmetic shortcuts. Bit manipulation is widely used in embedded systems, cryptography, competitive programming, and optimization-heavy tasks where performance and memory usage are critical.
 
 Mastering this technique enables developers to write concise, faster code and solve complex problems using elegant binary logic.
 
@@ -127,7 +163,18 @@ Mastering this technique enables developers to write concise, faster code and so
 
 </details>
 
+
+<div>
+<AdBanner />
+</div>
+
+
+---
 ## Common Operations
+---
+Some of the common operation used to manipulate bits are listed below:
+<br>
+</br>
 
 | Operator    | Symbol | Description                   | Example     | Result (a=5, b=3) |
 |-------------|--------|-------------------------------|-------------|------------------|
@@ -140,60 +187,98 @@ Mastering this technique enables developers to write concise, faster code and so
   
 ---
 
+
+<div>
+<AdBanner />
+</div>
+
+
 ## Use Cases of Bit Manipulation
 
-Bit manipulation is a powerful technique used in various programming and engineering domains. Below are some key use cases explained in detail:
-
-### 1. **Checking if a Number is Even or Odd**
-
-* **Logic:** Use the bitwise AND (`&`) operator with 1.
-* **Explanation:** The least significant bit (LSB) of an odd number is always `1`, while for an even number, it is `0`.
-* **Code Example (Java/C++):**
-
-  ```java
-  if ((n & 1) == 0) {
-      // Even
-  } else {
-      // Odd
-  }
-  ```
-
-### 2. **Swapping Two Numbers Without a Temporary Variable**
-
-* **Logic:** Use XOR (`^`) to swap values.
-* **Explanation:** XOR has the property where `a ^ b ^ b = a`. So, we can swap values without using extra space.
-* **Code Example:**
-
-  ```java
-  a = a ^ b;
-  b = a ^ b;
-  a = a ^ b;
-  ```
-
-### 3. **Setting, Clearing, and Toggling a Specific Bit**
-
-* **Set the ith Bit:** `n = n | (1 << i);` → Sets the ith bit to 1.
-* **Clear the ith Bit:** `n = n & ~(1 << i);` → Clears the ith bit (sets to 0).
-* **Toggle the ith Bit:** `n = n ^ (1 << i);` → Flips the ith bit.
-* **Use Case:** These operations are useful in flag systems, configuration settings, and state encoding.
-
-### 4. **Counting Set Bits (Population Count)**
-
-* **Logic:** Use Brian Kernighan’s algorithm to count the number of 1s in the binary representation.
-* **Explanation:** Each time `n = n & (n - 1)` removes the lowest set bit. Count the number of such operations.
-* **Use Case:** Used in cryptography, digital logic, and performance optimization.
-
-### 5. **Efficient Power-of-Two Checks**
-
-* **Logic:** `n > 0 && (n & (n - 1)) == 0`
-* **Explanation:** A number that is a power of two has exactly one set bit in its binary representation.
-* **Use Case:** Useful in algorithms that require sizes to be powers of two (e.g., buffer sizes, hashing, memory alignment).
-
-These use cases demonstrate how bit manipulation can reduce time complexity and memory usage, especially in low-level systems, competitive programming, and high-performance applications.
+Bit manipulation is a powerful technique used in various programming and engineering domains. Below are some key use cases explained in detail, with a focus on real-time applications and industry scenarios:
 
 ---
 
+
+<Tabs>
+
+<TabItem  value="Real-time OS/File Systems" label="Access Control Systems">
+
+* **Industry Scenario:** In Unix-like operating systems (Linux, macOS), file permissions (read/write/execute) are stored using 9 bits (3 for owner, group, and others). Bitwise operations are used to check or set these permission flags efficiently.
+* **Example:** The least significant bit (LSB) of an odd number is always `1`, while for an even number, it is `0`.
+* **Code Example (Java/C++):**
+
+```javascript
+if ((n & 1) == 0) {
+    // Even
+} else {
+    // Odd
+}
+```
+</TabItem>
+
+
+<TabItem value="Swapping in Embedded Systems"  label="XOR-Based">
+
+* **Industry Scenario:** In embedded systems, particularly those using low-power microcontrollers like the ATmega328 (Arduino) or ARM Cortex-M0, memory and register space are extremely limited. XOR-based swapping is occasionally used in low-level assembly or C code to exchange values between registers or memory-mapped I/O ports without using an extra variable. For instance, when toggling control between two sensor readings in an interrupt service routine (ISR), this method avoids extra RAM usage.
+
+</TabItem>
+
+<TabItem value="Bit Operations for Device Drivers and Hardware Configuration"  label="Bit Operations for Device Drivers and Hardware Configuration
+">
+
+
+<div>
+<AdBanner />
+</div>
+
+
+* **Industry Scenario:** In automotive ECUs (Engine Control Units), bit fields represent different configuration options. Setting or clearing bits is used to enable/disable engine diagnostics, features, or sensors.
+* **Set the ith Bit:** `n = n | (1 << i);` → Sets the ith bit to `1`.
+* **Clear the ith Bit:** `n = n & ~(1 << i);` → Clears the ith bit (sets to `0`).
+* **Toggle the ith Bit:** `n = n ^ (1 << i);` → Flips the ith bit.
+
+</TabItem>
+
+<TabItem value="Counting Set Bits (Population Count) in Cryptography and Compression"  label="Counting Set Bits (Population Count) in Cryptography and Compression
+">
+
+<div>
+<AdBanner />
+</div>
+
+* **Industry Scenario:** In cryptographic algorithms like SHA or RSA, population count is used in Hamming distance calculations for error correction and digital signature validation in hardware security modules (HSMs).
+* **Logic:** Use Brian Kernighan’s algorithm to count the number of `1`s in the binary representation.
+* **Explanation:** Each time `n = n & (n - 1)` removes the lowest set bit.
+</TabItem>
+
+
+
+<TabItem value="Power-of-Two Checks for Memory Optimization"  label="Power-of-Two Checks for Memory Optimization">
+
+* **Industry Scenario:** Game engines like Unreal Engine or Unity allocate textures and memory buffers in powers of two for optimal performance on GPUs. Bitwise power-of-two checks ensure alignment.
+* **Logic:** `n > 0 && (n & (n - 1)) == 0`
+* **Explanation:** A number that is a power of two has exactly one set bit.
+</TabItem>
+</Tabs>
+
+
+---
+
+These use cases show how bit manipulation enables **real-time processing**, reduced memory usage, and high performance in systems such as embedded devices, operating systems, game engines, and cryptographic hardware.
+<br>
+</br>
+---
+
+
+
+<div>
+<AdBanner />
+</div>
+
+
 ## Bit Tricks
+---
 
 | Trick           | Expression         | Use                                      |                    
 | --------------- | ------------------ | ---------------------------------------- | 
@@ -203,6 +288,14 @@ These use cases demonstrate how bit manipulation can reduce time complexity and 
 | Clear i-th bit  | `n & ~(1 << i)`    | Turns off the i-th bit                   |                       
 | Toggle i-th bit | `n ^ (1 << i)`     | Flips the i-th bit                       |                      
 | Is power of 2   | `n & (n - 1) == 0` | True if `n` is power of 2 (and `n != 0`) |                       
+
+
+
+<div>
+<AdBanner />
+</div>
+
+
 
 ## Examples in Code
 <Tabs>
@@ -292,15 +385,70 @@ public class BitManipulation {
 </TabItem>
 </Tabs>
 
-### 1. Count Set Bits
+
+<details>
+<summary> 
+
+**Code Explaination**
+
+</summary>
+
+<Tabs>
+<TabItem value="count Set Bits" label="Count set Bits">
 
 - Counts the number of 1s in the binary representation of a number.
 - Uses the operation `n = n & (n - 1)` which removes the rightmost set bit from `n`.
 - Each iteration removes one set bit and increments the count.
 - Loop continues until `n` becomes zero.
 - Efficient because it only runs as many times as there are set bits.
+<Tabs>
 
-### 2. Check if a Number is a Power of Two
+<TabItem value="cpp" label="C++">
+
+```cpp
+// Count set bits
+int countSetBits(int n) {
+    int count = 0;
+    while (n) {
+        n &= (n - 1);
+        count++;
+    }
+    return count;
+}
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+# Count set bits
+def count_set_bits(n):
+    count = 0
+    while n:
+        n &= (n - 1)
+        count += 1
+    return count
+```
+</TabItem>
+<TabItem value="java" label="Java">
+
+```javascript
+    // 1. Count set bits
+    public static int countSetBits(int n) {
+        int count = 0;
+        while (n != 0) {
+            n &= (n - 1); // Clears the lowest set bit
+            count++;
+        }
+        return count;
+    }
+```
+
+</TabItem>
+</Tabs>
+</TabItem>
+<TabItem value= "Check if a number is a Power of Two" label="Check if a number is a Power of Two">
 
 - A number is a power of two if it has exactly one set bit in its binary form.
 - Subtracting 1 flips all bits after the set bit.
@@ -308,14 +456,94 @@ public class BitManipulation {
 - If the result is zero, it means there was only one set bit.
 - Also ensures `n` is not zero to avoid false positives.
 
-### 3. Toggle the ith Bit
+<Tabs>
+<TabItem value="Cpp" label="C++">
+
+```cpp
+// Check power of 2
+bool isPowerOfTwo(int n) {
+    return n != 0 && (n & (n - 1)) == 0;
+}
+
+```
+
+</TabItem>
+<TabItem value="Python" label="Python">
+
+```python
+# Check power of 2
+def is_power_of_two(n):
+    return n != 0 and (n & (n - 1)) == 0
+```
+
+</TabItem>
+<TabItem value="Java" label="Java">
+
+```javascript
+
+    // 2. Check if a number is power of two
+    public static boolean isPowerOfTwo(int n) {
+        return n != 0 && (n & (n - 1)) == 0;
+    }
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="Toggle the ith bit" label="Toggle the ith bit">
 
 - To toggle the ith bit of a number, create a mask by left shifting 1 by `i` (`1 << i`).
 - Use XOR operation `n ^ (1 << i)` which flips the ith bit:
   - If it was 1, it becomes 0.
-  - If it was 0, it becomes 1.
+  - If it was 0, it becomes 
+
+<Tabs>
+<TabItem value="C++" label="C++">
+
+```cpp
+// Toggle ith bit
+int toggleIthBit(int n, int i) {
+    return n ^ (1 << i);
+}
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+# Toggle ith bit
+def toggle_ith_bit(n, i):
+    return n ^ (1 << i)
+```
+
+</TabItem>
+<TabItem value="Java" label="Java">
+
+```javascript
+// 3. Toggle the ith bit
+    public static int toggleIthBit(int n, int i) {
+        return n ^ (1 << i); // Flips the ith bit
+    }
+```
+
+</TabItem>
+
+</Tabs>
+</TabItem>
+</Tabs>
+
+</details>
 
 ---
+
+
+<div>
+<AdBanner />
+</div>
+
 
 ## Tips for Practice
 
@@ -410,6 +638,11 @@ if (num & 1) {
     // Even number
 }
 ```
+
+<div>
+<AdBanner />
+</div>
+
 
 The least significant bit (LSB) of an odd number is always 1, while for even numbers it's 0.
 
@@ -543,7 +776,34 @@ This sets the ith bit to 1.
 
 </details>
 
+:::note
+>  Bit manipulation enables efficient binary operations on integers. Mastering it boosts performance in low-level and algorithm-heavy tasks.
 
-## Summary
+:::
 
-<pre><code> Summary Bit manipulation enables efficient binary operations on integers. Mastering it boosts performance in low-level and algorithm-heavy tasks. </code></pre>
+##  Read More Article
+
+- [Getting Started](https://compilersutra.com/docs/DSA/)
+- [Mathematical Foundation](https://compilersutra.com/docs/DSA/)
+- [Introduction to DSA](https://compilersutra.com/docs/DSA)
+- [Bit Manipulation Technique](https://compilersutra.com/docs/DSA/Bit_Manipulation_Technique)
+
+### 📚 Complexity Analysis & Big-O Notation  
+- [Big-O Notation Cheat Sheet](https://www.bigocheatsheet.com/) – A quick reference for algorithm complexities.  
+- [Big-O Notation Explained](https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis//) – A detailed guide on Big-O with examples.  
+- [Computational Complexity (MIT OpenCourseWare)](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-045j-automata-computability-and-complexity-spring-2011/) – A deeper dive into algorithm complexity.  
+
+### 🔍 Algorithm Analysis & Optimization  
+- [Sorting Algorithm Complexities](https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/) – Time complexities of various sorting algorithms.  
+- [Amortized Analysis Explained](https://www.geeksforgeeks.org/introduction-to-amortized-analysis/) – Understanding amortized complexity for data structures.  
+
+### 🛠 Tools for Profiling & Complexity Analysis  
+- [Profiling Python Code with cProfile](https://docs.python.org/3/library/profile.html) – Official Python documentation for `cProfile`.  
+- [Valgrind (Performance Analysis)](http://valgrind.org/) – A powerful tool for analyzing C/C++ program execution.  
+  
+### 🎥 Video Courses  
+- [Algorithm Complexity (MIT Lecture)](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/) – MIT's free algorithms course.  
+- [Time Complexity & Big-O Notation (Khan Academy)](https://www.khanacademy.org/computing/computer-science/algorithms#time-complexity-analysis) – Beginner-friendly video tutorials.  
+- [Stanford Algorithms Course (Coursera)](https://www.coursera.org/specializations/algorithms) – A comprehensive introduction to algorithms and complexity.  
+
+---
