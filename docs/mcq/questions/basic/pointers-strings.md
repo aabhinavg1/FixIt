@@ -42,6 +42,8 @@ tags:
   - C++ String Manipulation Techniques
 
 ---
+
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
   <Question
@@ -122,6 +124,10 @@ return 0;
     options={['10', '20', 'Error', 'None of the above']}
     answer="20"
   />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="11).Which header file is required to use strings in C++?"
@@ -217,6 +223,10 @@ int main() {
   answer="Hello World"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).Which of the following is used to get a character at a specific index in a string?"
   options={['str.at(i)', 'str[i]', 'Both A and B', 'None of the above']}
@@ -303,6 +313,10 @@ int main() {
   answer="3"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).What is the default value of an uninitialized pointer in C++?"
   options={['nullptr', '0', 'Random address', 'Error']}
@@ -382,6 +396,10 @@ int main() {
   answer="const int* ptr;"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).What is the purpose of `delete[]` in C++?"
   options={['It deallocates memory for a dynamically allocated array', 'It frees a single dynamically allocated object', 'It marks the pointer as deleted', 'None of the above']}
@@ -458,3 +476,7 @@ int main() {
   options={['Ex', 'ampl', 'xam', 'Error']}
   answer="ampl"
 />
+
+<div>
+<AdBanner />
+</div>
