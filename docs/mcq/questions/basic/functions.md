@@ -41,6 +41,7 @@ tags:
 
 ---
 
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 <Question
@@ -103,6 +104,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="base condition"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).Which function is automatically called when a program starts in C++?"
   options={['start()', 'begin()', 'main()', 'init()']}
@@ -162,6 +167,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['Outside all functions', 'In the header file', 'Inside a function', 'In global scope']}
   answer="Inside a function"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21).Can a function be declared inside a class in C++?"
@@ -223,6 +232,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="No"
 />
 
+<div>
+<AdBanner />
+</div>
 
 <Question
 question="31).What is the purpose of the 'inline' keyword in function declaration?"
@@ -284,6 +296,11 @@ question="31).What is the purpose of the 'inline' keyword in function declaratio
   answer="void func(T&& t);"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="41).What does the 'noexcept' specifier indicate in a C++ function?"
   options={['The function does not return', 'The function may throw exceptions', 'The function does not throw exceptions', 'The function must return an exception']}
@@ -343,3 +360,7 @@ question="31).What is the purpose of the 'inline' keyword in function declaratio
   options={['Pass by value', 'Pass by reference', 'Pass by name', 'Pass by pointer']}
   answer="Pass by name"
 />
+
+<div>
+<AdBanner />
+</div>

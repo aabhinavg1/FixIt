@@ -359,7 +359,65 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['1','True','true','Yes']}
     answer="true"
 />
+<Question
+  question="41). What does the `explicit` keyword in C++ prevent?"
+  options={['Implicit conversions', 'Function overloading', 'Template instantiation', 'Operator overloading']}
+  answer="Implicit conversions"
+/>
 
+<Question
+  question="42). Which of the following is the correct way to dynamically allocate memory for an array of 5 integers?"
+  options={['int *arr = new int[5];', 'int arr = new int[5];', 'int *arr = malloc(5);', 'int arr[5] = new int;']}
+  answer="int *arr = new int[5];"
+/>
+
+<Question
+  question="43). Which operator is used to deallocate memory allocated with `new`?"
+  options={['delete', 'remove', 'free', 'release']}
+  answer="delete"
+/>
+
+<Question
+  question="44). What does the `this` pointer refer to in a class method?"
+  options={['It refers to the current object instance', 'It refers to the base class', 'It refers to the parent function', 'It refers to the memory address of main()']}
+  answer="It refers to the current object instance"
+/>
+
+<Question
+  question="45). Which of the following is used to define a constant pointer in C++?"
+  options={['int* const ptr;', 'const int* ptr;', 'int const* ptr;', 'All of the above']}
+  answer="int* const ptr;"
+/>
+
+<Question
+  question="46). Which C++ keyword is used to prevent a class from being inherited?"
+  options={['sealed', 'final', 'static', 'private']}
+  answer="final"
+/>
+
+<Question
+  question="47). What is the default access specifier for members of a C++ class?"
+  options={['public', 'private', 'protected', 'None']}
+  answer="private"
+/>
+
+<Question
+  question="48). Which header file is needed to use the `std::vector` container?"
+  options={['<array>', '<vector>', '<list>', '<map>']}
+  answer="<vector>"
+/>
+
+<Question
+  question="49). What is the output of `sizeof(char)` in C++?"
+  options={['1', '2', '4', 'Depends on compiler']}
+  answer="1"
+/>
+
+<Question
+  question="50). What happens when you delete a null pointer in C++?"
+  options={['It throws a runtime error', 'It results in undefined behavior', 'Nothing happens', 'It crashes the program']}
+  answer="Nothing happens"
+/>
 
 
 
