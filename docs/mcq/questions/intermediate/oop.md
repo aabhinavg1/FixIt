@@ -69,7 +69,7 @@ tags:
   - C++ Performance Optimization
 ---
 
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Object-Oriented Programming (OOP)
@@ -125,6 +125,10 @@ import { Question } from '../../Question';
   answer="A function that can be overridden in a derived class"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).Which of the following best defines encapsulation?"
   options={['Binding data and functions together', 'Hiding implementation details', 'Only defining variables in a class', 'None of the above']}
@@ -175,6 +179,11 @@ import { Question } from '../../Question';
   options={['Function overloading', 'Compile-time binding', 'Runtime function overriding', 'None of the above']}
   answer="Runtime function overriding"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).Which of the following is true about abstract classes?"
   options={['They cannot be inherited', 'They can be instantiated', 'They must contain at least one pure virtual function', 'They can only contain private members']}
@@ -225,6 +234,11 @@ import { Question } from '../../Question';
   options={['final', 'const', 'static', 'private']}
   answer="final"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).Can a constructor be virtual?"
   options={['Yes', 'No', 'Only if defined in derived class', 'Only static constructors can be virtual']}
@@ -275,6 +289,11 @@ import { Question } from '../../Question';
   options={['Base constructor → Derived constructor → Base destructor → Derived destructor', 'Derived constructor → Base constructor → Derived destructor → Base destructor', 'Base constructor → Derived constructor → Derived destructor → Base destructor', 'Derived constructor → Derived destructor → Base constructor → Base destructor']}
   answer="Base constructor → Derived constructor → Derived destructor → Base destructor"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).Which of the following supports function overriding?"
   options={['Static functions', 'Virtual functions', 'Inline functions', 'Friend functions']}
@@ -326,3 +345,6 @@ import { Question } from '../../Question';
   answer="All of the above"
 />
 
+<div>
+<AdBanner />
+</div>
