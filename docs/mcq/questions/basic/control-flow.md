@@ -436,3 +436,115 @@ question="40). Which control flow structure is missing in C++?"
 options={['unless', 'until', 'elif', 'Both A and B']}
 answer="Both A and B"
 />
+<Question
+  question="41). What will this code output?"
+  code={`int x = 4;
+        if (x % 2 == 0)
+          cout << "Even";
+        else
+          cout << "Odd";`}
+  options={['Even', 'Odd', '4', 'Error']}
+  answer="Even"
+/>
+
+<Question
+  question="42). Which is the correct way to write a for-loop that counts from 10 down to 1?"
+  options={[
+    'for (int i = 10; i >= 1; i--)',
+    'for (int i = 10; i > 0; i--)',
+    'for (int i = 1; i <= 10; i--)',
+    'for (int i = 1; i < 10; i--)'
+  ]}
+  answer="for (int i = 10; i > 0; i--)"
+/>
+
+<Question
+  question="43). What is the output of the following code?"
+  code={`int x = 7;
+        if (x < 10)
+        if (x > 5)
+          cout << "Good";
+        else
+          cout << "Bad";`}
+  options={['Good', 'Bad', 'Error', 'Nothing']}
+  answer="Good"
+/>
+
+<Question
+  question="44). What is the output of this code?"
+  code={`int x = 3;
+switch (x) {
+    case 1:
+    case 2:
+        cout << "Small"; break;
+    case 3:
+    case 4:
+        cout << "Medium"; break;
+    default:
+        cout << "Large";
+}`}
+  options={['Small', 'Medium', 'Large', 'Error']}
+  answer="Medium"
+/>
+
+<Question
+  question="45). How many times will this loop execute?"
+  code={`for (int i = 0; i != 5; i++) {
+    cout << i << " ";
+}`}
+  options={['4', '5', '6', 'Infinite']}
+  answer="5"
+/>
+
+<Question
+  question="46). Identify the mistake in this loop:"
+  code={`int i = 0;
+while (i < 5)
+    cout << i << " ";`}
+  options={['No increment for i', 'Wrong condition', 'Extra semicolon', 'Incorrect syntax']}
+  answer="No increment for i"
+/>
+
+<Question
+  question="47). What is the output?"
+  code={`int a = 0;
+if (a = 5)
+    cout << "True";
+else
+    cout << "False";`}
+  options={['True', 'False', 'Error', 'Nothing']}
+  answer="True"
+/>
+
+<Question
+  question="48). Choose the correct way to use an \if-else\ statement."
+  options={[
+    'if (x == 1) cout << "One"; else cout << "Not one";',
+    'if x == 1: cout << "One"; else: cout << "Not one";',
+    'if x == 1 then cout << "One"; else cout << "Not one";',
+    'if (x == 1) then cout << "One"; else cout << "Not one";'
+  ]}
+  answer='if (x == 1) cout << "One"; else cout << "Not one";'
+/>
+
+<Question
+  question="49). What will this code print?"
+  code={`int x = 0;
+do {
+    cout << x;
+} while (x);`}
+  options={['0', '1', 'Infinite loop', 'Nothing']}
+  answer="0"
+/>
+
+<Question
+  question="50). What does this nested if-else ladder represent?"
+  code={`if (x < 0)
+    cout << "Negative";
+else if (x == 0)
+    cout << "Zero";
+else
+    cout << "Positive";`}
+  options={['It checks for parity', 'It classifies a number', 'It performs a calculation', 'It prints all values of x']}
+  answer="It classifies a number"
+/>
