@@ -41,6 +41,7 @@ tags:
   - Template Concepts
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Templates
@@ -96,6 +97,10 @@ import { Question } from '../../Question';
   answer="Yes"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11). Can class templates have more than one template parameter?"
   options={['Yes', 'No', 'Only two parameters', 'Only for structures']}
@@ -146,6 +151,10 @@ import { Question } from '../../Question';
   options={['Function template', 'Class template', 'Variable template', 'Loop template']}
   answer="Loop template"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21). Can template classes be inherited?"
@@ -198,6 +207,10 @@ import { Question } from '../../Question';
   answer="Performing computations at compile-time using templates"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31). Can you use typedef in templates?"
   options={['Yes', 'No', 'Only in classes', 'Only in functions']}
@@ -249,6 +262,10 @@ import { Question } from '../../Question';
   answer="Access a nested type inside T"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). What is the primary use of 'std::enable_if' in template programming?"
   options={['Conditional template instantiation', 'Enabling smart pointers', 'Memory allocation', 'Multithreading']}
@@ -299,3 +316,7 @@ import { Question } from '../../Question';
   options={['requires', 'concept', 'typename', 'static']}
   answer="requires"
 />
+
+<div>
+<AdBanner />
+</div>
