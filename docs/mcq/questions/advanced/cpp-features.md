@@ -308,8 +308,8 @@ import { Question } from '../../Question';
 
 <Question
   question="50).What is 'std::convertible_to' concept in C++20?"
-  options={[ 'Checks for type conversion operators', 'A deprecated feature', 'None of the above','Checks if one type can be converted to another']}
-  answer="Checks if one type can be converted to another!!!"
+  options={[ 'Checks for type conversion operators', 'A deprecated feature', 'None of the above','Checks if one type can be converted to another!!']}
+  answer="Checks if one type can be converted to another!!"
 />
 
 
