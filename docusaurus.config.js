@@ -39,7 +39,6 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
-      // ✅ Remove "themeConfig.mermaid" – not allowed
       metadata: [
         { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' },
       ],
@@ -51,13 +50,24 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          { type: 'docSidebar', sidebarId: 'llvmTutorialSidebar', position: 'left', label: 'LLVM Tutorials' },
-          { type: 'docSidebar', sidebarId: 'tvmTutorialSidebar', position: 'left', label: 'TVM Tutorials' },
-          { type: 'docSidebar', sidebarId: 'gpuTutorialSidebar', position: 'left', label: 'GPU Tutorials' },
-          { type: 'docSidebar', sidebarId: 'compilersSidebar', position: 'left', label: 'Compilers' },
-          { type: 'docSidebar', sidebarId: 'cppTutorialSidebar', position: 'left', label: 'C++ Tutorials' },
-          { type: 'docSidebar', sidebarId: 'dataStructureSidebar', position: 'left', label: 'DSA' },
-          { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'project' },
+          {
+            type: 'dropdown',
+            label: 'Tutorials',
+            position: 'left',
+            items: [
+              { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
+              { label: 'TVM Tutorials', to: '/docs/tvm-for-beginners' },
+              { label: 'GPU Tutorials', to: '/docs/the_graphic_rendering_pipeline/' },
+              { label: 'Compilers', to: '/docs/compilers/compiler' },
+              { label: 'C++ Tutorials', to: '/docs/c++/CppTutorial' },
+              { label: 'DSA Tutorials', to: '/docs/DSA/' },
+              { label: 'Python Automation', to: '/docs/python/python_tutorial' },
+              { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },  // Added Linux
+           
+              {label: 'OpenCl Tutorial' , to: '/docs/gpu/opencl'}
+            ],
+          },
+          { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'Project' },
           {
             type: 'dropdown',
             label: 'MCQ',
