@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Friend Functions
@@ -128,6 +128,10 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only with operator functions', 'None of the above']}
   answer="Yes"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).Where is a friend function typically defined?"
   options={['Inside the class', 'Outside the class', 'In the constructor', 'None of the above']}
@@ -178,6 +182,10 @@ import { Question } from '../../Question';
   options={['friend void display();', 'void friend display();', 'friend class display();', 'None of the above']}
   answer="friend void display();"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).Which is true about the declaration of friend functions?"
   options={['They must be unique', 'They must be overloaded', 'They can be declared multiple times', 'None of the above']}
@@ -228,6 +236,10 @@ import { Question } from '../../Question';
   options={['Friend functions are part of class\'s public interface', 'Friend functions are not members of a class', 'Friend functions cannot be overloaded', 'Friend functions cannot be templates']}
   answer="Friend functions are not members of a class"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).Can a friend function be declared as a friend in multiple classes simultaneously?"
   options={['Yes', 'No', 'Only in related classes', 'Only if classes are inherited']}
@@ -255,16 +267,17 @@ import { Question } from '../../Question';
 />
 <Question
   question="36).What is the main disadvantage of friend functions?"
-  options={['Break encapsulation', 'Slower execution', 'Less readability', 'None of the above']}
+  options={['Break encapsulation', 'Slower execution', 'Yes', 'None of the above']}
   answer="Break encapsulation"
 />
 <Question
   question="37).Can a friend function call private member functions of the class?"
-  options={['Yes', 'No', 'Only if defined inside the class', 'Only if friend class']}
+  options={['No', 'Only if defined inside the class', 'Yes','Only if friend class']}
+  answer="Yes"
 />
 <Question
   question="38).How is a friend function invoked?"
-  options={['Like a normal function', 'Using class name', 'Using object reference', 'None of the above']}
+  options={[ 'Using class name', 'Using object reference', 'None of the above','Like a normal function']}
   answer="Like a normal function"
 />
 <Question
@@ -277,19 +290,23 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only if base class', 'Only if derived class']}
   answer="Yes"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).Which of the following best describes the use of friend functions?"
-  options={['To provide access to unrelated functions', 'To implement encapsulation', 'To manage memory', 'None of the above']}
+  options={[ 'To implement encapsulation', 'To manage memory', 'To provide access to unrelated functions','None of the above']}
   answer="To provide access to unrelated functions"
 />
 <Question
   question="42).Is it necessary to define a friend function immediately after declaration?"
-  options={['No', 'Yes', 'Only in template classes', 'Only for inline functions']}
+  options={[ 'Yes','No', 'Only in template classes', 'Only for inline functions']}
   answer="No"
 />
 <Question
   question="43).Which of the following has more access privileges?"
-  options={['Friend function', 'Public member function', 'Constructor', 'Destructor']}
+  options={[ 'Public member function', 'Friend function','Constructor', 'Destructor']}
   answer="Friend function"
 />
 <Question
@@ -299,7 +316,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="45).Can a friend function be virtual?"
-  options={['No', 'Yes', 'Only in abstract classes', 'Only if declared inside the class']}
+  options={[ 'Yes', 'Only in abstract classes', 'Only if declared inside the class','No']}
   answer="No"
 />
 <Question
@@ -309,12 +326,12 @@ import { Question } from '../../Question';
 />
 <Question
   question="47).Which access specifier must a friend function be declared under?"
-  options={['Any (public, protected, private)', 'Only public', 'Only private', 'Only protected']}
+  options={[ 'Only public', 'Only private', 'Only protected','Any (public, protected, private)']}
   answer="Any (public, protected, private)"
 />
 <Question
   question="48).Can a friend function be declared in a struct?"
-  options={['Yes', 'No', 'Only in classes', 'Only with typedefs']}
+  options={['No','Yes', 'Only in classes', 'Only with typedefs']}
   answer="Yes"
 />
 <Question
@@ -324,6 +341,6 @@ import { Question } from '../../Question';
 />
 <Question
   question="50).If a friend function modifies the private data of a class, is it considered safe OOP practice?"
-  options={['No, it violates encapsulation', 'Yes, always safe', 'Depends on compiler', 'Yes, if virtual']}
+  options={[ 'Yes, always safe', 'Depends on compiler', 'No, it violates encapsulation','Yes, if virtual']}
   answer="No, it violates encapsulation"
 />
