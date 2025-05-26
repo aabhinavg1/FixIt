@@ -1,190 +1,352 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global Stylesheet
+ * 
+ * Purpose: Provides consistent styling across the entire application
+ * Features:
+ * - Comprehensive design system with semantic variables
+ * - Responsive design considerations
+ * - Accessibility-focused styling
+ * - Maintainable CSS architecture
  */
 
-/* Override the default Infima variables here. */
+/* ==================== CSS CUSTOM PROPERTIES ==================== */
 :root {
-  --ifm-color-primary: #2e8555; /* Primary color */
-  --ifm-color-primary-dark: #29784c; /* Darker variant */
-  --ifm-color-primary-darker: #277148; /* Darkest variant */
-  --ifm-color-primary-darkest: #205d3b; /* Darkest variant */
-  --ifm-color-primary-light: #33925d; /* Lighter variant */
-  --ifm-color-primary-lighter: #359962; /* Lightest variant */
-  --ifm-color-primary-lightest: #3cad6e; /* Lightest variant */
-  --ifm-code-font-size: 95%; /* Code font size */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1); /* Highlighted code line background */
+  /* Primary Color Palette */
+  --color-primary-900: #1a5c3a;
+  --color-primary-800: #205d3b;
+  --color-primary-700: #277148;
+  --color-primary-600: #29784c;
+  --color-primary-500: #2e8555;
+  --color-primary-400: #33925d;
+  --color-primary-300: #359962;
+  --color-primary-200: #3cad6e;
+  --color-primary-100: #4fddbf;
+
+  /* Neutral Colors */
+  --color-neutral-900: #121212;
+  --color-neutral-800: #1e1e1e;
+  --color-neutral-700: #2d2d2d;
+  --color-neutral-600: #424242;
+  --color-neutral-500: #5e5e5e;
+  --color-neutral-400: #858585;
+  --color-neutral-300: #b0b0b0;
+  --color-neutral-200: #d6d6d6;
+  --color-neutral-100: #f9f9f9;
+  --color-neutral-50: #ffffff;
+
+  /* Semantic Variables */
+  --color-background: var(--color-neutral-100);
+  --color-text: var(--color-neutral-900);
+  --color-link: var(--color-primary-500);
+  --color-link-hover: var(--color-primary-600);
+  --color-border: var(--color-neutral-200);
+
+  /* Typography */
+  --font-base-size: 16px;
+  --font-scale-ratio: 1.25;
+  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'Roboto Mono', monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-unit: 1rem;
+  --spacing-xxs: calc(var(--spacing-unit) * 0.25);
+  --spacing-xs: calc(var(--spacing-unit) * 0.5);
+  --spacing-sm: calc(var(--spacing-unit) * 0.75);
+  --spacing-md: var(--spacing-unit);
+  --spacing-lg: calc(var(--spacing-unit) * 1.5);
+  --spacing-xl: calc(var(--spacing-unit) * 2);
+  --spacing-xxl: calc(var(--spacing-unit) * 3);
+
+  /* Border */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 300ms;
+  --transition-duration-slow: 450ms;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index */
+  --z-index-low: 10;
+  --z-index-medium: 100;
+  --z-index-high: 1000;
+  --z-index-overlay: 10000;
 }
 
-/* Dark mode theme variables for readability */
+/* ==================== DARK THEME OVERRIDES ==================== */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0; /* Dark mode primary color */
-  --ifm-color-primary-dark: #21af90; /* Darker variant */
-  --ifm-color-primary-darker: #1fa588; /* Darkest variant */
-  --ifm-color-primary-darkest: #1a8870; /* Darkest variant */
-  --ifm-color-primary-light: #29d5b0; /* Lighter variant */
-  --ifm-color-primary-lighter: #32d8b4; /* Lightest variant */
-  --ifm-color-primary-lightest: #4fddbf; /* Lightest variant */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3); /* Highlighted code line background in dark mode */      
+  --color-background: var(--color-neutral-900);
+  --color-text: var(--color-neutral-100);
+  --color-link: var(--color-primary-400);
+  --color-link-hover: var(--color-primary-300);
+  --color-border: var(--color-neutral-700);
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Body styles for light and dark themes */
+/* ==================== BASE STYLES ==================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--font-base-size);
+}
+
 body {
-  background-color: #f9f9f9; /* Light background */
-  color: #333; /* Dark text */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-[data-theme='dark'] body {
-  background-color: #1a1a1a; /* Dark background */
-  color: #f9f9f9; /* Light text for dark mode */
+/* ==================== TYPOGRAPHY ==================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text);
 }
 
-/* General element styles */
-h1, h2, h3, h4, h5, h6, p {
-  color: inherit; /* Inherit color from the body */
+h1 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 2.5); }
+h2 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 2); }
+h3 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.75); }
+h4 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.5); }
+h5 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.25); }
+h6 { font-size: var(--font-base-size); }
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  max-width: 75ch;
 }
 
-/* Button styles */
+/* ==================== LINKS ==================== */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-duration-fast) var(--transition-timing);
+  position: relative;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ==================== BUTTONS ==================== */
 button {
-  background-color: var(--ifm-color-primary); /* Use the primary color */
-  color: white; /* White text */
+  --button-bg: var(--color-primary-500);
+  --button-text: var(--color-neutral-50);
+  
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border: none;
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 20px; /* Padding for comfort */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--transition-duration-normal) var(--transition-timing);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  min-height: 2.75rem;
 }
 
 button:hover {
-  background-color: var(--ifm-color-primary-dark); /* Darken on hover */
+  --button-bg: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Link styles */
-a {
-  color: var(--ifm-color-primary);
-  text-decoration: none; /* Remove underline */
-  transition: color 0.3s ease; /* Smooth transition */
+button:active {
+  transform: translateY(0);
 }
 
-a:hover {
-  text-decoration: underline; /* Underline on hover */
+button:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
 }
 
-[data-theme='dark'] a {
-  color: var(--ifm-color-primary-light); /* Adjust link color for dark mode */
+/* Secondary Button Variant */
+button.secondary {
+  --button-bg: transparent;
+  --button-text: var(--color-primary-500);
+  border: var(--border-width) solid var(--color-primary-500);
 }
 
-/* Tutorials Navigation Styles */
+button.secondary:hover {
+  --button-bg: rgba(46, 133, 85, 0.1);
+}
+
+/* ==================== COMPONENTS ==================== */
+/* Tutorials Navigation */
 .tutorials-nav {
-  background-color: var(--ifm-color-primary-light); /* Background for the nav */
-  padding: 20px; /* Add padding */
+  background-color: var(--color-primary-400);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 [data-theme='dark'] .tutorials-nav {
-  background-color: var(--ifm-color-primary-dark); /* Dark mode background */
+  background-color: var(--color-primary-700);
 }
 
-/* Style for the unordered list */
 .tutorials-list {
-  list-style-type: none; /* Remove bullet points */
-  display: flex; /* Use flexbox for alignment */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  justify-content: space-between; /* Evenly space items */
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margin */
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  padding: 0;
+  margin: 0;
 }
 
-/* Style for list items */
-.tutorials-list li {
-  margin: 10px; /* Add margin */
+.tutorials-list__item {
+  margin: 0;
 }
 
-/* Style for the links */
-.tutorials-list a {
-  display: inline-block; /* Treat links as block elements */
-  padding: 12px 20px; /* Padding for comfort */
-  border-radius: 5px; /* Rounded corners */
-  background-color: var(--ifm-color-primary); /* Use primary color */
-  color: white; /* White text */
-  text-decoration: none; /* Remove underline */
-  transition: background-color 0.3s ease; /* Smooth transition */
+.tutorials-list__link {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-primary-500);
+  color: var(--color-neutral-50);
+  transition: all var(--transition-duration-normal) var(--transition-timing);
+  height: 100%;
 }
 
-.tutorials-list a:hover {
-  background-color: var(--ifm-color-primary-dark); /* Darken on hover */
+.tutorials-list__link:hover,
+.tutorials-list__link:focus-visible {
+  background-color: var(--color-primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Maintenance Popup styles */
+/* Maintenance Popup */
 .maintenance-popup {
-  background-color: rgba(255, 255, 255, 0.9); /* Light mode background */
-  border: 2px solid var(--ifm-color-primary);
-  padding: 20px;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-primary-500);
+  padding: var(--spacing-lg);
   position: fixed;
-  top: 20%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centering the popup */
-  z-index: 1000; /* Ensure it appears above other content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+  z-index: var(--z-index-overlay);
+  box-shadow: var(--shadow-lg);
+  width: min(90%, 500px);
+  border-radius: var(--border-radius-lg);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-[data-theme='dark'] .maintenance-popup {
-  background-color: rgba(0, 0, 0, 0.8); /* Dark mode background */
-  color: #f9f9f9; /* Light text color */
+.maintenance-popup__title {
+  color: var(--color-primary-500);
+  margin-bottom: var(--spacing-md);
 }
 
-.maintenance-popup h2 {
-  color: var(--ifm-color-primary);
+.maintenance-popup__content {
+  margin-bottom: var(--spacing-lg);
 }
 
-.maintenance-popup button {
-  background-color: var(--ifm-color-primary);
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+.maintenance-popup__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
 }
 
-.maintenance-popup button:hover {
-  background-color: var(--ifm-color-primary-dark); /* Darken on hover */
+/* 404 Page */
+.page-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: var(--spacing-xl);
 }
 
-/* Mobile responsiveness */
+.page-404__title {
+  color: var(--color-primary-500);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-md);
+}
+
+.page-404__description {
+  font-size: 1.25rem;
+  max-width: 60ch;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
-  .maintenance-popup {
-    width: 90%; /* Responsive width for smaller screens */
-    padding: 15px;
+  :root {
+    --font-base-size: 15px;
   }
 
   .tutorials-list {
-    flex-direction: column; /* Stack list items vertically */
+    grid-template-columns: 1fr;
   }
 
-  .tutorials-list li {
-    width: 100%; /* Full width for each list item */
+  .maintenance-popup {
+    width: 95%;
+    padding: var(--spacing-md);
   }
-
-  .tutorials-list a {
-    width: 100%; /* Full width for links */
-    text-align: center; /* Center align text */
-  }
-  .mermaid {
-    display: block; /* Ensure the mermaid container is a block element */
-    max-width: 100%; /* Prevent overflow */
-    margin: 0 auto; /* Center it */
-  }
-  /* Example styling for the 404 page */
-div {
-  font-family: Arial, sans-serif;
-  color: #333;
 }
 
-h1 {
-  color: #e74c3c;
-}
+@media (max-width: 480px) {
+  :root {
+    --font-base-size: 14px;
+  }
 
-p {
-  font-size: 1.2rem;
-}
-
+  .page-404 {
+    padding: var(--spacing-md);
+  }
 }

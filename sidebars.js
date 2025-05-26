@@ -32,6 +32,7 @@ const sidebars = {
       items: [
         'gpu/opencl/opencl',
         'gpu/opencl/basic/what_is_opencl',
+        'gpu/opencl/basic/setting_up_opencl',
       ],
     },
   ],
@@ -201,6 +202,7 @@ const sidebars = {
   ],
 
   // Sidebar for MCQs and Interview Questions
+  // Sidebar for MCQs and Interview Questions
   mcqSidebar: [
     {
       type: 'category',
@@ -213,11 +215,100 @@ const sidebars = {
           collapsed: true,
           items: [
             'mcq/cpp_mcqs',                  // C++ MCQs
+            'mcq/questions/basic/array-and-strings',
+            'mcq/questions/basic/basic',
+            'mcq/questions/basic/control-flow',
+            'mcq/questions/basic/data-types',
+            'mcq/questions/basic/functions',
+            'mcq/questions/basic/intro-to-cpp',
+            'mcq/questions/basic/io',
+            'mcq/questions/basic/loop',
+            'mcq/questions/basic/pointers-strings',
+            'mcq/questions/basic/variables-and-constants',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Intermediate MCQs',
+          items: [
+            'mcq/questions/intermediate/abstraction',
+            'mcq/questions/intermediate/classes-objects',
+            'mcq/questions/intermediate/constructors-destructors',
+            'mcq/questions/intermediate/encapsulation',
+            'mcq/questions/intermediate/file-handling',
+            'mcq/questions/intermediate/friend-functions',
+            'mcq/questions/intermediate/inheritance',
+            'mcq/questions/intermediate/getting-started-with-oops-concept',
+            'mcq/questions/intermediate/memory-management',
+            'mcq/questions/intermediate/oop',
+            'mcq/questions/intermediate/operator-overloading',
+            'mcq/questions/intermediate/polymorphism',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced MCQs',
+          items: [
+            'mcq/questions/advanced/concurrency-and-synchronization',
+            'mcq/questions/advanced/cpp-features-11-14-17-20',
+            'mcq/questions/advanced/exception-handling',
+            'mcq/questions/advanced/lambdas',
+            'mcq/questions/advanced/move-semantics',
+            'mcq/questions/advanced/multithreading',
+            'mcq/questions/advanced/stl',
+            'mcq/questions/advanced/templates',
+            'mcq/questions/advanced/vectors',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Specialized MCQs',
+          items: [
+            'mcq/questions/specialized/algorithm',
+            'mcq/questions/specialized/cpp-embedded',
+            'mcq/questions/specialized/design-patterns',
+            'mcq/questions/specialized/optimization',
+            'mcq/questions/specialized/smart-pointers',
+            'mcq/questions/specialized/specialized',
+          ],
+        },
+        // Adding Interview Questions under Basic category
+        {
+          type: 'category',
+          label: 'Interview Questions',
+          items: [
+            'mcq/interview_question/cpp_interview_mcqs',
+            'mcq/interview_question/basic/intro-to-cpp',
+            'mcq/interview_question/basic/control-flow',
+            'mcq/interview_question/basic/functions-recursion',
+            'mcq/interview_question/basic/arrays-strings',
+            'mcq/interview_question/basic/io-operations',
+            'mcq/interview_question/basic/pointers-references',
+            'mcq/interview_question/intermediate/ClassesObjects',
+            'mcq/interview_question/intermediate/CppInterviewQuestionsConstructorsDestructors',
+            'mcq/interview_question/intermediate/EssentialCppInterviewQuestionsInheritancePolymorphism',
+            'mcq/interview_question/intermediate/oop',
+            'mcq/interview_question/intermediate/CppInterviewQuestionsExceptionHandling',
+            'mcq/interview_question/intermediate/memory-management',
+            'mcq/interview_question/intermediate/operator-overloading',
+
+          ],
+        },
+
+        //Adding mcq with the standard
+
+        {
+          type: 'category',
+          label: 'Standatd Questions',
+          items: [
+            'mcq/interview_question/cpp11/cpp11',
           ],
         },
       ],
     },
   ],
 };
+
+
 
 module.exports = sidebars;
