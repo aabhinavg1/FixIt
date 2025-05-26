@@ -69,6 +69,7 @@ tags:
   - C++ Performance Optimization
 ---
 
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Polymorphism
@@ -123,6 +124,11 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only if declared with final', 'None of the above']}
   answer="Yes"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
   question="11).What keyword prevents further overriding of a virtual function?"
@@ -200,6 +206,10 @@ import { Question } from '../../Question';
   options={['B', 'A', 'Error', 'Undefined']}
   answer="B"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21).Can destructors be virtual?"
@@ -280,6 +290,11 @@ import { Question } from '../../Question';
   answer="B"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="31).Can a derived class object be assigned to a base class reference?"
   options={['Yes', 'No', 'Only in static_cast', 'Only for final classes']}
@@ -356,6 +371,11 @@ import { Question } from '../../Question';
   options={['Base', 'Derived', 'Error', 'Undefined']}
   answer="Base"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
   question="41).How can polymorphism help with maintainability?"
@@ -436,13 +456,6 @@ import { Question } from '../../Question';
   answer="It cannot be called directly"
 />
 
-<Question
-  question="51) What happens if a class contains at least one pure virtual function?"
-  options={[
-    'It becomes an abstract class',
-    'It cannot have any data members',
-    'It must not have a constructor',
-    'It cannot be inherited'
-  ]}
-  answer="It becomes an abstract class"
-/>
+<div>
+<AdBanner />
+</div>

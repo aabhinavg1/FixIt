@@ -42,6 +42,7 @@ tags:
 
 ---
 
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 // C++ Introduction Quiz
@@ -111,6 +112,11 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
            'A function cannot take parameters.']}
   answer="A function may or may not return a value."
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11). Which keyword is used to define a constant in C++?"
   options={['final', 'const', 'static', 'immutable']}
@@ -170,6 +176,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['Exits the loop immediately', 'Skips the current iteration and moves to the next', 'Restarts the loop from the beginning', 'Terminates the program']}
   answer="Skips the current iteration and moves to the next"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21).  What is C++ primarily known for?"
@@ -236,6 +246,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="int* ptr;"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31). Which operator is used for logical AND in C++?"
   options={['&', '&&', '|', '||']}
@@ -294,6 +308,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['A function that can be called from any class', 'A function defined with the `virtual` keyword', 'A function that can only be accessed from base class', 'None of the above']}
   answer="A function defined with the `virtual` keyword"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="41). Which of the following is the correct way to call a base class function from a derived class in C++?"
@@ -355,6 +373,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="class MyClass {};"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="51). Which of the following is not a valid C++ loop?"
   options={['for', 'while', 'do-while', 'repeat-until']}
@@ -414,3 +436,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['To specify alignment requirements', 'To align text output', 'To create aligned arrays', 'To format code']}
   answer="To specify alignment requirements"
 />
+
+<div>
+<AdBanner />
+</div>

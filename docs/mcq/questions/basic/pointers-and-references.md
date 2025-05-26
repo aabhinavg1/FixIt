@@ -41,6 +41,8 @@ tags:
   - C++ References without pointers
 
 ---
+
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 <Question
@@ -103,6 +105,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['*', '&', 'ref', '^']}
   answer="&"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="11) Can we change the reference to refer to another variable?"
@@ -172,6 +178,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['Address of x', 'Value of x', 'Address of pointer p', 'Compilation error']}
   answer="Address of pointer p"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21) What does the following function parameter mean: void func(int*& ptr)?"
@@ -322,6 +332,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="delete[] ptr;"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41) What happens when delete is called twice on same pointer?"
   options={['No effect', 'Undefined behavior', 'Memory leak', 'Segmentation fault']}
@@ -382,3 +396,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   'const int ptr']}
   answer="const int* const ptr;"
 />
+
+<div>
+<AdBanner />
+</div>

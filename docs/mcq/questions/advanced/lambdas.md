@@ -91,6 +91,7 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only with specific algorithms', 'None of the above']}
   answer="Yes"
 />
+
 <div>
 <AdBanner />
 </div>
@@ -154,6 +155,7 @@ question="20).Can lambda functions be constexpr?"
 options={['No, lambdas are runtime-only', 'Only if they capture no variables', 'Yes, if they meet constexpr requirements', 'None of the above']}
 answer="Yes, if they meet constexpr requirements"
 />
+
 <div>
 <AdBanner />
 </div>
@@ -269,7 +271,6 @@ question="38).How do you write a templated lambda (C++20)?"
 options={['[T]() { }', '[]<typename T>(T arg) { }', 'template<typename T> []() { }', 'None of the above']}
 answer="[]<typename T>(T arg) { }"
 />
-
 <Question
 question="39).Can a lambda be static?"
 options={['Only in global scope', 'No', 'Yes', 'None of the above']}
@@ -281,6 +282,7 @@ question="40).What is the difference between [=] and [&]?"
 options={['No difference', '[=] is for const lambdas; [&] is for mutable', '[=] captures by value; [&] captures by reference', 'None of the above']}
 answer="[=] captures by value; [&] captures by reference"
 />
+
 <div>
 <AdBanner />
 </div>
@@ -344,3 +346,7 @@ question="50).How do you capture this by value in C++20?"
 options={['[*this]', '[this]', '[=, this]', 'None of the above']}
 answer="[*this]"
 />
+
+<div>
+<AdBanner />
+</div>

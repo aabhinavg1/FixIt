@@ -68,7 +68,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Operator Overloading
@@ -123,6 +123,10 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only for integer strings', 'None of the above']}
   answer="Yes"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="11).Which operator is typically overloaded to output an object?"
@@ -183,6 +187,10 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only new', 'Only delete']}
   answer="Yes"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21).Which operator can be overloaded as a unary operator?"
@@ -278,6 +286,10 @@ import { Question } from '../../Question';
   answer="All of the above"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).Can `==` be overloaded to compare two objects?"
   options={['Yes', 'No', 'Only for integers', 'Only for built-in types']}
@@ -360,6 +372,10 @@ import { Question } from '../../Question';
   answer="Yes, by using access specifiers"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).What does the keyword `mutable` allow in operator overloading?"
   options={['Modification in const function', 'Use in friend function', 'Overload `=` operator', 'None of the above']}
@@ -420,13 +436,6 @@ import { Question } from '../../Question';
   answer="operator<"
 />
 
-<Question
-  question="51) How can you use a custom comparison function with an STL `std::sort` algorithm?"
-  options={[
-    'By overloading operator=',
-    'By passing a comparison function as a third argument',
-    'By defining a destructor',
-    'By using operator++'
-  ]}
-  answer="By passing a comparison function as a third argument"
-/>
+<div>
+<AdBanner />
+</div>
