@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Abstraction
@@ -128,6 +128,10 @@ import { Question } from '../../Question';
   options={['Using interfaces', 'Using private members', 'Using inline functions', 'None of the above']}
   answer="Using interfaces"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="11).Which of the following makes a class abstract in C++?"
@@ -195,6 +199,10 @@ class B : public A {};`}
   answer="Virtual function"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).Which statement is true about abstract base classes in C++?"
   options={['They must be inherited', 'They can only have private members', 'They are instantiated directly', 'They can’t have a constructor']}
@@ -254,6 +262,10 @@ class B : public A {};`}
   options={['Increases memory usage', 'Improves data visibility', 'Reduces complexity by hiding internal implementation', 'Allows access to low-level system calls']}
   answer="Reduces complexity by hiding internal implementation"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
 question="31).What is the primary goal of abstraction in C++?"
@@ -315,6 +327,10 @@ options={['No, abstract classes must be base classes', 'Yes, inheritance is inde
 answer="Yes, inheritance is independent of abstraction"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
 question="41).What is the purpose of making a class abstract?"
 options={['To define a common interface for derived classes', 'To prevent all forms of inheritance', 'To optimize memory allocation', 'To enable RTTI']}
@@ -373,3 +389,7 @@ question="50).What happens if you try to delete an abstract class pointer?"
 options={['Undefined behavior', 'Compiler error', 'Only works if destructor is virtual', 'Automatic derived class cleanup']}
 answer="Only works if destructor is virtual"
 />
+
+<div>
+<AdBanner />
+</div>
