@@ -45,6 +45,7 @@ tags:
   - Concurrent Programming Techniques
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Concurrency and Synchronization
@@ -99,6 +100,10 @@ import { Question } from '../../Question';
   options={['A class that automatically locks and unlocks a mutex', 'A function that locks multiple mutexes', 'A method to lock a mutex manually', 'None of the above']}
   answer="A class that automatically locks and unlocks a mutex"
 />
+<div>
+<AdBanner />
+</div>
+
 
 <Question
 question="11).What is a race condition in C++?"
@@ -158,6 +163,10 @@ question="20).What is std::recursive_mutex used for?"
 options={['Allowing the same thread to lock a mutex multiple times', 'Locking multiple mutexes at once', 'Preventing deadlocks', 'None of the above']}
 answer="Allowing the same thread to lock a mutex multiple times"
 />
+<div>
+<AdBanner />
+</div>
+
 
 <Question
 question="21).Which of the following is a lock-free synchronization mechanism?"
@@ -218,6 +227,10 @@ question="30).Which of the following is true about std::thread::detach()?"
 options={['The thread runs independently of the main thread', 'The thread must be joined later', 'The thread terminates immediately', 'None of the above']}
 answer="The thread runs independently of the main thread"
 />
+<div>
+<AdBanner />
+</div>
+
 
 
 <Question
@@ -280,6 +293,11 @@ options={['To allow a limited number of threads to access a resource', 'To lock 
 answer="To allow a limited number of threads to access a resource"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
 question="41).What is the purpose of std::atomic_thread_fence in C++?"
 options={['To enforce memory ordering constraints', 'To lock a mutex', 'To terminate a thread', 'None of the above']}
@@ -339,4 +357,8 @@ question="50).What is the purpose of std::stop_source (C++20)?"
 options={['To send a stop request to a std::jthread', 'To lock a mutex', 'To join threads', 'None of the above']}
 answer="To send a stop request to a std::jthread"
 />
+
+<div>
+<AdBanner />
+</div>
 
