@@ -104,6 +104,7 @@ tags:
   - C++ Testing and Practice
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 
@@ -195,6 +196,10 @@ int main() {
   answer="It is guaranteed to execute at least once"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).What will the following code output?"
   code={`int x = 10;
@@ -281,6 +286,10 @@ do {
   answer="Evaluates a condition and returns a value"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).What will be printed?"
   code={`int a = 5, b = 10;
@@ -352,6 +361,10 @@ if x == 1
   options={['1 2 3 4 5', '1 3 5', '1 2 4', '2 4 6']}
   answer="1 3 5"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
 question="31). What is the output of the following code?"
@@ -436,6 +449,10 @@ question="40). Which control flow structure is missing in C++?"
 options={['unless', 'until', 'elif', 'Both A and B']}
 answer="Both A and B"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). What will this code output?"
   code={`int x = 4;
@@ -446,6 +463,7 @@ answer="Both A and B"
   options={['Even', 'Odd', '4', 'Error']}
   answer="Even"
 />
+
 
 <Question
   question="42). Which is the correct way to write a for-loop that counts from 10 down to 1?"

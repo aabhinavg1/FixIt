@@ -36,6 +36,7 @@ tags:
   - Lambda Parameters
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Lambda Functions
@@ -91,235 +92,261 @@ import { Question } from '../../Question';
   answer="Yes"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
-question="11).What does the mutable keyword do in a lambda?"
-options={[ 'Makes the lambda const','Allows modifying captured variables by value', 'Enables move semantics', 'None of the above']}
+question="11).What does the mutable keyword do in a lambda function?"
+options={['Makes the lambda thread-safe', 'Allows modifying captured variables by value', 'Forces the lambda to return a value', 'None of the above']}
 answer="Allows modifying captured variables by value"
 />
 
 <Question
-question="12).How do you capture all variables by value in a lambda?"
-options={['[=]', '[&]', '[*]', 'None of the above']}
-answer="[=]"
+question="12).How can you explicitly specify the return type of a lambda?"
+options={['[]() int { return 42; }', '[]() => int { return 42; }', '[]() -> int { return 42; }', 'None of the above']}
+answer="[]() -> int { return 42; }"
 />
 
 <Question
-question="13).How do you capture all variables by reference in a lambda?"
-options={['[=]', '[*]','[&]',  'None of the above']}
+question="13).What happens if a lambda captures a variable by value and modifies it without mutable?"
+options={['The variable is modified externally', 'Compilation error', 'Undefined behavior', 'None of the above']}
+answer="Compilation error"
+/>
+
+<Question
+question="14).Which of the following captures all local variables by reference?"
+options={['[=]', '[&]', '[*]', 'None of the above']}
 answer="[&]"
 />
+
 <Question
-question="14).How do you specify parameters in a lambda?"
-options={[ '[a, b]', '{a, b}', 'None of the above','(int a, int b)']}
-answer="(int a, int b)"
+question="15).What is the type of a lambda function?"
+options={['std::function', 'A unique, unnamed closure type', 'void(*)()', 'None of the above']}
+answer="A unique, unnamed closure type"
 />
 
 <Question
-question="15).Can lambda parameters have default arguments?"
-options={[ 'No', 'Only in C++20','Yes, in C++14 and later', 'None of the above']}
-answer="Yes, in C++14 and later"
-/>
-<Question
-question="16).How do you explicitly specify a lambda's return type?"
-options={[' -> int { return 42; } ' , ' int { return 42; }', ' : int { return 42; }', 'None of the above']}
-answer=" -> int { return 42; }"
+question="16).How can you store a lambda in an std::function?"
+options={['function f = []{};', 'std::function<void()> f = []{};', 'auto f = []{};', 'None of the above']}
+answer="std::function<void()> f = []{};"
 />
 
 <Question
-question="17).What happens if a lambda has multiple return statements with different types?"
-options={['Compiler error unless return type is specified', 'It deduces the common type', 'It always returns void', 'None of the above']}
-answer="Compiler error unless return type is specified"
+question="17).What does [this] capture in a lambda inside a class?"
+options={['Only class members', 'The current object by reference', 'The current object by value', 'None of the above']}
+answer="The current object by reference"
 />
+
 <Question
-question="18).How do you capture a specific variable by move?"
-options={[ '[move var]', '[std::move(var)]','[var = std::move(var)]', 'None of the above']}
+question="18).Can a lambda function be recursive?"
+options={['No, lambdas cannot call themselves', 'Only if marked constexpr', 'Yes, using std::function or auto with a capture', 'None of the above']}
+answer="Yes, using std::function or auto with a capture"
+/>
+
+<Question
+question="19).What is the default capture mode if none is specified?"
+options={['All by reference', 'No captures', 'All by value', 'None of the above']}
+answer="No captures"
+/>
+
+<Question
+question="20).Can lambda functions be constexpr?"
+options={['No, lambdas are runtime-only', 'Only if they capture no variables', 'Yes, if they meet constexpr requirements', 'None of the above']}
+answer="Yes, if they meet constexpr requirements"
+/>
+
+<div>
+<AdBanner />
+</div>
+
+<Question
+question="21).How do you pass a lambda as a function argument?"
+options={['Only by pointer', 'By template parameter or std::function', 'Only by reference', 'None of the above']}
+answer="By template parameter or std::function"
+/>
+
+<Question
+question="22).What does [=, &x] mean in a lambda capture?"
+options={['Invalid syntax', 'Capture all by value except x by reference', 'Capture all by reference except x by value', 'None of the above']}
+answer="Capture all by value except x by reference"
+/>
+
+<Question
+question="23).Can a lambda function have a default argument?"
+options={['Only in C++20', 'No', 'Yes', 'None of the above']}
+answer="Yes"
+/>
+
+<Question
+question="24).What is a generic lambda (introduced in C++14)?"
+options={['A templated lambda', 'A lambda returning auto', 'A lambda with auto parameters', 'None of the above']}
+answer="A lambda with auto parameters"
+/>
+
+<Question
+question="25).How do you capture a move-only object (like std::unique_ptr) in a lambda?"
+options={['[&var]', '[var]', '[var = std::move(var)]', 'None of the above']}
 answer="[var = std::move(var)]"
 />
 
 <Question
-question="19).Can you capture class member variables directly in a lambda?"
-options={[ 'Yes with [=]', 'No, must capture this','Yes with [&]', 'None of the above']}
-answer="No, must capture this"
-/>
-<Question
-question="20).When were generic lambdas introduced?"
-options={[ 'C++11', 'C++17', 'None of the above','C++14']}
-answer="C++14"
+question="26).Can lambda functions be used in constexpr contexts in C++17 and later?"
+options={['Only if they don’t capture anything', 'No', 'Yes', 'None of the above']}
+answer="Yes"
 />
 
 <Question
-question="21).What is a generic lambda?"
-options={['Lambda with auto parameters', 'Lambda template', 'Lambda with variadic args', 'None of the above']}
-answer="Lambda with auto parameters"
-/>
-<Question
-question="22).Which STL algorithm commonly uses lambdas?"
-options={['std::sort', 'std::malloc', 'std::cout', 'None of the above']}
-answer="std::sort"
+question="27).What is the lifetime of a captured reference in a lambda?"
+options={['Same as the lambda object', 'Same as the referenced object', 'Only until the lambda is called', 'None of the above']}
+answer="Same as the referenced object"
 />
 
 <Question
-question="23).Can lambda expressions be used as template arguments?"
-options={['Yes', 'Only in C++20', 'No', 'None of the above']}
-answer="No"
-/>
-
-
-<Question
-question="24).Can lambdas be recursive?"
-options={['Yes, with std::function', 'No', 'Only in C++20', 'None of the above']}
-answer="Yes, with std::function"
+question="28).Can a lambda be a coroutine (C++20)?"
+options={['Only with std::generator', 'No', 'Yes', 'None of the above']}
+answer="Yes"
 />
 
 <Question
-question="25).What is a lambda's closure type?"
-options={[ 'std::function','Unique unnamed class type', 'std::lambda', 'None of the above']}
-answer="Unique unnamed class type"
-/>
-<Question
-question="26).Are lambdas typically optimized by compilers?"
-options={['Yes, often inlined', 'No, they are slow', 'Only with -O3 flag', 'None of the above']}
-answer="Yes, often inlined"
+question="29).What is the difference between std::function and a lambda?"
+options={['std::function cannot store lambdas', 'std::function is a type-erased wrapper; lambda has a unique type', 'Lambdas are slower', 'None of the above']}
+answer="std::function is a type-erased wrapper; lambda has a unique type"
 />
 
 <Question
-question="27).When does a lambda allocate memory?"
-options={['When capturing large objects by value', 'Always', 'Never', 'None of the above']}
-answer="When capturing large objects by value"
+question="30).How do you capture a parameter pack in a lambda (C++20)?"
+options={['[args...]', '[...args = std::move(args)]', '[&args...]', 'None of the above']}
+answer="[...args = std::move(args)]"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
-question="28).How do you capture class members in a lambda?"
-options={[ '[self]','[this]', '[class]', 'None of the above']}
-answer="[this]"
+question="31).Can a lambda be noexcept?"
+options={['Only if it captures nothing', 'No', 'Yes', 'None of the above']}
+answer="Yes"
 />
 
 <Question
-question="29).Can lambdas be used as class members?"
-options={['Yes, as std::function', 'No', 'Only static ones', 'None of the above']}
-answer="Yes, as std::function"
-/>
-<Question
-question="30).What is an immediately invoked lambda?"
-options={['{}( )', ' ', 'lambda()', 'None of the above']}
-answer="{}( )"
+question="32).What happens if a lambda captures a local variable that goes out of scope?"
+options={['The variable is copied automatically', 'Undefined behavior if accessed', 'The lambda becomes invalid', 'None of the above']}
+answer="Undefined behavior if accessed"
 />
 
 <Question
-question="31).How are lambdas shown in debuggers?"
-options={['As compiler-generated class types', 'As "lambda"', 'As std::function', 'None of the above']}
-answer="As compiler-generated class types"
-/>
-
-<Question
-question="32).What can a lambda without captures convert to?"
-options={[ 'std::string', 'int','Function pointer', 'None of the above']}
-answer="Function pointer"
-/>
-
-<Question
-question="33).Why can't lambdas with captures convert to function pointers?"
-options={[ 'They are too big', 'Standard prohibits it', 'None of the above','They have state']}
-answer="They have state"
-/>
-<Question
-question="34).When were template lambdas introduced?"
-options={['C++20', 'C++14', 'C++17', 'None of the above']}
-answer="C++20"
-/>
-
-<Question
-question="35).When was init-capture introduced for lambdas?"
-options={['C++14', 'C++11', 'C++17', 'None of the above']}
-answer="C++14"
-/>
-
-<Question
-question="36).When were pack captures introduced in lambdas?"
-options={['C++20', 'C++14', 'C++17', 'None of the above']}
-answer="C++20"
-/>
-
-<Question
-question="37).How do you initialize a captured variable in the capture clause?"
-options={['[x = 42] { }', '[x(42)] { }', '[x{42}] { }', 'None of the above']}
-answer="[x = 42] { }"
-/>
-
-
-<Question
-question="38).Can lambdas have attributes?"
-options={[ 'No','Yes, in C++23', 'Only certain attributes', 'None of the above']}
-answer="Yes, in C++23"
-/>
-
-<Question
-question="39).Where are attributes placed on lambdas?"
-options={['Before capture clause', 'After parameters', 'Before return type', 'None of the above']}
-answer="Before capture clause"
-/>
-
-<Question
-question="40).What affects a lambda's size?"
-options={['What it captures', 'Its parameters', 'Its return type', 'None of the above']}
-answer="What it captures"
-/>
-
-<Question
-question="41).What is sizeof for a captureless lambda?"
-options={[ '0','1', '4', 'None of the above']}
-answer="1"
-/>
-
-<Question
-question="42).How can you overload a lambda function?"
-options={['By using std::overloaded pattern', 'Using overload keyword', 'By default in C++20', 'None of the above']}
-answer="By using std::overloaded pattern"
-/>
-
-<Question
-question="43).Can two lambdas in the same scope have the same signature?"
-options={[ 'No', 'Only if marked override', 'Yes, they have unique types','None of the above']}
-answer="Yes, they have unique types"
-/>
-
-<Question
-question="44).Is it safe to pass a lambda between threads?"
-options={['Yes, if captures are thread-safe', 'No', 'Only with [=] capture', 'None of the above']}
-answer="Yes, if captures are thread-safe"
-/>
-
-<Question
-question="45).What happens if a lambda captures a local variable and is used in another thread?"
-options={['Undefined behavior if variable goes out of scope', 'Automatic synchronization', 'Compiler error', 'None of the above']}
-answer="Undefined behavior if variable goes out of scope"
-/>
-
-<Question
-question="46).Can a lambda inherit from a class?"
-options={['Yes', 'Only in C++20', 'No', 'None of the above']}
+question="33).Can a lambda be consteval (C++20)?"
+options={['Only if it is constexpr', 'Yes', 'No', 'None of the above']}
 answer="No"
 />
 
 <Question
-question="47).Can a lambda be derived from?"
-options={[ 'Yes','No', 'Only if marked final', 'None of the above']}
+question="34).How do you forward-capture a variable in a lambda?"
+options={['[&&var]', '[var = std::forward<T>(var)]', '[var&]', 'None of the above']}
+answer="[var = std::forward<T>(var)]"
+/>
+
+<Question
+question="35).Can a lambda be used as a comparator in std::sort?"
+options={['Only if it is stateless', 'No', 'Yes', 'None of the above']}
+answer="Yes"
+/>
+
+<Question
+question="36).What is the advantage of using a lambda over a function pointer?"
+options={['Faster execution', 'Can capture state and context', 'Smaller binary size', 'None of the above']}
+answer="Can capture state and context"
+/>
+
+<Question
+question="37).Can a lambda be volatile?"
+options={['Only if it is mutable', 'Yes', 'No', 'None of the above']}
 answer="No"
 />
 
 <Question
-question="48).Can a lambda have virtual methods?"
-options={['No', 'Yes', 'Only if marked virtual', 'None of the above']}
+question="38).How do you write a templated lambda (C++20)?"
+options={['[T]() { }', '[]<typename T>(T arg) { }', 'template<typename T> []() { }', 'None of the above']}
+answer="[]<typename T>(T arg) { }"
+/>
+<Question
+question="39).Can a lambda be static?"
+options={['Only in global scope', 'No', 'Yes', 'None of the above']}
 answer="No"
 />
 
 <Question
-question="49).Can a lambda override a virtual function?"
-options={['No', 'Yes', 'Only if signature matches exactly', 'None of the above']}
-answer="No"
+question="40).What is the difference between [=] and [&]?"
+options={['No difference', '[=] is for const lambdas; [&] is for mutable', '[=] captures by value; [&] captures by reference', 'None of the above']}
+answer="[=] captures by value; [&] captures by reference"
+/>
+
+<div>
+<AdBanner />
+</div>
+
+<Question
+question="41).What does [x = 5] in a lambda capture mean?"
+options={['Captures x by reference with default value 5', 'Initializes a new variable x with value 5', 'Compilation error', 'None of the above']}
+answer="Initializes a new variable x with value 5"
 />
 
 <Question
-question="50).Can lambdas be used in SFINAE contexts?"
-options={[ 'No', 'Only in C++17', 'None of the above','Yes, in C++20']}
-answer="Yes, in C++20"
+question="42).Can a lambda function be declared static inside a class?"
+options={['Yes, but only if it captures nothing', 'No, lambdas are always non-static', 'Only in C++20', 'None of the above']}
+answer="No, lambdas are always non-static"
 />
+
+<Question
+question="43).What happens if a lambda captures a global variable?"
+options={['It must use [&]', 'It cannot capture globals', 'Globals are accessible without capturing', 'None of the above']}
+answer="Globals are accessible without capturing"
+/>
+
+<Question
+question="44).How do you write a lambda that takes no parameters?"
+options={['[]() { }', '[] { }', '[void] { }', 'None of the above']}
+answer="[] { }"
+/>
+
+<Question
+question="45).What is the effect of [=, this] in C++20?"
+options={['Deprecated (redundant capture)', 'Captures this explicitly and others by value', 'Syntax error', 'None of the above']}
+answer="Deprecated (redundant capture)"
+/>
+
+<Question
+question="46).Can a lambda be used as a template argument?"
+options={['Only in C++20', 'No', 'Yes, if it is stateless', 'None of the above']}
+answer="Yes, if it is stateless"
+/>
+
+<Question
+question="47).What does [&, x] mean in a lambda capture?"
+options={['Captures x by value, others by reference', 'Syntax error', 'Captures x by reference, others by value', 'None of the above']}
+answer="Captures x by value, others by reference"
+/>
+
+<Question
+question="48).Can a lambda be defined inside a constexpr function?"
+options={['No', 'Only in C++17 and later', 'Yes, even in C++11', 'None of the above']}
+answer="Yes, even in C++11"
+/>
+
+<Question
+question="49).What is the output of auto f = [](int x) { return x * 2; }; std::cout << f(3);?"
+options={['6', 'Compilation error', '0', 'None of the above']}
+answer="6"
+/>
+
+<Question
+question="50).How do you capture this by value in C++20?"
+options={['[*this]', '[this]', '[=, this]', 'None of the above']}
+answer="[*this]"
+/>
+
+<div>
+<AdBanner />
+</div>
