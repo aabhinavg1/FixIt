@@ -44,7 +44,7 @@ tags:
   - C++ Programming Fundamentals
 
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
   <Question
@@ -107,6 +107,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     answer="functionName(int& x)"
   />
 
+<div>
+<AdBanner />
+</div>
+
 
   <Question
     question="11). What header file is required for using 'cin' and 'cout' in C++?"
@@ -168,6 +172,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['4 decimal places', '6 decimal places', '2 decimal places', '8 decimal places']}
   answer="6 decimal places"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21). What is the use of 'ios::fixed'?"
@@ -289,6 +297,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     answer="C++ 2024"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
     question="31).What will be the output of the following code?"
     code={`#include <iostream>
@@ -359,6 +371,11 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['1','True','true','Yes']}
     answer="true"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). What does the `explicit` keyword in C++ prevent?"
   options={['Implicit conversions', 'Function overloading', 'Template instantiation', 'Operator overloading']}
@@ -418,6 +435,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['It throws a runtime error', 'It results in undefined behavior', 'Nothing happens', 'It crashes the program']}
   answer="Nothing happens"
 />
+
+<div>
+<AdBanner />
+</div>
 
 
 
