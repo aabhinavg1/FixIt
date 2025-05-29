@@ -104,6 +104,7 @@ tags:
   - C++ Reference Types
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 // C++ Data Types Quiz
@@ -168,6 +169,11 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="const float pi = 3.14;"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="11).Which of the following is NOT a fundamental data type in C++?"
   options={['int', 'float', 'string', 'double']}
@@ -229,6 +235,11 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="const"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="21).Which of the following is a valid `long int` declaration?"
   options={['long int x;', 'int long x;', 'long x;', 'All of the above']}
@@ -289,6 +300,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['wchar_t', 'char16_t', 'char32_t', 'All of the above']}
   answer="All of the above"
 />
+
+<div>
+<AdBanner />
+</div>
 
 
 <Question
@@ -357,6 +372,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['L', 'LD', 'LF', 'D']}
   answer="L"
 />
+
+<div>
+<AdBanner />
+</div>
 
 
 <Question
@@ -428,3 +447,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="char8_t"
   explanation="C++20 introduced char8_t specifically for UTF-8 character representation, distinct from the regular char type."
 />
+
+<div>
+<AdBanner />
+</div>

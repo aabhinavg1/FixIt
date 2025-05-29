@@ -73,6 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Constructors and Destructors
@@ -127,6 +128,12 @@ import { Question } from '../../Question';
   options={['When an object goes out of scope', 'When a new object is created', 'When a constructor is called', 'None of the above']}
   answer="When an object goes out of scope"
 />
+
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="11).Can a constructor be declared as virtual in C++?"
   options={['Yes', 'No', 'Only in abstract classes', 'Depends on the compiler']}
@@ -177,6 +184,11 @@ import { Question } from '../../Question';
   options={['Compiler provides a default destructor', 'Objects cannot be destroyed', 'It causes a runtime error', 'None of the above']}
   answer="Compiler provides a default destructor"
 />
+<div>
+<AdBanner />
+</div>
+
+
 <Question
   question="21).Can you explicitly call a destructor?"
   options={['Yes, using object.~ClassName()', 'No, destructors are always implicit', 'Only for static objects', 'None of the above']}
@@ -227,6 +239,11 @@ import { Question } from '../../Question';
   options={['Yes', 'No', 'Only with templates', 'Only in base classes']}
   answer="No"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
 question="31).What is the default access specifier for a constructor if not specified?"
@@ -288,6 +305,11 @@ options={['Copy constructor is used instead', 'Compilation error occurs', 'Objec
 answer="Copy constructor is used instead"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
 question="41).What happens if a destructor throws an exception?"
 options={['Undefined behavior if another exception is active', 'Program terminates safely', 'Compiler ignores it', 'None of the above']}
@@ -347,3 +369,8 @@ question="50).What happens if a class has a deleted destructor?"
 options={['Objects cannot be destroyed', 'Default destructor is used', 'It causes a warning', 'None of the above']}
 answer="Objects cannot be destroyed"
 />
+
+<div>
+<AdBanner />
+</div>
+

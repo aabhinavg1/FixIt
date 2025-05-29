@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 
@@ -129,6 +129,11 @@ import { Question } from '../../Question';
   options={['It protects object integrity', 'It allows data hiding', 'It provides a clear interface', 'All of the above']}
   answer="All of the above"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).What keyword is used to define a class in C++?"
   options={['struct', 'class', 'object', 'None of the above']}
@@ -179,6 +184,11 @@ import { Question } from '../../Question';
   options={['Makes unit testing easier', 'Reduces runtime', 'Avoids object creation', 'None of the above']}
   answer="Makes unit testing easier"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).What is the best practice when using private members?"
   options={['Access them directly', 'Expose them through public methods', 'Make them global', 'None of the above']}
@@ -229,6 +239,9 @@ import { Question } from '../../Question';
   options={['Open/Closed Principle', 'Single Responsibility Principle', 'Information Hiding', 'Polymorphism']}
   answer="Information Hiding"
 />
+<div>
+<AdBanner />
+</div>
 
 <Question
 question="31).Which of the following best describes encapsulation?"
@@ -289,6 +302,10 @@ question="40).What is a mutator function?"
 options={['A function that retrieves data', 'A function that modifies data', 'A function that deletes objects', 'None of the above']}
 answer="A function that modifies data"
 />
+<div>
+<AdBanner />
+</div>
+
 
 <Question
 question="41).Which access specifier is most restrictive?"
@@ -349,3 +366,6 @@ question="50).Which of the following is true about encapsulation?"
 options={['It increases coupling between classes', 'It reduces dependencies between classes', 'It prevents inheritance', 'None of the above']}
 answer="It reduces dependencies between classes"
 />
+<div>
+<AdBanner />
+</div>
