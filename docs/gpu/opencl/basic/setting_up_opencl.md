@@ -92,16 +92,26 @@ import TabItem from '@theme/TabItem';
 import AdBanner from '@site/src/components/AdBanner';
 
 ---
+<div>
+    <AdBanner />
+</div>
 
-OpenCL ``(Open Computing Language)`` is an open standard for ``parallel programming of heterogeneous systems``, enabling developers to write portable code that runs efficiently on a wide variety of devices such as ``CPUs, GPUs, FPGAs, and other accelerators``.
 
- Whether you're working on high-performance computing (HPC), machine learning, real-time graphics, or embedded systems, OpenCL provides a unified framework for harnessing the power of parallelism.
+OpenCL **(Open Computing Language)** is an open standard for ``parallel programming of heterogeneous systems``, enabling developers to write portable code that runs efficiently on a wide variety of devices such as ``CPUs, GPUs, FPGAs, and other accelerators``.
+
+Whether you're working on high-performance computing (HPC), machine learning, real-time graphics, or embedded systems, OpenCL provides a unified framework for harnessing the power of parallelism.
 
 :::cautions
 This guide is designed to help you set up ```OpenCL across Linux, macOS, and Windows`` platforms, ensuring you're ready to build and run OpenCL programs on your hardware```. We'll walk you through the installation process, demonstrate ```how to verify your setup```, and provide a hands-on example of an OpenCL program. Additionally, we’ll address common pitfalls and provide resources for further learning.
 :::
 
 Whether you're a developer exploring GPU acceleration for the first time, a researcher optimizing algorithms for high-throughput systems, or an engineer working on AI workloads, this guide will give you the solid foundation you need to get started with OpenCL.
+:::
+
+<div>
+    <AdBanner />
+</div>
+
 
 ## Table of Contents
 
@@ -109,8 +119,13 @@ Whether you're a developer exploring GPU acceleration for the first time, a rese
 2. [Steps to Install OpenCL on Linux](#2-how-to-install-opencl-on-linux-ubuntudebian)
 3. [How to Verify the OpenCL Installation](#3--how-to-verify-the-opencl-installation)
 
-5. [Troubleshooting Common OpenCL Setup Issues](#4--troubleshooting-common-opencl-setup-issues)
-6. [Conclusion and Resources for Further Learning](#5--conclusion-and-resources-for-further-learning)
+4. [Troubleshooting Common OpenCL Setup Issues](#4--troubleshooting-common-opencl-setup-issues)
+5. [Conclusion and Resources for Further Learning](#5--conclusion-and-resources-for-further-learning)
+6. [Read More](#more-articles)
+
+<div>
+    <AdBanner />
+</div>
 
 ---
 ## OpenCL Setup Flow Diagram
@@ -202,6 +217,9 @@ This process ensures a smooth setup for OpenCL development across Intel, AMD, NV
 :::
 </details>
 
+<div>
+    <AdBanner />
+</div>
 
 ## 1. Prerequisites for Setting Up OpenCL
 
@@ -293,11 +311,17 @@ This process ensures a smooth setup for OpenCL development across Intel, AMD, NV
 </Tabs>
 ---
 
+<div>
+    <AdBanner />
+</div>
+
 ## 2. How to Install OpenCL on Linux (Ubuntu/Debian)
 
 OpenCL (Open Computing Language) enables programs to run across heterogeneous platforms including CPUs, GPUs, and other processors.
 
 ---
+
+
 
 ### Step 1: Verify Your Vendor System
 
@@ -312,6 +336,54 @@ lspci | grep -i vga
 This will show a list of OpenCL-capable devices. Identify whether your system has an Intel, AMD, or NVIDIA GPU, or if you're using CPU-only support.
 
 ---
+<div>
+    <AdBanner />
+</div>
+
+<Tabs>
+
+<TabItem value="Ubuntu 18.04" label="Ubuntu 18.04">
+
+### Ubuntu 18.04
+
+- Intel: `apt install intel-opencl-icd`
+- AMD: Use legacy AMDGPU-PRO or OpenCL Runtime
+- NVIDIA: Install driver + CUDA toolkit (OpenCL supported)
+
+</TabItem>
+
+<TabItem value="Ubuntu 20.04" label="Ubuntu 20.04">
+
+### Ubuntu 20.04
+
+- Intel: `apt install intel-opencl-icd`
+- AMD: ROCm >= 4.x (verify GPU model compatibility)
+- NVIDIA: Use `nvidia-driver-xxx` + CUDA toolkit
+
+</TabItem>
+
+<TabItem value="Ubuntu 22.04" label="Ubuntu 22.04">
+
+### Ubuntu 22.04
+
+- Intel: Recommended using Intel oneAPI Base Toolkit (includes OpenCL runtime)
+- AMD: ROCm >= 5.x with latest drivers
+- NVIDIA: CUDA Toolkit 11/12.x and drivers
+
+</TabItem>
+
+<TabItem value="Ubuntu 24.04" label="Ubuntu 24.04 (Latest)">
+
+### Ubuntu 24.04 (Latest)
+
+- Intel: Intel oneAPI Base Toolkit (use official install script)
+- AMD: Latest ROCm release for Ubuntu 24.04
+- NVIDIA: Use latest proprietary drivers from NVIDIA site + CUDA 12.x
+
+</TabItem>
+
+</Tabs>
+
 
 <Tabs>
 <TabItem value="intel" label="Intel">
@@ -384,6 +456,9 @@ This installs the OpenCL Installable Client Driver (ICD) loader, enabling OpenCL
 * Use `clinfo`  after installation to verify that the OpenCL platform and devices are correctly recognized.
 :::
 ---
+<div>
+    <AdBanner />
+</div>
 
 With these steps, you should be able to develop and run OpenCL applications on most Linux systems with Intel, AMD, NVIDIA GPUs or CPU-only setups.
 
@@ -396,7 +471,7 @@ Download and install the SDK/runtime provided by your hardware vendor:
 | **Vendor** | **Download Link**                                                                                  |
 |------------|----------------------------------------------------------------------------------------------------|
 | **Intel**  | [Intel OpenCL SDK](https://www.intel.com/content/www/us/en/developer/articles/tool/opencl-drivers.html)       |
-| **AMD**    | [AMD OpenCL SDK](https://www.amd.com/en/developer/opencl.html)                                     |
+| **AMD**    | [AMD OpenCL SDK](https://community.amd.com/t5/general-discussions/insstalling-opencl-ver-1-2-on-womdows-10/m-p/144299/highlight/true)                                     |
 | **NVIDIA** | [NVIDIA CUDA Toolkit (includes OpenCL support)](https://developer.nvidia.com/cuda-downloads)      |
 
 > 💡 **Tip:** For NVIDIA devices, OpenCL is installed as part of the CUDA Toolkit.
@@ -451,7 +526,9 @@ clinfo | findstr "OpenCL"
 If you see platform and device information, your installation is successful.
 
 ---
--
+<div>
+    <AdBanner />
+</div>
 
 ## 4 . Troubleshooting Common OpenCL Setup Issues
 
@@ -473,20 +550,87 @@ If you see platform and device information, your installation is successful.
 
 ---
 
+<div>
+    <AdBanner />
+</div>
+
 ## 5 . Conclusion and Resources for Further Learning
 
 🎓 You’ve set up OpenCL on your system and run a basic program! Keep exploring:
-
+* [Opencl Introducton](https://compilersutra.com/docs/gpu/opencl/basic/what_is_opencl)
 * [Khronos OpenCL](https://www.khronos.org/opencl/)
 * [Intel OpenCL](https://www.intel.com/content/www/us/en/developer/tools/opencl-sdk.html)
 * [AMD ROCm](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/)
 * [NVIDIA CUDA](https://developer.nvidia.com/cuda-downloads)
 
-For community support:
 
-* Stack Overflow (`[opencl]` tag)
-* Reddit communities (e.g., r/gpgpu, r/computervision)
-* GitHub discussions
 
+## More Articles
+
+<Tabs>
+  <TabItem value="docs" label="📚 Documentation">
+             - [CompilerSutra Home](https://compilersutra.com)
+                - [CompilerSutra Homepage (Alt)](https://compilersutra.com/)
+                - [Getting Started Guide](https://compilersutra.com/get-started)
+                - [Newsletter Signup](https://compilersutra.com/newsletter)
+                - [Skip to Content (Accessibility)](https://compilersutra.com#__docusaurus_skipToContent_fallback)
+
+
+  </TabItem>
+
+  <TabItem value="tutorials" label="📖 Tutorials & Guides">
+
+        - [AI Documentation](https://compilersutra.com/docs/Ai)
+        - [DSA Overview](https://compilersutra.com/docs/DSA/)
+        - [DSA Detailed Guide](https://compilersutra.com/docs/DSA/DSA)
+        - [MLIR Introduction](https://compilersutra.com/docs/MLIR/intro)
+        - [TVM for Beginners](https://compilersutra.com/docs/tvm-for-beginners)
+        - [Python Tutorial](https://compilersutra.com/docs/python/python_tutorial)
+        - [C++ Tutorial](https://compilersutra.com/docs/c++/CppTutorial)
+        - [C++ Main File Explained](https://compilersutra.com/docs/c++/c++_main_file)
+        - [Compiler Design Basics](https://compilersutra.com/docs/compilers/compiler)
+        - [OpenCL for GPU Programming](https://compilersutra.com/docs/gpu/opencl)
+        - [LLVM Introduction](https://compilersutra.com/docs/llvm/intro-to-llvm)
+        - [Introduction to Linux](https://compilersutra.com/docs/linux/intro_to_linux)
+
+  </TabItem>
+
+  <TabItem value="assessments" label="📝 Assessments">
+
+        - [C++ MCQs](https://compilersutra.com/docs/mcq/cpp_mcqs)
+        - [C++ Interview MCQs](https://compilersutra.com/docs/mcq/interview_question/cpp_interview_mcqs)
+
+  </TabItem>
+
+  <TabItem value="projects" label="🛠️ Projects">
+
+            - [Project Documentation](https://compilersutra.com/docs/Project)
+            - [Project Index](https://compilersutra.com/docs/project/)
+            - [Graphics Pipeline Overview](https://compilersutra.com/docs/The_Graphic_Rendering_Pipeline)
+            - [Graphic Rendering Pipeline (Alt)](https://compilersutra.com/docs/the_graphic_rendering_pipeline/)
+
+  </TabItem>
+
+  <TabItem value="resources" label="🌍 External Resources">
+
+            - [LLVM Official Docs](https://llvm.org/docs/)
+            - [Ask Any Question On Quora](https://compilersutra.quora.com)
+            - [GitHub: FixIt Project](https://github.com/aabhinavg1/FixIt)
+            - [GitHub Sponsors Page](https://github.com/sponsors/aabhinavg1)
+
+  </TabItem>
+
+  <TabItem value="social" label="📣 Social Media">
+
+            - [🐦 Twitter - CompilerSutra](https://twitter.com/CompilerSutra)
+            - [💼 LinkedIn - Abhinav](https://www.linkedin.com/in/abhinavcompilerllvm/)
+            - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)
+
+  </TabItem>
+</Tabs>
 
 ---
+
+<div>
+    <AdBanner />
+</div>
