@@ -2,6 +2,12 @@
 title: "Setting Up OpenCL Across Platforms"
 description: "The most comprehensive OpenCL programming guide covering architecture, kernel optimization, GPU/CPU acceleration, and real-world applications with hands-on code examples."
 keywords: 
+ - How to Install Opencl On Ubuntu
+ - How to Install Opencl On Window
+ - Installig Opencl
+ - Installing opencl on intel
+ - Installing opencl on windows
+ - Installing opencl on mac
  - OpenCL  
  - OpenCL Courses  
  - OpenCL Tutorial  
