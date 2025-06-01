@@ -118,6 +118,11 @@ Whether you're a developer exploring GPU acceleration for the first time, a rese
     <AdBanner />
 </div>
 
+<detalis>
+ <summary> Youtube Video </summary>
+ https://www.youtube.com/watch?v=QUpnLYe546Q
+ 
+</detalis>
 
 ## Table of Contents
 
