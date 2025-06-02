@@ -116,7 +116,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="2).Which of the following is the correct syntax to declare a `while` loop in C++?"
-  options={['while condition { // code }', 'while (condition) { // code }', 'while (condition) : { // code }', 'while {condition} { // code }']}
+  options={[ 'while (condition) { // code }', 'while (condition) : { // code }', 'while {condition} { // code }','while condition { // code }',]}
   answer="while (condition) { // code }"
 />
 
@@ -131,7 +131,7 @@ int main() {
     }
     return 0;
 }`}
-  options={['0 1 2', '1 2 3', '0 1 2 3', '1 2 3 4']}
+  options={[ '1 2 3', '0 1 2','0 1 2 3', '1 2 3 4']}
   answer="0 1 2"
   
 />
@@ -151,7 +151,7 @@ int main() {
 
 <Question
   question="6).What is the correct syntax for a `switch` statement in C++?"
-  options={['switch (expression) { case x: // code; break; }', 'switch {expression} { case x: // code; break; }', 'switch: expression { case x: // code; break; }', 'switch(expression) { case x: // code }']}
+  options={[ 'switch {expression} { case x: // code; break; }', 'switch: expression { case x: // code; break; }', 'switch(expression) { case x: // code }','switch (expression) { case x: // code; break; }',]}
   answer="switch (expression) { case x: // code; break; }"
 />
 
@@ -192,7 +192,7 @@ int main() {
 
 <Question
   question="10).Which of the following statements is true about a `do-while` loop in C++?"
-  options={['It is guaranteed to execute at least once', 'It may not execute at all', 'It requires the condition to be checked first', 'None of the above']}
+  options={[ 'It may not execute at all', 'It requires the condition to be checked first', 'It is guaranteed to execute at least once','None of the above']}
   answer="It is guaranteed to execute at least once"
 />
 
