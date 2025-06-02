@@ -44,7 +44,7 @@ tags:
   - C++ Programming Fundamentals
 
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
   <Question
@@ -106,9 +106,17 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['functionName(int& x)', 'functionName(&int x)', 'functionName(int* x)', 'None of the above']}
     answer="functionName(int& x)"
   />
+<<<<<<< HEAD
   <div>
 <AdBanner />
 </div>
+=======
+
+<div>
+<AdBanner />
+</div>
+
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
   <Question
     question="11). What header file is required for using 'cin' and 'cout' in C++?"
@@ -298,6 +306,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 <AdBanner />
 </div>
 
+<div>
+<AdBanner />
+</div>
+
 <Question
     question="31).What will be the output of the following code?"
     code={`#include <iostream>
@@ -368,9 +380,17 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['1','True','true','Yes']}
     answer="true"
 />
+<<<<<<< HEAD
 <div>
 <AdBanner />
 </div>
+=======
+
+<div>
+<AdBanner />
+</div>
+
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <Question
   question="41). What does the `explicit` keyword in C++ prevent?"
   options={[ 'Function overloading', 'Template instantiation', 'Operator overloading','Implicit conversions']}
@@ -430,9 +450,17 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['It throws a runtime error', 'It results in undefined behavior', 'Nothing happens', 'It crashes the program']}
   answer="Nothing happens"
 />
+<<<<<<< HEAD
 <div>
 <AdBanner />
 </div>
+=======
+
+<div>
+<AdBanner />
+</div>
+
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
 
 

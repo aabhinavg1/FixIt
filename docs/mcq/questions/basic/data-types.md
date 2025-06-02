@@ -173,6 +173,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 <AdBanner />
 </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <Question
   question="11).Which of the following is NOT a fundamental data type in C++?"
   options={['int', 'float', 'string', 'double']}
@@ -446,6 +450,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="char8_t"
   explanation="C++20 introduced char8_t specifically for UTF-8 character representation, distinct from the regular char type."
 />
+<<<<<<< HEAD
+=======
+
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <div>
 <AdBanner />
 </div>
