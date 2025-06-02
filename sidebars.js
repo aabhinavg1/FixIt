@@ -254,6 +254,7 @@ projectSidebar: [
             'mcq/questions/basic/loop',
             'mcq/questions/basic/pointers-strings',
             'mcq/questions/basic/variables-and-constants',
+            'mcq/questions/basic/pointers-and-references'
           ],
         },
         {
