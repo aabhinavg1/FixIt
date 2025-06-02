@@ -25,6 +25,12 @@ tags:
   - LLVM IR
   - Machine Learning in LLVM
 ---
+import AdBanner from '@site/src/components/AdBanner';
+
+<div>
+<AdBanner />
+</div>
+
 
 # ⚙️ LLVM Tutorial
 
@@ -41,6 +47,11 @@ Start with the core concepts of LLVM, including Intermediate Representation (IR)
 Expand your knowledge with custom pass development, static analysis, and optimizations.
 
 ---
+<div>
+<AdBanner />
+</div>
+
+
 
 ## 🚀 Advanced
 **[Code generation, backend ,hardware-specific optimizations.](llvm_extras/index.md)**
@@ -48,12 +59,30 @@ Expand your knowledge with custom pass development, static analysis, and optimiz
 Explore advanced topics in LLVM, including backend creation, JIT compilation, and hardware-specific optimizations.
 
 ---
+<div>
+<AdBanner />
+</div>
+
 
 ## 📖 Tools and Ecosystem
 **[Overview of LLVM tools and supporting projects.](#)**  
 Learn about essential LLVM tools like Clang, LLD, and Polly, and how they contribute to the LLVM ecosystem.
 
+<div>
+<AdBanner />
+</div>
+
+
 ---
+<div>
+<AdBanner />
+</div>
 
 ### 🚀 Get Started!
 Choose a category to begin your LLVM journey. Whether you’re new to compiler development or looking to enhance your expertise, there’s something here for every level.
+
+
+<div>
+<AdBanner />
+</div>
+

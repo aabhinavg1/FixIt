@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # File Handling
@@ -128,6 +128,10 @@ import { Question } from '../../Question';
   options={['An error occurs', 'A new file is created', 'The program crashes', 'None of the above']}
   answer="An error occurs"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).Which class in C++ is used for both reading and writing to files?"
   options={['fstream', 'ifstream', 'ofstream', 'file']}
@@ -178,6 +182,10 @@ import { Question } from '../../Question';
   options={['read()', 'get()', 'scan()', 'receive()']}
   answer="read()"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).What does the flush() function do?"
   options={['Flushes output buffer to file', 'Flushes memory cache', 'Closes the file', 'None of the above']}
@@ -228,20 +236,24 @@ import { Question } from '../../Question';
   options={['Always close the file after use', 'Ignore file errors', 'Never check file mode', 'Use magic numbers']}
   answer="Always close the file after use"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
-  question="1).Which of the following is the correct syntax for an `if` statement in C++?"
+  question="31).Which of the following is the correct syntax for an `if` statement in C++?"
   options={['if (condition) { // code }', 'if condition { // code }', 'if {condition} { // code }', 'if: condition { // code }']}
   answer="if (condition) { // code }"
 />
 
 <Question
-  question="2).Which of the following is the correct syntax to declare a `while` loop in C++?"
+  question="32).Which of the following is the correct syntax to declare a `while` loop in C++?"
   options={['while condition { // code }', 'while (condition) { // code }', 'while (condition) : { // code }', 'while {condition} { // code }']}
   answer="while (condition) { // code }"
 />
 
 <Question
-  question="3).What is the output of the following C++ code?"
+  question="33).What is the output of the following C++ code?"
   code={`#include <iostream>
 using namespace std;
 
@@ -258,30 +270,30 @@ int main() {
 
 
 <Question
-  question="4).What is the purpose of the `break` statement in C++?"
+  question="34).What is the purpose of the `break` statement in C++?"
   options={['To stop the execution of the program', 'To exit a loop or switch statement', 'To pause the program execution', 'To terminate the current function']}
   answer="To exit a loop or switch statement"
 />
 
 <Question
-  question="5).Which loop is guaranteed to execute at least once in C++?"
+  question="35).Which loop is guaranteed to execute at least once in C++?"
   options={['for loop', 'while loop', 'do-while loop', 'None of the above']}
   answer="do-while loop"
 />
 
 <Question
-  question="6).What is the correct syntax for a `switch` statement in C++?"
+  question="36).What is the correct syntax for a `switch` statement in C++?"
   options={['switch (expression) { case x: // code; break; }', 'switch {expression} { case x: // code; break; }', 'switch: expression { case x: // code; break; }', 'switch(expression) { case x: // code }']}
   answer="switch (expression) { case x: // code; break; }"
 />
 
 <Question
-  question="7).In which scenario would you use a `continue` statement in C++?"
+  question="37).In which scenario would you use a `continue` statement in C++?"
   options={['To stop the execution of the current loop iteration and move to the next iteration', 'To exit the loop entirely', 'To break out of a function', 'To jump to the end of the function']}
   answer="To stop the execution of the current loop iteration and move to the next iteration"
 />
 <Question
-  question="8) What is the output of the following C++ code?"
+  question="38) What is the output of the following C++ code?"
 
   code={`#include <iostream>
 using namespace std;
@@ -304,20 +316,23 @@ int main() {
 
 
 <Question
-  question="9).What will be printed if the following C++ code is executed?"
+  question="39).What will be printed if the following C++ code is executed?"
 
   options={['Less than 5', 'Equal to 10', 'Greater than 5', 'Nothing will be printed']}
   answer="Equal to 10"
 />
 
 <Question
-  question="10).Which of the following statements is true about a `do-while` loop in C++?"
+  question="40).Which of the following statements is true about a `do-while` loop in C++?"
   options={['It is guaranteed to execute at least once', 'It may not execute at all', 'It requires the condition to be checked first', 'None of the above']}
   answer="It is guaranteed to execute at least once"
 />
+<div>
+<AdBanner />
+</div>
 
 <Question
-  question="11).What will the following code output?"
+  question="41).What will the following code output?"
   code={`int x = 10;
 if (x > 5)
     cout << "A";
@@ -328,7 +343,7 @@ else
 />
 
 <Question
-  question="12).What is the output of this code?"
+  question="42).What is the output of this code?"
   code={`int i = 0;
 while (i < 2) {
     cout << i;
@@ -339,19 +354,19 @@ while (i < 2) {
 />
 
 <Question
-  question="13).Which of the following keywords is used to terminate a loop early in C++?"
+  question="43).Which of the following keywords is used to terminate a loop early in C++?"
   options={['exit', 'return', 'continue', 'break']}
   answer="break"
 />
 
 <Question
-  question="14).Which statement skips the current loop iteration and proceeds to the next one?"
+  question="44).Which statement skips the current loop iteration and proceeds to the next one?"
   options={['return', 'break', 'continue', 'skip']}
   answer="continue"
 />
 
 <Question
-  question="15).What is the output of this code?"
+  question="45).What is the output of this code?"
   code={`int x = 3;
 switch (x) {
     case 1: cout << "One"; break;
@@ -364,7 +379,7 @@ switch (x) {
 />
 
 <Question
-  question="16).What is the output of the following nested loop?"
+  question="46).What is the output of the following nested loop?"
   code={`for (int i = 0; i < 2; i++) {
     for (int j = 0; j < 2; j++) {
         cout << i << j << " ";
@@ -375,7 +390,7 @@ switch (x) {
 />
 
 <Question
-  question="17).How many times will the loop run?"
+  question="47).How many times will the loop run?"
   code={`int count = 0;
 do {
     count++;
@@ -385,285 +400,19 @@ do {
 />
 
 <Question
-  question="18).Which loop is best when the number of iterations is known in advance?"
+  question="48).Which loop is best when the number of iterations is known in advance?"
   options={['while', 'do-while', 'for', 'switch']}
   answer="for"
 />
 
 <Question
-  question="19).Which of the following is not a valid conditional operator in C++?"
+  question="49).Which of the following is not a valid conditional operator in C++?"
   options={['==', '!=', '<>', '<=']}
   answer="<>"
 />
 
 <Question
-  question="20).What does the ternary operator `? :` do in C++?"
+  question="50).What does the ternary operator `? :` do in C++?"
   options={['Creates a loop', 'Evaluates a condition and returns a value', 'Declares a variable', 'Compares two strings']}
   answer="Evaluates a condition and returns a value"
-/>
-
-<Question
-  question="21).What will be printed?"
-  code={`int a = 5, b = 10;
-cout << (a > b ? a : b);`}
-  options={['5', '10', '0', 'Error']}
-  answer="10"
-/>
-
-<Question
-  question="22).Which of the following is true about `switch` statements?"
-  options={['They can evaluate float expressions', 'They can evaluate string expressions', 'They can evaluate integer expressions', 'None of the above']}
-  answer="They can evaluate integer expressions"
-/>
-
-<Question
-  question="23).Choose the correct syntax for a ternary operator."
-  options={['condition ? value1 : value2;', 'condition : value1 ? value2;', 'if (condition) ? value1 : value2;', 'condition ? value1 , value2;']}
-  answer="condition ? value1 : value2;"
-/>
-
-<Question
-  question="24).What is the output?"
-  code={`for (int i = 5; i > 0; i--) {
-    if (i == 3) break;
-    cout << i << " ";
-}`}
-  options={['5 4 3', '5 4', '4 3 2', '5 4 3 2 1']}
-  answer="5 4"
-/>
-
-<Question
-  question="25).Identify the error in this code:"
-  code={`int x = 1;
-if x == 1
-    cout << "Yes";`}
-  options={['Missing semicolon', 'Incorrect if syntax', 'Missing else block', 'None']}
-  answer="Incorrect if syntax"
-/>
-
-<Question
-  question="26).How can you create an infinite loop in C++?"
-  options={['while(1) {}', 'for(;;) {}', 'do {} while(1);', 'All of the above']}
-  answer="All of the above"
-/>
-
-<Question
-  question="27).Which loop structure is generally best for checking a condition at the end of each iteration?"
-  options={['while', 'for', 'do-while', 'switch']}
-  answer="do-while"
-/>
-
-<Question
-  question="28).Which of the following is true about nested loops?"
-  options={['Only for-loops can be nested', 'You can nest any combination of loops', 'Nested loops must be of same type', 'Nested loops are not allowed']}
-  answer="You can nest any combination of loops"
-/>
-
-<Question
-  question="29).Which control structure is best used for making multiple decisions based on different values of a single variable?"
-  options={['if', 'switch', 'while', 'do-while']}
-  answer="switch"
-/>
-
-<Question
-  question="30).What will the following loop print?"
-  code={`for (int i = 1; i <= 5; i += 2) {
-    cout << i << " ";
-}`}
-  options={['1 2 3 4 5', '1 3 5', '1 2 4', '2 4 6']}
-  answer="1 3 5"
-/>
-
-<Question
-question="31). What is the output of the following code?"
-code={`int x = 5;
-if (x == 0) 
-    cout << "Zero"; 
-else 
-    cout << "Non-zero"; `}
-options={['Zero', 'Non-zero', 'Compilation error', 'Runtime error']}
-answer="Non-zero"
-/>
-
-<Question
-question="32). Which loop will execute exactly 5 times?"
-options={['for (int i=1; i<=5; i++)', 'for (int i=0; i<5; i++)', 'Both A and B', 'None of the above']}
-answer="Both A and B"
-/>
-
-<Question
-question="33). What is the output of this code?"
-code={`int i = 10; 
-do { cout << i-- << " "; }
- while (i > 8);`
- }
-options={['10 9', '10 9 8', '9 8', 'Infinite loop']}
-answer="10 9"
-/>
-
-<Question
-question="34). Which statement about the goto keyword is true?"
-options={['It is preferred over loops', 'It can jump to any function', 'It makes code harder to maintain', 'It is mandatory for control flow']}
-answer="It makes code harder to maintain"
-/>
-
-<Question
-question="35). What is the output?"
-code={`int x = 2;
- switch(x) 
- { case 1: x++;
-  case 2: x++; 
-  case 3: x++; 
-  default: x++; } 
-  cout << x; `}
-options={['2', '3', '5', '6']}
-answer="5"
-/>
-
-<Question
-question="36). Which of these is NOT a valid loop control variable modification?"
-options={['i++', 'i *= 2', 'i += 0.5', 'i = i * i']}
-answer="i += 0.5"
-/>
-
-<Question
-question="37). What does this code print?"
-code={`for (int i = 0; i < 3; i++) 
-continue; 
-cout << i; `}
-options={['012', '2', 'Compilation error', 'Nothing']}
-answer="Compilation error"
-/>
-
-<Question
-question="38). How many times is 'Hello' printed?"
-code={`int x = 3;
- while (x--)
-  { cout << "Hello "; 
-  x--; }`
-  }
-options={['1', '2', '3', 'Infinite']}
-answer="1"
-/>
-
-<Question
-question="39). Which is equivalent to: if (!condition) ?"
-options={['if (condition == false)', 'if (condition != true)', 'if (condition == 0)', 'All of the above']}
-answer="All of the above"
-/>
-
-<Question
-question="40). Which control flow structure is missing in C++?"
-options={['unless', 'until', 'elif', 'Both A and B']}
-answer="Both A and B"
-/>
-<Question
-  question="41). What will be the output of the following C++ code?"
-  code={`#include <iostream>
-using namespace std;
-
-int main() {
-  int x = 5;
-  if (x == 5) {
-    cout << "Equal";
-  }
-  return 0;
-}`}
-  options={['Equal', 'Not Equal', 'Error', 'Nothing']}
-  answer="Equal"
-/>
-
-<Question
-  question="42). How many times will this loop execute?"
-  code={`int count = 0;
-for (int i = 0; i < 4; i++) {
-  count++;
-}`}
-  options={['3', '4', '5', 'Infinite']}
-  answer="4"
-/>
-
-<Question
-  question="43). What will be the result of the following code?"
-  code={`int a = 3;
-int b = 4;
-if (a > b)
-  cout << "A";
-else
-  cout << "B";`}
-  options={['A', 'B', 'AB', 'Nothing']}
-  answer="B"
-/>
-
-<Question
-  question="44). What is the output of this code using nested loops?"
-  code={`for (int i = 0; i < 2; i++) {
-  for (int j = 0; j < 2; j++) {
-    cout << i << j << " ";
-  }
-}`}
-  options={['00 01 10 11', '00 01 01 10', '00 10 01 11', '00 01 10 11']}
-  answer="00 01 10 11"
-/>
-
-<Question
-  question="45). Which of the following loop structures will never execute?"
-  options={[
-    'while (false) { cout << "Hi"; }',
-    'do { cout << "Hi"; } while (false);',
-    'for (int i = 1; i < 1; i++) { cout << "Hi"; }',
-    'All of the above except do-while'
-  ]}
-  answer="All of the above except do-while"
-/>
-
-<Question
-  question="46). What does this code print?"
-  code={`int x = 10;
-while (x > 5) {
-  x -= 2;
-  cout << x << " ";
-}`}
-  options={['8 6 4', '8 6', '10 8 6', '8 6 4 2']}
-  answer="8 6"
-/>
-
-<Question
-  question="47). What does the default keyword do in a switch statement?"
-  options={[
-    'Specifies the first case to execute',
-    'Acts as a fallback if no other case matches',
-    'Skips all cases',
-    'Throws an exception'
-  ]}
-  answer="Acts as a fallback if no other case matches"
-/>
-
-<Question
-  question="48). Which of the following is NOT a valid control flow statement in C++?"
-  options={['break', 'skip', 'continue', 'goto']}
-  answer="skip"
-/>
-
-<Question
-  question="49). What will this code print?"
-  code={`int x = 1;
-if (x) {
-  cout << "True";
-} else {
-  cout << "False";
-}`}
-  options={['True', 'False', '0', '1']}
-  answer="True"
-/>
-
-<Question
-  question="50). What is the result of this loop?"
-  code={`int sum = 0;
-for (int i = 1; i <= 3; i++) {
-  sum += i;
-}
-cout << sum;`}
-  options={['3', '6', '5', '7']}
-  answer="6"
 />

@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Memory Management
@@ -85,12 +85,12 @@ import { Question } from '../../Question';
 />
 <Question
   question="2).Which operator is used for dynamic memory allocation?"
-  options={['new', 'malloc', 'allocate', 'None of the above']}
+  options={[ 'malloc', 'allocate', 'None of the above','new']}
   answer="new"
 />
 <Question
   question="3).Which operator is used to deallocate memory in C++?"
-  options={['delete', 'free', 'dispose', 'None of the above']}
+  options={[ 'free', 'delete','dispose', 'None of the above']}
   answer="delete"
 />
 <Question
@@ -100,7 +100,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="5).What is a smart pointer?"
-  options={['A pointer that automatically manages memory', 'A pointer that points to other pointers', 'A pointer that only works with arrays', 'None of the above']}
+  options={[ 'A pointer that points to other pointers', 'A pointer that only works with arrays', 'A pointer that automatically manages memory','None of the above']}
   answer="A pointer that automatically manages memory"
 />
 <Question
@@ -115,7 +115,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="8).What happens if delete is used on NULL?"
-  options={['No operation is performed', 'It causes a segmentation fault', 'It deallocates NULL', 'None of the above']}
+  options={[ 'It causes a segmentation fault', 'It deallocates NULL', 'None of the above','No operation is performed']}
   answer="No operation is performed"
 />
 <Question
@@ -128,6 +128,11 @@ import { Question } from '../../Question';
   options={['To deallocate memory allocated for arrays', 'To deallocate static memory', 'To deallocate class objects', 'None of the above']}
   answer="To deallocate memory allocated for arrays"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).What happens if you delete a pointer that was not allocated using new?"
   options={['Undefined behavior', 'Memory leak', 'Compilation error', 'Segmentation fault']}
@@ -150,7 +155,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="15).What is the effect of using delete on a null pointer?"
-  options={['Nothing happens', 'Throws an exception', 'Causes a crash', 'Deallocates null']}
+  options={[ 'Throws an exception', 'Causes a crash', 'Deallocates null','Nothing happens']}
   answer="Nothing happens"
 />
 <Question
@@ -160,24 +165,29 @@ import { Question } from '../../Question';
 />
 <Question
   question="17).What is std::make_shared used for?"
-  options={['Efficient creation of shared_ptr', 'Conversion to weak_ptr', 'Destruction of shared_ptr', 'Creating unique_ptr']}
+  options={[ 'Conversion to weak_ptr', 'Destruction of shared_ptr', 'Efficient creation of shared_ptr','Creating unique_ptr']}
   answer="Efficient creation of shared_ptr"
 />
 <Question
   question="18).Which header file is needed to use smart pointers in C++?"
-  options={['<memory>', '<smartptr>', '<stdlib.h>', '<iostream>']}
+  options={[ '<smartptr>', '<memory>','<stdlib.h>', '<iostream>']}
   answer="<memory>"
 />
 <Question
   question="19).What is the use of reset() in smart pointers?"
-  options={['Deletes managed object and resets pointer', 'Allocates memory', 'Calls constructor', 'Returns raw pointer']}
+  options={[ 'Allocates memory', 'Calls constructor', 'Returns raw pointer','Deletes managed object and resets pointer',]}
   answer="Deletes managed object and resets pointer"
 />
 <Question
   question="20).What is the purpose of enable_shared_from_this?"
   options={['To create a shared_ptr from within the object', 'To enable unique ownership', 'To break cyclic references', 'To allocate raw memory']}
-  answer="To create a shared_ptr from within the object"
+  ans wer="To create a shared_ptr from within the object"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).Which smart pointer can be safely copied?"
   options={['unique_ptr', 'shared_ptr', 'raw pointer', 'auto_ptr']}
@@ -190,12 +200,12 @@ import { Question } from '../../Question';
 />
 <Question
   question="23).What happens when the last shared_ptr to an object is destroyed?"
-  options={['The object is deleted', 'Nothing happens', 'The object is reset', 'Memory leak occurs']}
+  options={[ 'Nothing happens', 'The object is deleted','The object is reset', 'Memory leak occurs']}
   answer="The object is deleted"
 />
 <Question
   question="24).What does shared_ptr::use_count() return?"
-  options={['Number of shared_ptrs managing the object', 'Size of object', 'Total memory used', 'Number of weak_ptrs']}
+  options={[ 'Size of object', 'Total memory used', 'Number of shared_ptrs managing the object','Number of weak_ptrs']}
   answer="Number of shared_ptrs managing the object"
 />
 <Question
@@ -215,12 +225,12 @@ import { Question } from '../../Question';
 />
 <Question
   question="28).What does new (std::nothrow) return if memory allocation fails?"
-  options={['nullptr', 'Throws exception', 'Returns zero', 'Segmentation fault']}
+  options={[ 'Throws exception', 'Returns zero', 'Segmentation fault','nullptr']}
   answer="nullptr"
 />
 <Question
   question="29).What is the primary benefit of make_unique?"
-  options={['Exception safety and better performance', 'Manual memory management', 'Support for shared ownership', 'Automatic casting']}
+  options={[ 'Manual memory management', 'Exception safety and better performance','Support for shared ownership', 'Automatic casting']}
   answer="Exception safety and better performance"
 />
 <Question
@@ -228,14 +238,19 @@ import { Question } from '../../Question';
   options={['Used for array deallocation', 'Used only for pointers to objects', 'Cannot be overloaded', 'Used with malloc']}
   answer="Used for array deallocation"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).What is the output of use_count on a default-initialized shared_ptr?"
-  options={['0', '1', 'Undefined', 'null']}
+  options={[ '1', 'Undefined', 'null','0']}
   answer="0"
 />
 <Question
   question="32).Which statement about unique_ptr is correct?"
-  options={['It can be moved but not copied', 'It supports reference counting', 'It can be shared', 'It can be assigned to shared_ptr directly']}
+  options={[ 'It supports reference counting', 'It can be shared', 'It can be assigned to shared_ptr directly','It can be moved but not copied']}
   answer="It can be moved but not copied"
 />
 <Question
@@ -245,7 +260,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="34).What happens if you copy a unique_ptr?"
-  options={['Compilation error', 'Both manage same object', 'Creates a dangling pointer', 'Reference count increases']}
+  options={[ 'Both manage same object', 'Creates a dangling pointer','Compilation error', 'Reference count increases']}
   answer="Compilation error"
 />
 <Question
@@ -278,6 +293,11 @@ import { Question } from '../../Question';
   options={['weak_ptr', 'auto_ptr', 'malloc', 'unique_ptr']}
   answer="weak_ptr"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).What does delete operator do in C++?"
   options={['Deallocates memory and calls destructor', 'Releases only pointer', 'Clears object data', 'Calls constructor']}
@@ -295,12 +315,12 @@ import { Question } from '../../Question';
 />
 <Question
   question="44).What happens when a weak_ptr is converted to shared_ptr after object is destroyed?"
-  options={['Returns nullptr', 'Creates a new object', 'Throws exception', 'Segmentation fault']}
+  options={[ 'Creates a new object','Returns nullptr', 'Throws exception', 'Segmentation fault']}
   answer="Returns nullptr"
 />
 <Question
   question="45).What is RAII in C++?"
-  options={['Resource Acquisition Is Initialization', 'Runtime Allocation Is Internal', 'Resource Allocation Is Instant', 'None of the above']}
+  options={[ 'Runtime Allocation Is Internal', 'Resource Allocation Is Instant', 'None of the above','Resource Acquisition Is Initialization']}
   answer="Resource Acquisition Is Initialization"
 />
 <Question
@@ -315,7 +335,7 @@ import { Question } from '../../Question';
 />
 <Question
   question="48).What is the role of custom deleters in smart pointers?"
-  options={['Define how objects are destroyed', 'Prevent move semantics', 'Disable memory deallocation', 'Increase performance']}
+  options={[ 'Prevent move semantics', 'Disable memory deallocation','Define how objects are destroyed', 'Increase performance']}
   answer="Define how objects are destroyed"
 />
 <Question
@@ -325,6 +345,10 @@ import { Question } from '../../Question';
 />
 <Question
   question="50).How does shared_ptr avoid double deletion?"
-  options={['Uses reference counting', 'Blocks copy constructors', 'Creates raw pointers', 'Throws compile error']}
+  options={[ 'Blocks copy constructors', 'Uses reference counting','Creates raw pointers', 'Throws compile error']}
   answer="Uses reference counting"
 />
+
+<div>
+<AdBanner />
+</div>

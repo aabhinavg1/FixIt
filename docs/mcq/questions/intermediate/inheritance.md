@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Inheritance
@@ -128,6 +128,10 @@ import { Question } from '../../Question';
   options={['To access base class members', 'To call the base class constructor', 'Both A and B', 'None of the above']}
   answer="None of the above"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).What type of inheritance occurs when a class is derived from more than one base class?"
   options={['Hierarchical inheritance', 'Multiple inheritance', 'Single inheritance', 'Hybrid inheritance']}
@@ -188,6 +192,10 @@ import { Question } from '../../Question';
   answer="private"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21).What is hybrid inheritance?"
   options={['Inheritance involving only two classes', 'Inheritance combining multiple types of inheritance', 'Inheritance without constructors', 'None of the above']}
@@ -247,6 +255,10 @@ import { Question } from '../../Question';
   options={['Normal function', 'Static function', 'Constructor', 'Pure virtual function']}
   answer="Pure virtual function"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).What is the default inheritance visibility mode for classes in C++?"
   options={['private', 'public', 'protected', 'None of the above']}
@@ -297,6 +309,10 @@ import { Question } from '../../Question';
   options={['Templates', 'Static casting', 'Virtual functions', 'Constructor overloading']}
   answer="Virtual functions"
 />
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41).Which of the following results from improper handling of diamond problem?"
   options={['Ambiguity in base members', 'Object slicing', 'Memory leak', 'Stack overflow']}

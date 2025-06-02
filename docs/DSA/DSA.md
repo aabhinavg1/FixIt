@@ -45,8 +45,8 @@ Gain **practical knowledge, expert tips, and hands-on experience** to improve yo
 ### 🟢 **Getting Started**
 1. **[Introduction to DSA](./introduction-to-dsa)**
 2. **[Mathematical Foundations](./Mathematical_Foundation.md)**
-3. **[Time & Space Complexity Analysis](#time--space-complexity-analysis)**
-4. **[Bit Manipulation Techniques](#bit-manipulation-techniques)**
+3. **[Time & Space Complexity Analysis](./Time_and_space.md)**
+4. **[Bit Manipulation Techniques](./Bit_Manipulation_Technique.md)**
 
 ### 🔵 **Data Structures - A Complete Guide**
 5. **[Arrays and Strings](#arrays-and-strings)**

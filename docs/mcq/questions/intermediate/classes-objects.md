@@ -73,7 +73,7 @@ tags:
   - STL in C++
   - C++ Performance Optimization
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';
 
 # Classes and Objects
@@ -132,6 +132,11 @@ import { Question } from '../../Question';
   options={['Destructor', 'Constructor', 'Friend function', 'None of the above']}
   answer="Destructor"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
   question="11).What is constructor overloading in C++?"
@@ -192,6 +197,11 @@ import { Question } from '../../Question';
   options={['To prevent the function from modifying class members', 'To protect the return type', 'To make the class immutable', 'None of the above']}
   answer="To prevent the function from modifying class members"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
   question="21).What is an object in C++?"
@@ -263,6 +273,11 @@ int main() {
   answer="Wrapping data and functions into a single unit"
 />
 
+<div>
+<AdBanner />
+</div>
+
+
 <Question
 question="31).What is the correct syntax to declare a class in C++?"
 options={['class MyClass {};', 'MyClass class {};', 'object MyClass {};', 'struct MyClass {};']}
@@ -322,6 +337,11 @@ question="40).What is the size of an empty class object?"
 options={['0 bytes', '1 byte', '4 bytes', 'Depends on compiler']}
 answer="1 byte"
 />
+
+<div>
+<AdBanner />
+</div>
+
 
 <Question
 question="41).When is an object destroyed in C++?"
@@ -383,3 +403,8 @@ question="50).Which keyword is used to prevent a class from being inherited?"
 options={['final', 'static', 'const', 'private']}
 answer="final"
 />
+
+<div>
+<AdBanner />
+</div>
+

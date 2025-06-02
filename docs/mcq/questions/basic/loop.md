@@ -41,7 +41,7 @@ tags:
   - C++ Loop Techniques
 
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path based on your project structure
 
 {/* Basics of Control Flow and Looping in C++ */}
@@ -168,6 +168,10 @@ int main() {
   answer="It is guaranteed to execute at least once"
 />
 
+<div>
+<AdBanner />
+</div>
+
 {/* Intermediate to Advanced MCQs on Loops */}
 
 <Question
@@ -261,6 +265,10 @@ do {
   answer="continue"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="21). What is the output of the following code?"
   code={`int x = 3;
@@ -351,6 +359,10 @@ while (i <= 3) {
   ]}
   answer="while (true) {}"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="31). What is the output of this `for` loop with a step of 2?"
@@ -487,6 +499,11 @@ while (i <= 3) {
   ]}
   answer="First never runs, second runs once"
 />
+
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="41). What will be the output of the following C++ code?"
   code={`#include <iostream>

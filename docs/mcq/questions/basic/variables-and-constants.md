@@ -43,6 +43,7 @@ tags:
   - C++ Scope of Variables
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
 // C++ Data Types Quiz
@@ -107,6 +108,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="const float pi = 3.14;"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="11).Which keyword is used to define a constant integer in C++?"
   options={['const', 'define', 'static', 'immutable']}
@@ -167,6 +172,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['static', 'const', 'extern', 'private']}
   answer="static"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="21).Which of the following can be used to initialize a constant reference?"
@@ -230,6 +239,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="5"
 />
 
+<div>
+<AdBanner />
+</div>
+
 <Question
   question="31).What is the default value of a global int variable in C++?"
   options={['0', 'undefined', 'garbage', 'null']}
@@ -291,6 +304,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['It deduces the type at compile time', 'It makes a variable dynamic', 'It is used for constants', 'It is obsolete in C++']}
   answer="It deduces the type at compile time"
 />
+
+<div>
+<AdBanner />
+</div>
 
 <Question
   question="41).What is the output of the following code?"
