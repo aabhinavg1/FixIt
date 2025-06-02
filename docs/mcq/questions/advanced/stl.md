@@ -49,54 +49,54 @@ import { Question } from '../../Question';
 # STL: Standard Template Library
 
 <Question
-  question="1).What does STL stand for in C++?"
-  options={['Standard Template Library', 'Standard Type Library', 'Standard Test Library', 'None of the above']}
-  answer="Standard Template Library"
-/>
-<Question
-  question="2).Which of the following is NOT a component of the C++ STL?"
-  options={['Containers', 'Algorithms', 'Iterators', 'Memory Management']}
-  answer="Memory Management"
-/>
-<Question
-  question="3).Which header file is required for using the vector container in STL?"
-  options={['<vector>', '<iostream>', '<algorithm>', '<list>']}
-  answer="<vector>"
-/>
-<Question
-  question="4).What type of container is std::vector?"
-  options={['Sequence container', 'Associative container', 'Container adapter', 'None of the above']}
-  answer="Sequence container"
-/>
-<Question
-  question="5).Which STL container is best for fast insertion and deletion from both ends?"
-  options={['std::list', 'std::vector', 'std::deque', 'std::map']}
+  question="1). What is the default underlying container for std::stack?"
+  options={['std::vector', 'std::deque', 'std::queue', 'std::list']}
   answer="std::deque"
 />
 <Question
-  question="6).Which STL algorithm is used to find an element in a container?"
-  options={['find()', 'search()', 'locate()', 'find_element()']}
-  answer="find()"
+  question="2). Which container does not provide random access iterators?"
+  options={['std::list', 'std::deque', 'std::array', 'std::vector']}
+  answer="std::list"
 />
 <Question
-  question="7).Which of the following STL containers is used for key-value pairs?"
-  options={['std::map', 'std::list', 'std::deque', 'std::vector']}
+  question="3). Which of the following is an associative container?"
+  options={['std::deque', 'std::map', 'std::array', 'std::vector']}
   answer="std::map"
 />
 <Question
-  question="8).What does the std::sort() function do in STL?"
-  options={['Sorts the elements of a container', 'Reverses the container', 'Finds the maximum element', 'None of the above']}
-  answer="Sorts the elements of a container"
+  question="4). What is the time complexity of std::unordered_map lookup?"
+  options={['O(log n)', 'O(n)', 'O(1)', 'O(n log n)']}
+  answer="O(1)"
 />
 <Question
-  question="9).Which function is used to remove an element from a vector in STL?"
-  options={['erase()', 'remove()', 'pop_back()', 'delete()']}
-  answer="erase()"
+  question="5). Which of the following allows duplicate keys?"
+  options={['std::set', 'std::multimap', 'std::map', 'std::unordered_set']}
+  answer="std::multimap"
 />
 <Question
-  question="10).Which container type is the fastest for random access?"
-  options={['std::vector', 'std::list', 'std::deque', 'std::map']}
-  answer="std::vector"
+  question="6). Which container stores elements in a key-value pair and is ordered?"
+  options={['std::multiset', 'std::unordered_map', 'std::map', 'std::vector']}
+  answer="std::map"
+/>
+<Question
+  question="7). What does std::vector::capacity() return?"
+  options={['Number of elements', 'Allocated storage size', 'Free space', 'Max allowed size']}
+  answer="Allocated storage size"
+/>
+<Question
+  question="8). Which of these is a container adapter?"
+  options={['std::deque', 'std::array', 'std::queue', 'std::set']}
+  answer="std::queue"
+/>
+<Question
+  question="9). Which STL container uses a hash table?"
+  options={['std::unordered_map', 'std::stack', 'std::vector', 'std::map']}
+  answer="std::unordered_map"
+/>
+<Question
+  question="10). Which algorithm searches for a value in a range?"
+  options={['lookup()', 'find()', 'search()', 'locate()']}
+  answer="find()"
 />
 
 <div>
@@ -104,54 +104,54 @@ import { Question } from '../../Question';
 </div>
 
 <Question
-  question="11). Which container maintains sorted order automatically?"
-  options={['std::set', 'std::vector', 'std::stack', 'std::queue']}
-  answer="std::set"
+  question="11). What header file is needed for std::vector?"
+  options={['<list>', '<vector>', '<deque>', '<array>']}
+  answer="<vector>"
 />
 <Question
-  question="12). What is the time complexity of accessing an element in std::vector by index?"
-  options={['O(1)', 'O(log n)', 'O(n)', 'O(n log n)']}
-  answer="O(1)"
+  question="12). What type of iterator does std::vector support?"
+  options={['Bidirectional Iterator', 'Random Access Iterator', 'Forward Iterator', 'Input Iterator']}
+  answer="Random Access Iterator"
 />
 <Question
-  question="13). Which container supports LIFO (Last In First Out)?"
-  options={['std::stack', 'std::queue', 'std::list', 'std::set']}
+  question="13). Which container is best for LIFO operations?"
+  options={['std::map', 'std::stack', 'std::queue', 'std::set']}
   answer="std::stack"
 />
 <Question
-  question="14). Which container supports FIFO (First In First Out)?"
-  options={['std::queue', 'std::stack', 'std::map', 'std::vector']}
-  answer="std::queue"
-/>
-<Question
-  question="15). What is the default underlying container for std::stack?"
-  options={['std::deque', 'std::list', 'std::vector', 'std::queue']}
+  question="14). What is the default container for std::queue?"
+  options={['std::deque', 'std::vector', 'std::map', 'std::list']}
   answer="std::deque"
 />
 <Question
-  question="16). What does the 'auto' keyword help with in STL?"
-  options={['Type inference', 'Auto memory management', 'Auto compilation', 'None of the above']}
-  answer="Type inference"
+  question="15). Which of the following is not an STL algorithm?"
+  options={['sort()', 'reverse()', 'count()', 'connect()']}
+  answer="connect()"
 />
 <Question
-  question="17). Which algorithm counts the number of occurrences of a value?"
-  options={['count()', 'find()', 'accumulate()', 'search()']}
-  answer="count()"
+  question="16). Which method inserts at the beginning of std::list?"
+  options={['push_back()', 'insert()', 'push_front()', 'emplace()']}
+  answer="push_front()"
 />
 <Question
-  question="18). What header file is needed for std::set?"
-  options={['<set>', '<map>', '<unordered_set>', '<iostream>']}
-  answer="<set>"
+  question="17). Which of these provides constant time insertion/removal at both ends?"
+  options={['std::vector', 'std::deque', 'std::array', 'std::set']}
+  answer="std::deque"
 />
 <Question
-  question="19). Which container allows duplicate keys?"
-  options={['std::multimap', 'std::map', 'std::set', 'std::unordered_map']}
-  answer="std::multimap"
+  question="18). Which container is sorted automatically?"
+  options={['std::queue', 'std::vector', 'std::list', 'std::set']}
+  answer="std::set"
 />
 <Question
-  question="20). What does std::unique() do?"
-  options={['Removes consecutive duplicates', 'Sorts the container', 'Erases all elements', 'Finds unique keys']}
-  answer="Removes consecutive duplicates"
+  question="19). Which function removes consecutive duplicates in a range?"
+  options={['unique()', 'filter()', 'remove()', 'erase()']}
+  answer="unique()"
+/>
+<Question
+  question="20). Which header defines std::array?"
+  options={['<map>', '<array>', '<vector>', '<utility>']}
+  answer="<array>"
 />
 
 <div>
@@ -160,32 +160,32 @@ import { Question } from '../../Question';
 
 <Question
   question="21). Which of these is not a sequence container?"
-  options={['std::stack', 'std::vector', 'std::deque', 'std::list']}
+  options={['std::stack', 'std::deque', 'std::list', 'std::vector']}
   answer="std::stack"
 />
 <Question
   question="22). Which iterator category allows random access?"
-  options={['Random Access Iterator', 'Bidirectional Iterator', 'Input Iterator', 'Forward Iterator']}
+  options={['Bidirectional Iterator', 'Input Iterator', 'Random Access Iterator', 'Forward Iterator']}
   answer="Random Access Iterator"
 />
 <Question
   question="23). Which algorithm returns true if all elements meet a condition?"
-  options={['all_of()', 'any_of()', 'none_of()', 'count_if()']}
+  options={['none_of()', 'all_of()', 'count_if()', 'any_of()']}
   answer="all_of()"
 />
 <Question
   question="24). What does std::accumulate() do?"
-  options={['Sums values in a range', 'Sorts values', 'Finds max value', 'Removes duplicates']}
+  options={['Finds max value', 'Sorts values', 'Sums values in a range', 'Removes duplicates']}
   answer="Sums values in a range"
 />
 <Question
   question="25). Which container does not allow duplicate elements?"
-  options={['std::set', 'std::multiset', 'std::vector', 'std::list']}
+  options={['std::list', 'std::vector', 'std::set', 'std::multiset']}
   answer="std::set"
 />
 <Question
   question="26). Which STL container is unordered?"
-  options={['std::unordered_map', 'std::map', 'std::set', 'std::multiset']}
+  options={['std::unordered_map', 'std::multiset', 'std::set', 'std::map']}
   answer="std::unordered_map"
 />
 <Question
@@ -195,17 +195,17 @@ import { Question } from '../../Question';
 />
 <Question
   question="28). Which function checks if a container is empty?"
-  options={['empty()', 'is_empty()', 'size() == 0', 'None']}
+  options={['empty()', 'is_empty()', 'None', 'size() == 0']}
   answer="empty()"
 />
 <Question
   question="29). Which method returns the size of a container?"
-  options={['size()', 'length()', 'count()', 'capacity()']}
+  options={['count()', 'size()', 'length()', 'capacity()']}
   answer="size()"
 />
 <Question
   question="30). What does push_back() do in std::vector?"
-  options={['Adds element at end', 'Adds at front', 'Removes last', 'Reverses vector']}
+  options={['Adds at front', 'Adds element at end', 'Reverses vector', 'Removes last']}
   answer="Adds element at end"
 />
 
@@ -214,54 +214,54 @@ import { Question } from '../../Question';
 </div>
 
 <Question
-  question="31). What type of container is std::priority_queue?"
-  options={['Container adapter', 'Sequence container', 'Associative container', 'None']}
-  answer="Container adapter"
+  question="31). Which container is best for LIFO operations?"
+  options={['std::stack', 'std::queue', 'std::map', 'std::set']}
+  answer="std::stack"
 />
 <Question
-  question="32). What is the time complexity of inserting into std::map?"
+  question="32). Which STL container uses a hash table?"
+  options={['std::unordered_map', 'std::stack', 'std::map', 'std::vector']}
+  answer="std::unordered_map"
+/>
+<Question
+  question="33). What is the time complexity of std::unordered_map lookup?"
   options={['O(log n)', 'O(1)', 'O(n)', 'O(n log n)']}
-  answer="O(log n)"
+  answer="O(1)"
 />
 <Question
-  question="33). Which STL algorithm finds the first mismatch between two ranges?"
-  options={['mismatch()', 'find()', 'adjacent_find()', 'equal()']}
-  answer="mismatch()"
+  question="34). Which of the following allows duplicate keys?"
+  options={['std::map', 'std::set', 'std::multimap', 'std::unordered_set']}
+  answer="std::multimap"
 />
 <Question
-  question="34). Which of these containers provides stable sorting?"
-  options={['std::list::sort()', 'std::sort()', 'std::set', 'std::vector']}
-  answer="std::list::sort()"
+  question="35). What is the default container for std::queue?"
+  options={['std::deque', 'std::list', 'std::map', 'std::vector']}
+  answer="std::deque"
 />
 <Question
-  question="35). Which container does not support random access?"
-  options={['std::list', 'std::vector', 'std::deque', 'std::array']}
-  answer="std::list"
+  question="36). Which of the following is not an STL algorithm?"
+  options={['connect()', 'reverse()', 'count()', 'sort()']}
+  answer="connect()"
 />
 <Question
-  question="36). Which algorithm is used to copy elements to another container?"
-  options={['copy()', 'duplicate()', 'assign()', 'copy_to()']}
-  answer="copy()"
+  question="37). Which method inserts at the beginning of std::list?"
+  options={['push_front()', 'emplace()', 'insert()', 'push_back()']}
+  answer="push_front()"
 />
 <Question
-  question="37). Which container is usually implemented as a red-black tree?"
-  options={['std::map', 'std::deque', 'std::vector', 'std::unordered_map']}
-  answer="std::map"
+  question="38). Which of these provides constant time insertion/removal at both ends?"
+  options={['std::array', 'std::deque', 'std::vector', 'std::set']}
+  answer="std::deque"
 />
 <Question
-  question="38). What is the use of emplace_back()?"
-  options={['Construct and insert at end', 'Remove from end', 'Insert at front', 'Sort vector']}
-  answer="Construct and insert at end"
+  question="39). Which container is sorted automatically?"
+  options={['std::list', 'std::queue', 'std::set', 'std::vector']}
+  answer="std::set"
 />
 <Question
-  question="39). Which is true about std::unordered_map?"
-  options={['Average O(1) lookup', 'Maintains order', 'No key-value storage', 'Allows duplicates']}
-  answer="Average O(1) lookup"
-/>
-<Question
-  question="40). Which header file includes most STL algorithms?"
-  options={['<algorithm>', '<vector>', '<map>', '<utility>']}
-  answer="<algorithm>"
+  question="40). Which function removes consecutive duplicates in a range?"
+  options={['erase()', 'unique()', 'remove()', 'filter()']}
+  answer="unique()"
 />
 
 <div>
@@ -269,54 +269,54 @@ import { Question } from '../../Question';
 </div>
 
 <Question
-  question="41). Which container is best for fast lookup by key?"
-  options={['std::map', 'std::vector', 'std::deque', 'std::list']}
+  question="41). Which header defines std::array?"
+  options={['<vector>', '<array>', '<map>', '<utility>']}
+  answer="<array>"
+/>
+<Question
+  question="42). What header file is needed for std::vector?"
+  options={['<array>', '<vector>', '<deque>', '<list>']}
+  answer="<vector>"
+/>
+<Question
+  question="43). Which type of iterator does std::vector support?"
+  options={['Input Iterator', 'Bidirectional Iterator', 'Random Access Iterator', 'Forward Iterator']}
+  answer="Random Access Iterator"
+/>
+<Question
+  question="44). Which container stores elements in a key-value pair and is ordered?"
+  options={['std::unordered_map', 'std::map', 'std::vector', 'std::multiset']}
   answer="std::map"
 />
 <Question
-  question="42). Which adapter container uses heap structure internally?"
-  options={['std::priority_queue', 'std::stack', 'std::list', 'std::vector']}
-  answer="std::priority_queue"
+  question="45). Which container does not provide random access iterators?"
+  options={['std::array', 'std::list', 'std::vector', 'std::deque']}
+  answer="std::list"
 />
 <Question
-  question="43). Which algorithm reverses a range?"
-  options={['reverse()', 'rotate()', 'flip()', 'invert()']}
-  answer="reverse()"
-/>
-<Question
-  question="44). What does std::advance() do?"
-  options={['Moves iterator forward by n', 'Sorts range', 'Reverses range', 'Removes element']}
-  answer="Moves iterator forward by n"
-/>
-<Question
-  question="45). Which container should be used for frequent insertions at the beginning?"
-  options={['std::deque', 'std::vector', 'std::array', 'std::map']}
+  question="46). What is the default underlying container for std::stack?"
+  options={['std::list', 'std::vector', 'std::queue', 'std::deque']}
   answer="std::deque"
 />
 <Question
-  question="46). Which of the following is a smart pointer in STL?"
-  options={['std::shared_ptr', 'std::vector', 'std::list', 'std::pair']}
-  answer="std::shared_ptr"
+  question="47). Which of these is a container adapter?"
+  options={['std::deque', 'std::queue', 'std::set', 'std::array']}
+  answer="std::queue"
 />
 <Question
-  question="47). What is the use of std::pair?"
-  options={['Stores two related values', 'Sorts elements', 'Removes duplicates', 'None']}
-  answer="Stores two related values"
+  question="48). What does std::vector::capacity() return?"
+  options={['Max allowed size', 'Number of elements', 'Allocated storage size', 'Free space']}
+  answer="Allocated storage size"
 />
 <Question
-  question="48). What is returned by std::find_if()?"
-  options={['Iterator to first match', 'True or false', 'Count', 'None']}
-  answer="Iterator to first match"
+  question="49). Which algorithm searches for a value in a range?"
+  options={['search()', 'find()', 'lookup()', 'locate()']}
+  answer="find()"
 />
 <Question
-  question="49). Which STL component provides generic operations on ranges?"
-  options={['Algorithms', 'Containers', 'Iterators', 'Adapters']}
-  answer="Algorithms"
-/>
-<Question
-  question="50). Which is the correct header for using std::pair?"
-  options={['<utility>', '<pair>', '<tuple>', '<functional>']}
-  answer="<utility>"
+  question="50). Which container adapter follows FIFO order?"
+  options={['std::stack', 'std::priority_queue', 'std::list', 'std::queue']}
+  answer="std::queue"
 />
 
 <div>
