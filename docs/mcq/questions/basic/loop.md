@@ -49,10 +49,10 @@ import { Question } from '../../Question';  // Adjust the path based on your pro
 <Question
   question="1). Which of the following is the correct syntax for an `if` statement in C++?"
   options={[
-    'if (condition) { // code }',
     'if condition { // code }',
     'if {condition} { // code }',
-    'if: condition { // code }'
+    'if: condition { // code }',
+    'if (condition) { // code }'
   ]}
   answer="if (condition) { // code }"
 />
@@ -114,10 +114,10 @@ int main() {
 <Question
   question="7). In which scenario would you use a `continue` statement in C++?"
   options={[
-    'To stop the execution of the current loop iteration and move to the next iteration',
     'To exit the loop entirely',
     'To break out of a function',
-    'To jump to the end of the function'
+    'To jump to the end of the function',
+    'To stop the execution of the current loop iteration and move to the next iteration'
   ]}
   answer="To stop the execution of the current loop iteration and move to the next iteration"
 />
@@ -125,14 +125,14 @@ int main() {
 <Question
   question="8). What is the output of the following C++ code?"
   code={`#include <iostream>
-using namespace std;
+         using namespace std;
 
-int main() {
-  for (int i = 0; i < 4; i++) {
-    cout << i << " ";
-  }
-  return 0;
-}`}
+         int main() {
+            for (int i = 0; i < 4; i++) {
+              cout << i << " ";
+            }
+        return 0;
+        }`}
   options={['0 1 2', '1 2 3', '0 1 2 3', '0 1 2 3 4']}
   answer="0 1 2 3"
 />
@@ -614,3 +614,6 @@ cout << sum;`}
   options={['3', '6', '5', '7']}
   answer="6"
 />
+<div>
+<AdBanner />
+</div>
