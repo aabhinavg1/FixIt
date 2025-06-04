@@ -147,12 +147,12 @@ const config = {
       async: true,
       defer: true,
     },
-    {
-      src: "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js",
-      async: true,
-      "custom-element": "amp-auto-ads",
-      defer: true,
-    },
+    
+    //   src: "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js",
+    //   async: true,
+    //   "custom-element": "amp-auto-ads",
+    //   defer: true,
+    // },
     { src: '/js/contest.js', async: true, defer: true},
     { src: '/js/amp-auto-ads.js', async: true, defer: true },
     { src: '/js/google-tag-manager.js', async: true, defer: true },
