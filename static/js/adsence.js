@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const adConfig = {
   'in-article': {
@@ -20,30 +20,29 @@ const adConfig = {
 
 export default function AdBanner({ adType = 'in-article' }) {
   const adRef = useRef(null);
+  const [adLoaded, setAdLoaded] = useState(false);
 
   useEffect(() => {
+    if (!adRef.current) return;  // Ensure that the element is available
     let retryCount = 0;
     const maxRetries = 10;
 
     const loadAd = () => {
-      if (!adRef.current) return;
-
       const width = adRef.current.offsetWidth;
 
-      // If the width is zero, set a default width (e.g., 300px)
       if (width === 0) {
         adRef.current.style.width = '300px'; // Assigning a default width
       }
 
-      // Retry loading the ad until a valid width is detected or retry count is reached
       if (width === 0 && retryCount < maxRetries) {
         retryCount++;
-        setTimeout(loadAd, 300 * retryCount); // exponential backoff
+        setTimeout(loadAd, 300 * retryCount); // Exponential backoff
         return;
       }
 
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setAdLoaded(true);  // Mark ad as loaded
       } catch (e) {
         console.error('AdSense error:', e);
       }
@@ -67,14 +66,17 @@ export default function AdBanner({ adType = 'in-article' }) {
   const { adSlot, adFormat, layout } = adConfig[adType] || adConfig['in-article'];
 
   return (
-    <ins
-      ref={adRef}
-      className="adsbygoogle"
-      style={{ display: 'block', width: '100%', textAlign: 'center' }}
-      data-ad-layout={layout}
-      data-ad-format={adFormat}
-      data-ad-client="ca-pub-4507855210682789"
-      data-ad-slot={adSlot}
-    />
+    <div>
+      <ins
+        ref={adRef}
+        className="adsbygoogle"
+        style={{ display: 'block', width: '100%', textAlign: 'center' }}
+        data-ad-layout={layout}
+        data-ad-format={adFormat}
+        data-ad-client="ca-pub-4507855210682789"
+        data-ad-slot={adSlot}
+      />
+      {!adLoaded && <p>Loading ad...</p>}
+    </div>
   );
 }
