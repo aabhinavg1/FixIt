@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function AdBanner() {
+  const adRef = useRef(null);
+
   useEffect(() => {
-    // Load AdSense script only once
-    if (!window.adsbygoogle) {
+    // Load the AdSense script if not already loaded
+    if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
       const script = document.createElement('script');
       script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4507855210682789';
       script.async = true;
@@ -11,18 +13,33 @@ export default function AdBanner() {
       document.head.appendChild(script);
     }
 
-    // Push the ad
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
+    const loadAd = () => {
+      try {
+        // Only push if the element has non-zero width and is visible
+        if (
+          adRef.current &&
+          adRef.current.offsetWidth > 0 &&
+          adRef.current.offsetHeight > 0 &&
+          window.getComputedStyle(adRef.current).display !== 'none'
+        ) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } else {
+          // Retry after 500ms until the element becomes visible
+          setTimeout(loadAd, 500);
+        }
+      } catch (e) {
+        console.error('AdSense error:', e);
+      }
+    };
+
+    loadAd();
   }, []);
 
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: 'block', textAlign: 'center' }}
+      ref={adRef}
+      style={{ display: 'block', textAlign: 'center', width: '100%' }}
       data-ad-layout="in-article"
       data-ad-format="fluid"
       data-ad-client="ca-pub-4507855210682789"
