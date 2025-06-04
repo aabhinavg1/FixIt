@@ -9,20 +9,27 @@ export default function AdBanner() {
       script.async = true;
       script.crossOrigin = 'anonymous';
       document.head.appendChild(script);
-    }
 
-    // Push the ad
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
+      script.onload = () => {
+        // Push the ad after the script has loaded
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error('AdSense error:', e);
+        }
+      };
     }
   }, []);
 
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: 'block', textAlign: 'center' }}
+      style={{ 
+        display: 'block', 
+        width: '100%', 
+        minHeight: '90px', 
+        textAlign: 'center' 
+      }}
       data-ad-layout="in-article"
       data-ad-format="fluid"
       data-ad-client="ca-pub-4507855210682789"
