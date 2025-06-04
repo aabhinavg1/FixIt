@@ -111,6 +111,11 @@ tags:
 import AdBanner from '@site/src/components/AdBanner';
 import { Question } from '../../Question';  // Adjust the path to your Question.js component
 
+<div>
+        <AdBanner />
+</div>
+
+
   <Question
     question="1).Which of the following is the correct syntax to declare an array in C++?"
     options={['int[] arr;', 'array<int> arr;', 'int arr[];','None of the above']}
@@ -190,8 +195,9 @@ return 0;
   />
   
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="11).Which header file is needed to use the strlen() function in C++?"
@@ -256,8 +262,9 @@ return 0;
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="21).What will this code output?"
@@ -323,8 +330,9 @@ return 0;
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="31).What will be the output of the following code?"
@@ -435,7 +443,7 @@ question="34).What does this code output?"
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
   <Question
@@ -531,5 +539,5 @@ question="34).What does this code output?"
 />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
