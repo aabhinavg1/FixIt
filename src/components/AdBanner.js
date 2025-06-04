@@ -2,13 +2,11 @@ import React, { useEffect, useRef } from 'react';
 
 export default function AdBanner() {
   const adRef = useRef(null);
-  const observerRef = useRef(null);
 
   useEffect(() => {
-    // Ensure we're in the browser
-    if (typeof window === 'undefined') return;
+    // Ensure the script is only added once
+    if (typeof window === 'undefined') return;  // Check if we're in the browser
 
-    // Inject AdSense script only once
     if (!window.adsbygoogleLoaded) {
       const script = document.createElement('script');
       script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4507855210682789';
@@ -24,56 +22,12 @@ export default function AdBanner() {
       document.head.appendChild(script);
     }
 
-    // Load ad when visible using IntersectionObserver
-    const loadAdWhenVisible = (entries) => {
-      const entry = entries[0];
-      const adContainer = adRef.current;
-
-      if (!adContainer) return;
-
-      if (entry.isIntersecting) {
-        try {
-          const alreadyRendered = adContainer.getAttribute('data-adsbygoogle-status');
-          if (!alreadyRendered) {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-            console.info('Ad pushed into view.');
-          } else {
-            console.warn('Ad already rendered. Skipping push.');
-          }
-        } catch (error) {
-          console.error('AdSense error:', error);
-        }
-      }
-    };
-
-    if ('IntersectionObserver' in window) {
-      observerRef.current = new IntersectionObserver(loadAdWhenVisible, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-      });
-
-      if (adRef.current) {
-        observerRef.current.observe(adRef.current);
-      }
-    } else {
-      // Fallback for old browsers
-      console.warn('IntersectionObserver not supported, loading ad immediately.');
-      try {
-        if (adRef.current && !adRef.current.getAttribute('data-adsbygoogle-status')) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
-      } catch (e) {
-        console.error('AdSense error:', e);
-      }
+    // Add the ad slot once the script is loaded
+    if (adRef.current && !adRef.current.hasAttribute('data-adsbygoogle-status')) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      adRef.current.setAttribute('data-adsbygoogle-status', 'rendered');
     }
 
-    // Cleanup observer
-    return () => {
-      if (observerRef.current && adRef.current) {
-        observerRef.current.unobserve(adRef.current);
-      }
-    };
   }, []);
 
   return (
