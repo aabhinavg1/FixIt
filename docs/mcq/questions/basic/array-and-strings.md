@@ -113,7 +113,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="1).Which of the following is the correct syntax to declare an array in C++?"
-    options={[ 'int[] arr;', 'array<int> arr;', 'int arr[];','None of the above']}
+    options={['int[] arr;', 'array<int> arr;', 'int arr[];','None of the above']}
     answer="int arr[];"
   />
 
@@ -179,13 +179,13 @@ return 0;
 
   <Question
     question="9).How do you access the third element of an array `arr[]` in C++?"
-    options={[ 'arr[3]', 'arr(2)', 'arr(3)','arr[2]']}
+    options={['arr[3]', 'arr(2)', 'arr(3)','arr[2]']}
     answer="arr[2]"
   />
 
   <Question
     question="10).What is the correct way to declare a multidimensional array in C++?"
-    options={[ 'int arr[3,3];', 'int arr[3, 3] = {};', 'None of the above']}
+    options={['int arr[3,3];', 'int arr[3, 3] = {};', 'None of the above']}
     answer="int arr[3][3];"
   />
   

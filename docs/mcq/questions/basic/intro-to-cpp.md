@@ -88,19 +88,19 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="7).In C++, which of the following types is used for dynamic memory allocation?"
-  options={[ 'malloc', 'alloc', 'allocmem','new']}
+  options={['malloc', 'alloc', 'allocmem','new']}
   answer="new"
 />
 
 <Question
   question="8).Which of the following is the correct way to comment a single line in C++?"
-  options={[ '/* This is a comment */', '<!-- This is a comment -->', '# This is a comment','// This is a comment',]}
+  options={['/* This is a comment */', '<!-- This is a comment -->', '# This is a comment','// This is a comment',]}
   answer="// This is a comment"
 />
 
 <Question
   question="9).Which of the following is the correct syntax to declare a constant in C++?"
-  options={[ 'int x const = 10;', 'const int x = 10;','constant int x = 10;', 'x = const 10;']}
+  options={['int x const = 10;', 'const int x = 10;','constant int x = 10;', 'x = const 10;']}
   answer="const int x = 10;"
 />
 
@@ -161,7 +161,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="18). What is the correct way to declare an array in C++?"
-  options={[ 'arr int[10];', 'int[10] arr;','int arr[10];', 'array arr(10);']}
+  options={['arr int[10];', 'int[10] arr;','int arr[10];', 'array arr(10);']}
   answer="int arr[10];"
 />
 
@@ -288,7 +288,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="37). What does the `++` operator do?"
-  options={[ 'Adds two numbers', 'Concatenates strings', 'Creates a new variable','Increments a variable by 1']}
+  options={['Adds two numbers', 'Concatenates strings', 'Creates a new variable','Increments a variable by 1']}
   answer=" Increments a variable by 1"
 />
 
@@ -315,7 +315,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="41). Which of the following is the correct way to call a base class function from a derived class in C++?"
-  options={[ 'super::function()', 'this::function()', 'base.function()','base::function()',]}
+  options={['super::function()', 'this::function()', 'base.function()','base::function()',]}
   answer="base::function()"
 />
 
@@ -339,7 +339,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="45). Which of the following is a feature of C++?"
-  options={[ 'Automatic garbage collection','Object-oriented programming', 'Multi-platform support', 'All of the above']}
+  options={['Automatic garbage collection','Object-oriented programming', 'Multi-platform support', 'All of the above']}
   answer="Object-oriented programming"
 />
 
@@ -363,7 +363,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="49). Which of the following is the correct way to define a default constructor in C++?"
-  options={[ 'MyClass(void) {}', 'MyClass()','MyClass() {}', 'All of the above']}
+  options={['MyClass(void) {}', 'MyClass()','MyClass() {}', 'All of the above']}
   answer="MyClass() {}"
 />
 

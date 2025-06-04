@@ -49,7 +49,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="1).What is the correct way to declare a function in C++?"
-    options={[ 'functionName() void', 'void functionName()','function void()', 'None of the above']}
+    options={['functionName() void', 'void functionName()','function void()', 'None of the above']}
     answer="void functionName()"
   />
 
@@ -67,7 +67,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="4).Which of the following is true about function overloading in C++?"
-    options={[ 'Functions with the same name and parameters cannot be overloaded', 'Function overloading is not allowed in C++', 'Functions with the same name but different parameter types can be overloaded','None of the above']}
+    options={['Functions with the same name and parameters cannot be overloaded', 'Function overloading is not allowed in C++', 'Functions with the same name but different parameter types can be overloaded','None of the above']}
     answer="Functions with the same name but different parameter types can be overloaded"
   />
 
@@ -106,17 +106,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['functionName(int& x)', 'functionName(&int x)', 'functionName(int* x)', 'None of the above']}
     answer="functionName(int& x)"
   />
-<<<<<<< HEAD
   <div>
 <AdBanner />
 </div>
-=======
-
-<div>
-<AdBanner />
-</div>
-
->>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
   <Question
     question="11). What header file is required for using 'cin' and 'cout' in C++?"
@@ -380,26 +372,19 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['1','True','true','Yes']}
     answer="true"
 />
-<<<<<<< HEAD
-<div>
-<AdBanner />
-</div>
-=======
-
 <div>
 <AdBanner />
 </div>
 
->>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <Question
   question="41). What does the `explicit` keyword in C++ prevent?"
-  options={[ 'Function overloading', 'Template instantiation', 'Operator overloading','Implicit conversions']}
+  options={['Function overloading', 'Template instantiation', 'Operator overloading','Implicit conversions']}
   answer="Implicit conversions"
 />
 
 <Question
   question="42). Which of the following is the correct way to dynamically allocate memory for an array of 5 integers?"
-  options={[ 'int arr = new int[5];', 'int *arr = malloc(5);', 'int *arr = new int[5];','int arr[5] = new int;']}
+  options={['int arr = new int[5];', 'int *arr = malloc(5);', 'int *arr = new int[5];','int arr[5] = new int;']}
   answer="int *arr = new int[5];"
 />
 
@@ -411,7 +396,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="44). What does the `this` pointer refer to in a class method?"
-  options={[ 'It refers to the base class', 'It refers to the parent function', 'It refers to the memory address of main()','It refers to the current object instance']}
+  options={['It refers to the base class', 'It refers to the parent function', 'It refers to the memory address of main()','It refers to the current object instance']}
   answer="It refers to the current object instance"
 />
 
@@ -450,17 +435,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['It throws a runtime error', 'It results in undefined behavior', 'Nothing happens', 'It crashes the program']}
   answer="Nothing happens"
 />
-<<<<<<< HEAD
-<div>
-<AdBanner />
-</div>
-=======
 
 <div>
 <AdBanner />
 </div>
-
->>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
 
 
