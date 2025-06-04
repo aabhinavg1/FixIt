@@ -51,7 +51,7 @@ Bash ``scripting`` is one of the most powerful tools for ``automating tasks`` in
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 <details>
 <summary> For Windows </summary>
@@ -99,7 +99,7 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 ## What is Bash?
 
@@ -142,7 +142,7 @@ The diagram above shows how a command flows through the Linux system using the B
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 #### Step-by-Step Breakdown:
 
@@ -168,7 +168,7 @@ The diagram above shows how a command flows through the Linux system using the B
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 :::caution You know What
 This flow demonstrates the layered architecture of Linux and how Bash serves as the interface between users and the underlying system.
@@ -181,7 +181,7 @@ A **Shell** is a command-line interface that allows users to interact with the o
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 ```mermaid
 flowchart TD
@@ -321,7 +321,7 @@ This system keeps things organized, secure, and efficient, letting users control
 
 <div>
 <AdBanner />
-<div> 
+</div> 
 
 ## Types of Shells in Linux
 
@@ -523,7 +523,7 @@ csh
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 ## What is a Bash Script?
 
@@ -630,7 +630,7 @@ Since Bash is pre-installed on most Linux systems, Bash scripts don’t require 
 
 <div>
 <AdBanner />
-<div> />
+</div>
 
 
 ## Getting Started: Writing Your First Bash Script
@@ -662,7 +662,7 @@ This script will simply print "Hello, world!" to the terminal.
 
 <div>
 <AdBanner />
-<div>
+</div>
 ## Making a Script Executable
 
 After writing the script, you need to make it executable to run it directly.
@@ -695,7 +695,7 @@ Congratulations! You've just written and executed your first Bash script!
 
 <div>
 <AdBanner />
-<div>
+</div>
 
 ## References
 
