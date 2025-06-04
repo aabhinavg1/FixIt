@@ -11,7 +11,33 @@ keywords:
 - Linux shell scripting
 - Bash commands
 - Shell programming
-
+- Linux basics  
+- Learn Linux for beginners  
+- Linux commands tutorial  
+- Linux file system  
+- Ubuntu for beginners  
+- Linux tutorial  
+- Linux commands for beginners  
+- Introduction to Linux  
+- Linux terminal tutorial  
+- Basic Linux commands  
+- Linux shell commands  
+- Linux CLI for beginners  
+- Learn Ubuntu step by step  
+- Getting started with Linux  
+- Linux for Windows users  
+- Beginner Linux guide  
+- Ubuntu command line basics  
+- Learn Linux online free  
+- Linux cheat sheet for beginners  
+- Linux directory structure explained  
+- Linux system administration basics  
+- Mastering Linux terminal  
+- Debian for beginners  
+- Fedora Linux tutorial  
+- Linux bash scripting for beginners  
+- Essential Linux skills  
+- Linux OS tutorial for newbies 
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
@@ -19,15 +45,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<div>
-    <AdBanner />
-</div>
- 
-
-
 # Introduction
 
 Bash ``scripting`` is one of the most powerful tools for ``automating tasks`` in ``Linux`` and ``Unix-like systems``. Whether you're a beginner or a seasoned system administrator, learning Bash scripting can greatly improve your efficiency, automate repetitive tasks, and help you become more productive. This guide will introduce you to Bash scripting, starting from basic commands to advanced scripting techniques.
+
+<AdBanner />
+
 
 <details>
 <summary> For Windows </summary>
@@ -48,24 +71,15 @@ You don’t need to be a programming expert to start writing Bash scripts—basi
 Practice by writing small scripts to automate tasks you do often, like cleaning up directories or backing up files.
 :::
 
----
+
 <details>
 <summary> Youtube Video Playlist</summary>
 
 [![Watch the video](https://img.youtube.com/vi/jyigdPpeoCE/maxresdefault.jpg)](https://youtu.be/jyigdPpeoCE)
 
-
-
 </details>
----
 
-
-<div>
-    <AdBanner />
-</div>
-
-
----
+<AdBanner />
 
 ## Table of Contents
 
@@ -81,14 +95,9 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
 * [Reference](#references)
 
   
----
 
-<div>
-    <AdBanner />
-</div>
+<AdBanner />
 
-
----
 
 ## What is Bash?
 
@@ -129,13 +138,10 @@ flowchart TD
 
 The diagram above shows how a command flows through the Linux system using the Bash shell.
 
----
 
-<div>
-    <AdBanner />
-</div>
- 
----
+<AdBanner />
+
+
 
 #### Step-by-Step Breakdown:
 
@@ -159,30 +165,22 @@ The diagram above shows how a command flows through the Linux system using the B
 
 </details>
 
----
 
-<div>
-    <AdBanner />
-</div>
- 
----
+<AdBanner />
 
-:::cautions You know What
+
+
+:::caution You know What
 This flow demonstrates the layered architecture of Linux and how Bash serves as the interface between users and the underlying system.
 :::
-
----
-
-<div>
-    <AdBanner />
-</div>
-
----
 
 
 ## What is a Shell?
 
 A **Shell** is a command-line interface that allows users to interact with the operating system by typing commands. It serves as an intermediary between the user and the kernel (core of the OS). The shell interprets the commands given by the user into actions that the kernel can perform, such as running programs, managing files, and executing scripts. Shells like **Bash**, **Zsh**, and **PowerShell** also support scripting to automate repetitive tasks.
+
+<AdBanner />
+
 
 ```mermaid
 flowchart TD
@@ -212,13 +210,10 @@ flowchart TD
 - **System Hardware**  
   These are the actual physical parts of the computer: the CPU (brain), RAM (memory), hard drives (storage), graphics card, and so on. The kernel tells the hardware what to do—like displaying text on your monitor, reading from the hard drive, or sending data to a printer.
 
----
 
-<div>
-    <AdBanner />
-</div>
- 
----
+<AdBanner />
+
+
 ### Real-Life Example
 
 Imagine you're ordering food at a restaurant:
@@ -228,7 +223,7 @@ Imagine you're ordering food at a restaurant:
 3. **Kernel**: The chef who understands how to prepare the food based on the request.
 4. **Hardware**: The kitchen appliances and tools used to cook and serve the food.
 
----
+
 
 ### Step-by-Step Flow
 
@@ -238,7 +233,7 @@ Imagine you're ordering food at a restaurant:
 4. The **hardware (like your hard drive)** is used to physically store that folder.
 5. The result is shown on your screen, usually with no error if it worked.
 
----
+
 
 This system keeps things organized, secure, and efficient, letting users control a powerful machine with just a few words.
 
@@ -327,12 +322,9 @@ This system keeps things organized, secure, and efficient, letting users control
 </TabItem>
 </Tabs>
 
----
 
-<div>
-    <AdBanner />
-</div>
- 
+
+<AdBanner />
 
 ## Types of Shells in Linux
 
@@ -390,7 +382,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 **Fish (Friendly Interactive SHell)** is a modern, user-friendly shell designed to be easy to use out of the box. It offers several features that make the command-line experience more intuitive, especially for beginners or those coming from graphical environments.
 
----
+
 
 ### 🌟 Key Features:
 
@@ -401,7 +393,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 * **No need to configure much**: Comes with sensible defaults, so you can be productive immediately.
 * **Scripting with Simpler Syntax**: Fish scripting is more readable compared to Bash or Zsh.
 
----
+
 
 ### 🧪 Example:
 
@@ -421,7 +413,7 @@ end
 say_hello
 ```
 
----
+
 
 ### Installation
 
@@ -438,7 +430,7 @@ To make Fish your default shell:
 chsh -s /usr/bin/fish
 ```
 
----
+
 
 ### Tip:
 
@@ -456,7 +448,7 @@ This launches a browser interface where you can choose themes, functions, and co
 
 **Ksh (Korn Shell)** is backward-compatible with the Bourne shell and includes features from the C shell. It is often used in legacy systems and older UNIX environments where scripting and performance are key.
 
----
+
 
 ### 🌟 Key Features:
 
@@ -465,7 +457,7 @@ This launches a browser interface where you can choose themes, functions, and co
 * Suitable for scripting and legacy application support
 * Often used in commercial UNIX systems like AIX, HP-UX
 
----
+
 
 ### Example:
 
@@ -473,7 +465,7 @@ This launches a browser interface where you can choose themes, functions, and co
 echo "Hello from Ksh!"
 ```
 
----
+
 
 ### Installation:
 
@@ -497,7 +489,7 @@ ksh
 
 **Csh (C Shell)** is a Unix shell developed by Bill Joy at the University of California, Berkeley. It introduced a C-like scripting syntax and interactive features like command history, aliases, and job control.
 
----
+
 
 ### Key Features
 
@@ -507,7 +499,7 @@ ksh
 - Job control support
 - Historically used in BSD systems and legacy UNIX setups
 
----
+
 
 ### Example
 
@@ -531,14 +523,9 @@ csh
 
 </TabItem>
 </Tabs>
----
 
-<div>
-    <AdBanner />
-</div>
- 
+<AdBanner />
 
----
 
 ## What is a Bash Script?
 
@@ -575,19 +562,19 @@ flowchart TD
 
 This document explains the flow of how a Bash script works based on the given diagram.
 
----
+
 
 ##### 1. Bash Script → Text File
 
 A **Bash script** is essentially a plain **text file** that contains a series of commands to be executed by the Bash shell.
 
----
+
 
 ####  2. Bash Script → Contains Bash Commands
 
 The script includes **Bash commands**, just like the ones you would type into a terminal. These can include file operations, loops, conditionals, and function definitions.
 
----
+
 
 ##### 3. Bash Script → Executable on Linux/Unix Systems
 
@@ -599,11 +586,11 @@ A Bash script is intended to be **executed on Linux or Unix-like systems**, wher
 
 and similarly other 
 </details>
----
 
-<div>
-    <AdBanner />
-</div>
+
+
+    
+
  
 
 ## Why Use Bash Scripts?
@@ -642,13 +629,9 @@ Since Bash is pre-installed on most Linux systems, Bash scripts don’t require 
 :::   
 </details>
 
----
 
-<div>
-    <AdBanner />
-</div>
- 
----
+ <AdBanner />
+
 
 ## Getting Started: Writing Your First Bash Script
 
@@ -676,7 +659,8 @@ echo "Hello, world!"
 
 This script will simply print "Hello, world!" to the terminal.
 
----
+
+ <AdBanner />
 
 ## Making a Script Executable
 
@@ -704,11 +688,11 @@ You should see the output:
 Hello, world!
 ```
 
----
+
 
 Congratulations! You've just written and executed your first Bash script!
 
----
+
 ## References
 
 Here are some helpful resources to further your understanding of Linux:
@@ -725,7 +709,7 @@ Here are some helpful resources to further your understanding of Linux:
 - [TLDP: The Linux Documentation Project](https://tldp.org/)
 - [OverTheWire: Bandit (Linux terminal wargame for practice)](https://overthewire.org/wargames/bandit/)
 
----
+
 
 By regularly using and referencing these resources, you can reinforce your Linux knowledge and become more confident navigating both the terminal and system internals.
 
@@ -794,7 +778,7 @@ By regularly using and referencing these resources, you can reinforce your Linux
 </Tabs>
 
 
-<div>
-    <AdBanner />
-</div>
+
+    
+
  
