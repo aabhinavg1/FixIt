@@ -57,7 +57,7 @@ tags:
 import AdBanner from '@site/src/components/AdBanner';
 
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -93,6 +93,7 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Operator Overloading](./questions/intermediate/operator-overloading.md)
 - [Memory Management: malloc, free, new, delete](./questions/intermediate/memory-management.md)
 - [File Handling](./questions/intermediate/file-handling.md)
+---
 
 <div>
 <AdBanner />
@@ -120,8 +121,10 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 ---
 
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
+
+---
 
 ## 💡 Why Practice C++ MCQs?
 
@@ -141,3 +144,6 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 4. Bookmark the topics you want to revisit for revision.
 
 ---
+<div>
+    <AdBanner />
+</div>

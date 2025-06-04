@@ -81,6 +81,10 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
 </details>
 
 
+<div>
+    <AdBanner />
+</div>
+
 
 ## Table of Contents
 
@@ -95,6 +99,7 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
   * [Making a Script Executable](#making-a-script-executable)
 * [Reference](#references)
 
+---
   
 
 <div>
