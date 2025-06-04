@@ -49,7 +49,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="1).What is the correct way to declare a function in C++?"
-    options={['void functionName()', 'functionName() void', 'function void()', 'None of the above']}
+    options={[ 'functionName() void', 'void functionName()','function void()', 'None of the above']}
     answer="void functionName()"
   />
 
@@ -67,7 +67,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="4).Which of the following is true about function overloading in C++?"
-    options={['Functions with the same name but different parameter types can be overloaded', 'Functions with the same name and parameters cannot be overloaded', 'Function overloading is not allowed in C++', 'None of the above']}
+    options={[ 'Functions with the same name and parameters cannot be overloaded', 'Function overloading is not allowed in C++', 'Functions with the same name but different parameter types can be overloaded','None of the above']}
     answer="Functions with the same name but different parameter types can be overloaded"
   />
 
@@ -85,13 +85,13 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="7).Which of the following is a valid recursive function in C++?"
-    options={['int factorial(int n) { if (n == 0) return 1; else return n * factorial(n-1); }', 'int factorial(int n) { return n * factorial(n); }', 'int factorial(int n) { return n; }', 'None of the above']}
+    options={['int factorial(int n) { return n * factorial(n); }','int factorial(int n) { if (n == 0) return 1; else return n * factorial(n-1); }',  'int factorial(int n) { return n; }', 'None of the above']}
     answer="int factorial(int n) { if (n == 0) return 1; else return n * factorial(n-1); }"
   />
 
   <Question
     question="8).What does the `inline` keyword do in C++?"
-    options={['It tells the compiler to insert the function code directly at the point of call', 'It defines a function with no return type', 'It ensures the function is only called once', 'None of the above']}
+    options={[ 'It defines a function with no return type', 'It ensures the function is only called once', 'It tells the compiler to insert the function code directly at the point of call','None of the above']}
     answer="It tells the compiler to insert the function code directly at the point of call"
   />
 
@@ -106,11 +106,17 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['functionName(int& x)', 'functionName(&int x)', 'functionName(int* x)', 'None of the above']}
     answer="functionName(int& x)"
   />
+<<<<<<< HEAD
+  <div>
+<AdBanner />
+</div>
+=======
 
 <div>
 <AdBanner />
 </div>
 
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
   <Question
     question="11). What header file is required for using 'cin' and 'cout' in C++?"
@@ -169,7 +175,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="20). What is the default precision of floating-point numbers in 'cout'?"
-  options={['4 decimal places', '6 decimal places', '2 decimal places', '8 decimal places']}
+  options={['4 decimal places',  '2 decimal places', '8 decimal places','6 decimal places']}
   answer="6 decimal places"
 />
 
@@ -185,7 +191,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="22). How do you flush the output buffer manually?"
-  options={['cout.flush();', 'cin.flush();', 'flush();', 'None of the above']}
+  options={['cin.flush();','cout.flush();',  'flush();', 'None of the above']}
   answer="cout.flush();"
 />
 
@@ -296,6 +302,9 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['C++2024', 'C++ 2024', 'C+2024', 'Compilation Error']}
     answer="C++ 2024"
 />
+<div>
+<AdBanner />
+</div>
 
 <div>
 <AdBanner />
@@ -356,7 +365,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
     question="38)What is the purpose of cin.ignore(n, ch)?"
-    options={['Ignores n characters or until ch is encountered','Skips the next n lines','Clears the input buffer completely','None of the above']}
+    options={['Skips the next n lines','Clears the input buffer completely','Ignores n characters or until ch is encountered','None of the above']}
     answer="Ignores n characters or until ch is encountered"
 />
 
@@ -371,20 +380,26 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
     options={['1','True','true','Yes']}
     answer="true"
 />
+<<<<<<< HEAD
+<div>
+<AdBanner />
+</div>
+=======
 
 <div>
 <AdBanner />
 </div>
 
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <Question
   question="41). What does the `explicit` keyword in C++ prevent?"
-  options={['Implicit conversions', 'Function overloading', 'Template instantiation', 'Operator overloading']}
+  options={[ 'Function overloading', 'Template instantiation', 'Operator overloading','Implicit conversions']}
   answer="Implicit conversions"
 />
 
 <Question
   question="42). Which of the following is the correct way to dynamically allocate memory for an array of 5 integers?"
-  options={['int *arr = new int[5];', 'int arr = new int[5];', 'int *arr = malloc(5);', 'int arr[5] = new int;']}
+  options={[ 'int arr = new int[5];', 'int *arr = malloc(5);', 'int *arr = new int[5];','int arr[5] = new int;']}
   answer="int *arr = new int[5];"
 />
 
@@ -396,7 +411,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="44). What does the `this` pointer refer to in a class method?"
-  options={['It refers to the current object instance', 'It refers to the base class', 'It refers to the parent function', 'It refers to the memory address of main()']}
+  options={[ 'It refers to the base class', 'It refers to the parent function', 'It refers to the memory address of main()','It refers to the current object instance']}
   answer="It refers to the current object instance"
 />
 
@@ -435,11 +450,17 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['It throws a runtime error', 'It results in undefined behavior', 'Nothing happens', 'It crashes the program']}
   answer="Nothing happens"
 />
+<<<<<<< HEAD
+<div>
+<AdBanner />
+</div>
+=======
 
 <div>
 <AdBanner />
 </div>
 
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 
 
 

@@ -54,7 +54,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
   <Question
     question="2).Which of the following is used to access the value at the pointer address in C++?"
-    options={['*', '&', '#', '%']}
+    options={[ '&', '#','*', '%']}
     answer="*"
   />
 
@@ -69,7 +69,7 @@ int* ptr = &x;
 cout << *ptr;
 return 0;
 }`}
-    options={['10', 'x', 'ptr', 'Error']}
+    options={[ 'x','10', 'ptr', 'Error']}
     answer="10"
   />
 
@@ -171,7 +171,7 @@ int main() {
   cout << str[0];
   return 0;
 }`}
-  options={['W', 'o', 'Error', '0']}
+  options={[ 'o', 'Error', '0','W']}
   answer="W"
 />
 
@@ -191,7 +191,7 @@ int main() {
 
 <Question
   question="17).What is the correct way to allocate memory for a string in C++ using new?"
-  options={['char* str = new char[20];', 'char str = new char;', 'string str = new string;', 'None of the above']}
+  options={[ 'char str = new char;', 'string str = new string;','char* str = new char[20];', 'None of the above']}
   answer="char* str = new char[20];"
 />
 
@@ -249,13 +249,13 @@ int main() {
 
 <Question
   question="23).Which of these best describes pointer arithmetic?"
-  options={['It moves the pointer based on data type size', 'It adds bytes to address', 'It does nothing', 'None']}
+  options={[ 'It adds bytes to address', 'It moves the pointer based on data type size','It does nothing', 'None']}
   answer="It moves the pointer based on data type size"
 />
 
 <Question
   question="24).How do you declare a pointer to a string object in C++?"
-  options={['string* ptr;', '*string ptr;', 'ptr string*;', 'None']}
+  options={[ '*string ptr;', 'ptr string*;', 'string* ptr;','None']}
   answer="string* ptr;"
 />
 
@@ -319,7 +319,7 @@ int main() {
 
 <Question
   question="31).What is the default value of an uninitialized pointer in C++?"
-  options={['nullptr', '0', 'Random address', 'Error']}
+  options={[ '0', 'Random address', 'Error','nullptr']}
   answer="nullptr"
 />
 
@@ -331,7 +331,7 @@ int main() {
 
 <Question
   question="33).What happens if you try to dereference a pointer to a local variable after the function has returned?"
-  options={['Segmentation fault', 'The pointer will hold the last valid value', 'It will print a garbage value', 'It will not compile']}
+  options={[ 'The pointer will hold the last valid value', 'It will print a garbage value', 'Segmentation fault','It will not compile']}
   answer="Segmentation fault"
 />
 
@@ -402,7 +402,7 @@ int main() {
 
 <Question
   question="41).What is the purpose of `delete[]` in C++?"
-  options={['It deallocates memory for a dynamically allocated array', 'It frees a single dynamically allocated object', 'It marks the pointer as deleted', 'None of the above']}
+  options={[ 'It frees a single dynamically allocated object', 'It deallocates memory for a dynamically allocated array','It marks the pointer as deleted', 'None of the above']}
   answer="It deallocates memory for a dynamically allocated array"
 />
 
@@ -429,7 +429,7 @@ int main() {
   cout << ptr;
   return 0;
   }`}
-  options={['C+', 'C++', '++', 'Error']}
+  options={['C+', '++','C++', 'Error']}
   answer="C++"
 />
 

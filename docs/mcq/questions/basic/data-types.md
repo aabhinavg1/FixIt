@@ -123,7 +123,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="3).Which of the following data types is used to store a single character?"
-  options={['char', 'int', 'float', 'string']}
+  options={[ 'int', 'float', 'string','char']}
   answer="char"
 />
 
@@ -141,7 +141,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="6).Which data type would you use to store large integers in C++?"
-  options={['long long int', 'int', 'short', 'char']}
+  options={[ 'int', 'short','long long int', 'char']}
   answer="long long int"
 />
 
@@ -153,7 +153,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="8).Which of the following data types has the largest range in C++?"
-  options={['long long int', 'int', 'float', 'double']}
+  options={[ 'int', 'float', 'double','long long int',]}
   answer="long long int"
 />
 
@@ -173,7 +173,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 <AdBanner />
 </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <Question
   question="11).Which of the following is NOT a fundamental data type in C++?"
   options={['int', 'float', 'string', 'double']}
@@ -231,7 +234,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="20).Which qualifier ensures a variable cannot be modified after initialization?"
-  options={['const', 'volatile', 'mutable', 'static']}
+  options={[ 'volatile', 'const','mutable', 'static']}
   answer="const"
 />
 
@@ -248,7 +251,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="22).What is the range of a `signed char` in C++?"
-  options={['-128 to 127', '0 to 255', '-127 to 128', '-32768 to 32767']}
+  options={[ '0 to 255', '-127 to 128','-128 to 127', '-32768 to 32767']}
   answer="-128 to 127"
 />
 
@@ -272,7 +275,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="26).Which header file is required to use `std::string` in C++?"
-  options={['<string>', '<cstring>', '<string.h>', '<iostream>']}
+  options={[ '<cstring>', '<string.h>', '<iostream>','<string>']}
   answer="<string>"
 />
 
@@ -341,7 +344,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="36).Which data type would you use to store a large floating-point number in C++?"
-  options={['long double', 'double', 'float', 'None of the above']}
+  options={[ 'double', 'float','long double', 'None of the above']}
   answer="long double"
 />
 
@@ -447,7 +450,10 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   answer="char8_t"
   explanation="C++20 introduced char8_t specifically for UTF-8 character representation, distinct from the regular char type."
 />
+<<<<<<< HEAD
+=======
 
+>>>>>>> a943eb6a97bfdd0b445587ae2121355ee84f8557
 <div>
 <AdBanner />
 </div>
