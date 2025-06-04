@@ -54,7 +54,11 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
 
 [![Watch the video](https://img.youtube.com/vi/jyigdPpeoCE/maxresdefault.jpg)](https://youtu.be/jyigdPpeoCE)
 
+
+
 </details>
+---
+
 
 <div>
     <AdBanner />
@@ -83,6 +87,8 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
     <AdBanner />
 </div>
 
+
+---
 
 ## What is Bash?
 
@@ -124,11 +130,12 @@ flowchart TD
 The diagram above shows how a command flows through the Linux system using the Bash shell.
 
 ---
+
 <div>
     <AdBanner />
 </div>
  
-
+---
 
 #### Step-by-Step Breakdown:
 
@@ -153,14 +160,25 @@ The diagram above shows how a command flows through the Linux system using the B
 </details>
 
 ---
+
 <div>
     <AdBanner />
 </div>
  
+---
 
-:::cautions
+:::cautions You know What
 This flow demonstrates the layered architecture of Linux and how Bash serves as the interface between users and the underlying system.
 :::
+
+---
+
+<div>
+    <AdBanner />
+</div>
+
+---
+
 
 ## What is a Shell?
 
@@ -200,7 +218,7 @@ flowchart TD
     <AdBanner />
 </div>
  
-
+---
 ### Real-Life Example
 
 Imagine you're ordering food at a restaurant:
@@ -520,6 +538,7 @@ csh
 </div>
  
 
+---
 
 ## What is a Bash Script?
 
@@ -629,6 +648,7 @@ Since Bash is pre-installed on most Linux systems, Bash scripts don’t require 
     <AdBanner />
 </div>
  
+---
 
 ## Getting Started: Writing Your First Bash Script
 
