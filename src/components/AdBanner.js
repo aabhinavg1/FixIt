@@ -4,17 +4,33 @@ export default function AdBanner() {
   const adRef = useRef(null);
 
   useEffect(() => {
+    let retryCount = 0;
+    const maxRetries = 10;
+
     const loadAd = () => {
+      if (!adRef.current) return;
+
+      const width = adRef.current.offsetWidth;
+
+      // If the width is zero, set a default width (e.g., 300px)
+      if (width === 0) {
+        adRef.current.style.width = '300px'; // Assigning a default width
+      }
+
+      // Retry loading the ad until a valid width is detected or retry count is reached
+      if (width === 0 && retryCount < maxRetries) {
+        retryCount++;
+        setTimeout(loadAd, 300 * retryCount); // exponential backoff
+        return;
+      }
+
       try {
-        if (window.adsbygoogle && adRef.current) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
         console.error('AdSense error:', e);
       }
     };
 
-    // Inject AdSense script only once
     if (!window.adsbygoogleLoaded) {
       const script = document.createElement('script');
       script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4507855210682789';
@@ -22,11 +38,11 @@ export default function AdBanner() {
       script.crossOrigin = 'anonymous';
       script.onload = () => {
         window.adsbygoogleLoaded = true;
-        loadAd(); // Push after script loads
+        loadAd();
       };
       document.head.appendChild(script);
     } else {
-      loadAd(); // Script already loaded, push immediately
+      loadAd();
     }
   }, []);
 
