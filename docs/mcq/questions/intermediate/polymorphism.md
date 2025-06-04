@@ -76,99 +76,158 @@ import { Question } from '../../Question';
 
 <Question
   question="1).What is polymorphism in C++?"
-  options={['Ability to process objects differently based on their type', 'Inheritance of base class properties', 'A type of memory management', 'None of the above']}
+  options={[
+    'Ability to process objects differently based on their type',
+    'Inheritance of base class properties',
+    'A type of memory management',
+    'None of the above'
+  ]}
   answer="Ability to process objects differently based on their type"
 />
+
 <Question
   question="2).What are the two types of polymorphism in C++?"
-  options={['Static and Dynamic', 'Compile-time and Runtime', 'Both A and B', 'None of the above']}
+  options={[
+    'Static and Dynamic',
+    'Compile-time and Runtime',
+    'Both A and B',
+    'None of the above',
+  ]}
   answer="Both A and B"
 />
+
 <Question
   question="3).Which function is used to achieve runtime polymorphism?"
-  options={['Virtual function', 'Static function', 'Inline function', 'None of the above']}
+  options={[
+    'Inline function',
+    'Virtual function',
+    'Static function',
+    'None of the above',
+  ]}
   answer="Virtual function"
 />
+
 <Question
   question="4).What is required to make a function in a base class virtual?"
-  options={['Use the virtual keyword', 'Use the static keyword', 'Declare the function as private', 'None of the above']}
+  options={[
+    'Use the static keyword',
+    'Declare the function as private',
+    'Use the virtual keyword',
+    'None of the above',
+  ]}
   answer="Use the virtual keyword"
 />
+
 <Question
   question="5).How does C++ implement runtime polymorphism?"
-  options={['By using vtables and vptr', 'Through function overloading', 'Using templates', 'None of the above']}
+  options={[
+    'By using vtables and vptr',
+    'Using templates',
+    'Through function overloading',
+    'None of the above',
+  ]}
   answer="By using vtables and vptr"
 />
+
 <Question
   question="6).What is function overloading?"
-  options={['Same function name with different parameters', 'Multiple classes sharing the same function', 'A function calling itself', 'None of the above']}
+  options={[
+    'A function calling itself',
+    'Same function name with different parameters',
+    'Multiple classes sharing the same function',
+    'None of the above',
+  ]}
   answer="Same function name with different parameters"
 />
+
 <Question
   question="7).Can constructors be virtual in C++?"
-  options={['No', 'Yes', 'Only for abstract classes', 'None of the above']}
+  options={[
+    'Only for abstract classes',
+    'Yes',
+    'No',
+    'None of the above',
+  ]}
   answer="No"
 />
+
 <Question
   question="8).What is the difference between function overloading and overriding?"
-  options={['Overloading happens in the same class; overriding happens in inherited classes', 'Overriding requires virtual functions', 'Both A and B', 'None of the above']}
+  options={[
+    'Overriding requires virtual functions',
+    'Overloading happens in the same class; overriding happens in inherited classes',
+    'Both A and B',
+    'None of the above',
+  ]}
   answer="Both A and B"
 />
+
 <Question
   question="9).What is the purpose of the 'override' specifier in C++?"
-  options={['Ensures a function is overriding a base class function', 'Marks a function as virtual', 'Declares a function as static', 'None of the above']}
+  options={[
+    'Marks a function as virtual',
+    'Declares a function as static',
+    'Ensures a function is overriding a base class function',
+    'None of the above',
+  ]}
   answer="Ensures a function is overriding a base class function"
 />
+
 <Question
   question="10).Can a virtual function in the base class be overridden in the derived class?"
-  options={['Yes', 'No', 'Only if declared with final', 'None of the above']}
+  options={[
+    'No',
+    'Only if declared with final',
+    'Yes',
+    'None of the above',
+  ]}
   answer="Yes"
 />
+
 
 <div>
 <AdBanner />
 </div>
 
-
 <Question
   question="11).What keyword prevents further overriding of a virtual function?"
-  options={['final', 'const', 'static', 'sealed']}
+  options={['sealed', 'final', 'const', 'static']}
   answer="final"
 />
 
 <Question
   question="12).Which of the following achieves compile-time polymorphism?"
-  options={['Function overloading', 'Operator overloading', 'Templates', 'All of the above']}
+  options={['Operator overloading', 'All of the above', 'Function overloading', 'Templates']}
   answer="All of the above"
 />
 
 <Question
   question="13).What does RTTI stand for?"
-  options={['Run-Time Type Information', 'Real-Time Template Interface', 'Run-Time Type Interface', 'None of the above']}
+  options={['Run-Time Type Interface', 'Run-Time Type Information', 'Real-Time Template Interface', 'None of the above']}
   answer="Run-Time Type Information"
 />
 
 <Question
   question="14).Which operator is used in C++ for RTTI?"
-  options={['typeid', 'dynamic_cast', 'Both', 'None']}
+  options={['Both', 'typeid', 'dynamic_cast', 'None']}
   answer="Both"
 />
 
 <Question
   question="15).What will `typeid` return?"
-  options={['Type information at runtime', 'Object value', 'Function name', 'Address of variable']}
+  options={['Object value', 'Type information at runtime', 'Function name', 'Address of variable']}
   answer="Type information at runtime"
 />
 
 <Question
   question="16).Which cast is used in runtime polymorphism?"
-  options={['dynamic_cast', 'static_cast', 'const_cast', 'reinterpret_cast']}
+  options={['reinterpret_cast', 'dynamic_cast', 'static_cast', 'const_cast']}
   answer="dynamic_cast"
 />
 
 <Question
   question="17).What will happen if dynamic_cast fails?"
-  options={['Returns nullptr (for pointers)', 'Throws bad_cast (for references)', 'Crashes', 'Both A and B']}
+  options={['Crashes', 'Both A and B', 'Throws bad_cast (for references)', 'Returns nullptr (for pointers)']}
   answer="Both A and B"
 />
 
@@ -180,30 +239,30 @@ import { Question } from '../../Question';
 
 <Question
   question="19).Can you override a non-virtual function?"
-  options={['No', 'Yes', 'Only if final', 'Only with templates']}
+  options={['No', 'Only with templates', 'Only if final', 'Yes']}
   answer="No"
 />
 
 <Question
   question="20) What is the output of the following code?"
   code={`#include <iostream>
-  using namespace std;
-  class A {
-  public:
-    virtual void show() { std::cout << "A"; }
-  };
+using namespace std;
+class A {
+public:
+  virtual void show() { std::cout << "A"; }
+};
 
-  class B : public A {
-  public:
-    void show() override { std::cout << "B"; }
-  };
+class B : public A {
+public:
+  void show() override { std::cout << "B"; }
+};
 
-  int main() {
-    A* obj = new B();
-    obj->show();
-    return 0;
-  }`}
-  options={['B', 'A', 'Error', 'Undefined']}
+int main() {
+  A* obj = new B();
+  obj->show();
+  return 0;
+}`}
+  options={['Undefined', 'B', 'Error', 'A']}
   answer="B"
 />
 
@@ -213,80 +272,80 @@ import { Question } from '../../Question';
 
 <Question
   question="21).Can destructors be virtual?"
-  options={['Yes', 'No', 'Only in abstract classes', 'Only if final']}
+  options={['Only if final', 'Yes', 'Only in abstract classes', 'No']}
   answer="Yes"
 />
 
 <Question
   question="22).Why should base class destructors be virtual?"
-  options={['To ensure proper cleanup in derived classes', 'To allow overriding', 'To make base class abstract', 'None of the above']}
+  options={['To allow overriding', 'To ensure proper cleanup in derived classes', 'None of the above', 'To make base class abstract']}
   answer="To ensure proper cleanup in derived classes"
 />
 
 <Question
   question="23).Can a pure virtual function have a definition?"
-  options={['Yes', 'No', 'Only if inline', 'Only if it’s static']}
+  options={['Only if it’s static', 'Only if inline', 'No', 'Yes']}
   answer="Yes"
 />
 
 <Question
   question="24).What makes a class abstract?"
-  options={['Having at least one pure virtual function', 'Having only private data members', 'Inheriting from another class', 'Having no constructors']}
+  options={['Having no constructors', 'Having only private data members', 'Inheriting from another class', 'Having at least one pure virtual function']}
   answer="Having at least one pure virtual function"
 />
 
 <Question
   question="25).Can an abstract class have constructors?"
-  options={['Yes', 'No', 'Only if no virtual function', 'Only in base classes']}
+  options={['Only if no virtual function', 'Yes', 'No', 'Only in base classes']}
   answer="Yes"
 />
 
 <Question
   question="26).Which of the following enables polymorphism in templates?"
-  options={['Function templates', 'Class templates', 'Template specialization', 'All of the above']}
+  options={['Function templates', 'Class templates', 'All of the above', 'Template specialization']}
   answer="All of the above"
 />
 
 <Question
   question="27).What is slicing in polymorphism?"
-  options={['Losing derived class part when assigning to base', 'Dividing memory', 'Object splitting', 'Memory fragmentation']}
+  options={['Memory fragmentation', 'Losing derived class part when assigning to base', 'Object splitting', 'Dividing memory']}
   answer="Losing derived class part when assigning to base"
 />
 
 <Question
   question="28).Which specifier ensures a function is not overridden further?"
-  options={['final', 'sealed', 'const', 'static']}
+  options={['static', 'sealed', 'final', 'const']}
   answer="final"
 />
 
 <Question
   question="29).How many pure virtual functions are required to make a class abstract?"
-  options={['At least one', 'Two', 'All must be pure virtual', 'None']}
+  options={['None', 'Two', 'At least one', 'All must be pure virtual']}
   answer="At least one"
 />
 
 <Question
   question="30).What is the output?"
   code={` #include <iostream>
-  using namespace std;
-  class A {
-  public:
-    virtual void f() { std::cout << "A"; }
-  };
+using namespace std;
+class A {
+public:
+  virtual void f() { std::cout << "A"; }
+};
 
-  class B : public A {
-  public:
-    void f() override { std::cout << "B"; }
-  };
+class B : public A {
+public:
+  void f() override { std::cout << "B"; }
+};
 
-  void call(A& a) { a.f(); }
+void call(A& a) { a.f(); }
 
-  int main() {
-    B b;
-    call(b);
-    return 0;
-  }`}
-  options={['B', 'A', 'Error', 'Undefined']}
+int main() {
+  B b;
+  call(b);
+  return 0;
+}`}
+  options={['Undefined', 'B', 'A', 'Error']}
   answer="B"
 />
 
@@ -294,81 +353,80 @@ import { Question } from '../../Question';
 <AdBanner />
 </div>
 
-
 <Question
   question="31).Can a derived class object be assigned to a base class reference?"
-  options={['Yes', 'No', 'Only in static_cast', 'Only for final classes']}
+  options={['Only for final classes', 'Only in static_cast', 'Yes', 'No']}
   answer="Yes"
 />
 
 <Question
   question="32).What happens if a virtual function is not overridden in a derived class?"
-  options={['Base version is called', 'Error', 'Program crashes', 'It becomes abstract']}
+  options={['It becomes abstract', 'Error', 'Base version is called', 'Program crashes']}
   answer="Base version is called"
 />
 
 <Question
   question="33).What does 'virtual table' contain?"
-  options={['Pointers to virtual functions', 'Class variables', 'Function parameters', 'Inheritance hierarchy']}
+  options={['Class variables', 'Inheritance hierarchy', 'Function parameters', 'Pointers to virtual functions']}
   answer="Pointers to virtual functions"
 />
 
 <Question
   question="34).What is the size of an object with only one virtual function?"
-  options={['Greater due to vptr', 'Same as normal object', 'Zero', 'Cannot be determined']}
+  options={['Zero', 'Greater due to vptr', 'Cannot be determined', 'Same as normal object']}
   answer="Greater due to vptr"
 />
 
 <Question
   question="35).What is the result of dynamic dispatch?"
-  options={['Correct function is called based on object type at runtime', 'Compile-time error', 'Faster compilation', 'Memory leak']}
+  options={['Memory leak', 'Compile-time error', 'Correct function is called based on object type at runtime', 'Faster compilation']}
   answer="Correct function is called based on object type at runtime"
 />
 
 <Question
   question="36).Can polymorphism be achieved using pointers?"
-  options={['Yes', 'No', 'Only using static functions', 'Only in multiple inheritance']}
+  options={['Only using static functions', 'Only in multiple inheritance', 'No', 'Yes']}
   answer="Yes"
 />
 
 <Question
   question="37).Which of the following is NOT required for runtime polymorphism?"
-  options={['Virtual function', 'Base class pointer/reference', 'Function overriding', 'Template']}
+  options={['Template', 'Virtual function', 'Function overriding', 'Base class pointer/reference']}
   answer="Template"
 />
 
 <Question
   question="38).Which class type is used to define a common interface?"
-  options={['Abstract class', 'Base class', 'Final class', 'Friend class']}
+  options={['Friend class', 'Final class', 'Abstract class', 'Base class']}
   answer="Abstract class"
 />
 
 <Question
   question="39).What is the advantage of runtime polymorphism?"
-  options={['Flexibility and extensibility', 'Reduced code readability', 'Compile-time speed', 'Memory optimization']}
+  options={['Compile-time speed', 'Flexibility and extensibility', 'Memory optimization', 'Reduced code readability']}
   answer="Flexibility and extensibility"
 />
 
 <Question
   question="40).What is the output?"
   code={` #include <iostream>
-  using namespace std;
-  class Base {
-  public:
-    void show() { std::cout << "Base"; }
-  };
+using namespace std;
+class Base {
+public:
+  void show() { std::cout << "Base"; }
+};
 
-  class Derived : public Base {
-  public:
-    void show() { std::cout << "Derived"; }
-  };
+class Derived : public Base {
+public:
+  void show() { std::cout << "Derived"; }
+};
 
-  int main() {
-    Base* b = new Derived();
-    b->show();
-    return 0;
-  }`}
-  options={['Base', 'Derived', 'Error', 'Undefined']}
+int main() {
+  Base* b = new Derived();
+  b->show();
+  return 0;
+}`}
+  options={['Derived', 'Base', 'Undefined', 'Error']}
   answer="Base"
 />
 
@@ -376,10 +434,9 @@ import { Question } from '../../Question';
 <AdBanner />
 </div>
 
-
 <Question
   question="41).How can polymorphism help with maintainability?"
-  options={['Code is more modular and easier to extend', 'Reduces use of functions', 'Minimizes need for variables', 'None of the above']}
+  options={['Minimizes need for variables', 'Code is more modular and easier to extend', 'None of the above', 'Reduces use of functions']}
   answer="Code is more modular and easier to extend"
 />
 
@@ -391,68 +448,68 @@ import { Question } from '../../Question';
 
 <Question
   question="43).Can virtual functions be static?"
-  options={['No', 'Yes', 'Only if pure virtual', 'Only in templates']}
+  options={['No', 'Only in templates', 'Only if pure virtual', 'Yes']}
   answer="No"
 />
 
 <Question
   question="44).What is the use of dynamic_cast?"
-  options={['Safely downcast in polymorphic hierarchy', 'Allocate memory dynamically', 'Convert static to dynamic types', 'None']}
+  options={['Allocate memory dynamically', 'Convert static to dynamic types', 'None', 'Safely downcast in polymorphic hierarchy']}
   answer="Safely downcast in polymorphic hierarchy"
 />
 
 <Question
   question="45).What is the output?"
   code={`#include <iostream>
-  using namespace std;
-  class A {
-  public:
-    virtual void display() { std::cout << "A"; }
-  };
+using namespace std;
+class A {
+public:
+  virtual void display() { std::cout << "A"; }
+};
 
-  class B : public A {
-  public:
-    void display() { std::cout << "B"; }
-  };
+class B : public A {
+public:
+  void display() { std::cout << "B"; }
+};
 
-  int main() {
-    A a;
-    B b;
-    A* ptr = &b;
-    ptr->display();
-    return 0;
-  }`}
-  options={['B', 'A', 'Error', 'Undefined']}
+int main() {
+  A a;
+  B b;
+  A* ptr = &b;
+  ptr->display();
+  return 0;
+}`}
+  options={['A', 'Undefined', 'Error', 'B']}
   answer="B"
 />
 
 <Question
   question="46).Which of these prevents polymorphism?"
-  options={['Private non-virtual method', 'Using static function', 'Slicing', 'All of the above']}
+  options={['Using static function', 'All of the above', 'Private non-virtual method', 'Slicing']}
   answer="All of the above"
 />
 
 <Question
   question="47).What is the result of calling a virtual function in a constructor?"
-  options={['Base class version is called', 'Derived class version is called', 'Error', 'Undefined behavior']}
+  options={['Undefined behavior', 'Derived class version is called', 'Base class version is called', 'Error']}
   answer="Base class version is called"
 />
 
 <Question
   question="48).What is the main purpose of the `virtual` keyword in C++?"
-  options={['To define a function template', 'To allow dynamic binding', 'To declare a pure virtual function', 'To define a static method']}
+  options={['To allow dynamic binding', 'To define a static method', 'To define a function template', 'To declare a pure virtual function']}
   answer="To allow dynamic binding"
 />
 
 <Question
   question="49).Which of the following can be used to achieve polymorphism in C++?"
-  options={['Function overloading', 'Operator overloading', 'Inheritance and virtual functions', 'All of the above']}
+  options={['Operator overloading', 'Function overloading', 'All of the above', 'Inheritance and virtual functions']}
   answer="Inheritance and virtual functions"
 />
 
 <Question
   question="50).Which of the following statements is true about a pure virtual function?"
-  options={['It must have a body', 'It cannot be overridden', 'It cannot be called directly', 'It must be declared in the derived class']}
+  options={['It cannot be called directly', 'It must be declared in the derived class', 'It cannot be overridden', 'It must have a body']}
   answer="It cannot be called directly"
 />
 
