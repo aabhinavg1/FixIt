@@ -149,6 +149,10 @@ GCC uses a two-phase intermediate representation system:
 | **Industry Usage**       | Broad adoption in modern tech             | Dominant in traditional Unix/Linux | Tie    |
 | **Ease of Development**  | Easier to extend                          | More complex                       | LLVM   |
 
+
+<AdBanner />
+
+
 ## LLVM vs. GCC Architecture
 
 ```mermaid
@@ -188,6 +192,10 @@ graph TD;
 4. **JIT Support** - LLVM’s Just-In-Time compilation capability makes it the preferred choice for runtime optimization and dynamic languages.
 5. **Easier Extensibility** - LLVM's well-structured APIs enable adding support for new languages and architectures with less effort.
 
+
+<AdBanner />
+
+
 ## Viewing Compilation Passes with GCC and LLVM
 
 This section explains how to see each compilation pass on a sample testcase using GCC and LLVM. It also mentions that LLVM relies on the Clang front end.
@@ -219,6 +227,8 @@ LLVM has a separate tool known as `opt` for the middle-end and `llc` for the bac
       opt --print-passes  #to see all passes you have 
    ```
 - **Backend Pass:** `llc` is used for converting LLVM IR to target-specific assembly.
+
+ <AdBanner />
 
 ## Viewing Passes with LLVM (Clang)
 
@@ -278,6 +288,8 @@ Want to learn how LLVM works? Check out:
 
 ### 3. Can GCC compile LLVM IR?  
 No, GCC does not directly support LLVM IR. However, tools like `llvm-gcc` (deprecated) or `dragonegg` (plugin) were used in the past.  
+
+<AdBanner />
 
 For more on LLVM IR, explore:  
 - [LLVM IR Basics](http://localhost:3000/docs/llvm/llvm_basic/markdown-features)  

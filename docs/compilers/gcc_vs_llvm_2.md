@@ -1,5 +1,4 @@
 ---
-
 title: "LLVM vs GCC: Optimization Techniques & Benchmarks in Practice"
 description: "A practical guide comparing LLVM and GCC optimization levels, flags, binary performance, and real-world benchmarks. Dive into hands-on examples and learn how to choose the right compiler optimizations."
 
@@ -91,7 +90,8 @@ Welcome to **Part 2** of our LLVM vs GCC comparison series. This article focuses
 Part 1, titled ["LLVM vs GCC: Performance, Optimization, and Use Cases Compared"](https://www.compilersutra.com/docs/compilers/gcc_vs_llvm), covers architecture, IRs (LLVM IR vs GIMPLE), licensing, and modularity.
 :::
 
----
+  <AdBanner />
+
 
 ## 📚 Table of Contents
 
@@ -137,6 +137,7 @@ Compiler optimization levels control how much ***effort the compiler*** puts int
     <AdBanner />
 </div>
 
+
 ### Why Optimization Levels Matter
 
 * `-O3` and `-Ofast`: Improve runtime for compute-heavy apps
@@ -173,7 +174,7 @@ clang -### file.c
 </Tabs>
 :::
 
----
+
 
 <div>
     <AdBanner />
@@ -256,6 +257,9 @@ sudo ./install-sh
 # Step 2: Install a benchmark (e.g., Apache build)
 phoronix-test-suite install pts/build-apache
 ```
+
+<AdBanner />
+
 
 ### ▶️ Benchmark with LLVM (Clang)
 
@@ -605,6 +609,9 @@ Use `export CC=gcc` or `export CC=clang` to switch between them.
 **Clang** tends to offer clearer, more human-readable error messages and warnings. But **GCC** supports broader platform debugging tools in some embedded environments.
 
 ---
+
+ <AdBanner />
+
 
 ### 6. **What about Link-Time Optimization (LTO)?**
 
