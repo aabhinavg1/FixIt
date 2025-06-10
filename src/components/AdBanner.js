@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 
 export default function AdBanner() {
   const adRef = useRef(null);
-  const hasPushed = useRef(false);
 
   useEffect(() => {
     let retryCount = 0;
@@ -11,24 +10,22 @@ export default function AdBanner() {
     const loadAd = () => {
       if (!adRef.current) return;
 
-      let width = adRef.current.offsetWidth;
+      const width = adRef.current.offsetWidth;
 
+      // If the width is zero, set a default width (e.g., 300px)
       if (width === 0) {
-        adRef.current.style.width = '300px';
-        width = adRef.current.offsetWidth;
+        adRef.current.style.width = '300px'; // Assigning a default width
       }
 
+      // Retry loading the ad until a valid width is detected or retry count is reached
       if (width === 0 && retryCount < maxRetries) {
         retryCount++;
-        setTimeout(loadAd, 300 * retryCount);
+        setTimeout(loadAd, 300 * retryCount); // exponential backoff
         return;
       }
 
       try {
-        if (!hasPushed.current) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-          hasPushed.current = true;
-        }
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
         console.error('AdSense error:', e);
       }
@@ -43,10 +40,7 @@ export default function AdBanner() {
         window.adsbygoogleLoaded = true;
         loadAd();
       };
-
-      if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
-        document.head.appendChild(script);
-      }
+      document.head.appendChild(script);
     } else {
       loadAd();
     }
@@ -57,11 +51,10 @@ export default function AdBanner() {
       ref={adRef}
       className="adsbygoogle"
       style={{ display: 'block', width: '100%', minHeight: '100px', textAlign: 'center' }}
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
       data-ad-client="ca-pub-4507855210682789"
       data-ad-slot="4245371887"
-      data-ad-format="fluid"
-      data-ad-layout="in-article"
-      data-full-width-responsive="true"
     />
   );
 }
