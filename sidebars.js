@@ -4,21 +4,50 @@ const sidebars = {
   compilersSidebar: [
     {
       type: 'category',
-      label: 'Compilers',
+      label: 'Know Your Compiler',
+      collapsed: false,
+      items: [
+        'compilers/Compiler', // Overview
+        'compilers/front_end/compiler-frontend',
+        'compilers/front_end/role_of_parser',
+        'compilers/back_end/introduction-to-backend-compilers',
+        'compilers/flag/compiler-flags',
+        'compilers/Verification_Vs_Validation',
+        'compilers/build_your_compiler',
+        'compilers/other_arch/other-architectures',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'GCC vs LLVM',
       collapsed: true,
       items: [
-        'compilers/Compiler',                 // Overview of compilers
-        'compilers/CPU/cpu-compilers',        // Tutorials specific to CPU compilers
-        'compilers/GPU/gpu-compilers',        // Tutorials specific to GPU compilers
-        'compilers/back_end/introduction-to-backend-compilers', // Backend concepts and tutorials
-        'compilers/flag/compiler-flags',      // Compiler flags and optimizations
-        'compilers/front_end/compiler-frontend', // Frontend concepts and tutorials
-        'compilers/front_end/role_of_parser',
-        'compilers/other_arch/other-architectures', // Tutorials for other architectures
-        'compilers/gcc_vs_llvm',              // Tutorials for gcc vs llvm
-        'compilers/clang-c-vs-cpp-compilation', // Tutorials for clang c vs cpp
-        'compilers/Verification_Vs_Validation', // Tutorial for the verification vs validation
-        'compilers/build_your_compiler',      // Build compiler in 100 lines
+        'compilers/gcc_vs_llvm',
+        'compilers/gcc_vs_llvm_2',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'C vs C++ Compilation',
+      collapsed: true,
+      items: [
+        'compilers/clang-c-vs-cpp-compilation',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'CPU Compilers',
+      collapsed: true,
+      items: [
+        'compilers/CPU/cpu-compilers',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'GPU Compilers',
+      collapsed: true,
+      items: [
+        'compilers/GPU/gpu-compilers',
       ],
     },
   ],
