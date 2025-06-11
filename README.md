@@ -53,6 +53,6 @@ CompilerSutra is more than a blog or course site. It is a growing ecosystem for 
 
 # How To Contribute To The CompilerSutra
 
-Go to [Contribution.md](https://github.com/aabhinavg1/FixIt)
+Go to [Contribution.md](https://github.com/aabhinavg1/FixIt/blob/main/Contribution.md))
 
 Thank you for your interest in contributing to CompilerSutra!
