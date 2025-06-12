@@ -183,4 +183,38 @@ for (int i = 0; i < 5; i++) {
 
 ---
 
+## 6. What is the purpose of the `goto` statement in C++?
+
+The `goto` statement provides an unconditional jump to another line in the program identified by a label. It can alter the control flow, but its use is generally discouraged as it can make the code harder to read and maintain.
+
+**Syntax:**
+
+```cpp
+goto label;
+// some code
+label:
+// code to execute after jump
+```
+
+**Example:**
+
+```cpp
+int x = 0;
+
+start:
+std::cout << x << " ";
+x++;
+if (x < 5) {
+    goto start; // Jumps to the label 'start'
+}
+```
+
+### Sample Answer:
+
+"The `goto` statement is used to jump to a labeled part of the code, which can be useful for breaking deeply nested loops or handling specific error cases. However, I avoid using `goto` because it can lead to spaghetti code and reduce code clarity. Structured loops and functions are usually better alternatives."
+
+**When to use:** Use `goto` sparingly, such as in error handling in legacy code or exiting nested loops, but prefer structured control flow for better readability and maintenance.
+
+---
+
 For more interview preparation resources, visit our [C++ Tutorials](#) or contact us for personalized mentoring.
