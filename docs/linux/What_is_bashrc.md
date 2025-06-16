@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
     - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)  
     - [📘 Facebook - CompilerSutra](https://www.facebook.com/profile.php?id=61577245012547)  
     - [📝 Quora - CompilerSutra](https://compilersutra.quora.com/)  
-    
+
   </TabItem>
 
 </details>
@@ -99,7 +99,7 @@ Configuring ``aliases`` in your Linux shell is one of the ``easiest ways to boos
 :::
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -147,8 +147,9 @@ Configuring ``aliases`` in your Linux shell is one of the ``easiest ways to boos
 
 * [Summary](#summary)
 
+
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 ## Introduction to `ls` Command
@@ -276,7 +277,7 @@ Perfect for system admins and developers who want a full view of a folder.
 
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -367,7 +368,7 @@ This is useful when you're trying to **locate a specific hidden file** (like `.b
 
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -403,7 +404,7 @@ Using **aliases** can significantly reduce this friction by turning long command
 This redundancy can be avoided by creating aliases.
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -425,9 +426,8 @@ update
 ```
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
-
 
 
 ## How to Create an Alias
@@ -443,7 +443,7 @@ These aliases will not persist after you close the terminal.
 
 
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -542,7 +542,10 @@ ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
 
----
+<div>
+    <AdBanner />
+</div>
+
 
 ## Summary
 
@@ -617,6 +620,7 @@ For more tips on development and productivity, visit **CompilerSutra**.
   </TabItem>
 </Tabs>
 
+
 <div>
-  <AdBanner />
+    <AdBanner />
 </div>
