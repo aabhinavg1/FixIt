@@ -27,15 +27,20 @@ Before you begin, ensure you have the following:
    ```bash
    git clone https://github.com/<your-username>/FixIt.git
    cd FixIt
+   cd /src/pages 
+   rm  newsletter.js  # remove newsletter.js 
+   code index.js   # open index .js in any editor
    ```
    - Go to /src/pages/newsletter.js and delete the file
    - Open the file /src/pages/index.js and do the following:
       1. Comment the lines:
-      ```cpp
+
+      ```javascript
       //import NewsletterModal from '../newsletter_modal/NewsletterModal';
       //import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
       ```
-      ```cpp
+
+      ```javascript
       {/*isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />*/}
       {/* Contribution message has been removed */}
       ```
