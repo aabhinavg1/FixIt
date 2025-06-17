@@ -213,6 +213,7 @@ const sidebars = {
       items: [
         'linux/intro_to_linux',         // Introduction to Linux
         'linux/basic_of_linux',
+        'linux/What_is_bashrc',
         //'linux/linux-commands',         // Common Linux commands
         //'linux/advanced-linux',         // Advanced Linux topics
       ],
