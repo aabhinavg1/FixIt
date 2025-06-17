@@ -27,7 +27,21 @@ Before you begin, ensure you have the following:
    ```bash
    git clone https://github.com/<your-username>/FixIt.git
    cd FixIt
+   cd /src/pages 
+   rm  newsletter.js  # remove newsletter.js 
+   code index.js   # open index.js in any editor
    ```
+   - Comment the lines:
+
+      ```javascript
+      //import NewsletterModal from '../newsletter_modal/NewsletterModal';
+      //import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
+      ```
+
+      ```javascript
+      {/*isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />*/}
+      {/* Contribution message has been removed */}
+      ```
 
 3. **Create a New Branch**
 
@@ -41,9 +55,8 @@ Before you begin, ensure you have the following:
    * Follow the existing code style and structure
 
 5. **Commit Your Work**
-
    ```bash
-   git add .
+   git add path/to/your/file
    git commit -m "Brief description of your change"
    ```
 
@@ -58,6 +71,32 @@ Before you begin, ensure you have the following:
    * Navigate to your fork on GitHub
    * Click "Compare & pull request"
    * Describe your changes clearly and submit the PR
+
+---
+
+## Cleaning Up After Your PR is Merged
+
+After your pull request has been merged, you can clean up your local and remote branches with these commands:
+
+```bash
+# Switch back to main branch (or master)
+git checkout main
+
+# Pull the latest changes from upstream main branch
+git pull upstream main
+
+# Delete your feature branch locally
+git branch -d your-feature-name
+
+# Delete your feature branch from your GitHub fork
+git push origin --delete your-feature-name
+```
+
+If you haven't set upstream remote yet, add it like this:
+
+```bash
+git remote add upstream https://github.com/aabhinavg1/FixIt.git
+```
 
 ---
 
