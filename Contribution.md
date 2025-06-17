@@ -29,11 +29,9 @@ Before you begin, ensure you have the following:
    cd FixIt
    cd /src/pages 
    rm  newsletter.js  # remove newsletter.js 
-   code index.js   # open index .js in any editor
+   code index.js   # open index.js in any editor
    ```
-   - Go to /src/pages/newsletter.js and delete the file
-   - Open the file /src/pages/index.js and do the following:
-      1. Comment the lines:
+   - Comment the lines:
 
       ```javascript
       //import NewsletterModal from '../newsletter_modal/NewsletterModal';
