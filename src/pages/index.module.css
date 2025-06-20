@@ -141,3 +141,13 @@
   }
 }
   
+.heroSubtitle {
+  text-align: center !important;
+  margin: 0 auto;
+  max-width: 800px;
+  margin-bottom: 15px;
+  display: block;
+}
+.headerContainer {
+  text-align: center !important;
+}
