@@ -33,10 +33,15 @@ const HeroTitle = styled.h1`
 
 const HeroSubtitle = styled.p`
   font-size: 1.5rem;
-  color: #555; /* Darker color for better contrast */
+  color: #555;
   animation: ${fadeIn} 1.2s ease-in-out forwards;
-  opacity: 0; /* Initial opacity for fade-in effect */
-  transform: translateY(20px); /* Initial position for animation */
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* Add this to fix the alignment issue */
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
 `;
 
 const HeroButton = styled.a`
