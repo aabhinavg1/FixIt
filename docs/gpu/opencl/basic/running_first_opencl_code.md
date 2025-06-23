@@ -65,6 +65,11 @@ import AdBanner from '@site/src/components/AdBanner';
 
 #  Beginner to Expert Guide: Running Your First OpenCL Hello World Program
 
+<div>
+    <AdBanner />
+</div>
+
+     
  Welcome to your first step into the world of **OpenCL** — a powerful framework that allows you to write programs capable of running on heterogeneous computing devices such as CPUs, GPUs, and other accelerators.
 
 This guide is designed to take you from a basic understanding of how OpenCL works to confidently writing and running your first “Hello World” program using OpenCL on your local system.
@@ -140,7 +145,6 @@ Let’s begin by exploring the building blocks of OpenCL starting with kernels, 
     <AdBanner />
 </div>
 
----
 
 ## 📚 Table of Contents
 
@@ -219,7 +223,6 @@ This ID helps divide the overall task into smaller parts,  with each work-item h
 
 ## 2️⃣ Why Do We Need a Kernel?
 
----
 In ***high-performance and data-parallel computing***,  traditional sequential programming approaches often become bottlenecks. To overcome these limitations and fully utilize hardware capabilities,  **OpenCL kernels** are used to execute code in parallel across multiple processing units like GPU cores.
 
 ### Conceptual Overview
