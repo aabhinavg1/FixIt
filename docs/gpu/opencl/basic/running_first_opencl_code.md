@@ -131,9 +131,9 @@ Let’s begin by exploring the building blocks of OpenCL starting with kernels, 
 > Whether you're exploring parallel computing or targeting heterogeneous devices,  this article is the perfect launchpad.
 :::
 
-🎥 **Watch the tutorial playlist**: [CompilerSutra OpenCL Series](https://www.youtube.com/@compilersutra/playlists)
+🎥 **Watch the tutorial playlist**: [CompilerSutra OpenCL Series](https://www.youtube.com/watch?v=WstjeANBXX4&list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ&index=5)
 
-![Preview](https://img.youtube.com/vi/qj0LwiRreIU/maxresdefault.jpg)
+![Preview](https://img.youtube.com/vi/WstjeANBXX4/maxresdefault.jpg)
 )
 
 <div>
