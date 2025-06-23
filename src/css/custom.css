@@ -442,7 +442,7 @@ button.secondary:hover {
 }
 header h1 {
   font-size: 3rem;
-  color: #000;
+  color: var(--color-text);  /* uses correct light/dark color */
   margin-bottom: var(--spacing-md);
   text-align: center;
 }
