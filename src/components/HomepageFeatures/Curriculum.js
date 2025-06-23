@@ -231,23 +231,72 @@ const ButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+`;
+
 const SupportButton = styled.a`
-  padding: 10px 22px;
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
   background-color: ${({ primary }) => (primary ? '#0366d6' : '#24292F')};
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
+  color: #ffffff;
+  text-decoration: none !important;
+  border: none;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
   transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
+
+  /* Outer glow */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 
   &:hover {
-    background-color: ${({ primary }) => (primary ? '#024fa0' : '#000')};
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(3, 102, 214, 0.6), 0 0 20px rgba(3, 102, 214, 0.4);
+    background-color: ${({ primary }) => (primary ? '#0255c1' : '#000')};
+    color: #ffffff;
+  }
+
+  /* Glowing animated border effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: ${({ primary }) =>
+      primary
+        ? 'linear-gradient(135deg, #3b82f6, #60a5fa, #3b82f6)'
+        : 'linear-gradient(135deg, #555, #777, #555)'};
+    border-radius: 10px;
+    z-index: -2;
+    filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  /* Keeps inner background below the text but above glow */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ primary }) => (primary ? '#0366d6' : '#24292F')};
+    border-radius: 8px;
+    z-index: -1;
   }
 `;
 
@@ -399,18 +448,23 @@ const Curriculum = () => {
         </SupportDescription>
 
         <ButtonContainer>
-          <SupportButton primary href="https://www.compilersutra.com/learnmore/">Learn More</SupportButton>
-          <SupportButton href="https://github.com/sponsors/aabhinavg1">Become a Sponsor or Donate</SupportButton>
+          <SupportButton primary href="https://www.compilersutra.com/learnmore/">
+            <span>Learn More</span>
+          </SupportButton>
+          <SupportButton href="https://github.com/sponsors/aabhinavg1">
+            <span>Become a Sponsor or Donate</span>
+          </SupportButton>
         </ButtonContainer>
+
       </SupportSection>
 
       {/* Contribute Box */}
-      <ContributeBox>
-        <ContributeMessage>
-          🤝 Feel free to contribute! Check out our GitHub repository: 
-          <a href="https://github.com/aabhinavg1/FixIt" target="_blank" rel="noopener noreferrer"> GitHub</a>
-        </ContributeMessage>
-      </ContributeBox>
+<ContributeBox>
+  <ContributeMessage>
+    <span>🤝 Feel free to contribute! Check out our GitHub repository:</span>
+    <a href="https://github.com/aabhinavg1/FixIt" target="_blank" rel="noopener noreferrer"> GitHub</a>
+    </ContributeMessage>
+    </ContributeBox>
     </CurriculumSection>
   );
 };
