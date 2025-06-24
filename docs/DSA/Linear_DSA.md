@@ -110,6 +110,11 @@ Examples include:
 
 ---
 
+ <div>
+<AdBanner />
+</div>
+
+
 ## Types of Linear Data Structures
 
 ### 1. Arrays
@@ -173,6 +178,11 @@ In this array:
 * Storing collections of items with known size.
 * Implementing basic sorting/searching algorithms.
 * Representing matrices or fixed-size buffers.
+
+ <div>
+<AdBanner />
+</div>
+
 
 ### 2. Linked Lists
 
@@ -249,6 +259,11 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 * Handling dynamic datasets where insert/delete operations are frequent.
 
 ---
+
+  <div>
+<AdBanner />
+</div>
+
 
 ### 3. Stacks
 
@@ -331,11 +346,14 @@ print("Top after pop:", stack[-1])  # Should print 10
 </TabItem>
 </Tabs>
 
----
-
 Stacks are a fundamental concept in computer science, and understanding their behavior is essential for solving problems involving nested structures, backtracking, and function management.
 
 ---
+<div>
+<AdBanner />
+</div>
+
+ 
 
 ### 4. Queues
 
@@ -431,6 +449,10 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 
 
 ---
+<div>
+<AdBanner />
+</div>
+
 
 ## Comparison of Linear Structures
 
@@ -465,6 +487,10 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
   * Used in streaming data, network buffering, and producer-consumer problems.
 
 ---
+<div>
+<AdBanner />
+</div>
+
 
 ## Choosing the Right Structure
 
@@ -498,6 +524,10 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 * [DSA Handbook](https://compilersutra.com/docs/DSA/)
 
 ---
+<div>
+<AdBanner />
+</div>
+
 
 ## Conclusion
 
@@ -575,6 +605,11 @@ A **doubly linked list** allows traversal in both directions, as each node store
 <details>
 <summary>
 
+<div>
+<AdBanner />
+</div>
+
+
 **What is a circular linked list?**
 
 </summary>
@@ -585,7 +620,11 @@ A **circular linked list** is where the last node points back to the first node.
 </details>
 
 <details>
-<summary>
+<summary>  <div>  
+    <DSA_Book_Recommendation />  
+  </div>
+
+
 
 **What is the time complexity of basic operations in linear data structures?**
 
@@ -653,6 +692,11 @@ The number of nodes in a linked list of size `n` is exactly `n`. Each node store
 </details>
 
 ---
+
+<div>
+<AdBanner />
+</div>
+
 
 ## Further Reading
 
