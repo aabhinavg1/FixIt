@@ -62,6 +62,7 @@ const sidebars = {
         'gpu/opencl/opencl',
         'gpu/opencl/basic/what_is_opencl',
         'gpu/opencl/basic/setting_up_opencl',
+        'gpu/opencl/basic/running_first_opencl_code',
       ],
     },
   ],
