@@ -87,8 +87,14 @@ const CurriculumItem = styled.div`
   }
 
   &:hover {
+<<<<<<< HEAD
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color:rgb(234, 235, 237);
+=======
     transform: scale(1.07);
     box-shadow: 0 0 25px rgba(30, 144, 255, 0.6), 0 8px 20px rgba(70, 130, 180, 0.6);
+>>>>>>> dd6a9f34438dd09baaf0ebac91f71f3a52887edd
   }
 
   &::before {
@@ -166,56 +172,131 @@ const Shape = styled.div`
   }
 `;
 
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 // Support Section Styled Components
 const SupportSection = styled.div`
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #fff3e4;
-  border-radius: 8px;
+  margin-top: 60px;
+  padding: 25px;
+  background: linear-gradient(145deg, #f9fafb, #f0f3f7);
+  border: 1px solid #d0d7e2;
+  border-left: 5px solid #0366d6;
+  border-radius: 12px;
   color: #333;
   text-align: center;
-  max-width: 300px;
-  margin: 40px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  animation: ${fadeInUp} 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.03);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
   }
 `;
 
 const SupportTitle = styled.h3`
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  color: #1c2b39;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 `;
 
 const SupportDescription = styled.p`
-  margin: 10px 0;
-  color: #555;
-  font-size: 1rem;
+  margin: 15px 0;
+  color: #4a5568;
+  font-size: 1.05rem;
+  line-height: 1.6;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+`;
+
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 `;
 
 const SupportButton = styled.a`
-  padding: 10px 20px;
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
   background-color: ${({ primary }) => (primary ? '#0366d6' : '#24292F')};
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
+  color: #ffffff;
+  text-decoration: none !important;
+  border: none;
+  border-radius: 8px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  z-index: 0;
+  transition: all 0.3s ease;
+
+  /* Outer glow */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 
   &:hover {
-    background-color: ${({ primary }) => (primary ? '#005bb5' : '#000')};
-    transform: translateX(4px);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(3, 102, 214, 0.6), 0 0 20px rgba(3, 102, 214, 0.4);
+    background-color: ${({ primary }) => (primary ? '#0255c1' : '#000')};
+    color: #ffffff;
+  }
+
+  /* Glowing animated border effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: ${({ primary }) =>
+      primary
+        ? 'linear-gradient(135deg, #3b82f6, #60a5fa, #3b82f6)'
+        : 'linear-gradient(135deg, #555, #777, #555)'};
+    border-radius: 10px;
+    z-index: -2;
+    filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  /* Keeps inner background below the text but above glow */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ primary }) => (primary ? '#0366d6' : '#24292F')};
+    border-radius: 8px;
+    z-index: -1;
   }
 `;
 
@@ -237,8 +318,7 @@ const SupportButtonWithArrow = styled(SupportButton)`
 // Heart Icon
 const HeartIcon = styled.span`
   font-size: 1.5rem;
-  color: #333;
-  margin-right: 5px;
+  color: #0366d6;
 `;
 
 // Contribute Box Styled Components
@@ -368,18 +448,23 @@ const Curriculum = () => {
         </SupportDescription>
 
         <ButtonContainer>
-          <SupportButton primary href="https://www.compilersutra.com/learnmore/">Learn More</SupportButton>
-          <SupportButton href="https://github.com/sponsors/aabhinavg1">Become a Sponsor or Donate</SupportButton>
+          <SupportButton primary href="https://www.compilersutra.com/learnmore/">
+            <span>Learn More</span>
+          </SupportButton>
+          <SupportButton href="https://github.com/sponsors/aabhinavg1">
+            <span>Become a Sponsor or Donate</span>
+          </SupportButton>
         </ButtonContainer>
+
       </SupportSection>
 
       {/* Contribute Box */}
-      <ContributeBox>
-        <ContributeMessage>
-          🤝 Feel free to contribute! Check out our GitHub repository: 
-          <a href="https://github.com/aabhinavg1/FixIt" target="_blank" rel="noopener noreferrer"> GitHub</a>
-        </ContributeMessage>
-      </ContributeBox>
+<ContributeBox>
+  <ContributeMessage>
+    <span>🤝 Feel free to contribute! Check out our GitHub repository:</span>
+    <a href="https://github.com/aabhinavg1/FixIt" target="_blank" rel="noopener noreferrer"> GitHub</a>
+    </ContributeMessage>
+    </ContributeBox>
     </CurriculumSection>
   );
 };
