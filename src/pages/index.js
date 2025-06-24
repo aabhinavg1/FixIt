@@ -9,38 +9,38 @@ import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import AdBanner from '../components/AdBanner';
 
 function HomepageHeader({ onNotifyClick }) {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className={clsx("container", styles.headerContainer)}>
-        <Heading as="h1" className={clsx("hero__title", styles.heroTitle)}>
-          {siteConfig.title}
-        </Heading>
-        <p className={clsx("hero__subtitle", styles.heroSubtitle)}>
-          {siteConfig.tagline}
-        </p>
+    <header className={clsx('hero hero--primary', styles.heroBanner, styles.customHero)}>
+      <div className={styles.heroSlides}></div>
+      <div className={styles.overlayBox}></div>
+
+      <div className={clsx('container', styles.headerContainer)}>
+        <h1 className={clsx('hero__title', styles.heroTitle)}>{siteConfig.title}</h1>
+        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{siteConfig.tagline}</p>
+
         <div className={clsx(styles.buttons, styles.responsiveButtonContainer)}>
-          <Link className={clsx("button button--secondary button--lg", styles.primaryButton)} to="/docs/llvm/intro-to-llvm">
-            Compiler Frameworks and Toolchains ⏱️
-          </Link>
+          
           <div className={clsx(styles.buttonContainer, styles.responsiveButtonGroup)}>
             <button
               onClick={onNotifyClick}
               className={clsx(styles.bellButton, 'button button--secondary')}
             >
-              <FaBell style={{ marginRight: '5px' }} />
+              <FaBell className={styles.bellIcon} style={{ marginRight: '5px' }} />
               Notify
             </button>
-            <Link 
-              to="https://twitter.com/CompilerSutra" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link
+            style={{ color: '#fff' }}
+              to="https://twitter.com/CompilerSutra"
+              target="_blank"
+              rel="noopener noreferrer"
               className={clsx(styles.twitterButton, 'button button--secondary')}
             >
-              <FaTwitter style={{ marginRight: '5px' }} />
+              <FaTwitter className={styles.twitterIcon} style={{ marginRight: '5px', color:'#fff' }} />
               Follow
             </Link>
           </div>
@@ -70,6 +70,7 @@ export default function Home() {
         <HomepageFeatures />
         {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
         {/* Contribution message has been removed */}
+        <AdBanner />
       </main>
     </Layout>
   );
