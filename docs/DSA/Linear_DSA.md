@@ -110,8 +110,8 @@ Examples include:
 
 ---
 
- <div>
-<AdBanner />
+<div>
+        <AdBanner />
 </div>
 
 
@@ -179,8 +179,8 @@ In this array:
 * Implementing basic sorting/searching algorithms.
 * Representing matrices or fixed-size buffers.
 
- <div>
-<AdBanner />
+<div>
+        <AdBanner />
 </div>
 
 
@@ -260,8 +260,8 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 
 ---
 
-  <div>
-<AdBanner />
+<div>
+        <AdBanner />
 </div>
 
 
@@ -350,7 +350,7 @@ Stacks are a fundamental concept in computer science, and understanding their be
 
 ---
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
  
@@ -450,7 +450,7 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 
 ---
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
 
@@ -488,7 +488,7 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 
 ---
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
 
@@ -525,7 +525,7 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 
 ---
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
 
@@ -606,7 +606,7 @@ A **doubly linked list** allows traversal in both directions, as each node store
 <summary>
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
 
@@ -694,7 +694,7 @@ The number of nodes in a linked list of size `n` is exactly `n`. Each node store
 ---
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
 
