@@ -1,5 +1,5 @@
 ---
-title: "Bit Manipulation Techniques - Essential Guide 2025"
+title: "Bit Manipulation Techniques"
 description: "Master bit manipulation in programming. Learn core bitwise operations, use cases, optimization tricks, and code examples in Python and C++."
 keywords: 
 - Bit Manipulation  
