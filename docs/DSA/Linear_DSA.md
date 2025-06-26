@@ -55,15 +55,18 @@ tags:
 - CS Fundamentals  
 ---
 
-  <div>  
+<div>  
     <DSA_Book_Recommendation />  
-  </div>
+</div>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 import AdBanner from '@site/src/components/AdBanner';
 
+<div>
+    <AdBanner />
+</div>
 
 ## Table of Contents
 
@@ -71,10 +74,10 @@ import AdBanner from '@site/src/components/AdBanner';
 2. [What are Linear Data Structures?](#what-are-linear-data-structures)
 3. [Types of Linear Data Structures](#types-of-linear-data-structures)
 
-   * Arrays
-   * Linked Lists
-   * Stacks
-   * Queues
+   - [Arrays](#1-arrays)
+   - [Linked Lists](#2-linked-lists)
+   - [Stacks](#3-stacks)
+   - [Queues](#4-queues)
 4. [Comparison of Linear Structures](#comparison-of-linear-structures)
 5. [Applications of Linear Data Structures](#applications-of-linear-data-structures)
 6. [Choosing the Right Structure](#choosing-the-right-structure)
@@ -83,7 +86,9 @@ import AdBanner from '@site/src/components/AdBanner';
 9. [Conclusion](#conclusion)
 10. [Further Reading](#further-reading)
 
----
+<div>
+    <AdBanner />
+</div>
 
 ## Introduction
 
@@ -91,9 +96,9 @@ import AdBanner from '@site/src/components/AdBanner';
 
 They allow for efficient access and modification of data, especially when operations are performed in order.
 
----
-
----
+<div>
+    <AdBanner />
+</div>
 
 ## What are Linear Data Structures?
 
@@ -108,12 +113,10 @@ Examples include:
 * Stacks
 * Queues
 
----
 
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
-
 
 ## Types of Linear Data Structures
 
@@ -146,7 +149,9 @@ In this array:
 * ...
 * `arr[4]` holds `50`
 
----
+<div>
+    <AdBanner />
+</div>
 
 #### 🔧 Characteristics
 
@@ -155,7 +160,9 @@ In this array:
 * **Static Size**: The array size must be defined upfront and cannot be resized later.
 * **Homogeneous Data Type**: All elements must be of the same type (e.g., all integers).
 
----
+<div>
+    <AdBanner />
+</div>
 
 #### Advantages
 
@@ -163,7 +170,9 @@ In this array:
 * **Simplicity**: Easy to declare and use in any programming language.
 * **Cache Efficiency**: Contiguous layout optimizes cache performance in loops.
 
----
+<div>
+    <AdBanner />
+</div>
 
 #### Disadvantages
 
@@ -171,7 +180,9 @@ In this array:
 * **Insertion/Deletion is Costly**: Requires shifting elements (`O(n)`).
 * **Memory Waste**: Declaring larger-than-needed arrays may result in wasted space.
 
----
+<div>
+    <AdBanner />
+</div>
 
 ####  Use Cases
 
@@ -180,9 +191,21 @@ In this array:
 * Representing matrices or fixed-size buffers.
 
 <div>
-        <AdBanner />
+      <AdBanner />
 </div>
 
+:::caution When to use Array
+### 💡 Tip: When to Use an Array
+
+> Use an array when you:
+>
+> - Need to store **multiple items** of the **same data type**
+> - Know the **number of elements** in advance or don't need to frequently change it
+> - Require **fast access by index** (O(1) time complexity)
+> - Want **contiguous memory allocation** for better cache performance
+>
+> ❗ If you need **dynamic resizing**, consider using a `Vector` in C++ or a `List` in Python/Java instead.
+:::
 
 ### 2. Linked Lists
 
@@ -226,7 +249,6 @@ class Node:
 
 Unlike arrays, linked lists do not store elements in contiguous memory. Instead, each element points to the next, allowing for dynamic memory allocation and easier insertion/deletion.
 
----
 
 #### 🔄 Types of Linked Lists
 
@@ -234,7 +256,7 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 * **Doubly Linked List**: Each node points to both the next and previous nodes.
 * **Circular Linked List**: The last node points back to the head, forming a circle.
 
----
+
 
 #### Advantages
 
@@ -242,7 +264,7 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 * **Efficient Insert/Delete**: Insertion and deletion at the head/tail are `O(1)` operations.
 * **Memory Efficient**: Allocates memory as needed.
 
----
+
 
 #### Disadvantages
 
@@ -250,7 +272,7 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 * **Extra Memory Overhead**: Requires additional memory for pointers.
 * **More Complex Operations**: Implementation and traversal are more complex than arrays.
 
----
+
 
 #### Use Cases
 
@@ -258,18 +280,30 @@ Unlike arrays, linked lists do not store elements in contiguous memory. Instead,
 * Implementing memory management systems.
 * Handling dynamic datasets where insert/delete operations are frequent.
 
----
+
 
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
 
+:::tip
+### 💡 Tip: When to Use a Linked List
 
+> Use a linked list when you:
+>
+> - Need **frequent insertions or deletions** in the middle or beginning of the list
+> - Don’t know the total number of elements in advance
+> - Want to avoid the **overhead of resizing**, as with arrays or vectors
+> - Are okay with **sequential access** (no random access like arrays)
+>
+> ❗ If you need **fast index-based access**, a linked list is not ideal. Use an array or vector instead.
+
+:::
 ### 3. Stacks
 
 A **Stack** is a linear data structure that follows the **LIFO (Last In First Out)** principle. In this structure, the last element added to the stack is the first one to be removed. Think of it like a stack of plates: you add plates to the top and also remove them from the top.
 
----
+
 
 #### Key Operations
 
@@ -279,7 +313,9 @@ A **Stack** is a linear data structure that follows the **LIFO (Last In First Ou
 4. **empty()**: Checks whether the stack is empty.
 5. **size()**: Returns the number of elements in the stack.
 
----
+<div>
+    <AdBanner />
+</div>
 
 #### Use Cases of Stacks
 
@@ -288,7 +324,9 @@ A **Stack** is a linear data structure that follows the **LIFO (Last In First Ou
 * **Function Calls**: During recursion or nested function calls, the system uses a call stack to manage return addresses.
 * **Expression Evaluation**: Stacks help in evaluating postfix or prefix expressions.
 
----
+<div>
+    <AdBanner />
+</div>
 
 #### Stack Examples in Different Languages
 
@@ -348,12 +386,24 @@ print("Top after pop:", stack[-1])  # Should print 10
 
 Stacks are a fundamental concept in computer science, and understanding their behavior is essential for solving problems involving nested structures, backtracking, and function management.
 
----
+
 <div>
-        <AdBanner />
+  <AdBanner />
 </div>
 
- 
+ :::tip 
+ ### 💡 Tip: When to Use a Stack
+
+> Use a stack when you:
+>
+> - Need to process elements in **Last In, First Out (LIFO)** order
+> - Are implementing **undo functionality**, **backtracking**, or **recursive algorithms**
+> - Want to manage **function calls or expression evaluation**
+> - Need a simple way to **store intermediate states**
+>
+> ❗ If you need to access elements from both ends or randomly, a stack is not the right choice. Consider using a deque or another data structure.
+
+ :::
 
 ### 4. Queues
 
@@ -448,11 +498,23 @@ print("Front after pop:", q[0])  # Should print 2
 Queues are vital in managing ordered data and are frequently used in algorithms involving resource scheduling, buffering, and real-time processing.
 
 
----
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
 
+:::tip
+### 💡 Tip: When to Use a Queue
+
+> Use a queue when you:
+>
+> - Need to process elements in **First In, First Out (FIFO)** order
+> - Are handling **tasks, events, or requests** in the order they arrive
+> - Need to implement **breadth-first search (BFS)** or **job scheduling**
+> - Want a structure for **buffering** (e.g., in data streams or printers)
+>
+> ❗ If you need to insert or remove elements from both ends, consider using a deque instead of a standard queue.
+
+:::
 
 ## Comparison of Linear Structures
 
@@ -463,7 +525,7 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 | Stack       | O(n)        | O(1)          | ✅ Yes        | Backtracking, expressions  |
 | Queue       | O(n)        | O(1)          | ✅ Yes        | Scheduling, buffers        |
 
----
+
 ## Applications of Linear Data Structures
 
 * **Arrays**: Fast indexing, used in matrices and image storage.
@@ -486,9 +548,8 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
   * Essential in scheduling processes in operating systems.
   * Used in streaming data, network buffering, and producer-consumer problems.
 
----
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -523,9 +584,9 @@ Queues are vital in managing ordered data and are frequently used in algorithms 
 * [Codeforces](https://codeforces.com/)
 * [DSA Handbook](https://compilersutra.com/docs/DSA/)
 
----
+
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -535,7 +596,7 @@ Linear data structures are essential in programming, offering structured ways to
 
 Choose the appropriate structure based on your performance requirements and data access patterns to write optimal and scalable code.
 
----
+
 
 ## Linear Data Structures: Interview Questions and Answers
 
@@ -605,11 +666,6 @@ A **doubly linked list** allows traversal in both directions, as each node store
 <details>
 <summary>
 
-<div>
-        <AdBanner />
-</div>
-
-
 **What is a circular linked list?**
 
 </summary>
@@ -620,11 +676,7 @@ A **circular linked list** is where the last node points back to the first node.
 </details>
 
 <details>
-<summary>  <div>  
-    <DSA_Book_Recommendation />  
-  </div>
-
-
+<summary> 
 
 **What is the time complexity of basic operations in linear data structures?**
 
@@ -691,10 +743,9 @@ The number of nodes in a linked list of size `n` is exactly `n`. Each node store
 
 </details>
 
----
 
 <div>
-        <AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -704,4 +755,64 @@ The number of nodes in a linked list of size `n` is exactly `n`. Each node store
 * [Stacks and Queues in Detail](https://www.geeksforgeeks.org/stack-data-structure/)
 * [MIT OpenCourseWare: Data Structures](https://ocw.mit.edu/)
 * [CompilerSutra Linear DSA Module](https://compilersutra.com/docs/DSA/linear-structures)
+<Tabs>
+  <TabItem value="docs" label="📚 Documentation">
+             - [CompilerSutra Home](https://compilersutra.com)
+                - [CompilerSutra Homepage (Alt)](https://compilersutra.com/)
+                - [Getting Started Guide](https://compilersutra.com/get-started)
+                - [Newsletter Signup](https://compilersutra.com/newsletter)
+                - [Skip to Content (Accessibility)](https://compilersutra.com#__docusaurus_skipToContent_fallback)
 
+
+  </TabItem>
+
+  <TabItem value="tutorials" label="📖 Tutorials & Guides">
+
+        - [AI Documentation](https://compilersutra.com/docs/Ai)
+        - [DSA Overview](https://compilersutra.com/docs/DSA/)
+        - [DSA Detailed Guide](https://compilersutra.com/docs/DSA/DSA)
+        - [MLIR Introduction](https://compilersutra.com/docs/MLIR/intro)
+        - [TVM for Beginners](https://compilersutra.com/docs/tvm-for-beginners)
+        - [Python Tutorial](https://compilersutra.com/docs/python/python_tutorial)
+        - [C++ Tutorial](https://compilersutra.com/docs/c++/CppTutorial)
+        - [C++ Main File Explained](https://compilersutra.com/docs/c++/c++_main_file)
+        - [Compiler Design Basics](https://compilersutra.com/docs/compilers/compiler)
+        - [OpenCL for GPU Programming](https://compilersutra.com/docs/gpu/opencl)
+        - [LLVM Introduction](https://compilersutra.com/docs/llvm/intro-to-llvm)
+        - [Introduction to Linux](https://compilersutra.com/docs/linux/intro_to_linux)
+
+  </TabItem>
+
+  <TabItem value="assessments" label="📝 Assessments">
+
+        - [C++ MCQs](https://compilersutra.com/docs/mcq/cpp_mcqs)
+        - [C++ Interview MCQs](https://compilersutra.com/docs/mcq/interview_question/cpp_interview_mcqs)
+
+  </TabItem>
+
+  <TabItem value="projects" label="🛠️ Projects">
+
+            - [Project Documentation](https://compilersutra.com/docs/Project)
+            - [Project Index](https://compilersutra.com/docs/project/)
+            - [Graphics Pipeline Overview](https://compilersutra.com/docs/The_Graphic_Rendering_Pipeline)
+            - [Graphic Rendering Pipeline (Alt)](https://compilersutra.com/docs/the_graphic_rendering_pipeline/)
+
+  </TabItem>
+
+  <TabItem value="resources" label="🌍 External Resources">
+
+            - [LLVM Official Docs](https://llvm.org/docs/)
+            - [Ask Any Question On Quora](https://compilersutra.quora.com)
+            - [GitHub: FixIt Project](https://github.com/aabhinavg1/FixIt)
+            - [GitHub Sponsors Page](https://github.com/sponsors/aabhinavg1)
+
+  </TabItem>
+
+  <TabItem value="social" label="📣 Social Media">
+
+            - [🐦 Twitter - CompilerSutra](https://twitter.com/CompilerSutra)
+            - [💼 LinkedIn - CompilerSutra](https://www.linkedin.com/company/compilersutra/?viewAsMember=true/)
+            - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)
+
+  </TabItem>
+</Tabs>

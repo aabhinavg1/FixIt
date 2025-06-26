@@ -109,7 +109,7 @@ tags:
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
-import { Question } from '../../Question';  // Adjust the path to your Question.js component
+import { Question } from '../../Question'; // Adjust the path to your Question
 
 <div>
         <AdBanner />
