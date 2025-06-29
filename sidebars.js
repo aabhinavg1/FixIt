@@ -215,6 +215,7 @@ const sidebars = {
         'linux/intro_to_linux',         // Introduction to Linux
         'linux/basic_of_linux',
         'linux/What_is_bashrc',
+        'linux/Environment_variable_in_linux',
         //'linux/linux-commands',         // Common Linux commands
         //'linux/advanced-linux',         // Advanced Linux topics
       ],

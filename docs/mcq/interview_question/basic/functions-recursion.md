@@ -42,6 +42,12 @@ tags:
   - Recursion vs Iteration
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
+
+<div>
+    <AdBanner />
+</div>
+
 # Question on the Recursion in C++
 
 ## What is Recursion?
@@ -77,6 +83,9 @@ int fibonacci(int n) {
 In recursion, the base case ensures the function stops calling itself, while the recursive case solves smaller instances progressively. For example, in Fibonacci, the base cases are ``fibonacci(0)`` and ``fibonacci(1)``, while the recursive case computes ``fibonacci(n-1) + fibonacci(n-2)``
 :::
 
+<div>
+    <AdBanner />
+</div>
 
 ## What is a Recursive Function?
 
@@ -95,6 +104,10 @@ void countDown(int n) {
 A recursive function calls itself until it reaches a base case. It's commonly used in problems where the solution involves smaller subproblems of the same type.
 
 
+<div>
+    <AdBanner />
+</div>
+
 ## What is the Function Call Stack?
 
 When a recursive function is executed, each function call is added to the call stack. The function at the top of the stack executes, and once it completes, it is popped off the stack.
@@ -109,6 +122,10 @@ int sum(int n) {
 ```
 ### Sample Answer:
 The call stack stores information about active subroutines. In recursion, each call adds a new layer to the stack until the base case is reached.
+
+<div>
+    <AdBanner />
+</div>
 
 
 ## What is Divide and Conquer?
@@ -129,6 +146,9 @@ int binarySearch(int arr[], int low, int high, int key) {
 ### Sample Answer:
 Divide and Conquer splits the problem into smaller parts, solves them recursively, and merges the solutions. Binary search is a classic example.
 
+<div>
+    <AdBanner />
+</div>
 
 ## What is Backtracking?
 
@@ -150,6 +170,10 @@ bool solveMaze(int x, int y, int maze[5][5]) {
 Backtracking tries out all paths and returns as soon as it finds a solution or reaches a dead end. It's used in problems like mazes, N-Queens, and puzzles.
 
 
+<div>
+    <AdBanner />
+</div>
+
 ## What is Tail Recursion?
 
 Tail recursion is when the recursive call is the last operation in the function.
@@ -165,6 +189,10 @@ int tailSum(int n, int acc = 0) {
 ### Sample Answer:
 Tail-recursive functions can be optimized by the compiler to avoid extra stack frames, making recursion as efficient as iteration.
 
+
+<div>
+    <AdBanner />
+</div>
 
 ## What is Memoization?
 
@@ -182,6 +210,9 @@ int fib(int n, vector<int>& dp) {
 ### Sample Answer:
 Memoization avoids repeated computation by storing previously computed results. It significantly improves the performance of recursive algorithms like Fibonacci.
 
+<div>
+    <AdBanner />
+</div>
 
 ## What is Dynamic Programming?
 
@@ -202,6 +233,9 @@ int fib(int n) {
 ### Sample Answer:
 In the Fibonacci example, each call to fib(n) creates two more calls, forming a tree of recursive calls. It helps visualize how recursion unfolds.
 
+<div>
+    <AdBanner />
+</div>
 
 ## What is Recursive Problem Solving?
 
@@ -218,10 +252,18 @@ int power(int x, int n) {
 ### Sample Answer:
 Recursive problem solving is ideal for problems like power, factorial, search, and traversal, where each solution step depends on a smaller subproblem.
 
+<div>
+    <AdBanner />
+</div>
+
 
 ## What is Algorithm Optimization in Recursion?
 
 Algorithm optimization in recursion involves reducing time and space complexity using techniques like memoization, tail recursion, and pruning unnecessary calls.
+
+<div>
+    <AdBanner />
+</div>
 
 ### Example of Algorithm Optimization in Recursion
 
@@ -234,3 +276,7 @@ int powerOptimized(int x, int n) {
 ```
 ### Sample Answer:
 By avoiding redundant calls and reducing the depth of recursion, optimized recursive algorithms improve performance in problems with exponential time complexity.
+
+<div>
+    <AdBanner />
+</div>
