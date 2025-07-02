@@ -204,7 +204,7 @@ const ButtonContainer = styled.div`
 
 const SupportButton = styled.a`
   padding: 10px 20px;
-  background-color: ${({ primary }) => (primary ? '#0366d6' : '#24292F')};
+  background-color: ${({ $primary }) => ($primary ? '#0366d6' : '#24292F')};
   color: #fff;
   text-decoration: none;
   border-radius: 5px;

@@ -4,8 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-//import NewsletterModal from '../newsletter_modal/NewsletterModal';
-import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
+// import NewsletterModal from '../newsletter_modal/NewsletterModal'; // Already removed
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -52,13 +51,7 @@ function HomepageHeader({ onNotifyClick }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(true);
-
-  useEffect(() => {
-    if (!isModalOpen) {
-      setModalOpen(true);
-    }
-  }, []);
+  const [isModalOpen, setModalOpen] = useState(false); // No modal now
 
   return (
     <Layout
@@ -68,8 +61,7 @@ export default function Home() {
       <HomepageHeader onNotifyClick={() => setModalOpen(true)} />
       <main className={styles.mainContent}>
         <HomepageFeatures />
-        {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
-        {/* Contribution message has been removed */}
+        {/* NewsletterModal removed */}
       </main>
     </Layout>
   );

@@ -170,4 +170,338 @@ int main() {
 
 Understanding C++ I/O operations is essential for handling user input, file processing, and debugging. Master these concepts for a strong foundation in C++ programming.
 
-    
+## 6. How do you read and write binary files in C++?
+
+Use read() and write() methods of file streams to handle binary data.
+
+### Example:
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int num = 12345;
+
+    // Writing binary data
+    ofstream outFile("binary.dat", ios::binary);
+    outFile.write((char*)&num, sizeof(num));
+    outFile.close();
+
+    // Reading binary data
+    int readNum;
+    ifstream inFile("binary.dat", ios::binary);
+    inFile.read((char*)&readNum, sizeof(readNum));
+    inFile.close();
+
+    cout << "Number read from binary file: " << readNum << endl;
+    return 0;
+}
+```
+
+## 7. What is the purpose of flush in C++ output streams?
+
+flush forces the output buffer to write its contents immediately.
+
+### Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "This will be displayed immediately." << flush;
+    // flush is useful when output is buffered or delayed
+    return 0;
+}
+```
+
+## 8. How do you detect end-of-file (EOF) while reading a file?
+
+Use the .eof() function or check the stream state in a loop.
+
+### Example:
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("text.txt");
+    string word;
+
+    while (!file.eof()) {
+        file >> word;
+        cout << word << endl;
+    }
+
+    file.close();
+    return 0;
+}
+```
+
+## 9. How do you use seekg() and tellg() in file I/O?
+
+seekg() moves the read pointer.
+tellg() tells the current read position.
+
+### Example:
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("sample.txt");
+    file.seekg(0, ios::end);
+    int size = file.tellg();
+    file.close();
+
+    cout << "File size is " << size << " bytes." << endl;
+    return 0;
+}
+```
+
+## 10. What is the use of getline() with ifstream?
+
+To read lines from a file including spaces.
+
+### Example:
+```cpp
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream file("lines.txt");
+    string line;
+
+    while (getline(file, line)) {
+        cout << line << endl;
+    }
+
+    file.close();
+    return 0;
+}
+```
+
+## 11. How do you use stringstream for string-based I/O?
+
+stringstream allows I/O operations on strings, like parsing or formatting.
+
+### Example:
+
+```cpp
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    string input = "100 200";
+    stringstream ss(input);
+    int a, b;
+    ss >> a >> b;
+
+    cout << "First: " << a << ", Second: " << b << endl;
+    return 0;
+}
+```
+
+## 12. What are good(), bad(), fail(), and eof() in streams?
+
+These functions check the stream's state.
+
+### Example:
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("data.txt");
+
+    if (!file) {
+        cerr << "File not found!" << endl;
+    } else if (file.good()) {
+        cout << "Stream is good and ready to read." << endl;
+    }
+
+    file.close();
+    return 0;
+}
+```
+
+## 13. What is put() and get() in file streams?
+
+put() writes a single character.
+get() reads a single character.
+
+### Example:
+
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream out("char.txt");
+    out.put('A');
+    out.close();
+
+    ifstream in("char.txt");
+    char ch = in.get();
+    in.close();
+
+    cout << "Character read: " << ch << endl;
+    return 0;
+}
+```
+
+## 14. What is buffered vs unbuffered I/O in C++?
+
+Buffered I/O stores output in memory and writes in chunks (e.g., cout, clog).
+Unbuffered I/O writes directly to output (e.g., cerr).
+
+### Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Buffered output" << endl; // stored in buffer
+    cerr << "Unbuffered error" << endl; // immediate output
+    return 0;
+}
+```
+
+## 15. How do you format numbers using fixed, scientific, and setprecision?
+
+fixed – Fixed-point notation.
+scientific – Scientific notation.
+setprecision(n) – Controls number of digits.
+
+### Example:
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double num = 12345.6789;
+
+    cout << fixed << setprecision(2) << "Fixed: " << num << endl;
+    cout << scientific << setprecision(3) << "Scientific: " << num << endl;
+
+    return 0;
+}
+```
+
+## 16. How do you use hex, oct, and dec manipulators?
+
+They change the base used for output (hexadecimal, octal, decimal).
+
+### Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 255;
+
+    cout << "Decimal: " << dec << num << endl;
+    cout << "Hex: " << hex << num << endl;
+    cout << "Octal: " << oct << num << endl;
+
+    return 0;
+}
+```
+
+## 17. How do you read/write objects to a file in C++?
+
+Use write() and read() with binary mode and cast object addresses.
+
+### Examples:
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Student {
+public:
+    char name[50];
+    int age;
+};
+
+int main() {
+    Student s1 = {"Alice", 20};
+    ofstream fout("student.dat", ios::binary);
+    fout.write((char*)&s1, sizeof(s1));
+    fout.close();
+
+    Student s2;
+    ifstream fin("student.dat", ios::binary);
+    fin.read((char*)&s2, sizeof(s2));
+    fin.close();
+
+    cout << "Name: " << s2.name << ", Age: " << s2.age << endl;
+    return 0;
+}
+```
+
+## 18. How can you improve I/O performance in C++?
+
+Use std::ios::sync_with_stdio(false) to disable sync with C stdio.
+Use cin.tie(nullptr) to untie cin from cout.
+
+### Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr); // disables automatic flushing
+
+    int a;
+    cin >> a;
+    cout << "Input: " << a << endl;
+    return 0;
+}
+```
+
+## 19. How do you set fill characters using setfill()?
+
+Use it to fill empty spaces in formatted output.
+
+### Example:
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int num = 42;
+
+    cout << setfill('*') << setw(6) << num << endl; // ****42
+    return 0;
+}
+```
+
+## 20. How do you write formatted output using setw, left, right?
+
+These manipulators control field width and alignment.
+
+### Example:
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    cout << left << setw(10) << "Name" << right << setw(5) << "Age" << endl;
+    cout << left << setw(10) << "John" << right << setw(5) << 30 << endl;
+    return 0;
+}
+```
+
