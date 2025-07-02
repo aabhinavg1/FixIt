@@ -9,6 +9,7 @@ import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import AdBanner from '../components/AdBanner';
 
 function HomepageHeader({ onNotifyClick }) {
   const { siteConfig } = useDocusaurusContext();
@@ -70,6 +71,7 @@ export default function Home() {
         <HomepageFeatures />
         {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
         {/* Contribution message has been removed */}
+        <AdBanner />
       </main>
     </Layout>
   );
