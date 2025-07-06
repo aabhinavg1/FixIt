@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 //import NewsletterModal from '../newsletter_modal/NewsletterModal';
-import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
+//import NewsletterModal from './newsletter_modal_updated/NewsletterModal'
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -68,7 +68,7 @@ export default function Home() {
       <HomepageHeader onNotifyClick={() => setModalOpen(true)} />
       <main className={styles.mainContent}>
         <HomepageFeatures />
-        {isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />}
+        {/*isModalOpen && <NewsletterModal onClose={() => setModalOpen(false)} />*/}
         {/* Contribution message has been removed */}
       </main>
     </Layout>
