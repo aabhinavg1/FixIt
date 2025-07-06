@@ -406,7 +406,7 @@ Open Computing Language (OpenCL) is the open standard for parallel programming o
 ---
 
 <div>
-<AdBanner />
+  <AdBanner />
 </div>
 
 

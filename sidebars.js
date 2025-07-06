@@ -1,4 +1,4 @@
-/** @type {import('@docusaurus/types').Sidebar} */
+/** @type {import('@docusaurus/types').SidebarsConfig} */
 const sidebars = {
   // Sidebar for Compiler Tutorials
   compilersSidebar: [
@@ -7,7 +7,7 @@ const sidebars = {
       label: 'Know Your Compiler',
       collapsed: false,
       items: [
-        'compilers/Compiler', // Overview
+        'compilers/Compiler',
         'compilers/front_end/compiler-frontend',
         'compilers/front_end/role_of_parser',
         'compilers/back_end/introduction-to-backend-compilers',
@@ -63,6 +63,7 @@ const sidebars = {
         'gpu/opencl/basic/what_is_opencl',
         'gpu/opencl/basic/setting_up_opencl',
         'gpu/opencl/basic/running_first_opencl_code',
+        'gpu/opencl/basic/running_first_opencl_code_part2_a',
       ],
     },
   ],
@@ -74,10 +75,10 @@ const sidebars = {
       label: 'GPU Tutorials',
       collapsed: true,
       items: [
-        'gpu/introduction',                   // Introduction to GPU concepts
-        'gpu/optimizations',                  // GPU-specific optimization techniques
+        'gpu/introduction',
+        'gpu/optimizations',
         'gpu/evolution-of-parallel-programming',
-        'gpu/CPU_Vs_GPU'
+        'gpu/CPU_Vs_GPU',
       ],
     },
     {
@@ -86,7 +87,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/Parallel_Programming/Intro_to_Parallel_Programming',
-        'gpu/what_is_gpu'
+        'gpu/what_is_gpu',
       ],
     },
   ],
@@ -98,24 +99,24 @@ const sidebars = {
       label: 'LLVM Tutorials',
       collapsed: true,
       items: [
-        'llvm/intro-to-llvm',                 // Overview of LLVM
+        'llvm/intro-to-llvm',
         {
           type: 'category',
           label: 'LLVM Basics',
           items: [
-            'llvm/llvm_basic/Build',          // How to build LLVM
-            'llvm/llvm_basic/What_is_LLVM',   // Introduction to LLVM
-            'llvm/llvm_basic/Why_LLVM',       // Why use LLVM
-            'llvm/llvm_basic/congratulations',// Completing the basics
-            'llvm/llvm_basic/deploy-your-site', // Deployment guide
+            'llvm/llvm_basic/Build',
+            'llvm/llvm_basic/What_is_LLVM',
+            'llvm/llvm_basic/Why_LLVM',
+            'llvm/llvm_basic/congratulations',
+            'llvm/llvm_basic/deploy-your-site',
           ],
         },
         {
           type: 'category',
           label: 'LLVM Extras',
           items: [
-            'llvm/llvm_extras/manage_llvm_version', // Managing LLVM versions
-            'llvm/llvm_extras/llvm-guide',         // Additional LLVM guides
+            'llvm/llvm_extras/manage_llvm_version',
+            'llvm/llvm_extras/llvm-guide',
             'llvm/llvm_extras/llvm_pass_timing',
           ],
         },
@@ -133,23 +134,17 @@ const sidebars = {
         {
           type: 'category',
           label: 'Basic',
-          items: [
-            'c++/CppTutorial',               // Basic C++ introduction
-          ],
+          items: ['c++/CppTutorial'],
         },
         {
           type: 'category',
           label: 'Intermediate',
-          items: [
-            'c++/intermediate/IntermediateCpp',          // Intermediate C++ concepts
-          ],
+          items: ['c++/intermediate/IntermediateCpp'],
         },
         {
           type: 'category',
           label: 'Advanced',
-          items: [
-            'c++/advance/intro',              // Advanced C++ topics
-          ],
+          items: ['c++/advance/intro'],
         },
       ],
     },
@@ -175,67 +170,61 @@ const sidebars = {
       ],
     },
   ],
-  
-   // Sidebar for Python Automation and Linux Tutorials
-   pythonAutomationSidebar: [
+
+  // Sidebar for Python Automation
+  pythonAutomationSidebar: [
     {
       type: 'category',
       label: 'Python Automation',
       collapsed: true,
-      items: [
-        'python/python_tutorial',        // Introduction to Python
-        //'python/automation-basics',      // Basics of automation with Python
-        //'python/advanced-automation',    // Advanced automation techniques
-      ],
+      items: ['python/python_tutorial'],
     },
   ],
 
+  // Sidebar for DSA Tutorials
   dsaTutorialSidebar: [
     {
       type: 'category',
       label: 'DSA Tutorials',
-      collapsed: true, // You can set it to false if you want it expanded by default
+      collapsed: true,
       items: [
-        'DSA/introduction-to-dsa',         // Introduction to DSA
-        'DSA/Mathematical_Foundation',     // Mathematical Foundation
-        'DSA/DSA',                         // DSA Overview (or DSA.mdx, based on your file name)
-        'DSA/Bit_Manipulation_Technique',  // Bit Manipulation Technique
-        'DSA/Time_and_space',              // Time and Space Complexity
-        'DSA/Linear_DSA',                  // Linear Data Structures
+        'DSA/introduction-to-dsa',
+        'DSA/Mathematical_Foundation',
+        'DSA/DSA',
+        'DSA/Bit_Manipulation_Technique',
+        'DSA/Time_and_space',
+        'DSA/Linear_DSA',
       ],
     },
   ],
-  
+
+  // Sidebar for Linux Tutorials
   linuxTutorialSidebar: [
     {
       type: 'category',
       label: 'Linux Tutorials',
       collapsed: true,
       items: [
-        'linux/intro_to_linux',         // Introduction to Linux
+        'linux/intro_to_linux',
         'linux/basic_of_linux',
         'linux/What_is_bashrc',
         'linux/Environment_variable_in_linux',
-        //'linux/linux-commands',         // Common Linux commands
-        //'linux/advanced-linux',         // Advanced Linux topics
+        'linux/Declaring_Variable_In_bash',
       ],
     },
   ],
 
-  // Sidebar for Projects and Others
+  // Sidebar for Project Pages
   projectSidebar: [
     {
       type: 'category',
       label: 'Project',
       collapsed: true,
-      items: [
-        'project/Project',
-      ],
+      items: ['project/Project'],
     },
   ],
 
-  // Sidebar for MCQs and Interview Questions
-  // Sidebar for MCQs and Interview Questions
+  // Sidebar for C++ MCQs and Interview Questions
   mcqSidebar: [
     {
       type: 'category',
@@ -247,7 +236,7 @@ const sidebars = {
           label: 'Basic MCQs',
           collapsed: true,
           items: [
-            'mcq/cpp_mcqs',                  // C++ MCQs
+            'mcq/cpp_mcqs',
             'mcq/questions/basic/array-and-strings',
             'mcq/questions/basic/basic',
             'mcq/questions/basic/control-flow',
@@ -258,7 +247,7 @@ const sidebars = {
             'mcq/questions/basic/loop',
             'mcq/questions/basic/pointers-strings',
             'mcq/questions/basic/variables-and-constants',
-            'mcq/questions/basic/pointers-and-references'
+            'mcq/questions/basic/pointers-and-references',
           ],
         },
         {
@@ -306,7 +295,6 @@ const sidebars = {
             'mcq/questions/specialized/specialized',
           ],
         },
-        // Adding Interview Questions under Basic category
         {
           type: 'category',
           label: 'Interview Questions',
@@ -325,15 +313,11 @@ const sidebars = {
             'mcq/interview_question/intermediate/CppInterviewQuestionsExceptionHandling',
             'mcq/interview_question/intermediate/memory-management',
             'mcq/interview_question/intermediate/operator-overloading',
-
           ],
         },
-
-        //Adding mcq with the standard
-
         {
           type: 'category',
-          label: 'Standatd Questions',
+          label: 'Standard Questions',
           items: [
             'mcq/interview_question/cpp11/cpp11',
           ],
@@ -341,8 +325,74 @@ const sidebars = {
       ],
     },
   ],
+
+  // 🔵 Sidebar for React MCQs
+  reactMcqSidebar: [
+    {
+      type: 'category',
+      label: 'React MCQs',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'Basic React MCQs',
+          collapsed: true,
+          items: [
+            'react_mcq/react_mcq',
+            'react_mcq/basic/intro-to-react',
+            'react_mcq/basic/jsx',
+            'react_mcq/basic/components',
+            'react_mcq/basic/props-state',
+            'react_mcq/basic/events',
+            'react_mcq/basic/conditional-rendering',
+            'react_mcq/basic/lists-keys',
+            'react_mcq/basic/forms',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Intermediate React MCQs',
+          collapsed: true,
+          items: [
+            'react_mcq/intermediate/lifecycle',
+            'react_mcq/intermediate/hooks',
+            'react_mcq/intermediate/effects',
+            'react_mcq/intermediate/router',
+            'react_mcq/intermediate/lifting-state',
+            'react_mcq/intermediate/refs',
+            'react_mcq/intermediate/controlled-uncontrolled',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced React MCQs',
+          collapsed: true,
+          items: [
+            'react_mcq/advanced/custom-hooks',
+            'react_mcq/advanced/context-api',
+            'react_mcq/advanced/use-reducer',
+            'react_mcq/advanced/memoization',
+            'react_mcq/advanced/lazy-loading',
+            'react_mcq/advanced/error-boundaries',
+            'react_mcq/advanced/portals',
+            'react_mcq/advanced/suspense',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Specialized React MCQs',
+          collapsed: true,
+          items: [
+            'react_mcq/specialized/redux',
+            'react_mcq/specialized/performance',
+            'react_mcq/specialized/testing',
+            'react_mcq/specialized/typescript',
+            'react_mcq/specialized/production',
+          ],
+        },
+      ],
+    },
+  ],
 };
-
-
 
 module.exports = sidebars;

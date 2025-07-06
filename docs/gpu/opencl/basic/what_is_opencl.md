@@ -537,5 +537,5 @@ OpenCL continues to evolve with support for newer versions and better integratio
 > 🧠 Stay tuned for practical labs and tutorials where you'll write, compile, and benchmark OpenCL programs!
 
 <div>
-<AdBanner />
+   <AdBanner />
 </div>

@@ -73,8 +73,9 @@ const config = {
             label: 'MCQ',
             position: 'left',
             items: [
-              { label: 'Practice MCQ', to: '/docs/mcq/cpp_mcqs' },
-              { label: 'Practice Interview Question', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
+              { label: 'Practice MCQ CPP', to: '/docs/mcq/cpp_mcqs' },
+              { label: 'Practice Interview Question and Answer CPP', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
+              {label: 'React MCQ', to: '/docs/react_mcq'}
             ],
           },
           { href: '/newsletter', label: 'Subscribe', position: 'right' },
