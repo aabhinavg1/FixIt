@@ -1,64 +1,58 @@
-
 # CompilerSutra
 
-CompilerSutra is a platform dedicated to teaching compiler technologies, covering topics such as LLVM, GCC, TVM, MLIR, and more. Whether you are a beginner or an experienced developer, CompilerSutra provides tutorials, blog posts, and resources to help you understand and contribute to the world of compiler development.
+CompilerSutra is a technology learning platform created to simplify complex concepts across a wide range of software engineering domains. It covers everything from compilers and low-level systems programming to full-stack development, DevOps, AI, and beyond.
 
-## Installation
-
-To get started, follow these steps:
-
-```bash
-$ npm install
-```
-
-## Local Development
-
-Run the following command to start a local development server:
-
-```
-$ npm start
-```
-
-This command will open a browser window, and you can see live changes without restarting the server.
-
-## Build
-
-To build the static content:
-
-```
-$ npm run build
-```
-
-The generated static files will be available in the `build` directory, which can be deployed to any static hosting service.
-
-## Deployment
-
-To deploy using SSH:
-
-```
-$ USE_SSH=true npm run deploy
-```
-
-To deploy without SSH, use the following:
-
-```
-$ GIT_USER=<Your GitHub username> npm run deploy
-```
-
-This command builds the website and pushes it to the `gh-pages` branch of your GitHub repository.
-
-## How to Contribute
-
-Contributions are welcome! Here are a few ways you can get involved:
-
-1. **Create tutorials or improve documentation**: If you have expertise in compilers, feel free to contribute by writing tutorials, improving the existing content, or helping to expand the knowledge ase.
-
-2. **Report issues**: If you find any bugs or issues on the website, open an issue in the [GitHub repository](https://github.com/aabhinavg1/FixIt/tree/main).
-
-3. **Submit Pull Requests**: If you want to contribute code or make changes, fork the repository, create a new branch, make your changes, and submit a pull request.
-
-4. **Join discussions**: We value community input. Join us in discussions on the latest developments in compiler technologies.
-
-Follow CompilerSutra on Twitter [@CompilerSutra](https://x.com/CompilerSutra).
+The goal is to help developers — whether beginners or professionals — build a deep, practical understanding of how things work, no matter the stack or specialization.
 
 ---
+
+## Why CompilerSutra?
+
+While most tutorials are either too abstract or oversimplified, CompilerSutra focuses on practical, hands-on learning through real projects and code walkthroughs. It's designed to help you connect the dots between theory and implementation — across any technology.
+
+CompilerSutra is built by developers who’ve been through the same learning curve and want to share that knowledge with clarity and depth.
+
+---
+
+## What You’ll Learn
+
+The platform is continuously evolving and currently includes topics such as:
+
+* Compiler and systems programming (LLVM, IR, optimization)
+* GPU development and parallel programming
+* Linux internals and operating system fundamentals
+* Full-stack development and backend services
+* DevOps practices (CI/CD, containers, automation)
+* AI, ML, and data workflows
+* Coding patterns, DSA, and interview preparation
+
+You’ll also find content that spans languages like C++, Python, Java, JavaScript, and more — with the flexibility to explore whichever stack you’re working on or interested in.
+
+---
+
+## Who Should Use CompilerSutra?
+
+* Students exploring foundational concepts in software engineering
+* Developers building careers in system, backend, or full-stack roles
+* Engineers preparing for technical interviews or deep-dive projects
+* Open-source contributors and toolchain maintainers
+* Anyone who wants to go beyond surface-level understanding of tech
+
+---
+
+## How to Get Started
+
+* Visit the website: [https://compilersutra.com](https://compilersutra.com)
+* Explore real-world projects on [https://github.com/aabhinavg1/FixIt](https://github.com/aabhinavg1/FixIt)
+* Watch concept breakdowns and tutorials on YouTube
+* Subscribe to the newsletter for MCQs, insights, and early access updates
+
+CompilerSutra is more than a blog or course site. It is a growing ecosystem for serious learners and builders. Whether you're compiling code, shipping apps, deploying services, or debugging kernels, CompilerSutra helps you understand the 'why' behind the 'how.'
+
+---
+
+# How To Contribute To The CompilerSutra
+
+Go to [Contribution.md](https://github.com/aabhinavg1/FixIt/blob/main/Contribution.md)
+
+Thank you for your interest in contributing to CompilerSutra!

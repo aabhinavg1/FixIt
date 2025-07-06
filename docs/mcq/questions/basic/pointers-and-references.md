@@ -124,7 +124,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="13) Which of the following declares a reference to an integer?"
-  options={['int ref;', 'int& ref;', 'int *ref;', 'ref int;']}
+  options={['int ref;',  'int *ref;', 'ref int;','int& ref;']}
   answer="int& ref;"
 />
 
@@ -197,13 +197,13 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="23) Can a pointer point to a function?"
-  options={['Yes', 'No', 'Only in C++11', 'Only with inline functions']}
+  options={[ 'No', 'Only in C++11', 'Yes','Only with inline functions']}
   answer="Yes"
 />
 
 <Question
   question="24) Which of the following is correct syntax to define a function pointer?"
-  options={['int (*fp)(int);', 'int *fp(int);', 'int &fp(int);', 'None of the above']}
+  options={[ 'int *fp(int);','int (*fp)(int);', 'int &fp(int);', 'None of the above']}
   answer="int (*fp)(int);"
 />
 
@@ -250,7 +250,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="30) What will this return: `sizeof(int*)`?"
-  options={['2', '4', '8 (typically on 64-bit systems)', 'Size of int']}
+  options={['2', '4',  'Size of int','8 (typically on 64-bit systems)']}
   answer="8 (typically on 64-bit systems)"
 />
 
@@ -274,7 +274,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="34) What happens when you assign a reference to another variable?"
-  options={['Creates new copy', 'Creates alias', 'Copies memory', 'Nothing']}
+  options={['Creates new copy',  'Copies memory', 'Creates alias','Nothing']}
   answer="Creates alias"
 />
 
@@ -322,7 +322,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="39) How can you dynamically allocate memory for an int?"
-  options={['int* p = new int;', 'int p = new int;', 'int p = malloc(sizeof(int));', 'None']}
+  options={[ 'int p = new int;', 'int p = malloc(sizeof(int));', 'int* p = new int;','None']}
   answer="int* p = new int;"
 />
 
@@ -338,7 +338,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="41) What happens when delete is called twice on same pointer?"
-  options={['No effect', 'Undefined behavior', 'Memory leak', 'Segmentation fault']}
+  options={['No effect',  'Memory leak', 'Segmentation fault','Undefined behavior']}
   answer="Undefined behavior"
 />
 
@@ -356,7 +356,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="44) What is the base address of an array?"
-  options={['Address of first element', 'NULL', 'Address of last element', 'Size of array']}
+  options={[ 'NULL', 'Address of last element', 'Size of array','Address of first element',]}
   answer="Address of first element"
 />
 

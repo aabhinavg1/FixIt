@@ -50,7 +50,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="1).Which of the following is a built-in data type in C++?"
-  options={['int', 'string', 'list', 'vector']}
+  options={[ 'string', 'list', 'vector','int']}
   answer="int"
 />
 
@@ -74,31 +74,31 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="5).Which of the following is a non-built-in (user-defined) data type in C++?"
-  options={['struct', 'int', 'char', 'float']}
+  options={[ 'int', 'struct','char', 'float']}
   answer="struct"
 />
 
 <Question
   question="6).Which data type would you use to store large integers in C++?"
-  options={['long long int', 'int', 'short', 'char']}
+  options={[ 'int', 'short', 'long long int','char']}
   answer="long long int"
 />
 
 <Question
   question="7).Which of the following is the correct syntax to declare a pointer to an integer in C++?"
-  options={['int *p;', 'pointer int p;', 'int p*;', 'pointer *int p;']}
+  options={[ 'pointer int p;', 'int p*;', 'pointer *int p;','int *p;']}
   answer="int *p;"
 />
 
 <Question
   question="8).Which of the following data types has the largest range in C++?"
-  options={['long long int', 'int', 'float', 'double']}
+  options={[ 'int','long long int', 'float', 'double']}
   answer="long long int"
 />
 
 <Question
   question="9).What is the size of a `bool` data type in C++?"
-  options={['1 byte', '4 bytes', '8 bytes', '2 bytes']}
+  options={[ '4 bytes', '8 bytes', '1 byte','2 bytes']}
   answer="1 byte"
 />
 
@@ -120,19 +120,19 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="12).What is the result of using an uninitialized local variable in C++?"
-  options={['Undefined behavior', 'It is set to 0', 'Compilation error', 'Null value']}
+  options={[ 'It is set to 0', 'Compilation error', 'Null value','Undefined behavior']}
   answer="Undefined behavior"
 />
 
 <Question
   question="13).What does the keyword `constexpr` indicate in C++?"
-  options={['A compile-time constant', 'A run-time constant', 'A variable', 'A pointer']}
+  options={['A run-time constant','A compile-time constant',  'A variable', 'A pointer']}
   answer="A compile-time constant"
 />
 
 <Question
   question="14).Which symbol is used to denote a reference variable in C++?"
-  options={['&', '*', '@', '#']}
+  options={[ '*', '@', '&','#']}
   answer="&"
 />
 
@@ -145,7 +145,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="16).What is a variable in C++?"
-  options={['A name given to a storage location', 'A keyword', 'A type of function', 'None of the above']}
+  options={[ 'A keyword', 'A type of function', 'A name given to a storage location','None of the above']}
   answer="A name given to a storage location"
 />
 
@@ -197,7 +197,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="24).What type will the variable `auto x = 42;` be?"
-  options={['int', 'float', 'double', 'Depends on compiler settings']}
+  options={[ 'float', 'double', 'int','Depends on compiler settings']}
   answer="int"
 />
 
@@ -222,7 +222,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="28).What happens if you try to modify a `const` variable?"
-  options={['Compile-time error', 'It modifies the value', 'Runtime warning', 'Nothing']}
+  options={[ 'It modifies the value', 'Runtime warning','Compile-time error', 'Nothing']}
   answer="Compile-time error"
 />
 
@@ -245,19 +245,19 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="31).What is the default value of a global int variable in C++?"
-  options={['0', 'undefined', 'garbage', 'null']}
+  options={[ 'undefined', 'garbage', '0','null']}
   answer="0"
 />
 
 <Question
   question="32).What happens if you declare a variable as volatile in C++?"
-  options={['The compiler avoids optimizations on it', 'It becomes constant', 'It is stored in a register', 'It cannot be modified']}
+  options={['It becomes constant','The compiler avoids optimizations on it', 'It is stored in a register', 'It cannot be modified']}
   answer="The compiler avoids optimizations on it"
 />
 
 <Question
   question="33).What does the mutable keyword do in C++?"
-  options={['Allows modification of a member in a const object', 'Makes a variable constant', 'Prevents variable modification', 'Declares a static variable']}
+  options={[ 'Makes a variable constant', 'Prevents variable modification', 'Declares a static variable','Allows modification of a member in a const object']}
   answer="Allows modification of a member in a const object"
 />
 
@@ -295,7 +295,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 <Question
   question="39).What is the output of the following code?"
   code={'const int x = 5;\nint *p = (int*)&x;\n*p = 10;\ncout << x;'}
-  options={['5', '10', 'Undefined behavior', 'Compilation error']}
+  options={[ '10', 'Undefined behavior','5', 'Compilation error']}
   answer="5"
 />
 
@@ -324,7 +324,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="43).What is the difference between const and constexpr in C++?"
-  options={['constexpr is evaluated at compile time', 'const is only for integers', 'No difference', 'constexpr is runtime-only']}
+  options={['constexpr is runtime-only','constexpr is evaluated at compile time', 'const is only for integers', 'No difference']}
   answer="constexpr is evaluated at compile time"
 />
 
@@ -343,7 +343,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="46).Which of the following is true about wchar_t in C++?"
-  options={['It is used for wide characters', 'It is the same as char', 'It is deprecated', 'It is a floating-point type']}
+  options={[ 'It is the same as char', 'It is deprecated', 'It is a floating-point type','It is used for wide characters']}
   answer="It is used for wide characters"
 />
 
@@ -356,7 +356,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="48).Which of the following is not a valid way to declare a constant pointer to a constant integer?"
-  options={['const int *const p;', 'int const *const p;', 'const int const *p;', 'int const * p const;']}
+  options={[ 'int const *const p;', 'const int const *p;', 'const int *const p;','int const * p const;']}
   answer="const int const *p;"
 />
 
@@ -372,3 +372,6 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
   options={['auto', 'register', 'dynamic', 'extern']}
   answer="dynamic"
 />
+<div>
+<AdBanner />
+</div>

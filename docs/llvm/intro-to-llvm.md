@@ -28,7 +28,7 @@ tags:
 import AdBanner from '@site/src/components/AdBanner';
 
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
 
 
@@ -42,14 +42,20 @@ Start with the core concepts of LLVM, including Intermediate Representation (IR)
 
 ---
 
+<div>
+    <AdBanner />
+</div>
+
+
 ## 🔧 Intermediate
 **[Developing custom LLVM passes and optimizations.](./Intermediate/What_Is_LLVM_Passes.md)**  
 Expand your knowledge with custom pass development, static analysis, and optimizations.
 
 ---
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
+
 
 
 
@@ -60,29 +66,22 @@ Explore advanced topics in LLVM, including backend creation, JIT compilation, an
 
 ---
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
+
 
 
 ## 📖 Tools and Ecosystem
 **[Overview of LLVM tools and supporting projects.](#)**  
 Learn about essential LLVM tools like Clang, LLD, and Polly, and how they contribute to the LLVM ecosystem.
 
-<div>
-<AdBanner />
-</div>
-
-
 ---
 <div>
-<AdBanner />
+    <AdBanner />
 </div>
 
 ### 🚀 Get Started!
 Choose a category to begin your LLVM journey. Whether you’re new to compiler development or looking to enhance your expertise, there’s something here for every level.
 
 
-<div>
-<AdBanner />
-</div>
 

@@ -109,11 +109,16 @@ tags:
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
-import { Question } from '../../Question';  // Adjust the path to your Question.js component
+import { Question } from '../../Question'; // Adjust the path to your Question
+
+<div>
+        <AdBanner />
+</div>
+
 
   <Question
     question="1).Which of the following is the correct syntax to declare an array in C++?"
-    options={['int arr[];', 'int[] arr;', 'array<int> arr;', 'None of the above']}
+    options={['int[] arr;', 'array<int> arr;', 'int arr[];','None of the above']}
     answer="int arr[];"
   />
 
@@ -179,19 +184,20 @@ return 0;
 
   <Question
     question="9).How do you access the third element of an array `arr[]` in C++?"
-    options={['arr[2]', 'arr[3]', 'arr(2)', 'arr(3)']}
+    options={['arr[3]', 'arr(2)', 'arr(3)','arr[2]']}
     answer="arr[2]"
   />
 
   <Question
     question="10).What is the correct way to declare a multidimensional array in C++?"
-    options={['int arr[3][3];', 'int arr[3,3];', 'int arr[3, 3] = {};', 'None of the above']}
+    options={['int arr[3,3];', 'int arr[3, 3] = {};', 'None of the above']}
     answer="int arr[3][3];"
   />
   
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="11).Which header file is needed to use the strlen() function in C++?"
@@ -256,8 +262,9 @@ return 0;
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="21).What will this code output?"
@@ -275,7 +282,7 @@ return 0;
   <Question
     question="23).What is the output of this code?"
     code={`string s = "Code";\ns += "Sutra";\ncout << s;`}
-    options={['Code Sutra', 'CodeSutra', 'Error', 'SutraCode']}
+    options={['Code Sutra',  'Error', 'SutraCode','CodeSutra',]}
     answer="CodeSutra"
   />
 
@@ -323,8 +330,9 @@ return 0;
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
+
 
   <Question
     question="31).What will be the output of the following code?"
@@ -435,7 +443,7 @@ question="34).What does this code output?"
   />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>
 
   <Question
@@ -531,5 +539,5 @@ question="34).What does this code output?"
 />
 
 <div>
-<AdBanner />
+        <AdBanner />
 </div>

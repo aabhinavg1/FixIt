@@ -88,19 +88,19 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="7).In C++, which of the following types is used for dynamic memory allocation?"
-  options={['new', 'malloc', 'alloc', 'allocmem']}
+  options={['malloc', 'alloc', 'allocmem','new']}
   answer="new"
 />
 
 <Question
   question="8).Which of the following is the correct way to comment a single line in C++?"
-  options={['// This is a comment', '/* This is a comment */', '<!-- This is a comment -->', '# This is a comment']}
+  options={['/* This is a comment */', '<!-- This is a comment -->', '# This is a comment','// This is a comment',]}
   answer="// This is a comment"
 />
 
 <Question
   question="9).Which of the following is the correct syntax to declare a constant in C++?"
-  options={['const int x = 10;', 'int x const = 10;', 'constant int x = 10;', 'x = const 10;']}
+  options={['int x const = 10;', 'const int x = 10;','constant int x = 10;', 'x = const 10;']}
   answer="const int x = 10;"
 />
 
@@ -119,13 +119,13 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="11). Which keyword is used to define a constant in C++?"
-  options={['final', 'const', 'static', 'immutable']}
+  options={['final',  'static','const', 'immutable']}
   answer="const"
 />
 
 <Question
   question="12). What does `return 0` do in `main()` function?"
-  options={['Returns 0 to the console', 'Ends the program successfully', 'Causes an error', 'Stops all loops']}
+  options={['Returns 0 to the console',  'Causes an error', 'Stops all loops','Ends the program successfully']}
   answer="Ends the program successfully"
 />
 
@@ -137,7 +137,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="14). What is the result of dividing two integers in C++?"
-  options={['Float', 'Integer division', 'Error', 'None of the above']}
+  options={['Integer division','Float',  'Error', 'None of the above']}
   answer="Integer division"
 />
 
@@ -161,7 +161,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="18). What is the correct way to declare an array in C++?"
-  options={['int arr[10];', 'arr int[10];', 'int[10] arr;', 'array arr(10);']}
+  options={['arr int[10];', 'int[10] arr;','int arr[10];', 'array arr(10);']}
   answer="int arr[10];"
 />
 
@@ -224,13 +224,13 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="27). What does the `new` keyword do in C++?"
-  options={['Allocates memory on the stack', 'Allocates memory on the heap', 'Creates a new function', 'Creates a new class']}
+  options={['Allocates memory on the stack',  'Creates a new function', 'Creates a new class','Allocates memory on the heap',]}
   answer="Allocates memory on the heap"
 />
 
 <Question
   question="28). Which of the following is the correct syntax for defining a function in C++?"
-  options={['function_name() {}', 'void function_name() {}', 'def function_name() {}', 'function function_name() {}']}
+  options={['function_name() {}',  'def function_name() {}', 'void function_name() {}','function function_name() {}']}
   answer="void function_name() {}"
 />
 
@@ -288,7 +288,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="37). What does the `++` operator do?"
-  options={['Increments a variable by 1', 'Adds two numbers', 'Concatenates strings', 'Creates a new variable']}
+  options={['Adds two numbers', 'Concatenates strings', 'Creates a new variable','Increments a variable by 1']}
   answer=" Increments a variable by 1"
 />
 
@@ -315,7 +315,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="41). Which of the following is the correct way to call a base class function from a derived class in C++?"
-  options={['base::function()', 'super::function()', 'this::function()', 'base.function()']}
+  options={['super::function()', 'this::function()', 'base.function()','base::function()',]}
   answer="base::function()"
 />
 
@@ -327,7 +327,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="43). Which of the following is the correct syntax for declaring a function pointer in C++?"
-  options={['void (*func_ptr)();', 'void func_ptr()', 'func_ptr void ();', 'None of the above']}
+  options={['void func_ptr()', 'func_ptr void ();', 'void (*func_ptr)();', 'None of the above']}
   answer="void (*func_ptr)();"
 />
 
@@ -339,7 +339,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="45). Which of the following is a feature of C++?"
-  options={['Object-oriented programming', 'Automatic garbage collection', 'Multi-platform support', 'All of the above']}
+  options={['Automatic garbage collection','Object-oriented programming', 'Multi-platform support', 'All of the above']}
   answer="Object-oriented programming"
 />
 
@@ -363,7 +363,7 @@ import { Question } from '../../Question';  // Adjust the path to your Question.
 
 <Question
   question="49). Which of the following is the correct way to define a default constructor in C++?"
-  options={['MyClass() {}', 'MyClass(void) {}', 'MyClass()', 'All of the above']}
+  options={['MyClass(void) {}', 'MyClass()','MyClass() {}', 'All of the above']}
   answer="MyClass() {}"
 />
 

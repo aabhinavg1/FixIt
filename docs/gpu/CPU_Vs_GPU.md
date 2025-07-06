@@ -32,7 +32,7 @@ import Parallel_Programming from './Parallel_Programming/Parallel_Progamming_Boo
 
 <div>  
     <Parallel_Programming />  
-  </div>  
+</div>  
 
 ---
 ## Introduction
