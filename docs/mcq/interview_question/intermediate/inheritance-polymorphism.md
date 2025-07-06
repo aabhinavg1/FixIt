@@ -265,5 +265,344 @@ int main() {
 
 ---
 
-For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`."
+## **7. What is the difference between public, protected, and private inheritance?**
 
+### **Example:**
+```cpp
+class Base {
+public:
+    int x;
+protected:
+    int y;
+private:
+    int z;
+};
+
+class DerivedPublic : public Base { /* x-public, y-protected */ };
+class DerivedProtected : protected Base { /* x,y-protected */ };
+class DerivedPrivate : private Base { /* x,y-private */ };
+```
+
+### **Sample Answer:**
+"Public inheritance keeps base members' access the same, protected changes public/protected members to protected, private changes them to private."
+
+**When to use:** Use public inheritance for “is-a” relationships, others to restrict access.
+
+---
+
+## **8. What is constructor inheritance in C++?**
+
+### **Example:**
+```cpp
+class Base {
+public:
+    Base(int x) { std::cout << "Base constructor: " << x << std::endl; }
+};
+
+class Derived : public Base {
+public:
+    using Base::Base; // inherit constructors
+};
+
+int main() {
+    Derived d(5); // calls Base constructor
+}
+```
+
+###  *Sample Answer:**
+"Derived classes can reuse base class constructors using `using Base::Base;`."
+
+**When to use:** Use to simplify derived class construction.
+
+---
+
+## **9. Why should destructors be virtual?**
+
+### **Sample Answer:**
+"To ensure proper cleanup of derived objects when deleted via base class pointers."
+
+**When to use:** Always in polymorphic base classes.
+
+---
+
+## **10. What is a pure virtual destructor?**
+
+### **Example:**
+```cpp
+class Base {
+public:
+    virtual ~Base() = 0; // pure virtual destructor
+};
+
+Base::~Base() { std::cout << "Base destructor\n"; }
+```
+
+### **Sample Answer:**
+"A pure virtual destructor makes the class abstract but still requires an implementation."
+
+---
+
+## **11. What is object slicing and how to avoid it?**
+
+### **Sample Answer:**
+"Assigning a derived object to a base object copies only base part, losing derived data. Avoid by using pointers or references."
+
+---
+
+## **12. What is method overriding?**
+
+### **Sample Answer:**
+"Redefining a base class virtual function in a derived class to provide specific behavior."
+
+---
+
+## **13. What is method hiding?**
+
+### **Sample Answer:**
+"When a derived class declares a function with the same name but different signature, hiding base class methods."
+
+---
+
+## **14. How does `dynamic_cast` work?**
+
+### **Sample Answer:**
+"Performs safe runtime casts between polymorphic types, returning nullptr if cast fails."
+
+---
+
+## **15. Difference between `dynamic_cast` and `static_cast`?**
+
+### **Sample Answer:**
+"`dynamic_cast` checks types at runtime; `static_cast` performs unchecked compile-time casts."
+
+---
+
+## **16. What is the diamond problem?**
+
+### **Sample Answer:**
+"Ambiguity from multiple inheritance when two base classes inherit the same ancestor."
+
+---
+
+## **17. How to solve the diamond problem?**
+
+### **Sample Answer:**
+"Use virtual inheritance to share a single base class instance."
+
+---
+
+## **18. What is virtual inheritance?**
+
+### **Sample Answer:**
+"Ensures only one copy of the base class exists when inherited multiple times."
+
+---
+
+## **19. Can constructors be virtual?**
+
+### **Sample Answer:**
+"No, constructors cannot be virtual."
+
+---
+
+## **20. What is the role of the `override` keyword?**
+
+### **Sample Answer:**
+"Ensures the method overrides a base virtual function and helps catch errors."
+
+---
+
+## **21. How do you call a base class method from a derived class?**
+
+### **Example:**
+```cpp
+void Derived::show() {
+    Base::show();
+}
+```
+
+---
+
+## **22. What is covariant return type?**
+
+### **Sample Answer:**
+"Derived classes can override virtual functions to return pointers or references to derived types."
+
+---
+
+## **23. What is the difference between early binding and late binding?**
+
+### **Sample Answer:**
+"Early binding happens at compile-time for non-virtual functions; late binding happens at runtime for virtual functions."
+
+---
+
+## **24. What is a virtual table (vtable)?**
+
+### **Sample Answer:**
+
+"A mechanism used by C++ to support dynamic dispatch of virtual functions."
+
+---
+
+## **25. Can virtual functions be private?**
+
+### **Sample Answer:**
+"Yes, virtual functions can be private or protected."
+
+---
+
+## **26. What happens if base class destructor is not virtual?**
+
+### **Sample Answer:**
+"Deleting derived class objects via base pointers leads to undefined behavior."
+
+---
+
+## **27. How does polymorphism improve code flexibility?**
+
+### **Sample Answer:**
+"Allows working with base pointers/references while executing derived class methods."
+
+---
+
+## **28. What is interface inheritance?**
+
+### **Sample Answer:**
+"Inheriting pure virtual functions only, defining an interface."
+
+---
+
+## **29. What is implementation inheritance?**
+
+### **Sample Answer:**
+"Inheriting concrete implementations (methods and data)."
+
+---
+
+## **30. What are the access specifiers in inheritance?**
+
+### **Sample Answer:**
+"`public`, `protected`, and `private` control access to base class members in derived classes."
+
+---
+
+## **31. How can multiple inheritance cause ambiguity?**
+
+### **Sample Answer:**
+"If two base classes have a method with the same name, calls become ambiguous."
+
+---
+
+## **32. How to resolve ambiguity from multiple inheritance?**
+
+### **Sample Answer:**
+"Use scope resolution or virtual inheritance."
+
+---
+
+## **33. Can you inherit from a final class?**
+
+### **Sample Answer:**
+"No, `final` classes cannot be derived."
+
+---
+
+## **34. Why prefer composition over inheritance?**
+
+### **Sample Answer:**
+"Composition offers better flexibility and avoids tight coupling."
+
+---
+
+## **35. What is runtime polymorphism in C++?**
+
+### **Example:**
+```cpp
+class Animal {
+public:
+    virtual void speak() { std::cout << "Animal speaks\n"; }
+};
+
+class Dog : public Animal {
+public:
+    void speak() override { std::cout << "Dog barks\n"; }
+};
+
+int main() {
+    Animal* a = new Dog();
+    a->speak();  // Outputs: Dog barks
+    delete a;
+}
+```
+
+### **Sample Answer:**
+"Runtime polymorphism uses virtual functions to determine the method call at runtime based on the object type."
+
+**When to use:** Use when you want behavior to vary depending on the derived object type at runtime.
+
+---
+
+## **36. What is compile-time polymorphism in C++?**
+
+### **Example:**
+```cpp
+class Calculator {
+public:
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+};
+```
+
+### **Sample Answer:**
+"Compile-time polymorphism is achieved through function overloading or operator overloading."
+
+**When to use:** Use when operations share a name but differ by parameter type or number.
+
+---
+
+## **37. Can polymorphism be achieved without inheritance?**
+
+### **Sample Answer:**
+"Compile-time polymorphism (like function overloading or templates) can be used without inheritance, but runtime polymorphism requires inheritance and virtual functions."
+
+**When to use:** Use non-inheritance polymorphism when behavior can be resolved at compile-time.
+
+---
+
+## **38. How does polymorphism support open/closed principle?**
+
+### **Sample Answer:**
+"Polymorphism allows adding new behavior via derived classes without changing existing base class code."
+
+**When to use:** Use when designing systems meant to be extended without modifying stable code.
+
+---
+
+## **39. What is the difference between polymorphism and inheritance?**
+
+### **Sample Answer:**
+"Inheritance enables reuse of code; polymorphism enables dynamic behavior. Inheritance is a prerequisite for runtime polymorphism."
+
+**When to use:** Use inheritance for structure, and polymorphism for behavior variation.
+
+---
+
+## **40. Can templates be used with polymorphism?**
+
+### **Example:**
+```cpp
+template<typename T>
+void printType(const T& obj) {
+    obj.show();
+}
+```
+
+### **Sample Answer:**
+"Templates provide compile-time polymorphism. They allow the same function to work with different types."
+
+**When to use:** Use templates when behavior is known at compile-time and doesn’t require runtime dispatch.
+
+---
+
+For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`."
