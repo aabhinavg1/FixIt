@@ -56,6 +56,8 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AdBanner from '@site/src/components/AdBanner';
+import InfolinksScript from '@site/src/components/InfolinksScript';
+
 
 <div>
     <AdBanner />
@@ -63,6 +65,8 @@ import AdBanner from '@site/src/components/AdBanner';
 
 
 # Detect Your GPU Device Using OpenCL
+
+<InfolinksScript />
 
 
 Welcome to your next step in mastering **OpenCL**  a powerful framework for running code across a range of devices, including GPUs, CPUs, and other accelerators.
