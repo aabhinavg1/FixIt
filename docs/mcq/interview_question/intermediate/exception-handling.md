@@ -178,4 +178,363 @@ try {
 
 ---
 
+## **5. What is the role of `try` block in exception handling?**
+
+### **Example:**
+```cpp
+try {
+    int x = 5;
+    if (x == 5) throw std::runtime_error("Error: x cannot be 5");
+}
+```
+
+### **Sample Answer:**
+"The `try` block contains code that might throw exceptions. It lets me test code and handle any exceptions that occur."
+
+**When to use:** Use `try` around code segments where exceptions might happen.
+
+---
+
+## **6. What is the role of `catch` block?**
+
+### **Example:**
+```cpp
+try {
+    throw std::string("Error occurred");
+} catch (const std::string& e) {
+    std::cout << "Caught exception: " << e << std::endl;
+}
+```
+
+### **Sample Answer:**
+"The `catch` block handles exceptions thrown in the `try` block, allowing graceful error recovery."
+
+**When to use:** Use `catch` to handle specific exceptions after a `try` block.
+
+---
+
+## **7. What does the `throw` keyword do?**
+
+### **Example:**
+```cpp
+if (value < 0) throw std::invalid_argument("Negative value not allowed");
+```
+
+### **Sample Answer:**
+"`throw` signals that an error has occurred by raising an exception."
+
+**When to use:** Use `throw` to signal an error condition or exceptional event.
+
+---
+
+## **8. What happens if an exception is not caught?**
+
+### **Sample Answer:**
+"If an exception is not caught, the program calls `std::terminate` and usually crashes."
+
+**When to use:** Always catch exceptions or ensure they propagate to a safe handler.
+
+---
+
+## **9. Can you catch multiple exceptions? How?**
+
+### **Example:**
+```cpp
+try {
+    // code
+} catch (const std::out_of_range& e) {
+    std::cout << "Out of range error\n";
+} catch (const std::invalid_argument& e) {
+    std::cout << "Invalid argument error\n";
+}
+```
+
+### **Sample Answer:**
+"I can have multiple `catch` blocks to handle different exception types separately."
+
+**When to use:** Use multiple catches for specific handling of different errors.
+
+---
+
+## **10. What is a catch-all handler?**
+
+### **Example:**
+```cpp
+try {
+    // code
+} catch (...) {
+    std::cout << "Unknown exception caught\n";
+}
+```
+
+### **Sample Answer:**
+"A catch-all handler `catch(...)` catches any exception not caught by earlier catch blocks."
+
+**When to use:** Use it as a safety net for unknown exceptions.
+
+---
+
+## **11. How does stack unwinding work during exceptions?**
+
+### **Sample Answer:**
+"Stack unwinding destroys local objects as the exception propagates, ensuring proper cleanup."
+
+**When to use:** Understand this when managing resources manually during exceptions.
+
+---
+
+## **12. What is RAII and how does it relate to exception handling?**
+
+### **Sample Answer:**
+"RAII ties resource lifetimes to object lifetimes, ensuring automatic cleanup during stack unwinding."
+
+**When to use:** Use RAII to manage resources safely with exceptions.
+
+---
+
+## **13. What is the difference between `throw` and `throw;`?**
+
+### **Sample Answer:**
+"`throw` raises a new exception, while `throw;` rethrows the current exception inside a catch block."
+
+**When to use:** Use `throw;` to propagate exceptions further.
+
+---
+
+## **14. Can you catch exceptions by value, pointer, or reference? Which is preferred?**
+
+### **Sample Answer:**
+"Catching by `const reference` is preferred to avoid slicing and copying."
+
+**When to use:** Always catch exceptions as `const T&`.
+
+---
+
+## **15. What is `std::exception`?**
+
+### **Sample Answer:**
+"`std::exception` is the base class for all standard C++ exceptions."
+
+**When to use:** Catch `const std::exception&` to handle all standard exceptions.
+
+---
+
+## **16. Can you catch exceptions of different types using a single catch block?**
+
+### **Sample Answer:**
+"No, each catch handles one exception type, but you can catch by a base class."
+
+**When to use:** Catch by a common base class to handle multiple exception types.
+
+---
+
+## **17. What is `noexcept` and when should it be used?**
+
+### **Example:**
+```cpp
+void foo() noexcept {
+    // This function promises not to throw exceptions
+}
+```
+
+### **Sample Answer:**
+"`noexcept` indicates a function does not throw exceptions, helping optimization and program safety."
+
+**When to use:** Use `noexcept` on functions that won't throw.
+
+---
+
+## **18. Can constructors throw exceptions?**
+
+### **Sample Answer:**
+"Yes, constructors can throw exceptions if initialization fails."
+
+**When to use:** Be cautious and use RAII to manage resources during construction.
+
+---
+
+## **19. How to handle exceptions in destructors?**
+
+### **Sample Answer:**
+"Destructors should not throw exceptions; if they do, it can cause `std::terminate`."
+
+**When to use:** Catch and handle exceptions inside destructors.
+
+---
+
+## **20. What is stack unwinding?**
+
+### **Sample Answer:**
+"Stack unwinding is the process of calling destructors for all local objects as an exception propagates."
+
+**When to use:** Understand for resource cleanup during exceptions.
+
+---
+
+## **21. What happens if an exception is thrown during stack unwinding?**
+
+### **Sample Answer:**
+"If an exception is thrown during stack unwinding, the program terminates."
+
+**When to use:** Avoid throwing exceptions in destructors.
+
+---
+
+## **22. Can exceptions cross shared library boundaries?**
+
+### **Sample Answer:**
+"It depends on compiler and ABI; generally yes but with caution."
+
+**When to use:** Be careful with exceptions in mixed binary environments.
+
+---
+
+## **23. What is `std::bad_alloc`?**
+
+### **Sample Answer:**
+"`std::bad_alloc` is thrown when `new` fails to allocate memory."
+
+**When to use:** Handle memory allocation failures.
+
+---
+
+## **24. How do you disable exceptions globally?**
+
+### **Sample Answer:**
+"By compiling with `-fno-exceptions` (in GCC), but it's not recommended."
+
+**When to use:** Only in embedded or performance-critical systems.
+
+---
+
+## **25. What is the difference between checked and unchecked exceptions?**
+
+### **Sample Answer:**
+"C++ only has unchecked exceptions; no enforced compile-time checking."
+
+**When to use:** Understand difference from other languages like Java.
+
+---
+
+## **26. Can you catch exceptions thrown from within a `noexcept` function?**
+
+### **Sample Answer:**
+"No; if a `noexcept` function throws, `std::terminate` is called."
+
+**When to use:** Ensure `noexcept` functions do not throw.
+
+---
+
+## **27. What is the purpose of `std::terminate()`?**
+
+### **Sample Answer:**
+"It is called when an exception is not caught or thrown during stack unwinding."
+
+**When to use:** Understand as the program’s abrupt exit point.
+
+---
+
+## **28. How to rethrow an exception?**
+
+### **Example:**
+```cpp
+catch (const std::exception& e) {
+    std::cout << "Handling exception\n";
+    throw;  // Rethrow the current exception
+}
+```
+
+### **Sample Answer:**
+"Use `throw;` inside a catch block to rethrow the current exception."
+
+---
+
+## **29. What is `std::exception_ptr`?**
+
+### **Sample Answer:**
+"`std::exception_ptr` stores and propagates exceptions safely between threads."
+
+**When to use:** Use for advanced multithreading exception handling.
+
+---
+
+## **30. How can exceptions be used with multithreading?**
+
+### **Sample Answer:**
+"Exceptions can be caught in threads and passed via `std::exception_ptr` to other threads."
+
+---
+
+## **31. Can exception handling affect program performance?**
+
+### **Sample Answer:**
+"Yes, especially if exceptions are thrown frequently; use for exceptional cases only."
+
+---
+
+## **32. What is the difference between `throw` and `return` for error handling?**
+
+### **Sample Answer:**
+"`throw` transfers control via exceptions, while `return` requires manual checks."
+
+---
+
+## **33. What are the disadvantages of exception handling?**
+
+### **Sample Answer:**
+"Overuse can lead to complex code; some platforms have limited support."
+
+---
+
+## **34. What is an exception specification?**
+
+### **Sample Answer:**
+"Old C++ had exception specifications like `throw(int)`, but deprecated now."
+
+---
+
+## **35. How to define a noexcept function that might conditionally throw?**
+
+### **Example:**
+```cpp
+void f() noexcept(false) { /* may throw */ }
+```
+
+---
+
+## **36. What happens if `main()` throws an exception?**
+
+### **Sample Answer:**
+"If not caught, program calls `std::terminate`."
+
+---
+
+## **37. How to handle exceptions in templates?**
+
+### **Sample Answer:**
+"Templates can throw exceptions like normal functions."
+
+---
+
+## **38. What is the effect of catching exceptions by non-const reference?**
+
+### **Sample Answer:**
+"Possible to modify exception object; generally not recommended."
+
+---
+
+## **39. How do you log exceptions in C++?**
+
+### **Sample Answer:**
+"Inside catch blocks, log exception details using `e.what()` or custom messages."
+
+---
+
+## **40. What is the use of `std::unexpected()`?**
+
+### **Sample Answer:**
+"Called if an exception not allowed by exception specification is thrown (deprecated)."
+
+---
+
 For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`.
