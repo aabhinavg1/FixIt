@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-// import NewsletterModal from '../newsletter_modal/NewsletterModal'; // Already removed
 import { FaBell, FaTwitter } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-function HomepageHeader({ onNotifyClick }) {
+function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
 
   return (
@@ -26,10 +25,7 @@ function HomepageHeader({ onNotifyClick }) {
             Compiler Frameworks and Toolchains ⏱️
           </Link>
           <div className={clsx(styles.buttonContainer, styles.responsiveButtonGroup)}>
-            <button
-              onClick={onNotifyClick}
-              className={clsx(styles.bellButton, 'button button--secondary')}
-            >
+            <button className={clsx(styles.bellButton, 'button button--secondary')}>
               <FaBell style={{ marginRight: '5px' }} />
               Notify
             </button>
@@ -51,17 +47,15 @@ function HomepageHeader({ onNotifyClick }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isModalOpen, setModalOpen] = useState(false); // No modal now
 
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <HomepageHeader onNotifyClick={() => setModalOpen(true)} />
+      <HomepageHeader />
       <main className={styles.mainContent}>
         <HomepageFeatures />
-        {/* NewsletterModal removed */}
       </main>
     </Layout>
   );
