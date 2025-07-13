@@ -1,5 +1,4 @@
 ---
-id: OOPinCpp
 title: OOP in C++ - We’re All Just Fancy Objects, Aren’t We?
 description: |
   Explore the core principles of Object-Oriented Programming (OOP) in C++ and how they enable the creation of efficient and modular code. Learn about key concepts such as classes, objects, inheritance, polymorphism, encapsulation, and abstraction. This tutorial will help you understand how to design and implement OOP features in C++ to write clean, maintainable, and reusable code.

@@ -1,8 +1,5 @@
 ---
-id: intro
-
 title: Standars in C++
-
 description: Overview of the C++11 standard, introducing modern features such as auto type deduction, lambda expressions, range-based for loops, smart pointers, and enhancements to performance and code clarity in C++ programming.
 
 keywords:

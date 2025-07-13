@@ -1,5 +1,4 @@
 ---
-id: BasicCppTopics
 title: Basic C++ Topics - Understanding the Fundamentals of C++ Programming
 description: |
   This guide covers the fundamental topics every beginner needs to know to get started with C++ programming. From understanding variables, data types, and operators to mastering control flow, loops, and functions, this tutorial will give you a solid foundation in C++ programming. Learn the essential building blocks of C++ and how to write your first C++ program with ease.

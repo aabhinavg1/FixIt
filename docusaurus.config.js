@@ -59,7 +59,7 @@ const config = {
               { label: 'TVM Tutorials', to: '/docs/tvm-for-beginners' },
               { label: 'GPU Tutorials', to: '/docs/the_graphic_rendering_pipeline/' },
               { label: 'Compilers', to: '/docs/compilers/compiler' },
-              { label: 'C++ Tutorials', to: '/docs/c++/CppTutorial' },
+              { label: 'C++ Tutorials', to: '/docs/c++/cpp-learning-roadmap' },
               { label: 'DSA Tutorials', to: '/docs/DSA/' },
               { label: 'Python Automation', to: '/docs/python/python_tutorial' },
               { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },  // Added Linux
@@ -67,6 +67,7 @@ const config = {
               {label: 'OpenCl Tutorial' , to: '/docs/gpu/opencl'}
             ],
           },
+          { type: 'docSidebar', sidebarId: 'howToSidebar',  position: 'right', label: 'How-To Guides'},
           { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'Project' },
           {
             type: 'dropdown',
@@ -78,10 +79,10 @@ const config = {
               {label: 'React MCQ', to: '/docs/react_mcq'}
             ],
           },
-          { href: '/newsletter', label: 'Subscribe', position: 'right' },
           { href: 'https://www.youtube.com/@compilersutra', label: 'youtube', position: 'right' },
           { href: 'https://compilersutra.quora.com', label: '?', position: 'right' },
         ],
+        
       },
 
       footer: {
@@ -112,10 +113,6 @@ const config = {
               { label: 'Sponsor Us', href: 'https://github.com/sponsors/aabhinavg1' },
               { label: 'Contact Us', href: 'https://www.linkedin.com/in/abhinavcompilerllvm/' },
             ],
-          },
-          {
-            title: 'Subscribe',
-            items: [{ label: 'For Weekly Update', href: '/newsletter' }],
           },
           {
             title: 'Cookies',

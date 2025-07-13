@@ -1,5 +1,4 @@
 ---
-id: IntermediateCpp
 title: Intermediate C++ - Dive Deeper into Advanced C++ Concepts
 description: |
   Take your C++ skills to the next level with this intermediate-level tutorial. Explore topics such as object-oriented programming (OOP), advanced memory management, pointers, templates, and the Standard Template Library (STL). This guide is ideal for programmers who are familiar with the basics of C++ and are looking to master more complex aspects of the language to write efficient, optimized code.

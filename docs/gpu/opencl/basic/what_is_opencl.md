@@ -102,19 +102,11 @@ With its unified framework, OpenCL allows for unparalleled flexibility, enabling
 
   <h3>🎥 Video Tutorial Series</h3>
 
-  <p>
-    Learn the full topic with this curated video series on YouTube.<br/>
-    👉 <a href="https://www.youtube.com/playlist?list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ" target="_blank"><strong>Click here to watch the full playlist</strong></a>
-  </p>
-
-  <a href="https://www.youtube.com/playlist?list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ" target="_blank">
-    <img src="https://img.youtube.com/vi/J9trN17VDOY/0.jpg" alt="Watch on YouTube" width="480"/>
-  </a>
 
 </details>
 
 <div>
-<AdBanner />
+   <AdBanner />
 </div>
 
 

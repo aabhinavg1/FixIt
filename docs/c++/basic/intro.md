@@ -1,8 +1,6 @@
 ---
-id: Comprehensive-Cpp-Tutorial
-title: Comprehensive C++ Tutorial - Master C++ from Basics to Advanced Concepts
-description: |
-  This comprehensive C++ tutorial is designed to take you through every aspect of C++ programming, from beginner to advanced topics. Learn the basics of C++ syntax, control structures, data types, and functions, then dive deeper into advanced topics like object-oriented programming (OOP), memory management, templates, the Standard Template Library (STL), and multi-threading. Whether you're just starting out or looking to refine your skills, this tutorial is your one-stop resource for mastering C++.
+title: "Comprehensive C++ Tutorial - Master C++ from Basics to Advanced Concepts"
+description: "This comprehensive C++ tutorial is designed to take you through every aspect of C++ programming, from beginner to advanced topics. Learn the basics of C++ syntax, control structures, data types, and functions, then dive deeper into advanced topics like object-oriented programming (OOP), memory management, templates, the Standard Template Library (STL), and multi-threading. Whether you're just starting out or looking to refine your skills, this tutorial is your one-stop resource for mastering C++."
 keywords:
   - Comprehensive C++ Tutorial
   - Master C++ Programming

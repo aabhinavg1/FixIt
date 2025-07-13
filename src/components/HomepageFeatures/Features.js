@@ -1,50 +1,73 @@
 // src/homepagefeature/Features.js
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components'; // Import createGlobalStyle
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
-
-const FeaturesSection = styled.section`
-  padding: 60px 20px;
-  background-color: #f2f4f8; /* Light background */
-  text-align: center;
+// Animations
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
 `;
 
-const FeaturesTitle = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333; /* Dark text for contrast */
-  animation: fadeIn 1s ease-in; /* Fade-in animation */
-`;
-
-const FeatureCards = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    flex-direction: column; /* Stack cards on small screens */
-    align-items: center;
+const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
-const FeatureCard = styled.div`
-  width: 260px; /* Card width */
-  padding: 25px;
-  background-color: #ffffff; /* White background for cards */
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+const GlobalStyle = createGlobalStyle`
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+`;
+
+// Layout
+const FeaturesSection = styled.section`
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 100%);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
-  opacity: 0; /* Start invisible for animation */
-  transform: translateY(20px); /* Start position for animation */
-  animation: slideIn 0.5s forwards; /* Slide-in animation */
-  
+  font-family: 'Inter', sans-serif;
+`;
+
+const FeaturesTitle = styled.h2`
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 50px;
+  animation: ${fadeIn} 1s ease-in-out forwards;
+`;
+
+// Cards container
+const FeatureCards = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+// Individual Card
+const FeatureCard = styled.div`
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  width: 280px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  animation: ${slideIn} 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   }
 
   &:nth-child(1) { animation-delay: 0.2s; }
@@ -54,38 +77,14 @@ const FeatureCard = styled.div`
 
 const CardTitle = styled.h3`
   font-size: 1.5rem;
+  color: #2563eb;
   margin-bottom: 15px;
-  color: #007acc; /* Primary color */
 `;
 
 const CardDescription = styled.p`
   font-size: 1rem;
-  color: #555; /* Darker text for description */
-`;
-
-const fadeIn = `
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-`;
-
-const slideIn = `
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-const GlobalStyle = createGlobalStyle`
-  ${fadeIn}
-  ${slideIn}
+  color: #475569;
+  line-height: 1.6;
 `;
 
 const Features = () => {
@@ -98,19 +97,19 @@ const Features = () => {
           <FeatureCard>
             <CardTitle>Learn</CardTitle>
             <CardDescription>
-              Access a comprehensive curriculum with practical projects and real-world examples.
+              Access a structured curriculum with real-world compiler projects and expert-backed lessons.
             </CardDescription>
           </FeatureCard>
           <FeatureCard>
             <CardTitle>Build</CardTitle>
             <CardDescription>
-              Develop projects to demonstrate your skills and knowledge in C++ programming.
+              Apply your knowledge through hands-on projects in C++, LLVM, and system-level tooling.
             </CardDescription>
           </FeatureCard>
           <FeatureCard>
             <CardTitle>Connect</CardTitle>
             <CardDescription>
-              Join a community of developers and experts for collaboration and networking.
+              Join our developer community and connect with compiler engineers, mentors, and peers.
             </CardDescription>
           </FeatureCard>
         </FeatureCards>

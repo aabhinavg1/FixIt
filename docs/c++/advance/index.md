@@ -1,10 +1,6 @@
 ---
 title: Advanced C++
-
 description: A deep dive into advanced C++ concepts including templates, memory management, STL, metaprogramming, move semantics, and modern best practices introduced in C++11 and beyond.
-
-id: advanced-cpp
-
 tags:
 - C++  
 - Advanced C++  

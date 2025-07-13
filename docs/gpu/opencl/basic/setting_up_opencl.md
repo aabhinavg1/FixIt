@@ -120,7 +120,15 @@ Whether you're a developer exploring GPU acceleration for the first time, a rese
 
 <detalis>
  <summary> Youtube Video </summary>
- https://www.youtube.com/watch?v=QUpnLYe546Q
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/QUpnLYe546Q?autoplay=1&mute=1" 
+  title="CompilerSutra Video" 
+  frameborder="0" 
+  allow="autoplay; encrypted-media; picture-in-picture" 
+  allowfullscreen>
+</iframe>
  
 </detalis>
 

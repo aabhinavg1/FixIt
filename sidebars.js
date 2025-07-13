@@ -129,22 +129,140 @@ const sidebars = {
     {
       type: 'category',
       label: 'C++ Tutorials',
-      collapsed: true,
+      collapsed: false,
       items: [
+        'c++/cpp-learning-roadmap',
         {
           type: 'category',
           label: 'Basic',
-          items: ['c++/CppTutorial'],
+          collapsed: true,
+          items: [
+            'c++/basic/index',
+            'c++/basic/intro',
+            'c++/basic/cpp_tutorial_with_cmake',
+            'c++/basic/opp-cpp',
+            'c++/basic/books',
+            'c++/basic/docs',
+            'c++/basic/tools',
+            'c++/basic/gdb',
+            'c++/basic/valgrind',
+            'c++/basic/testing',
+            'c++/basic/googletest',
+            'c++/basic/catch2',
+            'c++/basic/open-source',
+          ],
         },
         {
           type: 'category',
           label: 'Intermediate',
-          items: ['c++/intermediate/IntermediateCpp'],
+          collapsed: true,
+          items: [
+            'c++/intermediate/index',
+            'c++/intermediate/intro',
+            'c++/intermediate/books',
+            'c++/intermediate/docs',
+            'c++/intermediate/tools',
+            'c++/intermediate/gdb',
+            'c++/intermediate/valgrind',
+            'c++/intermediate/testing',
+            'c++/intermediate/googletest',
+            'c++/intermediate/catch2',
+            'c++/intermediate/open-source',
+          ],
         },
         {
           type: 'category',
           label: 'Advanced',
-          items: ['c++/advance/intro'],
+          collapsed: true,
+          items: [
+            'c++/advanced/index',
+            'c++/advanced/books',
+            'c++/advanced/docs',
+            'c++/advanced/tools',
+            'c++/advanced/gdb',
+            'c++/advanced/valgrind',
+            'c++/advanced/testing',
+            'c++/advanced/googletest',
+            'c++/advanced/catch2',
+            'c++/advanced/open-source',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Expert',
+          collapsed: true,
+          items: [
+            'c++/expert/index',
+            'c++/expert/books',
+            'c++/expert/docs',
+            'c++/expert/tools',
+            'c++/expert/gdb',
+            'c++/expert/valgrind',
+            'c++/expert/testing',
+            'c++/expert/googletest',
+            'c++/expert/catch2',
+            'c++/expert/open-source',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Projects',
+          collapsed: true,
+          items: [
+            'c++/projects/index',
+            'c++/projects/books',
+            'c++/projects/docs',
+            'c++/projects/tools',
+            'c++/projects/gdb',
+            'c++/projects/valgrind',
+            'c++/projects/testing',
+            'c++/projects/googletest',
+            'c++/projects/catch2',
+            'c++/projects/open-source',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Resources',
+          collapsed: true,
+          items: [
+            'c++/resources/index',
+            'c++/resources/books',
+            'c++/resources/docs',
+            'c++/resources/tools',
+            'c++/resources/gdb',
+            'c++/resources/valgrind',
+            'c++/resources/testing',
+            'c++/resources/googletest',
+            'c++/resources/catch2',
+            'c++/resources/open-source',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Standard (C++ Versions)',
+          collapsed: true,
+          items: [
+            'c++/standard/index',
+            'c++/standard/intro',
+            'c++/standard/C++11',
+            'c++/standard/c++14',
+            'c++/standard/c++17',
+            'c++/standard/c++23',
+
+
+
+
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advance (Legacy)',
+          collapsed: true,
+          items: [
+            'c++/advance/index',
+            'c++/advance/intro',
+          ],
         },
       ],
     },
@@ -210,6 +328,7 @@ const sidebars = {
         'linux/What_is_bashrc',
         'linux/Environment_variable_in_linux',
         'linux/Declaring_Variable_In_bash',
+        'linux/if_else_in_bash',
       ],
     },
   ],
@@ -325,6 +444,21 @@ const sidebars = {
       ],
     },
   ],
+
+  //sidebar for the howToSidebar
+howToSidebar: [
+  {
+    type: 'category',
+    label: 'How to Guides',
+    collapsed: false,
+    items: [
+        'how_to/how-about-guide',
+        'how_to/run-multiple-cpp-files',
+    
+    ],
+  },
+],
+
 
   // 🔵 Sidebar for React MCQs
   reactMcqSidebar: [

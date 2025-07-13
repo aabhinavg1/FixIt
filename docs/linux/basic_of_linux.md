@@ -75,8 +75,18 @@ Practice by writing small scripts to automate tasks you do often, like cleaning 
 
 <details>
 <summary> Youtube Video Playlist</summary>
+<div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+    <iframe>
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/jyigdPpeoCE?autoplay=1&mute=1" 
+    title="Watch CompilerSutra Video" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media; picture-in-picture" 
+    allowfullscreen>
+    </iframe>
+</div>
 
-[![Watch the video](https://img.youtube.com/vi/jyigdPpeoCE/maxresdefault.jpg)](https://youtu.be/jyigdPpeoCE)
 
 </details>
 

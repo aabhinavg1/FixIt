@@ -336,7 +336,7 @@ const Curriculum = () => {
     { title:  "Projects", link: "/docs/Project", description: "Hands-on projects to strengthen your C++ skills.", icon: "💻" },
     { title: "MLIR & Optimization", link: "/docs/MLIR/intro", description: "Delve into MLIR, optimization, and code generation.", icon: "⚙️" },
     { title: "AI in Computer Science", link: "/docs/Ai", description: "Foundational concepts of C++ programming.", icon: "🔍" },
-    { title: "C++ Tutorial", link: "/docs/c++/c++_main_file", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
+    { title: "C++ Tutorial", link: "/docs/c++/cpp-learning-roadmap", description: "Explore advanced C++ topics and best practices.", icon: "🔧" },
     { title: "Artificial Intelligence", link: "/docs/AI/artificial_intelligence", description: "Explore smart systems, logic, reasoning, and decision-making in computers.", icon: "🤖" },
     { title: "Machine Learning", link: "#", description: "Learn algorithms that let machines learn from data and improve automatically.", icon: "📊" },
   ];

@@ -1,10 +1,6 @@
 ---
 title: Introduction to Standard C++
-
 description: An introductory guide to the evolution, core concepts, and features of the Standard C++ programming language, including its various versions and standardization process.
-
-id: introduction-to-standard-cpp
-
 tags:
 - C++  
 - Standard C++  

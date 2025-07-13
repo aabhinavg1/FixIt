@@ -564,7 +564,7 @@ Open Computing Language (OpenCL) is the open standard for parallel programming o
 
 ---
 <div>
-<AdBanner />
+  <AdBanner />
 </div>
 
 
@@ -586,5 +586,5 @@ Open Computing Language (OpenCL) is the open standard for parallel programming o
 In the next post, we will explore the history and motivation behind OpenCL, including the reasons Apple developed it and how it evolved as an industry-standard platform.
 
 <div>
-<AdBanner />
+  <AdBanner />
 </div>

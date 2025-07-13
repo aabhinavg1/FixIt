@@ -44,7 +44,17 @@ import TabItem from '@theme/TabItem';
 <details>
 <summary> Youtube Video Playlist</summary>
 
-[![Watch the video](https://img.youtube.com/vi/jyigdPpeoCE/maxresdefault.jpg)](https://youtu.be/jyigdPpeoCE)
+<div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/jyigdPpeoCE?mute=1" 
+    title="Watch CompilerSutra Video" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
 
 </details>
 

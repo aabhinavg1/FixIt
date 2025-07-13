@@ -1,153 +1,217 @@
+/* HERO BANNER SECTION */
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
   position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
   overflow: hidden;
-  background-color: #282c34; /* Dark background for better contrast */
-  color: #ffffff; /* White text for readability */
-  animation: fadeIn 1s ease-in; /* Fade-in effect for the banner */
+  color: #ffffff;
+  background: linear-gradient(145deg, #1c1e22, #282c34);
+  animation: fadeIn 1s ease-in;
 }
 
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive Padding */
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem; /* Reduced padding for smaller screens */
+    padding: 3rem 1rem;
   }
 }
 
+/* VIDEO BACKGROUND */
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.videoIframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.77vh; /* 16:9 ratio */
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+/* HEADER CONTAINER */
+.headerOverlay {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* TITLE AND TAGLINE */
+.heroTitle {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #61dafb, #21a1f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(97, 218, 251, 0.4);
+  animation: pulseGlow 3s infinite, slideInDown 0.6s ease-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 12px rgba(97, 218, 251, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(33, 161, 241, 0.9);
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.4rem;
+  color: #cccccc;
+  margin: 1rem 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* BUTTON SECTION */
 .buttons {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-direction: column; /* Stack buttons vertically on mobile */
-  gap: 1rem; /* Space between buttons */
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .buttonContainer {
-  display: flex; /* Display notify and follow buttons side by side */
-  justify-content: center; /* Center them horizontally */
-  gap: 1rem; /* Space between the buttons */
-  margin-top: 1.5rem; /* Space above the buttons */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-/* Common button styles */
-.bellButton, .twitterButton {
-  padding: 0.6rem 1.2rem; /* Larger padding for improved touch target */
-  border: none; /* Remove default button border */
-  border-radius: 6px; /* Slight rounding of corners */
-  cursor: pointer; /* Pointer cursor for buttons */
-  font-weight: bold; /* Bold text for emphasis */
-  display: flex; /* Flex for icon and text alignment */
-  align-items: center; /* Center icon and text vertically */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to buttons */
-  animation: bounceIn 0.5s ease; /* Bounce-in animation */
+.primaryButton,
+.askButton,
+.twitterButton,
+.youtubeButton {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.75rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: bounceIn 0.5s ease;
 }
 
-/* Notify button specific styles */
-.bellButton {
-  background-color: #f8f9fa; /* Light grey background */
-  color: #000000; /* Black text */
+/* Primary CTA */
+.primaryButton {
+  background-color: #61dafb;
+  color: #000;
 }
 
-.bellButton:hover {
-  background-color: #e0e0e0; /* Slightly darker grey on hover */
-  transform: scale(1.05); /* Scale up on hover */
+.primaryButton:hover {
+  background-color: #21a1f1;
+  transform: scale(1.05);
 }
 
-/* Twitter Follow button specific styles */
+/* Ask Q Button (Quora style) */
+.askButton {
+  background-color: #a82400;
+  color: #fff;
+}
+
+.askButton:hover {
+  background-color: #871e00;
+  transform: scale(1.05);
+}
+
+/* Twitter */
 .twitterButton {
-  background-color: #1DA1F2; /* Twitter blue */
-  color: #ffffff; /* White text */
+  background-color: #1DA1F2;
+  color: #fff;
 }
 
 .twitterButton:hover {
-  background-color: #0d8ddf; /* Darker Twitter blue on hover */
-  transform: scale(1.05); /* Scale up on hover */
+  background-color: #0d8ddf;
+  transform: scale(1.05);
 }
 
-/* Responsive font sizes for header */
-.heroTitle {
-  font-size: 2.5rem; /* Default size for title */
-  margin: 0.5rem 0; /* Margin around title */
-  animation: slideInDown 0.6s ease-out; /* Slide-in animation for title */
+/* YouTube */
+.youtubeButton {
+  background-color: #e5534b;
+  color: #fff;
 }
 
-.heroSubtitle {
-  font-size: 1.2rem; /* Default size for subtitle */
-  margin-top: 0.5rem; /* Space above subtitle */
-  color: #d1d1d1; /* Subtle grey for subtitle */
-  animation: slideInUp 0.6s ease-out; /* Slide-in animation for subtitle */
+.youtubeButton:hover {
+  background-color: #c5443d;
+  transform: scale(1.05);
 }
 
+/* RESPONSIVE TYPOGRAPHY */
 @media (max-width: 768px) {
   .heroTitle {
-    font-size: 2rem; /* Smaller title on mobile */
+    font-size: 2.3rem;
   }
   .heroSubtitle {
-    font-size: 1rem; /* Smaller subtitle on mobile */
+    font-size: 1.1rem;
   }
 }
 
-/* Additional media query for very small screens */
 @media (max-width: 480px) {
   .heroTitle {
-    font-size: 1.8rem; /* Further reduced title size */
+    font-size: 1.9rem;
   }
   .heroSubtitle {
-    font-size: 0.9rem; /* Further reduced subtitle size */
+    font-size: 0.95rem;
   }
 }
 
-/* Keyframe animations */
+/* ANIMATIONS */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes bounceIn {
-  from {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 @keyframes slideInDown {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes slideInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-  
-.heroSubtitle {
-  text-align: center !important;
-  margin: 0 auto;
-  max-width: 800px;
-  margin-bottom: 15px;
-  display: block;
-}
-.headerContainer {
-  text-align: center !important;
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }

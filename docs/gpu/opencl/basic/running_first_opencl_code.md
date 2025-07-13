@@ -1,5 +1,4 @@
 ---
-
 title: "Beginner to Expert Guide: Running Your First OpenCL Hello World Program"
 description: "A comprehensive OpenCL tutorial guiding beginners through writing and executing their first OpenCL Hello World program. Covers key concepts like kernel,  platform model,  device model,  context,  and host-device memory sharing. Ideal for developers looking to harness GPU power with OpenCL."
 keywords:
@@ -136,10 +135,25 @@ Let’s begin by exploring the building blocks of OpenCL starting with kernels, 
 > Whether you're exploring parallel computing or targeting heterogeneous devices,  this article is the perfect launchpad.
 :::
 
-🎥 **Watch the tutorial playlist**: [CompilerSutra OpenCL Series](https://www.youtube.com/watch?v=WstjeANBXX4&list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ&index=5)
+<p>
+  🎥 <strong>Watch the tutorial playlist</strong>: 
+  <a href="https://www.youtube.com/watch?v=WstjeANBXX4&list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ&index=5" target="_blank">
+    CompilerSutra OpenCL Series
+  </a>
+</p>
 
-![Preview](https://img.youtube.com/vi/WstjeANBXX4/maxresdefault.jpg)
-)
+<div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/WstjeANBXX4?autoplay=0&mute=1&list=PLdhENd4XPZLrVmQNquEN3BUPjfwvxu9nQ&index=5" 
+    title="CompilerSutra OpenCL Playlist" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
+
 
 <div>
     <AdBanner />

@@ -1,5 +1,4 @@
 ---
-id: IntroToCpp11VsCpp14
 title: Introduction to C++11 vs C++14 - Key Differences and Enhancements
 description: |
   Discover the key differences between C++11 and C++14 in this comprehensive guide. Learn about the new features and improvements introduced in C++14 that build upon the foundation set by C++11. This tutorial compares both versions and highlights the changes in syntax, performance, and functionality to help you understand which version is best suited for your development needs.

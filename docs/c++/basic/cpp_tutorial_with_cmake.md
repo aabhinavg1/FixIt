@@ -1,5 +1,4 @@
 ---
-id: cpp-tutorial-with-cmake
 title: C++ Tutorial with CMake
 description: |
   This tutorial provides a complete walkthrough of setting up and building C++ projects using CMake. Learn the basics of creating `CMakeLists.txt` files, organizing project structure, linking libraries, and compiling code efficiently. Ideal for beginners and intermediate developers who want to modernize their C++ development workflow using CMake.
