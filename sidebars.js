@@ -452,7 +452,7 @@ howToSidebar: [
     label: 'How to Guides',
     collapsed: false,
     items: [
-        'how_to/how-about-guide',
+        'how_to/how_to_do',
         'how_to/run-multiple-cpp-files',
     
     ],
