@@ -18,17 +18,14 @@ jobs:
 
     - name: Clone the newsletter_modal repository
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Ensure the PAT_TOKEN is available here
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
         echo "Cloning the newsletter_modal repository..."
-        # Clone the private repository and place it in the desired location within the public repo
         git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
 
     - name: Copy private repository code into public repo
       run: |
         echo "Copying private repository code into public repository..."
-        
-        # Check if the file already exists, if not, copy it
         for file in src/pages/newsletter_modal_updated/*; do
           if [ ! -e "./$file" ]; then
             cp -r "$file" ./src/pages/newsletter_modal_updated/
@@ -40,7 +37,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
+        node-version: '20.x'  # Updated to fix got@14.4.7 engine issue
 
     - name: Install dependencies
       run: npm install
