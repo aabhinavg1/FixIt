@@ -312,6 +312,7 @@ const sidebars = {
         'DSA/Bit_Manipulation_Technique',
         'DSA/Time_and_space',
         'DSA/Linear_DSA',
+        'DSA/Non-Linear_DSA',
       ],
     },
   ],
