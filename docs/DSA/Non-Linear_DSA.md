@@ -47,23 +47,22 @@ tags:
 - Coding Challenges
 - Data Structures
 
----
 
 <div>  
     <DSA_Book_Recommendation />  
 </div>
----
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 import AdBanner from '@site/src/components/AdBanner';
 
----
+
 <div>
     <AdBanner />
 </div>
----
+
 
 ## Table of Contents
 
@@ -86,11 +85,11 @@ import AdBanner from '@site/src/components/AdBanner';
 
 They allow more efficient organization and retrieval of data in scenarios where linear structures fall short.
 
----
+
 <div>
     <AdBanner />
 </div>
----
+
 
 ## What are Non-Linear Data Structures?
 
@@ -101,11 +100,11 @@ Unlike arrays, stacks, and queues, **non-linear data structures** store data in 
 
 They are often used in real-world applications like database indexing, AI, compiler design, and networking.
 
----
+
 <div>
     <AdBanner />
 </div>
----
+
 
 ## Types of Non-Linear Data Structures
 
@@ -161,13 +160,13 @@ class Node:
 </TabItem>
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 #### Tree Traversals:
 Tree traversal refers to visiting all nodes in a tree in a specific order. It is essential for many operations like searching, sorting, and evaluating expressions. Below are the main types of tree traversals with visual explanations.
@@ -228,13 +227,13 @@ Step 4: F (right child of C)
 Step 5: C (right child of A)
 Step 6: A (root)
 ```
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 ### 2. Graphs
 
@@ -253,13 +252,13 @@ A **graph** is a non-linear data structure consisting of a set of nodes **(verti
 
 - ***Connected vs. Disconnected Graphs***: In a connected graph, there's a path between every pair of vertices.
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 #### Representations:
 
@@ -367,13 +366,13 @@ public class AdjacencyMatrix {
 
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 **2. Adjacency List**
 
@@ -485,13 +484,13 @@ public class AdjacencyList {
 
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 #### Traversal:
 
@@ -607,13 +606,13 @@ void dfs(vector<vector<int>>& graph, int vertex, set<int>& visited) {
   </TabItem>
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 #### Algorithms:
 
@@ -648,13 +647,13 @@ adj_list[0].append(1)
 </TabItem>
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
+
 
 ## Applications of Non-Linear Structures
 
@@ -672,11 +671,11 @@ adj_list[0].append(1)
   * Web crawlers
   * Networking and communication
 
----
+
 <div>
     <AdBanner />
 </div>
----
+
 
 ## Traversal and Searching Techniques
 
@@ -706,11 +705,11 @@ Use traversal methods to explore or process each node/vertex systematically.
 
 *V = number of vertices, E = number of edges*
 
----
+
 <div>
     <AdBanner />
 </div>
----
+
 
 ## Interview Questions
 
@@ -786,10 +785,9 @@ A Trie is useful for searching words by prefix, like in autocomplete features.
   </TabItem>
 </Tabs>
 
----
+
 
 <div>
     <AdBanner />
 </div>
 
----
