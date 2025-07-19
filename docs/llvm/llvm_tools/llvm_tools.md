@@ -40,7 +40,7 @@ LLVM provides a powerful collection of command-line tools for working with compi
 
 :::important
  LLVM tools generally work with intermediate representations (IR) and various compiler artifacts. Start with small examples before working on complex projects.
-
+:::
 ## Table of Contents
 
 * [Introduction](#introduction)
