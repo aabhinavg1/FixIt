@@ -95,15 +95,7 @@ In an era where computing power is distributed across a multitude of platforms, 
 With its unified framework, OpenCL allows for unparalleled flexibility, enabling developers to harness the full capabilities of each device. This opens up new frontiers in fields such as **graphics rendering**, **scientific simulations**, **machine learning**, and more, driving innovation in both everyday applications and cutting-edge technologies.
 
 ---
-<details open>
-<summary style={{ fontSize: '1.2em', fontWeight: 'bold' }}>📺 YouTube Video Playlist</summary>
 
-  <br/>
-
-  <h3>🎥 Video Tutorial Series</h3>
-
-
-</details>
 
 <div>
    <AdBanner />
@@ -137,6 +129,17 @@ OpenCL serves as a ***powerful tool*** for harnessing the full potential of ***m
 <AdBanner />
 </div>
 
+
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>
+  <iframe
+    src="https://www.youtube.com/embed/J9trN17VDOY"
+    title="CompilerSutra: Watch Video"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
 
 
 ## Table of Contents

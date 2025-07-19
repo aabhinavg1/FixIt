@@ -41,22 +41,20 @@ import TabItem from '@theme/TabItem';
 
 **Linux is a powerful**, open-source operating system renowned for its ``stability, flexibility``, and ``security``. This ``Linux basics guide`` is ``designed for beginners``, offering a step-by-step introduction to essential commands, the file system, and practical tips to ``confidently start`` your Linux journey. Whether you're using ``Ubuntu``, ``Fedora``, or ``Debian`` , this tutorial will equip you with the ``foundational skills`` to navigate and ``manage a Linux system``.
 
-<details>
+
 <summary> Youtube Video Playlist</summary>
 
-<div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/jyigdPpeoCE?mute=1" 
-    title="Watch CompilerSutra Video" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>
+  <iframe
+    src="https://www.youtube.com/embed/jyigdPpeoCE?mute=1"
+    title="CompilerSutra: Watch Video"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+  
 </div>
-
-</details>
 
 <div>
     <AdBanner />

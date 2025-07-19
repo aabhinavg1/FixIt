@@ -53,7 +53,6 @@ keywords:
 - Linux bash scripting for beginners  
 - Essential Linux skills  
 - Linux OS tutorial for newbies 
-
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
@@ -102,6 +101,17 @@ Configuring ``aliases`` in your Linux shell is one of the ``easiest ways to boos
     <AdBanner />
 </div>
 
+
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>
+  <iframe
+    src="https://www.youtube.com/embed/qj0LwiRreIU"
+    title="CompilerSutra: Watch Video"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
 
 ## Table of Contents
 

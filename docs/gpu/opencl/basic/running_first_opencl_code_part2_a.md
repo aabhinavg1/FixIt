@@ -84,17 +84,22 @@ In this guide, you will learn how to:
 - Enumerate available devices under each platform
 - Select the appropriate device for running your OpenCL program
 
+
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>
+  <iframe
+    src="https://www.youtube.com/embed/r17Tcq7VUGY"
+    title="CompilerSutra – OpenCL Kernel Part 3a: Detect GPU Device"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
+
+
+
 <details>
-<summary><strong> Youtube Video Tutorial</strong></summary>
-## Watch the Tutorial
-
-**[CompilerSutra – How To Run OpenCL Kernel Part 3a: Detect GPU Device](https://youtu.be/r17Tcq7VUGY?si=mB4-j-DVeB_e7Lk0)**
-
-![Detect GPU Device Preview](https://img.youtube.com/vi/r17Tcq7VUGY/maxresdefault.jpg)
-
----
-
-## What You'll Learn
+<summary><strong>  What You'll Learn </strong></summary>
 
 * **Platform & Device Discovery**
   Understand how to enumerate OpenCL platforms and devices using `clGetPlatformIDs` and `clGetDeviceIDs`.

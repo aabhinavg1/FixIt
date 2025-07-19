@@ -43,14 +43,17 @@ import TabItem from '@theme/TabItem';
 
 Mastering variable declarations in **Bash** is foundational to writing reliable and maintainable shell scripts. Whether you're automating deployments, managing configuration files, or parsing logs, understanding how Bash handles variables can **save you from subtle bugs** and significantly improve your script's readability and robustness.
 
- <details>
- <summary><strong>🎥 Watch the Full Tutorial</strong></summary>
+ <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>
+  <iframe
+    src="https://www.youtube.com/embed/EETioR__z_U"
+    title="CompilerSutra Full Tutorial"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
 
-[![Watch Tutorial](https://img.youtube.com/vi/EETioR__z_U/0.jpg)](https://www.youtube.com/watch?v=EETioR__z_U)
-
-**▶️ Watch here:** [https://www.youtube.com/watch?v=EETioR__z_U](https://www.youtube.com/watch?v=EETioR__z_U)
-
-</details>
 
 <div>
   <AdBanner />
