@@ -337,6 +337,7 @@ const sidebars = {
         'linux/Environment_variable_in_linux',
         'linux/Declaring_Variable_In_bash',
         'linux/if_else_in_bash',
+        'linux/loop_in_bash',
       ],
     },
   ],
