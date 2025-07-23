@@ -43,12 +43,13 @@
 
   /* Typography */
   --font-base-size: 16px;
-  --font-scale-ratio: 1.25;
-  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-mono: 'Roboto Mono', monospace;
+  --font-scale-ratio: 1.2; /* Reduced from 1.25 for more subtle scaling */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-serif: 'Georgia', serif; /* Added serif option for professional feel */
+  --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-bold: 700;
+  --font-weight-bold: 600; /* Changed from 700 for more refined look */
 
   /* Spacing */
   --spacing-unit: 1rem;
@@ -62,20 +63,20 @@
 
   /* Border */
   --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
+  --border-radius-md: 6px; /* Reduced from 8px for more subtle rounding */
+  --border-radius-lg: 10px; /* Reduced from 12px */
   --border-width: 1px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 3px 5px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 12px rgba(0, 0, 0, 0.1);
+  --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 
   /* Transitions */
-  --transition-duration-fast: 150ms;
-  --transition-duration-normal: 300ms;
-  --transition-duration-slow: 450ms;
+  --transition-duration-fast: 120ms;
+  --transition-duration-normal: 250ms;
+  --transition-duration-slow: 400ms;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Z-index */
@@ -124,21 +125,68 @@ body {
 /* ==================== TYPOGRAPHY ==================== */
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+  line-height: 1.3; /* Increased from 1.2 for better readability */
   margin: 0 0 var(--spacing-md) 0;
   color: var(--color-text);
+  letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
 }
 
-h1 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 2.5); }
-h2 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 2); }
-h3 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.75); }
-h4 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.5); }
-h5 { font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.25); }
-h6 { font-size: var(--font-base-size); }
+h1 { 
+  font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 2); /* Reduced from 2.5 */
+  font-weight: 600; /* Slightly lighter than bold */
+}
+h2 { 
+  font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.75); /* Reduced from 2 */
+  font-weight: 600;
+}
+h3 { 
+  font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.5); /* Reduced from 1.75 */
+}
+h4 { 
+  font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.25); /* Reduced from 1.5 */
+}
+h5 { 
+  font-size: calc(var(--font-base-size) * var(--font-scale-ratio) * 1.125); /* Reduced from 1.25 */
+}
+h6 { 
+  font-size: var(--font-base-size);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
 p {
   margin: 0 0 var(--spacing-md) 0;
   max-width: 75ch;
+  line-height: 1.65; /* Increased from 1.6 for better readability */
+}
+
+/* Professional serif font for articles/long text */
+.article-text {
+  font-family: var(--font-family-serif);
+  line-height: 1.7;
+}
+
+/* ==================== HEADER TYPOGRAPHY ==================== */
+header h1 {
+  font-size: 2.25rem; /* Reduced from 3rem */
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  font-weight: 600; /* Semi-bold instead of bold */
+  letter-spacing: -0.015em;
+}
+
+/* Subheader style */
+header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-neutral-600);
+  margin-bottom: var(--spacing-lg);
+}
+
+[data-theme='dark'] header h2 {
+  color: var(--color-neutral-300);
 }
 
 /* ==================== LINKS ==================== */
@@ -147,6 +195,7 @@ a {
   text-decoration: none;
   transition: color var(--transition-duration-fast) var(--transition-timing);
   position: relative;
+  font-weight: var(--font-weight-medium);
 }
 
 a:hover,
@@ -180,7 +229,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
-  min-height: 2.75rem;
+  min-height: 2.5rem; /* Reduced from 2.75rem */
 }
 
 button:hover {
@@ -273,10 +322,12 @@ button.secondary:hover {
 .maintenance-popup__title {
   color: var(--color-primary-500);
   margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
 }
 
 .maintenance-popup__content {
   margin-bottom: var(--spacing-lg);
+  line-height: 1.65;
 }
 
 .maintenance-popup__actions {
@@ -298,58 +349,18 @@ button.secondary:hover {
 
 .page-404__title {
   color: var(--color-primary-500);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* Reduced from 2.5-4rem */
   margin-bottom: var(--spacing-md);
+  font-weight: 600;
 }
 
 .page-404__description {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Reduced from 1.25rem */
   max-width: 60ch;
   margin-bottom: var(--spacing-lg);
 }
 
-/* ==================== UTILITY CLASSES ==================== */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.text-center {
-  text-align: center;
-}
-
-/* ==================== RESPONSIVE DESIGN ==================== */
-@media (max-width: 768px) {
-  :root {
-    --font-base-size: 15px;
-  }
-
-  .tutorials-list {
-    grid-template-columns: 1fr;
-  }
-
-  .maintenance-popup {
-    width: 95%;
-    padding: var(--spacing-md);
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --font-base-size: 14px;
-  }
-
-  .page-404 {
-    padding: var(--spacing-md);
-  }
-}
+/* MCQ Styles */
 .mcq-question {
   background-color: var(--color-background);
   color: var(--color-text);
@@ -361,10 +372,11 @@ button.secondary:hover {
 }
 
 .mcq-question h3 {
-  font-size: 1.4rem;
+  font-size: 1.25rem; /* Reduced from 1.4rem */
   margin-bottom: var(--spacing-md);
   line-height: 1.4;
 }
+
 .mcq-options {
   display: flex;
   flex-direction: column;
@@ -388,22 +400,24 @@ button.secondary:hover {
   border-color: var(--color-primary-300);
   box-shadow: var(--shadow-sm);
 }
+
 .mcq-answer {
   margin-top: var(--spacing-md);
-  font-size: 1rem;
+  font-size: 0.95rem; /* Slightly reduced */
   padding: var(--spacing-sm);
-  border-left: 4px solid var(--color-primary-500);
+  border-left: 3px solid var(--color-primary-500); /* Reduced from 4px */
   background-color: var(--color-neutral-200);
   border-radius: var(--border-radius-sm);
 }
 
 .correct-answer {
-  color: green;
+  color: var(--color-primary-700); /* Changed from green */
 }
 
 .incorrect-answer {
-  color: red;
+  color: #d32f2f; /* More professional red */
 }
+
 .mcq-option.selected {
   border-color: var(--color-primary-500);
   background-color: var(--color-primary-100);
@@ -412,8 +426,9 @@ button.secondary:hover {
 
 .mcq-option.correct {
   background-color: #e6f5ea;
-  border-color: green;
+  border-color: var(--color-primary-700);
 }
+
 [data-theme='dark'] .mcq-option {
   background-color: var(--color-neutral-800);
   border-color: var(--color-neutral-600);
@@ -430,7 +445,70 @@ button.secondary:hover {
   background-color: var(--color-neutral-700);
   border-left-color: var(--color-primary-400);
 }
-@media screen and (max-width: 480px) {
+
+/* ==================== UTILITY CLASSES ==================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Professional text utilities */
+.text-lead {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-neutral-600);
+}
+
+[data-theme='dark'] .text-lead {
+  color: var(--color-neutral-300);
+}
+
+.text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  :root {
+    --font-base-size: 15px;
+    --font-scale-ratio: 1.15; /* Slightly reduced scale ratio for mobile */
+  }
+
+  .tutorials-list {
+    grid-template-columns: 1fr;
+  }
+
+  .maintenance-popup {
+    width: 95%;
+    padding: var(--spacing-md);
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-base-size: 14px;
+  }
+
+  .page-404 {
+    padding: var(--spacing-md);
+  }
+
   .mcq-question {
     padding: var(--spacing-md);
   }
@@ -439,10 +517,4 @@ button.secondary:hover {
     font-size: 0.95rem;
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-}
-header h1 {
-  font-size: 3rem;
-  color: var(--color-text);  /* uses correct light/dark color */
-  margin-bottom: var(--spacing-md);
-  text-align: center;
 }
