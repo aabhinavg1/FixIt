@@ -12,15 +12,16 @@
 /* ==================== CSS CUSTOM PROPERTIES ==================== */
 :root {
   /* Primary Color Palette */
-  --color-primary-900: #1a5c3a;
-  --color-primary-800: #205d3b;
-  --color-primary-700: #277148;
-  --color-primary-600: #29784c;
-  --color-primary-500: #2e8555;
-  --color-primary-400: #33925d;
-  --color-primary-300: #359962;
-  --color-primary-200: #3cad6e;
-  --color-primary-100: #4fddbf;
+--color-primary-900: #004578;
+--color-primary-800: #005a9e;
+--color-primary-700: #106ebe;
+--color-primary-600: #106ebe;
+--color-primary-500: #0078D4;
+--color-primary-400: #2899f5;
+--color-primary-300: #3aa0f3;
+--color-primary-200: #c7e0f4;
+--color-primary-100: #deecf9;
+
 
   /* Neutral Colors */
   --color-neutral-900: #121212;
@@ -44,7 +45,7 @@
   /* Typography */
   --font-base-size: 16px;
   --font-scale-ratio: 1.2; /* Reduced from 1.25 for more subtle scaling */
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-sans: 'Segoe UI', system-ui, sans-serif;
   --font-family-serif: 'Georgia', serif; /* Added serif option for professional feel */
   --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
   --font-weight-regular: 400;
@@ -63,8 +64,8 @@
 
   /* Border */
   --border-radius-sm: 4px;
-  --border-radius-md: 6px; /* Reduced from 8px for more subtle rounding */
-  --border-radius-lg: 10px; /* Reduced from 12px */
+  --border-radius-md: 4px; /* Reduced from 8px for more subtle rounding */
+  --border-radius-lg: 6px; /* Reduced from 12px */
   --border-width: 1px;
 
   /* Shadows */
