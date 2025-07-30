@@ -25,9 +25,14 @@ keywords:
 - GPU Tutorial for Developers
 
 ---
-
+import AdBanner from '@site/src/components/AdBanner';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+<div>
+    <AdBanner />
+</div>
+
 
 # GPU Programming Curriculum (From No CS to Pro)
 
@@ -74,6 +79,9 @@ Embark on this journey to become part of the future of computing where speed, ef
 
 
 
+<div>
+    <AdBanner />
+</div>
 
 ### What this curriculum offers:
 
@@ -627,6 +635,10 @@ Ask your question on Quora and tag it with #GPUProgramming or #Compilersutra! Ou
 </Tabs>
 </details>
 
+</div>
+
+<div>
+    <AdBanner />
 </div>
 
 
