@@ -68,7 +68,17 @@ const sidebars = {
       ],
     },
   ],
-
+  
+  gpuProgrammingSidebar: [
+    {
+      type: 'category',
+      label: 'Table of Content',
+      collapsed: true,
+      items: [
+        'gpu/gpu_programming/gpu_programming_toc',
+      ],
+    },
+  ],
   // Sidebar for GPU Tutorials
   gpuTutorialSidebar: [
     {
