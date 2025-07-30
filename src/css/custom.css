@@ -519,3 +519,190 @@ button.secondary:hover {
     padding: var(--spacing-xs) var(--spacing-sm);
   }
 }
+#gpu-toc-page {
+  background-color: #ffffff;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.02),
+    0 4px 8px rgba(0,0,0,0.04);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.5;
+  color: #222222;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+#gpu-toc-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  border-radius: 12px 12px 0 0;
+}
+
+/* Enhanced Summary Heading */
+#gpu-toc-page summary {
+  cursor: pointer;
+  font-weight: 700; /* Increased from 600 to 700 for bolder text */
+  font-size: 0.8125rem; /* Slightly larger than before (13px vs 12px) */
+  color: #202124; /* Darker color for better contrast */
+  letter-spacing: 0.03em; /* Slightly more spacing */
+  user-select: none;
+  background: linear-gradient(to right, #f8f9fa, #f1f3f4); /* Subtle gradient */
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem; /* More padding for prominence */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  border: 1px solid #d2d6dc;
+  text-transform: uppercase;
+  margin: 0.25rem 0;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+#gpu-toc-page summary:hover {
+  background: linear-gradient(to right, #f1f3f4, #e8eaed);
+  border-color: #c6dafc;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+#gpu-toc-page summary:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+#gpu-toc-page summary::after {
+  content: "›";
+  font-size: 1.2rem; /* Slightly larger arrow */
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+  color: #5f6368;
+  margin-left: 0.75rem; /* More spacing */
+  font-weight: bold; /* Bolder arrow */
+}
+
+#gpu-toc-page details[open] summary::after {
+  transform: rotate(270deg);
+}
+
+#gpu-toc-page summary .level-prefix {
+  color: #1a73e8; /* Blue color for better visibility */
+  font-weight: 800; /* Extra bold */
+  margin-right: 0.75rem; /* More spacing */
+  font-feature-settings: "tnum";
+  text-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+/* Rest of your existing styles remain the same */
+#gpu-toc-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.8125rem; /* 13px */
+  color: #3c4043;
+  background-color: #ffffff;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+#gpu-toc-page th {
+  background-color: #f8f9fa;
+  color: #5f6368;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.6875rem; /* 11px */
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+}
+
+#gpu-toc-page td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f1f1;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+#gpu-toc-page tr:last-child td {
+  border-bottom: none;
+}
+
+#gpu-toc-page tr:hover td {
+  background-color: #f8f9fa;
+}
+
+#gpu-toc-page a {
+  color: #1a73e8;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+#gpu-toc-page a:hover {
+  color: #174ea6;
+  text-decoration: underline;
+}
+
+.curriculum-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #202124;
+  margin: 1.5rem 0;
+  letter-spacing: -0.01em;
+  font-family: "Google Sans", "Inter", sans-serif;
+}
+
+/* Premium scrollbar */
+#gpu-toc-page::-webkit-scrollbar {
+  height: 6px;
+}
+
+#gpu-toc-page::-webkit-scrollbar-track {
+  background: rgba(241,243,244,0.5);
+}
+
+#gpu-toc-page::-webkit-scrollbar-thumb {
+  background-color: rgba(154,160,166,0.4);
+  border-radius: 3px;
+}
+
+#gpu-toc-page::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(154,160,166,0.6);
+}
+
+/* Status indicators */
+.status-pill {
+  font-size: 0.6875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-complete {
+  background-color: #e6f4ea;
+  color: #34a853;
+}
+
+.status-in-progress {
+  background-color: #fef7e0;
+  color: #f9ab00;
+}
+
+.status-not-started {
+  background-color: #f3f3f3;
+  color: #5f6368;
+}
