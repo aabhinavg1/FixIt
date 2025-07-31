@@ -10,7 +10,8 @@
   --correct-bg: #c8e6c9;
   --wrong-bg: #ffcdd2;
   --note-bg: #e8f5e9;
-  --monkey-brown: #8d6e63;
+  --pen-color: #37474f;
+  --paper-color: #ffffff;
 }
 
 .comic-panel {
@@ -33,7 +34,7 @@
   border: 2px solid var(--border-color);
   padding: 1.2rem 1.5rem;
   border-radius: 20px;
-  background-color: var(--question-bg);
+  background-color: var(--paper-color);
   position: relative;
   margin-bottom: 1.5rem;
   box-shadow: 5px 5px 0 var(--border-color);
@@ -45,93 +46,60 @@
 .question-bubble {
   font-size: 1.5rem;
   font-weight: 700;
+  background-color: var(--paper-color);
 }
 
 .answer-bubble {
   font-size: 1rem;
   font-weight: 400;
-  background-color: var(--answer-bg);
+  background-color: var(--paper-color);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border-radius: 15px;
+  padding: 0 1rem;
+  margin-top: 0;
+}
+
+.answer-bubble.show {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 1.2rem 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 5px 5px 0 var(--border-color);
 }
 
 .question-bubble::after,
-.answer-bubble::after {
+.answer-bubble.show::after {
   content: '';
   position: absolute;
   bottom: -20px;
   left: 30px;
   border-width: 20px 20px 0;
   border-style: solid;
-  border-color: var(--question-bg) transparent transparent transparent;
-}
-
-.comic-code {
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 2px dashed var(--border-color);
-  box-shadow: inset 2px 2px 0 var(--border-color);
-  background-color: #f0f0f0;
-  font-family: monospace;
-  font-size: 0.85rem;
-  overflow-x: auto;
-}
-
-.comic-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.comic-option {
-  background: var(--option-bg);
-  border: 2px solid var(--border-color);
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 4px 4px 0 var(--border-color);
-  transition: 0.2s ease;
-  font-size: 1rem;
-}
-
-.comic-option:hover {
-  background-color: var(--option-hover);
-  transform: scale(1.03);
-}
-
-.comic-option.selected {
-  background-color: #d0eaff;
-  border-color: #1976d2;
-}
-
-.comic-option.correct {
-  background-color: var(--correct-bg);
-  border-color: green;
-}
-
-.answer-bubble.correct-bubble {
-  background-color: var(--correct-bg);
-  border-color: green;
-}
-
-.answer-bubble.wrong-bubble {
-  background-color: var(--wrong-bg);
-  border-color: red;
+  border-color: var(--paper-color) transparent transparent transparent;
 }
 
 .show-answer-button {
   background-color: var(--option-bg);
   border: 2px solid var(--border-color);
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.25rem;
   margin-top: 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   box-shadow: 4px 4px 0 var(--border-color);
-  transition: transform 0.2s ease;
+  font-family: 'Comic Neue', cursive;
+  transition: 0.2s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000000;
 }
 
 .show-answer-button:hover {
   background-color: var(--option-hover);
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
 .speaker-header {
@@ -141,51 +109,39 @@
   margin-bottom: 0.5rem;
 }
 
-/* Pure CSS Monkey Avatar - Softer Professional Look */
+/* Pen & Paper Style Avatar */
 .css-monkey {
   position: relative;
   width: 40px;
   height: 40px;
-  background-color: var(--monkey-brown);
-  border-radius: 50%;
+  background-color: var(--pen-color);
+  border-radius: 6px;
   border: 2px solid var(--border-color);
+  box-shadow: inset -2px -2px 0 #fff;
 }
 
 .css-monkey::before,
 .css-monkey::after {
   content: '';
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--monkey-brown);
-  border: 2px solid var(--border-color);
-  border-radius: 50%;
-  top: 6px;
-}
-
-.css-monkey::before {
-  left: -10px;
-}
-
-.css-monkey::after {
-  right: -10px;
-}
-
-.css-monkey .eye {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: black;
-  border-radius: 50%;
+  width: 4px;
+  height: 20px;
+  background-color: var(--pen-color);
   top: 10px;
 }
 
-.css-monkey .eye.left {
-  left: 10px;
+.css-monkey::before {
+  left: -8px;
+  transform: rotate(-15deg);
 }
 
-.css-monkey .eye.right {
-  right: 10px;
+.css-monkey::after {
+  right: -8px;
+  transform: rotate(15deg);
+}
+
+.css-monkey .eye {
+  display: none;
 }
 
 .nested-note-block {
