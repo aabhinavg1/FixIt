@@ -445,6 +445,7 @@ const sidebars = {
             'mcq/interview_question/basic/arrays-strings',
             'mcq/interview_question/basic/io-operations',
             'mcq/interview_question/basic/pointers-references',
+            'mcq/interview_question/basic/data-types-variables',
             'mcq/interview_question/intermediate/ClassesObjects',
             'mcq/interview_question/intermediate/CppInterviewQuestionsConstructorsDestructors',
             'mcq/interview_question/intermediate/EssentialCppInterviewQuestionsInheritancePolymorphism',

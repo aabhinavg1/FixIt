@@ -95,37 +95,32 @@ tags:
   - C++ Operator Overloading Syntax
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
+import { ComicQA } from '../Question_comics';
+
+<div>
+    <AdBanner />
+</div>
 
 # **Essential C++ Interview Questions on Operator Overloading**
 
-## **1. What is operator overloading in C++?**
-Operator overloading allows customizing the behavior of operators for user-defined types, making code more intuitive.
-
-### **Example:**
-```cpp
-class Complex {
+<ComicQA
+  question="1. What is operator overloading in C++?"
+  code={`class Complex {
 public:
     int real, imag;
     Complex(int r, int i) : real(r), imag(i) {}
     Complex operator+(const Complex& obj) {
         return Complex(real + obj.real, imag + obj.imag);
     }
-};
-```
+};`}
+  answer="Operator overloading in C++ allows redefining operators for user-defined types, enhancing code readability and usability."
+  example="Use operator overloading when working with complex data types to improve code clarity."
+/>
 
-### **Sample Answer:**
-"Operator overloading in C++ allows redefining operators for user-defined types, enhancing code readability and usability."
-
-**When to use:** Use operator overloading when working with complex data types to improve code clarity.
-
----
-
-## **2. How do you overload the `<<` and `>>` operators in C++?**
-The `<<` and `>>` operators are overloaded as friend functions for stream input and output.
-
-### **Example:**
-```cpp
-#include <iostream>
+<ComicQA
+  question="2. How do you overload the << and >> operators in C++?"
+  code={`#include <iostream>
 class Complex {
 public:
     int real, imag;
@@ -136,53 +131,131 @@ public:
 std::ostream& operator<<(std::ostream& out, const Complex& obj) {
     out << obj.real << " + " << obj.imag << "i";
     return out;
-}
-```
+}`}
+  answer="The << and >> operators are overloaded as friend functions to facilitate formatted input and output for custom classes."
+  example="Use these operators to simplify object serialization and debugging."
+/>
 
-### **Sample Answer:**
-"The `<<` and `>>` operators are overloaded as friend functions to facilitate formatted input and output for custom classes."
-
-**When to use:** Use these operators to simplify object serialization and debugging.
-
----
-
-## **3. What is the difference between member function and friend function in operator overloading?**
-- **Member Function:** The left operand must be an instance of the class.
-- **Friend Function:** Can have different types for both operands.
-
-### **Example:**
-```cpp
-class Sample {
+<ComicQA
+  question="3. What is the difference between member function and friend function in operator overloading?"
+  code={`class Sample {
 public:
     int value;
     Sample(int v) : value(v) {}
-    Sample operator+(const Sample& obj) { return Sample(value + obj.value); } // Member function
-    friend Sample operator-(const Sample& a, const Sample& b); // Friend function
+    Sample operator+(const Sample& obj) { return Sample(value + obj.value); }
+    friend Sample operator-(const Sample& a, const Sample& b);
 };
 
 Sample operator-(const Sample& a, const Sample& b) {
     return Sample(a.value - b.value);
-}
-```
+}`}
+  answer="Member functions allow the left operand to be the calling object, while friend functions provide more flexibility."
+  example="Use member functions when the left operand is an object of the class; use friend functions for symmetry in binary operations."
+/>
 
-### **Sample Answer:**
-"Member functions allow the left operand to be the calling object, while friend functions provide more flexibility."
+<ComicQA
+  question="4. What are the best practices for operator overloading?"
+  code={`// Guidelines
+// - Use const for non-modifying methods
+// - Follow natural operator meanings
+// - Overload << >> for I/O`}
+  answer="Operator overloading should follow intuitive behavior, ensure efficiency, and use const where necessary."
+  example="Follow best practices to maintain readability and avoid unintended behavior."
+/>
 
-**When to use:** Use member functions when the left operand is an object of the class; use friend functions for symmetry in binary operations.
+<ComicQA
+  question="5. Can all operators be overloaded in C++?"
+  code={`// Not Overloadable:
+// ::  .  .*  sizeof  typeid  ?:  alignof  noexcept`}
+  answer="No, some operators like ::, ., sizeof, and ?: cannot be overloaded in C++."
+  example="Remember these exceptions when designing custom types."
+/>
 
----
 
-## **4. What are the best practices for operator overloading?**
-- Use `const` for non-modifying operations.
-- Overload `<<` and `>>` for user-defined types.
-- Follow natural operator semantics (e.g., `+` should not subtract values).
-- Prefer member functions where applicable.
+<div>
+    <AdBanner />
+</div>
 
-### **Sample Answer:**
-"Operator overloading should follow intuitive behavior, ensure efficiency, and use `const` where necessary."
+<ComicQA
+  question="6. Why use friend functions for operator overloading?"
+  code={`class Distance {
+    int meters;
+public:
+    Distance(int m) : meters(m) {}
+    friend Distance operator+(const Distance& a, const Distance& b);
+};
 
-**When to use:** Follow best practices to maintain readability and avoid unintended behavior.
+Distance operator+(const Distance& a, const Distance& b) {
+    return Distance(a.meters + b.meters);
+}`}
+  answer="Friend functions allow access to private data and support symmetric binary operations."
+  example="Use when both operands are not class instances or to access private members."
+/>
 
----
+<ComicQA
+  question="7. How to overload comparison operators in C++?"
+  code={`class Box {
+public:
+    int size;
+    Box(int s) : size(s) {}
+    bool operator==(const Box& other) const {
+        return size == other.size;
+    }
+};`}
+  answer="Comparison operators like ==, !=, <, > can be overloaded to compare user-defined types."
+  example="Overload these for meaningful comparisons in containers or logic checks."
+/>
 
+<ComicQA
+  question="8. How do you overload the [] operator?"
+  code={`class Array {
+    int data[10];
+public:
+    int& operator[](int index) {
+        return data[index];
+    }
+};`}
+  answer="Overload the [] operator to provide array-like access to class members."
+  example="Used when you want custom index access, like in matrix or list implementations."
+/>
+
+<ComicQA
+  question="9. How to overload assignment operator (=) correctly?"
+  code={`class Resource {
+    int* ptr;
+public:
+    Resource(int v) { ptr = new int(v); }
+    Resource& operator=(const Resource& obj) {
+        if (this != &obj) {
+            delete ptr;
+            ptr = new int(*obj.ptr);
+        }
+        return *this;
+    }
+};`}
+  answer="Overload assignment operator to handle deep copy and avoid memory issues."
+  example="Always implement copy assignment when dealing with dynamic memory."
+/>
+
+<div>
+    <AdBanner />
+</div>
+
+<ComicQA
+  question="10. What is the role of operator overloading in STL containers?"
+  code={`// Example: std::set uses < operator
+class Point {
+public:
+    int x, y;
+    bool operator<(const Point& p) const {
+        return x < p.x || (x == p.x && y < p.y);
+    }
+};`}
+  answer="STL containers rely on operator overloading (like <) for sorting and uniqueness."
+  example="Define comparison logic for custom types used in sets, maps, etc."
+/>
+
+<div>
+    <AdBanner />
+</div>
 For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`."

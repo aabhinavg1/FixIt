@@ -43,239 +43,150 @@ tags:
 
 ---
 import AdBanner from '@site/src/components/AdBanner';
+import { ComicQA } from '../Question_comics' ;
 
 <div>
     <AdBanner />
 </div>
 
-# Question on the Recursion in C++
+<ComicQA
+  question="1) What is Recursion?"
+  answer="Recursion occurs when a function calls itself to solve smaller instances of the same problem. It simplifies complex problems by breaking them down into smaller, manageable parts with base and recursive cases."
+  code={`int factorial(int n) {
+    if (n <= 1) return 1;  // Base case
+    return n * factorial(n - 1);  // Recursive case
+}`}
+  example={`// Calculating 5! (120)
+int result = factorial(5);
+// Call stack: factorial(5)→5*factorial(4)→...→5*4*3*2*1`}
+  whenToUse="Use recursion for problems that can be divided into identical subproblems (tree traversals, divide-and-conquer algorithms). Avoid for simple iterations where loops would suffice."
+/>
 
-## What is Recursion?
-
-Recursion occurs when a function calls itself to solve smaller instances of the same problem. It simplifies complex problems by breaking them down into smaller, manageable parts.
-
-### Example of Recursion:
-
-```cpp
-int factorial(int n) {
-    if (n <= 1) {
-        return 1;
-    }
-    return n * factorial(n - 1);
-}
-```
-### Sample Answer:
-Recursion is used in C++ to solve problems that can be broken down into smaller sub-problems with similar characteristics. By reducing the problem size at each recursive call, recursion efficiently solves complex problems.
-
-``Base Case`` and ``Recursive Case``
-1. Base Case: Prevents infinite recursion by defining when the recursion should stop.
-2. Recursive Case: The condition where the function calls itself to solve a smaller problem.
-
-```cpp
-int fibonacci(int n) {
-    if (n <= 1) {
-        return n;
-    }
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-```
-::: note
-In recursion, the base case ensures the function stops calling itself, while the recursive case solves smaller instances progressively. For example, in Fibonacci, the base cases are ``fibonacci(0)`` and ``fibonacci(1)``, while the recursive case computes ``fibonacci(n-1) + fibonacci(n-2)``
-:::
-
-<div>
-    <AdBanner />
-</div>
-
-## What is a Recursive Function?
-
-A recursive function is a function that calls itself either directly or indirectly in order to solve a problem.
-
-### Example of Recursion function:
-
-```cpp
-void countDown(int n) {
-    if (n == 0) return;
+<ComicQA
+  question="2) What is a Recursive Function?"
+  answer="A function that calls itself directly or indirectly to solve smaller instances of a problem until reaching a base case that stops further recursion."
+  code={`void countDown(int n) {
+    if (n == 0) return;  // Base case
     cout << n << " ";
-    countDown(n - 1);
-}
-```
-### Sample Answer:
-A recursive function calls itself until it reaches a base case. It's commonly used in problems where the solution involves smaller subproblems of the same type.
+    countDown(n - 1);    // Recursive call
+}`}
+  example={`// countDown(3) prints: 3 2 1
+countDown(3);`}
+  whenToUse="Use for problems with natural recursive structure (tree operations, mathematical sequences). Ensure base cases are properly defined to prevent stack overflow."
+/>
 
-
-<div>
-    <AdBanner />
-</div>
-
-## What is the Function Call Stack?
-
-When a recursive function is executed, each function call is added to the call stack. The function at the top of the stack executes, and once it completes, it is popped off the stack.
-
-### Example of Function Call Stack
-
-```cpp
-int sum(int n) {
+<ComicQA
+  question="3) What is the Function Call Stack in Recursion?"
+  answer="The call stack tracks active function calls. Each recursive call pushes a new stack frame until the base case is reached, then unwinds by popping frames."
+  code={`int sum(int n) {
     if (n == 0) return 0;
-    return n + sum(n - 1); // call stack builds up here
-}
-```
-### Sample Answer:
-The call stack stores information about active subroutines. In recursion, each call adds a new layer to the stack until the base case is reached.
+    return n + sum(n - 1);  // Stack builds here
+}`}
+  example={`// sum(3) call stack:
+// sum(3)→3+sum(2)→3+(2+sum(1))→3+(2+(1+sum(0)))→3+(2+(1+0))`}
+  whenToUse="Understand the call stack when debugging recursion. Be mindful of stack depth - deep recursion may cause stack overflow errors."
+/>
 
-<div>
-    <AdBanner />
-</div>
+<ComicQA
+  question="4) What is Divide and Conquer in Recursion?"
+  answer="A technique that divides problems into smaller subproblems, solves them recursively, and combines results for the final solution."
+  code={`int binarySearch(int arr[], int l, int r, int x) {
+    if (l > r) return -1;
+    int mid = l + (r - l)/2;
+    if (arr[mid] == x) return mid;
+    if (arr[mid] > x) return binarySearch(arr, l, mid-1, x);
+    return binarySearch(arr, mid+1, r, x);
+}`}
+  example={`// Searching for 7 in [1,3,7,9,12]:
+// First call: mid=7 (found immediately)`}
+  whenToUse="Ideal for problems that can be partitioned (sorting, searching). Time complexity often improves from O(n) to O(log n)."
+/>
 
-
-## What is Divide and Conquer?
-
-Divide and Conquer is a problem-solving technique where a problem is divided into smaller sub-problems, solved recursively, and then combined to get the final result.
-
-### Example of Divide and Conquer
-
-```cpp
-int binarySearch(int arr[], int low, int high, int key) {
-    if (low > high) return -1;
-    int mid = (low + high) / 2;
-    if (arr[mid] == key) return mid;
-    else if (arr[mid] > key) return binarySearch(arr, low, mid - 1, key);
-    else return binarySearch(arr, mid + 1, high, key);
-}
-```
-### Sample Answer:
-Divide and Conquer splits the problem into smaller parts, solves them recursively, and merges the solutions. Binary search is a classic example.
-
-<div>
-    <AdBanner />
-</div>
-
-## What is Backtracking?
-
-Backtracking is a recursive technique for solving problems by exploring all possible options and undoing the last step if it leads to a dead end.
-
-### Example of Backtracking
-
-```cpp
-bool solveMaze(int x, int y, int maze[5][5]) {
-    if (x == 4 && y == 4) return true;
-    // try right
-    if (maze[x][y+1] == 1 && solveMaze(x, y+1, maze)) return true;
-    // try down
-    if (maze[x+1][y] == 1 && solveMaze(x+1, y, maze)) return true;
+<ComicQA
+  question="5) What is Backtracking?"
+  answer="A recursive technique that explores potential solutions and abandons paths (backtracks) when they don't lead to a valid solution."
+  code={`bool solveMaze(int maze[N][N], int x, int y) {
+    if (x == N-1 && y == N-1) return true;
+    if (isSafe(maze, x, y)) {
+        maze[x][y] = 2;  // Mark path
+        if (solveMaze(maze, x+1, y)) return true;
+        if (solveMaze(maze, x, y+1)) return true;
+        maze[x][y] = 1;  // Backtrack
+    }
     return false;
-}
-```
-### Sample Answer:
-Backtracking tries out all paths and returns as soon as it finds a solution or reaches a dead end. It's used in problems like mazes, N-Queens, and puzzles.
-
+}`}
+  example={`// Solves mazes by trying paths and unmarking dead ends`}
+  whenToUse="Use for constraint satisfaction problems (N-Queens, Sudoku). Always undo changes (backtrack) when recursion unwinds."
+/>
 
 <div>
     <AdBanner />
 </div>
 
-## What is Tail Recursion?
-
-Tail recursion is when the recursive call is the last operation in the function.
-
-### Example of Tail Recursion
-
-```cpp
-int tailSum(int n, int acc = 0) {
+<ComicQA
+  question="6) What is Tail Recursion?"
+  answer="A recursion where the recursive call is the last operation. Can be optimized by compilers to reuse stack frames (tail call optimization)."
+  code={`int tailFact(int n, int acc = 1) {
     if (n == 0) return acc;
-    return tailSum(n - 1, acc + n); // tail-recursive
-}
-```
-### Sample Answer:
-Tail-recursive functions can be optimized by the compiler to avoid extra stack frames, making recursion as efficient as iteration.
+    return tailFact(n - 1, n * acc);  // Tail call
+}`}
+  example={`// tailFact(4) execution:
+// tailFact(4,1)→tailFact(3,4)→tailFact(2,12)→tailFact(1,24)→tailFact(0,24)→24`}
+  whenToUse="Convert regular recursion to tail recursion when possible to optimize stack usage. Particularly useful in functional programming."
+/>
 
-
-<div>
-    <AdBanner />
-</div>
-
-## What is Memoization?
-
-Memoization is an optimization technique that stores results of expensive function calls and returns the cached result when the same inputs occur again.
-
-### Example of Memoizing
-
-```cpp
-int fib(int n, vector<int>& dp) {
+<ComicQA
+  question="7) What is Memoization?"
+  answer="An optimization technique that caches results of expensive function calls to avoid redundant computations."
+  code={`int fib(int n, vector<int>& dp) {
     if (n <= 1) return n;
     if (dp[n] != -1) return dp[n];
-    return dp[n] = fib(n - 1, dp) + fib(n - 2, dp);
-}
-```
-### Sample Answer:
-Memoization avoids repeated computation by storing previously computed results. It significantly improves the performance of recursive algorithms like Fibonacci.
+    return dp[n] = fib(n-1, dp) + fib(n-2, dp);
+}`}
+  example={`// Fibonacci with memoization:
+// fib(5) with dp avoids recalculating fib(3), fib(2) etc.`}
+  whenToUse="Apply to recursive problems with overlapping subproblems (Fibonacci, grid traversal). Dramatically improves time complexity (O(2^n)→O(n))."
+/>
 
-<div>
-    <AdBanner />
-</div>
-
-## What is Dynamic Programming?
-
-Dynamic Programming (DP) solves problems by breaking them down into subproblems, solving each subproblem once, and storing the results for future reference.
-
-### Example of Dynamic programming
-
-```cpp
-int fib(int n) {
-    vector<int> dp(n + 1);
+<ComicQA
+  question="8) What is Dynamic Programming (DP)?"
+  answer="A method that solves problems by breaking them into overlapping subproblems, solving each once, and storing solutions (usually via memoization or tabulation)."
+  code={`int fibDP(int n) {
+    vector<int> dp(n+1);
     dp[0] = 0; dp[1] = 1;
-    for (int i = 2; i <= n; i++) {
-        dp[i] = dp[i - 1] + dp[i - 2];
-    }
+    for (int i = 2; i <= n; i++)
+        dp[i] = dp[i-1] + dp[i-2];
     return dp[n];
-}
-```
-### Sample Answer:
-In the Fibonacci example, each call to fib(n) creates two more calls, forming a tree of recursive calls. It helps visualize how recursion unfolds.
+}`}
+  example={`// Bottom-up Fibonacci calculation:
+// Builds solution from dp[0] up to dp[n] iteratively`}
+  whenToUse="Use when problems have optimal substructure and overlapping subproblems. Often converts exponential recursive solutions to polynomial time."
+/>
 
-<div>
-    <AdBanner />
-</div>
-
-## What is Recursive Problem Solving?
-
-Recursive problem solving involves breaking a problem into smaller subproblems of the same type and solving them recursively.
-
-### Example of Recursive Problem Solving
-
-```cpp
-int power(int x, int n) {
+<ComicQA
+  question="9) What is Recursive Problem Solving?"
+  answer="An approach where problems are solved by reducing them to smaller instances of the same problem until reaching trivial base cases."
+  code={`int power(int x, int n) {
     if (n == 0) return 1;
-    return x * power(x, n - 1);
-}
-```
-### Sample Answer:
-Recursive problem solving is ideal for problems like power, factorial, search, and traversal, where each solution step depends on a smaller subproblem.
+    return x * power(x, n-1);
+}`}
+  example={`// power(2,3) computes:
+// 2 * power(2,2) → 2 * (2 * power(2,1)) → 2 * (2 * (2 * 1))`}
+  whenToUse="Effective for problems with recursive definitions (mathematical sequences, tree operations). Always identify base cases first."
+/>
 
-<div>
-    <AdBanner />
-</div>
-
-
-## What is Algorithm Optimization in Recursion?
-
-Algorithm optimization in recursion involves reducing time and space complexity using techniques like memoization, tail recursion, and pruning unnecessary calls.
-
-<div>
-    <AdBanner />
-</div>
-
-### Example of Algorithm Optimization in Recursion
-
-```cpp
-int powerOptimized(int x, int n) {
+<ComicQA
+  question="10) How to Optimize Recursive Algorithms?"
+  answer="Techniques include: memoization (caching), tail recursion (stack optimization), pruning (early termination), and converting to iteration."
+  code={`int powerOptimized(int x, int n) {
     if (n == 0) return 1;
-    int half = powerOptimized(x, n / 2);
-    return (n % 2 == 0) ? half * half : x * half * half;
-}
-```
-### Sample Answer:
-By avoiding redundant calls and reducing the depth of recursion, optimized recursive algorithms improve performance in problems with exponential time complexity.
+    int half = powerOptimized(x, n/2);
+    return (n%2 == 0) ? half*half : x*half*half;
+}`}
+  example={` powerOptimized(2,10) only does 4 recursive calls instead of 10:
+ pow(2,10)→pow(2,5)→pow(2,2)→pow(2,1)`}
+  whenToUse="Optimize when recursion depth or computation time becomes problematic. Always analyze time/space complexity first."
+/>
 
 <div>
     <AdBanner />

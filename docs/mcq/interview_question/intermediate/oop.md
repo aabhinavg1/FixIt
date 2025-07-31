@@ -48,15 +48,19 @@ tags:
   - C++ Interview Preparation
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
+import { ComicQA } from '../Question_comics';
+
+<div>
+    <AdBanner />
+</div>
+
 
 # **Essential C++ Interview Questions on Object-Oriented Programming**
 
-## **1. What is Object-Oriented Programming (OOP) in C++?**
-Object-Oriented Programming (OOP) is a paradigm in C++ that organizes code into objects and classes for better modularity and reusability.
-
-### **Example:**
-```cpp
-class Car {
+<ComicQA
+  question="1. What is Object-Oriented Programming (OOP) in C++?"
+  code={`class Car {
 public:
     std::string brand;
     void show() { std::cout << "Car brand: " << brand << std::endl; }
@@ -67,79 +71,46 @@ int main() {
     myCar.brand = "Toyota";
     myCar.show();
     return 0;
-}
-```
+}`}
+  answer="OOP in C++ structures code into objects and classes to improve reusability and maintainability. It follows principles like encapsulation, inheritance, and polymorphism."
+  example="OOP is great for designing large, modular systems with reusable components."
+  whenToUse="Use OOP for complex systems requiring modularity and scalability."
+/>
 
-### **Sample Answer:**
-"OOP in C++ structures code into objects and classes to improve reusability and maintainability. It follows principles like encapsulation, inheritance, and polymorphism."
-
-**When to use:** Use OOP for complex systems requiring modularity and scalability.
-
----
-
-## **2. What is encapsulation in C++?**
-Encapsulation is the bundling of data and methods within a class while restricting direct access to some components.
-
-### **Example:**
-```cpp
-class BankAccount {
+<ComicQA
+  question="2. What is encapsulation in C++?"
+  code={`class BankAccount {
 private:
     double balance;
 public:
     void setBalance(double b) { balance = b; }
     double getBalance() { return balance; }
-};
-```
+};`}
+  answer="Encapsulation in C++ ensures data protection by restricting direct access and using getter/setter methods."
+  example="Encapsulation is used in financial applications where sensitive data must be protected."
+  whenToUse="Use encapsulation to protect sensitive data and enforce data integrity."
+/>
 
-### **Sample Answer:**
-"Encapsulation in C++ ensures data protection by restricting direct access and using getter/setter methods."
-
-**When to use:** Use encapsulation to protect sensitive data and enforce data integrity.
-
----
-
-## **3. What is inheritance in C++?**
-Inheritance allows a class to derive properties and methods from another class, enabling code reuse.
-
-### **Example:**
-```cpp
-class Vehicle {
+<ComicQA
+  question="3. What is inheritance in C++?"
+  code={`class Vehicle {
 public:
-    void honk() { std::cout << "Honk!" << std::endl; }
+    void start() { std::cout << "Starting vehicle" << std::endl; }
 };
 
-class Car : public Vehicle {};
-```
-
-### **Sample Answer:**
-"Inheritance in C++ enables code reuse by allowing a class to inherit properties and behaviors from a base class."
-
-**When to use:** Use inheritance to establish hierarchical relationships and avoid code duplication.
-
----
-
-## **4. What is polymorphism in C++?**
-Polymorphism allows functions or methods to take different forms through function overloading and overriding.
-
-### **Example:**
-```cpp
-class Animal {
+class Car : public Vehicle {
 public:
-    virtual void speak() { std::cout << "Animal speaks" << std::endl; }
-};
+    void honk() { std::cout << "Beep beep!" << std::endl; }
+};`}
+  answer="Inheritance allows a class to acquire the properties and behaviors of another class."
+  example="Cars and bikes inherit common features from the base class Vehicle."
+  whenToUse="Use when different classes share common behavior or structure."
+/>
 
-class Dog : public Animal {
-public:
-    void speak() override { std::cout << "Dog barks" << std::endl; }
-};
-```
+<div>
+    <AdBanner />
+</div>
 
-### **Sample Answer:**
-"Polymorphism in C++ enables dynamic method resolution, allowing different behaviors for the same function call."
-
-**When to use:** Use polymorphism for flexible and extensible code design.
-
----
 
 For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`."
 

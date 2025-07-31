@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 
 :root {
-  --panel-bg: #f5f7fa;
-  --border-color: #333;
-  --question-bg: #fff;
-  --option-bg: #e3f2fd;
-  --option-hover: #bbdefb;
+  --panel-bg: #fefefe;
+  --border-color: #2c3e50;
+  --question-bg: #ffffff;
+  --option-bg: #d0ebff;
+  --option-hover: #74c0fc;
   --answer-bg: #ffffff;
-  --correct-bg: #c8e6c9;
-  --wrong-bg: #ffcdd2;
-  --note-bg: #e8f5e9;
-  --pen-color: #37474f;
+  --correct-bg: #c8f7c5;
+  --wrong-bg: #ffbaba;
+  --note-bg: #e6fcf5;
+  --pen-color: #2d3436;
   --paper-color: #ffffff;
+  --accent-blue: #1c7ed6;
+}
+
+body {
+  background: #f9f9f9;
 }
 
 .comic-panel {
@@ -21,7 +26,7 @@
   margin: 2rem 0;
   background-color: var(--panel-bg);
   font-family: 'Comic Neue', cursive;
-  box-shadow: 8px 8px 0 var(--border-color);
+  box-shadow: 6px 6px 0 var(--border-color);
   position: relative;
   transition: transform 0.2s ease;
 }
@@ -37,16 +42,17 @@
   background-color: var(--paper-color);
   position: relative;
   margin-bottom: 1.5rem;
-  box-shadow: 5px 5px 0 var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
   max-width: 90%;
   line-height: 1.6;
   font-size: 1rem;
 }
 
 .question-bubble {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background-color: var(--paper-color);
+  color: #000;
 }
 
 .answer-bubble {
@@ -63,11 +69,11 @@
 }
 
 .answer-bubble.show {
-  max-height: 1000px;
+  max-height: none;
   opacity: 1;
   padding: 1.2rem 1.5rem;
   margin-top: 1rem;
-  box-shadow: 5px 5px 0 var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
 }
 
 .question-bubble::after,
@@ -89,7 +95,7 @@
   margin-top: 1rem;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 4px 4px 0 var(--border-color);
+  box-shadow: 3px 3px 0 var(--border-color);
   font-family: 'Comic Neue', cursive;
   transition: 0.2s ease;
   text-transform: uppercase;
@@ -100,6 +106,7 @@
 .show-answer-button:hover {
   background-color: var(--option-hover);
   transform: scale(1.07);
+  color: #fff;
 }
 
 .speaker-header {
@@ -166,4 +173,33 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #030000;
+}
+
+.rich-answer ul {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  padding-left: 1.75rem;
+  list-style-type: disc;
+}
+
+.rich-answer li {
+  margin-bottom: 0.6rem;
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+.cpp-features {
+  background: #eef7ff;
+  border-left: 4px solid #228be6;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #212529;
+}
+
+.cpp-features .label {
+  color: #1864ab;
+  font-weight: 600;
 }

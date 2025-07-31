@@ -41,278 +41,302 @@ keywords:
 - "C++ Code Optimization Techniques"
 
 ---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { ComicQA } from '../Question_comics' ;
+
+<div>
+    <AdBanner />
+</div>
+
+
 # **Essential C++11 Interview Questions**
+<ComicQA
+  question="1) What are smart pointers in C++11?"
+  answer="Smart pointers are RAII-based wrapper classes that automate memory management, eliminating common issues like memory leaks and dangling pointers."
+  code={`#include <memory>
 
-## **1. What are smart pointers in C++11?**
+void example() {
+    // Exclusive ownership
+    std::unique_ptr<int> uptr = std::make_unique<int>(42);
+    
+    // Shared ownership
+    std::shared_ptr<int> sptr1 = std::make_shared<int>(100);
+    auto sptr2 = sptr1;  // Reference count increases
+    
+    // Non-owning observer
+    std::weak_ptr<int> wptr = sptr1;
+}`}
+  example={`// Real-world applications:
+// 1. unique_ptr - File handles, exclusive resources
+// 2. shared_ptr - Caches, observer patterns
+// 3. weak_ptr - Breaking circular references`}
+  whenToUse="Prefer smart pointers over raw pointers in modern C++. Use unique_ptr for exclusive ownership, shared_ptr for shared access, and weak_ptr to avoid reference cycles."
+/>
 
-Smart pointers are wrapper classes that manage the lifecycle of dynamically allocated objects, reducing memory leaks.
-
-### **Types:**
-- `std::unique_ptr` - Exclusive ownership.
-- `std::shared_ptr` - Shared ownership.
-- `std::weak_ptr` - Non-owning reference.
-
-### **Example:**
-
-```cpp
-#include <memory>
-#include <iostream>
-
-int main() {
-    std::unique_ptr<int> ptr = std::make_unique<int>(42);
-    std::cout << "Value: " << *ptr << std::endl;
-}
-```
-
-### **Sample Answer:**
-"Smart pointers in C++11 (`unique_ptr`, `shared_ptr`, `weak_ptr`) help manage dynamic memory safely by ensuring proper deallocation when they go out of scope."
-
-**When to use:** Use smart pointers instead of raw pointers for better memory management.
-
----
-
-## **2. What are lambda expressions in C++11?**
-
-Lambda expressions allow defining inline anonymous functions.
-
-### **Syntax:**
-
-```cpp
-[ capture ] ( parameters ) -> return_type { function_body }
-```
-
-### **Example:**
-
-```cpp
-#include <iostream>
-
-int main() {
-    auto add = [](int a, int b) { return a + b; };
-    std::cout << "Sum: " << add(3, 5) << std::endl;
-}
-```
-
-### **Sample Answer:**
-"Lambda expressions provide a concise way to define small functions inline. They improve readability and allow capturing local variables."
-
-**When to use:** Use lambdas in algorithms, callbacks, and threading.
-
----
-
-## **3. What is move semantics in C++11?**
-
-Move semantics optimize performance by allowing resources to be transferred instead of copied.
-
-### **Example:**
-
-```cpp
-#include <iostream>
+<ComicQA
+  question="2) What are lambda expressions in C++11?"
+  answer="Lambdas are anonymous function objects that can capture variables from their enclosing scope, providing concise inline function definitions."
+  code={`#include <algorithm>
 #include <vector>
 
-std::vector<int> createVector() {
-    std::vector<int> v{1, 2, 3};
-    return v;
-}
+void lambdaExample() {
+    std::vector<int> nums {1, 2, 3, 4, 5};
+    
+    // Lambda with capture and parameters
+    int threshold = 3;
+    std::remove_if(nums.begin(), nums.end(), 
+        [threshold](int x) { return x < threshold; });
+    
+    // Generic lambda (C++14 feature)
+    auto printer = [](auto x) { std::cout << x; };
+}`}
+  example={`// Common lambda patterns:
+// 1. STL algorithm predicates
+// 2. Callback functions
+// 3. Thread tasks
+// 4. Custom comparators
 
-int main() {
-    std::vector<int> vec = createVector();
-    std::cout << "Size: " << vec.size() << std::endl;
-}
-```
+// Capture modes:
+// [=] - Capture by value
+// [&] - Capture by reference
+// [this] - Capture class members`}
+  whenToUse="Use lambdas for short, one-off functions where named functions would be cumbersome. Particularly useful with STL algorithms and asynchronous operations."
+/>
 
-### **Sample Answer:**
-"Move semantics (`std::move`) avoids unnecessary copying by transferring ownership of resources."
-
-**When to use:** Use move semantics to optimize performance when dealing with large objects.
-
----
-
-## **4. What is `constexpr` in C++11?**
-
-`constexpr` allows compile-time computation for functions and variables.
-
-### **Example:**
-
-```cpp
-#include <iostream>
-constexpr int square(int x) {
-    return x * x;
-}
-
-int main() {
-    constexpr int result = square(5);
-    std::cout << "Result: " << result << std::endl;
-}
-```
-
-### **Sample Answer:**
-"`constexpr` ensures functions and variables are evaluated at compile-time when possible, improving performance."
-
-**When to use:** Use `constexpr` to enable compile-time computations and optimizations.
-
----
-
-## **5. What is `std::thread` in C++11?**
-
-`std::thread` enables multithreading by allowing concurrent execution of functions.
-
-### **Example:**
-
-```cpp
-#include <iostream>
-#include <thread>
-
-void task() {
-    std::cout << "Hello from thread!" << std::endl;
-}
-
-int main() {
-    std::thread t(task);
-    t.join();
-}
-```
-
-### **Sample Answer:**
-"`std::thread` in C++11 allows concurrent execution of code, improving performance on multi-core systems."
-
-**When to use:** Use `std::thread` to execute tasks in parallel.
-
----
-
-## **6. What are rvalue references in C++11?**
-
-Rvalue references (`T&&`) enable move semantics, avoiding unnecessary copies.
-
-### **Example:**
-
-```cpp
-#include <iostream>
-
-void process(int&& num) {
-    std::cout << "Processing: " << num << std::endl;
-}
-
-int main() {
-    process(10); // Rvalue
-}
-```
-
-### **Sample Answer:**
-"Rvalue references allow us to implement move semantics, enabling efficient object transfers."
-
-**When to use:** Use rvalue references for move constructors and performance optimization.
-
----
-
-## **7. What is the `override` keyword in C++11?**
-
-`override` ensures that a function correctly overrides a base class function.
-
-### **Example:**
-
-```cpp
-class Base {
+<ComicQA
+  question="3) What is move semantics in C++11?"
+  answer="Move semantics enables efficient transfer of resources from temporary objects (rvalues) using move constructors and move assignment operators."
+  code={`class String {
+    char* data;
 public:
-    virtual void show() {}
+    // Move constructor
+    String(String&& other) noexcept 
+        : data(other.data) {
+        other.data = nullptr;
+    }
+    
+    // Move assignment
+    String& operator=(String&& other) noexcept {
+        if (this != &other) {
+            delete[] data;
+            data = other.data;
+            other.data = nullptr;
+        }
+        return *this;
+    }
+};`}
+  example={`// Move semantics in action:
+// 1. Return value optimization (RVO)
+// 2. STL container operations
+// 3. Resource transfer without copying
+// 4. Perfect forwarding
+
+// Key functions:
+// std::move - Casts to rvalue reference
+// noexcept - Important for move operations`}
+  whenToUse="Implement move semantics for resource-owning classes to optimize performance. Always mark move operations as noexcept for compatibility with STL containers."
+/>
+
+<ComicQA
+  question="4) What is constexpr in C++11?"
+  answer="constexpr indicates that a value or function can be evaluated at compile-time, enabling optimizations and metaprogramming."
+  code={`constexpr int factorial(int n) {
+    return (n <= 1) ? 1 : n * factorial(n - 1);
+}
+
+int main() {
+    constexpr int fact5 = factorial(5);  // Computed at compile-time
+    int array[fact5];  // Used as array size
+}`}
+  example={`// constexpr applications:
+// 1. Compile-time computations
+// 2. Fixed-size array declarations
+// 3. Template metaprogramming
+// 4. Performance-critical constants
+
+// C++11 limitations:
+// Single return statement
+// Limited loop constructs
+// Expanded in C++14/17`}
+  whenToUse="Use constexpr for values and functions that can be determined at compile-time to improve performance and enable compile-time checks."
+/>
+
+<div>
+    <AdBanner />
+</div>
+
+<ComicQA
+  question="5) What is std::thread in C++11?"
+  answer="std::thread provides a standardized way to create and manage threads, including joining and detaching operations."
+  code={`#include <thread>
+#include <iostream>
+
+void threadTask(int id) {
+    std::cout << "Thread " << id << " working\n";
+}
+
+int main() {
+    std::thread t1(threadTask, 1);
+    std::thread t2(threadTask, 2);
+    
+    t1.join();
+    t2.join();
+}`}
+  example={`// Thread management patterns:
+// 1. Worker threads
+// 2. Thread pools
+// 3. Parallel algorithms
+// 4. Asynchronous I/O
+
+// Synchronization tools:
+// std::mutex, std::lock_guard
+// std::condition_variable
+// std::atomic`}
+  whenToUse="Use std::thread for CPU-bound parallelism. For higher-level abstractions, consider std::async or parallel STL algorithms in modern C++."
+/>
+
+<ComicQA
+  question="6) What are rvalue references in C++11?"
+  answer="Rvalue references (T&&) identify temporary objects that can be safely moved from, enabling efficient resource transfer."
+  code={`template<typename T>
+void swap(T& a, T& b) {
+    T temp = std::move(a);
+    a = std::move(b);
+    b = std::move(temp);
+}
+
+void process(std::string&& str) {
+    // Safely move from str
+    std::string internal = std::move(str);
+}`}
+  example={`// Rvalue reference uses:
+// 1. Move constructors/assignment
+// 2. Perfect forwarding
+// 3. Optimized parameter passing
+// 4. Factory functions
+
+// Reference collapsing rules:
+// T& & → T&
+// T& && → T&
+// T&& & → T&
+// T&& && → T&&`}
+  whenToUse="Use rvalue references to implement move semantics and perfect forwarding. Essential for writing efficient generic code."
+/>
+
+<ComicQA
+  question="7) What is the override keyword in C++11?"
+  answer="override explicitly marks a virtual function as overriding a base class version, enabling compile-time checks for correct polymorphism."
+  code={`class Base {
+public:
+    virtual void foo(int) const;
+    virtual ~Base() = default;
 };
 
 class Derived : public Base {
 public:
-    void show() override {}
-};
-```
+    void foo(int) const override;  // Correct override
+    // void foo(float) override;   // Error: doesn't override
+};`}
+  example={`// Benefits of override:
+// 1. Catches signature mismatches
+// 2. Documents override intent
+// 3. Prevents accidental hiding
+// 4. Improves code readability
 
-### **Sample Answer:**
-"The `override` keyword ensures that a function in the derived class properly overrides a virtual function from the base class."
+// Related specifiers:
+// final - Prevents further overriding
+// = 0 - Pure virtual functions`}
+  whenToUse="Always use override when implementing virtual functions in derived classes to prevent subtle inheritance bugs."
+/>
 
-**When to use:** Use `override` to prevent accidental function mismatches in inheritance.
-
----
-
-## **8. What is `std::atomic` in C++11?**
-
-`std::atomic` provides atomic operations for thread safety.
-
-### **Example:**
-
-```cpp
-#include <atomic>
+<ComicQA
+  question="8) What is std::atomic in C++11?"
+  answer="std::atomic provides thread-safe operations on variables without explicit locking, using processor atomic instructions."
+  code={`#include <atomic>
 #include <thread>
-#include <iostream>
 
-std::atomic<int> count(0);
+std::atomic<int> counter(0);
 
 void increment() {
-    for (int i = 0; i < 1000; ++i) {
-        count.fetch_add(1, std::memory_order_relaxed);
-    }
+    for (int i = 0; i < 1000; ++i)
+        counter.fetch_add(1, std::memory_order_relaxed);
 }
 
 int main() {
     std::thread t1(increment);
     std::thread t2(increment);
-    t1.join();
-    t2.join();
-    std::cout << "Count: " << count.load() << std::endl;
+    t1.join(); t2.join();
+    std::cout << counter.load();
+}`}
+  example={`// Memory ordering options:
+// memory_order_relaxed - No ordering
+// memory_order_acquire - Read barrier
+// memory_order_release - Write barrier
+// memory_order_seq_cst - Full barrier (default)
+
+// Atomic types:
+// Fundamental types (int, bool)
+// Pointers
+// User-defined with is_lock_free()`}
+  whenToUse="Use std::atomic for simple shared variables in lock-free programming. For complex synchronization, prefer mutexes."
+/>
+
+<ComicQA
+  question="9) What are variadic templates in C++11?"
+  answer="Variadic templates allow functions and classes to accept an arbitrary number of template arguments, enabling type-safe variable-length argument lists."
+  code={`template<typename... Args>
+void log(Args... args) {
+    (std::cout << ... << args) << '\n';  // Fold expression (C++17)
 }
-```
 
-### **Sample Answer:**
-"`std::atomic` ensures operations on shared data are thread-safe without explicit locking."
+template<typename T, typename... Rest>
+class Tuple {
+    T head;
+    Tuple<Rest...> tail;
+};`}
+  example={`// Variadic template applications:
+// 1. Type-safe printf alternatives
+// 2. Tuple implementations
+// 3. Forwarding wrappers
+// 4. Recursive data structures
 
-**When to use:** Use `std::atomic` for lock-free thread synchronization.
+// Helper techniques:
+// sizeof...(Args) - Count arguments
+// std::forward - Perfect forwarding`}
+  whenToUse="Use variadic templates to create flexible generic components that work with varying numbers and types of arguments."
+/>
 
----
-
-## **9. What are variadic templates in C++11?**
-
-Variadic templates allow functions and classes to accept any number of parameters.
-
-### **Example:**
-
-```cpp
-#include <iostream>
-
-template <typename... Args>
-void print(Args... args) {
-    (std::cout << ... << args) << std::endl;
-}
+<ComicQA
+  question="10) What is std::unordered_map in C++11?"
+  answer="std::unordered_map is a hash table-based associative container offering average O(1) complexity for insertions, deletions, and lookups."
+  code={`#include <unordered_map>
+#include <string>
 
 int main() {
-    print(1, 2.5, "Hello");
-}
-```
+    std::unordered_map<std::string, int> word_counts;
+    word_counts["hello"] = 1;
+    word_counts["world"]++;
+    
+    for (const auto& [word, count] : word_counts) {
+        std::cout << word << ": " << count << '\n';
+    }
+}`}
+  example={`// Hash map operations:
+// insert/emplace - Add elements
+// find - Lookup elements
+// bucket_count - Hash table size
+// load_factor - Performance metric
 
-### **Sample Answer:**
-"Variadic templates enable writing flexible functions that handle multiple arguments generically."
+// Customization points:
+// Hash function specialization
+// Key equality predicate`}
+  whenToUse="Prefer unordered_map over std::map when order isn't required and you need faster lookups. For small datasets, std::map may be more efficient."
+/>
 
-**When to use:** Use variadic templates to create flexible functions and classes.
-
----
-
-## **10. What is `std::unordered_map` in C++11?**
-
-`std::unordered_map` is a hash table-based associative container for fast lookups.
-
-### **Example:**
-
-```cpp
-#include <unordered_map>
-#include <iostream>
-
-int main() {
-    std::unordered_map<std::string, int> scores = { {"Alice", 90}, {"Bob", 85} };
-    std::cout << "Alice's score: " << scores["Alice"] << std::endl;
-}
-```
-
-### **Sample Answer:**
-"`std::unordered_map` offers constant-time complexity on average for key-based lookups."
-
-**When to use:** Use `std::unordered_map` for efficient key-value data storage and retrieval.
-
----
-
+<div>
+    <AdBanner />
+</div>
 
 These are some of the key C++11 features you might encounter in interviews. Mastering these topics will help you stand out as a strong C++ developer!
 

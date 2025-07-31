@@ -6,12 +6,20 @@ import './ComicQuestion.css';
 export const ComicQA = ({ question, answer, code, example, whenToUse }) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
+  const renderParagraphs = (text) => {
+    if (typeof text !== 'string') return text;
+    return text
+      .split('\n')
+      .filter(line => line.trim() !== '')
+      .map((line, idx) => <p key={idx}>{line.trim()}</p>);
+  };
+
   return (
     <div className="comic-panel">
-      {/* Question Section */}
+      {/* Question Bubble */}
       <div className="speech-bubble question-bubble">
-        <h3>Question</h3>
-        <p>{question?.replace(/\?/g, '')}</p>
+        <h3 className="bubble-header">Question</h3>
+        {renderParagraphs(question)}
         <button
           className="show-answer-button"
           onClick={() => setShowAnswer(prev => !prev)}
@@ -20,18 +28,16 @@ export const ComicQA = ({ question, answer, code, example, whenToUse }) => {
         </button>
       </div>
 
-      {/* Animated Answer Section */}
+      {/* Answer Bubble */}
       <div className={`speech-bubble answer-bubble ${showAnswer ? 'show' : ''}`}>
         <div className="speaker-header">
-          <div className="css-monkey">
-            <div className="eye left"></div>
-            <div className="eye right"></div>
-          </div>
           <h4>Answer</h4>
         </div>
-        <p>{answer?.replace(/\?/g, '')}</p>
 
-        {/* Syntax */}
+        <div className="rich-answer">
+          {typeof answer === 'string' ? renderParagraphs(answer) : answer}
+        </div>
+
         {code && (
           <div className="nested-code-block">
             <h5>Syntax</h5>
@@ -41,7 +47,6 @@ export const ComicQA = ({ question, answer, code, example, whenToUse }) => {
           </div>
         )}
 
-        {/* Example */}
         {example && (
           <div className="nested-code-block">
             <h5>Example</h5>
@@ -51,11 +56,10 @@ export const ComicQA = ({ question, answer, code, example, whenToUse }) => {
           </div>
         )}
 
-        {/* When to Use */}
         {whenToUse && (
           <div className="nested-note-block">
             <h5>When to use</h5>
-            <p>{whenToUse?.replace(/\?/g, '')}</p>
+            {renderParagraphs(whenToUse)}
           </div>
         )}
       </div>

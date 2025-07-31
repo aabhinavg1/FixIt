@@ -95,446 +95,270 @@ tags:
   - C++ Error Management
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
+import { ComicQA } from '../Question_comics';
+
+<div>
+    <AdBanner />
+</div>
 
 # **Essential C++ Interview Questions on Exception Handling**
 
-## **1. What is exception handling in C++?**
-Exception handling is a mechanism in C++ to handle runtime errors gracefully using `try`, `catch`, and `throw` keywords.
+<ComicQA
+  question="1) What is exception handling in C++?"
+  answer="Exception handling is a mechanism to manage runtime errors using try, catch, and throw keywords, allowing graceful error recovery instead of program termination."
+  code={`try {
+    FileHandler fh("data.txt");
+    if (!fh.isValid()) throw runtime_error("File open failed");
+    processFile(fh);
+} catch (const exception& e) {
+    cerr << "Error: " << e.what() << endl;
+}`}
+  example={`// Common use cases:
+// 1. File I/O errors
+// 2. Invalid user input
+// 3. Resource allocation failures
+// 4. Network operation failures`}
+  whenToUse="Use exception handling for recoverable error conditions where you want to separate error handling from normal program flow."
+/>
 
-### **Example:**
-```cpp
-try {
-    int a = 10, b = 0;
-    if (b == 0) throw "Division by zero error!";
-    int result = a / b;
-} catch (const char* msg) {
-    std::cerr << msg << std::endl;
-}
-```
+<ComicQA
+  question="2) What are standard exceptions in C++?"
+  answer="The C++ Standard Library provides exception classes derived from std::exception, including logic_error, runtime_error, bad_alloc, and bad_cast."
+  code={`try {
+    vector<int> v(1000000000);  // May throw bad_alloc
+    if (v.empty()) throw logic_error("Unexpected empty vector");
+} catch (const bad_alloc& e) {
+    cerr << "Memory error: " << e.what();
+} catch (const logic_error& e) {
+    cerr << "Logic error: " << e.what();
+}`}
+  example={`// Common standard exceptions:
+// 1. invalid_argument - Invalid parameter
+// 2. out_of_range - Index out of bounds
+// 3. overflow_error - Arithmetic overflow
+// 4. bad_typeid - Failed typeid operation`}
+  whenToUse="Prefer standard exceptions over custom ones for common error cases to maintain consistency and interoperability."
+/>
 
-### **Sample Answer:**
-"Exception handling in C++ allows me to handle errors without crashing the program using `try`, `catch`, and `throw`."
-
-**When to use:** Use exception handling when dealing with runtime errors such as division by zero, invalid memory access, and file handling errors.
-
----
-
-## **2. What are standard exceptions in C++?**
-C++ provides a set of standard exceptions derived from the `std::exception` class.
-
-### **Example:**
-```cpp
-try {
-    throw std::runtime_error("Runtime error occurred");
-} catch (const std::exception& e) {
-    std::cout << "Exception: " << e.what() << std::endl;
-}
-```
-
-### **Sample Answer:**
-"C++ has built-in exceptions like `std::runtime_error`, `std::logic_error`, and `std::bad_alloc`. I use them for handling common errors effectively."
-
-**When to use:** Use standard exceptions for common errors like memory allocation failure or logical errors.
-
----
-
-## **3. How do you create a custom exception in C++?**
-
-### **Example:**
-```cpp
-class MyException : public std::exception {
+<ComicQA
+  question="3) How do you create custom exceptions?"
+  answer="Derive from std::exception or its derivatives, override what(), and use noexcept where appropriate for exception safety."
+  code={`class NetworkException : public runtime_error {
 public:
+    NetworkException(const string& msg, int code)
+        : runtime_error(msg), errorCode(code) {}
+    
+    int getErrorCode() const { return errorCode; }
+    
     const char* what() const noexcept override {
-        return "Custom exception occurred";
+        static string fullMsg = runtime_error::what() + 
+                               " (code: " + to_string(errorCode) + ")";
+        return fullMsg.c_str();
     }
-};
-
+private:
+    int errorCode;
+};`}
+  example={`// Custom exception usage:
 try {
-    throw MyException();
-} catch (const MyException& e) {
-    std::cout << e.what() << std::endl;
+    if (!pingServer()) throw NetworkException("Connection failed", 503);
+} catch (const NetworkException& e) {
+    cerr << e.what() << ", Retrying...";
+}`}
+  whenToUse="Create custom exceptions when you need domain-specific error information or specialized error handling behavior."
+/>
+
+<ComicQA
+  question="4) What is exception safety and best practices?"
+  answer="Exception safety ensures programs behave correctly during exceptions. Key levels: basic (no leaks), strong (commit-or-rollback), and noexcept (no throw)."
+  code={`class DatabaseTransaction {
+    Connection conn;
+public:
+    // Strong exception safety
+    void updateRecord(Record newRec) {
+        Record old = getCurrentRecord();
+        conn.startTransaction();
+        try {
+            saveRecord(newRec);
+            conn.commit();
+        } catch (...) {
+            conn.rollback();
+            saveRecord(old);  // Restore original
+            throw;
+        }
+    }
+};`}
+  example={`// Best practices:
+// 1. Use RAII for resource management
+// 2. Prefer pass-by-value and move semantics
+// 3. Mark non-throwing functions as noexcept
+// 4. Throw by value, catch by const reference
+// 5. Document exception guarantees`}
+  whenToUse="Apply exception safety principles whenever writing code that manages resources or needs predictable behavior during failures."
+/>
+
+<ComicQA
+  question="5) What is stack unwinding?"
+  answer="When an exception is thrown, stack unwinding destroys local objects in scope between throw and catch points by calling their destructors."
+  code={`void process() {
+    Resource r1;  // Constructor called
+    Resource r2;  // Constructor called
+    throw runtime_error("Error");
+    // r2 and r1 destructors called during unwinding
 }
-```
 
-### **Sample Answer:**
-"A custom exception in C++ is created by inheriting from `std::exception` and overriding the `what()` function."
+int main() {
+    try {
+        process();
+    } catch (...) {
+        // Stack has been unwound here
+    }
+}`}
+  example={`// Unwinding sequence:
+// 1. Exception thrown
+// 2. Current scope exited
+// 3. Local objects destroyed (reverse construction order)
+// 4. Process repeats up call stack until handler found
+// 5. If no handler, std::terminate called`}
+  whenToUse="Understand stack unwinding when designing resource management - ensure destructors properly clean up resources."
+/>
 
-**When to use:** Use custom exceptions for specific application errors.
+<div>
+    <AdBanner />
+</div>
 
----
-
-## **4. What is exception safety and best practices?**
-
-### **Best Practices:**
-- Use `try-catch` only where necessary.
-- Prefer RAII (Resource Acquisition Is Initialization) for resource management.
-- Catch exceptions by reference (`const std::exception&`).
-- Use `noexcept` where applicable to avoid unnecessary exception checks.
-
-### **Sample Answer:**
-"Exception safety ensures that code behaves correctly even when exceptions occur. I follow best practices like using RAII and avoiding raw pointers."
-
-**When to use:** Use exception safety principles to write robust and maintainable C++ code.
-
----
-
-## **5. What is the role of `try` block in exception handling?**
-
-### **Example:**
-```cpp
-try {
-    int x = 5;
-    if (x == 5) throw std::runtime_error("Error: x cannot be 5");
+<ComicQA
+  question="6) What happens if an exception isn't caught?"
+  answer="An uncaught exception triggers std::terminate(), typically aborting the program. The terminate handler can be customized via set_terminate()."
+  code={`void myTerminate() {
+    cerr << "Uncaught exception! Emergency shutdown.";
+    abort();
 }
-```
 
-### **Sample Answer:**
-"The `try` block contains code that might throw exceptions. It lets me test code and handle any exceptions that occur."
+int main() {
+    set_terminate(myTerminate);
+    throw runtime_error("This won't be caught");
+}`}
+  example={`// Common causes:
+// 1. No matching catch block
+// 2. Exception thrown during stack unwinding
+// 3. Exception escapes noexcept function
+// 4. Exception thrown from destructor during unwinding`}
+  whenToUse="Always ensure exceptions are caught at appropriate levels, especially in main() and thread entry points."
+/>
 
-**When to use:** Use `try` around code segments where exceptions might happen.
-
----
-
-## **6. What is the role of `catch` block?**
-
-### **Example:**
-```cpp
-try {
-    throw std::string("Error occurred");
-} catch (const std::string& e) {
-    std::cout << "Caught exception: " << e << std::endl;
-}
-```
-
-### **Sample Answer:**
-"The `catch` block handles exceptions thrown in the `try` block, allowing graceful error recovery."
-
-**When to use:** Use `catch` to handle specific exceptions after a `try` block.
-
----
-
-## **7. What does the `throw` keyword do?**
-
-### **Example:**
-```cpp
-if (value < 0) throw std::invalid_argument("Negative value not allowed");
-```
-
-### **Sample Answer:**
-"`throw` signals that an error has occurred by raising an exception."
-
-**When to use:** Use `throw` to signal an error condition or exceptional event.
-
----
-
-## **8. What happens if an exception is not caught?**
-
-### **Sample Answer:**
-"If an exception is not caught, the program calls `std::terminate` and usually crashes."
-
-**When to use:** Always catch exceptions or ensure they propagate to a safe handler.
-
----
-
-## **9. Can you catch multiple exceptions? How?**
-
-### **Example:**
-```cpp
-try {
-    // code
-} catch (const std::out_of_range& e) {
-    std::cout << "Out of range error\n";
-} catch (const std::invalid_argument& e) {
-    std::cout << "Invalid argument error\n";
-}
-```
-
-### **Sample Answer:**
-"I can have multiple `catch` blocks to handle different exception types separately."
-
-**When to use:** Use multiple catches for specific handling of different errors.
-
----
-
-## **10. What is a catch-all handler?**
-
-### **Example:**
-```cpp
-try {
-    // code
+<ComicQA
+  question="7) How to handle multiple exception types?"
+  answer="Use multiple catch blocks ordered from most to least specific. A catch-all block (...) should come last."
+  code={`try {
+    // Code that may throw
+} catch (const InvalidInputException& e) {
+    // Handle specific error
+} catch (const NetworkException& e) {
+    // Handle network issues
+} catch (const exception& e) {
+    // Handle any standard exception
 } catch (...) {
-    std::cout << "Unknown exception caught\n";
+    // Handle anything else
+}`}
+  example={`// Good practices:
+// 1. Catch specific exceptions first
+// 2. Catch by const reference
+// 3. Use catch-all sparingly
+// 4. Avoid shadowing exception objects`}
+  whenToUse="Use multiple catch blocks when different exception types require distinct handling logic."
+/>
+
+<ComicQA
+  question="8) What is noexcept and when to use it?"
+  answer="noexcept indicates a function won't throw exceptions. It enables optimizations and provides a contract to callers."
+  code={`class Vector {
+public:
+    // Move constructor should be noexcept
+    Vector(Vector&& other) noexcept 
+        : data(other.data), size(other.size) {
+        other.data = nullptr;
+    }
+    
+    // Clearly indicates no throw
+    size_t getSize() const noexcept { return size; }
+};`}
+  example={`// When to use noexcept:
+// 1. Move operations (required by STL)
+// 2. Swap functions
+// 3. Simple getters/accessors
+// 4. Destructors (implicitly noexcept)`}
+  whenToUse="Mark functions noexcept when they genuinely can't throw - this enables optimizations and better codegen."
+/>
+
+<ComicQA
+  question="9) Can constructors and destructors throw exceptions?"
+  answer="Constructors can throw, but destructors should not (unless marked noexcept(false)). Throwing destructors during stack unwinding causes terminate()."
+  code={`class Resource {
+public:
+    Resource() {
+        if (!acquireResource()) throw runtime_error("Acquisition failed");
+    }
+    
+    ~Resource() noexcept(false) {
+        if (!releaseResource()) {
+            if (uncaught_exceptions()) {
+                // Already handling exception - log but don't throw
+                logError();
+            } else {
+                throw runtime_error("Release failed");
+            }
+        }
+    }
+};`}
+  example={`// Best practices:
+// 1. Constructors - throw if initialization fails
+// 2. Destructors - avoid throwing (use noexcept)
+// 3. If destructor must throw, check uncaught_exceptions()
+// 4. Use RAII to manage resources safely`}
+  whenToUse="Design classes carefully - constructors should throw if they can't establish invariants, destructors should handle errors without throwing."
+/>
+
+<ComicQA
+  question="10) How to handle exceptions in multithreaded code?"
+  answer="Exceptions can't cross thread boundaries directly. Use std::exception_ptr to capture exceptions in worker threads and rethrow in main thread."
+  code={`vector<exception_ptr> threadExceptions;
+
+void workerTask(int id) {
+    try {
+        // Do work that might throw
+    } catch (...) {
+        threadExceptions[id] = current_exception();
+    }
 }
-```
 
-### **Sample Answer:**
-"A catch-all handler `catch(...)` catches any exception not caught by earlier catch blocks."
-
-**When to use:** Use it as a safety net for unknown exceptions.
-
----
-
-## **11. How does stack unwinding work during exceptions?**
-
-### **Sample Answer:**
-"Stack unwinding destroys local objects as the exception propagates, ensuring proper cleanup."
-
-**When to use:** Understand this when managing resources manually during exceptions.
-
----
-
-## **12. What is RAII and how does it relate to exception handling?**
-
-### **Sample Answer:**
-"RAII ties resource lifetimes to object lifetimes, ensuring automatic cleanup during stack unwinding."
-
-**When to use:** Use RAII to manage resources safely with exceptions.
-
----
-
-## **13. What is the difference between `throw` and `throw;`?**
-
-### **Sample Answer:**
-"`throw` raises a new exception, while `throw;` rethrows the current exception inside a catch block."
-
-**When to use:** Use `throw;` to propagate exceptions further.
-
----
-
-## **14. Can you catch exceptions by value, pointer, or reference? Which is preferred?**
-
-### **Sample Answer:**
-"Catching by `const reference` is preferred to avoid slicing and copying."
-
-**When to use:** Always catch exceptions as `const T&`.
-
----
-
-## **15. What is `std::exception`?**
-
-### **Sample Answer:**
-"`std::exception` is the base class for all standard C++ exceptions."
-
-**When to use:** Catch `const std::exception&` to handle all standard exceptions.
-
----
-
-## **16. Can you catch exceptions of different types using a single catch block?**
-
-### **Sample Answer:**
-"No, each catch handles one exception type, but you can catch by a base class."
-
-**When to use:** Catch by a common base class to handle multiple exception types.
-
----
-
-## **17. What is `noexcept` and when should it be used?**
-
-### **Example:**
-```cpp
-void foo() noexcept {
-    // This function promises not to throw exceptions
-}
-```
-
-### **Sample Answer:**
-"`noexcept` indicates a function does not throw exceptions, helping optimization and program safety."
-
-**When to use:** Use `noexcept` on functions that won't throw.
-
----
-
-## **18. Can constructors throw exceptions?**
-
-### **Sample Answer:**
-"Yes, constructors can throw exceptions if initialization fails."
-
-**When to use:** Be cautious and use RAII to manage resources during construction.
-
----
-
-## **19. How to handle exceptions in destructors?**
-
-### **Sample Answer:**
-"Destructors should not throw exceptions; if they do, it can cause `std::terminate`."
-
-**When to use:** Catch and handle exceptions inside destructors.
-
----
-
-## **20. What is stack unwinding?**
-
-### **Sample Answer:**
-"Stack unwinding is the process of calling destructors for all local objects as an exception propagates."
-
-**When to use:** Understand for resource cleanup during exceptions.
-
----
-
-## **21. What happens if an exception is thrown during stack unwinding?**
-
-### **Sample Answer:**
-"If an exception is thrown during stack unwinding, the program terminates."
-
-**When to use:** Avoid throwing exceptions in destructors.
-
----
-
-## **22. Can exceptions cross shared library boundaries?**
-
-### **Sample Answer:**
-"It depends on compiler and ABI; generally yes but with caution."
-
-**When to use:** Be careful with exceptions in mixed binary environments.
-
----
-
-## **23. What is `std::bad_alloc`?**
-
-### **Sample Answer:**
-"`std::bad_alloc` is thrown when `new` fails to allocate memory."
-
-**When to use:** Handle memory allocation failures.
-
----
-
-## **24. How do you disable exceptions globally?**
-
-### **Sample Answer:**
-"By compiling with `-fno-exceptions` (in GCC), but it's not recommended."
-
-**When to use:** Only in embedded or performance-critical systems.
-
----
-
-## **25. What is the difference between checked and unchecked exceptions?**
-
-### **Sample Answer:**
-"C++ only has unchecked exceptions; no enforced compile-time checking."
-
-**When to use:** Understand difference from other languages like Java.
-
----
-
-## **26. Can you catch exceptions thrown from within a `noexcept` function?**
-
-### **Sample Answer:**
-"No; if a `noexcept` function throws, `std::terminate` is called."
-
-**When to use:** Ensure `noexcept` functions do not throw.
-
----
-
-## **27. What is the purpose of `std::terminate()`?**
-
-### **Sample Answer:**
-"It is called when an exception is not caught or thrown during stack unwinding."
-
-**When to use:** Understand as the program’s abrupt exit point.
-
----
-
-## **28. How to rethrow an exception?**
-
-### **Example:**
-```cpp
-catch (const std::exception& e) {
-    std::cout << "Handling exception\n";
-    throw;  // Rethrow the current exception
-}
-```
-
-### **Sample Answer:**
-"Use `throw;` inside a catch block to rethrow the current exception."
-
----
-
-## **29. What is `std::exception_ptr`?**
-
-### **Sample Answer:**
-"`std::exception_ptr` stores and propagates exceptions safely between threads."
-
-**When to use:** Use for advanced multithreading exception handling.
-
----
-
-## **30. How can exceptions be used with multithreading?**
-
-### **Sample Answer:**
-"Exceptions can be caught in threads and passed via `std::exception_ptr` to other threads."
-
----
-
-## **31. Can exception handling affect program performance?**
-
-### **Sample Answer:**
-"Yes, especially if exceptions are thrown frequently; use for exceptional cases only."
-
----
-
-## **32. What is the difference between `throw` and `return` for error handling?**
-
-### **Sample Answer:**
-"`throw` transfers control via exceptions, while `return` requires manual checks."
-
----
-
-## **33. What are the disadvantages of exception handling?**
-
-### **Sample Answer:**
-"Overuse can lead to complex code; some platforms have limited support."
-
----
-
-## **34. What is an exception specification?**
-
-### **Sample Answer:**
-"Old C++ had exception specifications like `throw(int)`, but deprecated now."
-
----
-
-## **35. How to define a noexcept function that might conditionally throw?**
-
-### **Example:**
-```cpp
-void f() noexcept(false) { /* may throw */ }
-```
-
----
-
-## **36. What happens if `main()` throws an exception?**
-
-### **Sample Answer:**
-"If not caught, program calls `std::terminate`."
-
----
-
-## **37. How to handle exceptions in templates?**
-
-### **Sample Answer:**
-"Templates can throw exceptions like normal functions."
-
----
-
-## **38. What is the effect of catching exceptions by non-const reference?**
-
-### **Sample Answer:**
-"Possible to modify exception object; generally not recommended."
-
----
-
-## **39. How do you log exceptions in C++?**
-
-### **Sample Answer:**
-"Inside catch blocks, log exception details using `e.what()` or custom messages."
-
----
-
-## **40. What is the use of `std::unexpected()`?**
-
-### **Sample Answer:**
-"Called if an exception not allowed by exception specification is thrown (deprecated)."
-
----
-
+int main() {
+    vector<thread> threads;
+    for (int i = 0; i < 5; ++i) {
+        threads.emplace_back(workerTask, i);
+    }
+    
+    for (auto& t : threads) t.join();
+    
+    // Check for exceptions
+    for (auto& e : threadExceptions) {
+        if (e) {
+            try {
+                rethrow_exception(e);
+            } catch (const exception& e) {
+                cerr << "Thread error: " << e.what();
+            }
+        }
+    }
+}`}
+  example={`// Multithreading patterns:
+// 1. Capture exceptions with current_exception()
+// 2. Store std::exception_ptr in shared state
+// 3. Main thread checks and rethrows
+// 4. Use futures/promises for simpler exception propagation`}
+  whenToUse="Implement proper exception propagation in multithreaded applications to avoid silent failures in worker threads."
+/>
 For more C++ interview preparation, visit CompilerSutra or contact us for mentoring at `info@compilersutra.com`.
+<div>
+    <AdBanner />
+</div>
