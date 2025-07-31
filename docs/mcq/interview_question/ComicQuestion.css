@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+:root {
+  --panel-bg: #f5f7fa;
+  --border-color: #333;
+  --question-bg: #fff;
+  --option-bg: #e3f2fd;
+  --option-hover: #bbdefb;
+  --answer-bg: #ffffff;
+  --correct-bg: #c8e6c9;
+  --wrong-bg: #ffcdd2;
+  --note-bg: #e8f5e9;
+  --monkey-brown: #8d6e63;
+}
+
+.comic-panel {
+  border: 3px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  background-color: var(--panel-bg);
+  font-family: 'Comic Neue', cursive;
+  box-shadow: 8px 8px 0 var(--border-color);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.comic-panel:hover {
+  transform: scale(1.01);
+}
+
+.speech-bubble {
+  border: 2px solid var(--border-color);
+  padding: 1.2rem 1.5rem;
+  border-radius: 20px;
+  background-color: var(--question-bg);
+  position: relative;
+  margin-bottom: 1.5rem;
+  box-shadow: 5px 5px 0 var(--border-color);
+  max-width: 90%;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.question-bubble {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.answer-bubble {
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: var(--answer-bg);
+}
+
+.question-bubble::after,
+.answer-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 30px;
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: var(--question-bg) transparent transparent transparent;
+}
+
+.comic-code {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 2px dashed var(--border-color);
+  box-shadow: inset 2px 2px 0 var(--border-color);
+  background-color: #f0f0f0;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.comic-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.comic-option {
+  background: var(--option-bg);
+  border: 2px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--border-color);
+  transition: 0.2s ease;
+  font-size: 1rem;
+}
+
+.comic-option:hover {
+  background-color: var(--option-hover);
+  transform: scale(1.03);
+}
+
+.comic-option.selected {
+  background-color: #d0eaff;
+  border-color: #1976d2;
+}
+
+.comic-option.correct {
+  background-color: var(--correct-bg);
+  border-color: green;
+}
+
+.answer-bubble.correct-bubble {
+  background-color: var(--correct-bg);
+  border-color: green;
+}
+
+.answer-bubble.wrong-bubble {
+  background-color: var(--wrong-bg);
+  border-color: red;
+}
+
+.show-answer-button {
+  background-color: var(--option-bg);
+  border: 2px solid var(--border-color);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--border-color);
+  transition: transform 0.2s ease;
+}
+
+.show-answer-button:hover {
+  background-color: var(--option-hover);
+  transform: scale(1.05);
+}
+
+.speaker-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Pure CSS Monkey Avatar - Softer Professional Look */
+.css-monkey {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: var(--monkey-brown);
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+}
+
+.css-monkey::before,
+.css-monkey::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--monkey-brown);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  top: 6px;
+}
+
+.css-monkey::before {
+  left: -10px;
+}
+
+.css-monkey::after {
+  right: -10px;
+}
+
+.css-monkey .eye {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  border-radius: 50%;
+  top: 10px;
+}
+
+.css-monkey .eye.left {
+  left: 10px;
+}
+
+.css-monkey .eye.right {
+  right: 10px;
+}
+
+.nested-note-block {
+  background-color: var(--note-bg);
+  border: 2px dashed var(--border-color);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--border-color);
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.1rem;
+  position: relative;
+  max-width: 90%;
+}
+
+.nested-note-block h5 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
