@@ -1,294 +1,406 @@
----
+--- 
 id: cpp-learning-roadmap
-title: Complete C++ Learning Roadmap
-description: |
-  This comprehensive roadmap guides you from absolute beginner to advanced C++ developer. It outlines all essential topics in a structured learning path—ideal for self-paced learners, educators, and professionals preparing for interviews or real-world development.
+title: "C++ Programming Curriculum (From Zero to Advanced)"
+description: "Master C++ programming from scratch in 10 levels. No prior experience needed. Ideal for beginners to professional developers."
 keywords:
-  - C++ Roadmap
-  - Learn C++
-  - C++ Programming Guide
-  - Beginner to Advanced C++
-  - C++ Development Path
-  - Master C++ Programming
-  - C++ Study Plan
-  - C++ Topics
-  - C++ Career Roadmap
-  - C++ Interview Preparation
-  - CMake Build System
+- Learn C++ from Scratch
+- C++ Programming
+- C++ Course
+- Learn C++ Programming
+- C++ for Beginners
+- C++ Tutorial
+- Object-Oriented Programming
+- STL Course
+- Systems Programming
+- Self-paced C++ Course
+- C++ Roadmap
+- Modern C++
+- No CS Degree C++ Learning
+- Beginner to Advanced C++
+- C++ Developer Docs
+- C++ Curriculum
+- CMake Build System
+- Low-Level Programming
+- Docusaurus C++ Site
+- C++ Programming Guide
+- C++ Tutorial for Developers
+
 ---
-
-
+import AdBanner from '@site/src/components/AdBanner';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import AdBanner from '@site/src/components/AdBanner';
 
 <div>
     <AdBanner />
 </div>
 
-# Complete C++ Learning Roadmap
+# C++ Programming Curriculum (From Zero to Advanced)
 
-This roadmap is designed to help you progress from an absolute beginner to an expert C++ developer. It covers every major area of the language in a logical and practical order, from syntax and data types to templates, concurrency, and system-level programming.
+Welcome to your comprehensive, step-by-step **C++ Programming Curriculum**, designed for learners with **no prior programming background** to advanced developers. This roadmap is organized into ***10 progressive levels***, each building logically upon the previous, to guide you from fundamentals to professional-grade C++ development.
 
-<div>
-    <AdBanner />
-</div>
+:::important What this curriculum is about?
+This curriculum takes you from absolute beginner to proficient C++ developer capable of writing efficient, modern code.  
+It's structured into **10 comprehensive levels**, with each building on the previous one.  
+Each module offers a curated mix of ****Video**s**, ****Articles**s**, and ****PDF** resources** to suit different learning styles.  
 
+:::caution What to expect
+- **No prior programming knowledge required** - concepts explained from scratch
+- Hands-on **practical examples** using modern C++ standards
+- Understanding of **memory management** and **low-level programming**
+- Insights into **real-world applications** of C++ in systems, games, and HPC
+- Progressive complexity from basics to templates, concurrency, and optimization
+:::
 
-## Beginner Level (0–3 Months)
+### Why learn C++?
+In today's performance-critical applications, **efficiency and control** are essential. C++ powers everything from operating systems to game engines, offering:
 
-### 1. Introduction to C++
-
-- History and key features of C++
-- Setting up the development environment (compiler, IDE)
-- Structure of a basic C++ program
-- Comments and documentation best practices
-
-### 2. Basic Syntax
-
-- Variables and data types
-- Constants and literals
-- Operators: arithmetic, relational, logical
-- Basic input/output using `cin` and `cout`
-
-### 3. Control Flow
-
-- Conditional statements: `if`, `else`, `switch`
-- Loops: `for`, `while`, `do-while`
-- Control statements: `break`, `continue`
-
-### 4. Functions
-
-- Function declarations and definitions
-- Parameter passing and return values
-- Function overloading
-- Recursion basics
-
-### 5. Arrays and Strings
-
-- One-dimensional and multi-dimensional arrays
-- C-style strings and character arrays
-- Basic string operations
-
-### 6. Pointers Basics
-
-- Pointer declaration and initialization
-- Pointer arithmetic
-- Relationship between pointers and arrays
-
-### 7. Basic Memory Management
-
-- Stack vs heap memory
-- Dynamic memory allocation using `new` and `delete`
-- Understanding memory leaks
+:::tip Learning C++ opens doors to:
+>>> * **Unparalleled performance** for compute-intensive tasks
+>>> * Direct hardware access and memory control
+>>> * Careers in game development, embedded systems, and high-frequency trading
+>>> * Foundation for learning other languages and computer science concepts
+:::
 
 <div>
     <AdBanner />
 </div>
 
 
-## Intermediate Level (3–6 Months)
+<h1 class="curriculum-**Title**">The Curriculum</h1>
 
-### 1. Object-Oriented Programming
+<div id="gpu-toc-page">
 
-- Classes and objects
-- Constructors and destructors
-- Access specifiers: `public`, `private`, `protected`
-- Static members
 
-### 2. Advanced OOP Concepts
+<details>
+<summary><strong><span class="level-prefix">LEVEL 0:</span> Computer Basics</strong></summary>
 
-- Inheritance: single, multiple, multilevel
-- Polymorphism: function overriding and virtual functions
-- Abstract classes and pure virtual functions
-- Friend functions and friend classes
+:::tip Before diving into C++, 
+>>>> ***it’s essential to understand the basics of how computers work. This level builds the foundation of binary logic, memory, and the need for compilers***.
 
-### 3. References and Advanced Pointers
+:::
+| # | **Title**           | **Video**   | **Articles**| **PDF**     |
+| - | ------------------- | ----------- | ----------- | ----------- |
+| 1 | How Computers Work  | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Binary/Hexadecimal  | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Compilers Explained | Coming Soon | Coming Soon | Coming Soon |
 
-- References vs pointers
-- Pointers to pointers
-- Function pointers
-- `const` correctness with pointers and references
+</details>
 
-### 4. Dynamic Memory Management
 
-- Deep copy vs shallow copy
-- Smart pointers: `unique_ptr`, `shared_ptr`, `weak_ptr`
-- Memory debugging tools and practices
 
-### 5. Standard Template Library (STL) - Part 1
+<details>
+<summary><strong><span class="level-prefix">LEVEL 1:</span> C++ Fundamentals</strong></summary>
 
-- Sequence containers: `vector`, `list`, `deque`
-- Associative containers: `set`, `map`
-- Container adapters: `stack`, `queue`, `priority_queue`
+:::tip Learn the core building blocks of C++: 
+>>>> ***variables, types, and control structures. These are essential to start programming in C++.***
+:::
 
-### 6. Exception Handling
+| # | **Title**         | **Video**   | **Articles**| **PDF**     |
+| - | ----------------- | ----------- | ----------- | ----------- |
+| 1 | Variables & Types | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Operators         | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Control Flow      | Coming Soon | Coming Soon | Coming Soon |
 
-- `try`, `catch`, and `throw`
-- Standard exceptions
-- Creating custom exception classes
+</details>
 
-### 7. File Handling
 
-- File streams: `ifstream`, `ofstream`, `fstream`
-- Working with text and binary files
-- Serialization basics
-<div>
-    <AdBanner />
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 2:</span> Functions & Memory</strong></summary>
+
+:::tip Modular Designing
+>>>> ***Understand how to break code into reusable parts and manage memory safely with pointers and references.***
+:::
+
+
+| # | **Title**  | **Video**   | **Articles**| **PDF**     |
+| - | ---------- | ----------- | ----------- | ----------- |
+| 1 | Functions  | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Pointers   | Coming Soon | Coming Soon | Coming Soon |
+| 3 | References | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 3:</span> OOP Basics</strong></summary>
+
+:::tip Dive into Object-Oriented Programming:
+ >>>> ***create your own types using classes, reuse behavior with inheritance, and organize code better***
+:::
+
+
+| # | **Title**       | **Video**   | **Articles**| **PDF**     |
+| - | --------------- | ----------- | ----------- | ----------- |
+| 1 | Classes/Objects | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Constructors    | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Inheritance     | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 4:</span> Advanced OOP</strong></summary>
+
+:::tip Take your OOP skills further 
+>>>> ***learning about dynamic dispatch (polymorphism), code generalization via templates, and the STL.***
+:::
+
+| # | **Title**    | **Video**   | **Articles**| **PDF**     |
+| - | ------------ | ----------- | ----------- | ----------- |
+| 1 | Polymorphism | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Templates    | Coming Soon | Coming Soon | Coming Soon |
+| 3 | STL Intro    | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 5:</span> STL & Templates</strong></summary>
+
+<Tabs>
+ <TabItem value="5a" label="Containers">
+:::tip Master the most useful STL
+>>>> ***containers like vectors and maps.***  
+:::
+
+| # | **Title**   | Resources   |
+| - | ------- | ----------- |
+| 1 | Vectors | Coming Soon |
+| 2 | Maps    | Coming Soon |
+
+</TabItem>
+
+<TabItem value="5b" label="Algorithms">
+:::tip Work with standard algorithms 
+>>>> ***to perform powerful operations like sorting and searching.***
+:::
+
+| # | **Title** | Resources   |
+| - | --------- | ----------- |
+| 1 | Sorting   | Coming Soon |
+| 2 | Searching | Coming Soon |
+
+</TabItem>
+</Tabs>
+
+</details>
+
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 6:</span> Memory Management</strong></summary>
+:::tip Efficiently manage resources
+>>>> ***using smart pointers, move semantics, and even custom memory allocation strategies.***
+:::
+ 
+
+| # | **Title**             | **Video**       | **Articles**     | **PDF**         |
+| - | ----------------- | ----------- | ----------- | ----------- |
+| 1 | Smart Pointers    | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Move Semantics    | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Custom Allocators | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 7:</span> Concurrency</strong></summary>
+:::tip Leverage multi-threading
+>>>> ***for high-performance programs. Learn to use threads, mutexes, and asynchronous operations.*** 
+:::
+ 
+
+| # | **Title**| **Video**  | **Articles**| **PDF**     |
+| - | ------- | ----------- | ----------- | ----------- |
+| 1 | Threads | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Mutexes | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Async   | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 8:</span> Systems Programming</strong></summary>
+
+:::tip Explore how C++ interacts with the system
+>>>> ***handle files, sockets, and POSIX APIs.***
+:::
+
+| # | **Title**    | **Video**       | **Articles**     | **PDF**         |
+| - | -------- | ----------- | ----------- | ----------- |
+| 1 | File I/O | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Sockets  | Coming Soon | Coming Soon | Coming Soon |
+| 3 | POSIX    | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
+
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 9:</span> Advanced Features</strong></summary>
+
+<Tabs>
+<TabItem value="9a" label="C++20">
+:::tip Stay updated with modern C++
+>>> features like Concepts and Ranges.
+:::
+ 
+| # | **Title**    | Resources   |
+| - | -------- | ----------- |
+| 1 | Concepts | Coming Soon |
+| 2 | Ranges   | Coming Soon |
+
+</TabItem>
+
+<TabItem value="9b" label="Metaprogramming/Template Programming">
+:::tip  Unlock compile-time logic
+>>>> using powerful C++ metaprogramming tool
+:::
+
+| # | **Title** | **Resources**|
+| - | --------- | -----------  |
+| 1 | SFINAE    | Coming Soon  |
+| 2 | constexpr | Coming Soon  |
+
+</TabItem>
+</Tabs>
+
+</details>
+
+
+<details>
+<summary><strong><span class="level-prefix">LEVEL 10:</span> Professional Development</strong></summary>
+
+<Tabs>
+<TabItem value="10a" label="Build Systems">
+:::tip Learn about how real-world C++ projects 
+>>>> ***built, managed, and packaged.***
+:::
+
+| # | **Title** | Resources   |
+| - | ----- | ----------- |
+| 1 | CMake | Coming Soon |
+| 2 | Conan | Coming Soon |
+
+</TabItem>
+
+<TabItem value="10b" label="Career">
+:::tip Get ready for the industry
+>>>> ***interviews, contributing to open source, and growing your career.***
+
+:::
+
+| # | **Title**      | **Resources**   |
+| - | -------------- | -----------     |
+| 1 | Interview Prep | Coming Soon     |
+| 2 | Open Source    | Coming Soon     |
+
+</TabItem>
+</Tabs>
+
+</details>
+
 </div>
 
-## Advanced Level (6–12 Months)
+## Final Words: Your C++ Journey Starts Now
 
-### 1. Templates
+**Ready to begin?** Here's how to get the most from this roadmap:
 
-- Function templates
-- Class templates
-- Template specialization
-- Variadic templates
+1. **Follow sequentially** - Each level builds on previous knowledge
+2. **Code every day** - Even 30 minutes of practice helps
+3. **Build projects** - Reinforce learning with real applications
+4. **Join communities** - Learn from others and share your progress
 
-### 2. Advanced STL
+:::important Why C++ Matters Today
 
-- Iterators and generic algorithms
-- Lambda expressions and anonymous functions
-- Functors and predicates
-- Custom STL allocators
+* Powers performance-critical systems (game engines, HFT, embedded)
+* Foundation for learning Rust, Zig, and other systems languages
+* Skills valued in industries paying premium salaries
+  :::
 
-### 3. Move Semantics and Rvalue References
-
-- Lvalues vs rvalues
-- Move constructors and move assignment
-- `std::move` and perfect forwarding
-
-### 4. Concurrency and Multithreading
-
-- Creating and managing threads
-- Synchronization using mutexes and locks
-- Condition variables
-- Futures, promises, and async
-- Atomic operations and memory models
-
-### 5. Design Patterns
-
-- Creational patterns: Singleton, Factory
-- Structural patterns: Adapter, Decorator
-- Behavioral patterns: Observer, Strategy
-
-### 6. Advanced Topics
-
-- Type traits and SFINAE
-- CRTP (Curiously Recurring Template Pattern)
-- Expression templates
-- Basics of metaprogramming
-
-### 7. Build Systems (CMake)
-
-- Introduction to build systems
-- Writing `CMakeLists.txt` for small and large projects
-- Targets, linking libraries, and organizing source files
-- Cross-platform build generation
-- Integrating third-party libraries with CMake
-
-<div>
-    <AdBanner />
-</div>
-
-## Expert Level (1+ Years)
-
-### 1. Performance Optimization
-
-- Profiling and benchmarking techniques
-- Cache-conscious programming
-- SIMD and data parallelism
-- Lock-free and wait-free algorithms
-
-### 2. Advanced Memory Management
-
-- Custom allocators
-- Memory pools and arenas
-- Manual garbage collection strategies
-
-### 3. Template Metaprogramming
-
-- Compile-time computations with `constexpr` and `consteval`
-- Type manipulation using `type_traits`
-- Advanced pattern matching with templates
-
-### 4. C++20/23 Features
-
-- Concepts and constrained templates
-- Ranges and views
-- Coroutines and asynchronous programming
-- Modules for scalable build systems
-
-### 5. System Programming
-
-- Working with OS-level APIs
-- Basic network programming (sockets)
-- Device driver fundamentals
-
-### 6. Cross-Platform Development
-
-- Writing platform-independent code
-- Using build systems like CMake
-- Cross-compiling for different architectures
-- Conditional compilation and platform checks
+**Start with Level 0 today and commit to becoming a C++ expert!**
 
 ---
 
-## Practical Applications
+## Additional Resources
 
-### 1. Project Ideas
+<Tabs>
+  <TabItem value="docs" label="Documentation">
+    - [C++ Reference](https://cppreference.com)
+    - [ISO C++](https://isocpp.org)
+  </TabItem>
 
-- 2D game engine (using SFML or SDL)
-- High-performance computing tasks
-- Embedded systems and microcontroller projects
-- Blockchain from scratch
-- Developing a toy compiler or virtual machine
+  <TabItem value="courses" label="Courses">
+    - [CompilerSutra GPU](https://compilersutra.com/cpp)
+    - [CPP MCQ](https://www.compilersutra.com/docs/gpu/gpu_programming/gpu_programming_toc)
+  </TabItem>
+</Tabs>
 
-### 2. Testing and Debugging
 
-- Unit testing with Google Test or Catch2
-- Debugging with `gdb`, Valgrind, AddressSanitizer
-- Static and dynamic analysis tools
+## More Articles
 
-### 3. Code Quality
+<Tabs>
+  <TabItem value="docs" label="📚 Documentation">
+             - [CompilerSutra Home](https://compilersutra.com)
+                - [CompilerSutra Homepage (Alt)](https://compilersutra.com/)
+                - [Getting Started Guide](https://compilersutra.com/get-started)
+                - [Newsletter Signup](https://compilersutra.com/newsletter)
+                - [Skip to Content (Accessibility)](https://compilersutra.com#__docusaurus_skipToContent_fallback)
 
-- Following coding standards (Google, LLVM)
-- Performing code reviews
-- Writing documentation with Doxygen
 
----
+  </TabItem>
 
-## Continuous Learning
+  <TabItem value="tutorials" label="📖 Tutorials & Guides">
 
-### 1. Recommended Resources
+        - [AI Documentation](https://compilersutra.com/docs/Ai)
+        - [DSA Overview](https://compilersutra.com/docs/DSA/)
+        - [DSA Detailed Guide](https://compilersutra.com/docs/DSA/DSA)
+        - [MLIR Introduction](https://compilersutra.com/docs/MLIR/intro)
+        - [TVM for Beginners](https://compilersutra.com/docs/tvm-for-beginners)
+        - [Python Tutorial](https://compilersutra.com/docs/python/python_tutorial)
+        - [C++ Tutorial](https://compilersutra.com/docs/c++/CppTutorial)
+        - [C++ Main File Explained](https://compilersutra.com/docs/c++/c++_main_file)
+        - [Compiler Design Basics](https://compilersutra.com/docs/compilers/compiler)
+        - [OpenCL for GPU Programming](https://compilersutra.com/docs/gpu/opencl)
+        - [LLVM Introduction](https://compilersutra.com/docs/llvm/intro-to-llvm)
+        - [Introduction to Linux](https://compilersutra.com/docs/linux/intro_to_linux)
 
-- Books:
-  - *Effective C++* by Scott Meyers
-  - *The C++ Programming Language* by Bjarne Stroustrup
-- Online References:
-  - [CppReference.com](https://en.cppreference.com/)
-  - [ISO C++ Official Site](https://isocpp.org/)
+  </TabItem>
 
-<div>
-    <AdBanner />
-</div>
+  <TabItem value="assessments" label="📝 Assessments">
 
-### 2. Open Source Contribution
+        - [C++ MCQs](https://compilersutra.com/docs/mcq/cpp_mcqs)
+        - [C++ Interview MCQs](https://compilersutra.com/docs/mcq/interview_question/cpp_interview_mcqs)
 
-- Finding beginner-friendly issues in C++ repositories
-- Reading and contributing to large codebases
-- Understanding version control and collaboration
+  </TabItem>
 
-### 3. Staying Updated
+  <TabItem value="projects" label="🛠️ Projects">
 
-- Following C++ standardization committee updates
-- Attending conferences like CppCon, Meeting C++
-- Exploring upcoming C++ features and proposals
+            - [Project Documentation](https://compilersutra.com/docs/Project)
+            - [Project Index](https://compilersutra.com/docs/project/)
+            - [Graphics Pipeline Overview](https://compilersutra.com/docs/The_Graphic_Rendering_Pipeline)
+            - [Graphic Rendering Pipeline (Alt)](https://compilersutra.com/docs/the_graphic_rendering_pipeline/)
 
----
+  </TabItem>
 
-This roadmap is ideal for self-taught learners, educators creating structured syllabi, or developers aiming to master modern C++ with hands-on experience. Regular practice and real-world projects are essential to making steady progress.
-<div>
-    <AdBanner />
-</div>
+  <TabItem value="resources" label="🌍 External Resources">
+
+            - [LLVM Official Docs](https://llvm.org/docs/)
+            - [Ask Any Question On Quora](https://compilersutra.quora.com)
+            - [GitHub: FixIt Project](https://github.com/aabhinavg1/FixIt)
+            - [GitHub Sponsors Page](https://github.com/sponsors/aabhinavg1)
+
+  </TabItem>
+
+  <TabItem value="social" label="📣 Social Media">
+
+            - [🐦 Twitter - CompilerSutra](https://twitter.com/CompilerSutra)
+            - [💼 LinkedIn - Abhinav](https://www.linkedin.com/in/abhinavcompilerllvm/)
+            - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)
+
+  </TabItem>
+</Tabs>
