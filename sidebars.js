@@ -349,6 +349,7 @@ const sidebars = {
         'linux/Declaring_Variable_In_bash',
         'linux/if_else_in_bash',
         'linux/loop_in_bash',
+        'linux/markdown_checker',
       ],
     },
   ],
