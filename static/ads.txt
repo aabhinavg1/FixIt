@@ -1,2 +1,14 @@
-google.com, pub-4507855210682789, DIRECT, f08c47fec0942fa0
-https://srv.adstxtmanager.com/19390/compilersutra.com
+#Ads.txt compilersutra.com
+#Ads.txt managed by AdsTxtManager.com - the free ads.txt management tool for publishers
+ownerdomain=compilersutra.com
+contact=directsales@ezoic.com
+managerdomain=ezoic.ai
+
+ezoic.ai, d21bd2ccdf2cc0b23c96eba3bef3d916, DIRECT
+# 35
+themediagrid.com, 4M5PGT, DIRECT, 35d5010d7789b49d
+themediagrid.com, Q19AKF, DIRECT, 35d5010d7789b49d
+sonobi.com, 192ecdea01, RESELLER, d1a215d9eb5aee9e
+google.com, pub-6644558441501035, DIRECT, f08c47fec0942fa0
+google.com, pub-1175987143200523, RESELLER, f08c47fec0942fa0%
+google.com, pub-4507855210682789, DIRECT, f08c47fec0942fa0  # Your AdSense ID

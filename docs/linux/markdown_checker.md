@@ -55,7 +55,9 @@ keywords:
 import AdBanner from '@site/src/components/AdBanner';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import EzoicAd from '@site/src/components/ezoic_add';
 
+<EzoicAd id={101} />
 
 
 # Markdown Link Checker in Bash
@@ -72,13 +74,10 @@ Writing technical documentation is one **thing keeping** it ***error-free*** is 
     allowFullScreen
   />
 </div>
----
 
-<div>
-  <AdBanner />
-</div>
+<EzoicAd id={102} />
 
----
+
 
 ## Table of Contents
 
@@ -106,10 +105,8 @@ Writing technical documentation is one **thing keeping** it ***error-free*** is 
 
  
 
-<div>
-    <AdBanner />
-</div> 
----
+<EzoicAd id={103} />
+
 
 ## Problem Statement
 
@@ -816,7 +813,6 @@ We’ve laid the groundwork for a ***portable, automated Markdown link checker**
 </Tabs>
 
 
-<div>
-    <AdBanner />
-</div>
+<EzoicAd id={104} />
+
 
