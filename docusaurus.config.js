@@ -151,6 +151,8 @@ const config = {
     //   "custom-element": "amp-auto-ads",
     //   defer: true,
     // },
+    { src: '/js/ezoic.js', async: true, defer: true },
+
     { src: '/js/contest.js', async: true, defer: true},
     //{ src: '/js/amp-auto-ads.js', async: true, defer: true },
     { src: '/js/google-tag-manager.js', async: true, defer: true },
