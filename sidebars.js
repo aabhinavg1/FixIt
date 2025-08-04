@@ -65,6 +65,7 @@ const sidebars = {
         'gpu/opencl/basic/running_first_opencl_code',
         'gpu/opencl/basic/running_first_opencl_code_part2_a',
         'gpu/opencl/basic/detecting_opencl_gpu_on_android',
+        'gpu/opencl/basic/Writing_your_first_kernel',
       ],
     },
   ],
