@@ -115,14 +115,14 @@ import TabItem from '@theme/TabItem';
 
 - **Maind Body**
       * [Host Code ](#host-code)
-      * [Kernel Code runs on the device](#writing-and-running-your-first-opencl-kernel)
+      * [Kernel Code runs on the device](#the-kernel-code-runs-on-the-device-gpu-cpu-etc)
       * [Device Code](#device-gpu-side--kernel-execution-flow)
       * [Host vs Kernel Chat Sheet](#host-vs-kernel-cheat-sheet)
 
 
 - **References**
       * [Full Code Example](#step-1-write-your-kernel-code)
-      * [Related Tutorials](#prerequisites)
+      * [Related Tutorials](#gtihub-link)
 
 ---
 
@@ -789,7 +789,8 @@ No need to install additional runtime.
 * Use `clSetKernelArgSVMPointer` for SVM (OpenCL 2.0+)
 * Implement tiled matrix multiplication for performance benchmarks
 
----
+## gtihub Link 
+[github link for code ](https://github.com/aabhinavg1/OpenCLModular)
 
 ## References
 
