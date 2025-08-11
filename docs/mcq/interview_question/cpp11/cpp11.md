@@ -358,4 +358,4 @@ Mastering C++11 will help you stand out as a strong C++ developer. Here are some
 - [C++11 Features and Best Practices](https://www.compilersutra.com/docs/C++11)  
 
 
-By exploring these resources, you'll gain a solid understanding of C++11 and be well-prepared for interviews. 🚀  
+By exploring these resources, you'll gain a solid understanding of C++11 and be well-prepared for interviews. 

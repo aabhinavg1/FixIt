@@ -1,8 +1,6 @@
 ---
-id: memory-management
 title: Essential C++ Interview Questions on Memory Management
-description: |
-  This guide focuses on essential C++ interview questions related to memory management. Learn about dynamic memory allocation, memory leaks, pointers, smart pointers, memory deallocation, and garbage collection in C++. These concepts are crucial for any C++ developer and are commonly tested in interviews. Prepare to answer questions on stack vs heap memory, memory optimization techniques, and more.
+description: "This guide focuses on essential C++ interview questions related to memory management. Learn about dynamic memory allocation, memory leaks, pointers, smart pointers, memory deallocation, and garbage collection in C++. These concepts are crucial for any C++ developer and are commonly tested in interviews. Prepare to answer questions on stack vs heap memory, memory optimization techniques, and more."
 keywords:
   - C++ Interview Questions
   - Memory Management in C++

@@ -1,5 +1,4 @@
 ---
-id: ClassesObjects
 title: Classes and Objects
 description: |
   This guide focuses on essential C++ interview questions about classes and objects — the fundamental building blocks of object-oriented programming. Learn how classes encapsulate data and behavior, how to create and manipulate objects, and understand key concepts like member functions, access specifiers, constructors, destructors, and more. Prepare for interviews by mastering class design, object instantiation, and object-oriented principles in C++.

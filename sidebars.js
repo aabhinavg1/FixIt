@@ -77,6 +77,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'gpu/gpu_programming/gpu_programming_toc',
+        //'gpu/gpu_programming/what_is_cpu',
       ],
     },
   ],
@@ -448,13 +449,44 @@ const sidebars = {
             'mcq/interview_question/basic/io-operations',
             'mcq/interview_question/basic/pointers-references',
             'mcq/interview_question/basic/data-types-variables',
-            'mcq/interview_question/intermediate/ClassesObjects',
-            'mcq/interview_question/intermediate/CppInterviewQuestionsConstructorsDestructors',
-            'mcq/interview_question/intermediate/EssentialCppInterviewQuestionsInheritancePolymorphism',
+            'mcq/interview_question/intermediate/classes-object',
+            'mcq/interview_question/intermediate/constructors-destructors',
+            'mcq/interview_question/intermediate/inheritance-polymorphism',
             'mcq/interview_question/intermediate/oop',
-            'mcq/interview_question/intermediate/CppInterviewQuestionsExceptionHandling',
+            'mcq/interview_question/intermediate/exception-handling',
             'mcq/interview_question/intermediate/memory-management',
             'mcq/interview_question/intermediate/operator-overloading',
+            'mcq/interview_question/advanced/templates',
+            'mcq/interview_question/advanced/modern-cpp-features',
+            'mcq/interview_question/advanced/multi-threading',
+            'mcq/interview_question/advanced/stl',
+            'mcq/interview_question/advanced/lambda-expressions',
+            'mcq/interview_question/advanced/optimization-debugging',
+            'mcq/interview_question/advanced/algorithms-design-patterns',
+
+            //standard
+            'mcq/interview_question/standard/modern-cpp',
+            'mcq/interview_question/standard/stl-algorithms',
+
+            'mcq/interview_question/specialized/cpp-embedded',
+            'mcq/interview_question/specialized/debugging-profiling',
+            'mcq/interview_question/specialized/memory-management-detail',
+            'mcq/interview_question/specialized/high-performance',
+            'mcq/interview_question/specialized/debugging-profiling',
+            'mcq/interview_question/specialized/high-performance',
+            'mcq/interview_question/specialized/smart-pointers',
+
+            //cpp standard
+            'mcq/interview_question/cpp11/cpp11',
+            'mcq/interview_question/cpp14/cpp14',
+            'mcq/interview_question/cpp20/cpp20',
+          ],
+        },
+                {
+          type: 'category',
+          label: 'Interview Questions',
+          items: [
+            'mcq/interview_question/advanced/stl',
           ],
         },
         {
@@ -484,6 +516,24 @@ howToSidebar: [
   },
 ],
 
+  //sidebar for the tech blog
+  techblogSidebar: [
+    {
+      type: 'category',
+      label: 'Tech Blog',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'Tech Blog on AI',
+          collapsed: true,
+          items: [
+            'AI/is_gpt_is_opensource',
+          ],
+        },
+      ],
+    },
+  ],
 
   // 🔵 Sidebar for React MCQs
   reactMcqSidebar: [

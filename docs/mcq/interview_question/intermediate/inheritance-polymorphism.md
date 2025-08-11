@@ -1,8 +1,6 @@
 ---
-id: EssentialCppInterviewQuestionsInheritancePolymorphism
 title: Essential C++ Interview Questions on Inheritance and Polymorphism
-description: |
-  This guide covers essential C++ interview questions on inheritance and polymorphism, two of the core concepts of object-oriented programming (OOP). Learn about different types of inheritance (single, multiple, multilevel, hierarchical) and how polymorphism allows you to write flexible and reusable code. Understand the implementation of virtual functions, function overriding, and dynamic binding in C++ to prepare for technical interviews.
+description: "This guide covers essential C++ interview questions on inheritance and polymorphism, two of the core concepts of object-oriented programming (OOP). Learn about different types of inheritance (single, multiple, multilevel, hierarchical) and how polymorphism allows you to write flexible and reusable code. Understand the implementation of virtual functions, function overriding, and dynamic binding in C++ to prepare for technical interviews."
 keywords:
   - C++ Interview Questions
   - Inheritance in C++

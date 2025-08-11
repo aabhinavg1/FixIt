@@ -1,8 +1,6 @@
 ---
-id: operator-overloading
 title: Essential C++ Interview Questions on Operator Overloading
-description: |
-  This guide covers essential C++ interview questions on operator overloading, a key feature in C++ that allows you to define custom behavior for operators when applied to user-defined types. Learn how to overload operators such as +, -, *, and others to create intuitive and flexible C++ classes. Understand the rules, limitations, and best practices of operator overloading to be prepared for interview questions and practical scenarios.
+description: "This guide covers essential C++ interview questions on operator overloading, a key feature in C++ that allows you to define custom behavior for operators when applied to user-defined types. Learn how to overload operators such as +, -, *, and others to create intuitive and flexible C++ classes. Understand the rules, limitations, and best practices of operator overloading to be prepared for interview questions and practical scenarios."
 keywords:
   - C++ Interview Questions
   - Operator Overloading in C++

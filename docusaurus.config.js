@@ -64,11 +64,12 @@ const config = {
               { label: 'Python Automation', to: '/docs/python/python_tutorial' },
               { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },  // Added Linux
               { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc'},  // Added Linux       
-              {label: 'OpenCl Tutorial' , to: '/docs/gpu/opencl'}
+              {label: 'OpenCl Tutorial' , to: '/docs/gpu/opencl'},
             ],
           },
           { type: 'docSidebar', sidebarId: 'howToSidebar',  position: 'left', label: 'How-To Guides'},
           { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'Project' },
+          { type: 'docSidebar', sidebarId: 'techblogSidebar', position: 'left', label: 'Tech_blog'},
           {
             type: 'dropdown',
             label: 'MCQ',

@@ -1,8 +1,6 @@
 ---
-id: CppInterviewQuestionsExceptionHandling
 title: C++ Interview Questions on Exception Handling
-description: |
-  This guide covers essential C++ interview questions on exception handling, an important feature in C++ for handling runtime errors and ensuring program stability. Learn how to use try, catch, throw, and custom exception classes. Understand exception safety, the types of exceptions, and how to properly manage exceptions in your C++ code to prevent crashes and undefined behavior. This guide will help you prepare for technical interviews focused on error handling and robust program design.
+description: "This guide covers essential C++ interview questions on exception handling, an important feature in C++ for handling runtime errors and ensuring program stability. Learn how to use try, catch, throw, and custom exception classes. Understand exception safety, the types of exceptions, and how to properly manage exceptions in your C++ code to prevent crashes and undefined behavior. This guide will help you prepare for technical interviews focused on error handling and robust program design."
 keywords:
     - C++ Interview Questions
     - Exception Handling in C++

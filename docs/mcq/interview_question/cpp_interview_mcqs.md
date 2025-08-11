@@ -87,6 +87,9 @@ tags:
   - C++ Algorithms
   - Data Structures
 ---
+import AdBanner from '@site/src/components/AdBanner';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # C++ Interview Questions with Answers
 
@@ -107,37 +110,36 @@ Prepare for your C++ coding interviews with our expert-curated collection of C++
 
 ### 🟡 Intermediate C++ Interview Questions
 - [Object-Oriented Programming (OOP) in C++](./intermediate/oop.md)
-- [Classes, Objects, and Encapsulation](./intermediate/classes-objects.md)
-- [Constructors, Destructors, and Object Lifecycle](./questions/intermediate/constructors-destructors.md)
-- [Inheritance, Polymorphism, and Virtual Functions](./questions/intermediate/inheritance-polymorphism.md)
-- [Operator Overloading and Function Overloading](./questions/intermediate/operator-overloading.md)
-- [Memory Management Techniques: malloc, free, new, delete](./questions/intermediate/memory-management.md)
-- [Exception Handling and Custom Exceptions](./questions/intermediate/exception-handling.md)
+- [Classes, Objects, and Encapsulation](./intermediate/classes-object.md)
+- [Constructors, Destructors, and Object Lifecycle](./intermediate/constructors-destructors.md)
+- [Inheritance, Polymorphism, and Virtual Functions](./intermediate/inheritance-polymorphism.md)
+- [Operator Overloading and Function Overloading](./intermediate/operator-overloading.md)
+- [Memory Management Techniques: malloc, free, new, delete](./intermediate/memory-management.md)  
+- [Exception Handling and Custom Exceptions](./intermediate/exception-handling.md)
 
 ### 🔴 Advanced C++ Interview Questions
-- [STL: Mastering Standard Template Library](./questions/advanced/stl.md)
-- [Templates and Template Metaprogramming](./questions/advanced/templates.md)
-- [Multi-threading and Concurrency in C++](./questions/advanced/multi-threading.md)
-- [Lambda Expressions and Functional Programming](./questions/advanced/lambda-expressions.md)
-- [Move Semantics and Rvalue References](./questions/advanced/move-semantics.md)
-- [Modern C++ Features (C++11/14/17/20)](./questions/advanced/modern-cpp-features.md)
-- [C++ Algorithms, Design Patterns, and Best Practices](./questions/advanced/algorithms-design-patterns.md)
-- [Performance Optimization and Debugging in C++](./questions/advanced/optimization-debugging.md)
+- [STL: Mastering Standard Template Library](./advanced/stl.md)
+- [Templates and Template Metaprogramming](./advanced/templates.md)
+- [Multi-threading and Concurrency in C++](./advanced/multi-threading.md)
+- [Lambda Expressions and Functional Programming](./advanced/lambda-expressions.md)
+- [Move Semantics and Rvalue References](./advanced/move-semantics.md)
+- [Modern C++ Features (C++11/14/17/20)](./advanced/modern-cpp-features.md)
+- [ Best PractndicesC++ Algorithms, Design Patterns, a](./advanced/algorithms-design-patterns.md)
+- [Png in C+erformance Optimization and Debuggi+](./advanced/optimization-debugging.md)
 
 ### 🟣 Specialized C++ Interview Questions
-- [Smart Pointers and Resource Management](./questions/specialized/smart-pointers.md)
-- [C++ for Embedded Systems and Low-Level Programming](./questions/specialized/cpp-embedded.md)
-- [High-Performance C++ and Parallel Programming](./questions/specialized/high-performance.md)
-- [C++ Debugging, Profiling, and Testing](./questions/specialized/debugging-profiling.md)
-- [Advanced Memory Management in C++](./questions/specialized/memory-management-detail.md)
+- [Smart Pointers and Resource Management](./specialized/smart-pointers.md)
+- [C++ for Embedded Systems and Low-Level Programming](./specialized/cpp-embedded.md)
+- [High-Performance C++ and Parallel Programming](./specialized/high-performance.md)
+- [C++ Debugging, Profiling, and Testing](./specialized/debugging-profiling.md)
+- [Advanced Memory Management in C++](./specialized/memory-management-detail.md)
 
 ### 🟣 C++ Standard and Features Interview Questions
 - [C++11 Features and Best Practices](./cpp11/cpp11.md)
 - [C++14 and C++17 Enhancements](./cpp14/cpp14.md)
-- [C++14 and C++17 Enhancements](.cpp17/cpp17.md)
 - [C++20 New Features and Concepts](./cpp20/cpp20.md)
-- [STL (Standard Template Library) and Algorithms](./questions/standard/stl-algorithms.md)
-- [Modern C++ Best Practices](./questions/standard/modern-cpp.md)
+- [STL (Standard Template Library) and Algorithms](./standard/stl-algorithms.md)
+- [Modern C++ Best Practices](./standard/modern-cpp.md)
 
 ---
 
@@ -175,13 +177,66 @@ Prepare for your C++ coding interviews with our expert-curated collection of C++
 With this repository, you'll be ready to tackle C++ interview questions with ease, whether you're applying for an entry-level developer position or aiming for senior roles. Keep practicing, stay focused, and you'll be well-prepared to impress your interviewers.
 
 ---
+## More Articles
 
-### 📣 Popular Tags for C++ Interview Questions:
-- **C++ Basics**
-- **Advanced C++**
-- **C++ OOP**
-- **C++ Coding Interviews**
-- **Technical Interviews**
-- **C++ Algorithms**
-- **C++ STL**
-- **Concurrency and Multithreading in C++**
+<Tabs>
+  <TabItem value="docs" label="📚 Documentation">
+             - [CompilerSutra Home](https://compilersutra.com)
+                - [CompilerSutra Homepage (Alt)](https://compilersutra.com/)
+                - [Getting Started Guide](https://compilersutra.com/get-started)
+                - [Newsletter Signup](https://compilersutra.com/newsletter)
+                - [Skip to Content (Accessibility)](https://compilersutra.com#__docusaurus_skipToContent_fallback)
+
+
+  </TabItem>
+
+  <TabItem value="tutorials" label="📖 Tutorials & Guides">
+
+        - [AI Documentation](https://compilersutra.com/docs/Ai)
+        - [DSA Overview](https://compilersutra.com/docs/DSA/)
+        - [DSA Detailed Guide](https://compilersutra.com/docs/DSA/DSA)
+        - [MLIR Introduction](https://compilersutra.com/docs/MLIR/intro)
+        - [TVM for Beginners](https://compilersutra.com/docs/tvm-for-beginners)
+        - [Python Tutorial](https://compilersutra.com/docs/python/python_tutorial)
+        - [C++ Tutorial](https://compilersutra.com/docs/c++/CppTutorial)
+        - [C++ Main File Explained](https://compilersutra.com/docs/c++/c++_main_file)
+        - [Compiler Design Basics](https://compilersutra.com/docs/compilers/compiler)
+        - [OpenCL for GPU Programming](https://compilersutra.com/docs/gpu/opencl)
+        - [LLVM Introduction](https://compilersutra.com/docs/llvm/intro-to-llvm)
+        - [Introduction to Linux](https://compilersutra.com/docs/linux/intro_to_linux)
+
+  </TabItem>
+
+  <TabItem value="assessments" label="📝 Assessments">
+
+        - [C++ MCQs](https://compilersutra.com/docs/mcq/cpp_mcqs)
+        - [C++ Interview MCQs](https://compilersutra.com/docs/mcq/interview_question/cpp_interview_mcqs)
+
+  </TabItem>
+
+  <TabItem value="projects" label="🛠️ Projects">
+
+            - [Project Documentation](https://compilersutra.com/docs/Project)
+            - [Project Index](https://compilersutra.com/docs/project/)
+            - [Graphics Pipeline Overview](https://compilersutra.com/docs/The_Graphic_Rendering_Pipeline)
+            - [Graphic Rendering Pipeline (Alt)](https://compilersutra.com/docs/the_graphic_rendering_pipeline/)
+
+  </TabItem>
+
+  <TabItem value="resources" label="🌍 External Resources">
+
+            - [LLVM Official Docs](https://llvm.org/docs/)
+            - [Ask Any Question On Quora](https://compilersutra.quora.com)
+            - [GitHub: FixIt Project](https://github.com/aabhinavg1/FixIt)
+            - [GitHub Sponsors Page](https://github.com/sponsors/aabhinavg1)
+
+  </TabItem>
+
+  <TabItem value="social" label="📣 Social Media">
+
+            - [🐦 Twitter - CompilerSutra](https://twitter.com/CompilerSutra)
+            - [💼 LinkedIn - Abhinav](https://www.linkedin.com/in/abhinavcompilerllvm/)
+            - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)
+
+  </TabItem>
+</Tabs>
