@@ -511,6 +511,7 @@ howToSidebar: [
         'how_to/run-multiple-cpp-files',
         'how_to/how_to_build_cpp_with_make',
         'how_to/how_to_use_cmake',
+        'how_to/library_part1',
     
     ],
   },
