@@ -63,89 +63,55 @@
 import React, { useEffect, useRef } from "react";
 
 export default function AdBanner({
-  slot = "8480817097", // ✅ default slot (can override via props)
+  slot = "8480817097",
   layout = "in-article",
   format = "fluid",
-  style = { display: "block", textAlign: "center", minHeight: "120px" }
+  style = {}
 }) {
   const adRef = useRef(null);
 
   useEffect(() => {
-    const clientId = "ca-pub-3213090090375658"; // ✅ your AdSense ID
+    const clientId = "ca-pub-3213090090375658";
     const scriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
-    let retryCount = 0;
-    const maxRetries = 5;
-    let timeoutId = null;
 
-    const loadAd = () => {
-      if (!adRef.current) return;
-
-      const width = adRef.current.offsetWidth;
-      console.log(`[AdBanner] Attempt ${retryCount + 1}: width =`, width);
-
-      if (width === 0 && retryCount < maxRetries) {
-        retryCount++;
-        const delay = Math.min(500 * Math.pow(2, retryCount), 5000); // capped exponential backoff
-        console.log(`[AdBanner] Retrying in ${delay}ms (retry ${retryCount}/${maxRetries})...`);
-        timeoutId = setTimeout(loadAd, delay);
-        return;
-      }
-
-      try {
-        console.log("[AdBanner] Pushing ad to adsbygoogle...");
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        console.log("[AdBanner] ✅ Ad loaded successfully!");
-      } catch (e) {
-        console.error("[AdBanner] ❌ AdSense error:", e);
-      }
-    };
-
-    const loadScriptOnce = () => {
-      if (window.adsbygoogleLoaded) {
-        console.log("[AdBanner] Script already loaded, injecting ad...");
-        loadAd();
-        return;
-      }
-
-      const existingScript = document.querySelector(
-        `script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]`
-      );
-
-      if (existingScript) {
-        console.log("[AdBanner] Script found in DOM, waiting for load...");
-        existingScript.addEventListener("load", loadAd);
-        return;
-      }
-
-      console.log("[AdBanner] Injecting AdSense script...");
+    // Insert script immediately if not loaded
+    if (!window.adsbygoogleLoaded) {
       const script = document.createElement("script");
       script.src = scriptSrc;
       script.async = true;
       script.crossOrigin = "anonymous";
       script.onload = () => {
-        console.log("[AdBanner] ✅ Script loaded, now loading ad...");
         window.adsbygoogleLoaded = true;
-        loadAd();
+        pushAd();
       };
       document.head.appendChild(script);
-    };
+    } else {
+      pushAd();
+    }
 
-    loadScriptOnce();
+    function pushAd() {
+      if (!adRef.current) return;
 
-    // ✅ Cleanup on unmount
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-        console.log("[AdBanner] Cleanup: cleared retry timeout.");
+      // Set minimum width immediately if zero
+      if (adRef.current.offsetWidth === 0) {
+        adRef.current.style.width = "300px";
       }
-    };
-  }, []);
+
+      try {
+        if (Array.isArray(window.adsbygoogle)) {
+          window.adsbygoogle.push({});
+        }
+      } catch (e) {
+        console.error("[AdBanner] AdSense error:", e);
+      }
+    }
+  }, [slot, layout, format, style]);
 
   return (
     <ins
       ref={adRef}
       className="adsbygoogle"
-      style={style}
+      style={{ display: "block", textAlign: "center", minHeight: "120px", ...style }}
       data-ad-client="ca-pub-3213090090375658"
       data-ad-slot={slot}
       data-ad-layout={layout}
@@ -153,4 +119,3 @@ export default function AdBanner({
     />
   );
 }
-
