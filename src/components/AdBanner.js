@@ -54,7 +54,7 @@ export default function AdBanner() {
       data-ad-layout="in-article"
       data-ad-format="fluid"
       data-ad-client="ca-pub-3213090090375658"
-      data-ad-slot="4021013123"
+      data-ad-slot="5928991162"
     />
   );
 }
