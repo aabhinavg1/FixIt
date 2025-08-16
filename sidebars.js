@@ -352,6 +352,7 @@ const sidebars = {
         'linux/if_else_in_bash',
         'linux/loop_in_bash',
         'linux/markdown_checker',
+        'linux/markdown_checker_part2',
       ],
     },
   ],
