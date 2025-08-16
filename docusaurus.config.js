@@ -40,7 +40,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
       metadata: [
-        { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' },
+       // { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' },
+       { name: 'google-adsense-account', content: 'ca-pub-3213090090375658'},
       ],
 
       navbar: {
@@ -132,7 +133,7 @@ const config = {
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
       async: true,
       crossorigin: 'anonymous',
-      'data-ad-client': 'ca-pub-4507855210682789',
+      'data-ad-client': 'ca-pub-3213090090375658',
       defer: true,
     },
     {
@@ -163,7 +164,7 @@ const config = {
   ],
 
   customFields: {
-    adsenseClient: 'ca-pub-4507855210682789',
+    adsenseClient: 'ca-pub-3213090090375658',
   },
 };
 

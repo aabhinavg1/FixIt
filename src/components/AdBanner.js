@@ -126,7 +126,7 @@ export default function AdBanner() {
         textAlign: 'center',
       }}
       data-ad-client="ca-pub-3213090090375658"
-      data-ad-slot="3248053163"
+      data-ad-slot="5048219993"
       data-ad-format="fluid"
       data-ad-layout="in-article"
       data-ad-layout-key="+1r+s6-1h-2r+au" // Optional: Add only if needed

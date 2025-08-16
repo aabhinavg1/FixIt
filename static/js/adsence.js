@@ -4,7 +4,8 @@
 (function() {
     var adScript = document.createElement("script");
     adScript.async = true;
-    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4507855210682789";
+    //adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4507855210682789";
+    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213090090375658";
     adScript.crossOrigin = "anonymous";
     document.head.appendChild(adScript);
 })();
@@ -16,8 +17,9 @@ function loadAdSense() {
     adContainer.style.display = "block";
     adContainer.setAttribute("data-ad-format", "fluid");
     adContainer.setAttribute("data-ad-layout-key", "-fb+5w+4e-db+86");
-    adContainer.setAttribute("data-ad-client", "ca-pub-4507855210682789");
-    adContainer.setAttribute("data-ad-slot", "4332122514");
+    //adContainer.setAttribute("data-ad-client", "ca-pub-4507855210682789");
+    adContainer.setAttribute("data-ad-client", "ca-pub-3213090090375658");
+    adContainer.setAttribute("data-ad-slot", "5048219993");
 
     // Append ad to the body (or any specific container)
     document.body.appendChild(adContainer);
