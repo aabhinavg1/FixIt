@@ -60,52 +60,70 @@
 //   );
 // }
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-export default function AdBanner() {
+export default function AdBanner({
+  slot = "8480817097", // ✅ default slot (can override via props)
+  layout = "in-article",
+  format = "fluid",
+  style = { display: "block", textAlign: "center", minHeight: "120px" }
+}) {
   const adRef = useRef(null);
 
   useEffect(() => {
-    const clientId = 'ca-pub-3213090090375658'; // ✅ Use your real AdSense client ID
+    const clientId = "ca-pub-3213090090375658"; // ✅ your AdSense ID
     const scriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
     let retryCount = 0;
     const maxRetries = 5;
+    let timeoutId = null;
 
     const loadAd = () => {
       if (!adRef.current) return;
 
       const width = adRef.current.offsetWidth;
+      console.log(`[AdBanner] Attempt ${retryCount + 1}: width =`, width);
 
       if (width === 0 && retryCount < maxRetries) {
         retryCount++;
-        setTimeout(loadAd, 300 * retryCount); // exponential-ish backoff
+        const delay = Math.min(500 * Math.pow(2, retryCount), 5000); // capped exponential backoff
+        console.log(`[AdBanner] Retrying in ${delay}ms (retry ${retryCount}/${maxRetries})...`);
+        timeoutId = setTimeout(loadAd, delay);
         return;
       }
 
       try {
+        console.log("[AdBanner] Pushing ad to adsbygoogle...");
         (window.adsbygoogle = window.adsbygoogle || []).push({});
+        console.log("[AdBanner] ✅ Ad loaded successfully!");
       } catch (e) {
-        console.error('AdSense error:', e);
+        console.error("[AdBanner] ❌ AdSense error:", e);
       }
     };
 
     const loadScriptOnce = () => {
       if (window.adsbygoogleLoaded) {
+        console.log("[AdBanner] Script already loaded, injecting ad...");
         loadAd();
         return;
       }
 
-      const existingScript = document.querySelector(`script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]`);
+      const existingScript = document.querySelector(
+        `script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]`
+      );
+
       if (existingScript) {
-        existingScript.addEventListener('load', loadAd);
+        console.log("[AdBanner] Script found in DOM, waiting for load...");
+        existingScript.addEventListener("load", loadAd);
         return;
       }
 
-      const script = document.createElement('script');
+      console.log("[AdBanner] Injecting AdSense script...");
+      const script = document.createElement("script");
       script.src = scriptSrc;
       script.async = true;
-      script.crossOrigin = 'anonymous';
+      script.crossOrigin = "anonymous";
       script.onload = () => {
+        console.log("[AdBanner] ✅ Script loaded, now loading ad...");
         window.adsbygoogleLoaded = true;
         loadAd();
       };
@@ -113,22 +131,25 @@ export default function AdBanner() {
     };
 
     loadScriptOnce();
+
+    // ✅ Cleanup on unmount
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        console.log("[AdBanner] Cleanup: cleared retry timeout.");
+      }
+    };
   }, []);
 
   return (
     <ins
       ref={adRef}
       className="adsbygoogle"
-      style={{
-        display: 'block',
-        width: '100%',
-        minHeight: '120px',
-        textAlign: 'center',
-      }}
+      style={style}
       data-ad-client="ca-pub-3213090090375658"
-      data-ad-slot="8480817097"
-      data-ad-format="fluid"
-      data-ad-layout="in-article"
+      data-ad-slot={slot}
+      data-ad-layout={layout}
+      data-ad-format={format}
     />
   );
 }
