@@ -513,6 +513,8 @@ howToSidebar: [
         'how_to/how_to_build_cpp_with_make',
         'how_to/how_to_use_cmake',
         'how_to/library_part1',
+        'how_to/static_library',
+        'how_to/dynamic_library',
     
     ],
   },

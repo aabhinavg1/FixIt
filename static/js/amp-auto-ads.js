@@ -22,8 +22,8 @@ function addAmpAutoAds() {
         // Creating the AMP Auto Ads element
         const ampAutoAds = document.createElement("amp-auto-ads");
         ampAutoAds.setAttribute("type", "adsense");
-        ampAutoAds.setAttribute("data-ad-client", "ca-pub-4507855210682789");
-
+        //ampAutoAds.setAttribute("data-ad-client", "ca-pub-4507855210682789");
+        ampAutoAds.setAttribute("data-ad-client", "ca-pub-3213090090375658")
         // Append to the body or any other container
         document.body.appendChild(ampAutoAds);
         console.log("AMP Auto Ads injected.");
