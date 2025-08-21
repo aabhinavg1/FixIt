@@ -15,6 +15,7 @@ const sidebars = {
         'compilers/Verification_Vs_Validation',
         'compilers/build_your_compiler',
         'compilers/other_arch/other-architectures',
+        'compilers/basic_block_in_compiler',
       ],
     },
     {
