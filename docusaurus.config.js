@@ -155,7 +155,7 @@ const config = {
     // },
     { src: '/js/ezoic.js', async: true, defer: true },
 
-    { src: '/js/contest.js', async: true, defer: true},
+    //git{ src: '/js/contest.js', async: true, defer: true},
     //{ src: '/js/amp-auto-ads.js', async: true, defer: true },
     { src: '/js/google-tag-manager.js', async: true, defer: true },
     { src: '/js/google-analytics.js', async: true, defer: true },
