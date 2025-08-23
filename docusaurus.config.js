@@ -6,8 +6,8 @@ const config = {
   favicon: 'img/favicon.ico',
   url: 'https://compilersutra.com/',
   baseUrl: '/',
-  organizationName: 'aabhinavg1',
-  projectName: 'FixIt',
+  // organizationName: 'aabhinavg1',
+  // projectName: 'FixIt',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
