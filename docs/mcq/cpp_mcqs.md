@@ -124,6 +124,14 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
     <AdBanner />
 </div>
 
+### 🟤 Domain-Specific C++ MCQs
+
+- [C++ for Competitive Programming](./questions/domain/competitive-programming.md)
+- [C++ for System Programming](./questions/domain/system-programming.md)
+- [C++ for Game Development](./questions/domain/game-development.md)
+- [C++ for Embedded Systems](./questions/domain/embedded.md)
+- [C++ for Compiler Development](./questions/domain/compiler-dev.md)
+- [C++ for Data Science and HPC](./questions/domain/data-science-hpc.md)
 ---
 
 ## 💡 Why Practice C++ MCQs?

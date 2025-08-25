@@ -608,6 +608,58 @@ howToSidebar: [
       ],
     },
   ],
+  
+  domainMcqSidebar: [
+  {
+    type: 'category',
+    label: 'Domain Specific MCQs',
+    collapsed: false,
+    items: [
+      {
+        type: 'category',
+        label: 'Competitive Programming MCQs',
+        collapsed: true,
+        items: [
+          'mcq/questions/domain/competitive-programming',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'System Programming MCQs',
+        collapsed: true,
+        items: [
+          'mcq/questions/domain/system-programming',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'Compiler Design MCQs',
+        collapsed: true,
+        items: [
+          'mcq/questions/domain/compiler-dev',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'Embedded Systems MCQs',
+        collapsed: true,
+        items: [
+          'mcq/questions/domain/embedded',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'HPC & Data Science MCQs',
+        collapsed: true,
+        items: [
+          'mcq/questions/domain/data-science-hpc',
+        ],
+      },
+    ],
+  },
+],
+
 };
+
 
 module.exports = sidebars;
