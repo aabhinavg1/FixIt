@@ -354,6 +354,7 @@ const sidebars = {
         'linux/loop_in_bash',
         'linux/markdown_checker',
         'linux/markdown_checker_part2',
+        'linux/markdown_checker_part3',
       ],
     },
   ],
