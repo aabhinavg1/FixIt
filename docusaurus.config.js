@@ -78,6 +78,7 @@ const config = {
             items: [
               { label: 'Practice MCQ CPP', to: '/docs/mcq/cpp_mcqs' },
               { label: 'Practice Interview Question and Answer CPP', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
+              {label: 'Practice domain Specific MCQ', to: '/docs/mcq/cpp_mcqs#-domain-specific-c-mcqs'},
               {label: 'React MCQ', to: '/docs/react_mcq'}
             ],
           },
