@@ -124,7 +124,7 @@ Ask your question on Quora and tag it with #GPUProgramming or #Compilersutra! Ou
 </summary>
 |  #   | Title                                                          | Video Link  | Article Link | PDF         |
 | ---: | :------------------------------------------------------------- | :---------- | :----------- | :---------- |
-|  1   | What is a CPU? Explained Simply                                | Coming Soon | Coming Soon  | Coming Soon |
+|  1   | What is a CPU? Explained Simply                                | Coming Soon | [link](./how_computer_works.md)  | Coming Soon |
 |  2   | How Computers Process Instructions                             | Coming Soon | Coming Soon  | Coming Soon |
 |  3   | Why CPUs Got Stuck: The Frequency Wall                         | Coming Soon | Coming Soon  | Coming Soon |
 | 3.1  | CPUs with Multiple Cores – Benefits and Limitations            | Coming Soon | Coming Soon  | Coming Soon |

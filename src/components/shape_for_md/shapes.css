@@ -1,0 +1,70 @@
+/* shapes.css */
+
+/* Base style for all shape boxes */
+.shape-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  max-width: 90%;          /* responsive width on mobile */
+  width: auto;             /* adapt to content but capped by max-width */
+  border: 2px solid var(--box-border-color, #333); /* easy to change border color */
+  border-radius: 10px;
+  background-color: var(--box-bg-color, #f9f9f9); /* background color customizable */
+  color: var(--box-text-color, #222);             /* text color customizable */
+  font-family: var(--box-font-family, 'Comic Sans MS', cursive, sans-serif); /* default Comic font */
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Paragraphs inside the box */
+.shape-box p {
+  margin: 0.3em 0;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .shape-box {
+    max-width: 70%;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .shape-box {
+    max-width: 50%;
+    font-size: 1.2rem;
+  }
+}
+
+
+/* Circle */
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: lightblue;
+}
+
+/* Triangle */
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid lightcoral;
+}
+
+.enhanced-text {
+  color: var(--enhanced-color, #1f258d);
+  font-size: var(--enhanced-font-size, 1rem);
+  font-weight: var(--enhanced-font-weight, 400);
+  line-height: var(--enhanced-line-height, 1.5);
+  letter-spacing: var(--enhanced-letter-spacing, normal);
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* professional font */
+  margin: 1em 0;
+}
