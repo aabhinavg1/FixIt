@@ -7,6 +7,7 @@ const config = {
   url: 'https://compilersutra.com/',
   baseUrl: '/',
   organizationName: 'compilersutra',
+  trailingSlash: true, // ensures all docs URLs end with /
   projectName: 'FixIt',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
