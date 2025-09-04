@@ -10,8 +10,6 @@ const config = {
   projectName: 'FixIt',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
-  trailingSlash: false,
-
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
