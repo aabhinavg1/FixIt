@@ -1,9 +1,5 @@
 # Redirect non-www to www
-https://compilersutra.com/*  https://www.compilersutra.com/:splat  301!
-
-# Single-page app fallback (fixes trailingSlash:false 404s)
-/*  /index.html  200
-
+# https://compilersutra.com/*  https://www.compilersutra.com/:splat  301!
 # Your internal page redirects
 /docs/tutorial-basics/intro-to-llvm/    /docs/llvm_basic/Build   301
 /docs/tutorial-basics/markdown-features/ /docs/llvm_basic/markdown-features 301
