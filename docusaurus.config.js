@@ -4,12 +4,13 @@ const config = {
   title: 'CompilerSutra',
   tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
   favicon: 'img/favicon.ico',
-  url: 'https://compilersutra.com/',
+  url: 'https://compilersutra.com',
   baseUrl: '/',
   // organizationName: 'aabhinavg1',
   // projectName: 'FixIt',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
+  trailingSlash: false,
 
   i18n: {
     defaultLocale: 'en',
@@ -137,12 +138,12 @@ const config = {
       'data-ad-client': 'ca-pub-3213090090375658',
       defer: true,
     },
-    {
-      src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
-      async: true,
-      id: "cookieyes",
-      defer: true,
-    },
+    // {
+    //   src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
+    //   async: true,
+    //   id: "cookieyes",
+    //   defer: true,
+    // },
     {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
