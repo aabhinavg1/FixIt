@@ -357,6 +357,7 @@ const sidebars = {
         'linux/markdown_checker_part2',
         'linux/markdown_checker_part3',
         'linux/username_in_linux',
+        'linux/know_machine_ip'
       ],
     },
   ],

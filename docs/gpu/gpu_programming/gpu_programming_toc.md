@@ -112,6 +112,16 @@ Ask your question on Quora and tag it with #GPUProgramming or #Compilersutra! Ou
 
 👉 Ask a GPU Programming Question on Quora
 
+<details>
+<summary><strong><span class="level-prefix"></span> Know Computer Basics</strong></summary>
+
+| # | **Title**           | **Video**   | **Articles**| **PDF**     |
+| - | ------------------- | ----------- | ----------- | ----------- |
+| 1 | How Computers Work  | [link](https://youtu.be/2jtmDTQbYf4) | [link](https://www.compilersutra.com/docs/gpu/gpu_programming/how_computer_works/) | Coming Soon |
+| 2 | Binary/Hexadecimal  | Coming Soon | Coming Soon | Coming Soon |
+| 3 | Compilers Explained | Coming Soon | Coming Soon | Coming Soon |
+
+</details>
 <h1 class="curriculum-title">The Curriculum</h1>
 
 <div id="gpu-toc-page">
@@ -124,7 +134,7 @@ Ask your question on Quora and tag it with #GPUProgramming or #Compilersutra! Ou
 </summary>
 |  #   | Title                                                          | Video Link  | Article Link | PDF         |
 | ---: | :------------------------------------------------------------- | :---------- | :----------- | :---------- |
-|  1   | What is a CPU? Explained Simply                                | Coming Soon | [link](./how_computer_works.md)  | Coming Soon |
+|  1   | What is a CPU? Explained Simply                                | Coming Soon |Coming Soon  | Coming Soon |
 |  2   | How Computers Process Instructions                             | Coming Soon | Coming Soon  | Coming Soon |
 |  3   | Why CPUs Got Stuck: The Frequency Wall                         | Coming Soon | Coming Soon  | Coming Soon |
 | 3.1  | CPUs with Multiple Cores – Benefits and Limitations            | Coming Soon | Coming Soon  | Coming Soon |
