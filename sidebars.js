@@ -8,6 +8,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'compilers/Compiler',
+        'compilers/sourcecode_to_executable',
         'compilers/front_end/compiler-frontend',
         'compilers/front_end/role_of_parser',
         'compilers/back_end/introduction-to-backend-compilers',
