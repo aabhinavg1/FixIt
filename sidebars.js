@@ -116,6 +116,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'llvm/intro-to-llvm',
+        
         {
           type: 'category',
           label: 'LLVM Basics',
@@ -125,6 +126,8 @@ const sidebars = {
             'llvm/llvm_basic/Why_LLVM',
             'llvm/llvm_basic/congratulations',
             'llvm/llvm_basic/deploy-your-site',
+            'llvm/fix_llvm_build_bugs',
+
           ],
         },
         {
