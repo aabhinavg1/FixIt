@@ -2,18 +2,56 @@
 title: "Getting Started with GPU Programming: Complete Setup Guide"
 description: "Complete step-by-step guide to setting up your GPU environment for parallel computing. Learn to install NVIDIA/AMD drivers, use essential Linux tools, verify GPU access, and run your first GPU kernel."
 keywords:
-  - GPU setup
-  - GPU programming
-  - CUDA installation
-  - OpenCL installation
-  - NVIDIA GPU
-  - AMD GPU
-  - Linux GPU tools
-  - GPU drivers
-  - ROCm installation
-  - GPU kernel programming
-  - parallel computing
-  - high-performance computing
+- GPU setup
+- GPU programming
+- CUDA installation
+- OpenCL installation
+- NVIDIA GPU
+- AMD GPU
+- Linux GPU tools
+- GPU drivers
+- ROCm installation
+- GPU kernel programming
+- Parallel computing
+- High-performance computing
+- GPGPU
+- GPU acceleration
+- GPU debugging
+- GPU monitoring
+- GPU profiling
+- Vulkan API
+- DirectX 12 GPU
+- GPU memory management
+- GPU compute shaders
+- GPU optimization
+- Tensor cores
+- Deep learning GPU
+- Machine learning GPU
+- GPU benchmarking
+- Multi-GPU setup
+- GPU virtualization
+- GPU cloud computing
+- Heterogeneous computing
+- GPU compute performance
+- GPU toolchain
+- OpenCL kernel optimization
+- CUDA toolkit
+- GPU driver installation
+- GPU architecture
+- High-performance GPU computing
+- GPU compute API
+- GPU resource management
+- GPU scheduling
+- GPU concurrency
+- GPU programming models
+- GPU frameworks
+- GPU compute libraries
+- GPU task offloading
+- GPU memory allocation
+- GPU performance tuning
+- GPU software stack
+- GPU hardware acceleration
+
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
@@ -69,10 +107,9 @@ For more in-depth reference:
 5. [Programming Environment Setup](#programming-environment-setup)
 6. [Verification and Testing](#verification-and-testing)
 7. [Your First GPU Program](#your-first-gpu-program)
-8. [Understanding GPU Kernels](#understanding-gpu-kernels)
-9. [Troubleshooting Common Issues](#troubleshooting-common-issues)
-10. [Next Steps](#next-steps)
-11. [FAQ](#faq)
+8. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+9. [Next Steps](#next-steps)
+10. [FAQ](#faq)
 
 ---
 
@@ -86,7 +123,7 @@ Before beginning, ensure you have:
 - Basic familiarity with **command line operations**
 - **GCC** and essential build tools
 
-```rust
+```python
 # Install basic development tools
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential git wget curl cmake ninja-build pkg-config
@@ -250,7 +287,7 @@ sudo apt install -y unzip tar
   </TabItem>
   <TabItem value="Script" label="Script">
 
-  ```rust
+  ```python
   #!/bin/bash
 # gpu_debug_toolkit.sh
 # A comprehensive GPU debugging and monitoring toolkit for Linux
@@ -422,7 +459,7 @@ The **GPU Debug Toolkit** is a bash script for monitoring and debugging **NVIDIA
 
 **Usage**
 
-```rust
+```python
 # Run all checks
 ./gpu_debug_toolkit.sh --all
 
@@ -449,13 +486,13 @@ The **GPU Debug Toolkit** is a bash script for monitoring and debugging **NVIDIA
 1. Save as `gpu_debug_toolkit.sh`
 2. Make it executable:
 
-```rust
+```python
 chmod +x gpu_debug_toolkit.sh
 ```
 
 3. Run all checks:
 
-```rust
+```python
 ./gpu_debug_toolkit.sh --all
 ```
 
@@ -481,7 +518,7 @@ chmod +x gpu_debug_toolkit.sh
 
 ### Development Tools
 
-```rust
+```python
 # Compilers and build systems
 gcc --version                         # GNU Compiler Collection
 clang --version                      # LLVM Clang compiler
@@ -496,7 +533,7 @@ dpkg -l | grep nvidia                 # List NVIDIA packages
 <details>
 <summary>💡 Pro Tip: Create GPU Monitoring Dashboard</summary>
 
-```rust
+```python
 # Create a simple monitoring script
 cat > gpu-monitor.sh << 'EOF'
 #!/bin/bash
@@ -527,154 +564,425 @@ watch -n 2 ./gpu-monitor.sh
 
 ## GPU Hardware Detection
 
-### Identify Your GPU
+<Tabs>
+<!-- AMD GPU Detection -->
+  <TabItem value="amd" label="AMD GPU">
 
-```bash
+***Identify Your GPU***
+
+```python
 # Comprehensive GPU detection
-lspci -v | grep -A 10 -E "(VGA|3D)"
-
-# NVIDIA specific
-lspci | grep -i nvidia
-
-# AMD specific  
-lspci | grep -i "amd/ati"
-
-# Additional hardware info
-sudo lshw -C display
+ lspci -v | grep -A 10 -E "(VGA|3D)"
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 44 [Radeon RX 9060 XT] (rev c0) (prog-if 00 [VGA controller])
+        Subsystem: Gigabyte Technology Co., Ltd Device 2429
+        Flags: bus master, fast devsel, latency 0, IRQ 106, IOMMU group 15
+        Memory at f800000000 (64-bit, prefetchable) [size=16G]
+        Memory at fc00000000 (64-bit, prefetchable) [size=256M]
+        I/O ports at f000 [size=256]
+        Memory at f6c00000 (32-bit, non-prefetchable) [size=512K]
+        Expansion ROM at f6c80000 [disabled] [size=128K]
+        Capabilities: <access denied>
+        Kernel driver in use: amdgpu
+        Kernel modules: amdgpu
 ```
 
-**Example Output:**
-```
-01:00.0 VGA compatible controller: NVIDIA Corporation GA104 [GeForce RTX 3070] (rev a1)
-02:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700 XT]
+**AMD specific**
+
+```python
+> lspci | grep -i "amd/ati"
+
+01:00.0 PCI bridge: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch (rev 25)
+02:00.0 PCI bridge: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch (rev 25)
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 44 [Radeon RX 9060 XT] (rev c0)
+03:00.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 HDMI/DP Audio Controller
+15:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Granite Ridge [Radeon Graphics] (rev c5)
+15:00.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Radeon High Definition Audio Controller [Rembrandt/Strix]
+> 
 ```
 
-### Verify Kernel Recognition
+**Additional hardware info**
 
-```rust
+```python
+sudo lshw -C display 
+  *-display                 
+       description: VGA compatible controller
+       product: Navi 44 [Radeon RX 9060 XT]
+       vendor: Advanced Micro Devices, Inc. [AMD/ATI]
+       physical id: 0
+       bus info: pci@0000:03:00.0
+       logical name: /dev/fb0
+       version: c0
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm pciexpress msi vga_controller bus_master cap_list rom fb
+       configuration: depth=32 driver=amdgpu latency=0 mode=1920x1080 resolution=1920,1080 visual=truecolor xres=1920 yres=1080
+       resources: iomemory:f80-f7f iomemory:fc0-fbf irq:106 memory:f800000000-fbffffffff memory:fc00000000-fc0fffffff ioport:f000(size=256) memory:f6c00000-f6c7ffff memory:f6c80000-f6c9ffff
+  *-display
+       description: VGA compatible controller
+       product: Granite Ridge [Radeon Graphics]
+       vendor: Advanced Micro Devices, Inc. [AMD/ATI]
+       physical id: 0
+       bus info: pci@0000:15:00.0
+       version: c5
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm pciexpress msi msix vga_controller bus_master cap_list
+       configuration: driver=amdgpu latency=0
+       resources: iomemory:fc0-fbf irq:69 memory:fc20000000-fc2fffffff memory:f6200000-f63fffff ioport:d000(size=256) memory:f6700000-f677ffff
+```
+
+
+**Verify Kernel Recognition**
+
+```python
 # Check if GPU is detected by kernel
-dmesg | grep -i "gpu\|drm\|nvidia\|amd"
+> sudo dmesg | grep -i "gpu\|drm\|amd"
 
-# Check loaded graphics modules
-lsmod | grep -E "nvidia|amdgpu|radeon"
+[    0.000000] Linux version 6.14.0-33-generic (buildd@lcy02-amd64-026) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #33~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 17:02:30 UTC 2 (Ubuntu 6.14.0-33.33~24.04.1-generic 6.14.11)
+[    0.000000]   AMD AuthenticAMD
+[    0.003715] RAMDISK: [mem 0x65ff8000-0x6e4cdfff]
+[    0.004038] ACPI: SSDT 0x000000008D476000 00816C (v02 AMD    Splinter 00000002 MSFT 05000000)
+[    0.004046] ACPI: VFCT 0x000000008D3E0000 0194A0 (v01 ALASKA A M I    00000001 AMD  33504F47)
+[    0.004047] ACPI: SSDT 0x000000008D46F000 004DEE (v02 AMD    AMD CPU  00000001 AMD  00000001)
+[    0.004050] ACPI: SSDT 0x000000008D3DE000 0006D4 (v02 AMD    CPMWLRC  00000001 INTL 20221020)
+[    0.004051] ACPI: SSDT 0x000000008D3DC000 00169E (v02 AMD    CPMDFIG2 00000001 INTL 20221020)
+[    0.004052] ACPI: SSDT 0x000000008D3D9000 002AA6 (v02 AMD    CDFAAIG2 00000001 INTL 20221020)
+[    0.004053] ACPI: SSDT 0x000000008D3D8000 0008BA (v02 AMD    CPMDFDG2 00000001 INTL 20221020)
+[    0.004054] ACPI: SSDT 0x000000008D3CE000 009A9E (v02 AMD    CPMCMN   00000001 INTL 20221020)
+[    0.004055] ACPI: SSDT 0x000000008D3CB000 002924 (v02 AMD    AOD      00000001 INTL 20221020)
+[    0.004058] ACPI: IVRS 0x000000008D3C8000 0000C8 (v02 AMD    AmdTable 00000001 AMD  00000001)
+[    0.004059] ACPI: SSDT 0x000000008D3C7000 000500 (v02 AMD    MEMTOOL0 00000002 INTL 20221020)
+[    0.004060] ACPI: SSDT 0x000000008D3C6000 0009D0 (v02 AMD    CPMMSOSC 00000001 INTL 20221020)
+[    0.004061] ACPI: SSDT 0x000000008D3C5000 00047C (v02 AMD    AMDWOV   00000001 INTL 20221020)
+[    0.004062] ACPI: SSDT 0x000000008D3C3000 001046 (v02 AMD    CPMACPV4 00000001 INTL 20221020)
+[    0.004064] ACPI: SSDT 0x000000008D3C2000 00044E (v02 AMD    AmdTable 00000001 INTL 20221020)
+[    0.112950] AMD-Vi: Using global IVHD EFR:0x246577efa2254afa, EFR2:0x0
+[    0.241446] smpboot: CPU0: AMD Ryzen 7 9700X 8-Core Processor (family: 0x1a, model: 0x44, stepping: 0x0)
+[    0.241543] Performance Events: Fam17h+ 16-deep LBR, core perfctr, AMD PMU driver.
+[    0.317922] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported
+[    0.321076] AMD-Vi: Extended features (0x246577efa2254afa, 0x0): PPR NX GT [5] IA GA PC GA_vAPIC
+[    0.321080] AMD-Vi: Interrupt remapping enabled
+[    3.760244] AMD-Vi: Virtual APIC enabled
+[    3.760340] perf: AMD IBS detected (0x00081bff)
+[    3.760346] perf/amd_iommu: Detected AMD IOMMU #0 (2 banks, 4 counters/bank).
+[    3.799373] ACPI: bus type drm_connector registered
+[    3.866161] simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+[    3.866162] [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+[    3.866952] simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+[    5.267999] amdkcl: loading out-of-tree module taints kernel.
+[    5.268003] amdkcl: module verification failed: signature and/or required key missing - tainting kernel
+[    6.434987] [drm] amdgpu kernel modesetting enabled.
+[    6.434991] [drm] amdgpu version: 6.14.14
+[    6.434992] [drm] OS DRM version: 6.14.0
+[    6.435009] amdgpu: vga_switcheroo: detected switching method \_SB_.PCI0.GP17.VGA_.ATPX handle
+[    6.435125] amdgpu: ATPX version 1, functions 0x00000000
+[    6.438385] amdgpu: Virtual CRAT table created for CPU
+[    6.438392] amdgpu: Topology: Add CPU node
+[    6.440176] amdgpu 0000:03:00.0: enabling device (0006 -> 0007)
+[    6.440222] [drm] initializing kernel modesetting (IP DISCOVERY 0x1002:0x7590 0x1458:0x2429 0xC0).
+[    6.440231] [drm] register mmio base: 0xF6C00000
+[    6.440232] [drm] register mmio size: 524288
+[    6.443237] amdgpu 0000:03:00.0: amdgpu: detected ip block number 0 <soc24_common>
+[    6.443238] amdgpu 0000:03:00.0: amdgpu: detected ip block number 1 <gmc_v12_0>
+[    6.443239] amdgpu 0000:03:00.0: amdgpu: detected ip block number 2 <ih_v7_0>
+[    6.443239] amdgpu 0000:03:00.0: amdgpu: detected ip block number 3 <psp>
+[    6.443240] amdgpu 0000:03:00.0: amdgpu: detected ip block number 4 <smu>
+[    6.443241] amdgpu 0000:03:00.0: amdgpu: detected ip block number 5 <dm>
+[    6.443241] amdgpu 0000:03:00.0: amdgpu: detected ip block number 6 <gfx_v12_0>
+[    6.443242] amdgpu 0000:03:00.0: amdgpu: detected ip block number 7 <sdma_v7_0>
+[    6.443242] amdgpu 0000:03:00.0: amdgpu: detected ip block number 8 <vcn_v5_0_0>
+[    6.443243] amdgpu 0000:03:00.0: amdgpu: detected ip block number 9 <jpeg_v5_0_0>
+[    6.443243] amdgpu 0000:03:00.0: amdgpu: detected ip block number 10 <mes_v12_0>
+[    6.443255] amdgpu 0000:03:00.0: amdgpu: Fetched VBIOS from VFCT
+[    6.443257] amdgpu: ATOM BIOS: 113-R906XTGO-F2
+[    6.498539] amdgpu 0000:03:00.0: vgaarb: deactivate vga console
+[    6.498542] amdgpu 0000:03:00.0: amdgpu: Trusted Memory Zone (TMZ) feature not supported
 ```
 
+```python
+# Check loaded graphics modules
+> sudo lsmod | grep -E "amdgpu|radeon"
+amdgpu              19804160  18
+amddrm_ttm_helper      12288  1 amdgpu
+amdttm                131072  2 amdgpu,amddrm_ttm_helper
+amddrm_buddy           24576  1 amdgpu
+amdxcp                 16384  1 amdgpu
+amddrm_exec            12288  1 amdgpu
+amd_sched              61440  1 amdgpu
+amdkcl                 49152  4 amd_sched,amdttm,amddrm_exec,amdgpu
+drm_panel_backlight_quirks    12288  1 amdgpu
+drm_display_helper    278528  1 amdgpu
+cec                    94208  2 drm_display_helper,amdgpu
+i2c_algo_bit           16384  1 amdgpu
+drm_ttm_helper         16384  1 amdgpu
+video                  77824  1 amdgpu
+```
+
+</TabItem>
+
+<!-- NVIDIA Tab Coming Soon -->
+<TabItem value="nvidia" label="NVIDIA GPU">
+ <p>
+  Coming soon 🚧
+
+</p>
+ </TabItem> 
+ 
+ </Tabs>
 ---
 
 ## Driver Installation
 
-### AMD GPU Drivers
+Before installing GPU drivers on Linux, it’s essential to fully understand your system’s requirements. 
+***Conducting proper pre-checks—such as identifying*** your **GPU model**, **verifying kernel compatibility**, 
+and ensuring **no conflicting drivers** are present—can prevent installation failures, driver conflicts, 
+and performance issues. 
 
-#### Method 1: ROCm (Recommended for Compute)
-
-```bash
-# Add ROCm repository
-wget https://repo.radeon.com/rocm/rocm.gpg.key
-sudo apt-key add rocm.gpg.key
-echo 'deb [arch=amd64] https://repo.radeon.com/rocm/apt/5.7/ ubuntu main' | sudo tee /etc/apt/sources.list.d/rocm.list
-
-# Install ROCm
-sudo apt update
-sudo apt install rocm-hip-sdk rocm-opencl-sdk
-
-# Add user to render group
-sudo usermod -a -G render $USER
-sudo usermod -a -G video $USER
-
-# Verify installation
-clinfo | head -20
-```
-
-#### Method 2: AMDGPU-PRO
-
-```bash
-# Download from AMD website (replace with actual version)
-wget https://drivers.amd.com/drivers/linux/amdgpu-pro-22.20.3-220809.tar.xz
-tar -xf amdgpu-pro-*.tar.xz
-cd amdgpu-pro-*/
-
-# Install (headless for compute focus)
-sudo ./amdgpu-install --no-dkms --headless --opencl=legacy,pal
-
-# Reload environment
-sudo reboot
-```
-
-### NVIDIA GPU Drivers
-
-<div class="alert alert--info">
-  <strong>🚧 NVIDIA Section Coming Soon</strong>
-  <p>We're currently expanding our NVIDIA coverage with detailed installation guides, CUDA setup, and optimization techniques. Check back soon for comprehensive NVIDIA GPU programming content!</p>
-</div>
+:::tip > ***Taking these precautions ensures a smooth setup, maximizes hardware efficiency, and avoids frustrating troubleshooting later.*** 
+:::
 
 <details>
-<summary>📋 Driver Comparison Table</summary>
+  <summary><strong>How to Detect What You Need</strong> <em>(***Think Before Downloading***)</em></summary>
+  <p>
 
-| Feature | AMD ROCm | AMD GPU-PRO | NVIDIA |
-|---------|----------|-------------|---------|
-| **Target Use** | HPC & AI | Professional Graphics | AI & HPC |
-| **OpenCL Support** | ✅ | ✅ | ✅ |
-| **HIP Support** | ✅ | ❌ | ❌ |
-| **Installation** | Package Manager | Manual Install | Package Manager |
-| **License** | Open Source | Proprietary | Proprietary |
-| **Best For** | Developers & Researchers | Enterprise | AI/ML Workloads |
+  **Before Installing GPU Drivers**
 
+  >Before downloading or installing GPU drivers on Linux, you should take care of the following points to avoid conflicts, installation failures, or performance issues:  
+
+  **Points to take care of:**  
+  1. Identify your GPU model  
+  2. Check your Linux kernel version  
+  3. Check for existing GPU drivers  
+  4. Check current GPU usage  
+  5. Verify your display server configuration  
+
+  ---
+
+  <Tabs>
+    <TabItem value="gpu-model" label="GPU Model">
+  **Point 1: Identify Your GPU Model**  
+  Knowing your GPU model ensures you download the correct driver and avoid compatibility issues.  
+
+  **Question:** How do I check my GPU model?  
+
+  ```python
+  # Identify your GPU model
+  lspci | grep -i "vga\|3d"
+    03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 44 [Radeon RX 9060 XT] (rev c0)
+    15:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Granite Ridge [Radeon Graphics] (rev c5)
+  ```
+  or you can also use
+
+  ```python
+  sudo lshw -C display
+  >       sudo lshw -C display
+  *-display                 
+       description: VGA compatible controller
+       product: Navi 44 [Radeon RX 9060 XT]
+       vendor: Advanced Micro Devices, Inc. [AMD/ATI]
+       physical id: 0
+       bus info: pci@0000:03:00.0
+       logical name: /dev/fb0
+       version: c0
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm pciexpress msi vga_controller bus_master cap_list rom fb
+       configuration: depth=32 driver=amdgpu latency=0 mode=1920x1080 resolution=1920,1080 visual=truecolor xres=1920 yres=1080
+       resources: iomemory:f80-f7f iomemory:fc0-fbf irq:106 memory:f800000000-fbffffffff memory:fc00000000-fc0fffffff ioport:f000(size=256) memory:f6c00000-f6c7ffff memory:f6c80000-f6c9ffff
+  *-display
+       description: VGA compatible controller
+       product: Granite Ridge [Radeon Graphics]
+       vendor: Advanced Micro Devices, Inc. [AMD/ATI]
+       physical id: 0
+       bus info: pci@0000:15:00.0
+       version: c5
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm pciexpress msi msix vga_controller bus_master cap_list
+       configuration: driver=amdgpu latency=0
+       resources: iomemory:fc0-fbf irq:69 memory:fc20000000-fc2fffffff memory:f6200000-f63fffff ioport:d000(size=256) memory:f6700000-f677ffff
+  ```
+  </TabItem>
+
+    <TabItem value="kernel-version" label="Kernel Version">
+  **Point 2: Check your Linux Kernel Version**  
+  GPU drivers are tightly coupled with the kernel; incompatible drivers can fail to load.  
+
+  **Question:** How do I check my kernel version?  
+
+  ```python
+  > uname -r
+    6.14.0-33-generic
+  ```
+  </TabItem>
+
+    <TabItem value="existing-drivers" label="Existing Drivers">
+  **Point 3: Check for Existing GPU Drivers**  
+  Existing drivers may conflict with new installations, causing errors or instability.  
+
+  **Question:** How do I see if any GPU drivers are already installed?  
+
+```python
+>lsmod | grep -E "nvidia|amdgpu|radeon"
+amdgpu              19804160  19
+amddrm_ttm_helper      12288  1 amdgpu
+amdttm                131072  2 amdgpu,amddrm_ttm_helper
+amddrm_buddy           24576  1 amdgpu
+amdxcp                 16384  1 amdgpu
+amddrm_exec            12288  1 amdgpu
+amd_sched              61440  1 amdgpu
+amdkcl                 49152  4 amd_sched,amdttm,amddrm_exec,amdgpu
+drm_panel_backlight_quirks    12288  1 amdgpu
+drm_display_helper    278528  1 amdgpu
+cec                    94208  2 drm_display_helper,amdgpu
+i2c_algo_bit           16384  1 amdgpu
+drm_ttm_helper         16384  1 amdgpu
+video                  77824  1 amdgpu
+```
+  </TabItem>
+
+<TabItem value="display-server" label="Display Server">
+  **Point 5: Verify Display Server Configuration**  
+  Check if your system uses Xorg or Wayland, as some drivers may require specific configurations.  
+
+  **Question:** How do I verify my display server?  
+
+```python
+>echo $XDG_SESSION_TYPE
+wayland
+```
+</TabItem>
+</Tabs>
+
+  </p>
 </details>
 
+<Tabs>
+  {/* AMD GPU */}
+  <TabItem value="amd" label="AMD">
+    <Tabs>
+      {/* Ubuntu 22.04 */}
+  <TabItem value="ubuntu2204" label="Ubuntu 22.04">
+```bash
+sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/7.0.2 jammy main
+deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/graphics/7.0.2/ubuntu jammy main
+EOF
+
+sudo tee /etc/apt/preferences.d/rocm-pin-600 << EOF
+Package: *
+Pin: release o=repo.radeon.com
+Pin-Priority: 600
+EOF
+
+sudo apt update
+```
+</TabItem>
+
+{/* Ubuntu 24.04 */}
+<TabItem value="ubuntu2404" label="Ubuntu 24.04">
+```bash
+  sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+  deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/7.0.2 noble main
+  deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/graphics/7.0.2/ubuntu noble main
+  EOF
+
+  sudo tee /etc/apt/preferences.d/rocm-pin-600 << EOF
+  Package: *
+  Pin: release o=repo.radeon.com
+  Pin-Priority: 600
+  EOF
+
+  sudo apt update
+```
+  </TabItem>
+        {/* Ubuntu 24.04 */}
+  <TabItem value="Other Arch" label="Other arch">
+    - [Visit Here ](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/install-methods/package-manager/package-manager-ubuntu.html)
+
+    - [Check here of other OS](https://www.amd.com/en/support/download/drivers.html)
+    - [Using amdgpu-install](https://amdgpu-install.readthedocs.io/en/latest/)
+
+
+
+  </TabItem>
+
+
+</Tabs>
+        
+  </TabItem>
+
+  {/* NVIDIA GPU */}
+  <TabItem value="nvidia" label="NVIDIA">
+    {/* Add NVIDIA content or placeholder here */}
+    <p><em>Coming soon 🚧 NVIDIA GPU installation and configuration guides.</em></p>
+  </TabItem>
+</Tabs>
 ---
 
 ## Programming Environment Setup
 
 ### OpenCL Development Setup
 
-```bash
+<Tabs>
+  <TabItem value="amd" label="AMD OpenCL">
+
+**Note:** Before installing AMD OpenCL, ensure you download the latest AMD GPU driver from the official AMD support page:  
+[AMD Linux Drivers](https://www.amd.com/en/support/download/linux-drivers.html)
+```python
 # Install OpenCL development packages
 sudo apt install ocl-icd-opencl-dev clinfo opencl-headers
 
-# Alternative: Install vendor-specific implementations
-sudo apt install beignet-opencl-icd    # Intel (for integrated graphics)
-sudo apt install nvidia-opencl-icd     # NVIDIA
+# Dry-run AMD OpenCL install (checks what will be installed)
+# amdgpu-install only will be available after downloading and installing from the link
+# [AMD Linux Drivers](https://www.amd.com/en/support/download/linux-drivers.html)
+amdgpu-install --no-dkms --usecase=opencl --opencl=rocr --dryrun #to check which package will be installed
+
+# ⚠ This may prompt you to download the latest amdgpu package from AMD
+
+# Update package lists
+sudo apt-get update
+
+# Install ROCm OpenCL runtime
+sudo apt-get install rocm-opencl-runtime
+
+# Create shortcut for uninstalling AMD driver
+sudo ln -sf /usr/bin/amdgpu-install /usr/bin/amdgpu-uninstall
+
+# Full AMD OpenCL installation
+amdgpu-install --no-dkms --usecase=opencl --opencl=rocr
 ```
+:::tip dont forget to reboot the device
+:::
 
-### Compiler Setup
+```python
+> clinfo | grep AMD
 
+  Platform Version:				 OpenCL 2.1 AMD-APP (3662.0)
+  Platform Name:				 AMD Accelerated Parallel Processing
+  Platform Name:				 AMD Accelerated Parallel Processing
+  Board name:					 AMD Radeon RX 9060 XT
+  Board name:					 AMD Radeon Graphics
+```
+</TabItem>
+
+<TabItem value="intel" label="Intel OpenCL">
 ```bash
-# Install modern C/C++ compilers
-sudo apt install gcc-12 g++-12 clang-15
-
-# Set alternatives (optional)
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100
+# Install OpenCL for Intel integrated GPUs
+sudo apt install beignet-opencl-icd
 ```
 
-### Build System Configuration
 
-```cmake
-# Sample CMakeLists.txt for GPU projects
-cmake_minimum_required(VERSION 3.10)
-project(GPUExample)
+</TabItem>
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 14)
-
-# Find OpenCL package
-find_package(OpenCL REQUIRED)
-
-# Add executable
-add_executable(vector_add vector_add.c)
-target_link_libraries(vector_add OpenCL::OpenCL)
-
-# Compiler flags
-target_compile_options(vector_add PRIVATE -Wall -Wextra)
-```
-
----
+<TabItem value="nvidia" label="NVIDIA OpenCL">
+<p><em>Coming soon 🚧</em></p>
+</TabItem>
+</Tabs>
 
 ## Verification and Testing
 
-### System Health Check
-
-```bash
+```python
 #!/bin/bash
 # gpu-health-check.sh
 
@@ -711,253 +1019,273 @@ if command -v rocminfo &> /dev/null; then
 fi
 ```
 
+:::tip Sample Output
+:::
+
+```python
+> sudo ./test.sh
+=== GPU System Health Check ===
+
+1. Hardware Detection:
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 44 [Radeon RX 9060 XT] (rev c0)
+15:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Granite Ridge [Radeon Graphics] (rev c5)
+
+2. Driver Status:
+✅ AMD drivers loaded
+[11694.685455] amdgpu: Freeing queue vital buffer 0x75a4b9a00000, queue evicted
+[11706.920577] amdgpu: Freeing queue vital buffer 0x7d5549800000, queue evicted
+[11706.920585] amdgpu: Freeing queue vital buffer 0x7d554a200000, queue evicted
+[11728.343797] amdgpu: Freeing queue vital buffer 0x77bfba000000, queue evicted
+[11728.343802] amdgpu: Freeing queue vital buffer 0x77bfbaa00000, queue evicted
+
+3. OpenCL Platforms:
+  Platform Name:				 AMD Accelerated Parallel Processing
+  Platform Name:				 AMD Accelerated Parallel Processing
+
+4. Compute Capability:
+
+
+```
 ### OpenCL Platform Verification
+<Tabs>
+  <TabItem value="opencl" label="OpenCL">
+
+      **What We Want to Achieve**
+
+      We want to detect all OpenCL platforms and devices on the system, query their properties, and print a summary. This helps in selecting the best GPU/CPU for computation.
+
+      **Key Steps:**
+
+      1. Detect OpenCL platforms (vendors like AMD, NVIDIA, Intel).  
+      2. Query devices on each platform (CPU, GPU, Accelerator).  
+      3. Collect useful information: device type, name, vendor, compute units, global/local memory, max clock frequency.  
+      4. Print a summary for easy inspection.
+
+      **Basic Code**
+
+          ```c
+          #include <stdio.h>
+          #include <stdlib.h>
+          #define CL_TARGET_OPENCL_VERSION 220
+          #include <CL/cl.h>
+
+          int main() {
+              cl_uint platform_count;
+              clGetPlatformIDs(0, NULL, &platform_count);
+              printf("Found %u OpenCL platform(s)\n", platform_count);
+              return 0;
+          }
+          ```
+</TabItem>
+
+<TabItem value="amd" label="AMD">
+<Tabs>
+
+  <TabItem value="verify-opencl" label="Verify OpenCL">
+
+  **Basic Idea**
+
+  **Detect OpenCL Platforms**
+  A platform is basically an OpenCL implementation provided by a vendor (AMD, NVIDIA, Intel, etc.).
+
+  The code first asks the system:
+  *"How many OpenCL platforms are available?"*
+
+  **Query Devices on Each Platform**
+  Each platform can have multiple devices: GPUs, CPUs, or accelerators.
+
+  **Collect Useful Information**
+  For each device found, it gathers key properties:
+
+  * **Device type:** GPU, CPU, or other
+  * **Name:** The model or architecture (e.g., `gfx1200`)
+  * **Vendor:** Who made it (AMD, Intel, etc.)
+  * **Compute units:** How many processing cores
+  * **Global memory:** Total RAM available on the device
+  * **Clock frequency:** Max speed of the device
+  * **Local memory:** Small fast memory for computations
+
+  **Print a Summary**
+  All this information is printed in a readable format.
+
+  :::tip Purpose
+  Detect all OpenCL platforms and devices on the system and print their capabilities.
+  :::
+
+ </TabItem>
+
+  <TabItem value="verify-code" label="Code">
 
 ```c
-// opencl_check.c - Verify OpenCL installation
+// detect_opencl_devices.c - Detect GPUs and CPUs with full OpenCL info
 #include <stdio.h>
 #include <stdlib.h>
+#define CL_TARGET_OPENCL_VERSION 220 
 #include <CL/cl.h>
+
+const char* device_type_str(cl_device_type type) {
+    if (type & CL_DEVICE_TYPE_CPU) return "CPU";
+    if (type & CL_DEVICE_TYPE_GPU) return "GPU";
+    if (type & CL_DEVICE_TYPE_ACCELERATOR) return "Accelerator";
+    return "Other";
+}
 
 int main() {
     cl_uint platform_count;
     cl_platform_id *platforms;
-    
-    // Get platform count
+
     clGetPlatformIDs(0, NULL, &platform_count);
-    printf("Found %d OpenCL platform(s)\n", platform_count);
-    
+    printf("Found %u OpenCL platform(s)\n", platform_count);
+
     if (platform_count == 0) {
         printf("❌ No OpenCL platforms found\n");
         return 1;
     }
-    
-    // Get platform details
+
     platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * platform_count);
     clGetPlatformIDs(platform_count, platforms, NULL);
-    
+
     for (cl_uint i = 0; i < platform_count; i++) {
-        char name[128], vendor[128];
-        clGetPlatformInfo(platforms[i], CL_PLATFORM_NAME, 128, name, NULL);
-        clGetPlatformInfo(platforms[i], CL_PLATFORM_VENDOR, 128, vendor, NULL);
-        printf("Platform %d: %s (%s)\n", i, name, vendor);
+        char pname[128], pvendor[128];
+        clGetPlatformInfo(platforms[i], CL_PLATFORM_NAME, 128, pname, NULL);
+        clGetPlatformInfo(platforms[i], CL_PLATFORM_VENDOR, 128, pvendor, NULL);
+        printf("\nPlatform %u: %s (%s)\n", i, pname, pvendor);
+
+        cl_uint device_count;
+        clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, 0, NULL, &device_count);
+        if (device_count == 0) {
+            printf("  ❌ No devices found on this platform\n");
+            continue;
+        }
+
+        cl_device_id *devices = (cl_device_id*)malloc(sizeof(cl_device_id) * device_count);
+        clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, device_count, devices, NULL);
+
+        for (cl_uint j = 0; j < device_count; j++) {
+            char dname[128], dvendor[128];
+            cl_device_type dtype;
+            cl_uint compute_units;
+            cl_ulong global_mem;
+            cl_uint max_freq;
+            cl_ulong local_mem;
+
+            clGetDeviceInfo(devices[j], CL_DEVICE_NAME, 128, dname, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_VENDOR, 128, dvendor, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_TYPE, sizeof(dtype), &dtype, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_MAX_COMPUTE_UNITS, sizeof(compute_units), &compute_units, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(global_mem), &global_mem, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_MAX_CLOCK_FREQUENCY, sizeof(max_freq), &max_freq, NULL);
+            clGetDeviceInfo(devices[j], CL_DEVICE_LOCAL_MEM_SIZE, sizeof(local_mem), &local_mem, NULL);
+
+            printf("  Device %u: %s (%s)\n", j, dname, device_type_str(dtype));
+            printf("    Vendor: %s\n", dvendor);
+            printf("    Compute Units: %u\n", compute_units);
+            printf("    Global Memory: %.2f GB\n", global_mem / (1024.0*1024*1024));
+            printf("    Max Clock: %u MHz\n", max_freq);
+            printf("    Local Memory: %.2f KB\n", local_mem / 1024.0);
+        }
+
+        free(devices);
     }
-    
+
     free(platforms);
-    printf("✅ OpenCL environment verified\n");
+    printf("\n✅ OpenCL devices detection complete\n");
     return 0;
 }
 ```
+</TabItem>
 
-Compile and run:
+  <TabItem value="verify-build" label="Build">
+
 ```bash
-gcc opencl_check.c -o opencl_check -lOpenCL
+# AMD OpenCL library path
+sudo ln -s /opt/rocm-7.0.2/lib/libamdocl64.so /opt/rocm/lib/libOpenCL.so
+```
+
+* `sudo` → Runs the command with root privileges because writing to `/opt/rocm/lib` requires admin access.
+* `ln -s` → Creates a **symbolic link** (symlink). A symlink is like a shortcut or alias pointing to another file.
+* `/opt/rocm-7.0.2/lib/libamdocl64.so` → The **actual AMD OpenCL library** installed by ROCm.
+* `/opt/rocm/lib/libOpenCL.so` → The **link we’re creating**. Many build systems or programs expect `libOpenCL.so` as the standard OpenCL library name.
+
+**Effect:** After this command, any program trying to link against `-lOpenCL` will actually use AMD’s `libamdocl64.so`.
+
+---
+
+**Compile OpenCL Verification Program**
+
+```rust
+gcc opencl_check.c -o opencl_check \
+    -I/opt/rocm-7.0.2/include \
+    -L/opt/rocm/lib -lOpenCL
+```
+
+* `gcc` → GNU Compiler for C.
+* `opencl_check.c` → Your source code file containing OpenCL device detection code.
+* `-o opencl_check` → Output executable name will be `opencl_check`.
+* `-I/opt/rocm-7.0.2/include` → Adds the AMD ROCm OpenCL **header files** path so the compiler knows where to find `<CL/cl.h>`.
+* `-L/opt/rocm/lib` → Adds the **library search path** so the linker knows where to find libraries like `libOpenCL.so`.
+* `-lOpenCL` → Tells the linker to link against the `OpenCL` library (which now points to AMD’s `libamdocl64.so` because of the symlink).
+
+**Effect:** This produces an executable `opencl_check` that can query AMD GPUs using OpenCL.
+
+---
+
+💡 **In short:**
+
+1. **Symlink:** Makes AMD’s OpenCL library available under the standard name `libOpenCL.so`.
+2. **Compilation:** Compiles your C code, telling the compiler and linker where the OpenCL headers and library are.
+3. **Result:** You get a ready-to-run program that detects and prints OpenCL devices.
+
+</TabItem>
+
+<TabItem value="verify-run" label="Run">
+
+```bash
+# Run the OpenCL verification program
 ./opencl_check
 ```
 
----
+:::tip Expected Output:
+:::
 
-## Your First GPU Program
+```rust
+Found 1 OpenCL platform(s)
+Platform 0: AMD Accelerated Parallel Processing (Advanced Micro Devices, Inc.)
+  Device 0: gfx1200 (GPU)
+    Vendor: Advanced Micro Devices, Inc.
+    Compute Units: 16
+    Global Memory: 15.92 GB
+    Max Clock: 2787 MHz
+    Local Memory: 64.00 KB
+  Device 1: gfx1036 (GPU)
+    Vendor: Advanced Micro Devices, Inc.
+    Compute Units: 1
+    Global Memory: 15.23 GB
+    Max Clock: 2200 MHz
+    Local Memory: 64.00 KB
 
-### Simple Vector Addition in OpenCL
-
-#### Host Code (main.c)
-
-```c
-#include <stdio.h>
-#include <stdlib.h>
-#include <CL/cl.h>
-
-#define MAX_SOURCE_SIZE (0x100000)
-#define VECTOR_SIZE 1024
-
-int main() {
-    printf("🚀 Running First GPU Program: Vector Addition\n");
-    
-    // Initialize data
-    int *A = (int*)malloc(VECTOR_SIZE * sizeof(int));
-    int *B = (int*)malloc(VECTOR_SIZE * sizeof(int)); 
-    int *C = (int*)malloc(VECTOR_SIZE * sizeof(int));
-    
-    for (int i = 0; i < VECTOR_SIZE; i++) {
-        A[i] = i;
-        B[i] = VECTOR_SIZE - i;
-    }
-    
-    // Load OpenCL kernel source
-    FILE *fp = fopen("vector_add.cl", "r");
-    if (!fp) {
-        fprintf(stderr, "Failed to load kernel.\n");
-        exit(1);
-    }
-    char *source_str = (char*)malloc(MAX_SOURCE_SIZE);
-    size_t source_size = fread(source_str, 1, MAX_SOURCE_SIZE, fp);
-    fclose(fp);
-    
-    // Get platform and device
-    cl_platform_id platform_id = NULL;
-    cl_device_id device_id = NULL;
-    cl_uint ret_num_devices, ret_num_platforms;
-    
-    clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
-    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, &ret_num_devices);
-    
-    // Create context and command queue
-    cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, NULL);
-    cl_command_queue command_queue = clCreateCommandQueueWithProperties(context, device_id, 0, NULL);
-    
-    // Create memory buffers
-    cl_mem a_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY, VECTOR_SIZE * sizeof(int), NULL, NULL);
-    cl_mem b_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY, VECTOR_SIZE * sizeof(int), NULL, NULL);
-    cl_mem c_mem_obj = clCreateBuffer(context, CL_MEM_WRITE_ONLY, VECTOR_SIZE * sizeof(int), NULL, NULL);
-    
-    // Copy data to buffers
-    clEnqueueWriteBuffer(command_queue, a_mem_obj, CL_TRUE, 0, VECTOR_SIZE * sizeof(int), A, 0, NULL, NULL);
-    clEnqueueWriteBuffer(command_queue, b_mem_obj, CL_TRUE, 0, VECTOR_SIZE * sizeof(int), B, 0, NULL, NULL);
-    
-    // Create program from kernel source
-    cl_program program = clCreateProgramWithSource(context, 1, (const char**)&source_str, (const size_t*)&source_size, NULL);
-    clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
-    
-    // Create kernel
-    cl_kernel kernel = clCreateKernel(program, "vector_add", NULL);
-    
-    // Set kernel arguments
-    clSetKernelArg(kernel, 0, sizeof(cl_mem), (void*)&a_mem_obj);
-    clSetKernelArg(kernel, 1, sizeof(cl_mem), (void*)&b_mem_obj);
-    clSetKernelArg(kernel, 2, sizeof(cl_mem), (void*)&c_mem_obj);
-    
-    // Execute kernel
-    size_t global_item_size = VECTOR_SIZE;
-    size_t local_item_size = 64;
-    clEnqueueNDRangeKernel(command_queue, kernel, 1, NULL, &global_item_size, &local_item_size, 0, NULL, NULL);
-    
-    // Read results
-    clEnqueueReadBuffer(command_queue, c_mem_obj, CL_TRUE, 0, VECTOR_SIZE * sizeof(int), C, 0, NULL, NULL);
-    
-    // Verify results
-    int errors = 0;
-    for (int i = 0; i < VECTOR_SIZE; i++) {
-        if (C[i] != A[i] + B[i]) {
-            errors++;
-            if (errors < 5) printf("Error at index %d: %d + %d = %d (expected %d)\n", i, A[i], B[i], C[i], A[i] + B[i]);
-        }
-    }
-    
-    if (errors == 0) {
-        printf("✅ Vector addition successful! All %d elements correct.\n", VECTOR_SIZE);
-        printf("Sample results: %d + %d = %d\n", A[0], B[0], C[0]);
-        printf("Sample results: %d + %d = %d\n", A[100], B[100], C[100]);
-    } else {
-        printf("❌ Found %d errors in computation\n", errors);
-    }
-    
-    // Cleanup
-    clFlush(command_queue);
-    clFinish(command_queue);
-    clReleaseKernel(kernel);
-    clReleaseProgram(program);
-    clReleaseMemObject(a_mem_obj);
-    clReleaseMemObject(b_mem_obj);
-    clReleaseMemObject(c_mem_obj);
-    clReleaseCommandQueue(command_queue);
-    clReleaseContext(context);
-    
-    free(A);
-    free(B);
-    free(C);
-    free(source_str);
-    
-    return 0;
-}
+✅ OpenCL devices detection complete
 ```
 
-#### Kernel Code (vector_add.cl)
+  </TabItem>
 
-```opencl
-__kernel void vector_add(__global const int* A, 
-                         __global const int* B, 
-                         __global int* C) {
-    // Get index of the current element
-    int i = get_global_id(0);
-    
-    // Do the operation
-    C[i] = A[i] + B[i];
-}
-```
+</Tabs>
 
-#### Build and Run Script (build_run.sh)
+</TabItem>
 
-```bash
-#!/bin/bash
-echo "Building GPU Vector Addition Program..."
+<TabItem value="nvidia" label="NVIDIA">
+Coming Soon 
+</TabItem>
 
-# Compile the host code
-gcc -O2 -Wall -Wextra main.c -o vector_add -lOpenCL
+</Tabs>
 
-if [ $? -eq 0 ]; then
-    echo "✅ Build successful!"
-    echo "🚀 Running program..."
-    ./vector_add
-else
-    echo "❌ Build failed!"
-    exit 1
-fi
-```
 
-```bash
-chmod +x build_run.sh
-./build_run.sh
-```
-
----
-
-## Understanding GPU Kernels
-
-### What is a GPU Kernel?
-
-A **kernel** is a small function that executes in parallel across thousands of GPU threads. Unlike CPU code that runs sequentially, kernels leverage massive parallelism.
-
-```mermaid
-graph TB
-    A[Host CPU] --> B[Allocate GPU Memory]
-    B --> C[Copy Data to GPU]
-    C --> D[Launch Kernel]
-    D --> E[Thousands of Parallel Threads]
-    E --> F[Copy Results Back]
-    F --> G[Host CPU]
-    
-    subgraph "GPU Execution"
-        D --> E
-        E --> H[Thread 0]
-        E --> I[Thread 1]
-        E --> J[Thread N...]
-    end
-```
-
-### Kernel Execution Model
-
-```opencl
-// Simple kernel that doubles array elements
-__kernel void double_elements(__global float* input, 
-                              __global float* output) {
-    int idx = get_global_id(0);        // Unique thread ID
-    output[idx] = input[idx] * 2.0f;   // Parallel execution
-}
-```
-
-**Key Concepts:**
-- **Work-item**: Single execution instance (thread)
-- **Work-group**: Collection of work-items
-- **NDRange**: N-dimensional range of work-items
-
----
 
 ## Troubleshooting Common Issues
 
 ### Driver Issues
 
-```bash
+```python
 # Check if GPU is properly initialized
 dmesg | grep -i "drm\|gpu\|nvidia\|amd"
 
@@ -971,7 +1299,7 @@ sudo apt remove nvidia-*  # If switching from NVIDIA to AMD
 
 ### OpenCL Runtime Issues
 
-```bash
+```python
 # Check available OpenCL implementations
 update-alternatives --config opencl-icd
 
@@ -981,7 +1309,7 @@ clinfo -l  # List all platforms and devices
 
 ### Permission Issues
 
-```bash
+```python
 # Add user to necessary groups
 sudo usermod -a -G video $USER
 sudo usermod -a -G render $USER
@@ -992,7 +1320,7 @@ groups $USER
 
 ### Build Issues
 
-```bash
+```python
 # Ensure development packages are installed
 sudo apt install opencl-headers ocl-icd-opencl-dev
 
@@ -1023,7 +1351,7 @@ ldconfig -p | grep OpenCL
 
 ### Recommended Projects
 
-```bash
+```python
 # Clone and experiment with these projects
 git clone https://github.com/GPUOpen-LibrariesAndSDKs/rodinia
 git clone https://github.com/OpenCL/OpenCL-Examples
@@ -1067,27 +1395,6 @@ whenToUse="During GPU-intensive computations and debugging"
 
 ---
 
-## Summary
-
-Congratulations! You've successfully:
-
-✅ **Set up a complete GPU development environment**  
-✅ **Installed and configured AMD GPU drivers**  
-✅ **Verified hardware and software compatibility**  
-✅ **Written and executed your first GPU kernel**  
-✅ **Learned essential Linux tools for GPU programming**  
-
-### Key Takeaways
-
-- **GPUs provide massive parallelism** for compute-intensive tasks
-- **Proper driver installation** is crucial for performance
-- **OpenCL enables cross-platform GPU programming**
-- **System monitoring tools** are essential for debugging
-- **Start simple** with vector operations before complex algorithms
-
-<div>
-  <AdBanner />
-</div>
 
 ### Continue Your Journey
 
@@ -1100,6 +1407,92 @@ Ready for more? Explore these advanced topics:
 
 ---
 
-<div class="text--center">
-  <i>Happy GPU Computing! 🚀</i>
-</div>
+1. **NVIDIA Developer Blog** – "What’s the Difference Between a CPU and a GPU?"  
+   A detailed breakdown of the differences between CPUs and GPUs, their design philosophy, and their respective use cases.  
+   [https://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/](https://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/)
+
+2. **Intel** – "How GPUs Accelerate Machine Learning"  
+   Intel's insights into how GPUs enhance the performance of machine learning tasks and the role of parallel processing.  
+   [https://www.intel.com/content/www/us/en/artificial-intelligence/what-are-gpus-for-machine-learning.html](https://www.intel.com/content/www/us/en/artificial-intelligence/what-are-gpus-for-machine-learning.html)
+
+3. **CDW** – "CPU vs. GPU : What’s the Difference?"  
+   A comparison of the roles of CPUs and GPUs  
+   [https://www.cdw.com/content/cdw/en/articles/hardware/cpu-vs-gpu.html#:~:text=Modern%20Computing%20Components-,What's%20the%20Difference%20Between%20a%20CPU%20and%20a%20GPU%3F,many%20smaller%20tasks%20at%20once.](https://www.cdw.com/content/cdw/en/articles/hardware/cpu-vs-gpu.html#:~:text=Modern%20Computing%20Components-,What's%20the%20Difference%20Between%20a%20CPU%20and%20a%20GPU%3F,many%20smaller%20tasks%20at%20once.)
+
+4. **TechSpot** – "What is the Difference Between CPU and GPU?"  
+   A comprehensive article that compares CPU and GPU architecture, performance, and use in both consumer and industrial applications.  
+   [https://www.techspot.com/review/2790-faster-gpu-vs-faster-cpu//](https://www.techspot.com/review/2790-faster-gpu-vs-faster-cpu//)
+
+5. **Wikipedia** – "Graphics Processing Unit"  
+   A general overview of the history, architecture, and functions of GPUs in computing.  
+   [https://en.wikipedia.org/wiki/Graphics_processing_unit](https://en.wikipedia.org/wiki/Graphics_processing_unit)
+
+6. **History of Parallel Programming** - "History to Parallel programming"
+          [Intro to parallel programming](https://www.compilersutra.com/docs/parallel-programming-evolution)
+        
+7. **Intro to Parallel Programming** - "Introduction to Parallel Programming"
+[https://www.compilersutra.com/docs/gpu/Parallel_Programming/Intro_to_Parallel_Programming]
+
+
+
+<Tabs>
+  <TabItem value="docs" label="📚 Documentation">
+             - [CompilerSutra Home](https://compilersutra.com)
+                - [CompilerSutra Homepage (Alt)](https://compilersutra.com/)
+                - [Getting Started Guide](https://compilersutra.com/get-started)
+                - [Newsletter Signup](https://compilersutra.com/newsletter)
+                - [Skip to Content (Accessibility)](https://compilersutra.com#__docusaurus_skipToContent_fallback)
+
+
+  </TabItem>
+
+  <TabItem value="tutorials" label="📖 Tutorials & Guides">
+
+        - [AI Documentation](https://compilersutra.com/docs/Ai)
+        - [DSA Overview](https://compilersutra.com/docs/DSA/)
+        - [DSA Detailed Guide](https://compilersutra.com/docs/DSA/DSA)
+        - [MLIR Introduction](https://compilersutra.com/docs/MLIR/intro)
+        - [TVM for Beginners](https://compilersutra.com/docs/tvm-for-beginners)
+        - [Python Tutorial](https://compilersutra.com/docs/python/python_tutorial)
+        - [C++ Tutorial](https://compilersutra.com/docs/c++/CppTutorial)
+        - [C++ Main File Explained](https://compilersutra.com/docs/c++/c++_main_file)
+        - [Compiler Design Basics](https://compilersutra.com/docs/compilers/compiler)
+        - [OpenCL for GPU Programming](https://compilersutra.com/docs/gpu/opencl)
+        - [LLVM Introduction](https://compilersutra.com/docs/llvm/intro-to-llvm)
+        - [Introduction to Linux](https://compilersutra.com/docs/linux/intro_to_linux)
+
+  </TabItem>
+
+  <TabItem value="assessments" label="📝 Assessments">
+
+        - [C++ MCQs](https://compilersutra.com/docs/mcq/cpp_mcqs)
+        - [C++ Interview MCQs](https://compilersutra.com/docs/mcq/interview_question/cpp_interview_mcqs)
+
+  </TabItem>
+
+  <TabItem value="projects" label="🛠️ Projects">
+
+            - [Project Documentation](https://compilersutra.com/docs/Project)
+            - [Project Index](https://compilersutra.com/docs/project/)
+            - [Graphics Pipeline Overview](https://compilersutra.com/docs/The_Graphic_Rendering_Pipeline)
+            - [Graphic Rendering Pipeline (Alt)](https://compilersutra.com/docs/the_graphic_rendering_pipeline/)
+
+  </TabItem>
+
+  <TabItem value="resources" label="🌍 External Resources">
+
+            - [LLVM Official Docs](https://llvm.org/docs/)
+            - [Ask Any Question On Quora](https://compilersutra.quora.com)
+            - [GitHub: FixIt Project](https://github.com/aabhinavg1/FixIt)
+            - [GitHub Sponsors Page](https://github.com/sponsors/aabhinavg1)
+
+  </TabItem>
+
+  <TabItem value="social" label="📣 Social Media">
+
+            - [🐦 Twitter - CompilerSutra](https://twitter.com/CompilerSutra)
+            - [💼 LinkedIn - Abhinav](https://www.linkedin.com/in/abhinavcompilerllvm/)
+            - [📺 YouTube - CompilerSutra](https://www.youtube.com/@compilersutra)
+
+  </TabItem>
+</Tabs>
