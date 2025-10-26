@@ -80,6 +80,7 @@ const sidebars = {
       items: [
         'gpu/gpu_programming/gpu_programming_toc',
         'gpu/gpu_programming/how_computer_works',
+        'gpu/gpu_programming/Setting_your_Gpu',
         //'gpu/gpu_programming/what_is_cpu',
       ],
     },
