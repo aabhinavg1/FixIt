@@ -1,3 +1,10 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+# ✅ Redirect all non-www traffic to www
+[[redirects]]
+  from = "https://compilersutra.com/*"
+  to = "https://www.compilersutra.com/:splat"
+  status = 301
+  force = true
