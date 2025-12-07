@@ -140,13 +140,21 @@ const sidebars = {
             'llvm/llvm_extras/llvm_pass_timing',
           ],
         },
-                {
+        {
           type: 'category',
           label: 'LLVM Tools',
           items: [
             'llvm/llvm_tools/llvm_tools',
           ],
         },
+        {
+          type: 'category',
+          label: 'LLVM IR',
+          items: [
+            'llvm/llvm_ir/intro_to_llvm_ir',
+          ],
+        },
+
       ],
     },
   ],
