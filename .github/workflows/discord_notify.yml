@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # full history needed for git diff
 
       - name: Find changed docs files
         id: changed
@@ -40,16 +40,19 @@ jobs:
 
       - name: Send Discord notifications
         run: |
-          IFS=$'\n' read -rd '' -a FILES <<<"$CHANGED_FILES"
+          # Split changed files into array (safe)
+          IFS=$'\n' read -r -a FILES <<< "$CHANGED_FILES"
+
+          WEBHOOKS=(
+            ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
+            ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
+          )
 
           for FILE in "${FILES[@]}"; do
             ARTICLE_URL="https://www.compilersutra.com/${FILE%.*}/"
             MESSAGE="🆕 *New article published!*\n${ARTICLE_URL}"
 
-            WEBHOOKS=(
-              ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
-              ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
-            )
+            echo "Sending: $MESSAGE"
 
             for WEBHOOK in "${WEBHOOKS[@]}"; do
               curl -H "Content-Type: application/json" \
