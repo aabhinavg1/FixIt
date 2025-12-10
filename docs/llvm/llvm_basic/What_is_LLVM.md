@@ -14,6 +14,7 @@ keywords:
   - Writing Compiler Passes
   - Clang and LLVM Integration
   - LLVM Architecture and Design
+  - LLVM tutorial
 tags:
   - LLVM
   - Compiler Development
