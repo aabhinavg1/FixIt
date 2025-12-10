@@ -348,6 +348,7 @@ const sidebars = {
         'DSA/Time_and_space',
         'DSA/Linear_DSA',
         'DSA/non-Linear-DSA',
+        'DSA/arrays-and-strings',
       ],
     },
   ],
