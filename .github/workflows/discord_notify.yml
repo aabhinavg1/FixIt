@@ -13,14 +13,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0   # IMPORTANT
+          fetch-depth: 0
 
       - name: Find changed docs files
         id: changed
         run: |
-          # Get all changed or added files in docs/
-          CHANGED_FILES=$(git diff --name-only HEAD HEAD~1 | grep '^docs/' || true)
-          
+          BEFORE_SHA="${{ github.event.before }}"
+          AFTER_SHA="${{ github.event.after }}"
+
+          echo "Comparing commits:"
+          echo "$BEFORE_SHA -> $AFTER_SHA"
+
+          CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep '^docs/' || true)
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No docs files changed. Exiting."
             exit 0
@@ -33,7 +41,7 @@ jobs:
       - name: Send Discord notifications
         run: |
           IFS=$'\n' read -rd '' -a FILES <<<"$CHANGED_FILES"
-          
+
           for FILE in "${FILES[@]}"; do
             ARTICLE_URL="https://www.compilersutra.com/${FILE%.*}/"
             MESSAGE="🆕 *New article published!*\n${ARTICLE_URL}"
