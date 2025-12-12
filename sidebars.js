@@ -677,6 +677,25 @@ howToSidebar: [
   },
 ],
 
+
+  LLVMPassSidebar: [
+    {
+      type: 'category',
+      label: 'LLVM_Pass_Tracker',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'LLVM_Pass_Tracker',
+          collapsed: true,
+          items: [
+            'llvm/llvm_pass_tracker/llvm_pass',
+          ],
+        },
+      ],
+    },
+  ],
+
 };
 
 
