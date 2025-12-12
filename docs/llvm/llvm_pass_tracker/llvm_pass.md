@@ -126,11 +126,8 @@ import { ComicQA } from '../../mcq/interview_question/Question_comics';
 <div>
   <AdBanner />
 </div>
-caution ⚠️ AI & Human Collaboration Notice
-:::
-The formatting of this document was assisted by AI tools.  
-All content is research-based, written and reviewed by humans to ensure accuracy and clarity.
-:::
+
+
 
 # The Complete Evolution of LLVM Pass Infrastructure
 
@@ -179,6 +176,10 @@ This article fulfills its aim: providing a comprehensive overview of how LLVM’
 :::
 
 
+:::caution ⚠️ AI & Human Collaboration Notice
+The formatting of this document was assisted by AI tools.  
+All content is research-based, written and reviewed by humans to ensure accuracy and clarity.
+:::
 
 <div>
   <AdBanner />
