@@ -126,13 +126,15 @@ import { ComicQA } from '../../mcq/interview_question/Question_comics';
 <div>
   <AdBanner />
 </div>
+caution ⚠️ AI & Human Collaboration Notice
+:::
+The formatting of this document was assisted by AI tools.  
+All content is research-based, written and reviewed by humans to ensure accuracy and clarity.
+:::
 
 # The Complete Evolution of LLVM Pass Infrastructure
 
-## Introduction
-
-Here is a **clean, natural, human-written** rewrite of your paragraph.
-It removes AI-style padding, fixes grammar, improves flow, and reads like a real technical blog written by an engineering professional.
+## Introduction.
 
 LLVM’s pass infrastructure is one of the most significant architectural ideas to come out of modern compiler research. Introduced during LLVM’s early development at the [University of Illinois Urbana-Champaign in 2000](https://en.wikipedia.org/wiki/University_of_Illinois_Urbana-Champaign), it established a modular way of building compilers: instead of monolithic optimizers, LLVM breaks the workflow into small, independent units called **passes**. Each pass performs a specific analysis or transformation on the shared intermediate representation (IR).
 This modularity is what makes LLVM flexible, extensible, and easy to maintain—even as it grows to support new languages, new hardware, and new optimization techniques.
