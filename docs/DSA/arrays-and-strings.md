@@ -22,7 +22,7 @@ keywords:
   - DSA Strings
   - Array Interview Questions
   - String Interview Questions
-  - Array in  cpp
+  - Array C++
 
 tags:
   - Arrays
@@ -856,8 +856,7 @@ Be careful with invalid inputs → may throw exceptions.
 
 ### 🛠 Tools for Profiling & Complexity Analysis  
 - [Profiling Python Code with cProfile](https://docs.python.org/3/library/profile.html) – Official Python documentation for `cProfile`.  
-- [Valgrind (Performance Analysis)](http://valgrind.org/) – A powerful tool for analyzing C/C++ program execution.  
-  
+- [Valgrind (Performance Analysis)](http://valgrind.org/) – A powerful tool for analyzing C/C++ program execution.  j
 ### 🎥 Video Courses  
 - [Algorithm Complexity (MIT Lecture)](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/) – MIT's free algorithms course.  
 - [Time Complexity & Big-O Notation (Khan Academy)](https://www.khanacademy.org/computing/computer-science/algorithms#time-complexity-analysis) – Beginner-friendly video tutorials.  
