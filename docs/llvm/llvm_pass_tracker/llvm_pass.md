@@ -415,7 +415,7 @@ They perform concrete transformations such as eliminating dead code, inlining fu
 | Pass Name                     | Flag              | Description                                        | Link          |
 | ----------------------------- | ----------------- | -------------------------------------------------- | ------------- |
 | Always Inline                 | `always-inline`   | Inlines functions marked `always_inline`           | *Coming Soon* |
-| Function Inlining             | `inline`          | Integrates small functions into call sites         | *Coming Soon* |
+| Function Inlining             | `inline`          | Integrates small functions into call sites         | [Inline](./transformpass/inliner_llvm_v1.md) |
 | Partial Inliner               | `partial-inliner` | Performs partial function inlining                 | *Coming Soon* |
 | Merge Functions               | `mergefunc`       | Merges identical functions                         | *Coming Soon* |
 | Merge Return Nodes            | `mergereturn`     | Unifies multiple function exit points              | *Coming Soon* |
