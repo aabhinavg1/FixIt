@@ -81,7 +81,7 @@ In today's performance-critical applications, **efficiency and control** are ess
 | # | **Title**           | **Video**   | **Articles**| **PDF**     |
 | - | ------------------- | ----------- | ----------- | ----------- |
 | 1 | How Computers Work  | [link](https://youtu.be/2jtmDTQbYf4) | [link](https://www.compilersutra.com/docs/gpu/gpu_programming/how_computer_works/) | Coming Soon |
-| 2 | Binary/Hexadecimal  | Coming Soon | Coming Soon | Coming Soon |
+| 2 | Binary/Hexadecimal  | Coming Soon | [link](https://www.compilersutra.com/docs/c++/basic/binary_hexadecimal/)| Coming Soon |
 | 3 | Compilers Explained | Coming Soon | Coming Soon | Coming Soon |
 
 </details>

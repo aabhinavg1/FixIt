@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0   # full history needed for git diff
+          fetch-depth: 0
 
       - name: Find changed docs files
         id: changed
@@ -21,16 +21,13 @@ jobs:
           BEFORE_SHA="${{ github.event.before }}"
           AFTER_SHA="${{ github.event.after }}"
 
-          echo "Comparing commits:"
+          echo "Comparing:"
           echo "$BEFORE_SHA -> $AFTER_SHA"
 
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep '^docs/' || true)
 
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
-
           if [ -z "$CHANGED_FILES" ]; then
-            echo "No docs files changed. Exiting."
+            echo "No docs files changed"
             exit 0
           fi
 
@@ -40,24 +37,27 @@ jobs:
 
       - name: Send Discord notifications
         run: |
-          # Split changed files into array (safe)
-          IFS=$'\n' read -r -a FILES <<< "$CHANGED_FILES"
+          IFS=$'\n' read -r -a FILES <<< "${{ env.CHANGED_FILES }}"
 
           WEBHOOKS=(
-            ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
-            ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
+            "${{ secrets.DISCORD_WEBHOOK_GENERAL }}"
+            "${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}"
           )
 
           for FILE in "${FILES[@]}"; do
-            ARTICLE_URL="https://www.compilersutra.com/${FILE%.*}/"
-            MESSAGE="🆕 *New article published!*\n${ARTICLE_URL}"
+            # Convert docs path → live URL
+            URL_PATH="${FILE#docs/}"
+            URL_PATH="${URL_PATH%.*}/"
+            ARTICLE_URL="https://www.compilersutra.com/${URL_PATH}"
 
-            echo "Sending: $MESSAGE"
+            MESSAGE="🆕 **New article updated on CompilerSutra**\n🔗 ${ARTICLE_URL}"
+
+            echo "Sending: $ARTICLE_URL"
 
             for WEBHOOK in "${WEBHOOKS[@]}"; do
-              curl -H "Content-Type: application/json" \
-                   -X POST \
-                   -d "{\"content\": \"$MESSAGE\"}" \
-                   "$WEBHOOK"
+              curl -s -H "Content-Type: application/json" \
+                -X POST \
+                -d "$(jq -n --arg content "$MESSAGE" '{content: $content}')" \
+                "$WEBHOOK"
             done
           done
