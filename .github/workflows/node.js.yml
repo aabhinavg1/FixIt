@@ -16,23 +16,24 @@ jobs:
       with:
         submodules: false  # Avoid cloning submodules (we'll manually clone the private repo)
 
-    - name: Clone the newsletter_modal repository
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-      run: |
-        echo "Cloning the newsletter_modal repository..."
-        git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
+    # - name: Clone the newsletter_modal repository
+    #   # Commented out PAT_TOKEN authentication
+    #   env:
+    #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+    #   run: |
+    #     echo "Cloning the newsletter_modal repository..."
+    #     git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
 
-    - name: Copy private repository code into public repo
-      run: |
-        echo "Copying private repository code into public repository..."
-        for file in src/pages/newsletter_modal_updated/*; do
-          if [ ! -e "./$file" ]; then
-            cp -r "$file" ./src/pages/newsletter_modal_updated/
-          else
-            echo "$file already exists, skipping copy."
-          fi
-        done
+    # - name: Copy private repository code into public repo
+    #   run: |
+    #     echo "Copying private repository code into public repository..."
+    #     for file in src/pages/newsletter_modal_updated/*; do
+    #       if [ ! -e "./$file" ]; then
+    #         cp -r "$file" ./src/pages/newsletter_modal_updated/
+    #       else
+    #         echo "$file already exists, skipping copy."
+    #       fi
+    #     done
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
