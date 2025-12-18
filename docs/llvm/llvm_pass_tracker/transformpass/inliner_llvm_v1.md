@@ -1111,6 +1111,7 @@ flowchart TD
 
 ---
 
+
 ## Conclusion
 
 The LLVM 1.0 Inliner Pass represents a critical point in compiler engineering history where pragmatic design met academic rigor. Its simplicity belied sophisticated architectural decisions that enabled two decades of evolution. By understanding this foundational implementation, modern compiler engineers can:
