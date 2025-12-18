@@ -407,7 +407,6 @@ Legend:
 ```python
 llvm-1.0/include/llvm/Transform/IPO/
 ├── Inliner.h                    # Primary pass interface
-└── InlineCost.h                # Early cost modeling
 
 llvm-1.0/lib/Transform/IPO/
 ├── Inliner.cpp                  # Main pass implementation
