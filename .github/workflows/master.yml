@@ -4,18 +4,13 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "docs/**"   # Only trigger if docs changed
-      - "src/**"    # Include code changes as needed
-
+      - "docs/**"
 jobs:
-  run-nodejs-ci:
+  nodejs-ci:
     uses: ./.github/workflows/nodejs.yml
-    with:
-      run_build: true
 
-  run-discord-notify:
-    needs: run-nodejs-ci             # ← waits for Node.js CI to finish
-    if: ${{ needs.run-nodejs-ci.result == 'success' }}  # ← only run if Node.js CI succeeded
+  discord-notify:
+    needs: nodejs-ci
     uses: ./.github/workflows/discord_notify.yml
     with:
-      docs_sha: ${{ github.sha }}    # Pass current commit SHA to Discord workflow
+      docs_sha: ${{ github.sha }}
