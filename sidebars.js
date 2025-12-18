@@ -695,6 +695,23 @@ howToSidebar: [
       ],
     },
   ],
+  InliLLVMPassSidebarnerPass: [
+    {
+      type: 'category',
+      label: 'Inliner Pass',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'Inliner Pass Verson',
+          collapsed: true,
+          items: [
+            'llvm/llvm_pass_tracker/transformpass/inliner_llvm_v1',
+          ],
+        },
+      ],
+    },
+  ],
 
 };
 
