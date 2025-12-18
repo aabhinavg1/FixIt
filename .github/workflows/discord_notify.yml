@@ -2,26 +2,38 @@ name: Notify Discord After Deploy
 
 on:
   push:
-    branches: ["main"]   # Trigger on any push to main
+    branches: ["main"]
     paths:
-      - "docs/**"        # Only trigger if docs/ changed
+      - "docs/**"   # Only trigger if docs changed
 
 jobs:
   discord-notify:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - name: Wait for Node.js CI to finish
-        uses: benc-uk/workflow-wait@v2
-        with:
-          workflow: Node.js CI
-          branch: main
-          status: success
-          timeout_minutes: 20
+      - name: Wait for Node.js CI to complete
+        run: |
+          echo "Waiting for latest Node.js CI run to complete..."
+          ATTEMPTS=0
+          CI_STATUS="pending"
+
+          while [[ "$CI_STATUS" != "success" && "$ATTEMPTS" -lt 20 ]]; do
+            sleep 30
+            ATTEMPTS=$((ATTEMPTS+1))
+            CI_STATUS=$(gh run list --workflow "Node.js CI" --branch main --limit 1 --json conclusion,status \
+                         | jq -r '.[0].conclusion')
+            echo "Attempt $ATTEMPTS: Node.js CI status = $CI_STATUS"
+          done
+
+          if [[ "$CI_STATUS" != "success" ]]; then
+            echo "Node.js CI did not complete successfully. Exiting."
+            exit 1
+          fi
 
       - name: Detect changed docs
         run: |
