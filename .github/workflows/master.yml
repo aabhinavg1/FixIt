@@ -5,34 +5,12 @@ on:
     branches: ["main"]
     paths:
       - "docs/**"
-      - "src/**"
-
 jobs:
   nodejs-ci:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+    uses: ./.github/workflows/nodejs.yml
 
   discord-notify:
     needs: nodejs-ci
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Run Discord notifications
-        run: |
-          # Paste the discord_notify steps here
-          echo "Discord notify steps..."
+    uses: ./.github/workflows/discord_notify.yml
+    with:
+      docs_sha: ${{ github.sha }}
