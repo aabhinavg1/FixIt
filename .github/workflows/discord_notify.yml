@@ -9,6 +9,8 @@ on:
 jobs:
   discord-notify:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ← allows GitHub CLI to authenticate
 
     steps:
       - name: Checkout code
