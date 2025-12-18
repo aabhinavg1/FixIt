@@ -3,7 +3,7 @@ name: Notify Discord After Deploy
 on:
   workflow_run:
     workflows:
-      - "Node.js CI"   # ✅ EXACT match
+      - "Node.js CI"
     types:
       - completed
 
@@ -13,17 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
 
       - name: Detect changed docs
         run: |
-          BEFORE_SHA="${{ github.event.workflow_run.before }}"
           AFTER_SHA="${{ github.event.workflow_run.head_sha }}"
+          BEFORE_SHA=$(git rev-parse "${AFTER_SHA}^")
 
-          echo "Diff:"
+          echo "Diffing commits:"
           echo "$BEFORE_SHA → $AFTER_SHA"
 
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep '^docs/' || true)
@@ -39,31 +40,52 @@ jobs:
 
       - name: Send Discord notification
         run: |
-          IFS=$'\n' read -r -a FILES <<< "${{ env.CHANGED_FILES }}"
+          IFS=$'\n' read -r -a FILES <<< "${CHANGED_FILES}"
 
-          WEBHOOKS=(
-            "${{ secrets.DISCORD_WEBHOOK_GENERAL }}"
-            "${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}"
-          )
+          GENERAL_WEBHOOK="${{ secrets.DISCORD_WEBHOOK_GENERAL }}"
+          LLVM_WEBHOOK="${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}"
+
+          GENERAL_MSG="🆕 **New articles are LIVE on CompilerSutra**\n"
+          LLVM_MSG="🆕 **New LLVM articles are LIVE on CompilerSutra**\n"
+
+          GENERAL_COUNT=0
+          LLVM_COUNT=0
 
           for FILE in "${FILES[@]}"; do
             URL_PATH="${FILE#docs/}"
             URL_PATH="${URL_PATH%.*}/"
             ARTICLE_URL="https://www.compilersutra.com/${URL_PATH}"
 
-            MESSAGE="🆕 **New article is now LIVE on CompilerSutra**\n🔗 ${ARTICLE_URL}"
+            TITLE=$(sed -n 's/^title:[[:space:]]*//p' "$FILE" | head -n 1)
+            if [ -z "$TITLE" ]; then
+              TITLE=$(basename "$FILE" .md | tr '-' ' ')
+            fi
 
-            echo "Sending: $ARTICLE_URL"
+            LINE="• **${TITLE}**\n  🔗 ${ARTICLE_URL}\n"
 
-            for WEBHOOK in "${WEBHOOKS[@]}"; do
-              if [ -z "$WEBHOOK" ]; then
-                echo "Skipping empty webhook"
-                continue
-              fi
-
-              curl -sS -H "Content-Type: application/json" \
-                -X POST \
-                -d "$(jq -n --arg content "$MESSAGE" '{content: $content}')" \
-                "$WEBHOOK"
-            done
+            if [[ "$FILE" == *llvm* ]]; then
+              LLVM_MSG+="$LINE"
+              LLVM_COUNT=$((LLVM_COUNT + 1))
+            else
+              GENERAL_MSG+="$LINE"
+              GENERAL_COUNT=$((GENERAL_COUNT + 1))
+            fi
           done
+
+          send() {
+            local MSG="$1"
+            local WEBHOOK="$2"
+            [ -z "$WEBHOOK" ] && return
+            curl -sS -H "Content-Type: application/json" \
+              -X POST \
+              -d "{\"content\":\"$MSG\"}" \
+              "$WEBHOOK"
+          }
+
+          if [ "$GENERAL_COUNT" -gt 0 ]; then
+            send "$GENERAL_MSG" "$GENERAL_WEBHOOK"
+          fi
+
+          if [ "$LLVM_COUNT" -gt 0 ]; then
+            send "$LLVM_MSG" "$LLVM_WEBHOOK"
+          fi
