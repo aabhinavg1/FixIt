@@ -11,37 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-      with:
-        submodules: false  # Avoid cloning submodules (we'll manually clone the private repo)
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
 
-    # - name: Clone the newsletter_modal repository
-    #   # Commented out PAT_TOKEN authentication
-    #   env:
-    #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-    #   run: |
-    #     echo "Cloning the newsletter_modal repository..."
-    #     git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
+      # - name: Clone the newsletter_modal repository
+      #   # Commented out PAT_TOKEN authentication
+      #   env:
+      #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      #   run: |
+      #     git clone https://${{ secrets.PAT_TOKEN }}@github.com/aabhinavg1/newletter_modal.git ./src/pages/newsletter_modal_updated
 
-    # - name: Copy private repository code into public repo
-    #   run: |
-    #     echo "Copying private repository code into public repository..."
-    #     for file in src/pages/newsletter_modal_updated/*; do
-    #       if [ ! -e "./$file" ]; then
-    #         cp -r "$file" ./src/pages/newsletter_modal_updated/
-    #       else
-    #         echo "$file already exists, skipping copy."
-    #       fi
-    #     done
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'  # Updated to fix got@14.4.7 engine issue
+      - name: Install dependencies
+        run: npm install
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build the project
-      run: npm run build
+      - name: Build the project
+        run: npm run build
