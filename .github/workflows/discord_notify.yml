@@ -1,12 +1,15 @@
-name: Notify Discord on New Articles
+name: Notify Discord After Deploy
 
 on:
-  push:
-    paths:
-      - "docs/**"
+  workflow_run:
+    workflows:
+      - "Node.js CI"   # ✅ EXACT match
+    types:
+      - completed
 
 jobs:
   discord-notify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -15,19 +18,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find changed docs files
-        id: changed
+      - name: Detect changed docs
         run: |
-          BEFORE_SHA="${{ github.event.before }}"
-          AFTER_SHA="${{ github.event.after }}"
+          BEFORE_SHA="${{ github.event.workflow_run.before }}"
+          AFTER_SHA="${{ github.event.workflow_run.head_sha }}"
 
-          echo "Comparing:"
-          echo "$BEFORE_SHA -> $AFTER_SHA"
+          echo "Diff:"
+          echo "$BEFORE_SHA → $AFTER_SHA"
 
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep '^docs/' || true)
 
           if [ -z "$CHANGED_FILES" ]; then
-            echo "No docs files changed"
+            echo "No docs changes detected"
             exit 0
           fi
 
@@ -35,7 +37,7 @@ jobs:
           echo "$CHANGED_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Send Discord notifications
+      - name: Send Discord notification
         run: |
           IFS=$'\n' read -r -a FILES <<< "${{ env.CHANGED_FILES }}"
 
@@ -45,17 +47,21 @@ jobs:
           )
 
           for FILE in "${FILES[@]}"; do
-            # Convert docs path → live URL
             URL_PATH="${FILE#docs/}"
             URL_PATH="${URL_PATH%.*}/"
             ARTICLE_URL="https://www.compilersutra.com/${URL_PATH}"
 
-            MESSAGE="🆕 **New article updated on CompilerSutra**\n🔗 ${ARTICLE_URL}"
+            MESSAGE="🆕 **New article is now LIVE on CompilerSutra**\n🔗 ${ARTICLE_URL}"
 
             echo "Sending: $ARTICLE_URL"
 
             for WEBHOOK in "${WEBHOOKS[@]}"; do
-              curl -s -H "Content-Type: application/json" \
+              if [ -z "$WEBHOOK" ]; then
+                echo "Skipping empty webhook"
+                continue
+              fi
+
+              curl -sS -H "Content-Type: application/json" \
                 -X POST \
                 -d "$(jq -n --arg content "$MESSAGE" '{content: $content}')" \
                 "$WEBHOOK"
