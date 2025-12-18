@@ -21,8 +21,6 @@ jobs:
           AFTER_SHA="${{ inputs.docs_sha }}"
           BEFORE_SHA=$(git rev-parse "${AFTER_SHA}^")
 
-          echo "Diffing commits: $BEFORE_SHA → $AFTER_SHA"
-
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep '^docs/' || true)
 
           if [ -z "$CHANGED_FILES" ]; then
