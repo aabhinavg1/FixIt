@@ -1101,7 +1101,6 @@ flowchart TD
 
 ## References and Further Reading
 
-
 ### Primary Sources
 
 1. [**LLVM 1.0 Source Code**](https://github.com/llvm/llvm-project/tree/release/1.0.x/llvm)
