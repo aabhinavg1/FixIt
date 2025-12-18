@@ -1109,7 +1109,6 @@ flowchart TD
 4. **Commit [2f7c963]**: ["Initial revision"](https://github.com/llvm/llvm-project/commit/2f7c963559dbc6dbda43df77a090a93f94c6625e#diff-b01c41a1a680a1c3a2c7c60f1fbf8a177c1957fe6d3a0fef82c3582a7c449538)
 5. [**Inlining for Code Size Reduction**](https://homepages.dcc.ufmg.br/~fernando/publications/papers/SBLP21Pacheco.pdf)
 
-
 ---
 
 ## Conclusion
