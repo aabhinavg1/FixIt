@@ -1,29 +1,32 @@
 name: Notify Discord After Deploy
 
 on:
-  workflow_run:
-    workflows:
-      - "Node.js CI"
-    types:
-      - completed
+  push:
+    branches: ["main"]   # Trigger on any push to main
+    paths:
+      - "docs/**"        # Only trigger if docs/ changed
 
 jobs:
   discord-notify:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout exact commit
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 2
+
+      - name: Wait for Node.js CI to finish
+        uses: benc-uk/workflow-wait@v2
+        with:
+          workflow: Node.js CI
+          branch: main
+          status: success
+          timeout_minutes: 20
 
       - name: Detect changed docs
         run: |
-          AFTER_SHA="${{ github.event.workflow_run.head_sha }}"
-          BEFORE_SHA=$(git rev-parse "${AFTER_SHA}^")
-
+          BEFORE_SHA=$(git rev-parse HEAD~1)
+          AFTER_SHA=$(git rev-parse HEAD)
           echo "Diffing commits:"
           echo "$BEFORE_SHA → $AFTER_SHA"
 
