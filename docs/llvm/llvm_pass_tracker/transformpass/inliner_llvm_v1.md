@@ -125,6 +125,7 @@ keywords:
   - cloud compilation services
   - future compiler architectures
   - LLVM COURSES
+  - COMPILERSUTRA LLVM
 ---
 
 import AdBanner from '@site/src/components/AdBanner';

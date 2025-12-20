@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 2
 
       # ---------------------------------
-      # 1️⃣ Read commit message
+      # 1️⃣ Read commit message (FIXED)
       # ---------------------------------
       - name: Read commit message
         run: |
@@ -30,14 +30,21 @@ jobs:
           echo "$COMMIT_MSG" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-          LINK=$(echo "$COMMIT_MSG" | sed -n 's/^link:[[:space:]]*//p')
+          # Extract & CLEAN link (remove newline / spaces)
+          LINK=$(echo "$COMMIT_MSG" \
+            | sed -n 's/^link:[[:space:]]*//p' \
+            | tr -d '\r' \
+            | xargs)
+
           NODOC=$(echo "$COMMIT_MSG" | grep -x 'nodoc' || true)
 
           echo "LINK=$LINK" >> $GITHUB_ENV
           echo "NODOC=$NODOC" >> $GITHUB_ENV
 
+          echo "DEBUG: LINK=[$LINK]"
+
       # ---------------------------------
-      # 2️⃣ Detect docs change (POLICY ONLY)
+      # 2️⃣ Detect docs change (policy only)
       # ---------------------------------
       - name: Detect docs change
         id: detect_docs
@@ -62,7 +69,7 @@ jobs:
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo " No docs changed but commit message missing 'nodoc'"
+              echo "❌ No docs changed but commit message missing 'nodoc'"
               exit 1
             fi
           fi
@@ -78,7 +85,7 @@ jobs:
             exit 1
           fi
 
-          echo "✅ Valid Docusaurus route: $LINK"
+          echo "✅ Valid route: $LINK"
 
       # ---------------------------------
       # 5️⃣ Node.js build
@@ -95,7 +102,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 6️⃣ Discord notification (AFTER SUCCESS)
+      # 6️⃣ Discord notification (FIXED)
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
@@ -105,7 +112,9 @@ jobs:
         run: |
           ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
 
-          MSG="**New LLVM article published on CompilerSutra 🚀**\n${ARTICLE_URL}"
+          echo "Sending URL: $ARTICLE_URL"
+
+          MSG="**New article published on CompilerSutra 🚀**\n${ARTICLE_URL}"
 
           send() {
             local WEBHOOK="$1"
@@ -121,3 +130,4 @@ jobs:
           else
             send "$GENERAL_WEBHOOK"
           fi
+
