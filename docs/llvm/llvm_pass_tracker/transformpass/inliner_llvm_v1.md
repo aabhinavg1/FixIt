@@ -124,6 +124,7 @@ keywords:
   - distributed compilation
   - cloud compilation services
   - future compiler architectures
+  - LLVM COURSES
 ---
 
 import AdBanner from '@site/src/components/AdBanner';
