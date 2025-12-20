@@ -547,7 +547,6 @@ g++ -Wall -Wextra -Wpedantic
 ```
 
 ---
-
 <div>
   <AdBanner />
 </div>
