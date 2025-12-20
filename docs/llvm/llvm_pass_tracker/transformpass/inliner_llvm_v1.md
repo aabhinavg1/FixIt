@@ -126,6 +126,7 @@ keywords:
   - future compiler architectures
   - LLVM COURSES
   - COMPILERSUTRA LLVM
+  - COMPILER
 ---
 
 import AdBanner from '@site/src/components/AdBanner';

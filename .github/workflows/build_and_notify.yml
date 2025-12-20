@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 2
 
       # ---------------------------------
-      # 1️⃣ Read commit message (FIXED)
+      # 1️⃣ Read commit message (CLEAN)
       # ---------------------------------
       - name: Read commit message
         run: |
@@ -30,21 +30,21 @@ jobs:
           echo "$COMMIT_MSG" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-          # Extract & CLEAN link (remove newline / spaces)
-          LINK=$(echo "$COMMIT_MSG" \
+          # Extract + trim link (NO newline)
+          LINK="$(echo "$COMMIT_MSG" \
             | sed -n 's/^link:[[:space:]]*//p' \
-            | tr -d '\r' \
-            | xargs)
+            | tr -d '\r\n' \
+            | xargs)"
 
-          NODOC=$(echo "$COMMIT_MSG" | grep -x 'nodoc' || true)
+          NODOC="$(echo "$COMMIT_MSG" | grep -x 'nodoc' || true)"
 
           echo "LINK=$LINK" >> $GITHUB_ENV
           echo "NODOC=$NODOC" >> $GITHUB_ENV
 
-          echo "DEBUG: LINK=[$LINK]"
+          echo "DEBUG LINK=[$LINK]"
 
       # ---------------------------------
-      # 2️⃣ Detect docs change (policy only)
+      # 2️⃣ Detect docs change (POLICY)
       # ---------------------------------
       - name: Detect docs change
         id: detect_docs
@@ -64,31 +64,30 @@ jobs:
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
             if [ -z "$LINK" ]; then
-              echo "❌ Docs changed but commit message missing 'link:'"
+              echo "❌ Docs changed but missing 'link:'"
               exit 1
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo "❌ No docs changed but commit message missing 'nodoc'"
+              echo "❌ No docs changed but missing 'nodoc'"
               exit 1
             fi
           fi
 
       # ---------------------------------
-      # 4️⃣ Validate LINK FORMAT (NOT FILE)
+      # 4️⃣ Validate Docusaurus route
       # ---------------------------------
-      - name: Validate Docusaurus route
+      - name: Validate link format
         if: env.LINK != ''
         run: |
           if ! echo "$LINK" | grep -q '^/'; then
             echo "❌ link must start with '/'"
             exit 1
           fi
-
           echo "✅ Valid route: $LINK"
 
       # ---------------------------------
-      # 5️⃣ Node.js build
+      # 5️⃣ Build site
       # ---------------------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -102,7 +101,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 6️⃣ Discord notification (FIXED)
+      # 6️⃣ Discord notification (BULLETPROOF)
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
@@ -111,17 +110,23 @@ jobs:
           LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
           ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
-
-          echo "Sending URL: $ARTICLE_URL"
-
           MSG="**New article published on CompilerSutra 🚀**\n${ARTICLE_URL}"
 
+          clean() {
+            echo "$1" | tr -d '\r\n' | xargs
+          }
+
           send() {
-            local WEBHOOK="$1"
+            RAW="$1"
+            WEBHOOK="$(clean "$RAW")"
             [ -z "$WEBHOOK" ] && return
-            curl -sS -H "Content-Type: application/json" \
+
+            echo "Posting to Discord..."
+
+            curl -sS \
+              -H "Content-Type: application/json" \
               -X POST \
-              -d "{\"content\":\"$MSG\"}" \
+              --data-binary "$(printf '{"content":"%s"}' "$MSG")" \
               "$WEBHOOK"
           }
 
@@ -130,4 +135,3 @@ jobs:
           else
             send "$GENERAL_WEBHOOK"
           fi
-
