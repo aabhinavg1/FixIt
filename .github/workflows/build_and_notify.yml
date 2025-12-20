@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ---------------------------------
+      # 0️⃣ Checkout
+      # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -20,7 +23,6 @@ jobs:
       # 1️⃣ Read commit message
       # ---------------------------------
       - name: Read commit message
-        id: commit
         run: |
           COMMIT_MSG="$(git log -1 --pretty=%B)"
 
@@ -35,7 +37,7 @@ jobs:
           echo "NODOC=$NODOC" >> $GITHUB_ENV
 
       # ---------------------------------
-      # 2️⃣ Detect docs change (policy only)
+      # 2️⃣ Detect docs change (POLICY ONLY)
       # ---------------------------------
       - name: Detect docs change
         id: detect_docs
@@ -55,28 +57,28 @@ jobs:
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
             if [ -z "$LINK" ]; then
-              echo "ERROR: Docs changed but commit message missing 'link: /path'"
+              echo "❌ Docs changed but commit message missing 'link:'"
               exit 1
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo "ERROR: No docs changed but commit message missing 'nodoc'"
+              echo "❌ No docs changed but commit message missing 'nodoc'"
               exit 1
             fi
           fi
 
       # ---------------------------------
-      # 4️⃣ Validate link exists (optional but recommended)
+      # 4️⃣ Validate LINK FORMAT (NOT FILE)
       # ---------------------------------
-      - name: Validate link path
+      - name: Validate Docusaurus route
         if: env.LINK != ''
         run: |
-          DOC_FILE="docs${LINK}.md"
-
-          if [ ! -f "$DOC_FILE" ]; then
-            echo "ERROR: link does not map to a docs file: $DOC_FILE"
+          if ! echo "$LINK" | grep -q '^/'; then
+            echo "❌ link must start with '/'"
             exit 1
           fi
+
+          echo "✅ Valid Docusaurus route: $LINK"
 
       # ---------------------------------
       # 5️⃣ Node.js build
@@ -89,21 +91,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build site
         run: npm run build
 
       # ---------------------------------
-      # 6️⃣ Discord notification (from commit message ONLY)
+      # 6️⃣ Discord notification (AFTER SUCCESS)
       # ---------------------------------
       - name: Send Discord notification
-        if: env.LINK != ''
+        if: success() && env.LINK != ''
         env:
           GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
           LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
           ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
 
-          MSG="**New article published on CompilerSutra**\n${ARTICLE_URL}"
+          MSG="**New LLVM article published on CompilerSutra 🚀**\n${ARTICLE_URL}"
 
           send() {
             local WEBHOOK="$1"
@@ -114,9 +116,8 @@ jobs:
               "$WEBHOOK"
           }
 
-          if echo "$LINK" | grep -q llvm; then
+          if echo "$LINK" | grep -q '^/llvm'; then
             send "$LLVM_WEBHOOK"
           else
             send "$GENERAL_WEBHOOK"
           fi
-
