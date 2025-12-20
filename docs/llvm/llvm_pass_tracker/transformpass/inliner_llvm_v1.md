@@ -306,7 +306,7 @@ int foo(int x) { return add(x, 42); }
   </TabItem>
   <TabItem value="ir-before" label="LLVM IR (before)">
 
-```llvm
+```python
 define i32 @add(i32 %a, i32 %b) {
 entry:
   %0 = add i32 %a, %b
@@ -323,7 +323,7 @@ entry:
   </TabItem>
   <TabItem value="ir-after" label="LLVM IR (after)">
 
-```llvm
+```python
 define i32 @foo(i32 %x) {
 entry:
   %0 = add i32 %x, 42
