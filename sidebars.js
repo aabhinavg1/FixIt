@@ -186,6 +186,7 @@ const sidebars = {
             'c++/basic/catch2',
             'c++/basic/open-source',
             'c++/basic/binary_hexadecimal',
+            'c++/basic/c++_compilers',
           ],
         },
         {
