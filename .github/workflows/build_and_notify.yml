@@ -62,7 +62,7 @@ jobs:
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo "❌ No docs changed but commit message missing 'nodoc'"
+              echo " No docs changed but commit message missing 'nodoc'"
               exit 1
             fi
           fi
