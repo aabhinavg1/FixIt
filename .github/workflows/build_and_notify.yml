@@ -12,7 +12,7 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0️⃣ Checkout
+      # 0️⃣ Checkout here
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
