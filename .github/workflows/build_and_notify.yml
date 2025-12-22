@@ -12,7 +12,7 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0️⃣ Checkout
+      # 0️⃣ Checkout here
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 2
 
       # ---------------------------------
-      # 1️⃣ Read commit message (CLEAN)
+      # 1️⃣ Read commit message (BULLETPROOF)
       # ---------------------------------
       - name: Read commit message
         run: |
@@ -30,18 +30,25 @@ jobs:
           echo "$COMMIT_MSG" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-          # Extract + trim link (NO newline)
+          # ✅ Robust link extraction (case-insensitive, trims spaces)
           LINK="$(echo "$COMMIT_MSG" \
-            | sed -n 's/^link:[[:space:]]*//p' \
+            | grep -i '^[[:space:]]*link:' \
+            | head -n 1 \
+            | sed 's/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*//' \
             | tr -d '\r\n' \
             | xargs)"
 
-          NODOC="$(echo "$COMMIT_MSG" | grep -x 'nodoc' || true)"
+          # ✅ Robust nodoc detection
+          NODOC="$(echo "$COMMIT_MSG" | grep -i '^[[:space:]]*nodoc' || true)"
 
           echo "LINK=$LINK" >> $GITHUB_ENV
           echo "NODOC=$NODOC" >> $GITHUB_ENV
 
+          echo "----- COMMIT MESSAGE -----"
+          echo "$COMMIT_MSG"
+          echo "--------------------------"
           echo "DEBUG LINK=[$LINK]"
+          echo "DEBUG NODOC=[$NODOC]"
 
       # ---------------------------------
       # 2️⃣ Detect docs change (POLICY)
@@ -58,7 +65,7 @@ jobs:
           fi
 
       # ---------------------------------
-      # 3️⃣ Enforce commit message rules
+      # 3️⃣ Enforce commit message rules here
       # ---------------------------------
       - name: Enforce commit message policy
         run: |
@@ -101,7 +108,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 6️⃣ Discord notification (BULLETPROOF)
+      # 6️⃣ Discord notification
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
