@@ -65,7 +65,7 @@ jobs:
           fi
 
       # ---------------------------------
-      # 3️⃣ Enforce commit message rules
+      # 3️⃣ Enforce commit message rules here
       # ---------------------------------
       - name: Enforce commit message policy
         run: |
