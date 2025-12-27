@@ -542,7 +542,7 @@ howToSidebar: [
   },
     {
     type: 'category',
-    label: 'How to Guides',
+    label: 'Bit Manipulation',
     collapsed: false,
     items: [
         'how_to/two_compliment',

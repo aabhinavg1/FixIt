@@ -101,6 +101,13 @@ Learning what to do, but not why it works.
 :::note
 Content by Human, AI Provided Support
 :::
+
+
+<div>
+  <AdBanner />
+</div>
+
+
 ## Why −x = ~x + 1:
      >> ***A Bit-Level and Mathematical Explanation of Two's Complement***
 
@@ -258,6 +265,7 @@ printf("Signed s+1   = %d\n", s);
 
 </details>
 
+
 **Explanation:**
 
 * `u` wraps from 255 → 0 (like a clock).
@@ -274,6 +282,11 @@ Signed:  -128 → -127 → ... → -1 → 0 → 1 → ... → 127 → back to -1
 ```
 
 The **top bit decides the sign**. That’s why two’s complement works so naturally: the machine never needs to “know” negatives  it just adds and wraps around, and we humans interpret the top bit as the sign.
+
+
+<div>
+  <AdBanner />
+</div>
 
 
 
@@ -454,6 +467,12 @@ graph TD
 
 > Two’s complement is elegant because it makes negative numbers **just another pattern of bits**, so the machine can **add, subtract, and negate numbers without extra rules or hardware**.
 
+
+
+
+<div>
+  <AdBanner />
+</div>
 
 ## 4. Deriving −x = ~x + 1 <a name="derivation"></a>
 
