@@ -540,6 +540,14 @@ howToSidebar: [
     
     ],
   },
+    {
+    type: 'category',
+    label: 'How to Guides',
+    collapsed: false,
+    items: [
+        'how_to/two_compliment',
+    ],
+  },
 ],
 
   //sidebar for the tech blog
