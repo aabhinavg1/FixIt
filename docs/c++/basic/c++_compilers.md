@@ -20,20 +20,6 @@ keywords:
   - Lexical Syntax Semantic Analysis
   - Front End Middle End Back End Compiler
 
-tags:
-  - C++
-  - Compilers
-  - Compiler Design
-  - C++ Programming
-  - System Software
-  - Software Engineering
-  - Programming Languages
-  - Code Optimization
-  - Build Systems
-  - Low Level Programming
-  - Competitive Programming
-  - Interview Preparation
-  - Computer Science Fundamentals
 ---
 
 
@@ -60,15 +46,6 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 >  
 > By the end, compiling C++ will no longer feel like magic it will feel **predictable, debuggable, and powerful**.
 
-<<<<<<< HEAD
-
-=======
----
-<div>
-  <AdBanner />
-</div>
----
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 
 
 ## Table of Contents
@@ -175,15 +152,6 @@ int main() {
 * No compilation, semantic analysis, or code generation occurs
 
 This stage is useful for debugging macro expansions and preprocessing-related issues.
-<<<<<<< HEAD
-=======
-
----
-<div>
-  <AdBanner />
-</div>
----
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 
 
 ### 2. Compile to Assembly Code
@@ -219,17 +187,10 @@ LFE0:
 * `main.s` → Assembly code generated for the target architecture  
 * High-level C++ constructs are translated into target-specific machine instructions  
 * No object file is produced at this stage
-<<<<<<< HEAD
-
-This stage is useful for understanding compiler optimizations, instruction selection, and calling conventions.
-
-### 3️⃣ Compile to Object File
-=======
 
 This stage is useful for understanding compiler optimizations, instruction selection, and calling conventions.
 
 ### 3. Compile to Object File
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 
 To generate an **object file** without linking, use the `-c` flag.
 
@@ -240,14 +201,9 @@ g++ -c main.cpp
 
 **Output:**
 
-<<<<<<< HEAD
 
 * `main.o` → Object file
 
-=======
-* `main.o` → Object file
-
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 An object file contains:
 
 * Machine code for the compiled source file
@@ -258,15 +214,6 @@ In simple terms, an object file is a **partially finished program**.
 It is compiled but **not yet connected** to libraries or other source files.
 
 Multiple object files are later combined by the linker to create the final executable.
-<<<<<<< HEAD
-=======
-
----
-<div>
-  <AdBanner />
-</div>
----
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 
 
 ### 4. Full Compilation and Linking
@@ -290,8 +237,7 @@ To check syntax and semantics **without generating any output files**, use:
 
 ---
 <Tabs>
-  <TabItem value="analogy" label="🏭 Real-World Analogy">
-<<<<<<< HEAD
+  <TabItem value="analogy" label="Real-World Analogy">
 
 | Compilation Stage | Real-World Analogy |
 |------------------|-------------------|
@@ -302,7 +248,7 @@ To check syntax and semantics **without generating any output files**, use:
 
   </TabItem>
 
-  <TabItem value="pipeline" label="🔄 Compilation Pipeline">
+  <TabItem value="pipeline" label="Compilation Pipeline">
 
 | Step | Command | Output | Description |
 |-----|--------|--------|-------------|
@@ -313,7 +259,7 @@ To check syntax and semantics **without generating any output files**, use:
 
   </TabItem>
 
-  <TabItem value="files" label="📦 File Types">
+  <TabItem value="files" label="File Types">
 
 | File Type | Name | Simple Explanation |
 |----------|------|-------------------|
@@ -324,41 +270,6 @@ To check syntax and semantics **without generating any output files**, use:
 
 
 
-  </TabItem>
-
-</Tabs>
-
-=======
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
-
-| Compilation Stage | Real-World Analogy |
-|------------------|-------------------|
-| Preprocessing (`.i`) | Raw materials prepared |
-| Compilation (`.s`) | Blueprint converted to machine steps |
-| Object File (`.o`) | Individual parts manufactured |
-| Linking (Executable) | All parts assembled into a product |
-
-  </TabItem>
-
-  <TabItem value="pipeline" label="🔄 Compilation Pipeline">
-
-| Step | Command | Output | Description |
-|-----|--------|--------|-------------|
-| Preprocessing | `g++ -E main.cpp` | `main.i` | Expands macros |
-| Compilation | `g++ -S main.cpp` | `main.s` | Generates assembly |
-| Object Generation | `g++ -c main.cpp` | `main.o` | Produces machine code |
-| Linking | `g++ main.o` | `a.out` | Creates executable |
-
-  </TabItem>
-
-  <TabItem value="files" label="📦 File Types">
-
-| File Type | Name | Simple Explanation |
-|----------|------|-------------------|
-| `.o` | Object file | One compiled piece of code |
-| `.a` | Static library | Collection of object files |
-| `.so` | Shared library | Loaded at runtime |
-| Executable | `a.out` / `.exe` | Fully runnable program |
   </TabItem>
 
 </Tabs>
@@ -1110,14 +1021,7 @@ Always compile and link with warnings enabled:
 ```bash
 g++ -Wall -Wextra -Wpedantic
 ```
-<<<<<<< HEAD
 :::
-=======
-
-Warnings often reveal logical and linking issues before they turn into runtime bugs.
-:::
-
->>>>>>> 122fed1 ([cpp-tutorial] Article on C++ Compilers)
 ---
 <div>
   <AdBanner />
