@@ -12,96 +12,98 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0 Checkout repository
+      # 0) Checkout
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 5
+          fetch-depth: 10
 
       # ---------------------------------
-      # 1 Detect docs-related commits
+      # 1) Detect docs changes (file truth)
       # ---------------------------------
-      - name: Detect docs commits
+      - name: Detect docs changes
         id: detect_docs
         run: |
-          DOC_COMMITS="$(git log --pretty=format:%H HEAD~5..HEAD -- docs/ || true)"
+          DOCS_CHANGED="$(git diff --name-only HEAD^ HEAD | grep '^docs/' || true)"
 
-          if [ -n "$DOC_COMMITS" ]; then
+          if [ -n "$DOCS_CHANGED" ]; then
             echo "docs_changed=true" >> $GITHUB_OUTPUT
-            echo "DOC_COMMITS=$DOC_COMMITS" >> $GITHUB_ENV
           else
             echo "docs_changed=false" >> $GITHUB_OUTPUT
           fi
 
+          echo "DEBUG docs_changed_files:"
+          echo "$DOCS_CHANGED"
+
       # ---------------------------------
-      # 2 Read and print commit messages
+      # 2) Read commit messages (LATEST link wins)
       # ---------------------------------
       - name: Read commit messages
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
-            echo "Docs changed. Reading commit messages that touched docs."
-            MSGS="$(git log --pretty=%B HEAD~5..HEAD -- docs/)"
+            echo "Docs changed. Scanning recent commits for latest link:"
+            LOG="$(git log --pretty=format:'---%n%B' HEAD~10..HEAD)"
           else
-            echo "No docs changed. Reading HEAD commit message."
-            MSGS="$(git log -1 --pretty=%B)"
+            echo "No docs changed. Reading HEAD commit message only"
+            LOG="$(git log -1 --pretty=format:'---%n%B')"
           fi
 
           echo ""
-          echo "================ COMMIT MESSAGE(S) READ BY CI ================"
-          echo "$MSGS"
-          echo "=============================================================="
+          echo "================= RAW COMMIT LOG READ BY CI ================="
+          echo "$LOG"
+          echo "============================================================="
           echo ""
 
-          echo "COMMIT_MSG<<EOF" >> $GITHUB_ENV
-          echo "$MSGS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          # Latest link wins (nearest to HEAD)
+          LINK="$(echo "$LOG" | awk '
+            /^---$/ { next }
+            /^[[:space:]]*[Ll][Ii][Nn][Kk]:/ {
+              sub(/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*/, "", $0)
+              print $0
+              exit
+            }')"
 
-          LINK="$(echo "$MSGS" \
-            | grep -i '^[[:space:]]*link:' \
-            | head -n 1 \
-            | sed 's/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*//' \
-            | xargs)"
-
-          NODOC="$(echo "$MSGS" | grep -i '^[[:space:]]*nodoc' || true)"
+          # nodoc can exist anywhere
+          NODOC="$(echo "$LOG" | grep -i '^[[:space:]]*nodoc' || true)"
 
           echo "LINK=$LINK" >> $GITHUB_ENV
           echo "NODOC=$NODOC" >> $GITHUB_ENV
 
-          echo "DEBUG PARSED LINK  = [$LINK]"
-          echo "DEBUG PARSED NODOC = [$NODOC]"
+          echo "DEBUG FINAL LINK  = [$LINK]"
+          echo "DEBUG FINAL NODOC = [$NODOC]"
 
       # ---------------------------------
-      # 3 Enforce commit message policy
+      # 3) Enforce commit message policy
       # ---------------------------------
       - name: Enforce commit message policy
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
             if [ -z "$LINK" ]; then
-              echo "Docs changed but missing 'link:' in commit message."
+              echo "Docs changed but missing 'link:' in the latest commit"
               exit 1
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo "No docs changed but missing 'nodoc' in commit message."
+              echo "No docs changed but missing 'nodoc' in commit message"
               exit 1
             fi
           fi
 
       # ---------------------------------
-      # 4 Validate link format
+      # 4) Validate route format
       # ---------------------------------
       - name: Validate link format
         if: env.LINK != ''
         run: |
           if ! echo "$LINK" | grep -q '^/'; then
-            echo "Invalid link format. Link must start with '/'."
+            echo "Invalid link format. link must start with '/'"
             exit 1
           fi
-          echo "Valid route: $LINK"
+          echo "Validated route: $LINK"
 
       # ---------------------------------
-      # 5 Build site
+      # 5) Build site
       # ---------------------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -115,7 +117,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 6 Discord notification
+      # 6) Discord notification
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
