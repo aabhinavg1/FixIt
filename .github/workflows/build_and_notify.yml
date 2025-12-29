@@ -12,7 +12,7 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0) Checkout (full history needed)
+      # 0) Checkout full history
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       # ---------------------------------
-      # 1) Show recent commits (DEBUG)
+      # 1) Show recent commits for debug
       # ---------------------------------
       - name: Show recent commits
         run: |
@@ -28,7 +28,7 @@ jobs:
           git log --oneline -10
 
       # ---------------------------------
-      # 2) Detect docs changes (file truth)
+      # 2) Detect docs changes
       # ---------------------------------
       - name: Detect docs changes
         id: detect_docs
@@ -36,7 +36,7 @@ jobs:
           BASE_SHA="${{ github.event.before }}"
           HEAD_SHA="${{ github.sha }}"
 
-          DOCS_CHANGED="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep '^docs/' || true)"
+          DOCS_CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep '^docs/' || true)
 
           if [ -n "$DOCS_CHANGED" ]; then
             echo "docs_changed=true" >> $GITHUB_OUTPUT
@@ -48,18 +48,16 @@ jobs:
           echo "$DOCS_CHANGED"
 
       # ---------------------------------
-      # 3) Read commit messages
-      #    - Docs changed: scan recent non-merge commits
-      #    - No docs: HEAD non-merge commit only
+      # 3) Read commit messages (merge-safe)
       # ---------------------------------
       - name: Read commit messages
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
-            echo "Docs changed. Scanning recent non-merge commits."
-            LOG="$(git log --no-merges -10 --pretty=format:'---%n%B')"
+            echo "Docs changed. Scanning last 10 non-merge commits."
+            LOG=$(git log --no-merges -10 --pretty=format:'---%n%B')
           else
             echo "No docs changed. Reading latest non-merge commit."
-            LOG="$(git log -1 --no-merges --pretty=format:'---%n%B')"
+            LOG=$(git log -1 --no-merges --pretty=format:'---%n%B')
           fi
 
           echo ""
@@ -68,15 +66,17 @@ jobs:
           echo "========================================================="
           echo ""
 
-          LINK="$(echo "$LOG" | awk '
+          # Extract latest link
+          LINK=$(echo "$LOG" | awk '
             /^---$/ { next }
             /^[[:space:]]*[Ll][Ii][Nn][Kk]:/ {
               sub(/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*/, "", $0)
               print $0
               exit
-            }')"
+            }')
 
-          NODOC="$(echo "$LOG" | grep -i '^[[:space:]]*nodoc' || true)"
+          # Extract nodoc anywhere
+          NODOC=$(echo "$LOG" | grep -i '^[[:space:]]*nodoc' || true)
 
           echo "LINK=$LINK" >> $GITHUB_ENV
           echo "NODOC=$NODOC" >> $GITHUB_ENV
@@ -130,7 +130,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 7) Discord notification
+      # 7) Send Discord notification
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
@@ -146,7 +146,7 @@ jobs:
           }
 
           send() {
-            WEBHOOK="$(clean "$1")"
+            WEBHOOK=$(clean "$1")
             [ -z "$WEBHOOK" ] && return
             curl -sS \
               -H "Content-Type: application/json" \
