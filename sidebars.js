@@ -154,6 +154,13 @@ const sidebars = {
             'llvm/llvm_ir/intro_to_llvm_ir',
           ],
         },
+        {
+          type: 'category',
+          label: 'LEVEL 0 - Compiler-Specific DSA Foundations',
+          items: [
+            'llvm/llvm_Curriculum/level0/Static_Single_Assignment',
+          ],
+        },
 
       ],
     },
@@ -538,6 +545,14 @@ howToSidebar: [
         'how_to/static_library',
         'how_to/dynamic_library',
     
+    ],
+  },
+    {
+    type: 'category',
+    label: 'Bit Manipulation',
+    collapsed: false,
+    items: [
+        'how_to/two_compliment',
     ],
   },
 ],

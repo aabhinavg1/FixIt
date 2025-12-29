@@ -80,7 +80,7 @@ Here’s a refined and expanded version of your table, now organized with bullet
 | Semantic Analysis | Attribute Grammars                      | Propagation of semantic info     | Coming Soon |
 | Semantic Analysis | Union-Find (Disjoint Sets)              | Type equivalence, alias analysis | Coming Soon |
 | Intermediate Code | Directed Acyclic Graphs (DAG)           | Common subexpression elimination | Coming Soon |
-| Intermediate Code | Static Single Assignment (SSA)          | IR simplification                | Coming Soon |
+| Intermediate Code | Static Single Assignment (SSA)          | IR simplification                | [link](./llvm_Curriculum/level0/Static_Single_Assignment.md) |
 | Intermediate Code | Three-Address Code (TAC)                | IR generation                    | Coming Soon |
 | Optimization      | Data Flow Graphs                        | Liveness & reaching defs         | Coming Soon |
 | Optimization      | Dominator Trees                         | Loop optimization                | Coming Soon |
