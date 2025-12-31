@@ -12,51 +12,31 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0️⃣ Checkout here
+      # 0) Checkout full history
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       # ---------------------------------
-      # 1️⃣ Read commit message (BULLETPROOF)
+      # 1) Show recent commits for debug
       # ---------------------------------
-      - name: Read commit message
+      - name: Show recent commits
         run: |
-          COMMIT_MSG="$(git log -1 --pretty=%B)"
-
-          echo "COMMIT_MSG<<EOF" >> $GITHUB_ENV
-          echo "$COMMIT_MSG" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-          # ✅ Robust link extraction (case-insensitive, trims spaces)
-          LINK="$(echo "$COMMIT_MSG" \
-            | grep -i '^[[:space:]]*link:' \
-            | head -n 1 \
-            | sed 's/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*//' \
-            | tr -d '\r\n' \
-            | xargs)"
-
-          # ✅ Robust nodoc detection
-          NODOC="$(echo "$COMMIT_MSG" | grep -i '^[[:space:]]*nodoc' || true)"
-
-          echo "LINK=$LINK" >> $GITHUB_ENV
-          echo "NODOC=$NODOC" >> $GITHUB_ENV
-
-          echo "----- COMMIT MESSAGE -----"
-          echo "$COMMIT_MSG"
-          echo "--------------------------"
-          echo "DEBUG LINK=[$LINK]"
-          echo "DEBUG NODOC=[$NODOC]"
+          echo "Last 10 commits:"
+          git log --oneline -10
 
       # ---------------------------------
-      # 2️⃣ Detect docs change (POLICY)
+      # 2) Detect docs changes
       # ---------------------------------
-      - name: Detect docs change
+      - name: Detect docs changes
         id: detect_docs
         run: |
-          DOCS_CHANGED=$(git diff --name-only HEAD^ HEAD | grep '^docs/' || true)
+          BASE_SHA="${{ github.event.before }}"
+          HEAD_SHA="${{ github.sha }}"
+
+          DOCS_CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep '^docs/' || true)
 
           if [ -n "$DOCS_CHANGED" ]; then
             echo "docs_changed=true" >> $GITHUB_OUTPUT
@@ -64,37 +44,79 @@ jobs:
             echo "docs_changed=false" >> $GITHUB_OUTPUT
           fi
 
+          echo "Docs changed files:"
+          echo "$DOCS_CHANGED"
+
       # ---------------------------------
-      # 3️⃣ Enforce commit message rules here
+      # 3) Read commit messages (merge-safe)
+      # ---------------------------------
+      - name: Read commit messages
+        run: |
+          if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
+            echo "Docs changed. Scanning last 10 non-merge commits."
+            LOG=$(git log --no-merges -10 --pretty=format:'---%n%B')
+          else
+            echo "No docs changed. Reading latest non-merge commit."
+            LOG=$(git log -1 --no-merges --pretty=format:'---%n%B')
+          fi
+
+          echo ""
+          echo "================= COMMIT LOG READ BY CI ================="
+          echo "$LOG"
+          echo "========================================================="
+          echo ""
+
+          # Extract latest link
+          LINK=$(echo "$LOG" | awk '
+            /^---$/ { next }
+            /^[[:space:]]*[Ll][Ii][Nn][Kk]:/ {
+              sub(/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*/, "", $0)
+              print $0
+              exit
+            }')
+
+          # Extract nodoc anywhere
+          NODOC=$(echo "$LOG" | grep -i '^[[:space:]]*nodoc' || true)
+
+          echo "LINK=$LINK" >> $GITHUB_ENV
+          echo "NODOC=$NODOC" >> $GITHUB_ENV
+
+          echo "Resolved LINK  : [$LINK]"
+          echo "Resolved NODOC : [$NODOC]"
+
+      # ---------------------------------
+      # 4) Enforce commit message policy
       # ---------------------------------
       - name: Enforce commit message policy
         run: |
           if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
             if [ -z "$LINK" ]; then
-              echo "❌ Docs changed but missing 'link:'"
+              echo "Docs changed but missing 'link:' in commit messages"
               exit 1
             fi
           else
             if [ -z "$NODOC" ]; then
-              echo "❌ No docs changed but missing 'nodoc'"
+              echo "No docs changed but missing 'nodoc' in commit message"
               exit 1
             fi
           fi
 
+          echo "Commit message policy passed"
+
       # ---------------------------------
-      # 4️⃣ Validate Docusaurus route
+      # 5) Validate route format
       # ---------------------------------
       - name: Validate link format
         if: env.LINK != ''
         run: |
           if ! echo "$LINK" | grep -q '^/'; then
-            echo "❌ link must start with '/'"
+            echo "Invalid link format. link must start with '/'"
             exit 1
           fi
-          echo "✅ Valid route: $LINK"
+          echo "Validated route: $LINK"
 
       # ---------------------------------
-      # 5️⃣ Build site
+      # 6) Build site
       # ---------------------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -108,7 +130,7 @@ jobs:
         run: npm run build
 
       # ---------------------------------
-      # 6️⃣ Discord notification
+      # 7) Send Discord notification
       # ---------------------------------
       - name: Send Discord notification
         if: success() && env.LINK != ''
@@ -117,19 +139,15 @@ jobs:
           LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
           ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
-          MSG="**New article published on CompilerSutra 🚀**\n${ARTICLE_URL}"
+          MSG="New article published on CompilerSutra\n${ARTICLE_URL}"
 
           clean() {
             echo "$1" | tr -d '\r\n' | xargs
           }
 
           send() {
-            RAW="$1"
-            WEBHOOK="$(clean "$RAW")"
+            WEBHOOK=$(clean "$1")
             [ -z "$WEBHOOK" ] && return
-
-            echo "Posting to Discord..."
-
             curl -sS \
               -H "Content-Type: application/json" \
               -X POST \
