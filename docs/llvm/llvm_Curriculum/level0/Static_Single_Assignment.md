@@ -81,8 +81,6 @@ It’s the
 > > > ***From Control Flow Chaos to Mathematical Order***
 :::
 
-
-
 :::important Now Let's Begin
 :::
 

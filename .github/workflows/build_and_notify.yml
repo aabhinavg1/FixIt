@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ---------------------------------
       # 0️⃣ Checkout
+      # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -23,7 +25,9 @@ jobs:
           echo "Commit SHA: $GITHUB_SHA"
           echo "Branch: $GITHUB_REF"
 
+      # ---------------------------------
       # 1️⃣ Detect docs changes
+      # ---------------------------------
       - name: Detect docs changes
         id: detect_docs
         run: |
@@ -40,22 +44,35 @@ jobs:
             echo "DOCS_CHANGED=false" >> "$GITHUB_ENV"
           fi
 
+          # Save commits to environment for Python script
           echo "BASE_COMMIT=$BASE" >> "$GITHUB_ENV"
           echo "HEAD_COMMIT=$HEAD" >> "$GITHUB_ENV"
 
+      # ---------------------------------
       # 2️⃣ Enforce commit policy & send Discord
+      # ---------------------------------
       - name: Enforce commit policy and notify
         env:
           DOCS_CHANGED: ${{ env.DOCS_CHANGED }}
           BASE_COMMIT: ${{ env.BASE_COMMIT }}
           HEAD_COMMIT: ${{ env.HEAD_COMMIT }}
-          GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
-          LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
+          DISCORD_WEBHOOK_GENERAL: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
+          DISCORD_WEBHOOK_LLVM_DISCUSSION: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
           python3 .ci/commit_policy.py
 
-      #  Build project
+      # ---------------------------------
+      # 3️⃣ Build project
+      # ---------------------------------
       - name: Build project
         run: |
           echo "Starting build"
           echo "Build completed successfully"
+
+      # ---------------------------------
+      # 4️⃣ Notify pipeline completion
+      # ---------------------------------
+      - name: Notify
+        run: |
+          echo "Documentation changed: $DOCS_CHANGED"
+          echo "CI pipeline finished"
