@@ -1039,7 +1039,6 @@ attributes #0 = { mustprogress nofree norecurse nounwind ssp memory(argmem: read
 
 * `%9 = phi i32 [ %7, %6 ], [ %4, %3 ]`
   This is **SSA in action**: after the `if` branch, `%9` picks **either updated `x` or original `x`**, depending on control flow.
-
 * The **PHI node** ensures **single assignment per SSA rules**, even with `multiple paths`.
 
 **Control Flow**
