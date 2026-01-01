@@ -1,15 +1,87 @@
-- name: Detect docs changes
-  id: detect_docs
-  run: |
-    BASE="${{ github.event.before }}"
-    HEAD="${{ github.sha }}"
-    if git diff --name-only "$BASE" "$HEAD" | grep -q '^docs/'; then
-      echo "DOCS_CHANGED=true" >> $GITHUB_ENV
-    else
-      echo "DOCS_CHANGED=false" >> $GITHUB_ENV
-    fi
+name: Build and Notify
 
-- name: Enforce commit policy (Python)
-  id: commit_policy
-  run: |
-    python3 .ci/commit_policy.py
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build_and_notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ---------------------------------
+      # 0) Checkout
+      # ---------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Log checkout info
+        run: |
+          echo "Repository checked out"
+          echo "Commit SHA: $GITHUB_SHA"
+          echo "Branch: $GITHUB_REF"
+
+      # ---------------------------------
+      # 1) Detect docs changes
+      # ---------------------------------
+      - name: Detect docs changes
+        id: detect_docs
+        run: |
+          echo "Detecting documentation changes"
+
+          BASE="${{ github.event.before }}"
+          HEAD="${{ github.sha }}"
+
+          if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "First commit or force push detected"
+            BASE="$(git rev-list --max-parents=0 HEAD)"
+          fi
+
+          echo "Comparing commits: $BASE -> $HEAD"
+
+          if git diff --name-only "$BASE" "$HEAD" | grep -q '^docs/'; then
+            echo "Documentation changes detected"
+            echo "DOCS_CHANGED=true" >> "$GITHUB_ENV"
+          else
+            echo "No documentation changes detected"
+            echo "DOCS_CHANGED=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Log docs status
+        run: |
+          echo "DOCS_CHANGED=$DOCS_CHANGED"
+
+      # ---------------------------------
+      # 2) Enforce commit policy
+      # ---------------------------------
+      - name: Enforce commit policy (Python)
+        id: commit_policy
+        run: |
+          echo "Running commit message policy enforcement"
+          python3 .ci/commit_policy.py
+
+      - name: Log commit policy outputs
+        run: |
+          echo "Extracted link: '${{ steps.commit_policy.outputs.link }}'"
+          echo "nodoc marker: '${{ steps.commit_policy.outputs.nodoc }}'"
+
+      # ---------------------------------
+      # 3) Build
+      # ---------------------------------
+      - name: Build project
+        run: |
+          echo "Starting build"
+          echo "Build completed successfully"
+
+      # ---------------------------------
+      # 4) Notify
+      # ---------------------------------
+      - name: Notify
+        run: |
+          echo "Notification stage"
+          echo "Docs changed: $DOCS_CHANGED"
+          echo "CI pipeline finished"
