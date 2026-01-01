@@ -81,13 +81,14 @@ def send_discord(message: str, webhook_url: str):
         log(f"Error sending Discord message: {e}")
         sys.exit(1)
 
-# --- Write GitHub Actions output ---
+# --- Write GitHub Actions output safely (encode newlines) ---
 def write_output(name: str, value: str):
     output_file = os.environ.get("GITHUB_OUTPUT")
     if output_file:
+        safe_value = value.replace("\n", "%0A")  # Encode newlines
         with open(output_file, "a") as f:
-            f.write(f"{name}={value}\n")
-        log(f"Set GitHub output {name}={value}")
+            f.write(f"{name}={safe_value}\n")
+        log(f"Set GitHub output {name}={safe_value}")
     else:
         log(f"GITHUB_OUTPUT not set, skipping output {name}")
 
@@ -117,7 +118,7 @@ def main():
 
     link, nodoc = parse_commit_log(commit_log)
 
-    # Enforce policy
+    # Enforce commit message policy
     if docs_flag and not link:
         log("Policy violation: docs changed but missing 'link:'")
         sys.exit(1)
@@ -125,20 +126,19 @@ def main():
         log("Policy violation: no docs changed but missing 'nodoc'")
         sys.exit(1)
 
-    # GitHub Actions outputs
+    # Set GitHub Actions outputs
     write_output("link", link or "")
     write_output("nodoc", "true" if nodoc else "")
 
-    # Build Discord message
+    # Build Discord message if link exists
     if link:
-        # Sanitize link
         clean_link = link.strip()
         article_url = f"https://www.compilersutra.com/docs{clean_link}"
         message = f"New article published on CompilerSutra\n{article_url}"
         write_output("discord_message", message)
         log(f"Discord message: {message}")
 
-        # Select webhook
+        # Select webhook based on link
         webhook = llvm_webhook if clean_link.lower().startswith("/llvm") else general_webhook
         send_discord(message, webhook)
 
