@@ -1157,7 +1157,7 @@ Static Single Assignment represents one of the most impactful innovations in com
 
 As we've started to explore `SSA`, SSA's power lies not in its syntactic constraint of single assignment, but in how it **makes implicit value flow explicit**. By converting complex global analysis problems into simple local graph traversals, SSA enabled compilers to perform optimizations that were previously impractical or impossible.
 
-The journey from `GCC's` pre-SSA days to today's sophisticated SSA-based pipelines in both GCC and LLVM demonstrates a fundamental truth in software engineering: **the right representation can dramatically simplify reasoning**. SSA turned compiler optimization from a collection of ad-hoc analyses into a systematic, composable discipline.
+The journey from `GCC's` pre-SSA `days to today's` sophisticated SSA-based pipelines in both GCC and LLVM demonstrates a fundamental truth in software engineering: **the right representation can dramatically simplify reasoning**. SSA turned compiler optimization from a collection of ad-hoc analyses into a systematic, composable discipline.
 
 Looking forward, SSA continues to evolve. Extensions like **MemorySSA** show that the same principles can apply to memory operations, while research into **polyhedral models** and **sea-of-nodes** representations explores what might come next. Yet for the foreseeable future, SSA remains the bedrock upon which modern compiler optimization is built.
 
