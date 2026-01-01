@@ -1153,9 +1153,9 @@ GCC demonstrates how SSA can be integrated into a mature, multi-language compile
 
 ## Closing Remark
 
-Static Single Assignment represents one of the most impactful innovations in compiler design over the past three decades. What began as an academic insight about value naming has transformed into the foundational representation for virtually all modern optimizing compilers.
+Static Single Assignment represents one of the most impactful innovations in compiler design over the past three decades. What began as an academic insight about value naming has transformed into the foundational representation for virtually all modern optimizing compilers. 
 
-As we've explored, SSA's power lies not in its syntactic constraint of single assignment, but in how it **makes implicit value flow explicit**. By converting complex global analysis problems into simple local graph traversals, SSA enabled compilers to perform optimizations that were previously impractical or impossible.
+As we've started to explore SSA, SSA's power lies not in its syntactic constraint of single assignment, but in how it **makes implicit value flow explicit**. By converting complex global analysis problems into simple local graph traversals, SSA enabled compilers to perform optimizations that were previously impractical or impossible.
 
 The journey from GCC's pre-SSA days to today's sophisticated SSA-based pipelines in both GCC and LLVM demonstrates a fundamental truth in software engineering: **the right representation can dramatically simplify reasoning**. SSA turned compiler optimization from a collection of ad-hoc analyses into a systematic, composable discipline.
 
