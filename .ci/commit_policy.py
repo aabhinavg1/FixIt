@@ -66,26 +66,49 @@ def parse_commit_log(log_text: str):
 # --- Send Discord message ---
 def send_discord(message: str, webhook_url: str):
     if not webhook_url:
-        log("No webhook URL provided, skipping")
+        log("No webhook URL provided, skipping Discord notification")
         return
+    webhook_url = webhook_url.strip()
     payload = {"content": message}
     headers = {"Content-Type": "application/json"}
-    response = requests.post(webhook_url, headers=headers, data=json.dumps(payload))
-    if response.status_code != 204:
-        log(f"Failed to send Discord message: {response.status_code} {response.text}")
+    try:
+        response = requests.post(webhook_url, headers=headers, data=json.dumps(payload), timeout=10)
+        if response.status_code != 204:
+            log(f"Failed to send Discord message: {response.status_code} {response.text}")
+            sys.exit(1)
+        log(f"Discord message sent successfully to {webhook_url}")
+    except requests.RequestException as e:
+        log(f"Error sending Discord message: {e}")
         sys.exit(1)
-    log(f"Discord message sent to {webhook_url}")
+
+# --- Write GitHub Actions output ---
+def write_output(name: str, value: str):
+    output_file = os.environ.get("GITHUB_OUTPUT")
+    if output_file:
+        with open(output_file, "a") as f:
+            f.write(f"{name}={value}\n")
+        log(f"Set GitHub output {name}={value}")
+    else:
+        log(f"GITHUB_OUTPUT not set, skipping output {name}")
 
 # --- Main ---
 def main():
-    base = os.environ.get("BASE_COMMIT")
-    head = os.environ.get("HEAD_COMMIT")
-    docs_flag = os.environ.get("DOCS_CHANGED") == "true"
-    general_webhook = os.environ.get("GENERAL_WEBHOOK")
-    llvm_webhook = os.environ.get("LLVM_WEBHOOK")
+    base = os.environ.get("BASE_COMMIT", "").strip()
+    head = os.environ.get("HEAD_COMMIT", "").strip()
+    docs_flag = os.environ.get("DOCS_CHANGED", "false").lower() == "true"
+
+    general_webhook = os.environ.get("DISCORD_WEBHOOK_GENERAL", "").strip()
+    llvm_webhook = os.environ.get("DISCORD_WEBHOOK_LLVM_DISCUSSION", "").strip()
 
     log(f"DOCS_CHANGED={docs_flag}")
     log(f"BASE={base}, HEAD={head}")
+
+    if not base:
+        base = get_base_commit()
+        log(f"Fallback base commit: {base}")
+    if not head:
+        head = run("git rev-parse HEAD")
+        log(f"Fallback head commit: {head}")
 
     commit_log = get_commit_log(docs_flag)
     print("\n===== COMMIT LOG =====")
@@ -94,7 +117,7 @@ def main():
 
     link, nodoc = parse_commit_log(commit_log)
 
-    # Policy enforcement
+    # Enforce policy
     if docs_flag and not link:
         log("Policy violation: docs changed but missing 'link:'")
         sys.exit(1)
@@ -102,14 +125,21 @@ def main():
         log("Policy violation: no docs changed but missing 'nodoc'")
         sys.exit(1)
 
+    # GitHub Actions outputs
+    write_output("link", link or "")
+    write_output("nodoc", "true" if nodoc else "")
+
     # Build Discord message
     if link:
-        article_url = f"https://www.compilersutra.com/docs{link}"
+        # Sanitize link
+        clean_link = link.strip()
+        article_url = f"https://www.compilersutra.com/docs{clean_link}"
         message = f"New article published on CompilerSutra\n{article_url}"
+        write_output("discord_message", message)
         log(f"Discord message: {message}")
 
-        # Pick webhook
-        webhook = llvm_webhook if link.lower().startswith("/llvm") else general_webhook
+        # Select webhook
+        webhook = llvm_webhook if clean_link.lower().startswith("/llvm") else general_webhook
         send_discord(message, webhook)
 
     log("Commit message policy passed")
