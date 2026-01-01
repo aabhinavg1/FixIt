@@ -1072,7 +1072,7 @@ flowchart TD
 **Key Takeaways:**
 
 * LLVM **always enforces SSA**.
-* PHI nodes are created **where multiple control-flow paths merge**.
+* `PHI` nodes are created **where multiple control-flow paths merge**.
 * If-else can be simplified to `select` **unless you prevent it with side effects or multiple basic blocks**.
 * This test case shows **SSA mechanics clearly**, like GCC examples with GIMPLE-SSA.
 
