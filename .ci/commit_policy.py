@@ -11,15 +11,29 @@ def run(cmd: str) -> str:
     log(f"Running command: {cmd}")
     return subprocess.check_output(cmd, shell=True, text=True).strip()
 
-def get_commit_log(base: str, head: str, docs_changed: bool) -> str:
-    if docs_changed:
-        log("Docs changed: reading commit messages between base and head")
-        cmd = f"git log {base}..{head} --no-merges --pretty=format:'---%n%B'"
-    else:
-        log("No docs changed: reading latest commit message only")
-        cmd = "git log -1 --no-merges --pretty=format:'---%n%B'"
+def get_base_commit() -> str:
+    """
+    Determine a safe base commit:
+    - If this is the first commit, return the root commit
+    - Otherwise, return HEAD~1
+    """
+    try:
+        base = run("git rev-parse HEAD~1")
+        log(f"Using base commit HEAD~1: {base}")
+        return base
+    except subprocess.CalledProcessError:
+        base = run("git rev-list --max-parents=0 HEAD")
+        log(f"Using root commit as base: {base}")
+        return base
 
-    return run(cmd)
+def get_commit_log(docs_changed: bool) -> str:
+    if docs_changed:
+        base = get_base_commit()
+        log("Docs changed: reading commits from base to HEAD")
+        return run(f"git log {base}..HEAD --no-merges --pretty=format:'---%n%B'")
+    else:
+        log("No docs changed: reading latest commit only")
+        return run("git log -1 --no-merges --pretty=format:'---%n%B'")
 
 def parse_commit_log(log_text: str):
     link = None
@@ -31,9 +45,9 @@ def parse_commit_log(log_text: str):
         line = line.strip()
 
         if not link:
-            match = re.match(r'(?i)^link:\s*(.+)$', line)
-            if match:
-                link = match.group(1).strip()
+            m = re.match(r'(?i)^link:\s*(.+)$', line)
+            if m:
+                link = m.group(1).strip()
                 log(f"Found link: {link}")
 
         if re.match(r'(?i)^nodoc\b', line):
@@ -47,24 +61,14 @@ def write_output(name: str, value: str):
     if not output_file:
         log("GITHUB_OUTPUT not set, skipping output export")
         return
-
     with open(output_file, "a") as f:
         f.write(f"{name}={value}\n")
 
 def main():
     docs_changed = os.environ.get("DOCS_CHANGED") == "true"
-    base = os.environ.get("GITHUB_EVENT_BEFORE")
-    head = os.environ.get("GITHUB_SHA")
-
     log(f"DOCS_CHANGED={docs_changed}")
-    log(f"BASE={base}")
-    log(f"HEAD={head}")
 
-    if not base or not head:
-        log("Missing BASE or HEAD commit information")
-        sys.exit(1)
-
-    commit_log = get_commit_log(base, head, docs_changed)
+    commit_log = get_commit_log(docs_changed)
 
     print("\n===== COMMIT LOG READ BY CI =====")
     print(commit_log)
