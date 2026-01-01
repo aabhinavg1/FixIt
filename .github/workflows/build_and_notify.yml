@@ -89,6 +89,7 @@ jobs:
       # ---------------------------------
       # 5) Send Discord notification
       # ---------------------------------
+      # ---------------------------------
       - name: Send Discord notification
         if: success() && steps.commit_policy.outputs.link != ''
         env:
@@ -96,7 +97,14 @@ jobs:
           GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
           LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
-          ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
+          # Sanitize LINK (remove newline, CR, spaces)
+          CLEAN_LINK="$(echo "$LINK" | tr -d '\r\n' | xargs)"
+
+          # Debug log
+          echo "Original LINK: [$LINK]"
+          echo "Sanitized CLEAN_LINK: [$CLEAN_LINK]"
+
+          ARTICLE_URL="https://www.compilersutra.com/docs${CLEAN_LINK}"
           MESSAGE="New article published on CompilerSutra\n${ARTICLE_URL}"
 
           send() {
@@ -109,7 +117,7 @@ jobs:
               "$WEBHOOK"
           }
 
-          if echo "$LINK" | grep -q '^/llvm'; then
+          if echo "$CLEAN_LINK" | grep -q '^/llvm'; then
             send "$LLVM_WEBHOOK"
           else
             send "$GENERAL_WEBHOOK"
