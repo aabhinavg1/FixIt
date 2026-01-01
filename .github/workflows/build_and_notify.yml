@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ---------------------------------
-      # 0) Checkout
-      # ---------------------------------
+      # 0️⃣ Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -25,100 +23,39 @@ jobs:
           echo "Commit SHA: $GITHUB_SHA"
           echo "Branch: $GITHUB_REF"
 
-      # ---------------------------------
-      # 1) Detect docs changes
-      # ---------------------------------
+      # 1️⃣ Detect docs changes
       - name: Detect docs changes
         id: detect_docs
         run: |
-          echo "Detecting documentation changes"
-
           BASE="${{ github.event.before }}"
           HEAD="${{ github.sha }}"
 
           if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
-            echo "First commit or force push detected"
             BASE="$(git rev-list --max-parents=0 HEAD)"
           fi
 
-          echo "Comparing commits: $BASE -> $HEAD"
-
           if git diff --name-only "$BASE" "$HEAD" | grep -q '^docs/'; then
-            echo "Documentation changes detected"
             echo "DOCS_CHANGED=true" >> "$GITHUB_ENV"
           else
-            echo "No documentation changes detected"
             echo "DOCS_CHANGED=false" >> "$GITHUB_ENV"
           fi
 
-      - name: Log docs status
-        run: |
-          echo "DOCS_CHANGED=$DOCS_CHANGED"
+          echo "BASE_COMMIT=$BASE" >> "$GITHUB_ENV"
+          echo "HEAD_COMMIT=$HEAD" >> "$GITHUB_ENV"
 
-      # ---------------------------------
-      # 2) Enforce commit policy
-      # ---------------------------------
-      - name: Enforce commit policy (Python)
-        id: commit_policy
+      # 2️⃣ Enforce commit policy & send Discord
+      - name: Enforce commit policy and notify
+        env:
+          DOCS_CHANGED: ${{ env.DOCS_CHANGED }}
+          BASE_COMMIT: ${{ env.BASE_COMMIT }}
+          HEAD_COMMIT: ${{ env.HEAD_COMMIT }}
+          GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
+          LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
-          echo "Running commit message policy enforcement"
           python3 .ci/commit_policy.py
 
-      - name: Log commit policy outputs
-        run: |
-          echo "Extracted link: '${{ steps.commit_policy.outputs.link }}'"
-          echo "nodoc marker: '${{ steps.commit_policy.outputs.nodoc }}'"
-
-      # ---------------------------------
-      # 3) Build
-      # ---------------------------------
+      #  Build project
       - name: Build project
         run: |
           echo "Starting build"
           echo "Build completed successfully"
-
-      # ---------------------------------
-      # 4) Notify
-      # ---------------------------------
-      - name: Notify
-        run: |
-          echo "Notification stage"
-          echo "Docs changed: $DOCS_CHANGED"
-          echo "CI pipeline finished"
-
-      # ---------------------------------
-      # 5) Send Discord notification
-      # ---------------------------------
-      # ---------------------------------
-      - name: Send Discord notification
-        if: success() && steps.commit_policy.outputs.link != ''
-        env:
-          LINK: ${{ steps.commit_policy.outputs.link }}
-          GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
-          LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
-        run: |
-          # Sanitize LINK (remove newline, CR, spaces)
-          CLEAN_LINK="$(echo "$LINK" | tr -d '\r\n' | xargs)"
-
-          # Debug log
-          echo "Original LINK: [$LINK]"
-          echo "Sanitized CLEAN_LINK: [$CLEAN_LINK]"
-
-          ARTICLE_URL="https://www.compilersutra.com/docs${CLEAN_LINK}"
-          MESSAGE="New article published on CompilerSutra\n${ARTICLE_URL}"
-
-          send() {
-            WEBHOOK="$1"
-            [ -z "$WEBHOOK" ] && return
-            curl -sS \
-              -H "Content-Type: application/json" \
-              -X POST \
-              --data-binary "$(printf '{"content":"%s"}' "$MESSAGE")" \
-              "$WEBHOOK"
-          }
-
-          if echo "$CLEAN_LINK" | grep -q '^/llvm'; then
-            send "$LLVM_WEBHOOK"
-          else
-            send "$GENERAL_WEBHOOK"
-          fi

@@ -3,31 +3,39 @@ import os
 import subprocess
 import sys
 import re
+import json
+import requests
 
+# --- Logging helper ---
 def log(msg: str):
     print(f"[CI][COMMIT_POLICY] {msg}")
 
+# --- Run shell command ---
 def run(cmd: str) -> str:
     log(f"Running command: {cmd}")
     return subprocess.check_output(cmd, shell=True, text=True).strip()
 
+# --- Determine if docs changed ---
+def docs_changed(base: str, head: str) -> bool:
+    diff = run(f"git diff --name-only {base} {head}")
+    changed = any(line.startswith("docs/") for line in diff.splitlines())
+    log(f"Docs changed: {changed}")
+    return changed
+
+# --- Get base commit safely ---
 def get_base_commit() -> str:
-    """
-    Determine a safe base commit:
-    - If this is the first commit, return the root commit
-    - Otherwise, return HEAD~1
-    """
     try:
         base = run("git rev-parse HEAD~1")
-        log(f"Using base commit HEAD~1: {base}")
+        log(f"Using HEAD~1 as base: {base}")
         return base
     except subprocess.CalledProcessError:
         base = run("git rev-list --max-parents=0 HEAD")
         log(f"Using root commit as base: {base}")
         return base
 
-def get_commit_log(docs_changed: bool) -> str:
-    if docs_changed:
+# --- Get commit log ---
+def get_commit_log(docs_changed_flag: bool) -> str:
+    if docs_changed_flag:
         base = get_base_commit()
         log("Docs changed: reading commits from base to HEAD")
         return run(f"git log {base}..HEAD --no-merges --pretty=format:'---%n%B'")
@@ -35,15 +43,14 @@ def get_commit_log(docs_changed: bool) -> str:
         log("No docs changed: reading latest commit only")
         return run("git log -1 --no-merges --pretty=format:'---%n%B'")
 
+# --- Parse commit log ---
 def parse_commit_log(log_text: str):
     link = None
     nodoc = False
-
-    log("Parsing commit messages")
+    log("Parsing commit log")
 
     for line in log_text.splitlines():
         line = line.strip()
-
         if not link:
             m = re.match(r'(?i)^link:\s*(.+)$', line)
             if m:
@@ -56,36 +63,54 @@ def parse_commit_log(log_text: str):
 
     return link, nodoc
 
-def write_output(name: str, value: str):
-    output_file = os.environ.get("GITHUB_OUTPUT")
-    if not output_file:
-        log("GITHUB_OUTPUT not set, skipping output export")
+# --- Send Discord message ---
+def send_discord(message: str, webhook_url: str):
+    if not webhook_url:
+        log("No webhook URL provided, skipping")
         return
-    with open(output_file, "a") as f:
-        f.write(f"{name}={value}\n")
+    payload = {"content": message}
+    headers = {"Content-Type": "application/json"}
+    response = requests.post(webhook_url, headers=headers, data=json.dumps(payload))
+    if response.status_code != 204:
+        log(f"Failed to send Discord message: {response.status_code} {response.text}")
+        sys.exit(1)
+    log(f"Discord message sent to {webhook_url}")
 
+# --- Main ---
 def main():
-    docs_changed = os.environ.get("DOCS_CHANGED") == "true"
-    log(f"DOCS_CHANGED={docs_changed}")
+    base = os.environ.get("BASE_COMMIT")
+    head = os.environ.get("HEAD_COMMIT")
+    docs_flag = os.environ.get("DOCS_CHANGED") == "true"
+    general_webhook = os.environ.get("GENERAL_WEBHOOK")
+    llvm_webhook = os.environ.get("LLVM_WEBHOOK")
 
-    commit_log = get_commit_log(docs_changed)
+    log(f"DOCS_CHANGED={docs_flag}")
+    log(f"BASE={base}, HEAD={head}")
 
-    print("\n===== COMMIT LOG READ BY CI =====")
+    commit_log = get_commit_log(docs_flag)
+    print("\n===== COMMIT LOG =====")
     print(commit_log)
-    print("================================\n")
+    print("=====================\n")
 
     link, nodoc = parse_commit_log(commit_log)
 
-    write_output("link", link or "")
-    write_output("nodoc", "true" if nodoc else "")
-
-    if docs_changed and not link:
+    # Policy enforcement
+    if docs_flag and not link:
         log("Policy violation: docs changed but missing 'link:'")
         sys.exit(1)
-
-    if not docs_changed and not nodoc:
+    if not docs_flag and not nodoc:
         log("Policy violation: no docs changed but missing 'nodoc'")
         sys.exit(1)
+
+    # Build Discord message
+    if link:
+        article_url = f"https://www.compilersutra.com/docs{link}"
+        message = f"New article published on CompilerSutra\n{article_url}"
+        log(f"Discord message: {message}")
+
+        # Pick webhook
+        webhook = llvm_webhook if link.lower().startswith("/llvm") else general_webhook
+        send_discord(message, webhook)
 
     log("Commit message policy passed")
 
