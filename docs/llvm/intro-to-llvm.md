@@ -66,33 +66,200 @@ Here’s a refined and expanded version of your table, now organized with bullet
 <details>
 <summary><strong>LEVEL 0: 📘 Compiler-Specific DSA Foundations</strong></summary>
 
-| Phase             | Core DSA / Algorithms                   | Application in Compiler          | Status      |
-| ----------------- | --------------------------------------- | -------------------------------- | ----------- |
-| Lexical Analysis  | Finite Automata (NFA/DFA)               | Token recognition                | Coming Soon |
-| Lexical Analysis  | Hash Tables                             | Identifier management            | Coming Soon |
-| Lexical Analysis  | Tries                                   | Keyword lookup                   | Coming Soon |
-| Lexical Analysis  | String Matching (KMP, Rabin-Karp, BM)   | Lexeme recognition               | Coming Soon |
-| Syntax Analysis   | Parse Trees                             | Grammar derivation               | Coming Soon |
-| Syntax Analysis   | Abstract Syntax Trees (AST)             | Program structure representation | Coming Soon |
-| Syntax Analysis   | Stacks (LL, LR Parsing)                 | Recursive & shift-reduce parsing | Coming Soon |
-| Syntax Analysis   | Control Flow Graphs (CFG)               | Flow of program execution        | Coming Soon |
-| Semantic Analysis | Symbol Table (Hash Map / Tree)          | Scope & type checking            | Coming Soon |
-| Semantic Analysis | Attribute Grammars                      | Propagation of semantic info     | Coming Soon |
-| Semantic Analysis | Union-Find (Disjoint Sets)              | Type equivalence, alias analysis | Coming Soon |
-| Intermediate Code | Directed Acyclic Graphs (DAG)           | Common subexpression elimination | Coming Soon |
-| Intermediate Code | Static Single Assignment (SSA)          | IR simplification                | [link](./llvm_Curriculum/level0/Static_Single_Assignment.md) |
-| Intermediate Code | Three-Address Code (TAC)                | IR generation                    | Coming Soon |
-| Optimization      | Data Flow Graphs                        | Liveness & reaching defs         | Coming Soon |
-| Optimization      | Dominator Trees                         | Loop optimization                | Coming Soon |
-| Optimization      | Worklist Algorithms                     | Iterative dataflow solving       | Coming Soon |
-| Optimization      | Dynamic Programming                     | Instruction scheduling, tiling   | Coming Soon |
-| Optimization      | Graph Coloring                          | Register allocation              | Coming Soon |
-| Code Generation   | Expression Trees                        | Instruction selection            | Coming Soon |
-| Code Generation   | Interference Graphs                     | Register assignment              | Coming Soon |
-| Code Generation   | Scheduling Algorithms (List Scheduling) | Instruction scheduling           | Coming Soon |
-| Code Generation   | Priority Queues / Heaps                 | Peephole & instruction ordering  | Coming Soon |
- 
+<table>
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Core DSA / Algorithms</th>
+      <th>Article Link</th>
+      <th>Video</th>
+      <th>PDF</th>
+      <th>PPT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Lexical Analysis -->
+    <tr>
+      <td rowspan="4">Lexical Analysis</td>
+      <td>Finite Automata (NFA/DFA)</td>
+      <td>Token recognition</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Hash Tables</td>
+      <td>Identifier management</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Tries</td>
+      <td>Keyword lookup</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>String Matching (KMP, Rabin-Karp, BM)</td>
+      <td>Lexeme recognition</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <!-- Syntax Analysis -->
+    <tr>
+      <td rowspan="4">Syntax Analysis</td>
+      <td>Parse Trees</td>
+      <td>Grammar derivation</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Abstract Syntax Trees (AST)</td>
+      <td>Program structure representation</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Stacks (LL, LR Parsing)</td>
+      <td>Recursive & shift-reduce parsing</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Control Flow Graphs (CFG)</td>
+      <td>Flow of program execution</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <!-- Semantic Analysis -->
+    <tr>
+      <td rowspan="3">Semantic Analysis</td>
+      <td>Symbol Table (Hash Map / Tree)</td>
+      <td>Scope & type checking</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Attribute Grammars</td>
+      <td>Propagation of semantic info</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Union-Find (Disjoint Sets)</td>
+      <td>Type equivalence, alias analysis</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <!-- Intermediate Code -->
+    <tr>
+      <td rowspan="3">Intermediate Code</td>
+      <td>Directed Acyclic Graphs (DAG)</td>
+      <td>Common subexpression elimination</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Static Single Assignment (SSA)</td>
+      <td>
+        IR simplification
+        <ul>
+          <li><a href="../llvm_Curriculum/level0/Static_Single_Assignment/">SSA Part1</a></li>
+          <li><a href="../llvm_Curriculum/level0/Static_Single_Assignment_part2/">SSA Part2</a></li>
+        </ul>
+      </td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Three-Address Code (TAC)</td>
+      <td>IR generation</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <!-- Optimization -->
+    <tr>
+      <td rowspan="5">Optimization</td>
+      <td>Data Flow Graphs</td>
+      <td>Liveness & reaching definitions</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Dominator Trees</td>
+      <td>Loop optimization</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Worklist Algorithms</td>
+      <td>Iterative dataflow solving</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Dynamic Programming</td>
+      <td>Instruction scheduling, tiling</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Graph Coloring</td>
+      <td>Register allocation</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <!-- Code Generation -->
+    <tr>
+      <td rowspan="4">Code Generation</td>
+      <td>Expression Trees</td>
+      <td>Instruction selection</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Interference Graphs</td>
+      <td>Register assignment</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Scheduling Algorithms (List Scheduling)</td>
+      <td>Instruction scheduling</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
+    <tr>
+      <td>Priority Queues / Heaps</td>
+      <td>Peephole & instruction ordering</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+      <td>Coming Soon</td>
+    </tr>
 
+  </tbody>
+</table>
 </details>
 
 <h1 class="curriculum-title">The Curriculum for the compiler</h1>
