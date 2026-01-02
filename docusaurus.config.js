@@ -4,7 +4,7 @@ const config = {
   title: 'CompilerSutra',
   tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
   favicon: 'img/favicon.ico',
-  url: 'https://compilersutra.com/',
+  url: 'https://www.compilersutra.com',
   baseUrl: '/',
   organizationName: 'compilersutra',
   trailingSlash: true, // ensures all docs URLs end with /

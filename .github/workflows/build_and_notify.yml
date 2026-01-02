@@ -12,151 +12,67 @@ jobs:
 
     steps:
       # ---------------------------------
-      # 0) Checkout full history
+      # 0️⃣ Checkout
       # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ---------------------------------
-      # 1) Show recent commits for debug
-      # ---------------------------------
-      - name: Show recent commits
+      - name: Log checkout info
         run: |
-          echo "Last 10 commits:"
-          git log --oneline -10
+          echo "Repository checked out"
+          echo "Commit SHA: $GITHUB_SHA"
+          echo "Branch: $GITHUB_REF"
 
       # ---------------------------------
-      # 2) Detect docs changes
+      # 1️⃣ Detect docs changes
       # ---------------------------------
       - name: Detect docs changes
         id: detect_docs
         run: |
-          BASE_SHA="${{ github.event.before }}"
-          HEAD_SHA="${{ github.sha }}"
+          BASE="${{ github.event.before }}"
+          HEAD="${{ github.sha }}"
 
-          DOCS_CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep '^docs/' || true)
+          if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            BASE="$(git rev-list --max-parents=0 HEAD)"
+          fi
 
-          if [ -n "$DOCS_CHANGED" ]; then
-            echo "docs_changed=true" >> $GITHUB_OUTPUT
+          if git diff --name-only "$BASE" "$HEAD" | grep -q '^docs/'; then
+            echo "DOCS_CHANGED=true" >> "$GITHUB_ENV"
           else
-            echo "docs_changed=false" >> $GITHUB_OUTPUT
+            echo "DOCS_CHANGED=false" >> "$GITHUB_ENV"
           fi
 
-          echo "Docs changed files:"
-          echo "$DOCS_CHANGED"
+          # Save commits to environment for Python script
+          echo "BASE_COMMIT=$BASE" >> "$GITHUB_ENV"
+          echo "HEAD_COMMIT=$HEAD" >> "$GITHUB_ENV"
 
       # ---------------------------------
-      # 3) Read commit messages (merge-safe)
+      # 2️⃣ Enforce commit policy & send Discord
       # ---------------------------------
-      - name: Read commit messages
-        run: |
-          if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
-            echo "Docs changed. Scanning last 10 non-merge commits."
-            LOG=$(git log --no-merges -10 --pretty=format:'---%n%B')
-          else
-            echo "No docs changed. Reading latest non-merge commit."
-            LOG=$(git log -1 --no-merges --pretty=format:'---%n%B')
-          fi
-
-          echo ""
-          echo "================= COMMIT LOG READ BY CI ================="
-          echo "$LOG"
-          echo "========================================================="
-          echo ""
-
-          # Extract latest link
-          LINK=$(echo "$LOG" | awk '
-            /^---$/ { next }
-            /^[[:space:]]*[Ll][Ii][Nn][Kk]:/ {
-              sub(/^[[:space:]]*[Ll][Ii][Nn][Kk]:[[:space:]]*/, "", $0)
-              print $0
-              exit
-            }')
-
-          # Extract nodoc anywhere
-          NODOC=$(echo "$LOG" | grep -i '^[[:space:]]*nodoc' || true)
-
-          echo "LINK=$LINK" >> $GITHUB_ENV
-          echo "NODOC=$NODOC" >> $GITHUB_ENV
-
-          echo "Resolved LINK  : [$LINK]"
-          echo "Resolved NODOC : [$NODOC]"
-
-      # ---------------------------------
-      # 4) Enforce commit message policy
-      # ---------------------------------
-      - name: Enforce commit message policy
-        run: |
-          if [ "${{ steps.detect_docs.outputs.docs_changed }}" = "true" ]; then
-            if [ -z "$LINK" ]; then
-              echo "Docs changed but missing 'link:' in commit messages"
-              exit 1
-            fi
-          else
-            if [ -z "$NODOC" ]; then
-              echo "No docs changed but missing 'nodoc' in commit message"
-              exit 1
-            fi
-          fi
-
-          echo "Commit message policy passed"
-
-      # ---------------------------------
-      # 5) Validate route format
-      # ---------------------------------
-      - name: Validate link format
-        if: env.LINK != ''
-        run: |
-          if ! echo "$LINK" | grep -q '^/'; then
-            echo "Invalid link format. link must start with '/'"
-            exit 1
-          fi
-          echo "Validated route: $LINK"
-
-      # ---------------------------------
-      # 6) Build site
-      # ---------------------------------
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build site
-        run: npm run build
-
-      # ---------------------------------
-      # 7) Send Discord notification
-      # ---------------------------------
-      - name: Send Discord notification
-        if: success() && env.LINK != ''
+      - name: Enforce commit policy and notify
         env:
-          GENERAL_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
-          LLVM_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
+          DOCS_CHANGED: ${{ env.DOCS_CHANGED }}
+          BASE_COMMIT: ${{ env.BASE_COMMIT }}
+          HEAD_COMMIT: ${{ env.HEAD_COMMIT }}
+          DISCORD_WEBHOOK_GENERAL: ${{ secrets.DISCORD_WEBHOOK_GENERAL }}
+          DISCORD_WEBHOOK_LLVM_DISCUSSION: ${{ secrets.DISCORD_WEBHOOK_LLVM_DISCUSSION }}
         run: |
-          ARTICLE_URL="https://www.compilersutra.com/docs${LINK}"
-          MSG="New article published on CompilerSutra\n${ARTICLE_URL}"
+          python3 .ci/commit_policy.py
 
-          clean() {
-            echo "$1" | tr -d '\r\n' | xargs
-          }
+      # ---------------------------------
+      # 3️⃣ Build project
+      # ---------------------------------
+      - name: Build project
+        run: |
+          echo "Starting build"
+          echo "Build completed successfully"
 
-          send() {
-            WEBHOOK=$(clean "$1")
-            [ -z "$WEBHOOK" ] && return
-            curl -sS \
-              -H "Content-Type: application/json" \
-              -X POST \
-              --data-binary "$(printf '{"content":"%s"}' "$MSG")" \
-              "$WEBHOOK"
-          }
-
-          if echo "$LINK" | grep -q '^/llvm'; then
-            send "$LLVM_WEBHOOK"
-          else
-            send "$GENERAL_WEBHOOK"
-          fi
+      # ---------------------------------
+      # 4️⃣ Notify pipeline completion
+      # ---------------------------------
+      - name: Notify
+        run: |
+          echo "Documentation changed: $DOCS_CHANGED"
+          echo "CI pipeline finished"

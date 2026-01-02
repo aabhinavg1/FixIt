@@ -159,6 +159,7 @@ const sidebars = {
           label: 'LEVEL 0 - Compiler-Specific DSA Foundations',
           items: [
             'llvm/llvm_Curriculum/level0/Static_Single_Assignment',
+            'llvm/llvm_Curriculum/level0/Static_Single_Assignment_part2'
           ],
         },
 
