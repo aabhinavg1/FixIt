@@ -7,10 +7,11 @@ const config = {
   url: 'https://www.compilersutra.com',
   baseUrl: '/',
   organizationName: 'compilersutra',
-  trailingSlash: true, // ensures all docs URLs end with /
+  trailingSlash: true,
   projectName: 'FixIt',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -40,8 +41,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
       metadata: [
-       // { name: 'google-adsense-account', content: 'ca-pub-4507855210682789' },
-       { name: 'google-adsense-account', content: 'ca-pub-3213090090375658'},
+        { name: 'google-adsense-account', content: 'ca-pub-3213090090375658' },
       ],
 
       navbar: {
@@ -50,7 +50,9 @@ const config = {
           alt: 'CompilerSutra Logo',
           src: 'img/logo.svg',
         },
+
         items: [
+          /* ---------------- Tutorials ---------------- */
           {
             type: 'dropdown',
             label: 'Tutorials',
@@ -63,32 +65,84 @@ const config = {
               { label: 'C++ Tutorials', to: '/docs/c++/cpp-learning-roadmap' },
               { label: 'DSA Tutorials', to: '/docs/DSA/' },
               { label: 'Python Automation', to: '/docs/python/python_tutorial' },
-              { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },  // Added Linux
-              { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc'},  // Added Linux       
-              {label: 'OpenCl Tutorial' , to: '/docs/gpu/opencl'},
-              
+              { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },
+              { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
+              { label: 'OpenCL Tutorial', to: '/docs/gpu/opencl' },
+              {label: 'Live', to: '/docs/linux/live'},
             ],
           },
-          { type: 'docSidebar', sidebarId: 'howToSidebar',  position: 'left', label: 'How-To Guides'},
-          { type: 'docSidebar', sidebarId: 'projectSidebar', position: 'left', label: 'Project' },
-          { type: 'docSidebar', sidebarId: 'techblogSidebar', position: 'left', label: 'Tech_blog'},
-          { type: 'docSidebar', sidebarId: 'LLVMPassSidebar', position: 'left', label: 'LLVM_Pass_Tracker'},
 
+          /* ---------------- YouTube (NEW) ---------------- */
+          {
+            type: 'dropdown',
+            label: 'YouTube',
+            position: 'left',
+            items: [
+              { label: 'Live Classes', to: '/docs/linux/live'},
+              {
+                label: 'Tech Talks ',
+                href: 'https://www.youtube.com/@compilersutra/live',
+              },
+            ],
+          },
+
+          /* ---------------- Docs ---------------- */
+          {
+            type: 'docSidebar',
+            sidebarId: 'howToSidebar',
+            position: 'left',
+            label: 'How-To Guides',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'projectSidebar',
+            position: 'left',
+            label: 'Project',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'techblogSidebar',
+            position: 'left',
+            label: 'Tech_blog',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'LLVMPassSidebar',
+            position: 'left',
+            label: 'LLVM_Pass_Tracker',
+          },
+
+          /* ---------------- MCQ ---------------- */
           {
             type: 'dropdown',
             label: 'MCQ',
             position: 'left',
             items: [
               { label: 'Practice MCQ CPP', to: '/docs/mcq/cpp_mcqs' },
-              { label: 'Practice Interview Question and Answer CPP', to: '/docs/mcq/interview_question/cpp_interview_mcqs' },
-              {label: 'Practice domain Specific MCQ', to: '/docs/mcq/cpp_mcqs#-domain-specific-c-mcqs'},
-              {label: 'React MCQ', to: '/docs/react_mcq'}
+              {
+                label: 'Practice Interview Question & Answers (CPP)',
+                to: '/docs/mcq/interview_question/cpp_interview_mcqs',
+              },
+              {
+                label: 'Domain Specific C++ MCQs',
+                to: '/docs/mcq/cpp_mcqs#-domain-specific-c-mcqs',
+              },
+              { label: 'React MCQ', to: '/docs/react_mcq' },
             ],
           },
-          { href: 'https://www.youtube.com/@compilersutra', label: 'youtube', position: 'right' },
-          { href: 'https://compilersutra.quora.com', label: '?', position: 'right' },
+
+          /* ---------------- External ---------------- */
+          {
+            href: 'https://www.youtube.com/@compilersutra',
+            label: 'YouTube Channel',
+            position: 'right',
+          },
+          {
+            href: 'https://compilersutra.quora.com',
+            label: 'Q&A',
+            position: 'right',
+          },
         ],
-        
       },
 
       footer: {
@@ -140,31 +194,16 @@ const config = {
       'data-ad-client': 'ca-pub-3213090090375658',
       defer: true,
     },
-    // {
-    //   src: "https://cdn-cookieyes.com/client_data/d4cd2fb2a4f6dfbaadea6ad8/script.js",
-    //   async: true,
-    //   id: "cookieyes",
-    //   defer: true,
-    // },
     {
       src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
       async: true,
       defer: true,
     },
-    
-    //   src: "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js",
-    //   async: true,
-    //   "custom-element": "amp-auto-ads",
-    //   defer: true,
-    // },
     { src: '/js/ezoic.js', async: true, defer: true },
-
-    //git{ src: '/js/contest.js', async: true, defer: true},
-    //{ src: '/js/amp-auto-ads.js', async: true, defer: true },
     { src: '/js/google-tag-manager.js', async: true, defer: true },
     { src: '/js/google-analytics.js', async: true, defer: true },
     { src: '/js/structured.js', async: true, defer: true },
-    { src: '/js/llvm.js', async: true, defer: true  },
+    { src: '/js/llvm.js', async: true, defer: true },
   ],
 
   customFields: {
@@ -173,4 +212,3 @@ const config = {
 };
 
 module.exports = config;
- 

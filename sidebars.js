@@ -383,6 +383,7 @@ const sidebars = {
         'linux/username_in_linux',
         'linux/know_machine_ip',
         'linux/how_ssh_scp_work',
+        'linux/live',
       ],
     },
   ],
@@ -730,6 +731,18 @@ howToSidebar: [
       ],
     },
   ],
+
+youtubeliveSidebar: [
+  {
+    type: 'category',
+    label: 'Live Sessions',
+    collapsed: false,
+    items: [
+      'live/live',
+    ],
+  },
+]
+
 
 };
 
