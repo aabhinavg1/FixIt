@@ -205,6 +205,32 @@ Each live session is later converted into:
       </td>
       <td>Coming Soon</td>
     </tr>
+
+    <tr>
+      <td>6</td>
+      <td>Compiler Front Middle Back End </td>
+      <td>
+        <a href="https://www.youtube.com/watch?v=Pq8Vj6KtwVc" target="_blank">link</a>
+      </td>
+      <td>
+        <a href="/ppt/live/compiler_inside_part1.pdf" target="_blank">slide</a>
+      </td>
+      <td>Coming Soon</td>
+    </tr>
+    
+    <tr>
+    <td>7</td>
+    <td>Why Compiler Need IR</td>
+    <td>
+      <a href="https://www.youtube.com/live/LIJlop0-UFw" target="_blank">link</a>
+    </td>
+    <td>
+      <a href="/ppt/live/compiler_inside_part1.pdf" target="_blank">slide</a>
+    </td>
+    <td>Coming Soon</td>
+  </tr>
+
+  
   </tbody>
 </table>
 
