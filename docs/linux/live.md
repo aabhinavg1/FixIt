@@ -167,9 +167,12 @@ Each live session is later converted into:
       <td>
         <a href="/ppt/live/sourcetobinary.pdf" target="_blank">slide</a>
       </td>
-      <td>Coming Soon</td>
+      <td>
+        <a href="https://www.compilersutra.com/docs/c++/basic/c++_compilers/" target="_blank">
+         C++ Compilers
+       </a>
+      </td>
     </tr>
-
     <tr>
       <td>3</td>
       <td>What Is a Compiler? Semantic Equivalence Explained Simply</td>
