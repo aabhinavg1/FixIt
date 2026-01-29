@@ -231,7 +231,7 @@ Each live session is later converted into:
       <a href="/ppt/live/compiler_inside_part1.pdf" target="_blank">slide</a>
     </td>
     <td>Coming Soon</td>
-  </tr>
+    </tr>
 
   
   </tbody>
