@@ -129,6 +129,7 @@ const sidebars = {
             'llvm/llvm_basic/congratulations',
             'llvm/llvm_basic/deploy-your-site',
             'llvm/fix_llvm_build_bugs',
+            'llvm/llvm_basic/LLVM_Architecture',
 
           ],
         },
