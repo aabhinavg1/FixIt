@@ -32,6 +32,7 @@ import TabItem from '@theme/TabItem';
     <AdBanner />
 </div>
 
+## For live Session [click here](#llvm-live-section)
 
 # LLVM Curriculum (From Beginner to Pro)
 
@@ -454,6 +455,72 @@ Here’s a refined and expanded version of your table, now organized with bullet
 <div>
     <AdBanner />
 </div>
+
+## LLVM Live Section  
+
+***LLVM LIVE: Real-Time Deep Dives & System-Level Walkthroughs***
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Live Topic</th>
+      <th>Description</th>
+      <th>Article</th>
+      <th>Video</th>
+      <th>PPT</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<tr>
+  <td><strong>Live Deep Dive</strong></td>
+
+  <td>
+    <strong>Episode 1: LLVM Architecture Overview</strong>
+  </td>
+
+  <td>
+    Complete system-level walkthrough of the LLVM compilation pipeline:<br/>
+    Frontend → LLVM IR → Optimization Passes → Backend → MIR → Assembly
+  </td>
+
+  <td>
+    <ul>
+      <li>
+        <a href="https://www.compilersutra.com/docs/llvm/llvm_basic/llvm_architecture/" target="_blank">
+          📖 Read Article
+        </a>
+      </li>
+    </ul>
+  </td>
+
+  <td>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=0MVe0wGG1Ns" target="_blank">
+          🎥 Watch Video
+        </a>
+      </li>
+    </ul>
+  </td>
+
+  <td>
+    <ul>
+      <li>
+        <a href="/ppt/live/llvm_architecture.pdf" target="_blank">
+          📊 Download PPT
+        </a>
+      </li>
+    </ul>
+  </td>
+
+</tr>
+
+  </tbody>
+</table>
+
+
 
 ### 🚀 Get Started!  
 Choose a level to begin your **LLVM journey**. Whether you’re a beginner or aiming for advanced backend engineering, this curriculum will give you the structured roadmap to **master LLVM step by step**.
