@@ -10,6 +10,7 @@ const sidebars = {
         'compilers/Compiler',
         'compilers/ir_in_compiler',
         'compilers/sourcecode_to_executable',
+        'compilers/IntroductionToCompilers',
         'compilers/front_end/compiler-frontend',
         'compilers/front_end/role_of_parser',
         'compilers/back_end/introduction-to-backend-compilers',
@@ -18,6 +19,7 @@ const sidebars = {
         'compilers/build_your_compiler',
         'compilers/other_arch/other-architectures',
         'compilers/basic_block_in_compiler',
+    
       ],
     },
     {
