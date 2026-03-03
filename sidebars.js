@@ -156,6 +156,7 @@ const sidebars = {
           label: 'LLVM IR',
           items: [
             'llvm/llvm_ir/intro_to_llvm_ir',
+            'llvm/llvm_ir/hierarchy_of_llvm_ir',
           ],
         },
         {
