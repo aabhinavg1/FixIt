@@ -102,7 +102,7 @@ keywords:
   - compiler phases explained
   - from code to assembly
   - getting started with LLVM
-  - Getting Started with LLVM
+  - Getting Started with LLVMgi
 ---
 
 import AdBanner from '@site/src/components/AdBanner';

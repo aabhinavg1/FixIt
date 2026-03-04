@@ -69,6 +69,7 @@ const config = {
               { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
               { label: 'OpenCL Tutorial', to: '/docs/gpu/opencl' },
               {label: 'Live', to: '/docs/linux/live'},
+              {label: 'COA',  to: '/docs/coa'},
             ],
           },
 
@@ -156,6 +157,7 @@ const config = {
               { label: 'Compilers', to: '/docs/compilers/compiler' },
               { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
               { label: 'DSA', to: '/docs/DSA/DSA' },
+              {label: 'COA', to: '/docs/coa/coa' },
             ],
           },
           {

@@ -746,6 +746,17 @@ youtubeliveSidebar: [
       'live/live',
     ],
   },
+],
+
+coasidebar: [
+  {
+    type: 'category',
+    label: 'COA',
+    collapsed: false,
+    items: [
+      'coa',
+    ],
+  },
 ]
 
 
