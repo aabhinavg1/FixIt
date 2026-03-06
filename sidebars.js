@@ -755,6 +755,7 @@ coasidebar: [
     collapsed: false,
     items: [
       'coa',
+      'coa/intro_to_coa',
     ],
   },
 ]

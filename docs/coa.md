@@ -158,7 +158,7 @@ They become **direct tools for shaping how hardware executes programs**.
 <tr>
   <td>1</td>
   <td>Computer Organization vs Computer Architecture</td>
-  <td>Coming Soon</td>
+  <td>[link](coa/intro_to_coa.md)</td>
   <td>Coming Soon</td>
 </tr>
 
