@@ -758,6 +758,18 @@ coasidebar: [
       'coa/intro_to_coa',
     ],
   },
+],
+
+articlesidebar: [
+  {
+    type: 'category',
+    label: 'article',
+    collapsed: false,
+    items: [
+      'articles',
+      'articles/compiler_directive',
+    ],
+  },
 ]
 
 

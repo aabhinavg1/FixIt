@@ -89,10 +89,14 @@ const config = {
 
           /* ---------------- Docs ---------------- */
           {
-            type: 'docSidebar',
-            sidebarId: 'howToSidebar',
+            type: 'dropdown',
             position: 'left',
-            label: 'How-To Guides',
+            label: 'Blog',
+            items: [
+              { label: 'Guides', to: '/docs/how_about' },
+              {label: 'Articles', to: '/docs/articles'},
+            ]
+
           },
           {
             type: 'docSidebar',
