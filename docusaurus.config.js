@@ -42,6 +42,20 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
       metadata: [
         { name: 'google-adsense-account', content: 'ca-pub-3213090090375658' },
+        { name: 'theme-color', content: '#0a0f1e' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'author', content: 'CompilerSutra' },
+        { name: 'keywords', content: 'LLVM, MLIR, TVM, compiler, C++, GPU programming, DSA, tutorials, compiler optimization' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'CompilerSutra' },
+        { property: 'og:url', content: 'https://www.compilersutra.com' },
+        { property: 'og:image', content: 'https://www.compilersutra.com/img/og-image.png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@CompilerSutra' },
+        { name: 'twitter:creator', content: '@CompilerSutra' },
+        { name: 'twitter:image', content: 'https://www.compilersutra.com/img/og-image.png' },
       ],
 
       navbar: {
@@ -108,13 +122,13 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'techblogSidebar',
             position: 'left',
-            label: 'Tech_blog',
+            label: 'Tech Blog',
           },
           {
             type: 'docSidebar',
             sidebarId: 'LLVMPassSidebar',
             position: 'left',
-            label: 'LLVM_Pass_Tracker',
+            label: 'LLVM Pass Tracker',
           },
 
           /* ---------------- MCQ ---------------- */

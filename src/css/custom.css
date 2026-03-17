@@ -1,6 +1,9 @@
+/* Load Inter from Google Fonts — used throughout the site */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 /**
  * Global Stylesheet
- * 
+ *
  * Purpose: Provides consistent styling across the entire application
  * Features:
  * - Comprehensive design system with semantic variables
@@ -45,7 +48,7 @@
   /* Typography */
   --font-base-size: 16px;
   --font-scale-ratio: 1.2; /* Reduced from 1.25 for more subtle scaling */
-  --font-family-sans: 'Segoe UI', system-ui, sans-serif;
+  --font-family-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
   --font-family-serif: 'Georgia', serif; /* Added serif option for professional feel */
   --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
   --font-weight-regular: 400;
