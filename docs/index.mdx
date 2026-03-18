@@ -1,0 +1,289 @@
+---
+id: docs-home
+title: CompilerSutra Documentation
+description: Master compiler engineering, systems programming, and GPU computing with our structured learning paths
+hide_table_of_contents: true
+---
+
+import DocsHub from '@site/src/components/DocsHub';
+import Link from '@docusaurus/Link';
+
+<div className="docs-hero">
+  <h1 className="docs-title">
+    <span className="gradient-text">CompilerSutra</span>
+  </h1>
+  <p className="docs-subtitle">
+    Master compilers, systems, and performance engineering
+  </p>
+  <div className="docs-badges">
+    <span className="badge">LLVM</span>
+    <span className="badge">GPU Computing</span>
+    <span className="badge">Systems Programming</span>
+    <span className="badge">Compiler Design</span>
+  </div>
+</div>
+
+---
+
+<DocsHub />
+
+---
+
+## Your Learning Journey
+
+Follow our curated path from fundamentals to advanced concepts:
+
+<div className="learning-grid">
+  <div className="learning-card">
+    <div className="step-number">1</div>
+    <h3>C++</h3>
+    <p>Systems programming fundamentals, memory management, and performance-critical code</p>
+    <Link to="/docs/c++/cpp-learning-roadmap" className="learning-link">Start →</Link>
+  </div>
+
+  <div className="learning-card">
+    <div className="step-number">2</div>
+    <h3>Data Structures & Algorithms</h3>
+    <p>Essential algorithms, complexity analysis, and problem-solving patterns</p>
+    <Link to="/docs/algorithms" className="learning-link">Start →</Link>
+  </div>
+
+  <div className="learning-card">
+    <div className="step-number">3</div>
+    <h3>Compiler Fundamentals</h3>
+    <p>Lexical analysis, parsing, semantic analysis, and intermediate representations</p>
+    <Link to="/docs/compilers/compiler" className="learning-link">Start →</Link>
+  </div>
+
+  <div className="learning-card">
+    <div className="step-number">4</div>
+    <h3>LLVM</h3>
+    <p>IR design, optimization passes, and backend code generation</p>
+    <Link to="/docs/llvm/intro-to-llvm" className="learning-link">Start →</Link>
+  </div>
+
+  <div className="learning-card">
+    <div className="step-number">5</div>
+    <h3>GPU Programming</h3>
+    <p>Parallel computing, memory hierarchy, and kernel optimization</p>
+    <Link to="/docs/gpu/opencl" className="learning-link">Start →</Link>
+  </div>
+</div>
+
+---
+
+## Why CompilerSutra?
+
+<div className="feature-grid">
+  <div className="feature">
+    <h4>Structured Path</h4>
+    <p>Carefully sequenced topics that build on each other</p>
+  </div>
+  <div className="feature">
+    <h4>Hands-on Learning</h4>
+    <p>Practical examples and real-world compiler projects</p>
+  </div>
+  <div className="feature">
+    <h4>Comprehensive</h4>
+    <p>From theory to implementation, all in one place</p>
+  </div>
+  <div className="feature">
+    <h4>Community Driven</h4>
+    <p>Learn with fellow compiler engineers</p>
+  </div>
+</div>
+
+---
+
+## Quick Links
+
+<div className="quick-links">
+  <Link to="/docs/llvm/intro-to-llvm" className="quick-link">LLVM Tutorials</Link>
+  <Link to="/docs/gpu/opencl" className="quick-link">GPU Programming</Link>
+  <Link to="/docs/c++/cpp-learning-roadmap" className="quick-link">C++ Roadmap</Link>
+  <Link to="/docs/mcq/cpp_mcqs" className="quick-link">Practice MCQs</Link>
+  <Link to="/docs/mcq/interview_question/cpp_interview_mcqs" className="quick-link">Interview Prep</Link>
+  <Link to="https://github.com/sponsors/aabhinavg1" className="quick-link highlight">Sponsor Us →</Link>
+</div>
+
+<style>{`
+  .docs-hero {
+    text-align: center;
+    margin: 2rem 0 3rem;
+  }
+
+  .docs-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .docs-subtitle {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+  }
+
+  .docs-badges {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    padding: 0.35rem 1rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    color: #60a5fa;
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .learning-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .learning-card:hover {
+    border-color: #60a5fa;
+    transform: translateY(-2px);
+  }
+
+  .step-number {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .learning-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.75rem;
+    color: #f0f4fa;
+  }
+
+  .learning-card p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .learning-link {
+    font-size: 0.9rem;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .learning-link:hover {
+    text-decoration: underline;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+  }
+
+  .feature h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #f0f4fa;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+  }
+
+  .quick-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+
+  .quick-link {
+    padding: 0.5rem 1rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 40px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+  }
+
+  .quick-link:hover {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: #1e293b;
+  }
+
+  .quick-link.highlight {
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    color: white;
+    border: none;
+  }
+
+  .quick-link.highlight:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 640px) {
+    .docs-title {
+      font-size: 2.5rem;
+    }
+    
+    .learning-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>

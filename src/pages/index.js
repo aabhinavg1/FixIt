@@ -71,7 +71,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className={clsx('button button--lg', styles.primaryButton)}
-            to="/docs/llvm/intro-to-llvm"
+            to="/docs/"
           >
             <FaRocket style={{ marginRight: '8px' }} />
             Start Learning — It&apos;s Free

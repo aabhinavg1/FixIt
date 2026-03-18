@@ -1,0 +1,348 @@
+/* ========== VARIABLES ========== */
+:root {
+  --primary: #60a5fa;
+  --primary-glow: rgba(96, 165, 250, 0.3);
+  --bg-deep: #0a0f1a;
+  --bg-surface: rgba(15, 23, 42, 0.8);
+  --text-primary: #f0f4fa;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-glow: rgba(96, 165, 250, 0.2);
+  --card-bg: rgba(17, 25, 40, 0.7);
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition: all 0.2s ease;
+}
+
+/* ========== BASE ========== */
+.csContainer {
+  background: radial-gradient(circle at 30% 40%, #1a2942, var(--bg-deep));
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  position: relative;
+}
+
+/* Minimal background pattern */
+.csContainer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--border-glow) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.csWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md) 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ========== HEADER ========== */
+.csHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.csHeader h1 {
+  font-size: clamp(40px, 8vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff, var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.1;
+}
+
+.csHeader p {
+  font-size: clamp(16px, 4vw, 18px);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========== LEARNING PATH ========== */
+.csPathSection {
+  background: var(--bg-surface);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid var(--border-subtle);
+}
+
+.csPathTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.csPathTitle::before {
+  content: '→';
+  color: var(--primary);
+  font-weight: 400;
+}
+
+.csPathGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.csPathItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(17, 24, 39, 0.7);
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: all 0.2s ease;
+}
+.csPathItem:hover {
+  border-color: var(--primary);
+  color: var(--text-primary);
+  background: rgba(96, 165, 250, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ========== TECH CARDS GRID ========== */
+.csGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ========== CARD ========== */
+.csCard {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+
+.csCard:hover {
+  border-color: var(--primary);
+  background: rgba(17, 25, 40, 0.9);
+  transform: translateY(-4px);
+}
+
+.csCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.csCard p {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.csCard span {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ========== DOCS SECTIONS ========== */
+.csDocs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.csSection {
+  background: var(--bg-surface);
+  backdrop-filter: blur(8px);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+
+.csSection:hover {
+  border-color: var(--border-glow);
+}
+
+.csSectionHeader {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.csSectionHeader h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.csSectionHeader h4::before {
+  content: '#';
+  color: var(--primary);
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.csSectionHeader p {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* LIST */
+.csSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.csSection li {
+  margin-bottom: 8px;
+}
+
+.csSection a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  padding: 6px 0;
+  transition: var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+.csSection a:hover {
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+/* Cookie section */
+.csSection:last-child ul {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.csSection:last-child li {
+  flex: 1;
+  min-width: 120px;
+  margin-bottom: 0;
+}
+
+.csSection:last-child a {
+  text-align: center;
+  padding: 8px 12px;
+  background: rgba(96, 165, 250, 0.1);
+  border-radius: 40px;
+  border: 1px solid var(--border-glow);
+}
+
+.csSection:last-child a:hover {
+  background: rgba(96, 165, 250, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ========== FEATURED ========== */
+.csFeatured {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.csFeatureCard {
+  background: linear-gradient(135deg, #1a2538, #0f1625);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+
+.csFeatureCard:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+}
+
+.csFeatureCard h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.csFeatureCard p {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 640px) {
+  .csWrapper {
+    padding: var(--spacing-lg) var(--spacing-sm) 60px;
+  }
+  
+  .csPathSection,
+  .csCard,
+  .csSection,
+  .csFeatureCard {
+    padding: 20px;
+  }
+  
+  .csPathGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .csSection:last-child ul {
+    flex-direction: column;
+  }
+  
+  .csSection:last-child li {
+    min-width: 100%;
+  }
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
