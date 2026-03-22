@@ -43,7 +43,8 @@ const config = {
       metadata: [
         { name: 'google-adsense-account', content: 'ca-pub-3213090090375658' },
         { name: 'theme-color', content: '#0a0f1e' },
-        { name: 'robots', content: 'index, follow' },
+        { name: 'robots', content: 'index, follow, max-image-preview:large' },
+        { name: 'format-detection', content: 'telephone=no' },
         { name: 'author', content: 'CompilerSutra' },
         { name: 'keywords', content: 'LLVM, MLIR, TVM, compiler, C++, GPU programming, DSA, tutorials, compiler optimization' },
         { property: 'og:type', content: 'website' },
@@ -52,10 +53,12 @@ const config = {
         { property: 'og:image', content: 'https://www.compilersutra.com/img/og-image.png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt', content: 'CompilerSutra social preview' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@CompilerSutra' },
         { name: 'twitter:creator', content: '@CompilerSutra' },
         { name: 'twitter:image', content: 'https://www.compilersutra.com/img/og-image.png' },
+        { name: 'twitter:image:alt', content: 'CompilerSutra social preview' },
       ],
 
       navbar: {
@@ -219,10 +222,8 @@ const config = {
       async: true,
       defer: true,
     },
-    { src: '/js/ezoic.js', async: true, defer: true },
     { src: '/js/google-tag-manager.js', async: true, defer: true },
     { src: '/js/google-analytics.js', async: true, defer: true },
-    { src: '/js/structured.js', async: true, defer: true },
     { src: '/js/llvm.js', async: true, defer: true },
   ],
 

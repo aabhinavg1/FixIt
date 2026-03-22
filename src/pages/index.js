@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -9,46 +9,18 @@ import { FaTwitter, FaYoutube, FaQuestionCircle, FaRocket } from 'react-icons/fa
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-// 🔥 Pipeline Animation Sequence
-const PIPELINE = [
-  'Preprocessor (-E)',
-  'Frontend (Parsing → AST)',
-  'IR Generation (LLVM IR)',
-  'Optimization (Passes)',
-  'Codegen (IR → ASM)',
-  'Assembler (-c)',
-  'Linker (ld)',
-  'Loader',
-  'CPU / GPU Execution',
-  'CompilerSutra',
-];
-
 const STATS = [
-  { value: 'Deep', label: 'Concepts' },
-  { value: 'Real', label: 'Engineering' },
-  { value: 'Zero', label: 'Fluff' },
-  { value: 'Free', label: 'Forever' },
+  { value: 'LLVM', label: 'Curriculum' },
+  { value: 'GPU', label: 'Systems Path' },
+  { value: 'IR', label: 'Optimization Thinking' },
+  { value: 'Free', label: 'Open Learning' },
 ];
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // 🔥 Progressive animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => {
-        if (prev === PIPELINE.length - 1) return prev; // stop at end
-        return prev + 1;
-      });
-    }, 1200);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <header className={clsx('hero', styles.heroBanner)}>
-      {/* Background */}
       <div className={styles.bgOrbs} aria-hidden="true">
         <div className={styles.orb1} />
         <div className={styles.orb2} />
@@ -57,15 +29,20 @@ function HomepageHeader() {
       <div className={styles.gridLines} aria-hidden="true" />
 
       <div className={clsx('container', styles.headerOverlay)}>
-        <div className={styles.badge}>🚀 Open Source · Free to Learn</div>
-
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           {siteConfig.title}
         </Heading>
 
-        {/* 🔥 Animated Pipeline */}
+        <div className={styles.badge}>Compiler Engineering · LLVM · GPU · Systems</div>
+
         <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
-          {PIPELINE.slice(0, currentIndex + 1).join(' → ')}
+          Learn how source code becomes optimized execution through compilers,
+          LLVM, IR, passes, GPU toolchains, and practical systems thinking.
+        </p>
+
+        <p className={styles.heroLead}>
+          This homepage now points readers toward the strongest parts of the
+          site instead of making them hunt through the docs tree.
         </p>
 
         <div className={styles.buttons}>
@@ -74,10 +51,22 @@ function HomepageHeader() {
             to="/docs/"
           >
             <FaRocket style={{ marginRight: '8px' }} />
-            Start Learning — It&apos;s Free
+            Start with the topic of your choice
           </Link>
 
           <div className={styles.buttonGroup}>
+            <Link
+              to="/docs/compilers/compiler"
+              className={clsx(styles.iconButton, styles.docsButton)}
+            >
+              Compiler Basics
+            </Link>
+            <Link
+              to="/docs/gpu/gpu_programming/gpu_programming_toc"
+              className={clsx(styles.iconButton, styles.docsButton)}
+            >
+              GPU Programming
+            </Link>
             <Link
               to="https://compilersutra.quora.com/"
               target="_blank"
@@ -119,17 +108,26 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+  const pageUrl = 'https://www.compilersutra.com/';
+  const socialImage = 'https://www.compilersutra.com/img/docusaurus-social-card.jpg';
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    '@type': 'CollectionPage',
     name: 'CompilerSutra',
-    url: 'https://www.compilersutra.com',
+    url: pageUrl,
     description:
       'Master LLVM, MLIR, TVM and compiler development with structured tutorials, hands-on projects, and expert-backed lessons.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://www.compilersutra.com/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
+    about: [
+      'LLVM',
+      'MLIR',
+      'TVM',
+      'Compiler Design',
+      'GPU Programming',
+      'Systems Programming',
+    ],
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: socialImage,
     },
   };
 
@@ -150,6 +148,9 @@ export default function Home() {
           property="og:description"
           content="Master LLVM, MLIR, TVM and compiler development with structured tutorials and hands-on projects."
         />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:image:alt" content="CompilerSutra home page preview" />
         <meta
           name="twitter:title"
           content="CompilerSutra | LLVM, MLIR, TVM & Compiler Tutorials"
@@ -158,6 +159,8 @@ export default function Home() {
           name="twitter:description"
           content="Master LLVM, MLIR, TVM and compiler development. Free tutorials, projects, and community."
         />
+        <meta name="twitter:image" content={socialImage} />
+        <meta name="twitter:image:alt" content="CompilerSutra home page preview" />
       </Head>
       <HomepageHeader />
       <main>

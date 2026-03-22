@@ -1,6 +1,6 @@
 .container {
   position: fixed;
-  bottom: 20px;
+  bottom: max(20px, env(safe-area-inset-bottom));
   right: 20px;
   background: #0f172a;
   color: #fff;
@@ -9,6 +9,7 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   z-index: 9999;
   width: 260px;
+  max-width: calc(100vw - 24px);
   animation: slideUp 0.4s ease;
 }
 
@@ -58,6 +59,15 @@
 
 .close:hover {
   color: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+  }
 }
 
 @keyframes slideUp {

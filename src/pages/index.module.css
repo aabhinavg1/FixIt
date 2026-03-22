@@ -79,7 +79,12 @@
   .headerOverlay { background: rgba(255, 255, 255, 0.15); }
   
   /* Adjust title for light mode */
-  .heroTitle { background: linear-gradient(135deg, #0a0f1e 0%, #0066cc 45%, #9900cc 75%, #0a0f1e 100%); }
+  .heroTitle {
+    color: #0a0f1e !important;
+    text-shadow:
+      0 0 16px rgba(0, 102, 255, 0.12),
+      0 0 28px rgba(153, 0, 204, 0.08);
+  }
   
   /* Adjust subtitle for light mode */
   .heroSubtitle { color: #334155; }
@@ -422,36 +427,39 @@
   border-color: rgba(0, 102, 255, 0.3);
 }
 
-/* ---- Title with theme gradient ---- */
+/* ---- Title ---- */
 .heroTitle {
   font-size: clamp(2.4rem, 6vw, 4.2rem) !important;
   font-weight: 900 !important;
   letter-spacing: -0.03em !important;
   line-height: 1.1 !important;
   margin-bottom: 1rem !important;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 45%, var(--accent-magenta) 75%, var(--text-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: titleGradient 8s ease infinite;
-  transition: background 0.3s ease;
-}
-
-@keyframes titleGradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  display: inline-block;
+  max-width: 12ch;
+  color: var(--text-primary) !important;
+  text-shadow:
+    0 0 18px rgba(0, 255, 255, 0.22),
+    0 0 36px rgba(255, 0, 255, 0.14);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* ---- Animated tagline with theme colors ---- */
 .heroSubtitle {
   font-size: clamp(1rem, 2.5vw, 1.35rem);
   color: var(--text-secondary);
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 1rem;
   max-width: 620px;
   line-height: 1.7;
   transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
   text-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.heroLead {
+  margin: 0 auto 2rem;
+  max-width: 54ch;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.7;
 }
 
 .fadeInUp {
@@ -616,6 +624,11 @@
   background: rgba(255, 135, 135, 0.15) !important;
   color: #ff8787 !important;
   border-color: #ff8787 !important;
+}
+
+.docsButton {
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 255, 255, 0.22) !important;
 }
 
 /* ---- Stats row with theme support ---- */
@@ -811,7 +824,8 @@
   }
   
   .heroTitle {
-    -webkit-text-fill-color: black !important;
+    color: black !important;
+    text-shadow: none !important;
     background: none !important;
   }
 }

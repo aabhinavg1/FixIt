@@ -1,0 +1,251 @@
+.section {
+  padding: 5rem 1.5rem 3rem;
+  background:
+    linear-gradient(180deg, #081120 0%, #eef4fb 5rem, #f7fafc 100%);
+}
+
+.sectionAlt {
+  padding: 3rem 1.5rem 5rem;
+  background: #f0f5fb;
+}
+
+.sectionShell {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #0f62fe;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.title {
+  margin: 0 auto 0.9rem;
+  max-width: 14ch;
+  color: #0f172a;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 0 auto 2.5rem;
+  max-width: 62ch;
+  color: #4b5563;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 1.6rem;
+  border: 1px solid #dbe5f0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.cardIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+  color: #0f62fe;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  margin: 0 0 0.55rem;
+  color: #0f172a;
+  font-size: 1.08rem;
+}
+
+.cardText {
+  margin: 0;
+  max-width: none;
+  color: #526072;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  border: 1px solid #cbd8e6;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.secondaryLink:hover {
+  text-decoration: none;
+  border-color: #93c5fd;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+}
+
+.curriculumGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.curriculumCard {
+  display: block;
+  min-height: 100%;
+  padding: 1.35rem;
+  border: 1px solid #d7e1ec;
+  border-radius: 18px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.curriculumCard:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+}
+
+.curriculumTitle {
+  margin: 0 0 0.45rem;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.curriculumText {
+  margin: 0;
+  max-width: none;
+  color: #526072;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.actionCard {
+  padding: 1.4rem;
+  border: 1px solid #d7e1ec;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #fff, #f8fbff);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.actionTitle {
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.actionText {
+  margin: 0 0 1rem;
+  max-width: none;
+  color: #526072;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, #0f62fe, #0b8fdc);
+  color: #fff;
+}
+
+.secondaryAction {
+  border: 1px solid #cbd8e6;
+  background: #fff;
+  color: #0f172a;
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 996px) {
+  .cardGrid,
+  .curriculumGrid,
+  .actionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .section,
+  .sectionAlt {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .cardGrid,
+  .curriculumGrid,
+  .actionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    max-width: none;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .primaryAction,
+  .secondaryAction,
+  .secondaryLink {
+    width: 100%;
+  }
+}
