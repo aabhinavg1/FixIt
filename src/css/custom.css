@@ -126,6 +126,54 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==================== ADS ==================== */
+.cs-ad-slot {
+  width: 100%;
+  max-width: min(100%, 860px);
+  margin: clamp(1.25rem, 3vw, 2rem) auto;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(0, 120, 212, 0.04), rgba(0, 0, 0, 0.02));
+  overflow: hidden;
+}
+
+.cs-ad-slot__label {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--color-neutral-500);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cs-ad-slot .adsbygoogle {
+  width: 100%;
+  min-height: 140px;
+}
+
+[data-theme='dark'] .cs-ad-slot {
+  background: linear-gradient(180deg, rgba(40, 153, 245, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+@media (max-width: 768px) {
+  .cs-ad-slot {
+    margin: 1rem auto;
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .cs-ad-slot .adsbygoogle {
+    min-height: 120px;
+  }
+}
+
 /* ==================== TYPOGRAPHY ==================== */
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
