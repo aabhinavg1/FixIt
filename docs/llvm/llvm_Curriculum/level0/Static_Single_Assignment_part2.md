@@ -149,7 +149,9 @@ We also examine how SSA is realized in practice by compilers like GCC and LLVM, 
 </Tabs>
 
 
-<AdBanner />
+<div>
+    <AdBanner />
+</div>
 
 
 ###### Static Single Assignment: (Part II)
@@ -469,7 +471,10 @@ So instead of reusing the `x` box:
 When paths merge, SSA uses a special "phi" function to pick the right version.
 
 
-<AdBanner />
+<div>
+    <AdBanner />
+</div>
+
 
 ## SSA and Control Dependence
 
@@ -1147,8 +1152,9 @@ GCC demonstrates how SSA can be integrated into a mature, multi-language compile
 :::
 
 
-<AdBanner />
-
+<div>
+    <AdBanner />
+</div>
 
 ## Closing Remark
 
