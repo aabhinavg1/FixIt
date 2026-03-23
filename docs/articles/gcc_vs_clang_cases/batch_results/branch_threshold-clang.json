@@ -1,0 +1,161 @@
+{
+  "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/branch_threshold.cpp",
+  "input_type": "cpp",
+  "backend": "cpu",
+  "experiments": [],
+  "pipeline": {
+    "frontend": "clang",
+    "compiler_steps": [
+      "source -> clang frontend",
+      "clang -> llvm ir",
+      "llvm ir -> native code"
+    ],
+    "execution_backend": "cpu",
+    "profiler": "perf/papi"
+  },
+  "commands": [
+    "clang++ -O3 -O3 -emit-llvm -S /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/branch_threshold.cpp -o /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold.ll",
+    "clang++ -O3 -O3 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/branch_threshold.cpp -o /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+    "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+    "perf stat -x, -e cpu-cycles,ref-cycles,stalled-cycles-frontend,instructions,branch-instructions,branch-misses /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+    "perf stat -x, -e cache-references,cache-misses /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+    "perf stat -x, -e L1-dcache-load-misses,L1-icache-load-misses,dTLB-load-misses,iTLB-load-misses,l2_cache_req_stat.ic_dc_miss_in_l2 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold"
+  ],
+  "hardware": {
+    "platform": "Linux-6.17.0-19-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "detected_platform": "linux",
+    "cpu_architecture": "x86_64",
+    "cpu_vendor": "amd",
+    "tools": {
+      "lscpu": true,
+      "perf": true,
+      "powermetrics": false,
+      "nvidia-smi": false,
+      "rocminfo": true
+    },
+    "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor",
+    "collector": "linux-perf",
+    "supported_metrics": [
+      "amd_l2_ic_dc_miss_in_l2",
+      "cache_misses",
+      "cache_references",
+      "cpu_cycles",
+      "dtlb_load_misses",
+      "execution_time_ms",
+      "frontend_stall_cycles",
+      "instruction_count",
+      "ipc",
+      "itlb_load_misses",
+      "l1_icache_misses",
+      "ref_cycles"
+    ],
+    "collector_available": true
+  },
+  "metrics": {
+    "execution_time_ms": 12.3292,
+    "cpu_cycles": 66280618,
+    "instruction_count": 365563109,
+    "ipc": 5.515385,
+    "ref_cycles": 45575954,
+    "frontend_stall_cycles": 3874295,
+    "branch_instructions": 108400956,
+    "branch_mispredictions": 2237,
+    "cache_references": 4765361,
+    "cache_misses": 96459,
+    "l1_cache_misses": 2334691,
+    "l1_icache_misses": 35367,
+    "l2_cache_misses": 97187,
+    "dtlb_load_misses": 7842,
+    "itlb_load_misses": 256,
+    "amd_l2_ic_dc_miss_in_l2": 97187,
+    "apple_power_mw": null,
+    "apple_cpu_freq_mhz": null,
+    "memory_bandwidth_mb_s": null,
+    "tile_size": null,
+    "opt_config": {},
+    "execution_time_summary_ms": {
+      "count": 5,
+      "min": 10.729,
+      "max": 15.408,
+      "mean": 12.3292,
+      "median": 11.731,
+      "stdev": 1.810155
+    }
+  },
+  "artifacts": {
+    "json": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/branch_threshold-clang.json",
+    "csv": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/branch_threshold-clang.csv"
+  },
+  "execution": {
+    "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+    "cpu_affinity": "",
+    "stdout": "676073664",
+    "stderr": "",
+    "returncode": 0,
+    "wall_time_ms": 12.3292,
+    "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner",
+    "warmup_runs": 1,
+    "repeat_runs": 5,
+    "timing_summary_ms": {
+      "count": 5,
+      "min": 10.729,
+      "max": 15.408,
+      "mean": 12.3292,
+      "median": 11.731,
+      "stdev": 1.810155
+    },
+    "mode": "executed",
+    "compiler": "clang++",
+    "trial_results": [
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+        "cpu_affinity": "",
+        "stdout": "676073664",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 12.29,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+        "cpu_affinity": "",
+        "stdout": "676073664",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 10.729,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+        "cpu_affinity": "",
+        "stdout": "676073664",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 11.731,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+        "cpu_affinity": "",
+        "stdout": "676073664",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 11.488,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold",
+        "cpu_affinity": "",
+        "stdout": "676073664",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 15.408,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      }
+    ],
+    "ir": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/branch_threshold/clang/branch_threshold.ll"
+  },
+  "status": "executed",
+  "timestamp_utc": "2026-03-23T03:30:55.206159+00:00"
+}

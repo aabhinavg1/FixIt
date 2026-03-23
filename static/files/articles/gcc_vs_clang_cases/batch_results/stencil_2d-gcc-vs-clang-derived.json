@@ -1,0 +1,374 @@
+{
+  "compiler1": {
+    "name": "g++",
+    "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/stencil_2d.cpp",
+    "input_type": "cpp",
+    "backend": "cpu",
+    "status": "executed"
+  },
+  "compiler2": {
+    "name": "clang++",
+    "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/stencil_2d.cpp",
+    "input_type": "cpp",
+    "backend": "cpu",
+    "status": "executed"
+  },
+  "metrics": {
+    "amd_l2_ic_dc_miss_in_l2": {
+      "compiler1": 182458.0,
+      "compiler2": 160228.0,
+      "diff": -22230.0,
+      "diff_percent": -12.183626,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "branch_instructions": {
+      "compiler1": 15263260.0,
+      "compiler2": 15235560.0,
+      "diff": -27700.0,
+      "diff_percent": -0.181482,
+      "unit": "branches",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "branch_mispredictions": {
+      "compiler1": 33463.0,
+      "compiler2": 31598.0,
+      "diff": -1865.0,
+      "diff_percent": -5.57332,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "branch_miss_rate_pct": {
+      "compiler1": 0.2192,
+      "compiler2": 0.2074,
+      "diff": -0.0118,
+      "diff_percent": -5.383212,
+      "unit": "%",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "cache_miss_rate_pct": {
+      "compiler1": 3.5628,
+      "compiler2": 3.5928,
+      "diff": 0.03,
+      "diff_percent": 0.842034,
+      "unit": "%",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "cache_misses": {
+      "compiler1": 179177.0,
+      "compiler2": 190710.0,
+      "diff": 11533.0,
+      "diff_percent": 6.436652,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "cache_references": {
+      "compiler1": 5029045.0,
+      "compiler2": 5308177.0,
+      "diff": 279132.0,
+      "diff_percent": 5.550398,
+      "unit": "references",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "cpu_cycles": {
+      "compiler1": 50900555.0,
+      "compiler2": 60169013.0,
+      "diff": 9268458.0,
+      "diff_percent": 18.208953,
+      "unit": "cycles",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "dtlb_load_misses": {
+      "compiler1": 10819.0,
+      "compiler2": 12263.0,
+      "diff": 1444.0,
+      "diff_percent": 13.34689,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "execution_time_ms": {
+      "compiler1": 8.972,
+      "compiler2": 11.1506,
+      "diff": 2.1786,
+      "diff_percent": 24.282211,
+      "unit": "ms",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "frontend_stall_cycles": {
+      "compiler1": 3782414.0,
+      "compiler2": 14840071.0,
+      "diff": 11057657.0,
+      "diff_percent": 292.343911,
+      "unit": "cycles",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "frontend_stall_ratio_pct": {
+      "compiler1": 7.431,
+      "compiler2": 24.664,
+      "diff": 17.233,
+      "diff_percent": 231.906877,
+      "unit": "%",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "instruction_count": {
+      "compiler1": 199618525.0,
+      "compiler2": 199194138.0,
+      "diff": -424387.0,
+      "diff_percent": -0.212599,
+      "unit": "instructions",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "ipc": {
+      "compiler1": 3.9217,
+      "compiler2": 3.3106,
+      "diff": -0.6111,
+      "diff_percent": -15.582528,
+      "unit": "insn/cycle",
+      "direction": "higher_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "itlb_load_misses": {
+      "compiler1": 290.0,
+      "compiler2": 294.0,
+      "diff": 4.0,
+      "diff_percent": 1.37931,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "l1_cache_misses": {
+      "compiler1": 1892997.0,
+      "compiler2": 1897899.0,
+      "diff": 4902.0,
+      "diff_percent": 0.258954,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "l1_icache_misses": {
+      "compiler1": 47342.0,
+      "compiler2": 46051.0,
+      "diff": -1291.0,
+      "diff_percent": -2.726965,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "l2_cache_misses": {
+      "compiler1": 182458.0,
+      "compiler2": 160228.0,
+      "diff": -22230.0,
+      "diff_percent": -12.183626,
+      "unit": "misses",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "l2_per_l1_miss_pct": {
+      "compiler1": 9.6386,
+      "compiler2": 8.4424,
+      "diff": -1.1962,
+      "diff_percent": -12.410516,
+      "unit": "%",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "ref_cycles": {
+      "compiler1": 35034817.0,
+      "compiler2": 41491884.0,
+      "diff": 6457067.0,
+      "diff_percent": 18.430429,
+      "unit": "cycles",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    }
+  },
+  "derived_metrics": {
+    "branch_miss_rate": {
+      "compiler1": 0.002192,
+      "compiler2": 0.002074,
+      "diff": -0.000118,
+      "diff_percent": -5.383212,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "branch_mpki": {
+      "compiler1": 0.167635,
+      "compiler2": 0.158629,
+      "diff": -0.009006,
+      "diff_percent": -5.372386,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "cache_miss_rate": {
+      "compiler1": 0.035628,
+      "compiler2": 0.035928,
+      "diff": 0.0003,
+      "diff_percent": 0.842034,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "cpi": {
+      "compiler1": 0.254989,
+      "compiler2": 0.302062,
+      "diff": 0.047073,
+      "diff_percent": 18.460796,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "execution_efficiency": {
+      "compiler1": 22249055.394561,
+      "compiler2": 17863983.821498,
+      "diff": -4385071.573063,
+      "diff_percent": -19.709024,
+      "unit": "",
+      "direction": "higher_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "frontend_stall_ratio": {
+      "compiler1": 0.07431,
+      "compiler2": 0.24664,
+      "diff": 0.17233,
+      "diff_percent": 231.906877,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "ipc": {
+      "compiler1": 3.921736,
+      "compiler2": 3.310577,
+      "diff": -0.611159,
+      "diff_percent": -15.583889,
+      "unit": "",
+      "direction": "higher_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "l1_mpki": {
+      "compiler1": 9.483073,
+      "compiler2": 9.527886,
+      "diff": 0.044813,
+      "diff_percent": 0.472558,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    },
+    "l2_mpki": {
+      "compiler1": 0.914033,
+      "compiler2": 0.804381,
+      "diff": -0.109652,
+      "diff_percent": -11.996503,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "improvement",
+      "which_is_better": "clang++"
+    },
+    "memory_intensity": {
+      "compiler1": 0.025193,
+      "compiler2": 0.026648,
+      "diff": 0.001455,
+      "diff_percent": 5.775414,
+      "unit": "",
+      "direction": "lower_is_better",
+      "change_label": "regression",
+      "which_is_better": "g++"
+    }
+  },
+  "bottlenecks": {
+    "compiler1": {
+      "matched": [],
+      "evaluations": [
+        {
+          "name": "memory-bound",
+          "condition": "cache_miss_rate > memory_bound_cache_miss_rate",
+          "matched": false
+        },
+        {
+          "name": "frontend-bound",
+          "condition": "frontend_stall_ratio > frontend_bound_stall_ratio",
+          "matched": false
+        },
+        {
+          "name": "branch-bound",
+          "condition": "branch_miss_rate > branch_bound_miss_rate",
+          "matched": false
+        },
+        {
+          "name": "compute-bound",
+          "condition": "ipc < low_ipc",
+          "matched": false
+        }
+      ]
+    },
+    "compiler2": {
+      "matched": [
+        "frontend-bound"
+      ],
+      "evaluations": [
+        {
+          "name": "memory-bound",
+          "condition": "cache_miss_rate > memory_bound_cache_miss_rate",
+          "matched": false
+        },
+        {
+          "name": "frontend-bound",
+          "condition": "frontend_stall_ratio > frontend_bound_stall_ratio",
+          "matched": true
+        },
+        {
+          "name": "branch-bound",
+          "condition": "branch_miss_rate > branch_bound_miss_rate",
+          "matched": false
+        },
+        {
+          "name": "compute-bound",
+          "condition": "ipc < low_ipc",
+          "matched": false
+        }
+      ]
+    }
+  }
+}

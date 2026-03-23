@@ -158,7 +158,7 @@ This section serves as a **technical knowledge base** containing conceptual arti
   <tbody>
 
 <tr>
-<td rowspan="5">Compiler Engineering</td>
+<td rowspan="6">Compiler Engineering</td>
 <td>What Happens When You Compile Code</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
@@ -193,6 +193,14 @@ This section serves as a **technical knowledge base** containing conceptual arti
 <tr>
 <td>Compiler Optimization Techniques</td>
 <td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
+<tr>
+<td>GCC vs Clang: Which Compiler Is Faster? (Real Benchmarks 2026)</td>
+<td><a href="./gcc_vs_clang_real_benchmarks_2026_reporter">Article</a></td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
