@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import { FaTwitter, FaYoutube, FaQuestionCircle, FaRocket } from 'react-icons/fa';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+
+const HomepageFeatures = lazy(() => import('@site/src/components/HomepageFeatures'));
 
 const STATS = [
   { value: 'LLVM', label: 'Curriculum' },
@@ -164,7 +165,9 @@ export default function Home() {
       </Head>
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <Suspense fallback={null}>
+          <HomepageFeatures />
+        </Suspense>
       </main>
     </Layout>
   );

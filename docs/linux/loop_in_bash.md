@@ -75,9 +75,9 @@ Loops are fundamental in any programming or scripting language, `allowing repeti
    * Reading Input with While
 4. [Until Loop](#4-until-loop)
 5. [Loop Control Statements](#5-loop-control-statements)
-   * [break](#51-break)
-   * [continue](#52-continue)
-   * [exit](#53-exit)
+   * [break](#5-loop-control-statements)
+   * [continue](#5-loop-control-statements)
+   * [exit](#5-loop-control-statements)
 6. [Best Practices](#6-best-practices)
 7. [Conclusion](#7-conclusion)
 8. [More Articles](#8-more-articles)

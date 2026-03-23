@@ -159,8 +159,8 @@ Let’s begin by exploring the building blocks of OpenCL starting with kernels, 
 3. [OpenCL Platform Model Explained](#3️⃣-opencl-platform-model-explained)
 4. [OpenCL Device Model Overview](#4️⃣-opencl-device-model-overview)
 5. [Context: How CPU and GPU Share Data](#5️⃣-context-how-cpu-and-gpu-share-data)
-6. [Sample Hello World Host Code (C)](#✅-sample-hello-world-host-code-c)
-7. [Comparison: OpenCL vs CUDA vs CPU](#📊-comparison-opencl-vs-cuda-vs-cpu)
+6. [Sample Hello World Host Code (C)](#sample-hello-world-host-code-c)
+7. [Comparison: OpenCL vs CUDA vs CPU](#comparison-opencl-vs-cuda-vs-cpu)
 8. [Ready to Run your First Opencl ](#ready-to-code-heres-whats-next)
 9. [More Artilces](#more-articles)
 
@@ -625,6 +625,36 @@ Understanding this context allows developers to build OpenCL applications that b
     <AdBanner />
 </div>
 
+## Sample Hello World Host Code (C)
+
+Here is a minimal host-side sketch showing the shape of a real OpenCL program:
+
+```c
+#include <CL/cl.h>
+
+int main() {
+    cl_platform_id platform;
+    cl_device_id device;
+
+    clGetPlatformIDs(1, &platform, NULL);
+    clGetDeviceIDs(platform, CL_DEVICE_TYPE_DEFAULT, 1, &device, NULL);
+
+    return 0;
+}
+```
+
+In practice, the full version will also create a context, command queue, program, kernel, and buffers. This small snippet is here to connect the theory in this article with the code you will write next.
+
+## Comparison: OpenCL vs CUDA vs CPU
+
+| Model | Main Strength | Main Tradeoff |
+| --- | --- | --- |
+| OpenCL | Cross-platform heterogeneous compute | More boilerplate and ecosystem fragmentation |
+| CUDA | Strong NVIDIA tooling and maturity | Vendor lock-in to NVIDIA |
+| CPU-only code | Easiest to debug and deploy | Lower throughput for massively parallel workloads |
+
+If portability across vendors matters, OpenCL is the strongest option. If you are fully committed to NVIDIA, CUDA can be easier to work with. If the workload is small or control-heavy, CPU code may still be the right engineering choice.
+
 
 ## Ready to Code? Here's What's Next!
 
@@ -728,4 +758,3 @@ We'll walk through:
 <div>
     <AdBanner />
 </div>
-

@@ -22,9 +22,9 @@ A **Python-based CLI tool** designed to collect system specifications like CPU, 
 ## 🧭 Table of Contents
 
 - [Project Structure](#-project-structure)
-- [Workflow Diagram](#-system-workflow-mermaid)
+- [Workflow Diagram](#system-workflow-mermaid)
 - [How It Works](#-how-the-code-works-algorithmic-breakdown)
-- [Installation](#-installation)
+- [Installation](#installation)
 - [Usage](#-usage)
 - [Output Examples](#-output-examples)
 - [Libraries Used](#-utility-libraries-used)
@@ -54,7 +54,7 @@ system-specs-collector/
 
 ---
 
-## 📈 System Workflow (Mermaid Diagram)
+## 📈 System Workflow (Mermaid Diagram) {#system-workflow-mermaid}
 
 ```mermaid
 flowchart TD
@@ -104,7 +104,7 @@ Each function gathers one component:
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation {#installation}
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -277,4 +277,3 @@ Star ⭐ it, share 🔁 it, or contribute 👨‍💻 to improve it!
 
 
 Let us know or submit a PR!
-

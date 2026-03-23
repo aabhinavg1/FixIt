@@ -1,7 +1,7 @@
 ---
-title: "LLVM Tutorial - What is LLVM?"
+title: "What Is LLVM? Architecture, LLVM IR, Clang, and Why LLVM Matters"
 slug: "intro-to-llvm"
-description: "Comprehensive guide to understanding LLVM: From function passes to creating your own LLVM passes and developing a compiler pass. Ideal for learners and developers."
+description: "Understand what LLVM is, how LLVM IR and Clang fit together, why LLVM succeeded, and where to start if you want to learn compiler engineering."
 keywords:
   - LLVM Tutorial
   - LLVM Function Pass
@@ -48,6 +48,8 @@ While most compilers treat compilation as a one-time event, LLVM treats it as a 
 
 If you are interested in **compilers, performance, systems programming, GPUs, or low-level optimization**, chances are LLVM has already crossed your paththrough Clang, Rust, Swift, Vulkan, JITs, or modern toolchains. But many people *use* LLVM without ever truly understanding **why it was designed this way** and **why it won**. 
 
+If your question is "what is LLVM and why do so many modern toolchains use it?", this page answers that directly before diving into the architecture.
+
 :::caution This Article
 This article is written to **connect those dots** to explain LLVM not as a collection of tools, but as a **compiler philosophy** that quietly became the backbone of modern software systems.
 :::
@@ -85,7 +87,7 @@ its relevance has only increased over time.
 * [Why LLVM Succeeded](#why-llvm-succeeded)
 * [LLVM Architecture](#llvm-architecture)
 * [Why This Design Matters](#why-this-design-matter)
-* [Real-World Example](#-real-world-example)
+* [Real-World Example](#real-world-example)
 * [Conclusion](#conclusion)
 * [More Articles](#more-articles)
 
@@ -743,16 +745,21 @@ Stay tuned for upcoming tutorials on:
 
 ---
 
-### More Article
-- [how LLVM solve MXN Problem](https://www.compilersutra.com/docs/llvm/llvm_basic/Why_What_Is_LLVM)
-- [How to  Understand LLVM IR](https://www.compilersutra.com/docs/llvm/llvm_basic/markdown-features)
-- [LLVM Tools](https://www.compilersutra.com/docs/llvm/llvm_extras/manage_llvm_version)
-- [learn LLVM Step By Step](https://www.compilersutra.com/docs/llvm/llvm_extras/translate-your-site)
-- [Power of the LLVM](https://www.compilersutra.com/docs/llvm/llvm_extras/llvm-guide)
-- [How to disable LLVM Pass](https://www.compilersutra.com/docs/llvm/llvm_extras/disable_pass)
-- [see time of each pass LLVM](https://www.compilersutra.com/docs/llvm/llvm_extras/llvm_pass_timing)
-- [Learn LLVM step by Step](https://www.compilersutra.com/docs/llvm/intro-to-llvm)
-- [Create LLVM Pass](https://www.compilersutra.com/docs/llvm/llvm_basic/pass/Function_Count_Pass)
+## Real-World Example
+
+In practice, LLVM often sits in the middle of a modern toolchain:
+
+1. A frontend parses source code and lowers it into LLVM IR.
+2. LLVM optimization passes transform that IR.
+3. A target backend emits efficient machine code for the destination platform.
+
+That same model works for C/C++, Rust, Swift, JIT systems, and many research compilers, which is exactly why LLVM became a platform instead of just a backend.
+
+## More Articles
+- [LLVM roadmap](../intro-to-llvm.md)
+- [Introduction to LLVM IR](../llvm_ir/intro_to_llvm_ir.md)
+- [Manage LLVM versions](../llvm_extras/manage_llvm_version.md)
+- [LLVM pass tracker](../llvm_pass_tracker/llvm_pass.md)
 
 <Tabs>
   <TabItem value="docs" label="📚 Documentation">
@@ -815,4 +822,3 @@ Stay tuned for upcoming tutorials on:
 
   </TabItem>
 </Tabs>
-

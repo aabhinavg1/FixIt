@@ -128,24 +128,118 @@ Gain **practical knowledge, expert tips, and hands-on experience** to improve yo
 - Kadane’s Algorithm  
 - Prefix Sum, Difference Arrays  
 
-### 📌 **Linked Lists**  
+### Linked Lists {#linked-lists}
 - Reverse a Linked List  
 - Detect & Remove Loop in Linked List  
 
-### 📌 **Stacks and Queues**  
+### Stacks and Queues {#stacks-and-queues}
 - Implement Stack Using Queue  
 - Monotonic Stack  
 
-### 📌 **Hashing and Hash Tables**  
+### Hashing and Hash Tables {#hashing-and-hash-tables}
 - Open Addressing & Chaining  
 - Rabin-Karp Algorithm for String Matching  
 
-### 📌 **Graph Data Structure**  
+### Trees {#trees}
+- Binary trees
+- AVL trees
+- Segment trees
+
+### Graph Data Structure {#graph-data-structure}
 - BFS & DFS  
 - Topological Sorting  
 - Minimum Spanning Tree (Kruskal, Prim)  
 
+### Heaps and Priority Queues {#heaps-and-priority-queues}
+- Binary heap basics
+- Priority-driven processing
+
+### Trie and Suffix Trees {#trie-and-suffix-trees}
+- Prefix matching
+- Fast dictionary lookups
+
+### Disjoint Set (Union-Find) {#disjoint-set-union-find}
+- Connected components
+- Dynamic connectivity
+
+### Fenwick Tree (Binary Indexed Tree) {#fenwick-tree-binary-indexed-tree}
+- Prefix sums
+- Efficient updates
+
 ---
+
+## 🔴 **Algorithms - From Basics to Advanced**
+
+### Sorting Algorithms {#sorting-algorithms}
+- Merge sort
+- Quick sort
+- Heap sort
+
+### Searching Algorithms {#searching-algorithms}
+- Binary search
+- Search over answer space
+
+### Graph Algorithms {#graph-algorithms}
+- BFS and DFS
+- Shortest path
+- Minimum spanning tree
+
+### Dynamic Programming (DP) {#dynamic-programming-dp}
+- Memoization
+- Tabulation
+
+### Greedy Algorithms {#greedy-algorithms}
+- Local-choice strategies
+- Interval and scheduling problems
+
+### Divide and Conquer {#divide-and-conquer}
+- Recursive splitting
+- Merge and combine patterns
+
+### Backtracking {#backtracking}
+- State-space search
+- Constraint exploration
+
+### String Algorithms {#string-algorithms}
+- KMP
+- Rabin-Karp
+- Z algorithm
+
+### Bitwise Algorithms {#bitwise-algorithms}
+- Bit masking
+- State compression
+
+### Computational Geometry {#computational-geometry}
+- Orientation tests
+- Convex hull basics
+
+### Number Theory Algorithms {#number-theory-algorithms}
+- Prime sieves
+- Modular arithmetic
+
+---
+
+## 🟠 **Advanced Topics & Competitive Programming**
+
+### Segment Trees & Range Queries {#segment-trees--range-queries}
+- Range minimum and sum queries
+- Lazy propagation overview
+
+### Heavy-Light Decomposition {#heavy-light-decomposition}
+- Tree path queries
+- Decomposition strategies
+
+### Persistent Data Structures {#persistent-data-structures}
+- Versioned arrays and trees
+- Functional persistence ideas
+
+### Bloom Filters & Skip Lists {#bloom-filters--skip-lists}
+- Probabilistic membership tests
+- Layered linked structures
+
+### Game Theory Algorithms {#game-theory-algorithms}
+- Grundy numbers
+- Winning-state analysis
 
 ## 🟡 **LeetCode & Interview Problems**  
 
@@ -155,31 +249,37 @@ Gain **practical knowledge, expert tips, and hands-on experience** to improve yo
 | **Graph** | Word Ladder | [LeetCode #127](#) |
 | **Trie** | Implement Trie (Prefix Tree) | [LeetCode #208](#) |
 
+### LeetCode Practice Problems {#leetcode-practice-problems}
+- Arrays, trees, graphs, and dynamic programming drills
+
+### System Design & DSA {#system-design--dsa}
+- Choosing the right data structure in scalable systems
+
 ---
 
 ## 🟣 **DSA in Real-World Applications**  
 
-### 📌 **DSA in Compiler Design**  
+### DSA in Compiler Design {#dsa-in-compiler-design}
 - Symbol Table Implementation (Hash Table, Trie)  
 - Abstract Syntax Trees (ASTs)  
 
-### 📌 **DSA in Embedded Systems**  
+### DSA in Embedded Systems {#dsa-in-embedded-systems}
 - Memory Management in Embedded Systems  
 - Scheduling Algorithms in RTOS  
 
-### 📌 **DSA in AI & Machine Learning**  
+### DSA in AI & Machine Learning {#dsa-in-ai--machine-learning}
 - Graph-Based Neural Networks  
 - Decision Trees & K-D Trees  
 
-### 📌 **DSA in Blockchain**  
+### DSA in Blockchain {#dsa-in-blockchain}
 - Merkle Trees for Secure Transactions  
 - Cryptographic Hash Functions  
 
-### 📌 **DSA in Operating Systems**  
+### DSA in Operating Systems {#dsa-in-operating-systems}
 - Page Replacement Algorithms (LRU, FIFO)  
 - CPU Scheduling (Round Robin, Shortest Job First)  
 
-### 📌 **DSA in Database Indexing**  
+### DSA in Database Indexing {#dsa-in-database-indexing}
 - B-Trees and B+ Trees  
 - Hash Indexing  
 

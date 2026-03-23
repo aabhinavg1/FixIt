@@ -629,7 +629,9 @@ command 2>&1 | tee log.txt
 
 <TabItem value="#python essential" label=" Thinks to know in python python-essentials">
 
- ### Python Essential
+ ### Python Essentials
+
+ ###### Installing CLI Tools in Bash (npm install, apt-get, etc.)
 
  <Tabs>
 

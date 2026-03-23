@@ -72,7 +72,7 @@ Classes and objects are fundamental concepts in object-oriented programming. To 
 2. Study how to define member functions and variables.
 3. Understand the differences between stack and heap memory allocation for objects.
 
-[Solve MCQ](classes-and-objects.md)
+[Solve MCQ](classes-objects.md)
 
 ## Constructors and Destructors
 

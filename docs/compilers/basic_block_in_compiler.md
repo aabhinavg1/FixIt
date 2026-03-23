@@ -78,7 +78,7 @@ Just as sentences structure a story, basic blocks structure programs.
 - [LLVM/Clang: Inspect, Visualize, and Count Basic Blocks](#llvmclang-inspect-visualize-and-count-basic-blocks)
   - [Quick CLI Methods (no coding)](#quick-cli-methods-no-coding)
   - [Programmatic Method (C++ tool using LLVM APIs)](#programmatic-method-c-tool-using-llvm-apis)
-- [Notes, Tips, and Cautions](#notes-tips-and-cautions)
+- [Notes, Tips, and Cautions](#faq)
 - [What next](#what-next)
 - [FAQ](#faq)
 

@@ -133,6 +133,8 @@ export default function ZoomableImage({ src, alt }) {
           src={src}
           alt={alt}
           onLoad={handleImageLoad}
+          loading="lazy"
+          decoding="async"
           style={{
             maxWidth: "none",
             maxHeight: "none",

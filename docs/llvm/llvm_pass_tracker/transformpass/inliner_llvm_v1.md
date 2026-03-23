@@ -269,13 +269,13 @@ Assisted by AI for writing clarity and structure. All technical analysis and con
    - [The Rule: How It Worked](#the-rule-how-it-worked)
    - [Why It Was So Simple](#why-it-was-so-simple)
 
-5. [Limitations and Refactor in Future Commits](#limitation-and-refactor-in-future-commit)
+5. [Limitations and Refactor in Future Commits](#limitations-and-refactor-in-future-commits)
 
 6. [The Architectural Split: Policy vs. Mechanics](#the-architectural-split-policy-vs-mechanics)
    - [Key Technical Changes in the Code](#key-technical-changes-in-the-code)
 
 7. [The Intermediate Leap: Smarter Heuristics and Utility Extraction](#the-intermediate-leap-smarter-heuristics-and-utility-extraction)
-   - [From Blocks to Quality: Birth of a Cost Model](#from-blocks-to-quality-the-birth-of-a-cost-model)
+   - [From Blocks to Quality: Birth of a Cost Model](#1-from-blocks-to-quality-birth-of-a-cost-model)
    - [Extracting the Grunt Work: InlineFunction.cpp](#2-extracting-the-grunt-work-the-creation-of-inlinefunctioncpp)
 
 8. [Algorithmic Evolution Between Commits](#algorithmic-evolution-between-commits)
@@ -741,6 +741,8 @@ They started with this as per compilersutra team because:
 3.  **It was a starting point.** You have to start somewhere before you can make something smarter.
 
 
+## Limitations and Refactor in Future Commits
+
 :::tip Limitation and Refactor in Future Commit
 
 The limitations of the original three-check heuristic were clear. While safe and simple, it lacked nuance and was a dead-end for future improvements. 
@@ -828,7 +830,7 @@ While the architectural split in [**`d075cc2`**](https://github.com/llvm/llvm-pr
 
 This commit delivered on both promises, marking a key evolution in the algorithm's *logic* and its *structure*.
 
-#### 1. From "Blocks" to "Quality": The Birth of a Cost Model
+#### 1. From Blocks to Quality: Birth of a Cost Model
 The most significant algorithmic change was the replacement of the primitive block-counting check with a nuanced, multi-factor **InlineQuality** score.
 
 **Before (`ShouldInlineMethod` in the initial commit):**
@@ -1195,9 +1197,6 @@ Follow continuation articles in this LLVM series on CompilerSutra.
 
   </TabItem>
 </Tabs>
-
-
-
 
 
 

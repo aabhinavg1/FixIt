@@ -151,6 +151,13 @@ By working directly with ***bits***, programmers can achieve highly efficient so
 
 Mastering this technique enables developers to write concise, faster code and solve complex problems using elegant binary logic.
 
+## Use Cases
+
+- flag packing
+- power-of-two checks
+- subset/state compression
+- low-level optimization and interview problems
+
 <details>
 <summary> why use `a << 1` instead of just `a * 2` or `a / 2`?**  </summary>
 

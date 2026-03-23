@@ -106,7 +106,7 @@ Mastering them is not just helpful—it is critical for strong problem-solving a
 
 
 
-## 1. Arrays
+## 1. Arrays {#arrays}
 
 Arrays are one of the most fundamental data structures in computer science. They store elements of the **same data type** in a **contiguous block of memory**, which allows extremely efficient access and manipulation.
 
@@ -438,7 +438,7 @@ Powerful for:
 A string is a sequence of characters stored in a contiguous block of memory, similar to an array. However, strings come with additional rules and behaviors depending on the programming language. Most languages treat strings as immutable objects, meaning their contents cannot be directly altered; instead, any modification creates a new string. This design provides safety but may impact performance in operations like concatenation or repeated modifications. In lower-level languages such as C or C++, strings behave more like character arrays and can be modified directly.
 
 
-## Mutable vs Immutable Strings
+## Mutable vs Immutable Strings {#strings}
 
 | Language | String Behavior                                                 |
 | -------- | --------------------------------------------------------------- |
@@ -549,6 +549,8 @@ In `"abcd"`:
 | Example    | `"abc"` in `"xabcd"` | `"acd"` in `"abcd"` |
 
 
+
+## Combined Tricks {#arrays--strings-together}
 
 ## 🧠 String Pattern Techniques
 
@@ -863,8 +865,6 @@ Be careful with invalid inputs → may throw exceptions.
 - [Stanford Algorithms Course (Coursera)](https://www.coursera.org/specializations/algorithms) – A comprehensive introduction to algorithms and complexity.  
 
 ---
-
-
 
 
 

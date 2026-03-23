@@ -122,7 +122,7 @@ Stay tuned for more shell scripting tips at **CompilerSutra**.
 </div>
 
 
-## <div align="center">Section 1: Core Concept </div>
+## Section 1: Core Concept {#section-1-core-concept}
 
 ### What is a Variable in Bash?
 
@@ -354,7 +354,7 @@ Use quotes to avoid word splitting and unexpected errors when paths or names con
 </div>
 
 
-## <div align="center"> Section 4: Output and Echo</div>
+## Section 4: Output and Echo {#section-4-output-and-echo}
 
 ## How `echo` Expands Variables
 

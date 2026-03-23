@@ -169,16 +169,16 @@ We will walk through log parsing, broken link detection, and generating reports 
 ###### Complete Enhanced Markdown Link Checker Article with Python Implementation
 
 ## 🔧 Table of Contents
-1. [Introduction](#introduction)
-2. [Environment Setup](#environment-setup)
-3. [Understanding the Log Format](#understanding-the-log-format)
-4. [Step-by-Step Python Implementation](#step-by-step-python-implementation)
-5. [Building the Parser](#building-the-parser)
-6. [Generating Reports](#generating-reports)
-7. [Summary & Statistics](#summary--statistics)
-8. [Complete Python Script](#complete-python-script)
-9. [Improvements & Extensions](#improvements--extensions)
-10. [Conclusion](#conclusion)
+1. [Introduction](#1-introduction)
+2. [Environment Setup](#2-environment-setup)
+3. [Understanding the Log Format](#3-understanding-the-log-format)
+4. [Step-by-Step Python Implementation](#4-step-by-step-python-implementation)
+5. [Building the Parser](#5-building-the-parser)
+6. [Generating Reports](#6-generating-reports)
+7. [Summary & Statistics](#7-summary--statistics)
+8. [Complete Python Script](#8-complete-python-script)
+9. [Improvements & Extensions](#9-improvements--extensions)
+10. [Conclusion](#10-conclusion)
 11. [Read More](#more-articles)
 
 ---
@@ -196,7 +196,7 @@ We will walk through log parsing, broken link detection, and generating reports 
 </div>
 :::
 
-## 1. Introduction <a name="introduction"></a>
+## 1. Introduction
 
 Welcome to the comprehensive guide on implementing a `Markdown Link Checker` in Python which will take input from the output genrated by [bash](https://www.compilersutra.com/docs/linux/markdown_checker_part2/#actual-bash-code). 
 
@@ -204,7 +204,7 @@ In this article, we'll build a robust parser that processes link checker logs, e
 
 While basic shell scripts can handle simple text parsing, Python offers superior capabilities for complex log processing, error handling, and data export. Our implementation will handle multiple log formats, track file contexts, and produce structured outputs ready for analysis.
 
-## 2. Environment Setup <a name="environment-setup"></a>
+## 2. Environment Setup
 
 **Requirements**
 - Python 3.8 or higher
@@ -231,7 +231,7 @@ ERROR: 2 dead links found in ./docs/python/numpy.md !
 ✅ All links verified successfully!
 ```
 
-**3. Understanding the Log Format** <a name="understanding-the-log-format"></a>
+## 3. Understanding the Log Format
 
 Markdown link checker logs typically contain several types of entries:
 
@@ -261,7 +261,7 @@ Always configure your checker to **ignore `#anchors`** unless you explicitly val
 
 </details>
 
-## 4. Step-by-Step Python Implementation <a name="step-by-step-python-implementation"></a>
+## 4. Step-by-Step Python Implementation
 
 Our implementation strategy involves:
 
@@ -396,7 +396,7 @@ error_link_pattern = re.compile(r"^→\s+(.+)")
 
 :::
 
-## 5. Building the Parser <a name="building-the-parser"></a>
+## 5. Building the Parser
 
 The core of our implementation is the `parse_log()` function:
 > *This function handles all the log formats we might encounter and returns a list of dictionaries containing the file path, broken URL, and status code.*
@@ -597,7 +597,7 @@ def parse_log(log_file):
 
 
 
-## 6. Generating Reports <a name="generating-reports"></a>
+## 6. Generating Reports
 
 We will create one seperate function for generating the reports
 
@@ -739,7 +739,7 @@ def save_reports(records, base_name="link_report"):
 
 This approach gives us flexibility in how we use the data—JSON for automated processing, CSV for simple analysis, and Excel for formatted reports.
 
-## 7. Summary & Statistics <a name="summary--statistics"></a>
+## 7. Summary & Statistics
 
 To provide quick insights, we generate summary statistics:
 
@@ -765,7 +765,7 @@ def print_summary(records):
 
 :::tip  `*The above `summary` helps identify which files need the most `attention` and shows the `distribution of HTTP status` codes.*`
 :::
-## 8. Complete Python Script <a name="complete-python-script"></a>
+## 8. Complete Python Script
 
 Here's the complete enhanced implementation:
 
@@ -955,7 +955,7 @@ if __name__ == "__main__":
     main()
 ```
 
-## 9. Improvements & Extensions <a name="improvements--extensions"></a>
+## 9. Improvements & Extensions
 
 Our implementation can be extended in several ways:
 
@@ -1135,7 +1135,7 @@ def generate_html_dashboard(records, output_file="link_dashboard.html"):
     print(f"✅ HTML dashboard generated: {output_file}")
 ```
 
-## 10. Conclusion <a name="conclusion"></a>
+## 10. Conclusion
 
 Python offers a **robust, scalable, and maintainable approach** to Markdown link validation compared to Bash scripts. Its rich ecosystem of libraries enables sophisticated parsing, data analysis, and automated reporting that integrates seamlessly into CI/CD pipelines.
 

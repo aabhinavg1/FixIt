@@ -1,7 +1,7 @@
 ---
 id: tvm-for-beginners
-title: "TVM for Beginners: A Comprehensive Guide to Apache TVM"
-description: "Learn Apache TVM, an open-source machine learning compiler framework. Discover how TVM optimizes deep learning models for various hardware backends, including CPUs, GPUs, and AI accelerators."
+title: "TVM for Beginners: What Apache TVM Is and How It Optimizes ML Models"
+description: "Learn what Apache TVM is, why ML compilers matter, how TVM optimizes models for CPUs, GPUs, and accelerators, and where to start with TVM."
 slug: /tvm-for-beginners
 sidebar_position: 1
 sidebar_label: "TVM for Beginners"
@@ -53,7 +53,6 @@ tags:
   - AutoTVM
   - MLIR
   - LLVM
-  - TensorFlow
   - PyTorch
   - ONNX
   - CUDA
@@ -71,6 +70,8 @@ tags:
 ---
 
 # Introduction to TVM
+
+If your search is "what is TVM?" or "how does Apache TVM optimize models?", this page is the conceptual starting point before installation, tuning, and deployment.
 
 Apache TVM is an open-source machine learning compiler framework that enables efficient execution of deep learning models on various hardware platforms. It is designed to optimize and deploy machine learning models across diverse hardware architectures such as CPUs, GPUs, and specialized accelerators.
 
@@ -258,3 +259,10 @@ TVM consists of several key component which we will discuss in upcoming article 
 
 
 For more information, visit the [official TVM documentation](https://tvm.apache.org/).
+
+## More Articles
+
+- [LLVM introduction](../llvm/llvm_basic/What_is_LLVM.md)
+- [TVM installation basics](./basics/installation.md)
+- [TVM first model](./basics/first-model.md)
+- [TVM AutoTVM and tuning](./basics/autotuning.md)

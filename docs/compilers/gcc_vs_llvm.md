@@ -1,6 +1,6 @@
 ---
 title: "LLVM vs GCC: Performance, Optimization, and Use Cases Compared"
-description: "LLVM vs GCC: Which compiler is better? Compare architecture, performance, optimizations, and use cases for C++, Rust, embedded systems, and more. Find out which one suits your needs!"
+description: "Compare GCC and LLVM/Clang across architecture, optimization strategy, tooling, diagnostics, and real-world use cases for C++, systems work, and compiler engineering."
 keywords:
   - best compiler for high-performance computing
   - LLVM vs GCC for deep learning
@@ -97,7 +97,7 @@ We'll compare their architectures, performance, intermediate representations, an
   - [2. Intermediate Representation (IR): LLVM IR vs. GCC's GIMPLE and RTL](#2-intermediate-representation-ir-llvm-ir-vs-gccs-gimple-and-rtl)
   - [3. Performance and Optimization: A Nuanced View](#3-performance-and-optimization-a-nuanced-view)
 - [LLVM vs. GCC Architecture Diagram](#llvm-vs-gcc-architecture-diagram)
-- [Comparative Evaluation: LLVM vs. GCC at a Glance](#comparative-evaluation-llvm-vs-gcc-at-a-glance)
+- [Comparative Evaluation: LLVM vs. GCC at a Glance](#comparative-evaluation-llvm-vs-gcc)
 - [Why is the Industry Shifting Toward LLVM?](#why-is-the-industry-shifting-toward-llvm)
 - [Viewing Compilation Passes with GCC and LLVM](#viewing-compilation-passes-with-gcc-and-llvm)
   - [Viewing Passes with GCC](#viewing-passes-with-gcc)
@@ -106,12 +106,12 @@ We'll compare their architectures, performance, intermediate representations, an
   - [Choose LLVM / Clang If:](#choose-llvm--clang-if)
   - [Choose GCC If:](#choose-gcc-if)
 - [Conclusion: Two Giants, One Goal](#conclusion-two-giants-one-goal)
-- [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
+- [Frequently Asked Questions (FAQ)](#faq-llvm-vs-gcc)
   - [1. Which is faster, LLVM or GCC?](#1-which-is-faster-llvm-or-gcc)
-  - [2. Why is LLVM preferred over GCC for new languages?](#2-why-is-llvm-preferred-over-gcc-for-new-languages)
+  - [2. Why is LLVM preferred over GCC for new languages?](#2-why-is-llvm-preferred-over-gcc)
   - [3. Can GCC compile LLVM IR?](#3-can-gcc-compile-llvm-ir)
   - [4. Which compiler is better for embedded systems: LLVM or GCC?](#4-which-compiler-is-better-for-embedded-systems-llvm-or-gcc)
-  - [5. How can I start using LLVM or GCC?](#5-how-can-i-start-using-llvm-or-gcc)
+  - [5. How can I start using LLVM or GCC?](#6-how-can-i-start-using-llvm-or-gcc)
 - [More Articles](#more-articles)
 
 
@@ -503,6 +503,10 @@ Not exactly. LLVM is a **compiler infrastructure**, a collection of libraries an
 
 
 ## More Articles
+
+- [Inside a compiler: source code to assembly](./intro.md)
+- [LLVM introduction](../llvm/llvm_basic/What_is_LLVM.md)
+- [GCC vs Clang benchmark report](../articles/gcc_vs_clang_real_benchmarks_2026_reporter.md)
 
 <Tabs>
   <TabItem value="docs" label="📚 Documentation">

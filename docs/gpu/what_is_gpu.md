@@ -85,7 +85,7 @@ A **Graphics Processing Unit (GPU)** is a specialized electronic circuit designe
 * [GPU Architecture in Detail](#gpu-architecture-in-detail)
 * [SIMT Model](#simt-model)
 * [Kernel and Thread Hierarchy](#kernel-and-thread-hierarchy)
-* [GPU Execution Pipeline](#gpu-execution-pipeline)
+* [GPU Execution Pipeline](#gpu-execution-pipeline-nvidia-and-amd-terminology)
 * [Warp Scheduling and Latency Hiding](#warp-scheduling-and-latency-hiding)
 * [Memory Access Hierarchy](#memory-access-hierarchy)
 * [Performance Factors](#performance-factors)

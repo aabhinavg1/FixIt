@@ -153,13 +153,13 @@ High-performance networking and security solutions rely on C++:
 ---
 C++ is a powerful language used across various domains, including system programming, game development, AI, and cloud computing. This document presents a structured index of C++ project ideas, categorized by different fields, to help you explore and build practical applications. It also provides guidance on how to get started with these projects.  
 
-- [1. System Programming](#-system-programming) 
+- [1. System Programming](#-what-is-system-programming) 
     - [What is System Programming](#-what-is-system-programming)
     - [Career Opportunities In System Programming](#-career-opportunities-in-system-programming)
     - [Future of system program](#-future-of-system-programming)
     - [Sytem Programming Project](#%EF%B8%8F-system-programming-projects)
 
-- [2. Game Development](#🏗️-game-development)
+- [2. Game Development](#-what-is-game-development)
     - [What is Game Development](#-what-is-game-development)
     - [Carrier Oppurtunities In Game Development](#-career-opportunities-in-game-development)
     - [Future of Game Development](#-future-of-game-development)
@@ -195,7 +195,7 @@ C++ is a powerful language used across various domains, including system program
 
   
 ---
-# 🏗️ System Programming 
+# System Programming
 
 ## 🔍 **What is System Programming?**  
 
@@ -373,7 +373,7 @@ Here are essential tools for system programming:
 :::
 ---
 
-# 🏗️ **Game Development**  
+# Game Development
 
 ## 🎮 **What is Game Development?**  
 
@@ -1253,4 +1253,3 @@ Here are some projects to build expertise in compiler development:
 Choose a project that interests you and start building! Each project offers an opportunity to apply your C++ knowledge and explore various domains.
 
 Happy Coding! 🎯
-

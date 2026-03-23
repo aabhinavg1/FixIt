@@ -1,9 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Head from "@docusaurus/Head";
 import OriginalLayout from "@theme-original/Layout";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import FloatingSubscribe from "@site/src/components/FloatingSubscribe";
+
+const FloatingSubscribe = lazy(() => import("@site/src/components/FloatingSubscribe"));
 
 export default function Layout(props) {
   const location = useLocation();
@@ -71,7 +73,13 @@ export default function Layout(props) {
         </script>
       </Head>
       <OriginalLayout {...props} />
-      <FloatingSubscribe />
+      <BrowserOnly fallback={null}>
+        {() => (
+          <Suspense fallback={null}>
+            <FloatingSubscribe />
+          </Suspense>
+        )}
+      </BrowserOnly>
     </>
   );
 }

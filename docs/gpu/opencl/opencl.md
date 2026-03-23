@@ -412,6 +412,26 @@ Open Computing Language (OpenCL) is the open standard for parallel programming o
 
 ## OpenCL Complete Tutorial Roadmap
 
+### Beginner Level (Fundamentals)
+
+The beginner track covers setup, terminology, and the first complete OpenCL program.
+
+### Intermediate Level (Core Concepts)
+
+This level focuses on memory behavior, work-item execution, and kernel programming details.
+
+### Advanced Level (Optimization)
+
+The advanced track moves into performance tuning, memory optimization, and multi-device execution.
+
+### Expert Level (Specialized Applications)
+
+These topics apply OpenCL to image processing, scientific computing, machine learning, and finance.
+
+### Integration and Extensions
+
+This section covers interoperability and how OpenCL fits into larger heterogeneous systems.
+
 <Tabs>
   <TabItem value="beginner" label="Beginner Level (Fundamentals)">
     #### 1. Introduction to OpenCL  
