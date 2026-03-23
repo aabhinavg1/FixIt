@@ -1,0 +1,43 @@
+---
+title: Compilers
+description: Explore compiler fundamentals, frontend and backend design, IR, flags, architecture, and build-your-own-compiler articles.
+slug: /compilers/
+---
+
+import Link from '@docusaurus/Link';
+import AdBanner from '@site/src/components/AdBanner';
+
+# Compilers
+
+This section covers the fundamentals that every compiler engineer needs before going deep into LLVM, MLIR, GPU compiler stacks, or backend specialization.
+
+## Best Entry Points
+
+<div style={{display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', marginBottom: '1.5rem'}}>
+  <div style={{padding: '1rem', borderRadius: '18px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)'}}>
+    <h3 style={{marginTop: 0}}>Start Here</h3>
+    <p>Use the full site roadmap if you want the guided path first.</p>
+    <Link to="/docs/start-here">Open roadmap</Link>
+  </div>
+  <div style={{padding: '1rem', borderRadius: '18px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)'}}>
+    <h3 style={{marginTop: 0}}>Compiler Track</h3>
+    <p>Follow the structured compiler-fundamentals sequence.</p>
+    <Link to="/docs/tracks/compiler-fundamentals">Open track</Link>
+  </div>
+  <div style={{padding: '1rem', borderRadius: '18px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)'}}>
+    <h3 style={{marginTop: 0}}>Build a Compiler</h3>
+    <p>Use a concrete project to connect the concepts quickly.</p>
+    <Link to="/docs/compilers/build_your_compiler">Open article</Link>
+  </div>
+</div>
+
+<AdBanner />
+
+## Core Articles
+
+- [What Is a Compiler?](/docs/compilers/compiler)
+- [Intermediate Representation in Compilers](/docs/compilers/ir_in_compiler)
+- [Source Code to Executable](/docs/compilers/sourcecode_to_executable)
+- [Compiler Frontend](/docs/compilers/front_end/compiler-frontend)
+- [Introduction to Backend Compilers](/docs/compilers/back_end/introduction-to-backend-compilers)
+- [Build Your First Compiler](/docs/compilers/build_your_compiler)

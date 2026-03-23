@@ -5,21 +5,21 @@ import styles from './styles.module.css';
 const FEATURES = [
   {
     icon: '01',
-    title: 'Structured Learning Path',
+    title: 'Roadmap First',
     description:
-      'Move from compiler basics to LLVM, MLIR, GPU programming, and optimization with a connected roadmap instead of random tutorials.',
+      'Move from compiler basics to LLVM, MLIR, GPU compiler work, and optimization through a clear start-here flow instead of random browsing.',
   },
   {
     icon: '02',
-    title: 'Hands-On Engineering',
+    title: 'Tools and Labs',
     description:
-      'Learn through LLVM passes, IR inspection, toolchain workflows, and systems-level examples that map to real compiler work.',
+      'Use tools, benchmark artifacts, LLVM workflows, and guided labs to turn the material into practical engineering skill.',
   },
   {
     icon: '03',
-    title: 'Built for Serious Learners',
+    title: 'Built for Real Compiler Work',
     description:
-      'The focus is depth, clarity, and practical reasoning, not shallow summaries or generic interview-style fluff.',
+      'The emphasis is on IR, passes, optimization behavior, GPU systems, and low-level reasoning instead of generic course-site filler.',
   },
 ];
 
@@ -28,10 +28,11 @@ export default function Features() {
     <section className={styles.section} id="why-compilersutra">
       <div className={styles.sectionShell}>
         <p className={styles.eyebrow}>Why CompilerSutra</p>
-        <h2 className={styles.title}>A Home Page That Points You Somewhere Real</h2>
+        <h2 className={styles.title}>A Technical Platform With an Actual Path</h2>
         <p className={styles.subtitle}>
-          CompilerSutra is built around one idea: help developers understand how
-          systems really work, from source code to optimized execution.
+          CompilerSutra should make the next step obvious: start with the
+          roadmap, go deeper through a track, and then reinforce the concepts
+          through tools, labs, and projects.
         </p>
 
         <div className={styles.cardGrid}>
@@ -45,14 +46,14 @@ export default function Features() {
         </div>
 
         <div className={styles.linkRow}>
-          <Link className={styles.secondaryLink} to="/docs/llvm/intro-to-llvm">
-            Explore LLVM Curriculum
+          <Link className={styles.secondaryLink} to="/docs/start-here">
+            Open Start Here
           </Link>
-          <Link className={styles.secondaryLink} to="/docs/compilers/compiler">
-            Start with Compiler Basics
+          <Link className={styles.secondaryLink} to="/docs/tools">
+            Explore Tools
           </Link>
-          <Link className={styles.secondaryLink} to="/docs/gpu/gpu_programming/gpu_programming_toc">
-            Enter GPU Programming
+          <Link className={styles.secondaryLink} to="/docs/labs">
+            Browse Labs
           </Link>
         </div>
       </div>

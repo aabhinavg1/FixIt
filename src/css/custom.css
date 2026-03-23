@@ -135,12 +135,13 @@ img {
 .cs-ad-slot {
   width: 100%;
   max-width: min(100%, 860px);
-  margin: clamp(1.25rem, 3vw, 2rem) auto;
-  padding: clamp(0.75rem, 2vw, 1rem);
+  margin: clamp(1.5rem, 3.4vw, 2.5rem) auto;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 14px;
   background: linear-gradient(180deg, rgba(0, 120, 212, 0.04), rgba(0, 0, 0, 0.02));
   overflow: hidden;
+  contain: layout paint;
 }
 
 .cs-ad-slot__label {
@@ -155,11 +156,29 @@ img {
 
 .cs-ad-slot .adsbygoogle {
   width: 100%;
-  min-height: 140px;
+  min-height: var(--cs-ad-min-height, 220px);
+}
+
+.cs-ad-slot[data-ad-status='loading'] .adsbygoogle {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.07), rgba(0, 0, 0, 0.03));
+  background-size: 200% 100%;
+  animation: cs-ad-pulse 1.8s linear infinite;
+  border-radius: 10px;
+}
+
+.cs-ad-slot[data-ad-status='ready'] .adsbygoogle {
+  background: transparent;
 }
 
 [data-theme='dark'] .cs-ad-slot {
   background: linear-gradient(180deg, rgba(40, 153, 245, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+[data-theme='dark'] .cs-ad-slot[data-ad-status='loading'] .adsbygoogle {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+  background-size: 200% 100%;
 }
 
 @media (max-width: 768px) {
@@ -170,7 +189,16 @@ img {
   }
 
   .cs-ad-slot .adsbygoogle {
-    min-height: 120px;
+    min-height: min(var(--cs-ad-min-height, 220px), 160px);
+  }
+}
+
+@keyframes cs-ad-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 

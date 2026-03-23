@@ -32,6 +32,10 @@ import TabItem from '@theme/TabItem';
     <AdBanner />
 </div>
 
+:::tip New Section Home
+This roadmap still works as before. If you want the cleaner section landing page first, go to [LLVM Home](/docs/llvm/).
+:::
+
 ## For live Session [click here](#llvm-live-section)
 
 # LLVM Curriculum (From Beginner to Pro)

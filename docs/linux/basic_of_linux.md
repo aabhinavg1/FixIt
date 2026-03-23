@@ -70,7 +70,7 @@ Bash is the default shell on most Linux systems, making it a vital skill for aut
 You don’t need to be a programming expert to start writing Bash scripts—basic command-line knowledge is enough to begin.
 :::
 
-:::cautions
+:::caution
 
 Practice by writing small scripts to automate tasks you do often, like cleaning up directories or backing up files.
 :::

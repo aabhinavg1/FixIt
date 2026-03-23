@@ -1,10 +1,49 @@
 const tutorials = {
+  learningPathsSidebar: [
+    {
+      type: 'category',
+      label: 'Start Here',
+      collapsed: false,
+      items: [
+        'start-here',
+        'tracks/index',
+        'tracks/compiler-fundamentals',
+        'tracks/llvm-and-ir',
+        'tracks/gpu-compilers',
+        'tracks/ml-compilers',
+      ],
+    },
+  ],
+
+  toolsSidebar: [
+    {
+      type: 'category',
+      label: 'Tools',
+      collapsed: false,
+      items: [
+        'tools/tools',
+      ],
+    },
+  ],
+
+  labsSidebar: [
+    {
+      type: 'category',
+      label: 'Labs',
+      collapsed: false,
+      items: [
+        'labs/labs',
+      ],
+    },
+  ],
+
   compilersSidebar: [
     {
       type: 'category',
       label: 'Know Your Compiler',
       collapsed: false,
       items: [
+        'compilers/index',
         'compilers/Compiler',
         'compilers/ir_in_compiler',
         'compilers/sourcecode_to_executable',
@@ -90,6 +129,7 @@ const tutorials = {
       label: 'GPU Tutorials',
       collapsed: true,
       items: [
+        'gpu/index',
         'gpu/introduction',
         'gpu/optimizations',
         'gpu/evolution-of-parallel-programming',
@@ -113,6 +153,7 @@ const tutorials = {
       label: 'LLVM Tutorials',
       collapsed: true,
       items: [
+        'llvm/index',
         'llvm/intro-to-llvm',
         {
           type: 'category',
@@ -168,6 +209,7 @@ const tutorials = {
       label: 'TVM Tutorials',
       collapsed: true,
       items: [
+        'tvm/index',
         'tvm/tvm-for-beginners',
         {
           type: 'category',
@@ -215,6 +257,7 @@ const tutorials = {
       label: 'Linux Tutorials',
       collapsed: true,
       items: [
+        'linux/index',
         'linux/intro_to_linux',
         'linux/basic_of_linux',
         'linux/What_is_bashrc',

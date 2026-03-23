@@ -11,10 +11,10 @@ import styles from './index.module.css';
 const HomepageFeatures = lazy(() => import('@site/src/components/HomepageFeatures'));
 
 const STATS = [
-  { value: 'LLVM', label: 'Curriculum' },
-  { value: 'GPU', label: 'Systems Path' },
-  { value: 'IR', label: 'Optimization Thinking' },
-  { value: 'Free', label: 'Open Learning' },
+  { value: '4', label: 'Core Tracks' },
+  { value: 'LLVM', label: 'IR Depth' },
+  { value: 'GPU', label: 'Compiler Path' },
+  { value: 'Free', label: 'Learning Core' },
 ];
 
 function HomepageHeader() {
@@ -37,36 +37,42 @@ function HomepageHeader() {
         <div className={styles.badge}>Compiler Engineering · LLVM · GPU · Systems</div>
 
         <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
-          Learn how source code becomes optimized execution through compilers,
-          LLVM, IR, passes, GPU toolchains, and practical systems thinking.
+          Learn compiler engineering through structured tracks, practical docs,
+          LLVM and IR deep dives, GPU compiler material, and hands-on labs.
         </p>
 
         <p className={styles.heroLead}>
-          This homepage now points readers toward the strongest parts of the
-          site instead of making them hunt through the docs tree.
+          Start with the roadmap, pick a track, then move into tools, labs, and
+          benchmark-driven articles instead of browsing the docs tree blindly.
         </p>
 
         <div className={styles.buttons}>
           <Link
             className={clsx('button button--lg', styles.primaryButton)}
-            to="/docs/"
+            to="/docs/start-here"
           >
             <FaRocket style={{ marginRight: '8px' }} />
-            Start with the topic of your choice
+            Start the roadmap
           </Link>
 
           <div className={styles.buttonGroup}>
             <Link
-              to="/docs/compilers/compiler"
+              to="/docs/tracks/llvm-and-ir"
               className={clsx(styles.iconButton, styles.docsButton)}
             >
-              Compiler Basics
+              LLVM and IR
             </Link>
             <Link
-              to="/docs/gpu/gpu_programming/gpu_programming_toc"
+              to="/docs/tracks/gpu-compilers"
               className={clsx(styles.iconButton, styles.docsButton)}
             >
-              GPU Programming
+              GPU Compilers
+            </Link>
+            <Link
+              to="/docs/tools"
+              className={clsx(styles.iconButton, styles.docsButton)}
+            >
+              Tools
             </Link>
             <Link
               to="https://compilersutra.quora.com/"
@@ -135,7 +141,7 @@ export default function Home() {
   return (
     <Layout
       title="CompilerSutra | LLVM, MLIR, TVM & Compiler Tutorials"
-      description="Master LLVM, MLIR, TVM and compiler development with structured tutorials, hands-on projects, and expert-backed lessons. Free and open source."
+      description="Learn compiler engineering through roadmaps, LLVM and IR tracks, GPU compiler tutorials, tools, labs, and benchmark-driven articles."
     >
       <Head>
         <script type="application/ld+json">

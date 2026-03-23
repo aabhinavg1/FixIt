@@ -1,0 +1,44 @@
+---
+title: ML Compilers Track
+description: Learn the modern ML compiler stack with MLIR, TVM, staged lowering, and the engineering patterns behind hardware-aware model compilation.
+keywords:
+  - ML compiler
+  - MLIR tutorial
+  - TVM tutorial
+  - lowering pipeline
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+
+# ML Compilers Track
+
+ML compilers are not just another frontend or backend story. They exist because modern workloads need richer IR design, staged lowering, schedule-aware optimization, and hardware-specific code generation strategies.
+
+## Who This Is For
+
+- compiler engineers moving into AI and domain-specific compilation
+- LLVM readers who want to understand the next layer above raw IR
+- performance engineers interested in model compilation and lowering pipelines
+
+## Outcome
+
+You should understand why MLIR exists, where TVM fits, and how multi-level compiler pipelines differ from classic single-IR workflows.
+
+## Recommended Sequence
+
+1. [MLIR Intro](/docs/MLIR/intro)
+2. [TVM Intro](/docs/tvm/intro-to-tvm)
+3. [GPU Compilers Track](/docs/tracks/gpu-compilers)
+4. [LLVM and IR Track](/docs/tracks/llvm-and-ir)
+
+<AdBanner />
+
+## Suggested Practice
+
+- compare classic LLVM-style optimization with staged lowering in an ML compiler stack
+- sketch a simple lowering pipeline from a domain-level representation toward low-level code
+- connect one ML compiler concept back to LLVM infrastructure you already know
+
+## Next Step
+
+Pair this track with [Tools](/docs/tools) and [Labs](/docs/labs) as those sections expand.

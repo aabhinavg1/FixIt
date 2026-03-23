@@ -113,12 +113,20 @@ const site = {
   articlesidebar: [
     {
       type: 'category',
-      label: 'article',
+      label: 'Articles',
       collapsed: false,
       items: [
         'articles',
         'articles/compiler_directive',
         'articles/gcc_vs_clang_real_benchmarks_2026_reporter',
+        {
+          type: 'category',
+          label: 'Tech Blog',
+          collapsed: true,
+          items: [
+            'AI/is_gpt_is_opensource',
+          ],
+        },
       ],
     },
   ],

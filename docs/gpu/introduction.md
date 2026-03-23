@@ -25,6 +25,10 @@ sidebar_label: The Graphic Rendering Pipeline
 
 # The Graphic Rendering Pipeline 🎨
 
+:::tip New Section Home
+This graphics pipeline article still works as before. If you want the broader GPU section landing page first, go to [GPU Home](/docs/gpu/).
+:::
+
 ## Summary
 
 In the world of *real-time graphics*, the **Rendering Pipeline** plays a crucial role in transforming 3D models into 2D visuals. It enables applications like video games and CGI to generate immersive digital environments in real time. The pipeline determines the *position*, *shape*, and *appearance* of objects, simulating environmental interactions to create seamless, visually stunning scenes. 

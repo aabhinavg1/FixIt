@@ -50,6 +50,7 @@ export default function AdBanner({
   format = 'fluid',
   layout = 'in-article',
   className = '',
+  minHeight = 220,
 }) {
   const adRef = useRef(null);
 
@@ -66,6 +67,26 @@ export default function AdBanner({
     let cancelled = false;
     let observer;
     let retryTimer;
+    let visibilityHandler;
+
+    const runWhenVisible = (callback) => {
+      if (document.visibilityState === 'visible') {
+        callback();
+        return;
+      }
+
+      visibilityHandler = () => {
+        if (document.visibilityState === 'visible') {
+          document.removeEventListener('visibilitychange', visibilityHandler);
+          visibilityHandler = undefined;
+          callback();
+        }
+      };
+
+      document.addEventListener('visibilitychange', visibilityHandler, {
+        once: true,
+      });
+    };
 
     const initializeAd = async () => {
       if (!node || cancelled || node.dataset.adInitialized === 'true') {
@@ -87,17 +108,24 @@ export default function AdBanner({
         try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
           node.dataset.adInitialized = 'true';
+          node.parentElement?.setAttribute('data-ad-status', 'ready');
         } catch (error) {
           const message = String(error?.message || error);
           if (message.toLowerCase().includes('already have ads')) {
             node.dataset.adInitialized = 'true';
+            node.parentElement?.setAttribute('data-ad-status', 'ready');
             return;
           }
           retryTimer = window.setTimeout(pushAd, 500);
         }
       };
 
-      pushAd();
+      const idleRunner =
+        typeof window.requestIdleCallback === 'function'
+          ? window.requestIdleCallback
+          : (cb) => window.setTimeout(cb, 1);
+
+      idleRunner(() => runWhenVisible(pushAd));
     };
 
     if ('IntersectionObserver' in window) {
@@ -123,6 +151,9 @@ export default function AdBanner({
       if (observer) {
         observer.disconnect();
       }
+      if (visibilityHandler) {
+        document.removeEventListener('visibilitychange', visibilityHandler);
+      }
       if (retryTimer) {
         window.clearTimeout(retryTimer);
       }
@@ -130,7 +161,12 @@ export default function AdBanner({
   }, []);
 
   return (
-    <div className={`cs-ad-slot ${className}`.trim()} aria-label="Advertisement">
+    <div
+      className={`cs-ad-slot ${className}`.trim()}
+      aria-label="Advertisement"
+      data-ad-status="loading"
+      style={{ '--cs-ad-min-height': `${minHeight}px` }}
+    >
       <span className="cs-ad-slot__label">Advertisement</span>
       <ins
         ref={adRef}
@@ -140,6 +176,7 @@ export default function AdBanner({
         data-ad-format={format}
         data-ad-client="ca-pub-3213090090375658"
         data-ad-slot={slot}
+        data-full-width-responsive="true"
       />
     </div>
   );

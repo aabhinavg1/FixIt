@@ -109,12 +109,11 @@ OpenCL **(Open Computing Language)** is an open standard for ``parallel programm
 
 Whether you're working on high-performance computing (HPC), machine learning, real-time graphics, or embedded systems, OpenCL provides a unified framework for harnessing the power of parallelism.
 
-:::cautions
+:::caution
 This guide is designed to help you set up ```OpenCL across Linux, macOS, and Windows`` platforms, ensuring you're ready to build and run OpenCL programs on your hardware```. We'll walk you through the installation process, demonstrate ```how to verify your setup```, and provide a hands-on example of an OpenCL program. Additionally, we’ll address common pitfalls and provide resources for further learning.
 :::
 
 Whether you're a developer exploring GPU acceleration for the first time, a researcher optimizing algorithms for high-throughput systems, or an engineer working on AI workloads, this guide will give you the solid foundation you need to get started with OpenCL.
-:::
 
 <div>
     <AdBanner />
@@ -226,7 +225,7 @@ After installation, run `clinfo` again to verify that the OpenCL platform and de
 
 ---
 
-:::tips  
+:::tip  
 - Always check `clinfo` output carefully for the presence and status of OpenCL platforms and devices.  
 - Keep GPU drivers up to date to avoid compatibility issues.  
 - Use vendor-specific SDK documentation for troubleshooting and optimization tips.  
