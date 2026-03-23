@@ -1,0 +1,134 @@
+{
+  "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/small_sort.cpp",
+  "input_type": "cpp",
+  "backend": "cpu",
+  "experiments": [],
+  "pipeline": {
+    "frontend": "clang",
+    "compiler_steps": [
+      "source -> clang frontend",
+      "clang -> llvm ir",
+      "llvm ir -> native code"
+    ],
+    "execution_backend": "cpu",
+    "profiler": "perf/papi"
+  },
+  "commands": [
+    "g++ -O3 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/small_sort.cpp -o /tmp/csperf-gcc-vs-clang-cases/small_sort",
+    "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+    "perf stat -x, -e cpu-cycles,ref-cycles,stalled-cycles-frontend,instructions,branch-instructions,branch-misses /tmp/csperf-gcc-vs-clang-cases/small_sort",
+    "perf stat -x, -e cache-references,cache-misses /tmp/csperf-gcc-vs-clang-cases/small_sort",
+    "perf stat -x, -e L1-dcache-load-misses,L1-icache-load-misses,dTLB-load-misses,iTLB-load-misses,l2_cache_req_stat.ic_dc_miss_in_l2 /tmp/csperf-gcc-vs-clang-cases/small_sort"
+  ],
+  "hardware": {
+    "platform": "Linux-6.17.0-19-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "tools": {
+      "lscpu": true,
+      "nvidia-smi": false,
+      "rocminfo": true
+    },
+    "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor"
+  },
+  "metrics": {
+    "execution_time_ms": 75.3378,
+    "l1_cache_misses": 5265517,
+    "l2_cache_misses": 203703,
+    "branch_mispredictions": 8890068,
+    "instruction_count": 882752053,
+    "memory_bandwidth_mb_s": null,
+    "tile_size": null,
+    "opt_config": {},
+    "execution_time_summary_ms": {
+      "count": 5,
+      "min": 74.626,
+      "max": 75.942,
+      "mean": 75.3378,
+      "median": 75.261,
+      "stdev": 0.539783
+    },
+    "cpu_cycles": 417337042,
+    "ref_cycles": 287724814,
+    "frontend_stall_cycles": 119987751,
+    "branch_instructions": 158388203,
+    "cache_references": 8798514,
+    "cache_misses": 181387,
+    "l1_icache_misses": 31283,
+    "dtlb_load_misses": 5783,
+    "itlb_load_misses": 300,
+    "amd_l2_ic_dc_miss_in_l2": 203703
+  },
+  "artifacts": {
+    "json": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/results/gcc-small_sort.json",
+    "csv": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/results/gcc-small_sort.csv"
+  },
+  "execution": {
+    "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+    "cpu_affinity": "0",
+    "stdout": "201324192",
+    "stderr": "",
+    "returncode": 0,
+    "wall_time_ms": 75.3378,
+    "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner",
+    "warmup_runs": 1,
+    "repeat_runs": 5,
+    "timing_summary_ms": {
+      "count": 5,
+      "min": 74.626,
+      "max": 75.942,
+      "mean": 75.3378,
+      "median": 75.261,
+      "stdev": 0.539783
+    },
+    "mode": "executed",
+    "trial_results": [
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+        "cpu_affinity": "0",
+        "stdout": "201324192",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 75.261,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+        "cpu_affinity": "0",
+        "stdout": "201324192",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 75.062,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+        "cpu_affinity": "0",
+        "stdout": "201324192",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 75.942,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+        "cpu_affinity": "0",
+        "stdout": "201324192",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 74.626,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/small_sort",
+        "cpu_affinity": "0",
+        "stdout": "201324192",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 75.798,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      }
+    ]
+  },
+  "status": "executed",
+  "timestamp_utc": "2026-03-22T14:53:59.333645+00:00"
+}

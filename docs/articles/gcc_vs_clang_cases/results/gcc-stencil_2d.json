@@ -1,0 +1,134 @@
+{
+  "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/stencil_2d.cpp",
+  "input_type": "cpp",
+  "backend": "cpu",
+  "experiments": [],
+  "pipeline": {
+    "frontend": "clang",
+    "compiler_steps": [
+      "source -> clang frontend",
+      "clang -> llvm ir",
+      "llvm ir -> native code"
+    ],
+    "execution_backend": "cpu",
+    "profiler": "perf/papi"
+  },
+  "commands": [
+    "g++ -O3 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/stencil_2d.cpp -o /tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+    "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+    "perf stat -x, -e cpu-cycles,ref-cycles,stalled-cycles-frontend,instructions,branch-instructions,branch-misses /tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+    "perf stat -x, -e cache-references,cache-misses /tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+    "perf stat -x, -e L1-dcache-load-misses,L1-icache-load-misses,dTLB-load-misses,iTLB-load-misses,l2_cache_req_stat.ic_dc_miss_in_l2 /tmp/csperf-gcc-vs-clang-cases/stencil_2d"
+  ],
+  "hardware": {
+    "platform": "Linux-6.17.0-19-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "tools": {
+      "lscpu": true,
+      "nvidia-smi": false,
+      "rocminfo": true
+    },
+    "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor"
+  },
+  "metrics": {
+    "execution_time_ms": 8.4544,
+    "l1_cache_misses": 1891134,
+    "l2_cache_misses": 132483,
+    "branch_mispredictions": 22571,
+    "instruction_count": 205792019,
+    "memory_bandwidth_mb_s": null,
+    "tile_size": null,
+    "opt_config": {},
+    "execution_time_summary_ms": {
+      "count": 5,
+      "min": 8.415,
+      "max": 8.49,
+      "mean": 8.4544,
+      "median": 8.467,
+      "stdev": 0.031919
+    },
+    "cpu_cycles": 46787095,
+    "ref_cycles": 34837370,
+    "frontend_stall_cycles": 2519096,
+    "branch_instructions": 15195014,
+    "cache_references": 4888044,
+    "cache_misses": 129327,
+    "l1_icache_misses": 53861,
+    "dtlb_load_misses": 14166,
+    "itlb_load_misses": 288,
+    "amd_l2_ic_dc_miss_in_l2": 132483
+  },
+  "artifacts": {
+    "json": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/results/gcc-stencil_2d.json",
+    "csv": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/results/gcc-stencil_2d.csv"
+  },
+  "execution": {
+    "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+    "cpu_affinity": "0",
+    "stdout": "1.25204e+07",
+    "stderr": "",
+    "returncode": 0,
+    "wall_time_ms": 8.4544,
+    "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner",
+    "warmup_runs": 1,
+    "repeat_runs": 5,
+    "timing_summary_ms": {
+      "count": 5,
+      "min": 8.415,
+      "max": 8.49,
+      "mean": 8.4544,
+      "median": 8.467,
+      "stdev": 0.031919
+    },
+    "mode": "executed",
+    "trial_results": [
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+        "cpu_affinity": "0",
+        "stdout": "1.25204e+07",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 8.467,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+        "cpu_affinity": "0",
+        "stdout": "1.25204e+07",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 8.473,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+        "cpu_affinity": "0",
+        "stdout": "1.25204e+07",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 8.49,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+        "cpu_affinity": "0",
+        "stdout": "1.25204e+07",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 8.415,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/tmp/csperf-gcc-vs-clang-cases/stencil_2d",
+        "cpu_affinity": "0",
+        "stdout": "1.25204e+07",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 8.427,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      }
+    ]
+  },
+  "status": "executed",
+  "timestamp_utc": "2026-03-22T14:54:03.655806+00:00"
+}

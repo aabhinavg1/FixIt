@@ -1,0 +1,159 @@
+{
+  "input_file": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/prefix_sum.cpp",
+  "input_type": "cpp",
+  "backend": "cpu",
+  "experiments": [],
+  "pipeline": {
+    "frontend": "clang",
+    "compiler_steps": [
+      "source -> clang frontend",
+      "clang -> llvm ir",
+      "llvm ir -> native code"
+    ],
+    "execution_backend": "cpu",
+    "profiler": "perf/papi"
+  },
+  "commands": [
+    "g++ -O3 -O3 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/prefix_sum.cpp -o /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+    "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+    "perf stat -x, -e cpu-cycles,ref-cycles,stalled-cycles-frontend,instructions,branch-instructions,branch-misses /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+    "perf stat -x, -e cache-references,cache-misses /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+    "perf stat -x, -e L1-dcache-load-misses,L1-icache-load-misses,dTLB-load-misses,iTLB-load-misses,l2_cache_req_stat.ic_dc_miss_in_l2 /home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum"
+  ],
+  "hardware": {
+    "platform": "Linux-6.17.0-19-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "detected_platform": "linux",
+    "cpu_architecture": "x86_64",
+    "cpu_vendor": "amd",
+    "tools": {
+      "lscpu": true,
+      "perf": true,
+      "powermetrics": false,
+      "nvidia-smi": false,
+      "rocminfo": true
+    },
+    "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor",
+    "collector": "linux-perf",
+    "supported_metrics": [
+      "amd_l2_ic_dc_miss_in_l2",
+      "cache_misses",
+      "cache_references",
+      "cpu_cycles",
+      "dtlb_load_misses",
+      "execution_time_ms",
+      "frontend_stall_cycles",
+      "instruction_count",
+      "ipc",
+      "itlb_load_misses",
+      "l1_icache_misses",
+      "ref_cycles"
+    ],
+    "collector_available": true
+  },
+  "metrics": {
+    "execution_time_ms": 28.1802,
+    "cpu_cycles": 153702075,
+    "instruction_count": 428954125,
+    "ipc": 2.790815,
+    "ref_cycles": 105881433,
+    "frontend_stall_cycles": 5055568,
+    "branch_instructions": 71355224,
+    "branch_mispredictions": 16757,
+    "cache_references": 9900119,
+    "cache_misses": 200790,
+    "l1_cache_misses": 4821244,
+    "l1_icache_misses": 123156,
+    "l2_cache_misses": 320478,
+    "dtlb_load_misses": 30290,
+    "itlb_load_misses": 223,
+    "amd_l2_ic_dc_miss_in_l2": 320478,
+    "apple_power_mw": null,
+    "apple_cpu_freq_mhz": null,
+    "memory_bandwidth_mb_s": null,
+    "tile_size": null,
+    "opt_config": {},
+    "execution_time_summary_ms": {
+      "count": 5,
+      "min": 28.037,
+      "max": 28.375,
+      "mean": 28.1802,
+      "median": 28.16,
+      "stdev": 0.14032
+    }
+  },
+  "artifacts": {
+    "json": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/prefix_sum-gcc.json",
+    "csv": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/prefix_sum-gcc.csv"
+  },
+  "execution": {
+    "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+    "cpu_affinity": "",
+    "stdout": "128",
+    "stderr": "",
+    "returncode": 0,
+    "wall_time_ms": 28.1802,
+    "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner",
+    "warmup_runs": 1,
+    "repeat_runs": 5,
+    "timing_summary_ms": {
+      "count": 5,
+      "min": 28.037,
+      "max": 28.375,
+      "mean": 28.1802,
+      "median": 28.16,
+      "stdev": 0.14032
+    },
+    "mode": "executed",
+    "compiler": "g++",
+    "trial_results": [
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+        "cpu_affinity": "",
+        "stdout": "128",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 28.037,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+        "cpu_affinity": "",
+        "stdout": "128",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 28.066,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+        "cpu_affinity": "",
+        "stdout": "128",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 28.16,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+        "cpu_affinity": "",
+        "stdout": "128",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 28.263,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      },
+      {
+        "binary": "/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/batch_results/build/prefix_sum/gcc/prefix_sum",
+        "cpu_affinity": "",
+        "stdout": "128",
+        "stderr": "",
+        "returncode": 0,
+        "wall_time_ms": 28.375,
+        "runner": "/home/aitr/projects/CompilerSutraPerfTool/build-native/bin/csperf_native_runner"
+      }
+    ]
+  },
+  "status": "executed",
+  "timestamp_utc": "2026-03-23T03:31:00.196452+00:00"
+}
