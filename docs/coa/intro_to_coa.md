@@ -736,7 +736,7 @@ While computer architecture defines the capabilities of the machine, **computer 
   <AdBanner />
 </div>
 
-## Section 4: Computer Architecture and Computer Organization
+## Section 4: Computer Architecture and Computer Organization {#section-4-key-differences-between-computer-architecture-and-computer-organization}
 
 If you have reached this point, it means you have already explored the basic ideas behind **computer architecture** and **computer organization**. You now know that both concepts describe how a computer system works, but they focus on different layers of the system.
 
@@ -965,7 +965,7 @@ This layered design is what allows computing systems to **evolve while maintaini
 </div>
 
 
-## Section 6
+## Section 6 {#section-6-why-compiler-engineers-care-about-computer-architecture}
 ## Why Compiler Engineers Care About Computer Architecture
 
 Compilers mainly work with **computer architecture**, because they generate instructions that follow the **Instruction Set Architecture (ISA)** of the processor.
@@ -1367,7 +1367,6 @@ Future topics worth exploring include:
 
   </TabItem>
 </Tabs>
-
 
 
 

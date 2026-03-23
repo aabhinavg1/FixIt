@@ -1,6 +1,6 @@
 ---
-title: "Setting Up OpenCL Across Platforms"
-description: "The most comprehensive OpenCL programming guide covering architecture, kernel optimization, GPU/CPU acceleration, and real-world applications with hands-on code examples."
+title: "How to Install and Set Up OpenCL on Linux, Windows, and macOS"
+description: "Learn how to install OpenCL on Linux, Windows, and macOS, verify drivers and runtimes, and run your first OpenCL program on CPU or GPU."
 keywords: 
  - How to Install Opencl On Ubuntu
  - How to Install Opencl On Window
@@ -102,6 +102,8 @@ import AdBanner from '@site/src/components/AdBanner';
     <AdBanner />
 </div>
 
+
+If your search intent is practical setup, this page is for that. It shows how to install OpenCL runtimes, validate the environment, and reach a working first program on Linux, Windows, and macOS.
 
 OpenCL **(Open Computing Language)** is an open standard for ``parallel programming of heterogeneous systems``, enabling developers to write portable code that runs efficiently on a wide variety of devices such as ``CPUs, GPUs, FPGAs, and other accelerators``.
 
@@ -584,6 +586,11 @@ If you see platform and device information, your installation is successful.
 
 
 ## More Articles
+
+- [OpenCL tutorial hub](../opencl.md)
+- [What is OpenCL?](./what_is_opencl.md)
+- [Run your first OpenCL program](./running_first_opencl_code.md)
+- [Write your first OpenCL kernel](./Writing_your_first_kernel.md)
 
 <Tabs>
   <TabItem value="docs" label="📚 Documentation">

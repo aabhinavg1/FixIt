@@ -980,6 +980,10 @@ sudo apt install beignet-opencl-icd
 </TabItem>
 </Tabs>
 
+## Your First GPU Program {#your-first-gpu-program}
+
+After the drivers and runtime are in place, the first milestone is not optimization. It is a successful end-to-end program that can discover the platform, compile a kernel, and launch work on the device.
+
 ## Verification and Testing
 
 ```python

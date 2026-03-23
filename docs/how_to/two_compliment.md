@@ -119,11 +119,11 @@ Content by Human, AI Provided Support
 5. [Equivalence of ~x + 1 and ~(x - 1)](#equivalence)
 6. [Common Misconceptions and Clarifications](#misconceptions)
 7. [Real-World Implications](#real-world)
-8. [Conclusion and Mental Models](#conclusion)
-9. [References](#references)
+8. [Conclusion and Mental Models](#8-conclusion-and-mental-models)
+9. [References](#9-references)
 10. [More Artilce](#more)
 
-## 1. Introduction: The Ubiquity of Two's Complement <a name="introduction"></a>
+## 1. Introduction: The Ubiquity of Two's Complement {#introduction}
 
 In low-level systems programming, few concepts are as fundamental yet frequently misunderstood as two's complement representation. This elegant encoding scheme governs how positive and negative integers are stored and manipulated in virtually every modern CPU, from embedded microcontrollers to server-class processors. Its implications permeate multiple layers of the computing stack:
 
@@ -135,7 +135,7 @@ In low-level systems programming, few concepts are as fundamental yet frequently
 
 This article provides both intuitive understanding and rigorous proof of the fundamental two's complement identity `-x = ~x + 1`, explaining why this representation dominates modern computing and how its mathematical properties enable efficient hardware implementation.
 
-## 2. Binary Representation and Fixed-Width Arithmetic <a name="binary-representation"></a>
+## 2. Binary Representation and Fixed-Width Arithmetic {#binary-representation}
 
 Before we explore negation and two’s complement, we need to understand **how numbers live inside a computer**.
 
@@ -303,7 +303,7 @@ Understanding signed vs unsigned numbers in **8-bit memory** helps you:
 > Once you understand **bits, widths, and how numbers loop around**, you’re halfway to understanding **why `-x` naturally becomes `~x + 1`**.
 > Two’s complement isn’t magic it’s **the simplest, most elegant way** to handle negatives in finite memory.
 
-## 3. Introducing Two's Complement <a name="intwo"></a>
+## 3. Introducing Two's Complement {#intwo}
 
 ###### 3.1 What is Two’s Complement?
 
@@ -474,7 +474,7 @@ graph TD
   <AdBanner />
 </div>
 
-## 4. Deriving −x = ~x + 1 <a name="derivation"></a>
+## 4. Deriving −x = ~x + 1 {#derivation}
 
 Now that we understand **two’s complement** and **fixed-width arithmetic**, let’s see **why negation in a computer becomes `-x = ~x + 1`**.
 
@@ -603,7 +603,7 @@ Thus, `-x = ~(x - 1)`.
 |         128 | 1000 0000  | 0111 1111   | 1000 0000       | -128                     | -128                 |
 
 
-## 5. Equivalence of ~x + 1 and ~(x - 1) <a name="equivalence"></a>
+## 5. Equivalence of ~x + 1 and ~(x - 1) {#equivalence}
 
 We already know the famous formula:
 
@@ -696,7 +696,7 @@ x - 1    = 0011
 Notice how the alternative method **avoids adding 1 after the complement**, which can sometimes be convenient in low-level programming or hardware design.
 
 
-## 6. Common Misconceptions and Clarifications <a name="misconceptions"></a>
+## 6. Common Misconceptions and Clarifications {#misconceptions}
 
 Even experienced programmers sometimes **misunderstand two’s complement**. Let’s clear up the most common confusions.
 
@@ -789,7 +789,7 @@ In modular arithmetic terms:
 
 
 
-## 7. Real-World Implications <a name="real-world"></a>
+## 7. Real-World Implications {#real-world}
 
 Two’s complement isn’t just a neat theory—it’s **everywhere in real systems**, quietly making arithmetic work without anyone noticing. Let’s see how it shows up in the wild.
 
@@ -868,7 +868,7 @@ If you’ve written compilers, device drivers, or low-level libraries, you quick
 
 Two’s complement isn’t just a representation—it’s a **bridge between bit patterns and real-world arithmetic**, enabling CPUs to do **more with less hardware**.
 
-## 8. Conclusion and Mental Models <a name="conclusion"></a>
+## 8. Conclusion and Mental Models
 
 If you step back and look at two’s complement, it’s not just a formula in a textbook. It’s a **masterpiece of elegance** in computer engineering—a way for machines, which understand only **zeros, ones, and addition**, to handle positive and negative numbers seamlessly.
 
@@ -937,7 +937,7 @@ Two’s complement is **more than a representation**—it’s a **mental model**
 
 > Next time you write `-x` in C, pause and imagine: the CPU isn’t subtracting; it’s **flipping bits and adding one**, traversing a **beautiful, logical loop** of 0s and 1s. That’s the elegance of two’s complement.
 
-## 9. References <a name="references"></a>
+## 9. References
 
 1. Bryant, R. E., & O’Hallaron, D. R. (2016). *Computer Systems: A Programmer’s Perspective* — Chapter 2 sample (online). https://csapp.cs.cmu.edu/2e/samples.html
 
@@ -952,7 +952,7 @@ Two’s complement is **more than a representation**—it’s a **mental model**
 6. Intel® 64 and IA‑32 Architectures Software Developer’s Manual (Intel SDM). https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html
 
 
-# More
+## More
 
 
 
@@ -1017,7 +1017,3 @@ Two’s complement is **more than a representation**—it’s a **mental model**
 
   </TabItem>
 </Tabs>
-
-
-
-

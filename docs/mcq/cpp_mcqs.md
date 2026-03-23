@@ -89,7 +89,7 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 - [Polymorphism](./questions/intermediate/polymorphism.md)
 - [Encapsulation](./questions/intermediate/encapsulation.md)
 - [Abstraction](./questions/intermediate/abstraction.md)
-- [Friend Functions and Classes](./questions/intermediate/friend-functions-and-classes.md)
+- [Friend Functions and Classes](./questions/intermediate/friend-functions.md)
 - [Operator Overloading](./questions/intermediate/operator-overloading.md)
 - [Memory Management: malloc, free, new, delete](./questions/intermediate/memory-management.md)
 - [File Handling](./questions/intermediate/file-handling.md)
@@ -102,14 +102,14 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 
 ### 🔴 Advanced C++ Concepts
 - [STL: Standard Template Library](./questions/advanced/stl.md)
-- [Vectors and Dynamic Arrays](./questions/advanced/vectors-and-dynamic-arrays.md)
+- [Vectors and Dynamic Arrays](./questions/advanced/vectors.md)
 - [Templates](./questions/advanced/templates.md)
 - [Exception Handling](./questions/advanced/exception-handling.md)
-- [Multi-threading](./questions/advanced/multi-threading.md)
-- [Concurrency and Synchronization](./questions/advanced/concurrency-and-synchronization.md)
-- [Lambda Functions](./questions/advanced/lambda-functions.md)
+- [Multi-threading](./questions/advanced/multithreading.md)
+- [Concurrency and Synchronization](./questions/advanced/concurrency.md)
+- [Lambda Functions](./questions/advanced/lambdas.md)
 - [Move Semantics and Rvalue References](./questions/advanced/move-semantics.md)
-- [Modern C++ Features (C++11/14/17/20)](./questions/advanced/modern-cpp-features.md)
+- [Modern C++ Features (C++11/14/17/20)](./questions/advanced/cpp-features.md)
 
 ### 🟣 Specialized C++ Concepts
 - [Smart Pointers](./questions/specialized/smart-pointers.md)
@@ -128,7 +128,6 @@ Sharpen your C++ programming skills with our comprehensive set of multiple-choic
 
 - [C++ for Competitive Programming](./questions/domain/competitive-programming.md)
 - [C++ for System Programming](./questions/domain/system-programming.md)
-- [C++ for Game Development](./questions/domain/game-development.md)
 - [C++ for Embedded Systems](./questions/domain/embedded.md)
 - [C++ for Compiler Development](./questions/domain/compiler-dev.md)
 - [C++ for Data Science and HPC](./questions/domain/data-science-hpc.md)

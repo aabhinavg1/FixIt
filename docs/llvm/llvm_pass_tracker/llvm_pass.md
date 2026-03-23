@@ -486,7 +486,11 @@ They perform concrete transformations such as eliminating dead code, inlining fu
 
 ---
 
-##### Utility Passes — Definition
+##### Target-Specific Passes {#target-specific-passes}
+
+Target-specific passes are tied to a backend, subtarget, or machine-level lowering pipeline. They adapt generic IR or machine code generation to the realities of a concrete architecture.
+
+##### Utility Passes — Definition {#utility-passes}
 
 Utility passes are compiler passes that **help developers inspect, debug, or verify LLVM IR**. They generally **do not perform optimizations** but provide tools for analysis, visualization, and debugging. Some are intended **only for internal or debugging purposes**.
 
@@ -505,6 +509,12 @@ Utility passes are compiler passes that **help developers inspect, debug, or ver
 | View Post-Dominator Tree | `view-post-dom`      | Displays post-dominator tree of a function                         | *Coming Soon* |
 | View Post-Dominator Only | `view-post-dom-only` | Displays post-dominator tree structure only                        | *Coming Soon* |
 | Transform Warning        | `transform-warning`  | Reports missed or forced transformations                           | *Coming Soon* |
+
+---
+
+##### Vector Optimizations {#vector-optimizations}
+
+Vector-oriented passes focus on widening scalar work, reshaping loops, and improving SIMD utilization when the target architecture and dependency structure allow it.
 
 ---
 
@@ -595,6 +605,5 @@ Follow continuation articles in this LLVM series on CompilerSutra.
 
   </TabItem>
 </Tabs>
-
 
 

@@ -1,6 +1,9 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
+Disallow: /docs/tags/
+
+Sitemap: https://www.compilersutra.com/sitemap.xml
 
 User-agent: ChatGPT-User
 Disallow: /

@@ -534,7 +534,7 @@ B --> D[Internet / Public IP]
 </Tabs>
 
 
-# FAQ
+## FAQ
 
 <ComicQA
   question="1) How do I find my machine name on Linux?"

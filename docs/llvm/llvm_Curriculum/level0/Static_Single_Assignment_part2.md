@@ -572,6 +572,8 @@ This combination is a major reason why modern compilers can perform aggressive o
 
 SSA is not just a theoretical idea it fundamentally changed how real-world compilers are built and optimized. Both **GCC** and **LLVM** adopted SSA-based intermediate representations to overcome the limitations of earlier compiler designs, but they did so in different ways.
 
+## How SSA Makes Value Flow Explicit
+
 ### SSA in Practice: GCC and LLVM
 
 Early versions of GCC did **not** use SSA internally. Variables were mutable, reassigned multiple times, and value flow was implicit. As a result, many optimizations required complex and expensive global dataflow analyses.
@@ -1258,6 +1260,5 @@ The story of SSA is ultimately a story about **clarity** about finding ways to s
 
   </TabItem>
 </Tabs>
-
 
 

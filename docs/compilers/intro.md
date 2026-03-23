@@ -199,7 +199,7 @@ You’ll understand what it is doing for you.
 - [Optimization Phase](#optimization-phase-middle-end)
 - [Code Generation](#clang--llvm-flow-llvm-ir--mir--machine-code)
 - [Clang vs GCC Internal Pipeline Comparison](#summary-clang-vs-gcc-back-end)
-- [9. FAQ](#10-faq)
+- [9. FAQ](#faq)
 
 
 <Tabs>
@@ -1376,7 +1376,7 @@ flowchart TD
 
 
 
-# FAQ
+## FAQ
 <ComicQA
 question="How can I generate LLVM IR using Clang?"
 answer="Use the -emit-llvm flag with -S to stop at LLVM IR generation."
@@ -1581,6 +1581,3 @@ This knowledge is foundational for systems programming, compiler development, an
 
   </TabItem>
 </Tabs>
-
-
-

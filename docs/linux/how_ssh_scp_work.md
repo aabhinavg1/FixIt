@@ -186,7 +186,7 @@ Together, they form the backbone of modern infrastructure management, empowering
 
 In the early days of computing, administrators and developers had to be **physically present** at the machine to interact with it. As organizations grew and computer systems became distributed across offices, data centers, and later, the cloud, this approach became impractical.
 
-###### Why secure remote access matters
+###### Why secure remote access matters {#why-secure-remote-access-matters}
 
 **Remote access** was the solution. It allows a user to connect to a computer or server from anywhere in the world
  and:
@@ -206,7 +206,7 @@ This security gap created the need for a **safer alternative** and that’s wher
 SSH solved this by introducing **encryption, authentication, and integrity checks**, making it the de-facto standard for remote access.
 :::
 
-###### What is SSH?
+###### What is SSH? {#what-is-ssh}
 
 SSH (Secure Shell) is a cryptographic network protocol that establishes a secure, encrypted session between a client and a server. 
 It ensures that all communication—including commands, data, and authentication credentials is protected from eavesdropping, tampering, or impersonation.
@@ -230,7 +230,7 @@ SSH allows you to:
 </div>
 
 
-###### What is SCP?
+###### What is SCP? {#what-is-scp}
 
 **SCP (Secure Copy Protocol)** is a command-line tool for **secure file transfer** between local and remote systems. Unlike older protocols like FTP, SCP **does not require a separate daemon**—it leverages SSH for both authentication and encryption.
 
@@ -256,7 +256,7 @@ SCP is ideal for:
 </div>
 
 
-###### Real-World Use Cases
+###### Real-World Use Cases {#real-world-use-cases}
 
 * **Developers:** 
 > *Seamlessly **deploy code, configuration files, or updates** to remote servers without exposing passwords. SSH and SCP make it safe to work across development, staging, and production environments, ensuring your workflow remains secure and efficient.*
@@ -382,6 +382,8 @@ ssh aitr@192.168.0.106
 
 ## Section 3: Pro SSH Usage
 
+###### 1. Using a Custom Port {#using-a-custom-port}
+
 By default, SSH uses **port 22**, but some servers may run SSH on a different port for security reasons. You can connect using the `-p` option:
 
 ```rust
@@ -392,7 +394,7 @@ ssh -p 2222 user@remote_host
 * Replace `user` with your remote username and `remote_host` with the server’s IP or hostname.
 
 
-###### 2. Running a Remote Command
+###### 2. Running a Remote Command {#running-a-remote-command}
 
 SSH allows you to **execute a command on a remote machine** without logging in interactively:
 
@@ -404,7 +406,7 @@ ssh user@remote_host "df -h /"
 * Any command enclosed in quotes will run on the remote server and return the output locally.
 
 
-###### 3. Automating Logins with SSH Keys
+###### 3. Automating with SSH Keys {#automating-with-ssh-keys}
 
 SSH keys allow **password-less authentication**, improving security and enabling automation in scripts and CI/CD pipelines.
 
@@ -435,7 +437,75 @@ ssh user@remote_host
 
 ## Section 4: SCP – Secure File Transfer
 
-Coming next week
+###### Syntax {#syntax}
+
+The basic `scp` syntax follows this pattern:
+
+```bash
+scp [options] source destination
+```
+
+Use `user@host:path` for any remote endpoint. If both source and destination are local paths, use `cp` instead of `scp`.
+
+###### Upload a File to Remote {#upload-a-file-to-remote}
+
+```bash
+scp ./build/app user@remote_host:/home/user/deploy/
+```
+
+This is the most common deployment flow: copy a local artifact to a remote machine over SSH.
+
+###### Download from Remote {#download-from-remote}
+
+```bash
+scp user@remote_host:/var/log/syslog ./downloads/syslog
+```
+
+This is useful for collecting logs, configuration snapshots, or generated reports from remote systems.
+
+###### Copy Entire Project Folder {#copy-entire-project-folder}
+
+```bash
+scp -r ./my_project user@remote_host:/home/user/projects/
+```
+
+The `-r` flag copies directories recursively. For large trees or repeated syncs, prefer `rsync -e ssh` because it can skip unchanged files.
+
+## Section 5: Best Practices & Troubleshooting {#section-5-best-practices--troubleshooting}
+
+Use these practices to keep remote access reliable and secure:
+
+* Prefer SSH keys over password-only logins.
+* Restrict SSH access with firewalls and least-privilege users.
+* Keep `openssh-client` and `openssh-server` updated.
+* Use `~/.ssh/config` to avoid repeating usernames, ports, and identity files.
+* Switch to `rsync` for repeated transfers or large directories.
+
+Common problems and first checks:
+
+* `Connection refused` usually means the SSH server is not running or the port is blocked.
+* `Permission denied` usually means the username, key, or file permissions are wrong.
+* Slow transfers often point to network issues, large file counts, or better fit for `rsync`.
+
+## Section 6: SSH vs SCP vs Alternatives {#section-6-ssh-vs-scp-vs-alternatives}
+
+Use each tool for the job it fits:
+
+* `ssh`: interactive login, remote commands, port forwarding, automation.
+* `scp`: fast secure copy for one-off file transfers.
+* `rsync -e ssh`: incremental synchronization, resume-friendly transfers, large directory copies.
+* `sftp`: interactive file browsing and transfer over SSH.
+
+## Section 7: Architecture Diagram {#section-7-architecture-diagram}
+
+```mermaid
+flowchart LR
+  A[Local Client] -->|SSH / SCP over encrypted channel| B[Remote SSH Server]
+  B --> C[Remote Shell]
+  B --> D[Remote Filesystem]
+  C --> E[Commands and Automation]
+  D --> F[Uploads, Downloads, Backups]
+```
 
 ## FAQ
 

@@ -127,9 +127,9 @@ Learning these patterns not only sharpens your scripting logic but also helps yo
    * [Delete a File Conditionally](#delete-a-file-conditionally)
 5. [Real-World Scripting Examples](#5-real-world-scripting-examples)
 
-   * [Log File Checker](#log-file-checker)
-   * [Config File Backup](#config-file-backup)
-   * [Auto Directory Creator](#auto-directory-creator)
+   * [Log File Checker](#5-real-world-scripting-examples)
+   * [Config File Backup](#5-real-world-scripting-examples)
+   * [Auto Directory Creator](#5-real-world-scripting-examples)
 6. [Common Mistakes to Avoid](#6-common-mistakes-to-avoid-in-bash-scripting)
 7. [Resources](#resources)
 8. [More Article](#more-articles)

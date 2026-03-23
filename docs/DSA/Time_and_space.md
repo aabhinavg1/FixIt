@@ -210,6 +210,22 @@ Optimizing both ensures that software remains **efficient, scalable, and practic
 
 ---
 
+## Big-O Cheat Sheet
+
+| Complexity | Typical Pattern | Practical Meaning |
+|------------|-----------------|-------------------|
+| `O(1)` | direct lookup | input size does not materially change cost |
+| `O(log n)` | divide and conquer | work grows slowly as input grows |
+| `O(n)` | single pass | cost scales directly with input size |
+| `O(n log n)` | efficient comparison sorting | common practical upper bound for general sorting |
+| `O(n^2)` | nested iteration | becomes expensive quickly on large input |
+| `O(2^n)` | exhaustive subsets | only feasible for small `n` |
+| `O(n!)` | exhaustive permutations | usually infeasible outside toy sizes |
+
+## Conclusion
+
+Time and space complexity are not just interview topics. They are the language engineers use to predict scaling behavior, choose safer algorithms, and avoid systems that collapse under real workloads.
+
 <Tabs>  
 
 <TabItem value="time" label="Time Complexity">  

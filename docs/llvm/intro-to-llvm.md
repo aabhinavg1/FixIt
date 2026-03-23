@@ -1,6 +1,6 @@
 ---
-title: "LLVM Curriculum (From Beginner to Pro)"
-description: "Learn LLVM step by step with a structured curriculum. Covers basics, intermediate pass development, advanced backend design, and real-world compiler engineering."
+title: "LLVM Roadmap: A Step-by-Step Curriculum from Beginner to Advanced"
+description: "Follow a structured LLVM roadmap covering compiler basics, LLVM IR, passes, optimization, backend concepts, and practical learning order."
 keywords:
 - LLVM Tutorial
 - Learn LLVM from Scratch
@@ -35,6 +35,8 @@ import TabItem from '@theme/TabItem';
 ## For live Session [click here](#llvm-live-section)
 
 # LLVM Curriculum (From Beginner to Pro)
+
+This page is the learning roadmap for LLVM. If you want a practical order for studying LLVM without getting lost in the ecosystem, start here.
 
 Welcome to your step-by-step **LLVM Curriculum**, designed to guide learners from **absolute beginners in compiler development** to **advanced LLVM engineers**.  
 This roadmap is structured into **10 progressive levels**, starting with compiler fundamentals, moving to LLVM IR and pass development, and culminating in backend, JIT, and advanced compiler research.
@@ -528,3 +530,22 @@ Here’s a refined and expanded version of your table, now organized with bullet
 
 ### 🚀 Get Started!  
 Choose a level to begin your **LLVM journey**. Whether you’re a beginner or aiming for advanced backend engineering, this curriculum will give you the structured roadmap to **master LLVM step by step**.
+
+## Real-World Example
+
+A practical LLVM learning path usually looks like this:
+
+1. Start with the frontend-to-IR pipeline.
+2. Read small LLVM IR examples and inspect generated code.
+3. Observe optimization passes on simple programs.
+4. Build a small custom pass.
+5. Connect those experiments back to a complete compiler workflow.
+
+That progression gives you usable LLVM intuition much faster than trying to memorize every subsystem first.
+
+## More Articles
+
+- [Introduction to LLVM IR](./llvm_ir/intro_to_llvm_ir.md)
+- [Manage LLVM Versions](./llvm_extras/manage_llvm_version.md)
+- [LLVM Pass Tracker](./llvm_pass_tracker/llvm_pass.md)
+- [What is LLVM?](./llvm_basic/What_is_LLVM.md)

@@ -1,5 +1,15 @@
 // @ts-check
 /** @type {import('@docusaurus/types').Config} */
+const productionScripts = [
+  {
+    src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
+    async: true,
+    defer: true,
+  },
+  { src: '/js/google-tag-manager.js', async: true, defer: true },
+  { src: '/js/google-analytics.js', async: true, defer: true },
+];
+
 const config = {
   title: 'CompilerSutra',
   tagline: 'Unleashing Compiler Power for Cutting-Edge Innovation!',
@@ -10,7 +20,6 @@ const config = {
   trailingSlash: true,
   projectName: 'FixIt',
   onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -25,6 +34,16 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
         },
+        sitemap: {
+          ignorePatterns: [
+            '/404',
+            '/404/**',
+            '/markdown-page',
+            '/markdown-page/**',
+            '/docs/tags',
+            '/docs/tags/**',
+          ],
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -36,6 +55,9 @@ const config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   themeConfig:
@@ -77,10 +99,10 @@ const config = {
             items: [
               { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
               { label: 'TVM Tutorials', to: '/docs/tvm-for-beginners' },
-              { label: 'GPU Tutorials', to: '/docs/the_graphic_rendering_pipeline/' },
+              { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline/' },
               { label: 'Compilers', to: '/docs/compilers/compiler' },
-              { label: 'C++ Tutorials', to: '/docs/c++/cpp-learning-roadmap' },
-              { label: 'DSA Tutorials', to: '/docs/DSA/' },
+              { label: 'C++ Tutorials', to: '/docs/c++' },
+              { label: 'DSA Tutorials', to: '/docs/DSA' },
               { label: 'Python Automation', to: '/docs/python/python_tutorial' },
               { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },
               { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
@@ -110,7 +132,7 @@ const config = {
             position: 'left',
             label: 'Blog',
             items: [
-              { label: 'Guides', to: '/docs/how_about' },
+              { label: 'Guides', to: '/docs/how-about' },
               {label: 'Articles', to: '/docs/articles'},
             ]
 
@@ -176,9 +198,9 @@ const config = {
               { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
               { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline' },
               { label: 'Compilers', to: '/docs/compilers/compiler' },
-              { label: 'C++ Tutorials', to: '/docs/c++/c++_main_file' },
-              { label: 'DSA', to: '/docs/DSA/DSA' },
-              {label: 'COA', to: '/docs/coa/coa' },
+              { label: 'C++ Tutorials', to: '/docs/c++' },
+              { label: 'DSA', to: '/docs/DSA' },
+              {label: 'COA', to: '/docs/coa' },
             ],
           },
           {
@@ -209,23 +231,7 @@ const config = {
       },
     }),
 
-  scripts: [
-    {
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-      async: true,
-      crossorigin: 'anonymous',
-      'data-ad-client': 'ca-pub-3213090090375658',
-      defer: true,
-    },
-    {
-      src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
-      async: true,
-      defer: true,
-    },
-    { src: '/js/google-tag-manager.js', async: true, defer: true },
-    { src: '/js/google-analytics.js', async: true, defer: true },
-    { src: '/js/llvm.js', async: true, defer: true },
-  ],
+  scripts: productionScripts,
 
   customFields: {
     adsenseClient: 'ca-pub-3213090090375658',

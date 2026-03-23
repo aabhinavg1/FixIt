@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "@docusaurus/Link";
-import FloatingSubscribe from "./FloatingSubscribe";
 import styles from "./DocsHub.module.css";
 
 // ========== DATA LAYER ==========
@@ -231,8 +230,6 @@ export default function HomepageDocs() {
         <DocsSections />
         <FeaturedGrid />
       </div>
-
-      <FloatingSubscribe />
     </div>
   );
 }

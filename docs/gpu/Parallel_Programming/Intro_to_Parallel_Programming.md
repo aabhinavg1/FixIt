@@ -1139,7 +1139,7 @@ Results match: Yes ✅
 
 ---
 
-## 4. Common Questions & Challenges in Parallel Computing
+## 4. Common Questions & Challenges in Parallel Computing {#4-common-questions-challenges-in-parallel-computing}
 
 <details>
 <summary>4.1 Limitations of Parallel Computing</summary>

@@ -94,12 +94,12 @@ Whether it's shaping the future of **autonomous vehicles**, powering **data cent
 <summary> Table of Contents</summary>
 ## Table of Contents
 
-- [⚙️ What Is a CPU?](#what-is-cpu)
+- [⚙️ What Is a CPU?](#what-is-a-cpu)
   - [Key Functions](#key-functions-of-a-cpu)
   - [Core CPU Features](#core-cpu-features))
 - [🎮 What Is a GPU?](#what-is-a-gpu)
   - [Key Functons](#key-functions-of-a-gpu)
-  - [Core GPU Feature](#core-feature-of-gpu)
+  - [Core GPU Feature](#core-gpu-features)
 - [🔍 CPU vs. GPU: The Difference](#cpu-vs-gpu-comparison)
 - [💡 When To Choose a GPU/CPU ](#when-to-use-cpu-gpu-or-both)
 - [💬 CPU vs. GPU FAQ](#-cpu-vs-gpu-faq)

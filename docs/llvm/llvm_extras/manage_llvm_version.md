@@ -1,6 +1,6 @@
 ---
-title: "LLVM Tutorial - Basic LLVM Tool"
-description: "Comprehensive guide to understanding LLVM: From function passes to creating your own LLVM passes and developing a compiler pass. Ideal for learners and developers."
+title: "How to Manage Multiple LLVM Versions on Linux and macOS"
+description: "Learn how to install, switch, and manage multiple LLVM versions, use llvm-config, and keep different compiler toolchains isolated for real projects."
 keywords:
   - LLVM Tutorial
   - LLVM Function Pass
@@ -29,7 +29,15 @@ tags:
 
 # Managing LLVM Versions
 
+If you build compiler tools, custom passes, or old research code, version management matters quickly. This guide shows how to install, switch, and inspect multiple LLVM versions without losing control of your toolchain.
+
 LLVM (Low-Level Virtual Machine) is a collection of modular and reusable compiler and toolchain technologies. Developers often need to manage multiple versions of LLVM for different projects or environments. In this guide, we will cover how to manage multiple LLVM versions and download the appropriate version for your needs.
+
+## Related Reading
+
+- [What is LLVM?](../llvm_basic/What_is_LLVM.md)
+- [LLVM roadmap](../intro-to-llvm.md)
+- [LLVM pass tracker](../llvm_pass_tracker/llvm_pass.md)
 
 ## Table of Contents
 

@@ -241,7 +241,7 @@ A computer is not “one thing.” It’s a collaboration between **hardware, so
 To really grasp how a computer functions, it’s useful to break it down into three key components:
 - [hardware](#phase-1-hardware)
 - [software](#phase-2-software)
-- [operating system](#why-operating-systems-matter) 
+- [operating system](#operating-systems-the-master-coordinator) 
 
 This three will gives you a clear view of how each part interacts and contributes to the overall system.
 
@@ -1016,4 +1016,3 @@ import { ComicQA } from '../../mcq/interview_question/Question_comics';
   example="Like employees using a shared playbook to coordinate tasks."
   whenToUse="Understanding multi-application workflows."
 />
-
