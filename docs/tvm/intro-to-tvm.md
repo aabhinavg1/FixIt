@@ -71,6 +71,10 @@ tags:
 
 # Introduction to TVM
 
+:::tip New Section Home
+This article still keeps its old TVM entry URL. If you want the new section landing page first, go to [TVM Home](/docs/tvm/).
+:::
+
 If your search is "what is TVM?" or "how does Apache TVM optimize models?", this page is the conceptual starting point before installation, tuning, and deployment.
 
 Apache TVM is an open-source machine learning compiler framework that enables efficient execution of deep learning models on various hardware platforms. It is designed to optimize and deploy machine learning models across diverse hardware architectures such as CPUs, GPUs, and specialized accelerators.

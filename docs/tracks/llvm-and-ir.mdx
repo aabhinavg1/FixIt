@@ -1,0 +1,60 @@
+---
+title: LLVM and IR Track
+description: Learn LLVM architecture, LLVM IR, SSA, dominance, pass pipelines, and the practical tooling behind modern compiler engineering.
+keywords:
+  - LLVM tutorial
+  - LLVM IR
+  - SSA
+  - compiler passes
+  - LLVM roadmap
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+
+# LLVM and IR Track
+
+This track is the core of CompilerSutra. It takes you from LLVM orientation into IR reasoning, analysis foundations, and pass-oriented thinking.
+
+## Who This Is For
+
+- engineers moving from compiler basics into real infrastructure
+- C++ developers entering the LLVM ecosystem
+- readers who want to understand SSA, dominance, and passes with production context
+
+## Outcome
+
+You should leave this track able to read LLVM IR, understand how LLVM is organized, and reason about why analyses and transformations are built the way they are.
+
+## Recommended Sequence
+
+1. [LLVM Roadmap](/docs/llvm/intro-to-llvm)
+2. [Build LLVM](/docs/llvm/llvm_basic/Build)
+3. [What Is LLVM?](/docs/llvm/llvm_basic/What_is_LLVM)
+4. [Why LLVM](/docs/llvm/llvm_basic/Why_LLVM)
+5. [LLVM Architecture](/docs/llvm/llvm_basic/LLVM_Architecture)
+6. [Manage LLVM Version](/docs/llvm/llvm_extras/manage_llvm_version)
+7. [LLVM Tools](/docs/llvm/llvm_tools/llvm_tools)
+8. [LLVM IR Introduction](/docs/llvm/llvm_ir/intro_to_llvm_ir)
+9. [Hierarchy of LLVM IR](/docs/llvm/llvm_ir/hierarchy_of_llvm_ir)
+10. [Static Single Assignment](/docs/llvm/llvm_Curriculum/level0/Static_Single_Assignment)
+11. [SSA Part 2](/docs/llvm/llvm_Curriculum/level0/Static_Single_Assignment_part2)
+12. [Dominator Tree and Dominance Frontier](/docs/llvm/llvm_Curriculum/level0/Dominator_Tree_And_Dominance_Frontier)
+13. [LLVM Pass Tracker](/docs/llvm/llvm_pass_tracker/llvm_pass)
+
+<AdBanner />
+
+## Supporting Material
+
+- [LLVM Build Fixes](/docs/llvm/fix_llvm_build_bugs)
+- [LLVM Guide](/docs/llvm/llvm_extras/llvm-guide)
+- [LLVM Pass Timing](/docs/llvm/llvm_extras/llvm_pass_timing)
+
+## Suggested Practice
+
+- compile a simple C file to LLVM IR and inspect the generated instructions
+- identify phi nodes in a control-flow-heavy example
+- compare the IR before and after a known optimization pass
+
+## Next Step
+
+After this track, move to [Labs](/docs/labs) and [Tools](/docs/tools), or continue into [GPU Compilers](/docs/tracks/gpu-compilers) or [ML Compilers](/docs/tracks/ml-compilers).

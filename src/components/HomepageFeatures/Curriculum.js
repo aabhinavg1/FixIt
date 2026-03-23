@@ -5,43 +5,38 @@ import styles from './styles.module.css';
 const CURRICULUM_ITEMS = [
   {
     title: 'Compiler Fundamentals',
-    link: '/docs/compilers/compiler',
-    description: 'Start with compiler phases, IR, CFGs, and how code becomes executable.',
+    link: '/docs/tracks/compiler-fundamentals',
+    description: 'Start with compiler phases, IR, CFGs, frontend and backend responsibilities, and how code becomes executable.',
   },
   {
-    title: 'LLVM Curriculum',
-    link: '/docs/llvm/intro-to-llvm',
-    description: 'Go deeper into LLVM architecture, IR, SSA, passes, and toolchain internals.',
+    title: 'LLVM and IR',
+    link: '/docs/tracks/llvm-and-ir',
+    description: 'Go deeper into LLVM architecture, IR, SSA, dominance, passes, and toolchain internals.',
   },
   {
-    title: 'LLVM IR',
-    link: '/docs/llvm/llvm_ir/intro_to_llvm_ir',
-    description: 'Understand the representation modern optimizers actually reason about.',
+    title: 'GPU Compilers',
+    link: '/docs/tracks/gpu-compilers',
+    description: 'Learn GPU execution, OpenCL, heterogeneous programming, and compiler-side performance reasoning.',
   },
   {
-    title: 'Pass Development',
-    link: '/docs/llvm/Intermediate/What_Is_LLVM_Passes',
-    description: 'Learn how LLVM transformations and analyses are structured in practice.',
+    title: 'ML Compilers',
+    link: '/docs/tracks/ml-compilers',
+    description: 'Move into MLIR, TVM, staged lowering, and modern compiler stacks used for AI workloads.',
   },
   {
-    title: 'GPU Programming',
-    link: '/docs/gpu/gpu_programming/gpu_programming_toc',
-    description: 'Build intuition for parallel hardware, memory behavior, and GPU execution.',
+    title: 'Start Here',
+    link: '/docs/start-here',
+    description: 'Use the roadmap to choose the right entry path and move through the platform in a deliberate sequence.',
   },
   {
-    title: 'OpenCL',
-    link: '/docs/gpu/opencl',
-    description: 'Bridge systems-level thinking with real heterogeneous programming workflows.',
+    title: 'Tools',
+    link: '/docs/tools',
+    description: 'Inspect IR, compare optimizations, visualize graphs, and browse benchmark artifacts with purpose-built tooling.',
   },
   {
-    title: 'MLIR and TVM',
-    link: '/docs/MLIR/intro',
-    description: 'Move toward modern compiler stacks used in AI and domain-specific systems.',
-  },
-  {
-    title: 'Projects and Practice',
-    link: '/docs/project/',
-    description: 'Use projects to turn conceptual understanding into repeatable engineering skill.',
+    title: 'Labs',
+    link: '/docs/labs',
+    description: 'Turn core concepts into repeatable engineering skill through practical compiler and optimization exercises.',
   },
 ];
 
@@ -50,10 +45,10 @@ export default function Curriculum() {
     <section className={styles.sectionAlt} id="curriculum">
       <div className={styles.sectionShell}>
         <p className={styles.eyebrow}>Curriculum</p>
-        <h2 className={styles.title}>Choose a Track and Keep Going</h2>
+        <h2 className={styles.title}>Choose a Track and Keep Moving</h2>
         <p className={styles.subtitle}>
-          The homepage should help a reader choose a direction quickly. These
-          tracks surface the strongest parts of the site instead of burying them.
+          The core job of the homepage is to route readers into a product
+          structure: roadmap, tracks, tools, labs, and then deeper articles.
         </p>
 
         <div className={styles.curriculumGrid}>

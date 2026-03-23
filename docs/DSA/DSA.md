@@ -20,6 +20,10 @@ tags: ["DSA", "Algorithms", "Data Structures", "LeetCode", "Competitive Programm
 ---
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 
+:::tip Section Home
+This page remains the canonical DSA section root at `/docs/DSA/`, so the older DSA link is still preserved.
+:::
+
 ## 📚 Recommended Books
 
 <div>

@@ -504,7 +504,7 @@ graph TD
 | Writeback           | Memory Controller, Registers, Shared Memory   | Memory Controller, Local Data Share (LDS), Global Memory |
 
 ---
-:::tips
+:::tip
 This pipeline ensures that data is processed efficiently on the GPU, leveraging massive parallelism. Both NVIDIA and AMD utilize similar concepts but have their own architectural implementations and terminologies to optimize computation, memory access, and instruction handling.
 :::
 

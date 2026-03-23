@@ -1,0 +1,57 @@
+---
+title: Compiler Fundamentals Track
+description: Build strong compiler foundations with compiler phases, IR, CFGs, basic optimization reasoning, and practical build-your-own-compiler articles.
+keywords:
+  - compiler fundamentals
+  - compiler basics
+  - build your own compiler
+  - compiler roadmap
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+
+# Compiler Fundamentals Track
+
+This track is for readers who want a clean path into compiler engineering without getting buried under toolchain details too early.
+
+## Who This Is For
+
+- students learning compilers for the first time
+- systems programmers who know C or C++ but not compiler architecture
+- engineers who want to understand optimization pipelines before touching LLVM internals
+
+## Outcome
+
+By the end of this track, you should understand how a compiler is structured, why IR exists, how control flow and data flow shape optimization, and how a small compiler project fits together.
+
+## Recommended Sequence
+
+1. [What Is a Compiler?](/docs/compilers/Compiler)
+2. [Intermediate Representation in Compilers](/docs/compilers/ir_in_compiler)
+3. [Source Code to Executable](/docs/compilers/sourcecode_to_executable)
+4. [Introduction to Compilers](/docs/compilers/IntroductionToCompilers)
+5. [Compiler Frontend](/docs/compilers/front_end/compiler-frontend)
+6. [Role of Parser](/docs/compilers/front_end/role_of_parser)
+7. [Introduction to Backend Compilers](/docs/compilers/back_end/introduction-to-backend-compilers)
+8. [Basic Blocks in Compiler Design](/docs/compilers/basic_block_in_compiler)
+9. [Compiler Flags](/docs/compilers/flag/compiler-flags)
+10. [Build Your First Compiler](/docs/compilers/build_your_compiler)
+
+<AdBanner />
+
+## Supporting Articles
+
+- [Verification vs Validation](/docs/compilers/Verification_Vs_Validation)
+- [Other Architectures](/docs/compilers/other_arch/other-architectures)
+- [CPU Compilers](/docs/compilers/CPU/cpu-compilers)
+- [GPU Compilers](/docs/compilers/GPU/gpu-compilers)
+
+## Suggested Practice
+
+- trace a simple source file through preprocessing, parsing, IR, and assembly
+- identify one frontend responsibility and one backend responsibility for each compiler phase
+- compare a hand-written optimization idea with what `-O2` or `-O3` already does
+
+## Next Step
+
+After this track, move to [LLVM and IR](/docs/tracks/llvm-and-ir).

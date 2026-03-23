@@ -39,6 +39,10 @@ import TabItem from '@theme/TabItem';
 
 # Linux Basics for Beginners: A Comprehensive Guide
 
+:::tip New Section Home
+This article remains a valid entry point. If you want the new section landing page first, go to [Linux Home](/docs/linux/).
+:::
+
 **Linux is a powerful**, open-source operating system renowned for its ``stability, flexibility``, and ``security``. This ``Linux basics guide`` is ``designed for beginners``, offering a step-by-step introduction to essential commands, the file system, and practical tips to ``confidently start`` your Linux journey. Whether you're using ``Ubuntu``, ``Fedora``, or ``Debian`` , this tutorial will equip you with the ``foundational skills`` to navigate and ``manage a Linux system``.
 
 

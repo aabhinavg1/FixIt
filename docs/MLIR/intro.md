@@ -31,6 +31,10 @@ date: "2024-10-28"
 
 # Introduction to MLIR
 
+:::tip New Section Home
+This MLIR article remains a valid entry point. If you want the new section landing page first, go to [MLIR Home](/docs/MLIR/).
+:::
+
 **MLIR** (Multi-Level Intermediate Representation) is an innovative compiler infrastructure framework designed to facilitate the development of complex compilers and related tools. Built as part of the LLVM project, MLIR aims to provide a flexible, reusable infrastructure for building custom intermediate representations (IRs) tailored to specific domain requirements.
 
 ## What is MLIR?

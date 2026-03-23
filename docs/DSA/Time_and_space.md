@@ -94,7 +94,7 @@ import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 If an algorithm needs to **scale efficiently**, it should compute results within a **finite and practical time bound**, even for large values of `n`. The goal of analyzing complexity is to determine whether an algorithm remains feasible when handling massive datasets, ensuring that it does not consume excessive computation time or memory. 
 
 ---
-:::Tip
+:::tip
 Understanding algorithmic complexity helps in:  
 - **Performance Optimization** – Choosing efficient algorithms for solving problems.  
 - **Scalability Analysis** – Ensuring algorithms work well with large inputs.  

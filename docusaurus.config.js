@@ -91,28 +91,58 @@ const config = {
         },
 
         items: [
-          /* ---------------- Tutorials ---------------- */
+          {
+            to: '/docs/start-here',
+            label: 'Start Here',
+            position: 'left',
+          },
           {
             type: 'dropdown',
-            label: 'Tutorials',
+            label: 'Tracks',
             position: 'left',
             items: [
-              { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
-              { label: 'TVM Tutorials', to: '/docs/tvm-for-beginners' },
-              { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline/' },
-              { label: 'Compilers', to: '/docs/compilers/compiler' },
-              { label: 'C++ Tutorials', to: '/docs/c++' },
-              { label: 'DSA Tutorials', to: '/docs/DSA' },
-              { label: 'Python Automation', to: '/docs/python/python_tutorial' },
-              { label: 'Linux Tutorials', to: '/docs/linux/intro_to_linux' },
-              { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
-              { label: 'OpenCL Tutorial', to: '/docs/gpu/opencl' },
-              {label: 'Live', to: '/docs/linux/live'},
-              {label: 'COA',  to: '/docs/coa'},
+              { label: 'Compiler Fundamentals', to: '/docs/tracks/compiler-fundamentals' },
+              { label: 'LLVM and IR', to: '/docs/tracks/llvm-and-ir' },
+              { label: 'GPU Compilers', to: '/docs/tracks/gpu-compilers' },
+              { label: 'ML Compilers', to: '/docs/tracks/ml-compilers' },
+              { label: 'C++', to: '/docs/c++' },
             ],
           },
-
-          /* ---------------- YouTube (NEW) ---------------- */
+          {
+            to: '/docs/tools',
+            label: 'Tools',
+            position: 'left',
+          },
+          {
+            to: '/docs/labs',
+            label: 'Labs',
+            position: 'left',
+          },
+          {
+            type: 'dropdown',
+            label: 'Articles',
+            position: 'left',
+            items: [
+              { label: 'All Articles', to: '/docs/articles' },
+              { label: 'Benchmarks', to: '/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter' },
+              { label: 'Tech Blog', to: '/docs/AI/is_gpt_is_opensource' },
+              { label: 'How-To Guides', to: '/docs/how-about' },
+            ],
+          },
+          {
+            type: 'dropdown',
+            label: 'Topics',
+            position: 'left',
+            items: [
+              { label: 'Compilers', to: '/docs/compilers/compiler' },
+              { label: 'LLVM', to: '/docs/llvm/intro-to-llvm' },
+              { label: 'MLIR', to: '/docs/MLIR/intro' },
+              { label: 'TVM', to: '/docs/tvm/intro-to-tvm' },
+              { label: 'OpenCL', to: '/docs/gpu/opencl' },
+              { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
+              { label: 'Linux', to: '/docs/linux/intro_to_linux' },
+            ],
+          },
           {
             type: 'dropdown',
             label: 'YouTube',
@@ -126,17 +156,6 @@ const config = {
             ],
           },
 
-          /* ---------------- Docs ---------------- */
-          {
-            type: 'dropdown',
-            position: 'left',
-            label: 'Blog',
-            items: [
-              { label: 'Guides', to: '/docs/how-about' },
-              {label: 'Articles', to: '/docs/articles'},
-            ]
-
-          },
           {
             type: 'docSidebar',
             sidebarId: 'projectSidebar',
@@ -145,18 +164,11 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'techblogSidebar',
-            position: 'left',
-            label: 'Tech Blog',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'LLVMPassSidebar',
             position: 'left',
             label: 'LLVM Pass Tracker',
           },
 
-          /* ---------------- MCQ ---------------- */
           {
             type: 'dropdown',
             label: 'MCQ',
@@ -175,7 +187,6 @@ const config = {
             ],
           },
 
-          /* ---------------- External ---------------- */
           {
             href: 'https://www.youtube.com/@compilersutra',
             label: 'YouTube Channel',
@@ -195,12 +206,15 @@ const config = {
           {
             title: 'Docs',
             items: [
+              { label: 'Start Here', to: '/docs/start-here' },
+              { label: 'Tracks', to: '/docs/tracks/compiler-fundamentals' },
+              { label: 'Tools', to: '/docs/tools' },
+              { label: 'Labs', to: '/docs/labs' },
               { label: 'LLVM Tutorials', to: '/docs/llvm/intro-to-llvm' },
-              { label: 'GPU Tutorials', to: '/docs/The_Graphic_Rendering_Pipeline' },
               { label: 'Compilers', to: '/docs/compilers/compiler' },
               { label: 'C++ Tutorials', to: '/docs/c++' },
-              { label: 'DSA', to: '/docs/DSA' },
-              {label: 'COA', to: '/docs/coa' },
+              { label: 'OpenCL', to: '/docs/gpu/opencl' },
+              { label: 'Linux', to: '/docs/linux/intro_to_linux' },
             ],
           },
           {

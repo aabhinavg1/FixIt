@@ -26,6 +26,10 @@ tags:
 ---
 # 🔍 Know Your Compilers
 
+:::tip New Section Home
+This compiler entry article still works as before. If you want the new section landing page first, go to [Compilers Home](/docs/compilers/).
+:::
+
 Welcome to the **Compiler Documentation**! Explore each stage and component of the compiler, from front-end parsing to architecture-specific optimizations for GPU, CPU, and more.
 
 ## Contents

@@ -17,8 +17,34 @@ export default function FloatingSubscribe() {
       return undefined;
     }
 
-    const timer = setTimeout(() => setVisible(true), 3000);
-    return () => clearTimeout(timer);
+    let timer;
+    let shown = false;
+
+    const maybeShow = () => {
+      if (shown) {
+        return;
+      }
+
+      const doc = document.documentElement;
+      const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const progress = window.scrollY / scrollable;
+
+      if (progress >= 0.35) {
+        shown = true;
+        setVisible(true);
+        window.removeEventListener("scroll", maybeShow);
+      }
+    };
+
+    timer = setTimeout(() => {
+      window.addEventListener("scroll", maybeShow, { passive: true });
+      maybeShow();
+    }, 8000);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", maybeShow);
+    };
   }, []);
 
   const handleClose = () => {
