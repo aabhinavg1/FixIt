@@ -640,6 +640,91 @@ button.secondary:hover {
   line-height: 1.5;
 }
 
+/* ==================== SEARCH FIXES ==================== */
+.navbarSearchContainer,
+.navbar__search,
+.navbar__search-input,
+.DocSearch,
+.DocSearch-Container,
+.DocSearch-Form,
+.DocSearch-Input,
+.DocSearch-Button,
+.aa-Form,
+.aa-InputWrapper,
+.aa-Input {
+  min-width: 0;
+}
+
+.navbar__search-input,
+.DocSearch-Input,
+.aa-Input {
+  width: 100%;
+  min-width: 14rem;
+  max-width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-indent: 0;
+  white-space: normal;
+  overflow: visible;
+  caret-color: var(--color-primary-500);
+}
+
+.navbar__search-input::placeholder,
+.DocSearch-Input::placeholder,
+.aa-Input::placeholder {
+  color: var(--color-neutral-500);
+  opacity: 1;
+}
+
+.navbar__search-input:focus,
+.DocSearch-Input:focus,
+.aa-Input:focus {
+  outline: none;
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 3px rgba(40, 153, 245, 0.16);
+}
+
+.DocSearch-Button {
+  min-height: 2.75rem;
+  border-radius: 999px;
+}
+
+.DocSearch-Button-Placeholder,
+.DocSearch-Button-Keys,
+.aa-InputWrapperPrefix,
+.aa-InputWrapperSuffix {
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .navbar__search-input,
+[data-theme='dark'] .DocSearch-Input,
+[data-theme='dark'] .aa-Input {
+  background: rgba(30, 30, 30, 0.96);
+  border-color: var(--color-neutral-600);
+  color: var(--color-neutral-100);
+}
+
+[data-theme='dark'] .navbar__search-input::placeholder,
+[data-theme='dark'] .DocSearch-Input::placeholder,
+[data-theme='dark'] .aa-Input::placeholder {
+  color: var(--color-neutral-300);
+}
+
+@media (max-width: 996px) {
+  .navbar__search-input,
+  .DocSearch-Input,
+  .aa-Input {
+    min-width: 11rem;
+  }
+}
+
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   :root {
