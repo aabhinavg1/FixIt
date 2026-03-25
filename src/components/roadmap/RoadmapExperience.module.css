@@ -1,0 +1,1260 @@
+.roadmap {
+  --rm-bg: #f4f7fb;
+  --rm-bg-soft: #ffffff;
+  --rm-bg-card: rgba(255, 255, 255, 0.9);
+  --rm-border: rgba(148, 163, 184, 0.22);
+  --rm-text: #111827;
+  --rm-muted: #4b5563;
+  --rm-primary: #3b82f6;
+  --rm-success: #22c55e;
+  --rm-warning: #f59e0b;
+  --rm-expert: #8b5cf6;
+  --rm-shadow: 0 22px 70px rgba(15, 23, 42, 0.1);
+  position: relative;
+  color: var(--rm-text);
+  isolation: isolate;
+}
+
+[data-theme='dark'] .roadmap {
+  --rm-bg: #0a0a0f;
+  --rm-bg-soft: #111114;
+  --rm-bg-card: rgba(17, 17, 20, 0.92);
+  --rm-border: rgba(148, 163, 184, 0.14);
+  --rm-text: #e4e4e7;
+  --rm-muted: #a1a1aa;
+  --rm-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.roadmap :global(.theme-doc-markdown) {
+  max-width: none;
+}
+
+.roadmapReady {
+  animation: fadeIn 420ms ease both;
+}
+
+.skeletonOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 5rem 1.25rem 2rem;
+  background: rgba(244, 247, 251, 0.96);
+  transition: opacity 320ms ease, visibility 320ms ease;
+}
+
+.skeletonHero,
+.skeletonGrid span {
+  display: block;
+  border-radius: 28px;
+  background: linear-gradient(90deg, rgba(148,163,184,0.08), rgba(148,163,184,0.18), rgba(148,163,184,0.08));
+  background-size: 220% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.skeletonHero {
+  height: 15rem;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.skeletonGrid span {
+  height: 10rem;
+}
+
+.skeletonGone {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero,
+.section,
+.timelineSection {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero {
+  overflow: hidden;
+  padding: 2rem 0 1.5rem;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.18), transparent 20rem),
+    radial-gradient(circle at 85% 12%, rgba(139, 92, 246, 0.14), transparent 18rem),
+    linear-gradient(-45deg, #eef4ff, #f8fbff, #edf5ff, #ffffff);
+  background-size: 180% 180%;
+  box-shadow: var(--rm-shadow);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  animation: gradientShift 15s ease infinite;
+}
+
+[data-theme='dark'] .hero {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.22), transparent 20rem),
+    radial-gradient(circle at 85% 12%, rgba(139, 92, 246, 0.18), transparent 18rem),
+    linear-gradient(-45deg, #0a0a0f, #111827, #0f172a, #111114);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.heroCanvas,
+.heroSpotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroCanvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
+
+.heroSpotlight {
+  background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(59, 130, 246, 0.1), transparent 70%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1rem;
+}
+
+.heroCopy,
+.heroAside,
+.prereqCard,
+.quickCard,
+.guideCard,
+.phaseCard,
+.outcomeCard,
+.rolesCard,
+.finalCard,
+.snippetCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rm-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.82));
+  box-shadow: var(--rm-shadow);
+  backdrop-filter: blur(16px);
+}
+
+[data-theme='dark'] .heroCopy,
+[data-theme='dark'] .heroAside,
+[data-theme='dark'] .prereqCard,
+[data-theme='dark'] .quickCard,
+[data-theme='dark'] .guideCard,
+[data-theme='dark'] .phaseCard,
+[data-theme='dark'] .outcomeCard,
+[data-theme='dark'] .rolesCard,
+[data-theme='dark'] .finalCard,
+[data-theme='dark'] .snippetCard {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+}
+
+.heroCopy {
+  padding: 1.4rem;
+  border-radius: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: #8cb7ff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 0.94;
+  color: #0f172a;
+}
+
+[data-theme='dark'] .heroTitle {
+  color: #fff;
+}
+
+.glitch {
+  position: relative;
+  animation: glitchShift 850ms steps(2, end) 1;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: rgba(59, 130, 246, 0.75);
+  transform: translate(-2px, -1px);
+  clip-path: inset(10% 0 52% 0);
+}
+
+.glitch::after {
+  color: rgba(245, 158, 11, 0.75);
+  transform: translate(2px, 1px);
+  clip-path: inset(58% 0 6% 0);
+}
+
+.heroLead {
+  max-width: 45rem;
+  margin: 1rem 0 0;
+  color: #334155;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+[data-theme='dark'] .heroLead {
+  color: rgba(228, 228, 231, 0.9);
+}
+
+.heroActions,
+.finalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.inlineButton,
+.trackLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.82rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.primaryButton::after,
+.secondaryButton::after,
+.inlineButton::after,
+.trackLink::after,
+.copyButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, transparent 62%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.primaryButton:active::after,
+.secondaryButton:active::after,
+.inlineButton:active::after,
+.trackLink:active::after,
+.copyButton:active::after {
+  transform: scale(1.8);
+  opacity: 1;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(59, 130, 246, 0.24);
+}
+
+.secondaryButton,
+.inlineButton,
+.trackLink {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255,255,255,0.72);
+  color: var(--rm-text);
+}
+
+[data-theme='dark'] .secondaryButton,
+[data-theme='dark'] .inlineButton,
+[data-theme='dark'] .trackLink {
+  background: rgba(255,255,255,0.04);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.inlineButton:hover,
+.trackLink:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.heroAside {
+  display: grid;
+  gap: 1rem;
+}
+
+.heroStatGrid,
+.quickStartGrid,
+.checkGrid,
+.roleGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.heroStatGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.statCard,
+.quickCard {
+  padding: 1.1rem;
+  border-radius: 24px;
+  border: 1px solid var(--rm-border);
+  background: rgba(255,255,255,0.74);
+}
+
+[data-theme='dark'] .statCard,
+[data-theme='dark'] .quickCard {
+  background: rgba(255,255,255,0.03);
+}
+
+.statCard strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #0f172a;
+  font-size: 1.32rem;
+}
+
+[data-theme='dark'] .statCard strong {
+  color: #fff;
+}
+
+.snippetCard {
+  padding: 1rem;
+  border-radius: 24px;
+}
+
+.snippetLabel {
+  margin: 0 0 0.35rem;
+  color: #8cb7ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.snippetCode {
+  display: block;
+  color: #0f172a;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  white-space: normal;
+}
+
+[data-theme='dark'] .snippetCode {
+  color: #f8fafc;
+}
+
+.copyButton,
+.resetButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.72rem 0.95rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.8);
+  color: var(--rm-text);
+  cursor: pointer;
+}
+
+[data-theme='dark'] .copyButton,
+[data-theme='dark'] .resetButton {
+  background: rgba(255,255,255,0.05);
+}
+
+.toast {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.14);
+  color: #dcfce7;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.toastVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroFooter {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem 1rem;
+}
+
+.typeQuote {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  border: 1px solid var(--rm-border);
+  background: rgba(255,255,255,0.7);
+  color: #0f172a;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+[data-theme='dark'] .typeQuote {
+  background: rgba(255,255,255,0.03);
+  color: #f8fafc;
+}
+
+.typeCaret {
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.14rem;
+  background: currentColor;
+  vertical-align: -0.12em;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+.section {
+  display: grid;
+  gap: 1rem;
+}
+
+.prereqCard,
+.guideCard,
+.outcomeCard,
+.rolesCard,
+.finalCard {
+  padding: 1.25rem;
+  border-radius: 28px;
+}
+
+.prereqCard summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.prereqCard summary::-webkit-details-marker {
+  display: none;
+}
+
+.prereqCard h2,
+.guideCard h2,
+.outcomeCard h2,
+.rolesCard h2,
+.finalCard h2 {
+  margin: 0;
+  color: #0f172a;
+}
+
+[data-theme='dark'] .prereqCard h2,
+[data-theme='dark'] .guideCard h2,
+[data-theme='dark'] .outcomeCard h2,
+[data-theme='dark'] .rolesCard h2,
+[data-theme='dark'] .finalCard h2 {
+  color: #fff;
+}
+
+.readyDial {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  min-height: 5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  background: rgba(59, 130, 246, 0.12);
+  color: #0f172a;
+}
+
+[data-theme='dark'] .readyDial {
+  color: #fff;
+}
+
+.prereqBody {
+  padding-top: 1rem;
+}
+
+.checkGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.checkItem,
+.widgetCheckbox,
+.completeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--rm-text);
+}
+
+.checkItem input,
+.widgetCheckbox input,
+.completeToggle input {
+  appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  border: 1px solid rgba(148, 163, 184, 0.38);
+  border-radius: 0.35rem;
+  background: rgba(255,255,255,0.03);
+  display: grid;
+  place-items: center;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.checkItem input::before,
+.widgetCheckbox input::before,
+.completeToggle input::before {
+  content: "";
+  width: 0.58rem;
+  height: 0.58rem;
+  transform: scale(0);
+  clip-path: polygon(14% 44%, 0 65%, 49% 100%, 100% 15%, 80% 0, 43% 62%);
+  background: #fff;
+  transition: transform 160ms ease;
+}
+
+.checkItem input:checked,
+.widgetCheckbox input:checked,
+.completeToggle input:checked {
+  background: var(--rm-primary);
+  border-color: var(--rm-primary);
+  transform: scale(1.04);
+}
+
+.checkItem input:checked::before,
+.widgetCheckbox input:checked::before,
+.completeToggle input:checked::before {
+  transform: scale(1);
+}
+
+.quickStartGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.timelineSection {
+  padding-top: 1rem;
+}
+
+.timelineWrap {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.timelineBase,
+.timelineFill {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 999px;
+  transform-origin: top;
+}
+
+.timelineBase {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.timelineFill {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+}
+
+.phaseCard {
+  position: relative;
+  margin-bottom: 1.15rem;
+  padding: 1.25rem;
+  border-radius: 30px;
+  transform: perspective(1200px) rotateX(var(--tilt-x, 2deg)) rotateY(var(--tilt-y, 0deg)) translateY(24px);
+  transition:
+    transform 260ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.phaseCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(280px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(59,130,246,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .phaseCard::before {
+  background: radial-gradient(280px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255,255,255,0.08), transparent 70%);
+}
+
+.phaseCard:hover {
+  transform: perspective(1200px) rotateX(var(--tilt-x, 1deg)) rotateY(var(--tilt-y, -1deg)) translateY(-5px) scale(1.012);
+  border-color: rgba(148, 163, 184, 0.22);
+}
+
+.phaseCard:hover::before {
+  opacity: 1;
+}
+
+.phaseCard:hover .phaseDot {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--phase-accent) 12%, transparent);
+}
+
+.phaseCard:hover .cardProgress span {
+  transform: scaleX(0.72);
+}
+
+.phaseActive .phaseDot {
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+.phaseDot {
+  position: absolute;
+  left: -2.4rem;
+  top: 2rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: var(--phase-accent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--phase-accent) 16%, transparent);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.phaseKicker,
+.subheading {
+  margin: 0 0 0.45rem;
+  color: #93c5fd;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.phaseTitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.6rem, 2vw, 2.15rem);
+}
+
+[data-theme='dark'] .phaseTitle {
+  color: #fff;
+}
+
+.phaseGlyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 14px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  transition: transform 220ms ease;
+}
+
+[data-theme='dark'] .phaseGlyph {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.phaseCard:hover .phaseGlyph {
+  transform: rotate(5deg) translateY(-1px);
+}
+
+.difficultyBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.foundation {
+  background: rgba(59, 130, 246, 0.16);
+  color: #bfdbfe;
+}
+
+.intermediate {
+  background: rgba(34, 197, 94, 0.16);
+  color: #bbf7d0;
+}
+
+.advanced {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fde68a;
+}
+
+.expert {
+  background: rgba(139, 92, 246, 0.16);
+  color: #ddd6fe;
+}
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.phaseColumn p {
+  color: #374151;
+}
+
+[data-theme='dark'] .phaseColumn p {
+  color: rgba(228, 228, 231, 0.9);
+}
+
+.quickWin,
+.proTip,
+.interviewBlock,
+.progressMarker {
+  padding: 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255,255,255,0.72);
+}
+
+[data-theme='dark'] .quickWin,
+[data-theme='dark'] .proTip,
+[data-theme='dark'] .interviewBlock,
+[data-theme='dark'] .progressMarker {
+  background: rgba(255,255,255,0.03);
+}
+
+.proTip summary,
+.interviewBlock summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.topicList,
+.projectList,
+.interviewBlock ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.topicList,
+.projectList {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.taskItem,
+.projectItem {
+  color: #1f2937;
+}
+
+[data-theme='dark'] .taskItem,
+[data-theme='dark'] .projectItem {
+  color: rgba(228, 228, 231, 0.92);
+}
+
+.taskItem {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+.projectItem {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.portfolioBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.16);
+  color: #fde68a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: help;
+}
+
+.corePagesWrap {
+  margin-top: 1rem;
+}
+
+.corePageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.corePageLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.92rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255,255,255,0.74);
+  color: var(--rm-text);
+  text-decoration: none;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+[data-theme='dark'] .corePageLink {
+  background: rgba(255,255,255,0.03);
+}
+
+.corePageLink:hover {
+  text-decoration: none;
+}
+
+.phaseFooter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.progressMarker {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+}
+
+.markerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--phase-accent) 18%, transparent);
+  color: color-mix(in srgb, var(--phase-accent) 88%, white);
+}
+
+.cardProgress {
+  margin-top: 1rem;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+  overflow: hidden;
+}
+
+.cardProgress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0.2);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--phase-accent), color-mix(in srgb, var(--phase-accent) 45%, white));
+  transition: transform 220ms ease;
+}
+
+.cardProgressDone {
+  transform: scaleX(1) !important;
+}
+
+.trackGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.outcomeCard,
+.rolesCard {
+  margin-bottom: 1rem;
+}
+
+.roleGrid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-top: 1rem;
+}
+
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255,255,255,0.78);
+}
+
+[data-theme='dark'] .roleBadge {
+  background: rgba(255,255,255,0.04);
+}
+
+.finalCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+.finalCard:hover {
+  transform: perspective(1200px) rotateX(var(--tilt-x, 1.2deg)) rotateY(var(--tilt-y, -1.2deg));
+}
+
+.finalCard:active {
+  transform: scale(0.99);
+}
+
+.anchor {
+  scroll-margin-top: 96px;
+}
+
+.progressWidget {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+[data-theme='dark'] .progressWidget {
+  background: rgba(10, 10, 15, 0.92);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.progressDial {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 0.8rem;
+}
+
+.progressSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progressTrack,
+.progressArc {
+  fill: none;
+  stroke-width: 8;
+}
+
+.progressTrack {
+  stroke: rgba(148, 163, 184, 0.22);
+}
+
+[data-theme='dark'] .progressTrack {
+  stroke: rgba(255,255,255,0.08);
+}
+
+.progressArc {
+  stroke: var(--rm-primary);
+  transition: stroke-dashoffset 220ms ease;
+}
+
+.progressCenter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.progressCenter strong {
+  font-size: 1.15rem;
+}
+
+.widgetMeta p {
+  margin: 0 0 0.2rem;
+}
+
+.widgetChecklist {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.8rem 0;
+}
+
+.resetButton {
+  width: 100%;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 560ms ease,
+    transform 560ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal]:global(.is-visible),
+.phaseCard:global(.is-visible),
+.phaseCard:global(.is-visible) .taskItem,
+.phaseCard:global(.is-visible) .corePageLink {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.phaseCard:global(.is-visible) {
+  animation: cardFlip 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.phaseCard:global(.is-visible) .taskItem {
+  animation: taskSlide 540ms cubic-bezier(0.25, 1.2, 0.4, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.phaseCard:global(.is-visible) .corePageLink {
+  animation: typeReveal 640ms steps(18, end) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .phaseCard,
+  .finalCard {
+    will-change: transform;
+  }
+}
+
+@media (max-width: 996px) {
+  .heroInner,
+  .phaseGrid,
+  .phaseFooter,
+  .finalCard,
+  .trackGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroStatGrid,
+  .checkGrid,
+  .quickStartGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    border-radius: 24px;
+  }
+
+  .heroTitle {
+    max-width: none;
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+  }
+
+  .timelineWrap {
+    padding-left: 1.6rem;
+  }
+
+  .phaseDot {
+    left: -1.1rem;
+  }
+
+  .progressWidget {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: min(18rem, calc(100vw - 1.5rem));
+  }
+
+  .heroActions,
+  .finalActions {
+    display: grid;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .inlineButton,
+  .trackLink {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .glitch,
+  .glitch::before,
+  .glitch::after,
+  .typeCaret,
+  .phaseActive .phaseDot,
+  .skeletonHero,
+  .skeletonGrid span {
+    animation: none !important;
+  }
+
+  [data-reveal],
+  .phaseCard,
+  .taskItem,
+  .corePageLink,
+  .primaryButton,
+  .secondaryButton,
+  .inlineButton,
+  .trackLink,
+  .phaseCard:hover,
+  .finalCard:hover {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+@keyframes glitchShift {
+  0%, 100% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  60% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cardFlip {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(-10deg) translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0);
+  }
+}
+
+@keyframes taskSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes typeReveal {
+  from {
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--phase-accent) 16%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 12px color-mix(in srgb, var(--phase-accent) 10%, transparent);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

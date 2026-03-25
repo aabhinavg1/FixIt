@@ -62,6 +62,10 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: false,
+      },
       metadata: [
         { name: 'google-adsense-account', content: 'ca-pub-3213090090375658' },
         { name: 'theme-color', content: '#0a0f1e' },
