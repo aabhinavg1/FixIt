@@ -6,7 +6,6 @@ import {
   FaCheck,
   FaCode,
   FaCopy,
-  FaRedoAlt,
   FaRocket,
   FaStar,
 } from 'react-icons/fa';
@@ -119,66 +118,6 @@ function CopySnippet() {
         Copied to clipboard
       </span>
     </div>
-  );
-}
-
-function ProgressTracker({
-  readiness,
-  completion,
-  completedPhaseCount,
-  phaseState,
-  activePhaseId,
-  onTogglePhase,
-  onReset,
-}) {
-  const circumference = 2 * Math.PI * 48;
-  const offset = circumference - (completion / 100) * circumference;
-
-  return (
-    <aside className={styles.progressWidget} aria-label="Roadmap progress tracker">
-      <div className={styles.progressDial}>
-        <svg viewBox="0 0 120 120" className={styles.progressSvg} aria-hidden="true">
-          <circle cx="60" cy="60" r="48" className={styles.progressTrack} />
-          <circle
-            cx="60"
-            cy="60"
-            r="48"
-            className={styles.progressArc}
-            style={{ strokeDasharray: circumference, strokeDashoffset: offset }}
-          />
-        </svg>
-        <div className={styles.progressCenter}>
-          <strong>{completion}%</strong>
-          <span>Complete</span>
-        </div>
-      </div>
-
-      <div className={styles.widgetMeta}>
-        <p>
-          <strong>{completedPhaseCount}</strong> / {PHASES.length} phases done
-        </p>
-        <p>{readiness}% ready from prerequisites</p>
-        <p>Reading now: {PHASES.find((phase) => phase.id === activePhaseId)?.title}</p>
-      </div>
-
-      <div className={styles.widgetChecklist}>
-        {PHASES.map((phase) => (
-          <label key={phase.id} className={styles.widgetCheckbox}>
-            <input
-              type="checkbox"
-              checked={Boolean(phaseState[phase.id])}
-              onChange={() => onTogglePhase(phase)}
-            />
-            <span>{phase.step}</span>
-          </label>
-        ))}
-      </div>
-
-      <button type="button" className={styles.resetButton} onClick={onReset}>
-        <FaRedoAlt aria-hidden="true" />
-        Reset progress
-      </button>
-    </aside>
   );
 }
 
@@ -344,13 +283,10 @@ export default function RoadmapExperience() {
   const {
     isHydrated,
     readiness,
-    completion,
-    completedPhaseCount,
     phaseState,
     prerequisiteState,
     togglePhase,
     togglePrerequisite,
-    reset,
   } = useRoadmapProgress(PHASES, PREREQUISITES);
 
   const timelineProgress = useRevealAnimations(
@@ -636,18 +572,8 @@ export default function RoadmapExperience() {
         </article>
       </section>
 
-      <ProgressTracker
-        readiness={readiness}
-        completion={completion}
-        completedPhaseCount={completedPhaseCount}
-        phaseState={phaseState}
-        activePhaseId={activePhaseId}
-        onTogglePhase={onTogglePhase}
-        onReset={reset}
-      />
-
       <span className={styles.srOnly} aria-live="polite">
-        {isHydrated ? `Roadmap completion ${completion} percent. Readiness ${readiness} percent.` : ''}
+        {isHydrated ? `Roadmap readiness ${readiness} percent.` : ''}
       </span>
     </div>
   );
