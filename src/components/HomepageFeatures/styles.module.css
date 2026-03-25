@@ -1,12 +1,15 @@
 .section {
   padding: 5rem 1.5rem 3rem;
   background:
-    linear-gradient(180deg, #081120 0%, #eef4fb 5rem, #f7fafc 100%);
+    radial-gradient(circle at top left, rgba(243, 115, 86, 0.08), transparent 18rem),
+    linear-gradient(180deg, #f3f6fb 0%, #fcfdff 100%);
 }
 
 .sectionAlt {
   padding: 3rem 1.5rem 5rem;
-  background: #f0f5fb;
+  background:
+    radial-gradient(circle at top right, rgba(84, 106, 255, 0.08), transparent 18rem),
+    #eef3fa;
 }
 
 .sectionShell {
@@ -14,47 +17,53 @@
   margin: 0 auto;
 }
 
-.eyebrow {
-  margin: 0 0 0.75rem;
-  color: #0f62fe;
-  font-size: 0.78rem;
+.sectionIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.eyebrow,
+.panelLabel {
+  margin: 0 0 0.7rem;
+  color: #335eea;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-align: center;
 }
 
 .title {
-  margin: 0 auto 0.9rem;
-  max-width: 14ch;
-  color: #0f172a;
-  text-align: center;
-  font-size: clamp(2rem, 4vw, 3.15rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 13ch;
+  color: #111827;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
 .subtitle {
-  margin: 0 auto 2.5rem;
+  margin: 0;
   max-width: 62ch;
   color: #4b5563;
-  text-align: center;
-  font-size: 1.02rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .card {
-  padding: 1.6rem;
-  border: 1px solid #dbe5f0;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  padding: 1.5rem;
+  border: 1px solid rgba(180, 193, 214, 0.65);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.06);
 }
 
 .cardIndex {
@@ -65,119 +74,161 @@
   height: 3rem;
   margin-bottom: 1rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #dbeafe, #e0f2fe);
-  color: #0f62fe;
+  background: linear-gradient(135deg, #ffe3d9, #e0ebff);
+  color: #1f3dbf;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 
+.cardKicker {
+  margin: 0 0 0.5rem;
+  color: #335eea;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .cardTitle {
   margin: 0 0 0.55rem;
-  color: #0f172a;
-  font-size: 1.08rem;
+  color: #111827;
+  font-size: 1.12rem;
 }
 
 .cardText {
   margin: 0;
   max-width: none;
-  color: #526072;
+  color: #556273;
   font-size: 0.96rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .linkRow {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.85rem;
-  margin-top: 1.5rem;
+  margin-top: 1.4rem;
 }
 
 .secondaryLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 2.8rem;
   padding: 0.8rem 1rem;
-  border: 1px solid #cbd8e6;
+  border: 1px solid rgba(176, 190, 213, 0.8);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  color: #0f172a;
+  background: rgba(255, 255, 255, 0.76);
+  color: #111827;
   font-weight: 600;
   text-decoration: none;
 }
 
 .secondaryLink:hover {
   text-decoration: none;
-  border-color: #93c5fd;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+  border-color: #8ca9ff;
+  box-shadow: 0 16px 34px rgba(51, 94, 234, 0.08);
 }
 
-.curriculumGrid {
+.dualPanel {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 1rem;
 }
 
-.curriculumCard {
+.panel {
+  padding: 1.3rem;
+  border: 1px solid rgba(180, 193, 214, 0.7);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.05);
+}
+
+.panelHeader {
+  margin-bottom: 1rem;
+}
+
+.panelTitle {
+  margin: 0;
+  color: #111827;
+  font-size: 1.18rem;
+}
+
+.curriculumGrid,
+.resourceGrid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.curriculumGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resourceGrid {
+  grid-template-columns: 1fr;
+}
+
+.curriculumCard,
+.resourceCard {
   display: block;
   min-height: 100%;
-  padding: 1.35rem;
-  border: 1px solid #d7e1ec;
-  border-radius: 18px;
+  padding: 1.2rem;
+  border: 1px solid rgba(205, 215, 231, 0.95);
+  border-radius: 20px;
   background: #fff;
   color: inherit;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
 }
 
-.curriculumCard:hover {
+.curriculumCard:hover,
+.resourceCard:hover {
   text-decoration: none;
   transform: translateY(-2px);
-  border-color: #93c5fd;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+  border-color: #8ca9ff;
+  box-shadow: 0 14px 30px rgba(51, 94, 234, 0.08);
 }
 
 .curriculumTitle {
   margin: 0 0 0.45rem;
-  color: #0f172a;
+  color: #111827;
   font-size: 1rem;
 }
 
 .curriculumText {
   margin: 0;
   max-width: none;
-  color: #526072;
-  font-size: 0.92rem;
-  line-height: 1.65;
+  color: #556273;
+  font-size: 0.93rem;
+  line-height: 1.7;
 }
 
 .actionGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.4rem;
 }
 
 .actionCard {
   padding: 1.4rem;
-  border: 1px solid #d7e1ec;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #fff, #f8fbff);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(180, 193, 214, 0.7);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 255, 0.92));
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.05);
 }
 
 .actionTitle {
   margin: 0 0 0.5rem;
-  color: #0f172a;
-  font-size: 1.1rem;
+  color: #111827;
+  font-size: 1.18rem;
 }
 
 .actionText {
   margin: 0 0 1rem;
   max-width: none;
-  color: #526072;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  color: #556273;
+  font-size: 0.96rem;
+  line-height: 1.75;
 }
 
 .actionButtons {
@@ -191,22 +242,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  min-height: 2.9rem;
+  padding: 0.8rem 1.05rem;
+  border-radius: 14px;
   font-weight: 700;
   text-decoration: none;
 }
 
 .primaryAction {
-  background: linear-gradient(135deg, #0f62fe, #0b8fdc);
+  background: linear-gradient(135deg, #1e3a8a, #335eea);
   color: #fff;
 }
 
 .secondaryAction {
-  border: 1px solid #cbd8e6;
+  border: 1px solid rgba(176, 190, 213, 0.8);
   background: #fff;
-  color: #0f172a;
+  color: #111827;
 }
 
 .primaryAction:hover,
@@ -215,10 +266,15 @@
 }
 
 @media (max-width: 996px) {
+  .sectionIntro,
+  .dualPanel,
   .cardGrid,
-  .curriculumGrid,
   .actionGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+  }
+
+  .curriculumGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -229,7 +285,6 @@
     padding-right: 1rem;
   }
 
-  .cardGrid,
   .curriculumGrid,
   .actionGrid {
     grid-template-columns: 1fr;
@@ -239,7 +294,8 @@
     max-width: none;
   }
 
-  .actionButtons {
+  .actionButtons,
+  .linkRow {
     flex-direction: column;
   }
 
@@ -248,4 +304,48 @@
   .secondaryLink {
     width: 100%;
   }
+}
+
+[data-theme='dark'] .section {
+  background:
+    radial-gradient(circle at top left, rgba(244, 115, 85, 0.12), transparent 18rem),
+    linear-gradient(180deg, #0d1625 0%, #101b2d 100%);
+}
+
+[data-theme='dark'] .sectionAlt {
+  background:
+    radial-gradient(circle at top right, rgba(92, 120, 255, 0.12), transparent 18rem),
+    #0b1524;
+}
+
+[data-theme='dark'] .title,
+[data-theme='dark'] .panelTitle,
+[data-theme='dark'] .cardTitle,
+[data-theme='dark'] .curriculumTitle,
+[data-theme='dark'] .actionTitle {
+  color: #f5f7fb;
+}
+
+[data-theme='dark'] .subtitle,
+[data-theme='dark'] .cardText,
+[data-theme='dark'] .curriculumText,
+[data-theme='dark'] .actionText {
+  color: #a9b8d0;
+}
+
+[data-theme='dark'] .card,
+[data-theme='dark'] .panel,
+[data-theme='dark'] .actionCard,
+[data-theme='dark'] .curriculumCard,
+[data-theme='dark'] .resourceCard,
+[data-theme='dark'] .secondaryLink {
+  border-color: rgba(154, 171, 199, 0.18);
+  background: rgba(14, 24, 40, 0.82);
+  color: #f5f7fb;
+}
+
+[data-theme='dark'] .secondaryAction {
+  border-color: rgba(154, 171, 199, 0.18);
+  background: rgba(14, 24, 40, 0.82);
+  color: #f5f7fb;
 }

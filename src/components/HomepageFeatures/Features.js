@@ -4,41 +4,53 @@ import styles from './styles.module.css';
 
 const FEATURES = [
   {
-    icon: '01',
-    title: 'Roadmap First',
+    kicker: 'Structured learning',
+    title: 'Roadmap before rabbit holes',
     description:
-      'Move from compiler basics to LLVM, MLIR, GPU compiler work, and optimization through a clear start-here flow instead of random browsing.',
+      'The site routes readers from fundamentals into specialized compiler work instead of forcing them to guess the right order.',
   },
   {
-    icon: '02',
-    title: 'Tools and Labs',
+    kicker: 'Practical depth',
+    title: 'Docs tied to tools and labs',
     description:
-      'Use tools, benchmark artifacts, LLVM workflows, and guided labs to turn the material into practical engineering skill.',
+      'Theory is reinforced with workflows, benchmark artifacts, and hands-on exercises so concepts translate into engineering judgment.',
   },
   {
-    icon: '03',
-    title: 'Built for Real Compiler Work',
+    kicker: 'Real technical focus',
+    title: 'Built around IR, optimization, and hardware behavior',
     description:
-      'The emphasis is on IR, passes, optimization behavior, GPU systems, and low-level reasoning instead of generic course-site filler.',
+      'The emphasis stays on compiler realities like passes, SSA, GPU execution, and low-level reasoning rather than generic bootcamp content.',
   },
+];
+
+const QUICK_LINKS = [
+  { label: 'Start Here', to: '/docs/start-here' },
+  { label: 'Tracks', to: '/docs/tracks' },
+  { label: 'Tools', to: '/docs/tools' },
+  { label: 'Labs', to: '/docs/labs' },
 ];
 
 export default function Features() {
   return (
     <section className={styles.section} id="why-compilersutra">
       <div className={styles.sectionShell}>
-        <p className={styles.eyebrow}>Why CompilerSutra</p>
-        <h2 className={styles.title}>A Technical Platform With an Actual Path</h2>
-        <p className={styles.subtitle}>
-          CompilerSutra should make the next step obvious: start with the
-          roadmap, go deeper through a track, and then reinforce the concepts
-          through tools, labs, and projects.
-        </p>
+        <div className={styles.sectionIntro}>
+          <div>
+            <p className={styles.eyebrow}>Why CompilerSutra</p>
+            <h2 className={styles.title}>A docs platform that behaves like a guided technical product</h2>
+          </div>
+          <p className={styles.subtitle}>
+            Good compiler material should not bury the path. The landing page
+            now makes the next move obvious, then the rest of the homepage keeps
+            reinforcing that structure.
+          </p>
+        </div>
 
         <div className={styles.cardGrid}>
-          {FEATURES.map((feature) => (
+          {FEATURES.map((feature, index) => (
             <article key={feature.title} className={styles.card}>
-              <span className={styles.cardIndex}>{feature.icon}</span>
+              <span className={styles.cardIndex}>0{index + 1}</span>
+              <p className={styles.cardKicker}>{feature.kicker}</p>
               <h3 className={styles.cardTitle}>{feature.title}</h3>
               <p className={styles.cardText}>{feature.description}</p>
             </article>
@@ -46,15 +58,11 @@ export default function Features() {
         </div>
 
         <div className={styles.linkRow}>
-          <Link className={styles.secondaryLink} to="/docs/start-here">
-            Open Start Here
-          </Link>
-          <Link className={styles.secondaryLink} to="/docs/tools">
-            Explore Tools
-          </Link>
-          <Link className={styles.secondaryLink} to="/docs/labs">
-            Browse Labs
-          </Link>
+          {QUICK_LINKS.map((link) => (
+            <Link key={link.label} className={styles.secondaryLink} to={link.to}>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </section>
