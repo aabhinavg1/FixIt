@@ -59,6 +59,13 @@ export default function Layout(props) {
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta name="author" content="CompilerSutra" />
+        <script
+          id="compilersutra-adsense"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213090090375658"
+          crossOrigin="anonymous"
+          data-overlays="bottom"
+        />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
