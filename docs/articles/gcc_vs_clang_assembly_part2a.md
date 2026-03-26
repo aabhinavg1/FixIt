@@ -77,7 +77,9 @@ Two incorrect explanations can be removed up front:
 - [4. Summary Table](#4-summary-table)
 - [5. What This Means for Real Systems](#5-what-this-means-for-real-systems)
 - [6. Key Lines](#6-key-lines)
-- [7. Conclusion](#7-conclusion)
+- [7. Practical Fix](#7-practical-fix)
+- [8. Conclusion](#8-conclusion)
+- [9. FAQ](#9-faq)
 
 ## Assembly Files
 

@@ -1,47 +1,74 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const ADSENSE_SRC =
-  'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213090090375658';
-const ADSENSE_SRC_PREFIX =
-  'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+const ADSENSE_SELECTOR =
+  'script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]';
 
-function ensureAdsenseScript() {
+function getPageKey() {
   if (typeof window === 'undefined') {
-    return Promise.resolve();
+    return 'server';
+  }
+  return window.location.pathname || '/';
+}
+
+function getPageLimit(pathname) {
+  const isMobile =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 768px)').matches;
+
+  if (pathname === '/') {
+    return 1;
   }
 
-  if (window.adsbygoogleLoaded) {
-    return Promise.resolve();
+  return isMobile ? 2 : 3;
+}
+
+function getMinTopOffset(pathname) {
+  return pathname === '/' ? 1400 : 900;
+}
+
+function claimAdSlot(pathname) {
+  if (typeof window === 'undefined') {
+    return true;
   }
 
-  const existing = document.querySelector(
-    `script[src="${ADSENSE_SRC}"], script[src^="${ADSENSE_SRC_PREFIX}"]`
-  );
-  if (existing) {
-    return new Promise((resolve) => {
-      if (window.adsbygoogleLoaded) {
-        resolve();
+  const key = `__csAdsSeen:${pathname}`;
+  const current = Number(window.sessionStorage.getItem(key) || '0');
+  const limit = getPageLimit(pathname);
+
+  if (current >= limit) {
+    return false;
+  }
+
+  window.sessionStorage.setItem(key, String(current + 1));
+  return true;
+}
+
+function waitForAdsense(maxAttempts = 20) {
+  return new Promise((resolve) => {
+    let attempts = 0;
+
+    const check = () => {
+      const hasScript = document.querySelector(ADSENSE_SELECTOR);
+      const hasAdsObject =
+        typeof window.adsbygoogle !== 'undefined' &&
+        typeof window.adsbygoogle.push === 'function';
+
+      if (hasScript && hasAdsObject) {
+        resolve(true);
         return;
       }
-      existing.addEventListener('load', () => {
-        window.adsbygoogleLoaded = true;
-        resolve();
-      }, { once: true });
-      existing.addEventListener('error', resolve, { once: true });
-    });
-  }
 
-  return new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = ADSENSE_SRC;
-    script.async = true;
-    script.crossOrigin = 'anonymous';
-    script.onload = () => {
-      window.adsbygoogleLoaded = true;
-      resolve();
+      attempts += 1;
+      if (attempts >= maxAttempts) {
+        resolve(false);
+        return;
+      }
+
+      window.setTimeout(check, 250);
     };
-    script.onerror = resolve;
-    document.head.appendChild(script);
+
+    check();
   });
 }
 
@@ -53,6 +80,7 @@ export default function AdBanner({
   minHeight = 220,
 }) {
   const adRef = useRef(null);
+  const [suppressed, setSuppressed] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -64,39 +92,37 @@ export default function AdBanner({
       return undefined;
     }
 
+    const pathname = getPageKey();
+    const nodeTop = node.getBoundingClientRect().top + window.scrollY;
+    if (nodeTop < getMinTopOffset(pathname)) {
+      setSuppressed(true);
+      return undefined;
+    }
+
+    if (!claimAdSlot(pathname)) {
+      setSuppressed(true);
+      return undefined;
+    }
+
     let cancelled = false;
     let observer;
     let retryTimer;
-    let visibilityHandler;
-
-    const runWhenVisible = (callback) => {
-      if (document.visibilityState === 'visible') {
-        callback();
-        return;
-      }
-
-      visibilityHandler = () => {
-        if (document.visibilityState === 'visible') {
-          document.removeEventListener('visibilitychange', visibilityHandler);
-          visibilityHandler = undefined;
-          callback();
-        }
-      };
-
-      document.addEventListener('visibilitychange', visibilityHandler, {
-        once: true,
-      });
-    };
 
     const initializeAd = async () => {
-      if (!node || cancelled || node.dataset.adInitialized === 'true') {
+      if (cancelled || node.dataset.adInitialized === 'true') {
         return;
       }
 
-      await ensureAdsenseScript();
+      const ready = await waitForAdsense();
+      if (!ready || cancelled || node.dataset.adInitialized === 'true') {
+        if (!ready) {
+          setSuppressed(true);
+        }
+        return;
+      }
 
       const pushAd = () => {
-        if (!node || cancelled || node.dataset.adInitialized === 'true') {
+        if (cancelled || node.dataset.adInitialized === 'true') {
           return;
         }
 
@@ -110,8 +136,8 @@ export default function AdBanner({
           node.dataset.adInitialized = 'true';
           node.parentElement?.setAttribute('data-ad-status', 'ready');
         } catch (error) {
-          const message = String(error?.message || error);
-          if (message.toLowerCase().includes('already have ads')) {
+          const message = String(error?.message || error).toLowerCase();
+          if (message.includes('already have ads')) {
             node.dataset.adInitialized = 'true';
             node.parentElement?.setAttribute('data-ad-status', 'ready');
             return;
@@ -120,12 +146,7 @@ export default function AdBanner({
         }
       };
 
-      const idleRunner =
-        typeof window.requestIdleCallback === 'function'
-          ? window.requestIdleCallback
-          : (cb) => window.setTimeout(cb, 1);
-
-      idleRunner(() => runWhenVisible(pushAd));
+      pushAd();
     };
 
     if ('IntersectionObserver' in window) {
@@ -138,7 +159,7 @@ export default function AdBanner({
             }
           });
         },
-        { rootMargin: '300px 0px' }
+        { rootMargin: '250px 0px' }
       );
 
       observer.observe(node);
@@ -151,14 +172,15 @@ export default function AdBanner({
       if (observer) {
         observer.disconnect();
       }
-      if (visibilityHandler) {
-        document.removeEventListener('visibilitychange', visibilityHandler);
-      }
       if (retryTimer) {
         window.clearTimeout(retryTimer);
       }
     };
   }, []);
+
+  if (suppressed) {
+    return null;
+  }
 
   return (
     <div

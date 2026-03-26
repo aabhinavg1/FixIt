@@ -135,13 +135,14 @@ img {
 .cs-ad-slot {
   width: 100%;
   max-width: min(100%, 860px);
-  margin: clamp(1.5rem, 3.4vw, 2.5rem) auto;
+  margin: clamp(1.75rem, 4vw, 3rem) auto;
   padding: clamp(0.85rem, 2vw, 1.1rem);
   border: 1px solid var(--color-border);
   border-radius: 14px;
   background: linear-gradient(180deg, rgba(0, 120, 212, 0.04), rgba(0, 0, 0, 0.02));
   overflow: hidden;
   contain: layout paint;
+  clear: both;
 }
 
 .cs-ad-slot__label {
@@ -157,6 +158,8 @@ img {
 .cs-ad-slot .adsbygoogle {
   width: 100%;
   min-height: var(--cs-ad-min-height, 220px);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .cs-ad-slot[data-ad-status='loading'] .adsbygoogle {
@@ -183,13 +186,13 @@ img {
 
 @media (max-width: 768px) {
   .cs-ad-slot {
-    margin: 1rem auto;
+    margin: 1.5rem auto;
     padding: 0.75rem;
     border-radius: 10px;
   }
 
   .cs-ad-slot .adsbygoogle {
-    min-height: min(var(--cs-ad-min-height, 220px), 160px);
+    min-height: min(var(--cs-ad-min-height, 220px), 140px);
   }
 }
 
