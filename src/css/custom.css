@@ -994,3 +994,47 @@ button.secondary:hover {
   color: #555;
   font-size: 0.95rem;
 }
+
+.cmp-chip {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.cmp-chip--gcc {
+  background: #fde8ee;
+  color: #8a1c45;
+  border-color: #f8b4c7;
+}
+
+.cmp-chip--clang {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #86efac;
+}
+
+.cmp-chip--shared {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fcd34d;
+}
+
+html[data-theme='dark'] .cmp-chip--gcc {
+  background: #3b1f29;
+  color: #ffd7e2;
+  border-color: #7f3150;
+}
+
+html[data-theme='dark'] .cmp-chip--clang {
+  background: #17342b;
+  color: #d2f7e7;
+  border-color: #2f7c63;
+}
+
+html[data-theme='dark'] .cmp-chip--shared {
+  background: #3a3116;
+  color: #f8e7a6;
+  border-color: #8a7330;
+}

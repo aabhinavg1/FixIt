@@ -148,6 +148,10 @@ Based on 10 local C++ workloads, batch-compared with GCC 13.3 and Clang 18.1 usi
 
 :::
 
+## Continue Reading
+
+- [Part 2A: Assembly Deep-Dive on 3 Key Benchmark Cases](/docs/articles/gcc_vs_clang_assembly_part2a)
+
 <div>
   <AdBanner />
 </div>

@@ -119,6 +119,7 @@ const site = {
         'articles',
         'articles/compiler_directive',
         'articles/gcc_vs_clang_real_benchmarks_2026_reporter',
+        'articles/gcc_vs_clang_assembly_part2a',
         {
           type: 'category',
           label: 'Tech Blog',
