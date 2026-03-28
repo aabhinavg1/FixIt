@@ -4,6 +4,7 @@ const productionScripts = [
   { src: '/js/google-tag-manager.js', async: true, defer: true },
   { src: '/js/google-analytics.js', async: true, defer: true },
 ];
+const SOCIAL_IMAGE_VERSION = '20260328-og-refresh';
 
 const config = {
   title: 'CompilerSutra',
@@ -71,14 +72,14 @@ const config = {
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'CompilerSutra' },
         { property: 'og:url', content: 'https://www.compilersutra.com' },
-        { property: 'og:image', content: 'https://www.compilersutra.com/img/og-image.png' },
+        { property: 'og:image', content: `https://www.compilersutra.com/img/og/master.png?v=${SOCIAL_IMAGE_VERSION}` },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:image:alt', content: 'CompilerSutra social preview' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@CompilerSutra' },
         { name: 'twitter:creator', content: '@CompilerSutra' },
-        { name: 'twitter:image', content: 'https://www.compilersutra.com/img/og-image.png' },
+        { name: 'twitter:image', content: `https://www.compilersutra.com/img/og/master.png?v=${SOCIAL_IMAGE_VERSION}` },
         { name: 'twitter:image:alt', content: 'CompilerSutra social preview' },
       ],
 
