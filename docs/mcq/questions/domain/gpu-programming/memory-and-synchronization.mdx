@@ -1,0 +1,24 @@
+---
+id: gpu-programming-memory-sync
+title: "GPU Memory and Synchronization MCQs"
+slug: /mcq/questions/domain/gpu-programming/memory-and-synchronization
+description: "MCQs on GPU memory hierarchy, coalescing, barriers, and data movement."
+displayed_sidebar: gpuMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# GPU Memory and Synchronization MCQs
+
+<Question question="1). Which memory type is usually fastest and closest to the compute cores on a GPU?" options={['Global memory', 'Local/shared memory', 'Host memory', 'Disk cache']} answer="Local/shared memory" />
+<Question question="2). What is the main drawback of global memory compared with shared/local memory?" options={['It cannot store arrays', 'It has higher latency', 'It is visible to only one thread', 'It is read-only']} answer="It has higher latency" />
+<Question question="3). What does memory coalescing improve in GPU programs?" options={['Branch prediction', 'Global memory access efficiency', 'Kernel compilation time', 'Register naming']} answer="Global memory access efficiency" />
+<Question question="4). A barrier inside a work-group is mainly used to:" options={['Start a new kernel', 'Synchronize participating work-items before proceeding', 'Transfer data back to the host', 'Increase register count']} answer="Synchronize participating work-items before proceeding" />
+<Question question="5). If each thread reads neighboring elements from memory, the access pattern is usually:" options={['More cache-friendly and easier to coalesce', 'Guaranteed to deadlock', 'Always slower than random access', 'Invalid on GPUs']} answer="More cache-friendly and easier to coalesce" />
+<Question question="6). What is the main reason to minimize host-device transfers?" options={['They can dominate total runtime', 'They increase compiler warnings', 'They reduce register pressure', 'They disable vectorization']} answer="They can dominate total runtime" />
+<Question question="7). Why is local/shared memory often used in tiled GPU algorithms?" options={['It stores the executable binary', 'It allows data reuse at lower latency than global memory', 'It is larger than global memory', 'It is managed only by the CPU']} answer="It allows data reuse at lower latency than global memory" />
+
+<div>
+    <AdBanner />
+</div>

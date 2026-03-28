@@ -16,6 +16,10 @@ function getPageLimit(pathname) {
     typeof window.matchMedia === 'function' &&
     window.matchMedia('(max-width: 768px)').matches;
 
+  if (pathname.startsWith('/docs/mcq')) {
+    return isMobile ? 3 : 4;
+  }
+
   if (pathname === '/') {
     return 1;
   }
@@ -24,6 +28,10 @@ function getPageLimit(pathname) {
 }
 
 function getMinTopOffset(pathname) {
+  if (pathname.startsWith('/docs/mcq')) {
+    return 0;
+  }
+
   return pathname === '/' ? 1400 : 900;
 }
 

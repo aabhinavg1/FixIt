@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./FloatingSubscribe.module.css";
 
 const DISMISS_KEY = "compilersutra-floating-subscribe-dismissed";
-const DISMISS_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+const DISMISS_TTL_MS = 1000 * 60 * 60 * 24;
 
 export default function FloatingSubscribe() {
   const [visible, setVisible] = useState(false);
@@ -17,34 +17,11 @@ export default function FloatingSubscribe() {
       return undefined;
     }
 
-    let timer;
-    let shown = false;
+    const timer = window.setTimeout(() => {
+      setVisible(true);
+    }, 3500);
 
-    const maybeShow = () => {
-      if (shown) {
-        return;
-      }
-
-      const doc = document.documentElement;
-      const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
-      const progress = window.scrollY / scrollable;
-
-      if (progress >= 0.35) {
-        shown = true;
-        setVisible(true);
-        window.removeEventListener("scroll", maybeShow);
-      }
-    };
-
-    timer = setTimeout(() => {
-      window.addEventListener("scroll", maybeShow, { passive: true });
-      maybeShow();
-    }, 8000);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", maybeShow);
-    };
+    return () => window.clearTimeout(timer);
   }, []);
 
   const handleClose = () => {

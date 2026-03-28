@@ -1,0 +1,23 @@
+---
+id: embedded-rtos-reliability
+title: "Embedded RTOS and Reliability MCQs"
+slug: /mcq/questions/domain/embedded/rtos-and-reliability
+description: "Embedded MCQs on DMA, power efficiency, RTOS basics, and small hardware-facing code questions."
+displayed_sidebar: embeddedMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# Embedded RTOS and Reliability MCQs
+
+<Question question="1). What is the output of the following C code on a microcontroller?" code={`#include <stdio.h>\nint main() {\n    unsigned char x = 250;\n    x = x + 10;\n    printf("%d", x);\n    return 0;\n}`} options={['260', '4', '255', 'Compilation Error']} answer="4" />
+<Question question="2). What will be the output of this C program?" code={`#include <stdio.h>\nint main() {\n    volatile int x = 5;\n    int *ptr = (int*)&x;\n    *ptr = 10;\n    printf("%d", x);\n    return 0;\n}`} options={['5', '10', 'Undefined Behavior', 'Compiler Error']} answer="10" />
+<Question question="3). Which technique is best for reducing power consumption in embedded systems?" options={['Increasing clock speed', 'Disabling unused peripherals', 'Using more interrupts', 'Polling frequently']} answer="Disabling unused peripherals" />
+<Question question="4). In embedded systems, DMA (Direct Memory Access) is mainly used for?" options={['Reducing memory size', 'Allowing peripherals to access memory without CPU', 'Improving caching', 'Debugging memory issues']} answer="Allowing peripherals to access memory without CPU" />
+<Question question="5). What will the following code output?" code={`#include <stdio.h>\n#define LED_ON  0x01\n#define LED_OFF 0x00\n\nint main() {\n    int status = LED_ON;\n    status ^= LED_ON;\n    printf("%d", status);\n    return 0;\n}`} options={['1', '0', '2', 'Undefined']} answer="0" />
+<Question question="6). Which of the following is NOT a real-time operating system (RTOS)?" options={['FreeRTOS', 'Zephyr', 'Linux Kernel', 'VxWorks']} answer="Linux Kernel" />
+
+<div>
+    <AdBanner />
+</div>

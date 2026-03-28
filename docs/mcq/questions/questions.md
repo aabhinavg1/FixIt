@@ -1,67 +1,71 @@
 ---
-id: AdvancedCppInterviewQuestions
-title: Advanced C++ Interview Questions
-description: |
-  This guide contains a curated set of advanced C++ interview questions that challenge your understanding of high-level concepts in modern C++. Topics include smart pointers, move semantics, perfect forwarding, multi-threading, memory models, templates, STL internals, and advanced object-oriented and functional programming features. Ideal for experienced developers preparing for senior-level technical interviews.
+id: mcq-questions-home
+title: "MCQ Question Sets"
+slug: /mcq/questions
+description: "Master page for all CompilerSutra MCQ question sets across C++, interview prep, and domain-specific low-level engineering topics."
 keywords:
-  - Advanced C++ Interview Questions
-  - Modern C++
-  - C++11 C++14 C++17 C++20
-  - Smart Pointers in C++
-  - Move Semantics
-  - Rvalue References
-  - Perfect Forwarding
-  - Lambda Expressions
-  - C++ Multi-threading
-  - C++ Memory Model
-  - Template Metaprogramming
-  - STL Internals
-  - C++ Design Patterns
-  - C++ Virtual Tables
-  - Function Objects
-  - Advanced Object-Oriented Concepts
-  - Functional Programming in C++
-  - C++ Type Traits
-  - Compile-Time Computation
-  - C++ Performance Optimization
-
+  - mcq questions
+  - programming mcq questions
+  - c++ mcq questions
+  - compiler mcq questions
+  - system programming mcq
+  - gpu programming mcq
+  - embedded mcq
+  - hpc mcq
 tags:
-  - Advanced C++
-  - C++11/14/17/20
-  - Smart Pointers
-  - Move Semantics
-  - Rvalue References
-  - Perfect Forwarding
-  - Lambda Functions
-  - C++ Concurrency
-  - C++ Memory Model
-  - STL Internals
-  - Template Metaprogramming
-  - Design Patterns in C++
-  - C++ Type Traits
-  - Compile-Time Programming
-  - Functional C++
-  - VTables and Polymorphism
-  - Senior C++ Interviews
-  - Performance Optimization
-  - Advanced OOP in C++
-
+  - MCQs
+  - C++
+  - Compiler Design
+  - Systems Programming
+  - GPU Programming
+  - Embedded Systems
+  - HPC
+displayed_sidebar: mcqSidebar
 ---
 
-# Advanced C++ Topics
+import AdBanner from '@site/src/components/AdBanner';
 
-This folder contains advanced C++ topics, designed for developers who have a foundational understanding of C++. These topics will help you dive deeper into complex areas of C++ programming, including concurrency, lambdas, templates, and more.
+# MCQ Question Sets
 
-1. **Concurrency**: Learn about multi-threading, synchronization, and concurrency in C++.
-2. **C++ Features**: Explore advanced features introduced in modern C++ standards (C++11, C++14, C++17, etc.).
-3. **Exception Handling**: Understand how to manage errors and exceptions in a robust way.
-4. **Lambdas**: Get familiar with anonymous functions and their uses in C++.
-5. **Move Semantics**: Master the concept of moving resources to optimize performance.
-6. **Multithreading**: Dive into multi-threading concepts and how to write thread-safe code.
-7. **STL**: The Standard Template Library provides generic data structures and algorithms for optimized development.
-8. **Templates**: Learn about template classes, functions, and specialization for generic programming.
-9. **Vectors**: Understand the use of dynamic arrays (vectors) in C++ for flexible and efficient data storage.
+This page is the master index for the actual question sets inside CompilerSutra. Use it when you want to jump straight into quiz pages instead of browsing the broader `/docs/mcq` hub first.
 
-The content of this folder will deepen your understanding of complex topics that are critical for high-performance and robust software development in C++.
+<div>
+    <AdBanner />
+</div>
 
-Happy coding!
+## 📋 Table of Contents
+
+### 🟢 Core C++ Question Sets
+- [Basic C++ MCQs](./basic/basic.md)
+- [Intermediate C++ MCQs](./intermediate/intermediate.md)
+- [Advanced C++ MCQs](./advanced/templates.md)
+- [Specialized C++ MCQs](./specialized/specialized.md)
+
+### 🟡 Domain Master Pages
+- [Compiler Design MCQs](/docs/mcq/questions/domain/compiler-dev)
+- [System Programming MCQs](/docs/mcq/questions/domain/system-programming)
+- [GPU Programming MCQs](/docs/mcq/questions/domain/gpu-programming)
+- [Embedded Systems MCQs](/docs/mcq/questions/domain/embedded)
+- [HPC and Performance MCQs](/docs/mcq/questions/domain/data-science-hpc)
+- [Competitive Programming MCQs](/docs/mcq/questions/domain/competitive-programming)
+
+### 🔵 Interview Question Sets
+- [C++ Interview MCQs](/docs/mcq/interview_question/cpp_interview_mcqs)
+
+## What You’ll Find Here
+
+- language-focused MCQ tracks for C++ from basic to advanced
+- domain master pages for compilers, systems, GPU, embedded, and HPC
+- quiz pages with 20+ questions in the domain sections
+- links that let readers move from overview pages into full question sets quickly
+
+## Best Way To Use This Page
+
+1. Start with the section closest to what you are studying now.
+2. Use the domain master pages when you want topic-focused low-level questions.
+3. Use the C++ sections when you want language revision before moving into systems or compiler work.
+4. Revisit the full quiz pages after reading the matching tutorials or tracks.
+
+<div>
+    <AdBanner />
+</div>

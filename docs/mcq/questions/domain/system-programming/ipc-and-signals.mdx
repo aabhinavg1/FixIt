@@ -1,0 +1,23 @@
+---
+id: system-programming-ipc-signals
+title: "IPC and Signals MCQs"
+slug: /mcq/questions/domain/system-programming/ipc-and-signals
+description: "System programming MCQs on pipes, message queues, signals, deadlocks, and synchronization."
+displayed_sidebar: systemProgrammingMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# IPC and Signals MCQs
+
+<Question question="1). Which system call is used to create a pipe in Unix?" options={['pipe()', 'mkfifo()', 'dup()', 'socket()']} answer="pipe()" />
+<Question question="2). Which of the following synchronization mechanisms can cause deadlock if misused?" options={['Semaphores', 'Monitors', 'Spinlocks', 'All of the above']} answer="All of the above" />
+<Question question="3). In Unix, what is the default signal sent by the kill command?" options={['SIGKILL', 'SIGTERM', 'SIGSTOP', 'SIGINT']} answer="SIGTERM" />
+<Question question="4). Which inter-process communication (IPC) mechanism provides communication between unrelated processes?" options={['Pipes', 'Message Queues', 'Signals', 'Shared Memory']} answer="Message Queues" />
+<Question question="5). What will be the output of the following C code?" code={`#include <stdio.h>\n#include <unistd.h>\n\nint main() {\n    printf("A");\n    fork();\n    printf("B");\n    return 0;\n}`} options={['A B', 'AB', 'ABAB', 'AABB']} answer="ABAB" />
+<Question question="6). Which of the following is used to prevent race conditions?" options={['Semaphores', 'Mutexes', 'Locks', 'All of the above']} answer="All of the above" />
+
+<div>
+    <AdBanner />
+</div>

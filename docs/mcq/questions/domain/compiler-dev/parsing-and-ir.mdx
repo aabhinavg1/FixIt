@@ -1,0 +1,47 @@
+---
+id: compiler-dev-parsing-ir
+title: "Parsing and IR MCQs"
+slug: /mcq/questions/domain/compiler-dev/parsing-and-ir
+description: "MCQs for parsing theory, grammar properties, IR structure, and SSA reasoning."
+displayed_sidebar: compilerMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# Parsing and IR MCQs
+
+<Question
+  question="1). Which parsing family is most closely associated with the formal grammar requirements of C++?"
+  options={['Recursive Descent', 'LL(1)', 'LR Parsing', 'Top-down backtracking']}
+  answer="LR Parsing"
+/>
+<Question
+  question="2). In SSA (Static Single Assignment) form, every variable:"
+  options={['Can be assigned multiple times', 'Is assigned exactly once', 'Is not assigned explicitly', 'Is used before definition']}
+  answer="Is assigned exactly once"
+/>
+<Question
+  question="3). Which grammar property is necessary to avoid ambiguity in parser construction?"
+  options={['Left recursion', 'Right recursion', 'Unambiguity', 'Left factoring']}
+  answer="Unambiguity"
+/>
+<Question
+  question="4). Which type of grammar is most commonly used in compiler design?"
+  options={['Context-Free Grammar', 'Context-Sensitive Grammar', 'Regular Grammar', 'Unrestricted Grammar']}
+  answer="Context-Free Grammar"
+/>
+<Question
+  question="5). In LLVM, which file format represents the human-readable IR?"
+  options={['.ll', '.bc', '.o', '.asm']}
+  answer=".ll"
+/>
+<Question
+  question="6). Which compiler optimization replaces expressions like 2*3 with 6 at compile time?"
+  options={['Constant Folding', 'Loop Invariant Code Motion', 'Dead Code Elimination', 'Peephole Optimization']}
+  answer="Constant Folding"
+/>
+
+<div>
+    <AdBanner />
+</div>

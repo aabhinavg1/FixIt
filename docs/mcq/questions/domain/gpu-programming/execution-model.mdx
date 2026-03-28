@@ -1,0 +1,24 @@
+---
+id: gpu-programming-execution-model
+title: "GPU Execution Model MCQs"
+slug: /mcq/questions/domain/gpu-programming/execution-model
+description: "MCQs on GPU kernels, work-groups, host control, and data-parallel workloads."
+displayed_sidebar: gpuMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# GPU Execution Model MCQs
+
+<Question question="1). What is the main reason GPUs achieve high throughput on parallel workloads?" options={['Large instruction caches', 'Many lightweight execution units', 'Higher clock speeds than CPUs', 'Larger disks']} answer="Many lightweight execution units" />
+<Question question="2). In GPU programming, a kernel is:" options={['A CPU interrupt handler', 'A function executed in parallel on the device', 'A memory allocator', 'A thread scheduler']} answer="A function executed in parallel on the device" />
+<Question question="3). In OpenCL terminology, a work-group is:" options={['A host-side scheduling queue', 'A collection of work-items that can synchronize locally', 'A set of CPU threads only', 'A compiler pass pipeline']} answer="A collection of work-items that can synchronize locally" />
+<Question question="4). Which pattern is best for GPU performance in many numeric workloads?" options={['Irregular memory access with frequent branching', 'Independent parallel work with regular memory access', 'Recursive allocation-heavy code', 'Serial execution with locks']} answer="Independent parallel work with regular memory access" />
+<Question question="5). Why do GPUs often perform well on matrix and vector operations?" options={['They avoid memory access entirely', 'These workloads expose large amounts of data parallelism', 'They always run in constant time', 'They do not require kernels']} answer="These workloads expose large amounts of data parallelism" />
+<Question question="6). What is usually the role of the host in an OpenCL-style program?" options={['Execute all work-items directly', 'Launch kernels and manage buffers on the device', 'Replace the GPU scheduler', 'Convert source code into assembly by hand']} answer="Launch kernels and manage buffers on the device" />
+<Question question="7). What kind of workload is usually a poor fit for GPUs?" options={['Embarrassingly parallel numeric work', 'Highly serial logic with little parallelism', 'Large vector arithmetic', 'Image processing filters']} answer="Highly serial logic with little parallelism" />
+
+<div>
+    <AdBanner />
+</div>

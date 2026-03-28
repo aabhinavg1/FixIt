@@ -1,0 +1,44 @@
+---
+id: gpu-programming-quiz
+title: "GPU Programming MCQs Quiz"
+slug: /mcq/questions/domain/gpu-programming/quiz
+description: "A beginner-friendly GPU programming quiz on kernels, memory hierarchy, synchronization, and basic performance ideas."
+displayed_sidebar: gpuMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# GPU Programming MCQs Quiz
+
+<Question question="1). What is a GPU mainly designed for?" options={['Handling lots of parallel work', 'Replacing RAM', 'Storing source code', 'Managing filesystems']} answer="Handling lots of parallel work" />
+<Question question="2). A kernel in GPU programming is usually:" options={['A function that runs on the GPU', 'A disk driver', 'A CPU interrupt', 'A linker flag']} answer="A function that runs on the GPU" />
+<Question question="3). GPUs are often good at:" options={['Parallel numeric work', 'Only serial recursion', 'Only text editing', 'Only file compression']} answer="Parallel numeric work" />
+<Question question="4). Which memory is usually faster on a GPU than global memory?" options={['Local/shared memory', 'Host memory', 'Disk memory', 'Browser cache']} answer="Local/shared memory" />
+<Question question="5). Global memory is often slower because it has:" options={['Higher latency', 'No bits', 'No addresses', 'No size']} answer="Higher latency" />
+<Question question="6). In OpenCL, a work-item is closest to:" options={['A single parallel execution unit of work', 'A ZIP file', 'A compiler pass', 'A memory allocator']} answer="A single parallel execution unit of work" />
+<Question question="7). A work-group is:" options={['A group of work-items that can coordinate locally', 'A CPU fan setting', 'A file type', 'A linker script']} answer="A group of work-items that can coordinate locally" />
+<Question question="8). Why are GPUs often fast for matrix operations?" options={['Because matrices expose lots of parallel work', 'Because they avoid memory completely', 'Because they remove loops', 'Because they do not use kernels']} answer="Because matrices expose lots of parallel work" />
+<Question question="9). What does memory coalescing try to improve?" options={['Memory access efficiency', 'File downloads', 'Compiler errors', 'Font rendering']} answer="Memory access efficiency" />
+<Question question="10). A barrier is mainly used to:" options={['Synchronize threads/work-items before moving on', 'Delete memory', 'Start the OS', 'Compile source code']} answer="Synchronize threads/work-items before moving on" />
+
+<div>
+    <AdBanner />
+</div>
+
+<Question question="11). What is branch divergence?" options={['Threads in the same group taking different code paths', 'A disk scheduling policy', 'A parser bug', 'A network timeout']} answer="Threads in the same group taking different code paths" />
+<Question question="12). Why can branch divergence hurt performance?" options={['It can make parallel execution less efficient', 'It improves coalescing too much', 'It removes all memory access', 'It turns the GPU into a CPU']} answer="It can make parallel execution less efficient" />
+<Question question="13). What is occupancy in simple terms?" options={['How well the GPU hardware stays busy', 'The size of a source file', 'The number of comments', 'The number of HTML tags']} answer="How well the GPU hardware stays busy" />
+<Question question="14). The host in a GPU program usually:" options={['Launches work and manages buffers', 'Runs every GPU thread directly', 'Replaces the GPU', 'Stores only CSS']} answer="Launches work and manages buffers" />
+<Question question="15). Host-device transfers matter because:" options={['They can take a lot of time', 'They replace kernels', 'They remove synchronization', 'They always speed up code']} answer="They can take a lot of time" />
+<Question question="16). Which workload is usually a poor fit for GPUs?" options={['Highly serial logic with little parallelism', 'Large vector math', 'Image filters', 'Matrix multiplication']} answer="Highly serial logic with little parallelism" />
+<Question question="17). Local/shared memory is useful when:" options={['Threads reuse nearby data', 'You want to store the whole operating system', 'You need a web browser', 'You want to avoid all synchronization']} answer="Threads reuse nearby data" />
+<Question question="18). A warp or wavefront is:" options={['A group of threads that execute together in hardware', 'A source file format', 'A network card mode', 'A compiler grammar rule']} answer="A group of threads that execute together in hardware" />
+<Question question="19). Register pressure refers to:" options={['Using many registers inside a kernel', 'Typing too hard on the keyboard', 'Allocating disk space', 'Turning off caching']} answer="Using many registers inside a kernel" />
+<Question question="20). Which topic is most related to CompilerSutra’s GPU section?" options={['OpenCL execution and memory behavior', 'Browser tabs', 'Spreadsheet formatting', 'Social media APIs']} answer="OpenCL execution and memory behavior" />
+<Question question="21). Kernel launch configuration helps decide:" options={['How work is divided across the GPU', 'Which CSS file loads first', 'How to rename folders', 'Which disk partition to mount']} answer="How work is divided across the GPU" />
+<Question question="22). Why should beginners learn GPU memory hierarchy?" options={['Because memory behavior strongly affects performance', 'Because it replaces syntax', 'Because it removes arithmetic', 'Because GPUs do not use memory']} answer="Because memory behavior strongly affects performance" />
+
+<div>
+    <AdBanner />
+</div>
