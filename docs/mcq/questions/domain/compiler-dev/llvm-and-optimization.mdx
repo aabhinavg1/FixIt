@@ -1,0 +1,52 @@
+---
+id: compiler-dev-llvm-optimization
+title: "LLVM and Optimization MCQs"
+slug: /mcq/questions/domain/compiler-dev/llvm-and-optimization
+description: "LLVM and optimization MCQs covering passes, scheduling, register allocation, and linking."
+displayed_sidebar: compilerMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# LLVM and Optimization MCQs
+
+<Question
+  question="1). In LLVM, which pass is responsible for converting LLVM IR to machine-specific assembly?"
+  options={['Frontend', 'Optimizer', 'Backend Code Generator', 'Linker']}
+  answer="Backend Code Generator"
+/>
+<Question
+  question="2). Which LLVM tool is used to optimize IR?"
+  options={['clang', 'opt', 'llc', 'llvm-link']}
+  answer="opt"
+/>
+<Question
+  question="3). Which register allocation technique is widely used in modern compilers?"
+  options={['FIFO Allocation', 'Graph Coloring', 'LRU Allocation', 'Stack Allocation']}
+  answer="Graph Coloring"
+/>
+<Question
+  question="4). Which algorithm is typically used for instruction scheduling in compilers?"
+  options={['Kruskal’s Algorithm', 'Dijkstra’s Algorithm', 'List Scheduling', 'Bellman-Ford']}
+  answer="List Scheduling"
+/>
+<Question
+  question="5). In LLVM, which command converts LLVM IR to optimized bitcode?"
+  options={['clang', 'opt', 'llc', 'llvm-ar']}
+  answer="opt"
+/>
+<Question
+  question="6). Loop unrolling is an example of which type of optimization?"
+  options={['Machine-Independent Optimization', 'Machine-Dependent Optimization', 'Lexical Optimization', 'Parsing Optimization']}
+  answer="Machine-Independent Optimization"
+/>
+<Question
+  question="7). In LLVM, which component handles linking multiple IR modules together?"
+  options={['llvm-link', 'llc', 'clang', 'ar']}
+  answer="llvm-link"
+/>
+
+<div>
+    <AdBanner />
+</div>

@@ -1,11 +1,6 @@
 // @ts-check
 /** @type {import('@docusaurus/types').Config} */
 const productionScripts = [
-  {
-    src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N8G7MKF9',
-    async: true,
-    defer: true,
-  },
   { src: '/js/google-tag-manager.js', async: true, defer: true },
   { src: '/js/google-analytics.js', async: true, defer: true },
 ];
@@ -178,6 +173,7 @@ const config = {
             label: 'MCQ',
             position: 'left',
             items: [
+              { label: 'MCQ Hub', to: '/docs/mcq' },
               { label: 'Practice MCQ CPP', to: '/docs/mcq/cpp_mcqs' },
               {
                 label: 'Practice Interview Question & Answers (CPP)',
@@ -187,7 +183,7 @@ const config = {
                 label: 'Domain Specific C++ MCQs',
                 to: '/docs/mcq/cpp_mcqs#-domain-specific-c-mcqs',
               },
-              { label: 'React MCQ', to: '/docs/react_mcq' },
+              { label: 'Compiler, Systems and GPU MCQ', to: '/docs/mcq' },
             ],
           },
 

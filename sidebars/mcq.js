@@ -5,6 +5,7 @@ const mcq = {
       label: 'MCQs',
       collapsed: true,
       items: [
+        'mcq/mcq-home',
         {
           type: 'category',
           label: 'Basic MCQs',
@@ -202,10 +203,11 @@ const mcq = {
       items: [
         {
           type: 'category',
-          label: 'Competitive Programming MCQs',
+          label: 'Compiler Design MCQs',
           collapsed: true,
           items: [
-            'mcq/questions/domain/competitive-programming',
+            'mcq/questions/domain/compiler-dev/compiler-dev-home',
+            'mcq/questions/domain/compiler-dev/compiler-dev-quiz',
           ],
         },
         {
@@ -213,15 +215,17 @@ const mcq = {
           label: 'System Programming MCQs',
           collapsed: true,
           items: [
-            'mcq/questions/domain/system-programming',
+            'mcq/questions/domain/system-programming/system-programming-home',
+            'mcq/questions/domain/system-programming/system-programming-quiz',
           ],
         },
         {
           type: 'category',
-          label: 'Compiler Design MCQs',
+          label: 'GPU Programming MCQs',
           collapsed: true,
           items: [
-            'mcq/questions/domain/compiler-dev',
+            'mcq/questions/domain/gpu-programming/gpu-programming-home',
+            'mcq/questions/domain/gpu-programming/gpu-programming-quiz',
           ],
         },
         {
@@ -229,17 +233,100 @@ const mcq = {
           label: 'Embedded Systems MCQs',
           collapsed: true,
           items: [
-            'mcq/questions/domain/embedded',
+            'mcq/questions/domain/embedded/embedded-home',
+            'mcq/questions/domain/embedded/embedded-quiz',
           ],
         },
         {
           type: 'category',
-          label: 'HPC & Data Science MCQs',
+          label: 'HPC and Performance MCQs',
           collapsed: true,
           items: [
-            'mcq/questions/domain/data-science-hpc',
+            'mcq/questions/domain/data-science-hpc/hpc-home',
+            'mcq/questions/domain/data-science-hpc/hpc-quiz',
           ],
         },
+        {
+          type: 'category',
+          label: 'Competitive Programming MCQs',
+          collapsed: true,
+          items: [
+            'mcq/questions/domain/competitive-programming/competitive-programming-home',
+            'mcq/questions/domain/competitive-programming/competitive-programming-quiz',
+          ],
+        },
+      ],
+    },
+  ],
+
+  compilerMcqSidebar: [
+    {
+      type: 'category',
+      label: 'Compiler Design MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/compiler-dev/compiler-dev-home',
+        'mcq/questions/domain/compiler-dev/compiler-dev-quiz',
+      ],
+    },
+  ],
+
+  systemProgrammingMcqSidebar: [
+    {
+      type: 'category',
+      label: 'System Programming MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/system-programming/system-programming-home',
+        'mcq/questions/domain/system-programming/system-programming-quiz',
+      ],
+    },
+  ],
+
+  gpuMcqSidebar: [
+    {
+      type: 'category',
+      label: 'GPU Programming MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/gpu-programming/gpu-programming-home',
+        'mcq/questions/domain/gpu-programming/gpu-programming-quiz',
+      ],
+    },
+  ],
+
+  embeddedMcqSidebar: [
+    {
+      type: 'category',
+      label: 'Embedded Systems MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/embedded/embedded-home',
+        'mcq/questions/domain/embedded/embedded-quiz',
+      ],
+    },
+  ],
+
+  hpcMcqSidebar: [
+    {
+      type: 'category',
+      label: 'HPC and Performance MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/data-science-hpc/hpc-home',
+        'mcq/questions/domain/data-science-hpc/hpc-quiz',
+      ],
+    },
+  ],
+
+  competitiveProgrammingMcqSidebar: [
+    {
+      type: 'category',
+      label: 'Competitive Programming MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/competitive-programming/competitive-programming-home',
+        'mcq/questions/domain/competitive-programming/competitive-programming-quiz',
       ],
     },
   ],

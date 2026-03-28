@@ -1,0 +1,26 @@
+---
+id: competitive-programming-stl
+title: "Competitive Programming STL and C++ MCQs"
+slug: /mcq/questions/domain/competitive-programming/stl-and-cpp-tricks
+description: "Competitive programming MCQs on STL behavior, lower_bound, popcount, accumulate, and sorting helpers."
+displayed_sidebar: competitiveProgrammingMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# STL and C++ Tricks MCQs
+
+<Question question="1). What is the output of the following C++ code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    vector<int> v = {1,2,3,4,5};\n    cout << *lower_bound(v.begin(), v.end(), 3);\n}`} options={['2', '3', '4', 'undefined']} answer="3" />
+<Question question="2). In competitive programming, why is unordered_map sometimes slower than map?" options={['Hash collisions', 'Tree balancing', 'Memory fragmentation', 'Compiler optimization']} answer="Hash collisions" />
+<Question question="3). What will be the output of the following code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    string s = "abc";\n    do {\n        cout << s << " ";\n    } while(next_permutation(s.begin(), s.end()));\n}`} options={['abc acb bac bca cab cba', 'abc acb bac bca cab', 'abc bac cab', 'Random order']} answer="abc acb bac bca cab cba" />
+<Question question="4). Which STL container guarantees O(1) access time for random elements?" options={['vector', 'list', 'set', 'map']} answer="vector" />
+<Question question="5). What is the output of this code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    set<int> s = {1,2,3,4};\n    cout << *s.lower_bound(3);\n}`} options={['2', '3', '4', 'Error']} answer="3" />
+<Question question="6). What is the output of this C++ program?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n = 10;\n    cout << __builtin_popcount(n);\n}`} options={['1', '2', '3', '4']} answer="2" />
+<Question question="7). What is the output of this code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int arr[] = {1,2,3,4};\n    cout << accumulate(arr, arr+4, 0);\n}`} options={['4', '6', '10', 'Error']} answer="10" />
+<Question question="8). What will this C++ code output?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int x = 5;\n    cout << (x << 1);\n}`} options={['5', '10', '20', 'Error']} answer="10" />
+<Question question="9). What is the output of this code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    vector<int> v = {5,2,9,1};\n    sort(v.begin(), v.end(), greater<int>());\n    for(int x : v) cout << x << " ";\n}`} options={['1 2 5 9', '9 5 2 1', '5 2 9 1', 'Random order']} answer="9 5 2 1" />
+
+<div>
+    <AdBanner />
+</div>

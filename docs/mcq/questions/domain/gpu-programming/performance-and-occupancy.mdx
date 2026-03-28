@@ -1,0 +1,23 @@
+---
+id: gpu-programming-performance-occupancy
+title: "GPU Performance and Occupancy MCQs"
+slug: /mcq/questions/domain/gpu-programming/performance-and-occupancy
+description: "MCQs on divergence, occupancy, memory bottlenecks, synchronization tradeoffs, and register pressure."
+displayed_sidebar: gpuMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# GPU Performance and Occupancy MCQs
+
+<Question question="1). Why is branch divergence harmful on GPUs?" options={['It increases disk usage', 'Threads in the same execution group take different paths and serialize execution', 'It disables caching entirely', 'It changes kernel syntax']} answer="Threads in the same execution group take different paths and serialize execution" />
+<Question question="2). What does occupancy usually refer to in GPU optimization?" options={['Percentage of CPU usage', 'How fully the GPU can keep hardware execution resources busy', 'Amount of disk space used by kernels', 'The number of source files in a project']} answer="How fully the GPU can keep hardware execution resources busy" />
+<Question question="3). Which issue commonly limits GPU speedups even when compute resources are abundant?" options={['Source file naming', 'Memory bandwidth bottlenecks', 'Lack of keyboard input', 'Static linking']} answer="Memory bandwidth bottlenecks" />
+<Question question="4). Which statement about synchronization is correct?" options={['Global synchronization inside a single kernel is trivial', 'Work-group level synchronization is usually easier than whole-grid synchronization', 'Synchronization is never needed on GPUs', 'Barriers can synchronize the host and device instantly']} answer="Work-group level synchronization is usually easier than whole-grid synchronization" />
+<Question question="5). In GPU terminology, what is a common optimization goal for register usage?" options={['Use as many registers as possible regardless of occupancy', 'Balance register use so kernels stay efficient without reducing parallelism too much', 'Eliminate all registers', 'Store every variable in global memory']} answer="Balance register use so kernels stay efficient without reducing parallelism too much" />
+<Question question="6). Which topic is most directly tied to CompilerSutra's GPU content?" options={['Browser rendering pipelines', 'OpenCL execution and memory behavior', 'CSS cascade rules', 'HTTP cookie storage']} answer="OpenCL execution and memory behavior" />
+
+<div>
+    <AdBanner />
+</div>

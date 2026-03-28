@@ -1,0 +1,44 @@
+---
+id: compiler-dev-quiz
+title: "Compiler Design MCQs Quiz"
+slug: /mcq/questions/domain/compiler-dev/quiz
+description: "A beginner-friendly compiler design quiz covering compiler phases, parsing, IR, LLVM, and basic optimization ideas."
+displayed_sidebar: compilerMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# Compiler Design MCQs Quiz
+
+<Question question="1). What is the main job of a compiler?" options={['Run the program directly', 'Convert source code to binary', 'Convert source code to assembly', 'Manage the keyboard']} answer="Convert source code to assembly" />
+<Question question="2). Which compiler phase reads raw characters and turns them into tokens?" options={['Lexical analysis', 'Linking', 'Register allocation', 'Caching']} answer="Lexical analysis" />
+<Question question="3). A token in compilation is usually:" options={['A hardware register', 'A small unit like an identifier, keyword, or operator', 'A finished executable', 'A debugger breakpoint']} answer="A small unit like an identifier, keyword, or operator" />
+<Question question="4). What does a parser mainly build?" options={['A disk image', 'A program structure such as a parse tree or AST', 'A browser page', 'A network socket']} answer="A program structure such as a parse tree or AST" />
+<Question question="5). What is the main role of an AST?" options={['Store machine instructions', 'Represent the structure of the source program', 'Replace all optimization passes', 'Handle only linker errors']} answer="Represent the structure of the source program" />
+<Question question="6). Which phase checks for things like undeclared variables and type mismatches?" options={['Semantic analysis', 'Lexical analysis', 'Pretty printing', 'Compression']} answer="Semantic analysis" />
+<Question question="7). Why do compilers use an intermediate representation (IR)?" options={['To make the source code longer', 'To separate frontend logic from target-specific code generation', 'To avoid parsing', 'To replace the symbol table']} answer="To separate frontend logic from target-specific code generation" />
+<Question question="8). Which statement about LLVM is true?" options={['LLVM is only a text editor', 'LLVM provides compiler infrastructure and tools', 'LLVM is only for JavaScript', 'LLVM replaces operating systems']} answer="LLVM provides compiler infrastructure and tools" />
+<Question question="9). Which LLVM tool is commonly used to optimize IR?" options={['opt', 'zip', 'grep', 'ssh']} answer="opt" />
+<Question question="10). Which file extension usually represents human-readable LLVM IR?" options={['.ll', '.png', '.zip', '.css']} answer=".ll" />
+--
+<div>
+    <AdBanner />
+</div>
+--
+<Question question="11). What is a symbol table used for in a compiler?" options={['Track names, types, and scope information', 'Store final images', 'Schedule CPU interrupts', 'Replace parsing']} answer="Track names, types, and scope information" />
+<Question question="12). Constant folding means:" options={['Moving constants to RAM', 'Computing constant expressions during compilation', 'Deleting all constants', 'Turning variables into loops']} answer="Computing constant expressions during compilation" />
+<Question question="13). Dead code elimination removes:" options={['All comments', 'Code that does not affect the final program result', 'Every unused variable name only', 'Every loop']} answer="Code that does not affect the final program result" />
+<Question question="14). What does SSA stand for?" options={['Static Single Assignment', 'Simple Syntax Analyzer', 'Shared System Access', 'Source Scheduling Algorithm']} answer="Static Single Assignment" />
+<Question question="15). In SSA, a variable is usually assigned:" options={['Exactly once', 'At least ten times', 'Only in loops', 'Only by the linker']} answer="Exactly once" />
+<Question question="16). A phi node is used to:" options={['Open files', 'Choose the correct value when control flow merges', 'Allocate heap memory', 'Print debug logs']} answer="Choose the correct value when control flow merges" />
+<Question question="17). Which part of the compiler is closest to machine-specific code emission?" options={['Backend', 'Preprocessor', 'Lexer', 'Markdown renderer']} answer="Backend" />
+<Question question="18). Register allocation is about:" options={['Choosing how variables use CPU registers', 'Allocating disk sectors', 'Creating source tokens', 'Loading web pages']} answer="Choosing how variables use CPU registers" />
+<Question question="19). Instruction scheduling tries to:" options={['Order instructions well for hardware execution', 'Rename source files', 'Create HTML pages', 'Replace parsing']} answer="Order instructions well for hardware execution" />
+<Question question="20). Why is parsing important?" options={['It helps the compiler understand program structure', 'It increases internet speed', 'It only formats comments', 'It is used only after linking']} answer="It helps the compiler understand program structure" />
+<Question question="21). Which grammar type is commonly discussed in compiler design?" options={['Context-free grammar', 'Color grammar', 'Audio grammar', 'Network grammar']} answer="Context-free grammar" />
+<Question question="22). Why do beginners study compiler phases first?" options={['To understand the full flow from source code to output', 'To avoid learning syntax', 'Because optimization comes first', 'Because linking is the only important step']} answer="To understand the full flow from source code to output" />
+
+<div>
+    <AdBanner />
+</div>
