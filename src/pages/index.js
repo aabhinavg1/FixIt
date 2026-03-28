@@ -193,7 +193,7 @@ function HomepageHeader() {
 
 export default function Home() {
   const pageUrl = 'https://www.compilersutra.com/';
-  const socialImage = 'https://www.compilersutra.com/img/docusaurus-social-card.jpg';
+  const socialImage = 'https://www.compilersutra.com/img/compilersutra-social-card.png';
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
