@@ -1,0 +1,42 @@
+---
+id: coa-quiz
+title: "COA MCQs Quiz"
+slug: /mcq/questions/domain/coa/quiz
+description: "A 20-question Computer Organization and Architecture quiz focused on CPU execution, instruction cycle, pipelining, hazards, and cache behavior."
+displayed_sidebar: coaMcqSidebar
+---
+
+import AdBanner from '@site/src/components/AdBanner';
+import { Question } from '../../../Question';
+
+# COA MCQs Quiz
+
+<Question question="1). What does a CPU directly execute?" options={['C++ source code', 'Machine instruction bytes', 'Only assembly comments', 'AST nodes']} answer="Machine instruction bytes" />
+<Question question="2). The program counter (`PC`) mainly stores:" options={['The value of the current variable', 'The address of the next instruction', 'The cache size', 'The number of registers']} answer="The address of the next instruction" />
+<Question question="3). Which stage reads instruction bytes from memory or the instruction cache?" options={['Decode', 'Execute', 'Fetch', 'Writeback']} answer="Fetch" />
+<Question question="4). Which stage figures out what an instruction means?" options={['Writeback', 'Decode', 'Branch prediction', 'Retirement only']} answer="Decode" />
+<Question question="5). Which stage does the actual arithmetic, load, store, or branch work?" options={['Fetch', 'Execute', 'Linking', 'Lexing']} answer="Execute" />
+<Question question="6). Which stage makes the result visible by updating registers or completing the store path?" options={['Writeback', 'Fetch', 'Parsing', 'Tokenization']} answer="Writeback" />
+<Question question="7). In the instruction cycle, what usually happens after writeback?" options={['The source code is reparsed', 'The PC moves to the next instruction or branch target', 'The compiler reruns optimization', 'The CPU clears RAM']} answer="The PC moves to the next instruction or branch target" />
+<Question question="8). Why is pipelining useful?" options={['It makes one instruction have zero latency', 'It overlaps work from multiple instructions to improve throughput', 'It removes all cache misses', 'It replaces registers']} answer="It overlaps work from multiple instructions to improve throughput" />
+<Question question="9). Throughput is best described as:" options={['How long one instruction takes to finish', 'How much work the CPU finishes over time', 'How much disk space a program uses', 'How many source files exist']} answer="How much work the CPU finishes over time" />
+<Question question="10). Latency is best described as:" options={['How often new work can start', 'How long one operation takes to finish', 'The number of compiler passes', 'The number of pipeline stages only']} answer="How long one operation takes to finish" />
+
+<div>
+    <AdBanner />
+</div>
+
+<Question question="11). Which of the following is an example of a data hazard?" options={['An instruction needs a result that is not ready yet', 'Two source files have the same name', 'A cache line is larger than RAM', 'The keyboard input is slow']} answer="An instruction needs a result that is not ready yet" />
+<Question question="12). Which of the following is a control hazard?" options={['A branch changes which instructions should be fetched', 'Two instructions use different registers', 'An ALU performs an add', 'A store writes data to memory']} answer="A branch changes which instructions should be fetched" />
+<Question question="13). Which of the following is a structural hazard?" options={['Two instructions need the same hardware resource in the same cycle', 'A branch is taken', 'A variable changes type', 'A compiler emits assembly']} answer="Two instructions need the same hardware resource in the same cycle" />
+<Question question="14). Why can a load instruction become expensive?" options={['Loads always modify source code', 'The data may miss in cache and take much longer to arrive', 'Loads are illegal in assembly', 'Loads bypass memory completely']} answer="The data may miss in cache and take much longer to arrive" />
+<Question question="15). If a load misses and a later add depends on that value, what usually happens?" options={['The add finishes first anyway', 'The dependent work may stall until the data arrives', 'The compiler restarts automatically', 'The PC is deleted']} answer="The dependent work may stall until the data arrives" />
+<Question question="16). On x86, why can one assembly instruction be heavier than it looks?" options={['It may decode into multiple internal micro-operations', 'x86 has no registers', 'x86 cannot access memory', 'x86 runs only one instruction total']} answer="It may decode into multiple internal micro-operations" />
+<Question question="17). What does `µop` mean in this context?" options={['A small internal operation produced from an instruction', 'A unit of disk storage', 'A type of linker warning', 'A source-level variable']} answer="A small internal operation produced from an instruction" />
+<Question question="18). Which hardware block is most directly associated with computing memory addresses?" options={['ALU', 'FPU', 'AGU', 'Branch predictor']} answer="AGU" />
+<Question question="19). A branch misprediction hurts performance because:" options={['The CPU may need to discard wrong-path work and restart', 'It deletes the binary', 'It removes all registers', 'It turns RAM into cache']} answer="The CPU may need to discard wrong-path work and restart" />
+<Question question="20). After finishing this article, what is the best next step?" options={['Practice COA MCQs to test your understanding', 'Ignore the topic completely', 'Delete the build folder', 'Rewrite the ISA']} answer="Practice COA MCQs to test your understanding" />
+
+<div>
+    <AdBanner />
+</div>

@@ -246,27 +246,6 @@ function PhaseCard({ phase, completed, active, onToggleComplete }) {
         </div>
       </div>
 
-      <div className={styles.phaseFooter}>
-        <div className={styles.progressMarker} data-reveal>
-          <span className={styles.markerIcon} aria-hidden="true">
-            <FaCheck />
-          </span>
-          <div>
-            <p className={styles.subheading}>Progress marker</p>
-            <p>{phase.progressMarker}</p>
-          </div>
-        </div>
-
-        <details className={styles.interviewBlock} data-reveal>
-          <summary>🎤 Interview Questions</summary>
-          <ul>
-            {phase.interviewQuestions.map((question) => (
-              <li key={question}>{question}</li>
-            ))}
-          </ul>
-        </details>
-      </div>
-
       <div className={styles.cardProgress} aria-hidden="true">
         <span className={clsx(completed && styles.cardProgressDone)} />
       </div>
@@ -496,6 +475,7 @@ export default function RoadmapExperience() {
 
         <div className={styles.trackGrid} data-reveal>
           <Link className={styles.trackLink} to="/docs/tracks/compiler-fundamentals/">Compiler Fundamentals</Link>
+          <Link className={styles.trackLink} to="/docs/coa/">Computer Architecture</Link>
           <Link className={styles.trackLink} to="/docs/tracks/llvm-and-ir/">LLVM and IR</Link>
           <Link className={styles.trackLink} to="/docs/tracks/gpu-compilers/">GPU Compilers</Link>
           <Link className={styles.trackLink} to="/docs/tracks/ml-compilers/">ML Compilers</Link>

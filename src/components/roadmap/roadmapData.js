@@ -78,6 +78,7 @@ export const PHASES = [
       { label: 'C++ Intermediate', to: '/docs/c++/intermediate/' },
       { label: 'C++ Advanced', to: '/docs/c++/advanced/' },
       { label: 'DSA Foundations', to: '/docs/DSA/introduction-to-dsa/' },
+      { label: 'Computer Architecture', to: '/docs/coa/' },
       { label: 'From Source Code to Executable', to: '/docs/compilers/sourcecode_to_executable/' },
     ],
     progressMarker: 'You stop seeing code as syntax and start seeing execution.',

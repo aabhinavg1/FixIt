@@ -164,15 +164,15 @@ They become **direct tools for shaping how hardware executes programs**.
 
 <tr>
   <td>2</td>
-  <td>How Programs Become Machine Instructions</td>
-  <td>Coming Soon</td>
-  <td>Coming Soon</td>
+  <td>How Source Code Becomes Binary</td>
+  <td>[link](https://www.compilersutra.com/docs/compilers/sourcecode_to_executable/)</td>
+  <td>[video](https://www.youtube.com/watch?v=vN6C7_5uN9s)</td>
 </tr>
 
 <tr>
   <td>3</td>
-  <td>Binary Representation and Data Encoding</td>
-  <td>Coming Soon</td>
+  <td>How CPU Executes Binary: Fetch–Decode–Execute Explained</td>
+  <td>[link](./coa/how_programs_become_machine_instructions.md)</td>
   <td>Coming Soon</td>
 </tr>
 
@@ -798,4 +798,3 @@ They become **direct tools for shaping how hardware executes programs**.
 
   </TabItem>
 </Tabs>
-

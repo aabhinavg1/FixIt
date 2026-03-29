@@ -10,6 +10,12 @@ const CURRICULUM_ITEMS = [
       'Start with phases, CFGs, frontend and backend roles, and how source code turns into executable programs.',
   },
   {
+    title: 'Computer Architecture',
+    link: '/docs/coa',
+    description:
+      'Build the hardware-side mental model for binaries, ISA, execution flow, and architecture-aware compiler reasoning.',
+  },
+  {
     title: 'LLVM and IR',
     link: '/docs/tracks/llvm-and-ir',
     description:
