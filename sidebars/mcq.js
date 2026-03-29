@@ -203,6 +203,15 @@ const mcq = {
       items: [
         {
           type: 'category',
+          label: 'COA MCQs',
+          collapsed: true,
+          items: [
+            'mcq/questions/domain/coa/coa-home',
+            'mcq/questions/domain/coa/coa-quiz',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Compiler Design MCQs',
           collapsed: true,
           items: [
@@ -267,6 +276,18 @@ const mcq = {
       items: [
         'mcq/questions/domain/compiler-dev/compiler-dev-home',
         'mcq/questions/domain/compiler-dev/compiler-dev-quiz',
+      ],
+    },
+  ],
+
+  coaMcqSidebar: [
+    {
+      type: 'category',
+      label: 'COA MCQs',
+      collapsed: false,
+      items: [
+        'mcq/questions/domain/coa/coa-home',
+        'mcq/questions/domain/coa/coa-quiz',
       ],
     },
   ],

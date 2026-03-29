@@ -106,6 +106,7 @@ const config = {
               { label: 'GPU Compilers', to: '/docs/tracks/gpu-compilers' },
               { label: 'ML Compilers', to: '/docs/tracks/ml-compilers' },
               { label: 'C++', to: '/docs/c++' },
+              {label: 'COA', to: '/docs/coa'},
             ],
           },
           {

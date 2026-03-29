@@ -106,6 +106,7 @@ const site = {
       items: [
         'coa',
         'coa/intro_to_coa',
+        'coa/cpu_execution',
       ],
     },
   ],

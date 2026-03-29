@@ -1,0 +1,76 @@
+---
+title: "CPU Instruction Demo"
+slug: /coa/cpu-instruction-demo
+description: "Interactive demonstration of how a CPU executes a single instruction through fetch, decode, execute, and writeback."
+---
+
+# CPU Instruction Demo
+
+Before using the demo, it helps to be clear about what we are actually observing.
+
+This walkthrough demonstrates how a CPU handles one small instruction as it moves through four classic stages:
+
+* `FETCH`
+* `DECODE`
+* `EXECUTE`
+* `WRITEBACK`
+
+The example is intentionally small:
+
+* C code: `sum = a + b;`
+* assembly: `add eax, edi`
+* binary bytes: `01 F8`
+* starting program counter: `0x1000`
+
+## What This Demo Is Showing
+
+This is not a full modern out-of-order core model.
+It is a clean teaching view of the essential datapath movement for one instruction.
+
+The goal is to make three things visible:
+
+* where the instruction bytes come from
+* how the CPU understands those bytes as an operation
+* how the final arithmetic result updates architectural state
+
+## What Is the Program Counter?
+
+The **program counter** or **PC** is the register that tells the CPU where the next instruction lives in memory.
+
+In this demo, the PC starts at `0x1000`.
+That means the CPU begins by reading instruction bytes from memory address `0x1000`.
+
+Without the PC, the CPU would not know which instruction to fetch next.
+Every instruction flow starts from this address-tracking mechanism.
+
+## What Are Registers?
+
+Registers are tiny storage locations inside the CPU used for active computation.
+They are much faster than main memory and are the first place arithmetic instructions usually read from and write to.
+
+In this example:
+
+* `EAX` starts with value `5`
+* `EDI` starts with value `3`
+
+During execution, the ALU adds those values together.
+During writeback, the result is written into `EAX`.
+
+## Why These Pieces Matter
+
+If you do not know:
+
+* where the instruction is stored
+* how the CPU finds it
+* which registers provide operands
+* when the result becomes architecturally visible
+
+then fetch-decode-execute remains a slogan instead of a machine model.
+
+This demo is meant to slow that process down and make each state change explicit.
+
+<iframe
+  src="/demos/cpu-instruction-demo.html"
+  title="CPU Instruction Demo"
+  style={{ width: '100%', minHeight: '620px', border: '0', borderRadius: '18px' }}
+/>
