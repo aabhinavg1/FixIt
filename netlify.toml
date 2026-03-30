@@ -11,7 +11,14 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
 
-# ✅ Redirect all non-www traffic to www
+# FIX: redirect BOTH http + https non-www → www (single step)
+
+[[redirects]]
+  from = "http://compilersutra.com/*"
+  to = "https://www.compilersutra.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "https://compilersutra.com/*"
   to = "https://www.compilersutra.com/:splat"
