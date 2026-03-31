@@ -3,7 +3,7 @@ export const gpuPapersTopic = {
   title: 'GPU Papers',
   description: 'GPU architecture, parallel execution, memory hierarchy, and compiler-facing GPU material.',
   coverTone: 'coverSlate',
-  coverImage: '/img/og/compilers.png',
+  coverImage: '/img/og/gpu.png',
   articleCategory: 'GPU Systems',
   articleDescription:
     'A shelf for GPU execution models, memory behavior, kernel optimization, and compiler-oriented accelerator reading.',
