@@ -10,6 +10,7 @@ const FloatingSubscribe = lazy(() => import("@site/src/components/FloatingSubscr
 
 export default function Layout(props) {
   const location = useLocation();
+  const isReaderRoute = location.pathname.startsWith("/library/read");
   const { siteConfig } = useDocusaurusContext();
   const siteUrl = siteConfig.url.replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}${location.pathname}`;
@@ -81,14 +82,20 @@ export default function Layout(props) {
           {JSON.stringify(structuredData)}
         </script>
       </Head>
-      <OriginalLayout {...props} />
-      <BrowserOnly fallback={null}>
-        {() => (
-          <Suspense fallback={null}>
-            <FloatingSubscribe />
-          </Suspense>
-        )}
-      </BrowserOnly>
+      <OriginalLayout
+        {...props}
+        noNavbar={isReaderRoute || props.noNavbar}
+        noFooter={isReaderRoute || props.noFooter}
+      />
+      {!isReaderRoute && (
+        <BrowserOnly fallback={null}>
+          {() => (
+            <Suspense fallback={null}>
+              <FloatingSubscribe />
+            </Suspense>
+          )}
+        </BrowserOnly>
+      )}
     </>
   );
 }

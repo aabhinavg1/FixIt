@@ -120,6 +120,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/library',
+            label: 'Library',
+            position: 'left',
+          },
+          {
             type: 'dropdown',
             label: 'Articles',
             position: 'left',
