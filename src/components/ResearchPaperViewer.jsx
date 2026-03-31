@@ -34,6 +34,12 @@ function getBookById(bookId) {
   return getLibraryPaper(bookId);
 }
 
+function openRawPdf(file) {
+  if (typeof window !== 'undefined' && file) {
+    window.location.replace(file);
+  }
+}
+
 function clampPage(nextPage, totalPages) {
   if (!totalPages) {
     return Math.max(1, nextPage);
@@ -85,13 +91,7 @@ function ReaderCard({
     <>
       <div className={pageStyles.documentWrap}>
         {preferBrowserMode || loadError ? (
-          <div className={pageStyles.nativePdfFallback}>
-            <iframe
-              className={pageStyles.nativePdfFrame}
-              src={file}
-              title="Embedded research paper PDF"
-            />
-          </div>
+          <div className={pageStyles.status}>Opening PDF…</div>
         ) : !Document || !Page ? (
           <div className={pageStyles.status}>Loading PDF reader…</div>
         ) : (
@@ -103,8 +103,7 @@ function ReaderCard({
               <div className={pageStyles.errorPanel}>
                 <p className={pageStyles.errorTitle}>Unable to load this PDF inside the reader.</p>
                 <p className={pageStyles.errorText}>
-                  `react-pdf` could not render this file, so the reader is switching to the
-                  browser PDF viewer instead.
+                  Opening the raw PDF instead.
                 </p>
               </div>
             }
@@ -129,11 +128,7 @@ function ReaderCard({
 
       {loadError && (
         <div className={pageStyles.fallbackBox}>
-          <p className={pageStyles.fallbackTitle}>Using browser PDF mode</p>
-          <p className={pageStyles.fallbackText}>
-            This host did not work with `react-pdf`, so the paper is being shown using the
-            browser&apos;s built-in PDF viewer inside the library page.
-          </p>
+          <p className={pageStyles.fallbackTitle}>Opening raw PDF</p>
         </div>
       )}
     </>
@@ -224,6 +219,12 @@ export default function ResearchPaperViewer() {
   }, [file, preferBrowserMode]);
 
   useEffect(() => {
+    if (preferBrowserMode || loadError) {
+      openRawPdf(file);
+    }
+  }, [file, loadError, preferBrowserMode]);
+
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowLeft') {
         setPageNumber((current) => clampPage(current - 1, numPages));
@@ -306,7 +307,7 @@ export default function ResearchPaperViewer() {
 
           <div className={pageStyles.readerProgress}>
             {preferBrowserMode || loadError ? (
-              <span className={pageStyles.readerProgressMuted}>Browser PDF mode</span>
+              <span className={pageStyles.readerProgressMuted}>Opening PDF</span>
             ) : numPages ? (
               <span>
                 Page {pageNumber} / {numPages}
