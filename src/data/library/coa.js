@@ -43,17 +43,17 @@ export const coaTopic = {
 
 export const coaPapers = [
   {
-    id: 'Pipeline architecture: ',
+    id: 'pipeline-architecture',
     topic: 'coa',
     category: 'Execution Flow',
-    thumbnailLabel: 'Pipeline',
-    title: 'Pipeline architecture: ',
-    author: 'CompilerSutra',
-    year: 'Internal',
+    thumbnailLabel: 'PA',
+    title: 'Pipeline Architecture',
+    author: 'WJAETS',
+    year: '2025',
     coverTone: 'coverTeal',
     file: 'https://wjaets.com/sites/default/files/fulltext_pdf/WJAETS-2025-0540.pdf',
     renderMode: 'browser',
-    note: 'CompilerSutra material covering source-to-binary execution flow.',
+    note: 'Pipeline architecture paper hosted by WJAETS.',
   },
   {
     id: 'coa-volta-architecture',
