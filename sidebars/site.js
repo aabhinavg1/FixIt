@@ -105,6 +105,7 @@ const site = {
       collapsed: false,
       items: [
         'coa',
+        'coa/basic_terminology_in_coa',
         'coa/intro_to_coa',
         'coa/cpu_execution',
       ],

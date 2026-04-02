@@ -57,13 +57,13 @@ import TabItem from '@theme/TabItem';
 
 # Computer Architecture Roadmap
 
-Most programmers learn **computer architecture** as an isolated academic subject pipelines, caches, branch prediction, instruction sets.
-Most compiler engineers learn **compiler theory** parsing, IR design, optimization passes.
+Most programmers learn **computer architecture** as an isolated academic subject: pipelines, caches, branch prediction, and instruction sets.
+Most compiler engineers learn **compiler theory** as a separate discipline: parsing, IR design, and optimization passes.
 
 But in reality, **modern performance engineering lives at the intersection of both**.
 
 A compiler does not run in a vacuum.
-Every instruction it emits must execute on real hardware with **pipelines, execution units, caches, memory latency, and parallel execution resources**. Small decisions made inside the compiler backend instruction ordering, register allocation, vectorization, memory access patterns can dramatically influence how efficiently hardware executes the program.
+Every instruction it emits must execute on real hardware with **pipelines, execution units, caches, memory latency, and parallel execution resources**. Small decisions made inside the compiler backend, such as instruction ordering, register allocation, vectorization, and memory access patterns, can dramatically influence how efficiently hardware executes the program.
 
 <Tabs>
   <TabItem value="social" label="📣 Social Media">
@@ -76,8 +76,13 @@ Every instruction it emits must execute on real hardware with **pipelines, execu
   </TabItem>
 </Tabs>
 
-:::tip For example:
-:::
+## Start Here First
+
+If you are new to COA, read these first before going deeper into ISA, cache, or pipeline topics:
+
+- [Computer Organization vs Computer Architecture](/docs/coa/intro_to_coa)
+- [Basic Terminology in COA Everyone Should Know](/docs/coa/basic_terminology_in_coa)
+- [How CPU Executes Binary: Fetch-Decode-Execute Explained](/docs/coa/cpu_execution)
 
 * A perfectly valid instruction sequence may **stall a CPU pipeline**.
 * A poorly scheduled loop may **destroy instruction-level parallelism**.
@@ -128,7 +133,7 @@ The goal is not just to understand **how processors work**, but to understand **
 
 By following this roadmap, you will develop a mental model of how software transforms into **efficient machine execution**.
 
-You will learn to see programs the way hardware sees them
+You will learn to see programs the way hardware sees them:
 as streams of instructions competing for pipelines, registers, cache bandwidth, and execution units.
 
 And once you start thinking this way, compiler optimizations stop feeling abstract.
@@ -158,54 +163,61 @@ They become **direct tools for shaping how hardware executes programs**.
 <tr>
   <td>1</td>
   <td>Computer Organization vs Computer Architecture</td>
-  <td>[link](coa/intro_to_coa.md)</td>
+  <td>[link](/docs/coa/intro_to_coa)</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
   <td>2</td>
+  <td>Basic Terminology in COA Everyone Should Know</td>
+  <td>[link](/docs/coa/basic_terminology_in_coa)</td>
+  <td>Coming Soon</td>
+</tr>
+
+<tr>
+  <td>3</td>
   <td>How Source Code Becomes Binary</td>
   <td>[link](https://www.compilersutra.com/docs/compilers/sourcecode_to_executable/)</td>
   <td>[video](https://www.youtube.com/watch?v=vN6C7_5uN9s)</td>
 </tr>
 
 <tr>
-  <td>3</td>
+  <td>4</td>
   <td>How CPU Executes Binary: Fetch–Decode–Execute Explained</td>
-  <td>[link](./coa/how_programs_become_machine_instructions.md)</td>
+  <td>[link](/docs/coa/cpu_execution)</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
-  <td>4</td>
+  <td>5</td>
   <td>Machine Code, Assembly, and Compilers</td>
   <td>Coming Soon</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
-  <td>5</td>
+  <td>6</td>
   <td>Basic CPU Components (ALU, Control Unit, Registers)</td>
   <td>Coming Soon</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
-  <td>6</td>
+  <td>7</td>
   <td>Instruction Execution Overview</td>
   <td>Coming Soon</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
-  <td>7</td>
+  <td>8</td>
   <td>Clock Cycle, Latency, and Throughput</td>
   <td>Coming Soon</td>
   <td>Coming Soon</td>
 </tr>
 
 <tr>
-  <td>8</td>
+  <td>9</td>
   <td>Why Hardware Knowledge Matters for Compiler Engineers</td>
   <td>Coming Soon</td>
   <td>Coming Soon</td>
