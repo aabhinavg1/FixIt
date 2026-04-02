@@ -5,11 +5,23 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://resources.infolinks.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://resources.infolinks.com;
+      connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
+      img-src 'self' data: https:;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self' data: https:;
+      frame-src 'self' https://docs.google.com https://docs.googleusercontent.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+      object-src 'none';
+      base-uri 'self';
+      frame-ancestors 'self';
+      upgrade-insecure-requests;
+    """
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
+    X-Frame-Options = "SAMEORIGIN"
 
 # FIX: redirect BOTH http + https non-www → www (single step)
 
