@@ -113,6 +113,15 @@ This is for:
 15. [Interview insight](#interview-insight)
 16. [Final thought](#final-thought)
 
+
+
+
+<div>
+    <AdBanner />
+</div>
+
+
+
 ## Why this terminology matters
 
 COA is not about memorizing hardware names. It is about understanding how software turns into machine activity.
@@ -359,9 +368,6 @@ The closer the data is to the CPU, the faster it is usually accessed. That is th
 - cache exists because main memory is too slow to feed the CPU directly
 - understanding execution means tracking both instructions and data movement
 
-<div>
-    <AdBanner />
-</div>
 
 ## Performance and pipeline terms
 
@@ -538,6 +544,13 @@ IPC = 800 / 400 = 2
 CPI = 400 / 800 = 0.5
 ```
 
+
+
+<div>
+    <AdBanner />
+</div>
+
+
 ### Latency vs Throughput vs CPI vs IPC
 
 | Term | What it means | Simple question | What usually improves performance |
@@ -641,6 +654,7 @@ This is the point where COA stops feeling like theory and starts feeling practic
 
 
 ## Quick Revision (1-Minute Recap)
+
 If you want a fast revision pass, remember these anchors:
 
 - **bit, byte, word** describe the basic data units
