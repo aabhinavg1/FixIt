@@ -19,6 +19,32 @@ tags:
 
 # Understanding LLVM Passes
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## What is an LLVM Pass?
 
 An **LLVM pass** is a small, self-contained module of code that is used to analyze or transform the LLVM Intermediate Representation (IR) of a program. LLVM IR is a low-level programming language used by the LLVM compiler to represent source code after it has been parsed but before it is translated into machine code. The role of passes is crucial because they help optimize, analyze, and transform this IR, improving the performance, efficiency, and quality of the compiled program.

@@ -29,6 +29,32 @@ tags:
 
 # The Middle-End Pass in LLVM: An Overview
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## Introduction
 
 The middle-end of the LLVM compiler pipeline is where the core optimization and transformation of the Intermediate Representation (IR) takes place. After the front-end pass has generated an IR from source code, the middle-end focuses on optimizing that representation for performance improvements, portability, and other compiler-level concerns. This article explores the middle-end pass, its role, and the types of transformations it performs on the IR.

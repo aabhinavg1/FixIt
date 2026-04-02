@@ -58,6 +58,32 @@ import TabItem from '@theme/TabItem';
 
 # Introduction 
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 CMake is the `de facto` standard build system generator for modern C++ development. Whether you're building for `Linux`, `Windows`, or `embedded systems`, mastering CMake will save you countless hours of pain that traditional Makefiles tend to cause. This guide is a step-by-step tutorial to help you build a simple C++ project using `CMakeLists.txt`.
 
 🎥 **Watch the Playlist**: 

@@ -65,6 +65,32 @@ import AdBanner from '@site/src/components/AdBanner';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 This is Part 3 of our library series. In [Part 1](https://www.compilersutra.com/docs/how_to/library_part1), we discussed library fundamentals, and in [Part 2](https://www.compilersutra.com/docs/how_to/static_library), we covered static libraries.
 
 <strong>You can check the video of both for what is library</strong>

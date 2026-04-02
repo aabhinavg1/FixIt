@@ -40,6 +40,32 @@ sidebar_label: cpp_tutorial_with_cmake
 
 # C++ Tutorial with Basic CMake
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## Summary
 
 This tutorial introduces C++, explaining why it is important for performance-critical applications, and guides you through setting up a simple C++ project using CMake. You'll write a basic "Hello, World!" program, create a `CMakeLists.txt` file, and compile the project using CMake, a versatile tool for cross-platform builds.

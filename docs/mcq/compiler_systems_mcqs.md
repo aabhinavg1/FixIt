@@ -31,6 +31,32 @@ import Link from '@docusaurus/Link';
 
 # CompilerSutra MCQ Hub
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 <div style={{position: 'relative', overflow: 'hidden', borderRadius: '28px', padding: '2rem', marginBottom: '1.5rem', border: '1px solid var(--ifm-color-emphasis-200)', background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(251, 191, 36, 0.10)), var(--ifm-background-surface-color)', boxShadow: '0 18px 40px rgba(15, 23, 42, 0.08)'}}>
   <div style={{position: 'absolute', inset: 'auto -5% -35% auto', width: '260px', height: '260px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.12)', filter: 'blur(8px)'}} />
   <p style={{margin: 0, letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'var(--ifm-color-primary)'}}>Practice by topic</p>

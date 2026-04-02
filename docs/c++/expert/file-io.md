@@ -17,6 +17,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # File I/O in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 File I/O is one of the first places where C++ stops being only about language syntax and starts touching the operating system directly. Reading configuration files, writing logs, loading assets, generating reports, and serializing intermediate data all depend on it.
 
 If you understand file I/O well, your code becomes much more practical.

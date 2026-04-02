@@ -18,6 +18,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Async and Futures in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 `std::thread` gives you low-level control over execution. `std::async`, `std::future`, and `std::promise` sit one level above that. They focus on a different problem: launching work, waiting for completion, and collecting a result without manually wiring every synchronization detail yourself.
 
 For many real applications, that model is a better starting point than raw threads.

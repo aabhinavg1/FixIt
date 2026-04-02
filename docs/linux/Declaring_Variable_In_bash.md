@@ -41,6 +41,32 @@ import TabItem from '@theme/TabItem';
 
 # Mastering Variable Declarations in Bash
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Mastering variable declarations in **Bash** is foundational to writing reliable and maintainable shell scripts. Whether you're automating deployments, managing configuration files, or parsing logs, understanding how Bash handles variables can **save you from subtle bugs** and significantly improve your script's readability and robustness.
 
  <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>

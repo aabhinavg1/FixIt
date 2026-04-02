@@ -21,6 +21,32 @@ keywords:
 ---
 import { ComicQA } from '../Question_comics' ;
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 <ComicQA
   question="1) What is RAII and why is it important in Modern C++?"
   answer="RAII (Resource Acquisition Is Initialization) ties resource management to object lifetime, ensuring resources are properly released when objects go out of scope."

@@ -28,6 +28,32 @@ tags:
 
 # Translating C Code to Executable using LLVM
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 LLVM provides a suite of tools to compile and execute code, including transforming C code into an executable format. This document outlines the basic steps involved in compiling a C file using LLVM tools such as `clang`, `llvm-as`, and `llc`.
 
 ## Table of Contents

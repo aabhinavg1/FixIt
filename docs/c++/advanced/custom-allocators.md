@@ -16,6 +16,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Custom Allocators in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Custom allocators are one of those topics that look advanced because they are advanced. They let you control how memory is acquired and released by containers and generic components. That power is useful in the right systems, but it also adds complexity fast.
 
 So the first rule is simple: do not start with allocators unless you have a real reason.

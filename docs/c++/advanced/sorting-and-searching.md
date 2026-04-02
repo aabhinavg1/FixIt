@@ -20,6 +20,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Sorting and Searching in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Sorting and searching are among the most common operations in programming.
 
 Beginners often first learn them through handwritten loops or textbook algorithms. That is useful for understanding the idea, but in practical modern C++, you should also learn the standard algorithm tools immediately.

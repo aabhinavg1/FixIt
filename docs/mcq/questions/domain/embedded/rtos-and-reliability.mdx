@@ -11,6 +11,32 @@ import { Question } from '../../../Question';
 
 # Embedded RTOS and Reliability MCQs
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 <Question question="1). What is the output of the following C code on a microcontroller?" code={`#include <stdio.h>\nint main() {\n    unsigned char x = 250;\n    x = x + 10;\n    printf("%d", x);\n    return 0;\n}`} options={['260', '4', '255', 'Compilation Error']} answer="4" />
 <Question question="2). What will be the output of this C program?" code={`#include <stdio.h>\nint main() {\n    volatile int x = 5;\n    int *ptr = (int*)&x;\n    *ptr = 10;\n    printf("%d", x);\n    return 0;\n}`} options={['5', '10', 'Undefined Behavior', 'Compiler Error']} answer="10" />
 <Question question="3). Which technique is best for reducing power consumption in embedded systems?" options={['Increasing clock speed', 'Disabling unused peripherals', 'Using more interrupts', 'Polling frequently']} answer="Disabling unused peripherals" />

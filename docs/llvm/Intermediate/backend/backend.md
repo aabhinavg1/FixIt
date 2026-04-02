@@ -28,6 +28,32 @@ tags:
 
 # The Back-End Pass in LLVM: An Overview
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## Introduction
 
 The back-end of the LLVM compiler pipeline is responsible for generating the final machine code from the optimized Intermediate Representation (IR). The back-end takes the transformed IR produced by the middle-end and translates it into a target-specific assembly or machine code. This process is crucial for ensuring that the final executable runs efficiently on the target hardware. This article discusses the back-end pass in LLVM, its components, and how it contributes to the compilation process.

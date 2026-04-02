@@ -31,6 +31,32 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 
 
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 > **When you run a C++ program for the first time, something magical seems to happen.**  
 >  
 > You write a few lines of **high-level C++ code**, press compile, and suddenly a **binary executable** appears ready to run on your machine.  

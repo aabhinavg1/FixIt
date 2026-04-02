@@ -38,6 +38,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # GCC vs Clang, Part 2A: Assembly Deep-Dive on 3 Key Benchmark Cases
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Part 1 reported the runtimes:
 
 > [**GCC vs Clang: A 10-Case Compiler Benchmark Report (2026)**](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter)

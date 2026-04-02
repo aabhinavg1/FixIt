@@ -48,6 +48,32 @@ tags:
 
 # 🧠 Mastering Object-Oriented Programming in C++: A Job-Oriented Guide
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 So, you're here to learn Object-Oriented Programming (OOP) in C++? Well, good news!. In this guide, we'll dive into **Object-Oriented Programming (OOP)**, focusing on **classes**, **objects**, and why these concepts are important in **job interviews**. Using a fun analogy of humans as objects, you'll learn the foundational ideas behind OOP in C++. 🧑‍💻
 Oh, and if you need a real book to read (besides my awesome explanation), check out *The C++ Programming Language* by Bjarne Stroustrup. It’s, like, the Bible for C++ nerds. 📚
 

@@ -44,6 +44,32 @@ import TabItem from '@theme/TabItem';
 
 # Loops in Bash
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Loops are fundamental in any programming or scripting language, `allowing repetitive` tasks to be automated efficiently. In Bash, loops help in `iterating over files`, command outputs, ranges, and more. This guide covers all major loop types, `control statements`, and `advanced patterns` to make you proficient in Bash scripting.
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '20px' }}>

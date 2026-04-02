@@ -29,6 +29,32 @@ tags:
 
 # Managing LLVM Versions
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 If you build compiler tools, custom passes, or old research code, version management matters quickly. This guide shows how to install, switch, and inspect multiple LLVM versions without losing control of your toolchain.
 
 LLVM (Low-Level Virtual Machine) is a collection of modular and reusable compiler and toolchain technologies. Developers often need to manage multiple versions of LLVM for different projects or environments. In this guide, we will cover how to manage multiple LLVM versions and download the appropriate version for your needs.

@@ -20,6 +20,32 @@ tags: ["DSA", "Algorithms", "Data Structures", "LeetCode", "Competitive Programm
 ---
 import DSA_Book_Recommendation from './DSA_Book_Recommendation.js';
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 :::tip Section Home
 This page remains the canonical DSA section root at `/docs/DSA/`, so the older DSA link is still preserved.
 :::

@@ -25,6 +25,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Variables and Data Types in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 If you remove variables and data types from C++, nothing meaningful remains.
 
 Every C++ program, no matter how simple or how advanced, depends on storing values, naming them, and telling the compiler what kind of data those values represent. That is exactly what variables and data types do.

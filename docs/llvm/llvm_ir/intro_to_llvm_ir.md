@@ -106,6 +106,32 @@ import { ComicQA } from '../../mcq/interview_question/Question_comics' ;
 
 # LLVM IR Explained: The Backbone of Modern Compilers
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ***LLVM IR (Intermediate Representation)*** is the central foundation of the entire LLVM compiler framework. It acts as a universal, platform-independent code format that all frontends and backends in LLVM rely on. 
 
 By sitting between source code and machine code, ***LLVM IR unlocks powerful optimizations, provides extraordinary portability***, and allows LLVM to remain highly modular across languages, tools, and hardware targets.
