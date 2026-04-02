@@ -16,6 +16,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # SFINAE in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 SFINAE stands for Substitution Failure Is Not An Error. The name sounds more intimidating than the core idea. It is a rule that affects template substitution and overload resolution in C++.
 
 For years, SFINAE was one of the main tools for expressing conditional template behavior before concepts made that job much cleaner.

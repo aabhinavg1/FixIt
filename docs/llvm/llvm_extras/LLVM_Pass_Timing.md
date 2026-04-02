@@ -41,6 +41,32 @@ tags:
 ---
 # How to See Time of Each Pass in LLVM
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## Why Analyze LLVM Pass Timings?
 
 Think of a scenario where yor team is at an AI research lab, where your team work is to  ``optimizing deep learning models`` for a ``high-performance`` GPU accelerator. Your team is developing a custom compiler backend or want to improve already implemented backend whose aim is to generate optimized machine code for AI workloads, ensuring that models run efficiently on ``specialized hardware``.  

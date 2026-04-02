@@ -61,6 +61,32 @@ import TabItem from '@theme/TabItem';
 # How to Build C++ with Makefile
 
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Mastering the use of a `Makefile` is one of the most powerful steps toward becoming a ***confident and efficient C++ developer*** . It not only strengthens your understanding of how the ***C++ build system*** operates but also enables you to `automate`, `organize`, and `scale your development workflow` effectively.
 
 This guide walks you through the core concepts of the `C++ compilation and linking process` , and demonstrates how to `automate repetitive build tasks` using Makefiles — from compiling individual files to building large, modular codebases.

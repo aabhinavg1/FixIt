@@ -19,6 +19,32 @@ tags:
 
 # LLVM Function Instruction Count Pass
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 This document provides an overview of how to write, build, and use an LLVM pass that counts the number of instructions in each function within a module. This pass is useful for performance analysis, code size estimations, and understanding the structure of functions in LLVM IR.
 
 ## Prerequisites

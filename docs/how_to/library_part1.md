@@ -61,6 +61,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Library and Types of Library
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 In this guide, you’ll master the essentials of programming ***libraries—pre-built*** code blocks that supercharge development. You’ll start by understanding what libraries are and why they’re indispensable for modern software, ***from avoiding reinvented wheels*** to leveraging battle-tested solutions. 
 
 > We’ll demystify key types like static libraries (embedded directly into executables) and dynamic libraries (loaded at runtime), along with niche variants like header-only libraries (e.g., [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page)) and plugin systems (used in apps like Photoshop). 

@@ -16,6 +16,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # `constexpr` in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 `constexpr` is one of the clearest examples of what modern C++ tries to do well: move work to compile time when possible, express intent clearly, and still let the programmer write ordinary-looking code.
 
 It is powerful, but it is easy to misunderstand if you reduce it to "this runs at compile time." That is only part of the story.

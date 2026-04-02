@@ -91,6 +91,32 @@ import { ComicQA } from '../mcq/interview_question/Question_comics' ;
 
 # What is SSH and SCP and How it Work and Where it Help
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 [SSH (Secure Shell)](https://www.openssh.com/) and **SCP (Secure Copy)** are **fundamental tools for secure communication and file management** across Linux, UNIX, and cloud environments.
 
 * **SSH** establishes an encrypted channel that allows users to log into remote servers, execute commands, forward ports, and automate system administration safely and reliably.

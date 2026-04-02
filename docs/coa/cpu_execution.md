@@ -70,6 +70,32 @@ import { ComicQA } from '../mcq/interview_question/Question_comics' ;
 
 # How CPU Executes Binary: Fetch–Decode–Execute Explained
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Your CPU runs billions of instructions per second, but every one of those instructions still has to move through real hardware step by step. Once source code has become a binary and the loader places it in memory, the important question is this:
 
 :::caution How does the CPU actually run it?

@@ -93,6 +93,32 @@ import TabItem from '@theme/TabItem';
 
 # C++ Interview Questions with Answers
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Prepare for your C++ coding interviews with our expert-curated collection of C++ interview questions and answers. From foundational topics to advanced concepts, this guide covers everything you need to master C++ for technical interviews. Whether you're a fresher, experienced professional, or aiming for a specialized role, these questions will help you confidently tackle C++ interviews and ace your job preparation.
 
 ---

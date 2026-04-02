@@ -38,6 +38,32 @@ import { ComicQA } from '../Question_comics';
 
 # Essential C++ Interview Questions for Freshers
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 <ComicQA
   question="1) What are the basic data types in C++?"
   answer="C++ provides primitive data types like int, float, double, char, and bool to handle different kinds of data. int stores integers, float/double store floating-point numbers (with different precision), char stores single characters, and bool stores true/false values."

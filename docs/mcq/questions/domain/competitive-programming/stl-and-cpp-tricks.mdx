@@ -11,6 +11,32 @@ import { Question } from '../../../Question';
 
 # STL and C++ Tricks MCQs
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 <Question question="1). What is the output of the following C++ code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    vector<int> v = {1,2,3,4,5};\n    cout << *lower_bound(v.begin(), v.end(), 3);\n}`} options={['2', '3', '4', 'undefined']} answer="3" />
 <Question question="2). In competitive programming, why is unordered_map sometimes slower than map?" options={['Hash collisions', 'Tree balancing', 'Memory fragmentation', 'Compiler optimization']} answer="Hash collisions" />
 <Question question="3). What will be the output of the following code?" code={`#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    string s = "abc";\n    do {\n        cout << s << " ";\n    } while(next_permutation(s.begin(), s.end()));\n}`} options={['abc acb bac bca cab cba', 'abc acb bac bca cab', 'abc bac cab', 'Random order']} answer="abc acb bac bca cab cba" />

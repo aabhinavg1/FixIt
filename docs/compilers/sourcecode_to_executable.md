@@ -102,6 +102,32 @@ keywords:
 
 # From Source Code to Binary (Part 2)
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 In [Part 1: how computer works](https://www.compilersutra.com/docs/gpu/gpu_programming/how_computer_works/), we discussed **how hardware software interact with each other using a bridge called OS** .  
 Now, in **Part 2**, we explore the **journey of your source code** as it transforms into a **binary executable** that your CPU can run.
 

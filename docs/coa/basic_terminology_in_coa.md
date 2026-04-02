@@ -153,6 +153,10 @@ So if you want to understand why a program runs fast or slow, why one compiler g
   </iframe>
 </div>
 
+<div style={{padding: '1rem 1.1rem', borderRadius: '18px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)', marginBottom: '1.5rem'}}>
+  <strong>Practice next:</strong> [Basic Terminology in COA MCQs](/docs/mcq/questions/domain/coa/basic-terminology)
+</div>
+
 ## A Simple Code Example First
 
 Take a simple line of code:

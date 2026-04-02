@@ -59,6 +59,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # GCC vs LLVM: Performance, Clang, IR, and Real Use Cases
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 If you search for `gcc vs llvm`, the practical comparison is usually **GCC vs Clang**. GCC is a compiler suite; LLVM is compiler infrastructure, and Clang is LLVM's C/C++ frontend.
 
 For C and C++, there is no universal winner. GCC often performs well on mature targets and established GNU toolchains, while Clang/LLVM often leads in diagnostics, tooling, sanitizers, and some compile-time workflows. The useful question is not "which one is better?" but "which one fits your target, code shape, and engineering workflow?"
@@ -480,7 +506,7 @@ No, GCC does not directly support LLVM IR. However, tools like `llvm-gcc` (depre
 
 
 For more on LLVM IR, explore:  
-- [LLVM IR Basics](http://compilersutra.com/docs/llvm/llvm_basic/markdown-features)  
+- [LLVM IR Basics](http://www.compilersutra.com/docs/llvm/llvm_basic/markdown-features)  
 - [LLVM IR Optimization Techniques](https://www.compilersutra.com/docs/llvm/intermediate/middlend/middleend/)  
 - [Generating LLVM IR from C++](http://localhost:3000/docs/llvm/llvm_basic/Build)  
 - [LLVM IR Documentation (Official)](https://llvm.org/docs/Frontend/PerformanceTips.html)  

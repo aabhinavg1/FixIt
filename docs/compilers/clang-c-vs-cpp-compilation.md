@@ -44,6 +44,32 @@ import TabItem from '@theme/TabItem';
 
 # **Compiler Perspective: C vs. C++ Compilation in Clang**
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Clang, a frontend for LLVM, processes C and C++ differently due to their distinct language features. This guide provides a detailed comparison and practical steps to observe these differences, from frontend parsing to backend code generation.
 
 ## **1. Frontend: Parsing & Lexical Analysis**
@@ -224,8 +250,8 @@ By following these steps, you can observe Clang's distinct handling of C and C++
 
 # Also Interested In:
 - [CompilerSutra Compiler Documentation](https://compilersutra.com/docs/compilers/compiler)
-- [LLVM Basics](http://compilersutra.com/docs/llvm/llvm_basic/)
-- [TVM for Beginners](http://compilersutra.com/docs/tvm-for-beginners/)
+- [LLVM Basics](http://www.compilersutra.com/docs/llvm/llvm_basic/)
+- [TVM for Beginners](http://www.compilersutra.com/docs/tvm-for-beginners/)
 
 ## Have Questions? 🤔  
 

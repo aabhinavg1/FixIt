@@ -61,6 +61,32 @@ import TabItem from '@theme/TabItem';
 
 # Writing and Running Your First OpenCL Kernel
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ***OpenCL (Open Computing Language)*** enables you to write programs that execute across `heterogeneous platforms`, including CPUs, GPUs, and more. In this guide, we’ll walk you through writing and executing your ***first OpenCL kernel***, explaining the host-device setup, memory models, and build mechanics.
 
 :::note This tutorial builds on prior foundational concepts

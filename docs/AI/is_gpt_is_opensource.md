@@ -22,6 +22,32 @@ keyword:
 
 # Is ChatGPT Open Source? Understanding OpenAI’s Models & Exploring Open Alternatives
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 :::tip Quick summary  
 What “open-weight” actually means, why ChatGPT isn’t open source, and some legit open-source alternatives you can try yourself.  
 <a href="https://compilersutra.com" target="_blank" rel="noopener noreferrer" class="compilersutra-highlight">  

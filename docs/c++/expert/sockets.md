@@ -16,6 +16,32 @@ import AdBanner from '@site/src/components/AdBanner';
 
 # Sockets in C++
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 Sockets are one of the operating system’s core abstractions for network communication. If your program talks to another machine, exposes a service, receives requests, streams data, or coordinates across processes, sockets are usually somewhere underneath.
 
 For C++ developers working in systems, infrastructure, backend, embedded, or low-latency domains, socket knowledge matters.

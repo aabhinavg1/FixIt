@@ -28,6 +28,32 @@ tags:
 
 # The Front-End Pass in LLVM: An Overview
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## Introduction
 
 In the LLVM compilation pipeline, the front-end pass plays a crucial role in transforming source code into an intermediate representation (IR) that can be optimized and translated into machine code. The front-end is responsible for parsing the source code, performing syntax and semantic analysis, and generating the LLVM IR that will be passed on to the subsequent stages in the compiler. This article delves into the workings of the front-end pass, its components, and its role within the broader LLVM framework.

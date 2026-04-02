@@ -10,6 +10,32 @@ tags: [LLVM, Compiler Passes, LLVM Passes, Optimization, Compiler Design, Interm
 
 # Understanding LLVM Passes and Their Types
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 ## What is an LLVM Pass?
 An **LLVM pass** is a modular unit of code analysis or transformation applied to the **LLVM Intermediate Representation (IR)** during the compilation process. Passes play a critical role in:
 

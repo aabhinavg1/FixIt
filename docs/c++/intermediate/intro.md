@@ -49,6 +49,32 @@ tags:
 
 # Introduction
 
+
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
 In this article we are going to discuss about the ``C++11`` vs ``C++14`` which is the common topic in the C++ interview question. Lets dive deep in the ocean of the difference of ``C++11`` and ``C++14``. 
 ``C++11``, was introduced in 2011, marked a significant ``overhaul`` of the C++ language, which is bringing in the  numerous features whose aim is to improve ``coding efficiency``, ``performance``, and ``simplicity``
 

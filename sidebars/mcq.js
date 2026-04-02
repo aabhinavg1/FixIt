@@ -208,6 +208,8 @@ const mcq = {
           items: [
             'mcq/questions/domain/coa/coa-home',
             'mcq/questions/domain/coa/coa-quiz',
+            'mcq/questions/domain/coa/basic-terminology-home',
+            'mcq/questions/domain/coa/basic-terminology-quiz',
           ],
         },
         {
@@ -288,6 +290,8 @@ const mcq = {
       items: [
         'mcq/questions/domain/coa/coa-home',
         'mcq/questions/domain/coa/coa-quiz',
+        'mcq/questions/domain/coa/basic-terminology-home',
+        'mcq/questions/domain/coa/basic-terminology-quiz',
       ],
     },
   ],
