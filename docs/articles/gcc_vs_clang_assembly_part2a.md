@@ -68,6 +68,10 @@ Part 1 reported the runtimes:
 
 > [**GCC vs Clang: A 10-Case Compiler Benchmark Report (2026)**](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter)
 
+Continue with the stencil pass-level analysis:
+
+> [**GCC vs Clang, Part 2B: Stencil from Source to IR, Passes, and Final Codegen**](/docs/articles/gcc_vs_clang_stencil_ir_passes_part2b)
+
 :::caution (Compiler versions and hardware details are documented in Part 1.)
 :::
 
