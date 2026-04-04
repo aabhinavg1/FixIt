@@ -43,6 +43,32 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AdBanner from '@site/src/components/AdBanner';
 
+
+📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+
+<div
+  style={{
+    width: '100%',
+    maxWidth: '900px',
+    margin: '1rem auto',
+  }}
+>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
+    style={{
+      width: '100%',
+      minHeight: '620px',
+      border: '0',
+      borderRadius: '12px',
+      background: '#fff',
+    }}
+    loading="lazy"
+  >
+    Loading…
+  </iframe>
+</div>
+
+
 # GCC vs Clang, Part 2B: Stencil from Source to IR, Passes, and Final Codegen
 
 This article focuses on one case:
@@ -176,6 +202,14 @@ ivtmp.87_48 = ivtmp.87_90 + 4;                             // destination ptr +=
   - Clang YAML: `loop not vectorized: cannot prove it is safe to reorder floating-point operations`
   - GCC `vect`: `not vectorized: unsupported data-type double`
 :::
+
+
+
+<div>
+  <AdBanner />
+</div>
+
+
 
 ## Table of Contents
 
@@ -817,6 +851,14 @@ Without them, the stencil story is easy to oversimplify. With them, the claim ge
  >>The next useful step is not just another assembly comparison. 
  >> It is a pass-level trace of the same stencil loop.
 
+
+
+<div>
+  <AdBanner />
+</div>
+
+
+
 ## FAQ
 
 ### Is this just a SIMD story?
@@ -942,3 +984,9 @@ The value of that follow-up is not another runtime number. It is a trace:
 
   </TabItem>
 </Tabs>
+
+
+
+<div>
+  <AdBanner />
+</div>
