@@ -93,19 +93,77 @@ const tutorials = {
     },
   ],
 
-  openclTutorialSidebar: [
+  openclMasterSidebar: [
     {
       type: 'category',
-      label: 'OpenCL Tutorials',
+      label: 'OpenCL Master',
       collapsed: true,
       items: [
         'gpu/opencl/opencl',
+        'gpu/opencl/amdgpu',
+        'gpu/opencl/amdcpu',
+        'gpu/opencl/nvidia',
+        'gpu/opencl/openclforandroid',
+      ],
+    },
+  ],
+
+  openclAMDGPUsidebar: [
+    {
+      type: 'category',
+      label: 'OpenCL on AMDGPU',
+      collapsed: true,
+      items: [
+        'gpu/opencl/amdgpu',
+        'gpu/opencl/basic/what_is_opencl',
+        'gpu/opencl/basic/setting_up_opencl',
+        'gpu/opencl/basic/getting_started_with_opencl_on_amdgpu',
+        'gpu/opencl/basic/running_first_opencl_code',
+        'gpu/opencl/basic/running_first_opencl_code_part2_a',
+        'gpu/opencl/basic/Writing_your_first_kernel',
+      ],
+    },
+  ],
+
+  openclAMDCPUSidebar: [
+    {
+      type: 'category',
+      label: 'OpenCL on AMD CPU',
+      collapsed: true,
+      items: [
+        'gpu/opencl/amdcpu',
         'gpu/opencl/basic/what_is_opencl',
         'gpu/opencl/basic/setting_up_opencl',
         'gpu/opencl/basic/running_first_opencl_code',
         'gpu/opencl/basic/running_first_opencl_code_part2_a',
-        'gpu/opencl/basic/detecting_opencl_gpu_on_android',
+      ],
+    },
+  ],
+
+  openclNVIDIASidebar: [
+    {
+      type: 'category',
+      label: 'OpenCL on NVIDIA',
+      collapsed: true,
+      items: [
+        'gpu/opencl/nvidia',
+        'gpu/opencl/basic/what_is_opencl',
+        'gpu/opencl/basic/setting_up_opencl',
+        'gpu/opencl/basic/running_first_opencl_code',
+        'gpu/opencl/basic/running_first_opencl_code_part2_a',
         'gpu/opencl/basic/Writing_your_first_kernel',
+      ],
+    },
+  ],
+
+  openclAndroidSidebar: [
+    {
+      type: 'category',
+      label: 'OpenCL for Android',
+      collapsed: true,
+      items: [
+        'gpu/opencl/openclforandroid',
+        'gpu/opencl/basic/detecting_opencl_gpu_on_android',
       ],
     },
   ],
