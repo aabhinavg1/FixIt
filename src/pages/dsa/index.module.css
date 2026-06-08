@@ -1,0 +1,544 @@
+.surface,
+.surfaceTint,
+.surfaceSoft {
+  position: relative;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border-radius: 30px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.surface {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.surfaceTint {
+  background:
+    radial-gradient(circle at top right, rgba(79, 142, 247, 0.06), transparent 12rem),
+    rgba(248, 250, 253, 0.86);
+}
+
+.surfaceSoft {
+  background:
+    radial-gradient(circle at top right, rgba(250, 204, 21, 0.05), transparent 12rem),
+    rgba(255, 255, 255, 0.78);
+}
+
+.journeyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.heroPanelStack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.heroPanelCard {
+  padding: 1rem;
+  border-radius: 26px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  background:
+    linear-gradient(135deg, rgba(47, 128, 237, 0.06), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84));
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.heroPanelTopline,
+.curriculumHeader,
+.checklistHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.heroPill,
+.curriculumBadge,
+.checklistMeta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.95rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 128, 237, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  color: #31597f;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.heroSignalRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.95rem;
+}
+
+.heroSignal {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.05rem;
+  padding: 0.44rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 128, 237, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+  color: #35506b;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.statCard,
+.curriculumCard,
+.pillarCard {
+  border-radius: 22px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.statCard {
+  padding: 0.85rem 0.9rem;
+}
+
+
+.statValue {
+  margin: 0;
+  color: #102033;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.journeyCard {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.15rem;
+  border-radius: 24px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(79, 142, 247, 0.08), transparent 11rem),
+    rgba(255, 255, 255, 0.84);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.journeyCardDim {
+  border-color: rgba(0, 0, 0, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(245, 245, 245, 0.72)),
+    rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.journeyIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.3rem;
+  height: 2.3rem;
+  width: 2.3rem;
+  border-radius: 999px;
+  color: #102033;
+  background: linear-gradient(135deg, rgba(79, 142, 247, 0.14), rgba(106, 169, 233, 0.22));
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.journeyCardDim .journeyIndex {
+  color: #000000;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.03));
+}
+
+.journeyPreview {
+  margin: 0;
+  color: #4f8ef7;
+  font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.journeyCardDim .journeyPreview,
+.journeyCardDim .journeyTag,
+.journeyCardDim .journeyTitle,
+.journeyCardDim .journeyText,
+.journeyCardDim .actionLink {
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.journeyCardDim .journeyPreview {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.journeyCardDim .actionLink {
+  opacity: 0.72;
+}
+
+
+
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #31597f;
+  font-weight: 700;
+}
+
+
+.visualLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
+  gap: 1rem;
+}
+
+.visualStack {
+  display: grid;
+  gap: 1rem;
+}
+
+.visualCard {
+  padding: 1.05rem 1.1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.visualHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.85rem;
+}
+
+.visualLabel {
+  color: #3f79b5;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.visualNote {
+  color: #617891;
+  font-size: 0.84rem;
+}
+
+.visualCode {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f9fbfe, #eef4fb);
+  color: #102033;
+  border: 1px solid rgba(141, 163, 190, 0.14);
+  font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.formulaPanel {
+  padding: 1.05rem;
+  border-radius: 24px;
+  border: 1px solid rgba(141, 163, 190, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(79, 142, 247, 0.06), transparent 11rem),
+    rgba(255, 255, 255, 0.84);
+  display: grid;
+  gap: 0.85rem;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.formulaLabel {
+  margin: 0;
+  color: #3f79b5;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.formulaList {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.formulaRow {
+  padding: 0.9rem 0.95rem;
+  border-radius: 18px;
+  border: 1px solid rgba(141, 163, 190, 0.14);
+  background: linear-gradient(180deg, #fcfdff, #f1f5fb);
+  color: #102033;
+  line-height: 1.6;
+  font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.52rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 142, 247, 0.14);
+  background: rgba(255, 255, 255, 0.86);
+  color: #31597f;
+  font-size: 0.88rem;
+}
+
+.domainGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.domainLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.95rem;
+  color: #0f2033;
+  font-weight: 700;
+}
+
+
+.sectionAlt {
+  background:
+    radial-gradient(circle at top right, rgba(47, 128, 237, 0.06), transparent 18rem),
+    rgba(248, 250, 253, 0.72);
+}
+
+.sectionTint {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+
+@media (max-width: 1180px) {
+  .pillarGrid,
+  .studyLoopGrid,
+  .outcomeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+
+  .heroPanelTopline,
+  .curriculumHeader,
+  .checklistHeader,
+  .visualHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+[data-theme='dark'] .surface,
+[data-theme='dark'] .surfaceTint,
+[data-theme='dark'] .surfaceSoft {
+  border-color: rgba(145, 163, 184, 0.18);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+[data-theme='dark'] .surface {
+  background: rgba(9, 13, 20, 0.92);
+}
+
+[data-theme='dark'] .surfaceTint {
+  background:
+    radial-gradient(circle at top right, rgba(47, 128, 237, 0.14), transparent 12rem),
+    rgba(9, 13, 20, 0.9);
+}
+
+[data-theme='dark'] .surfaceSoft {
+  background:
+    radial-gradient(circle at top right, rgba(250, 204, 21, 0.08), transparent 12rem),
+    rgba(12, 16, 24, 0.92);
+}
+
+[data-theme='dark'] .journeyCard {
+  border-color: rgba(148, 163, 184, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(47, 128, 237, 0.1), transparent 11rem),
+    rgba(14, 18, 26, 0.92);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='dark'] .journeyCardDim {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(18, 22, 31, 0.92), rgba(12, 16, 24, 0.94)),
+    rgba(12, 16, 24, 0.94);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.34),
+    0 8px 20px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='dark'] .journeyIndex {
+  color: #e5e7eb;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+[data-theme='dark'] .journeyCardDim .journeyIndex {
+  color: #f5f5f5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+[data-theme='dark'] .journeyPreview {
+  color: #8bb4ff;
+}
+
+[data-theme='dark'] .journeyCardDim .journeyPreview,
+[data-theme='dark'] .journeyCardDim .journeyTag,
+[data-theme='dark'] .journeyCardDim .journeyTitle,
+[data-theme='dark'] .journeyCardDim .journeyText,
+[data-theme='dark'] .journeyCardDim .actionLink {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+[data-theme='dark'] .journeyCardDim .journeyPreview {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+[data-theme='dark'] .journeyCardDim .actionLink {
+  opacity: 0.8;
+}
+
+[data-theme='dark'] .actionLink {
+  color: #b7c6dd;
+}
+
+[data-theme='dark'] .domainLink {
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] .domainLink:hover {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .domainGrid > * {
+  background:
+    linear-gradient(180deg, rgba(18, 22, 31, 0.95), rgba(12, 16, 24, 0.95)),
+    rgba(12, 16, 24, 0.95);
+  border-color: rgba(148, 163, 184, 0.16);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='dark'] .visualCard,
+[data-theme='dark'] .formulaPanel,
+[data-theme='dark'] .formulaRow,
+[data-theme='dark'] .chip,
+[data-theme='dark'] .statCard,
+[data-theme='dark'] .curriculumCard,
+[data-theme='dark'] .domainGrid > * {
+  border-color: rgba(148, 163, 184, 0.18);
+  background-color: rgba(14, 18, 26, 0.92);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.28),
+    0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme='dark'] .visualNote,
+[data-theme='dark'] .curriculumText,
+[data-theme='dark'] .journeyText,
+[data-theme='dark'] .panelText,
+[data-theme='dark'] .lead,
+[data-theme='dark'] .text,
+[data-theme='dark'] .checkItem {
+  color: rgba(226, 232, 240, 0.78);
+}
+
+[data-theme='dark'] .title,
+[data-theme='dark'] .panelTitle,
+[data-theme='dark'] .journeyTitle,
+[data-theme='dark'] .curriculumTitle,
+[data-theme='dark'] .statValue {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .kicker,
+[data-theme='dark'] .panelLabel,
+[data-theme='dark'] .journeyTag,
+[data-theme='dark'] .curriculumLabel,
+[data-theme='dark'] .checklistLabel,
+[data-theme='dark'] .formulaLabel,
+[data-theme='dark'] .visualLabel {
+  color: #9cc2ff;
+}
+
+[data-theme='dark'] .journeyCardDim .journeyTag {
+  color: rgba(255, 255, 255, 0.7);
+}

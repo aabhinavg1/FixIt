@@ -617,6 +617,12 @@
     linear-gradient(135deg, rgba(93, 34, 26, 0.95), rgba(16, 24, 39, 0.95));
 }
 
+.toneDsa {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.32), transparent 11rem),
+    linear-gradient(135deg, rgba(8, 17, 31, 0.96), rgba(15, 23, 42, 0.95));
+}
+
 .toneLlvm {
   background:
     radial-gradient(circle at top right, rgba(85, 146, 255, 0.34), transparent 11rem),

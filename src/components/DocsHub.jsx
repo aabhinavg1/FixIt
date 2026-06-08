@@ -97,7 +97,7 @@ const learningPath = [
   },
   {
     name: "Data Structures & Algorithms",
-    link: "/docs/DSA/introduction-to-dsa/", // update if needed
+    link: "/dsa",
   },
   {
     name: "Compiler Fundamentals",

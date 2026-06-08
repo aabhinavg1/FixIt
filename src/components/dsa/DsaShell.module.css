@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.page {
+  --bg-0: #f7f9fd;
+  --bg-1: #eef4fb;
+  --bg-2: #e7eef8;
+  --panel: rgba(255, 255, 255, 0.84);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --panel-border: rgba(134, 156, 184, 0.18);
+  --text: #0f2033;
+  --muted: #4d617b;
+  --blue: #2f80ed;
+  --blue-strong: #1f6fe0;
+  --teal: #13b8a6;
+  --sand: #f6d98b;
+  --blue-soft: rgba(47, 128, 237, 0.12);
+  --teal-soft: rgba(19, 184, 166, 0.10);
+
+  background:
+    radial-gradient(circle at 10% 0%, rgba(47, 128, 237, 0.10), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(19, 184, 166, 0.10), transparent 20rem),
+    radial-gradient(circle at 52% 100%, rgba(246, 217, 139, 0.10), transparent 18rem),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 46%, var(--bg-2) 100%);
+  color: var(--text);
+  font-family: Inter, Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.hero {
+  padding: 3rem 0 1.35rem;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(47, 128, 237, 0.08), transparent 22rem),
+    radial-gradient(circle at 78% 0%, rgba(19, 184, 166, 0.08), transparent 20rem);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shell {
+  width: min(1240px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.heroCopy,
+.heroPanel {
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.76)),
+    var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.heroCopy {
+  padding: clamp(1.7rem, 3vw, 2.75rem);
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCopy::after {
+  content: '';
+  position: absolute;
+  inset: auto 1.2rem 1.2rem auto;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 128, 237, 0.08), transparent 68%);
+  pointer-events: none;
+}
+
+.heroPanel {
+  padding: 1rem;
+  border-radius: 32px;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.9rem;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  max-width: 12ch;
+  color: var(--text);
+  font-size: clamp(2.6rem, 5vw, 4.85rem);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+  font-weight: 800;
+}
+
+.lead {
+  max-width: 52rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.08rem);
+  line-height: 1.9;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.45rem;
+}
+
+.primaryAction,
+.secondaryAction,
+.supportAction,
+.docAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.76rem 1.08rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.primaryAction {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 145%);
+  box-shadow: 0 16px 30px rgba(47, 128, 237, 0.18);
+}
+
+.secondaryAction {
+  color: var(--text);
+  border: 1px solid rgba(47, 128, 237, 0.18);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.supportAction,
+.docAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.76rem 1.08rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.supportAction {
+  color: var(--text);
+  border: 1px solid rgba(15, 32, 51, 0.14);
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.docAction {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f2033 0%, #203448 145%);
+  box-shadow: 0 16px 30px rgba(15, 32, 51, 0.16);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover,
+.supportAction:hover,
+.docAction:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.supportAction:focus-visible,
+.docAction:focus-visible {
+  outline: 3px solid rgba(47, 128, 237, 0.22);
+  outline-offset: 3px;
+}
+
+.heroPanelCard {
+  padding: 1rem;
+  border-radius: 26px;
+  border: 1px solid rgba(134, 156, 184, 0.16);
+  background:
+    linear-gradient(135deg, rgba(47, 128, 237, 0.06), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84));
+}
+
+.panelLabel {
+  margin: 0 0 0.45rem;
+  color: var(--blue);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.panelTitle {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.panelText {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.heroPanelTimeline {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.92rem 0.95rem;
+  border-radius: 20px;
+  border: 1px solid rgba(134, 156, 184, 0.16);
+  background: rgba(255, 255, 255, 0.86);
+  color: #203448;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+.timelineIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.16), rgba(19, 184, 166, 0.18));
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
+  }
+
+  .primaryAction:hover,
+  .secondaryAction:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(1240px, calc(100% - 1rem));
+  }
+
+  .heroCopy,
+  .heroPanel {
+    border-radius: 24px;
+  }
+
+  .heroCopy {
+    padding: 1.4rem;
+  }
+}
+
+
+[data-theme='dark'] .page {
+  --bg-0: #070b10;
+  --bg-1: #0b1118;
+  --bg-2: #111827;
+  --panel: rgba(11, 15, 22, 0.9);
+  --panel-strong: rgba(16, 22, 31, 0.95);
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --text: #f8fafc;
+  --muted: #c6cfdb;
+  --blue: #8fb8ff;
+  --blue-strong: #9cc2ff;
+  --teal: #57d7c5;
+  --sand: #e0c46a;
+  --blue-soft: rgba(143, 184, 255, 0.12);
+  --teal-soft: rgba(87, 215, 197, 0.1);
+}
+
+[data-theme='dark'] .hero::before {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(47, 128, 237, 0.14), transparent 22rem),
+    radial-gradient(circle at 78% 0%, rgba(19, 184, 166, 0.1), transparent 20rem);
+}
+
+[data-theme='dark'] .heroCopy,
+[data-theme='dark'] .heroPanel {
+  border-color: rgba(148, 163, 184, 0.18);
+  background:
+    linear-gradient(180deg, rgba(15, 20, 29, 0.94), rgba(11, 15, 22, 0.88)),
+    rgba(11, 15, 22, 0.9);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .eyebrow,
+[data-theme='dark'] .panelLabel {
+  color: #9cc2ff;
+}
+
+[data-theme='dark'] .lead,
+[data-theme='dark'] .panelText,
+[data-theme='dark'] .timelineItem {
+  color: rgba(226, 232, 240, 0.8);
+}
+
+[data-theme='dark'] .title,
+[data-theme='dark'] .panelTitle,
+[data-theme='dark'] .timelineItem {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .primaryAction {
+  box-shadow: 0 16px 30px rgba(47, 128, 237, 0.22);
+}
+
+[data-theme='dark'] .secondaryAction,
+[data-theme='dark'] .supportAction {
+  color: #f8fafc;
+  border-color: rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme='dark'] .docAction {
+  color: #f8fafc;
+  background: linear-gradient(135deg, #0b1118 0%, #172133 145%);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+}
+
+[data-theme='dark'] .primaryAction:focus-visible,
+[data-theme='dark'] .secondaryAction:focus-visible,
+[data-theme='dark'] .supportAction:focus-visible,
+[data-theme='dark'] .docAction:focus-visible {
+  outline-color: rgba(143, 184, 255, 0.35);
+}

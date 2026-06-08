@@ -1,0 +1,13 @@
+.frame {
+  width: min(1240px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.1rem 0 4.75rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  .frame {
+    width: min(1240px, calc(100% - 1rem));
+  }
+}
