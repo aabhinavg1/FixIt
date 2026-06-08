@@ -17,6 +17,18 @@ const NEWSLETTER_URL =
 
 const START_PATHS = [
   {
+    title: 'DSA Academy',
+    description:
+      'A dedicated DSA world for computational thinking, math, structures, algorithms, complexity, and domain use.',
+    tag: 'Separate product',
+    to: '/dsa',
+    cta: 'Start DSA',
+    tone: 'dsa',
+    coverImage: '/img/home/dsa-academy.svg',
+    coverLabel: 'Why + Math + Visuals',
+    chips: ['DSA', 'Math', 'Domain'],
+  },
+  {
     title: 'Compiler Fundamentals',
     description:
       'Start with source to binary, IR, control flow, data flow, and why compiler transformations matter.',

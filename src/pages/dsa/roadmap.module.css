@@ -1,0 +1,33 @@
+.timeline {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.95rem;
+}
+
+.detailLabel {
+  margin: 0 0 0.35rem;
+  color: #8ab4ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.detailList {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: #d7e2f5;
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -123,6 +123,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/dsa',
+            label: 'DSA',
+            position: 'left',
+          },
+          {
             type: 'dropdown',
             label: 'Tracks',
             position: 'left',

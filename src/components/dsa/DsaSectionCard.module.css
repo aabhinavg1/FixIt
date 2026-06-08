@@ -1,0 +1,108 @@
+.card {
+  position: relative;
+  padding: 1.15rem 1.15rem 1.05rem;
+  border-radius: 24px;
+  border: 1px solid rgba(134, 156, 184, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.8)),
+    rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 10px 24px rgba(15, 23, 42, 0.06);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #2f80ed 0%, #13b8a6 72%, #f6d98b 145%);
+  opacity: 0.78;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(47, 128, 237, 0.22);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 18px 34px rgba(15, 23, 42, 0.1);
+}
+
+.card:focus-within {
+  border-color: rgba(47, 128, 237, 0.2);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 16px 28px rgba(15, 23, 42, 0.08);
+}
+
+.tag {
+  margin: 0 0 0.5rem;
+  color: #2f80ed;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 0.6rem;
+  color: #0f2033;
+  font-size: 1.15rem;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.description {
+  margin: 0;
+  color: #4d617b;
+  line-height: 1.78;
+}
+
+.footnote {
+  margin: 0.8rem 0 0;
+  color: #647792;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+
+[data-theme='dark'] .card {
+  border-color: rgba(148, 163, 184, 0.16);
+  background:
+    linear-gradient(180deg, rgba(18, 22, 31, 0.95), rgba(12, 16, 24, 0.95)),
+    rgba(12, 16, 24, 0.95);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.26);
+}
+
+[data-theme='dark'] .card:hover {
+  border-color: rgba(143, 184, 255, 0.24);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 18px 34px rgba(0, 0, 0, 0.32);
+}
+
+[data-theme='dark'] .card::before {
+  background: linear-gradient(90deg, rgba(143, 184, 255, 0.95) 0%, rgba(87, 215, 197, 0.92) 72%, rgba(224, 196, 106, 0.9) 145%);
+}
+
+[data-theme='dark'] .tag {
+  color: #9cc2ff;
+}
+
+[data-theme='dark'] .title {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .description {
+  color: rgba(226, 232, 240, 0.78);
+}
+
+[data-theme='dark'] .footnote {
+  color: rgba(203, 213, 225, 0.7);
+}

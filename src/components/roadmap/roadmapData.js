@@ -77,7 +77,7 @@ export const PHASES = [
       { label: 'C++ Basics', to: '/docs/c++/basic/' },
       { label: 'C++ Intermediate', to: '/docs/c++/intermediate/' },
       { label: 'C++ Advanced', to: '/docs/c++/advanced/' },
-      { label: 'DSA Foundations', to: '/docs/DSA/introduction-to-dsa/' },
+      { label: 'DSA Foundations', to: '/dsa/foundations' },
       { label: 'Computer Architecture', to: '/docs/coa/' },
       { label: 'From Source Code to Executable', to: '/docs/compilers/sourcecode_to_executable/' },
     ],
