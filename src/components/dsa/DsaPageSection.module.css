@@ -73,3 +73,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 720px) {
+  .section {
+    margin-top: 1.8rem;
+    padding: 0.72rem;
+    border-radius: 20px;
+  }
+
+  .body {
+    gap: 0.8rem;
+    margin-top: 0.95rem;
+  }
+
+  .aside {
+    padding: 0.86rem 0.92rem;
+    border-radius: 18px;
+  }
+}

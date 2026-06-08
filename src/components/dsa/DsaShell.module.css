@@ -281,17 +281,62 @@
 }
 
 @media (max-width: 720px) {
+  .hero {
+    padding: 2rem 0 0.95rem;
+  }
+
   .shell {
     width: min(1240px, calc(100% - 1rem));
   }
 
+  .heroGrid {
+    gap: 0.75rem;
+  }
+
   .heroCopy,
   .heroPanel {
-    border-radius: 24px;
+    border-radius: 22px;
   }
 
   .heroCopy {
-    padding: 1.4rem;
+    padding: 1.15rem;
+  }
+
+  .heroCopy::after {
+    display: none;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.65rem;
+  }
+
+  .title {
+    max-width: none;
+    font-size: clamp(2.05rem, 11vw, 3rem);
+    line-height: 1;
+  }
+
+  .lead {
+    margin-top: 0.85rem;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .primaryAction,
+  .secondaryAction,
+  .supportAction,
+  .docAction {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.9rem;
+    padding: 0.8rem 1rem;
   }
 }
 

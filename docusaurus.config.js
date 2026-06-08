@@ -85,12 +85,12 @@ const config = {
         },
       },
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: 'light',
         respectPrefersColorScheme: false,
       },
       metadata: [
         // { name: 'google-adsense-account', content: 'ca-pub-3213090090375658' },
-        { name: 'theme-color', content: '#0a0f1e' },
+        { name: 'theme-color', content: '#f6f9fd' },
         { name: 'robots', content: 'index, follow, max-image-preview:large' },
         { name: 'format-detection', content: 'telephone=no' },
         { name: 'author', content: 'CompilerSutra' },
