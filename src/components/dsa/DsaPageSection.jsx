@@ -9,9 +9,10 @@ export default function DsaPageSection({
   aside,
   children,
   className = '',
+  id,
 }) {
   return (
-    <section className={clsx(styles.section, className)}>
+    <section id={id} className={clsx(styles.section, className)}>
       <div className={styles.header}>
         <div>
           {kicker ? <p className={styles.kicker}>{kicker}</p> : null}

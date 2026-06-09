@@ -1,0 +1,137 @@
+---
+title: What Is DSA?
+slug: /dsa/foundations/what-is-dsa/
+description: A clear article about what data structures and algorithms are, why they matter, and how to think about them together.
+displayed_sidebar: dsaSidebar
+---
+
+import Link from '@docusaurus/Link';
+
+# What Is DSA?
+
+DSA stands for **data structures and algorithms**. The two parts belong together.
+
+A data structure decides how information is stored. An algorithm decides how you move through that information, transform it, or answer a question from it.
+
+If you want the shortest useful definition, it is this:
+
+> DSA is the study of how to arrange data and how to process it so the solution stays clear, correct, and efficient enough.
+
+That definition works for a beginner and for someone who already solves problems regularly. The beginner learns what the terms mean. The experienced reader uses the same terms to judge trade-offs faster.
+
+## Introduction
+
+This page is the starting point for the foundations module. It is written to be read straight through, like an article, not as a list of isolated facts.
+
+The goal is simple:
+
+- understand what DSA means,
+- see how the two halves fit together,
+- and learn the habit of choosing a structure based on the problem, not the label.
+
+## What it means
+
+When people say DSA, they are talking about two linked decisions.
+
+1. What shape should the data have?
+2. What work should the program do on that data?
+
+A good DSA answer is usually the combination of both. The structure should fit the data, and the algorithm should fit the operation.
+
+If the data is arranged badly, the algorithm has to fight the structure.
+
+## Table of contents
+
+Use the page in order. Each section adds one idea.
+
+- Introduction
+- What it means
+- Quick view
+- What beginners should learn first
+- What experienced readers should look for
+- Simple examples
+- How to think about a problem
+- Learning path
+- Why this page exists
+- Next steps
+
+## Quick view
+
+If a problem asks you to:
+
+- scan data, an array may be enough,
+- look things up fast, a hash map may fit,
+- keep hierarchy, a tree may fit,
+- follow relationships or paths, a graph may fit.
+
+That is the core of DSA thinking. The data shape and the work shape have to match.
+
+## What beginners should learn first
+
+Start with the idea that every problem has three parts:
+
+1. What data do I have?
+2. What operation matters most?
+3. What cost can I afford?
+
+Once you can answer those three questions, DSA stops feeling random.
+
+## What experienced readers should look for
+
+If you already know the basics, the real question is not “what is the name of this structure?”
+
+The better question is:
+
+- What is the dominant operation?
+- Is the cost paid once or many times?
+- Is the data fixed, growing, reordered, or connected?
+- Do I need the simplest solution or the most scalable one?
+
+That is the difference between memorizing patterns and actually using them well.
+
+## Simple examples
+
+The same data can need different tools depending on the operation you want to make cheap.
+
+| Example | Why it fits |
+| --- | --- |
+| Array + scan | A flat array plus a loop is enough when the task is a simple pass over the data. |
+| Hash map + lookup | A map is useful when membership, counting, or key retrieval must be fast. |
+| Tree + traversal | A tree fits when hierarchy or repeated branching matters. |
+| Graph + search | A graph appears when the problem is about relationships, paths, or connectivity. |
+
+This is the main habit you need in DSA: do not pick a structure because you remember its name. Pick it because it makes the main operation cheaper.
+
+## How to think about a problem
+
+Before you choose an algorithm or a structure, slow down and name the work the program must do.
+
+1. Write down what the input is and what the output must be.
+2. Find the operation that happens most often.
+3. Ask whether the input is ordered, repeated, hierarchical, or connected.
+4. Estimate the cost you can afford in time and memory.
+5. Choose the structure that makes the main operation cheap enough.
+
+That sequence is simple, but it is enough to solve a large part of beginner and intermediate DSA problems without guessing.
+
+## Learning path
+
+The subject becomes easier when you learn it in layers.
+
+- **Beginner**: learn the names and the purpose of the basic structures.
+- **Intermediate**: match the structure to the operation and estimate the cost.
+- **Advanced**: combine multiple structures and justify the design under real constraints.
+
+The important point is that you should not rush past the cost model. That is where most of the useful reasoning starts.
+
+## Why this page exists
+
+This page is the shared starting point for the DSA section. It gives you enough context to move forward without forcing you into a long tutorial first.
+
+## Next steps
+
+Continue with the foundations module:
+
+- [State Modeling](/dsa/foundations/state-modeling) - learn how to turn a prompt into state, transitions, and output.
+- [Choosing a Structure](/dsa/foundations/choosing-a-structure) - see how the dominant operation decides the data structure.
+- [Problem Solving](/dsa/problem-solving) - use the repeatable workflow that connects foundations to real problems.
