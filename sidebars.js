@@ -11,4 +11,5 @@ module.exports = {
   ...mcq,
   ...site,
   ...benchmarking,
+  ...dsa,
 };
