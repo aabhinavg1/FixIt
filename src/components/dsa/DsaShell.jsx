@@ -16,9 +16,13 @@ export default function DsaShell({
   children,
   metaTitle,
   heroPanel,
+  heroActions,
+  noNavbar = false,
+  noFooter = false,
+  useLayout = true,
 }) {
-  return (
-    <Layout title={metaTitle || title} description={description}>
+  const content = (
+    <>
       <Head>
         <meta name="theme-color" content="#f6f9fd" />
         <meta name="robots" content="index, follow" />
@@ -34,19 +38,23 @@ export default function DsaShell({
                 <p className={styles.lead}>{lead || description}</p>
 
                 <div className={styles.heroActions}>
-                  <Link className={styles.primaryAction} to="/dsa/roadmap">
-                    Open roadmap
-                    <FaArrowRight aria-hidden="true" />
-                  </Link>
-                  <Link className={styles.secondaryAction} to="/dsa/foundations">
-                    Start with foundations
-                  </Link>
-                  <Link className={styles.supportAction} to="/support">
-                    Support Us
-                  </Link>
-                  <a className={styles.docAction} href={GOOGLE_DOC_URL} target="_blank" rel="noopener noreferrer">
-                    Get regular updates
-                  </a>
+                  {heroActions || (
+                    <>
+                      <Link className={styles.primaryAction} to="/dsa/roadmap">
+                        Open roadmap
+                        <FaArrowRight aria-hidden="true" />
+                      </Link>
+                      <Link className={styles.secondaryAction} to="/dsa/foundations">
+                        Start with foundations
+                      </Link>
+                      <Link className={styles.supportAction} to="/support">
+                        Support Us
+                      </Link>
+                      <a className={styles.docAction} href={GOOGLE_DOC_URL} target="_blank" rel="noopener noreferrer">
+                        Get regular updates
+                      </a>
+                    </>
+                  )}
                 </div>
 
               </div>
@@ -63,6 +71,16 @@ export default function DsaShell({
 
         {children}
       </main>
+    </>
+  );
+
+  if (!useLayout) {
+    return content;
+  }
+
+  return (
+    <Layout title={metaTitle || title} description={description} noNavbar={noNavbar} noFooter={noFooter}>
+      {content}
     </Layout>
   );
 }

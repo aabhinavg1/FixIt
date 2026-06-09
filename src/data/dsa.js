@@ -1,15 +1,22 @@
 export const DSA_NAV_ITEMS = [
   { label: 'Home', to: '/dsa' },
+  { label: 'Roadmap', to: '/dsa/roadmap' },
   { label: 'Foundations', to: '/dsa/foundations' },
+  { label: 'Problem Solving', to: '/dsa/problem-solving' },
   { label: 'Binary Math', to: '/dsa/binary-math' },
   { label: 'Mathematics', to: '/dsa/mathematics' },
-  { label: 'Data Structures', to: '/dsa/data-structures' },
-  { label: 'Algorithms', to: '/dsa/algorithms' },
   { label: 'Complexity', to: '/dsa/complexity' },
-  { label: 'Domain Usage', to: '/dsa/domain-applications' },
+  { label: 'Data Structures', to: '/dsa/data-structures' },
+  { label: 'Arrays', to: '/dsa/arrays' },
+  { label: 'Binary Search', to: '/dsa/binary-search' },
+  { label: 'Hashing', to: '/dsa/hashing' },
+  { label: 'Algorithms', to: '/dsa/algorithms' },
   { label: 'Practice', to: '/dsa/practice' },
-  { label: 'Roadmap', to: '/dsa/roadmap' },
+  { label: 'Visual Learning', to: '/dsa/visual-learning' },
+  { label: 'Domain Usage', to: '/dsa/domain-applications' },
 ];
+
+
 
 export const DSA_PILLARS = [
   {
