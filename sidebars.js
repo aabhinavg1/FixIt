@@ -4,6 +4,7 @@ const cpp = require('./sidebars/cpp');
 const mcq = require('./sidebars/mcq');
 const site = require('./sidebars/site');
 const benchmarking = require('./sidebars/benchmarking');
+const dsa = require('./sidebars/dsa');
 
 module.exports = {
   ...tutorials,
