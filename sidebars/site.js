@@ -210,8 +210,15 @@ const site = {
         'articles/where_gcc_and_clang_diverge_stencil_pass_trace',
         'articles/hft_stdlib_restrictions',
         'articles/language_energy_efficiency_validation',
-        'articles/rust-vs-modern-cpp-memory-safety-beyond-the-hype',
-        
+        {
+          type: 'category',
+          label: 'Compiler Comparisons',
+          collapsed: false,
+          items: [
+            'articles/rust-vs-modern-cpp-memory-safety-beyond-the-hype',
+            'articles/rustc-pipeline-vs-cpp-compilation-pipeline',
+          ],
+        },
         {
           type: 'category',
           label: 'Tech Blog',
