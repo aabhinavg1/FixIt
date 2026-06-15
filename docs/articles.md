@@ -194,8 +194,17 @@ This section serves as a **technical knowledge base** containing conceptual arti
   <tbody>
 
 <tr>
-<td rowspan="7">Compiler Engineering</td>
+<td rowspan="10">Compiler Engineering</td>
 <td>What Happens When You Compile Code</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
+<tr>
+<td>Rustc Pipeline vs C++ Compilation Pipeline</td>
+<td><a href="./rustc-pipeline-vs-cpp-compilation-pipeline">Article</a></td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
@@ -267,7 +276,6 @@ This section serves as a **technical knowledge base** containing conceptual arti
 <td>Coming Soon</td>
 <td>Coming Soon</td>
 </tr>
-
   </tbody>
 </table>
 
