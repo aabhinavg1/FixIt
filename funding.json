@@ -1,0 +1,69 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "organisation",
+    "role": "maintainer",
+    "name": "CompilerSutra",
+    "email": "osc@compilersutra.com",
+    "phone": "+91 9198679047",
+    "description": "CompilerSutra is an open educational platform focused on compiler engineering, LLVM, MLIR, GCC, Rust, GPU programming, and systems software. It provides free tutorials, documentation, learning resources, and community content to help developers enter and contribute to the open-source ecosystem.",
+    "webpageUrl": {
+      "url": "https://www.compilersutra.com",
+      "wellKnown": "https://www.compilersutra.com/"
+    }
+  },
+  "projects": [
+    {
+      "guid": "compilersutra-project",
+      "name": "compilersutra",
+      "description": "Funding to expand CompilerSutra's open educational resources for LLVM, MLIR, Rust, GCC, compiler engineering and systems programming. Planned deliverables include advanced tutorials, hands-on labs, open-source learning material, mentorship initiatives, community workshops, and educational tooling that lowers the barrier to entry for contributors interested in compiler and systems software development.\n",
+      "webpageUrl": {
+        "url": "https://www.compilersutra.com",
+        "wellKnown": "https://www.compilersutra.com"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/aabhinavg1/compilersutra"
+      },
+      "licenses": [
+        "MIT"
+      ],
+      "tags": [
+        "llvm",
+        "mlir",
+        "gcc",
+        "rust",
+        "compilers",
+        "systems-programming",
+        "gpu",
+        "education",
+        "foss",
+        "developer-tools"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "compilersutra-upi",
+        "type": "bank",
+        "address": "9198679047@ybl",
+        "description": "Funding channel for CompilerSutra project grants."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "compilersutra-2026",
+        "status": "active",
+        "name": "CompilerSutra Open Compiler Education Initiative",
+        "description": "Funding to create open educational resources for LLVM, MLIR, Rust, GCC, compiler engineering and systems programming. Planned deliverables include tutorials, hands-on labs, learning material, community outreach, and open-source educational tooling.",
+        "amount": 300000,
+        "currency": "INR",
+        "frequency": "one-time",
+        "channels": [
+          "compilersutra-upi"
+        ]
+      }
+    ],
+    "history": []
+  }
+}
