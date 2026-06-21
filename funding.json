@@ -8,8 +8,7 @@
     "phone": "9198679047",
     "description": "CompilerSutra is an open educational platform focused on compiler engineering, LLVM, MLIR, GCC, Rust, GPU programming, and systems software. It provides free tutorials, documentation, learning resources, and community content to help developers enter and contribute to the open-source ecosystem.",
     "webpageUrl": {
-      "url": "https://www.compilersutra.com",
-      "wellKnown": "https://www.compilersutra.com/"
+      "url": "https://www.compilersutra.com/"
     }
   },
   "projects": [
@@ -18,8 +17,7 @@
       "name": "compilersutra",
       "description": "Funding to expand CompilerSutra's open educational resources for LLVM, MLIR, Rust, GCC, compiler engineering and systems programming. Planned deliverables include advanced tutorials, hands-on labs, open-source learning material, mentorship initiatives, community workshops, and educational tooling that lowers the barrier to entry for contributors interested in compiler and systems software development.\n",
       "webpageUrl": {
-        "url": "https://www.compilersutra.com",
-        "wellKnown": "https://www.compilersutra.com"
+        "url": "https://www.compilersutra.com"
       },
       "repositoryUrl": {
         "url": "https://github.com/aabhinavg1/compilersutra"
