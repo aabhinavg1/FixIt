@@ -110,6 +110,7 @@ If you are new to COA, read these first before going deeper into ISA, cache, or 
 - [Basic Terminology in COA Everyone Should Know](/docs/coa/basic_terminology_in_coa)
 - [How an Instruction Actually Flows Through a Modern CPU](/docs/coa/how-an-instruction-actually-flows-through-a-modern-cpu)
 - [How Modern Processors Execute Code: From Sequential to Speculative Execution](/docs/coa/types_of_execution)
+- [Superscalar Execution: How Modern CPUs Execute Multiple Instructions Per Clock Cycle](/docs/coa/superscalar-execution)
 - [How CPU Executes Binary: Fetch-Decode-Execute Explained](/docs/coa/cpu_execution)
 - [Memory Hierarchy Explained: Cache, RAM, and Storage](/docs/coa/memory-hierarchy)
 

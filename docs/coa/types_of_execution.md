@@ -323,6 +323,8 @@ Superscalar execution means the processor can start work on more than one instru
 
 Pipelining keeps stages busy. Superscalar execution goes one step further and tries to feed multiple instructions into the machine in the same cycle, sometimes two, four, or more depending on the microarchitecture.
 
+For a deeper, hardware-first dive into dependency analysis, register renaming, and LLVM examples, read [Superscalar Execution: How Modern CPUs Execute Multiple Instructions Per Clock Cycle](/docs/coa/superscalar-execution).
+
 <Tabs>
   <TabItem value="super-intuition" label="Concrete Intuition" default>
     <p>If one instruction is an integer add and another is a load or a floating-point operation, the processor may be able to send both into different execution resources at once.</p>
