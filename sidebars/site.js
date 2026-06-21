@@ -172,6 +172,7 @@ const site = {
         'coa/intro_to_coa',
         'coa/instruction_flow_modern_cpu',
         'coa/types_of_execution',
+        'coa/superscalar_execution',
         'coa/cpu_execution',
         'coa/memory-hierarchy',
         'coa/measuring_throughput_cache_misses_cpu_behavior_cpp',
