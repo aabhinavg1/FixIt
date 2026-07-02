@@ -23,3 +23,4 @@ sendgrid.env
 # Local Netlify folder
 .netlify
 .qodo
+dsa_skills.sh

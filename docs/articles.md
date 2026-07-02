@@ -102,6 +102,13 @@ This section serves as a **technical knowledge base** containing conceptual arti
     <AdBanner />
 </div>
 
+<!-- jenkins-release:start -->
+## Daily Release
+
+No article has been published from the Jenkins queue yet.
+
+<!-- jenkins-release:end -->
+
 ## Article Index
 
 

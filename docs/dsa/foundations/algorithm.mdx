@@ -1,0 +1,980 @@
+---
+title: Algorithm
+description: Beginner-friendly explanation of algorithms, how step-by-step instructions work, and how to design, trace, and compare them.
+sidebar_position: 4
+slug: /dsa/foundations/algorithm/
+keywords:
+  - algorithm
+  - what is an algorithm
+  - dsa foundations
+  - computer science basics
+  - step-by-step instructions
+  - algorithm design
+  - beginner algorithm
+image: /img/dsa/foundations/dsa-foundations-hero-v2.png
+tags:
+  - dsa
+  - foundations
+  - beginner
+  - algorithm
+  - computer-science
+displayed_sidebar: dsaSidebar
+---
+
+import Head from '@docusaurus/Head';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Head>
+  <title>Algorithm | CompilerSutra</title>
+  <meta
+    name="description"
+    content="Beginner-friendly explanation of algorithms, how step-by-step instructions work, and how to design, trace, and compare them."
+  />
+  <meta
+    name="keywords"
+    content="algorithm, what is an algorithm, DSA foundations, computer science basics, step-by-step instructions, algorithm design, beginner algorithm"
+  />
+  <link rel="canonical" href="https://www.compilersutra.com/docs/dsa/foundations/algorithm/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Algorithm | CompilerSutra" />
+  <meta
+    property="og:description"
+    content="Beginner-friendly explanation of algorithms, how step-by-step instructions work, and how to design, trace, and compare them."
+  />
+  <meta property="og:url" content="https://www.compilersutra.com/docs/dsa/foundations/algorithm/" />
+  <meta property="og:image" content="https://www.compilersutra.com/img/dsa/foundations/dsa-foundations-hero-v2.png" />
+  <meta property="og:image:alt" content="CompilerSutra DSA foundations illustration" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Algorithm | CompilerSutra" />
+  <meta
+    name="twitter:description"
+    content="Beginner-friendly explanation of algorithms, how step-by-step instructions work, and how to design, trace, and compare them."
+  />
+  <meta name="twitter:image" content="https://www.compilersutra.com/img/dsa/foundations/dsa-foundations-hero-v2.png" />
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What is an algorithm?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'An algorithm is a clear, ordered set of steps for solving a problem.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Is an algorithm always code?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No. An algorithm can be described in words, pseudocode, flowcharts, or code.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Why should algorithms be finite?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Because a solution that never stops is not useful. A valid algorithm must terminate.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What is pseudocode?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Pseudocode is a human-friendly way to describe algorithm steps before writing program code.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Why do we dry run algorithms?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Dry runs help you check logic on small examples before writing or running code.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can there be many algorithms for one problem?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. Different algorithms can solve the same problem in different ways, with different trade-offs.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What is brute force?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Brute force checks many or all possibilities directly instead of using a smarter shortcut.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What is an optimized algorithm?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'It is an algorithm designed to do less work, use less memory, or both.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What should I learn after algorithms?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Arrays are a natural next step because they are easy to use in beginner examples.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Why do interviewers ask about algorithms?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'They want to see how you think through a problem, not just whether you know syntax.',
+            },
+          },
+        ],
+      }),
+    }}
+  />
+</Head>
+
+<style>{`
+.algorithm-flow,
+.algorithm-representation,
+.algorithm-property-grid,
+.dry-run-timeline {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.algorithm-flow {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.algorithm-flow-step,
+.algorithm-representation-step,
+.algorithm-property-card,
+.dry-run-step,
+.algorithm-life-step {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,250,251,0.96));
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+}
+
+.algorithm-flow-step,
+.algorithm-representation-step,
+.algorithm-life-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+}
+
+.algorithm-flow-badge,
+.algorithm-representation-badge,
+.algorithm-life-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darker);
+}
+
+.algorithm-flow-arrow,
+.algorithm-representation-arrow,
+.algorithm-life-arrow {
+  text-align: center;
+  color: var(--ifm-color-primary-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.algorithm-property-grid,
+.algorithm-life-cycle {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.algorithm-representation {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.algorithm-property-card {
+  padding: 1rem;
+}
+
+.algorithm-property-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darker);
+  margin-bottom: 0.8rem;
+}
+
+.dry-run-step {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  font-family: var(--ifm-font-family-monospace);
+  animation: dryPulse 2.4s ease-in-out infinite;
+}
+
+.dry-run-step:nth-child(1) { animation-delay: 0s; }
+.dry-run-step:nth-child(3) { animation-delay: 0.25s; }
+.dry-run-step:nth-child(5) { animation-delay: 0.5s; }
+.dry-run-step:nth-child(7) { animation-delay: 0.75s; }
+.dry-run-step:nth-child(9) { animation-delay: 1s; }
+.dry-run-step:nth-child(11) { animation-delay: 1.25s; }
+
+.dry-run-arrow {
+  text-align: center;
+  color: var(--ifm-color-primary-dark);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+@keyframes dryPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+  }
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+  }
+}
+
+.algorithm-graph {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.96));
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 640px) {
+  .algorithm-flow-step,
+  .algorithm-representation-step,
+  .algorithm-life-step {
+    grid-template-columns: 1fr;
+  }
+
+  .algorithm-flow-badge,
+  .algorithm-representation-badge,
+  .algorithm-life-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+}
+`}</style>
+
+# Algorithm
+
+You want to find the fastest route to college, make tea without forgetting a step, or search a contact in your phone.
+
+In each case, you are following a clear sequence of actions to reach a result.
+That sequence is an algorithm.
+
+:::note
+If you remember one line, remember this: an algorithm is a finite, ordered set of clear steps that turns input into output.
+:::
+
+<div style={{display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', alignItems: 'center', margin: '2rem 0'}}>
+  <div>
+    <p style={{marginTop: 0}}>
+      Algorithms are the part of computer science that tell a computer <strong>what to do next</strong>.
+      They are not tied to one language.
+      You can describe an algorithm in plain English, pseudocode, a flowchart, or actual code.
+    </p>
+    <p>
+      Before learning algorithms, understand <a href="/docs/dsa/foundations/data/">What Is Data?</a>. That page explains the input side.
+      After this page, continue with <a href="/docs/dsa/foundations/arrays/">Arrays</a> to see how algorithms work on ordered data.
+    </p>
+  </div>
+  <figure style={{margin: 0}}>
+    <img
+      src="/img/dsa/foundations/dsa-foundations-hero-v2.png"
+      alt="CompilerSutra illustration for DSA foundations"
+      style={{width: '100%', borderRadius: '18px', boxShadow: '0 20px 50px rgba(0,0,0,0.12)'}}
+    />
+    <figcaption style={{fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)', marginTop: '0.6rem'}}>
+      A good algorithm is easy to explain, easy to test, and clear enough to repeat.
+    </figcaption>
+  </figure>
+</div>
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Why Learn This?](#why-learn-this)
+- [Real-Life Example](#real-life-example)
+- [Intuition](#intuition)
+- [Definition](#definition)
+- [Visualization](#visualization)
+- [Algorithm Representation](#algorithm-representation)
+- [Characteristics](#characteristics)
+- [History](#history)
+- [Step-by-Step Explanation](#step-by-step-explanation)
+- [Dry Run](#dry-run)
+- [Code](#code)
+- [Complexity](#complexity)
+- [Comparison Tables](#comparison-tables)
+- [Real Applications](#real-applications)
+- [Advantages](#advantages)
+- [Limitations](#limitations)
+- [Common Mistakes](#common-mistakes)
+- [Memory Tricks](#memory-tricks)
+- [Interview Questions](#interview-questions)
+- [FAQs](#faqs)
+- [Practice Problems](#practice-problems)
+- [Summary](#summary)
+- [Read Next](#read-next)
+- [References](#references)
+
+## Introduction
+
+Think about a simple task like making a sandwich.
+
+You do not start by doing random actions.
+You first decide the order:
+
+1. take bread,
+2. add filling,
+3. close the sandwich,
+4. cut it,
+5. serve it.
+
+That ordered plan is an algorithm.
+
+In computing, the same idea applies.
+If a program needs to search, sort, compare, count, or decide, it needs an algorithm.
+
+## Why Learn This?
+
+Algorithms matter because they turn vague problem solving into repeatable steps.
+
+Without an algorithm, a solution is often:
+
+- hard to explain,
+- hard to test,
+- hard to debug,
+- and hard to improve.
+
+With an algorithm, you can reason about correctness and performance before you write code.
+
+:::important
+An algorithm is not the same as code. Code is one way to express an algorithm, but the algorithm itself is the method.
+:::
+
+## Real-Life Example
+
+Suppose you want to find a book in your room.
+
+You could:
+
+- scan every shelf one by one,
+- search only the shelf where you usually keep books,
+- or keep the books labeled by category so you can jump to the right place.
+
+Each approach is a different algorithm.
+
+The goal is the same, but the steps are different.
+Some are faster, some are simpler, and some use more memory or organization.
+
+## Intuition
+
+The easiest way to understand an algorithm is to think of it as a recipe.
+
+- The ingredients are the input.
+- The recipe steps are the algorithm.
+- The finished dish is the output.
+
+A recipe works only if the steps are clear enough to follow.
+If the steps are vague, different people may produce different results.
+
+That is why good algorithms are precise.
+
+## Definition
+
+In computer science, an algorithm is a finite sequence of unambiguous steps that solves a problem or produces a result.
+
+### Mathematical Definition
+
+An algorithm is a finite sequence of well-defined instructions that transforms input into output and terminates after a finite number of steps.
+
+Good algorithms usually have these properties:
+
+- **Finiteness**: they must stop after a limited number of steps.
+- **Definiteness**: each step must be clear.
+- **Input**: they may accept zero or more inputs.
+- **Output**: they produce at least one result.
+- **Effectiveness**: each step must be simple enough to execute.
+
+## Visualization
+
+Read the flowchart from top to bottom.
+
+<div className="algorithm-flow" role="img" aria-label="Algorithm flowchart from problem to writing a program">
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">1</div>
+    <div>
+      <strong>Problem</strong>
+      <div>What is the task I need to solve?</div>
+    </div>
+  </div>
+  <div className="algorithm-flow-arrow">▼</div>
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">2</div>
+    <div>
+      <strong>Understand Input</strong>
+      <div>What data do I already have?</div>
+    </div>
+  </div>
+  <div className="algorithm-flow-arrow">▼</div>
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">3</div>
+    <div>
+      <strong>Design Algorithm</strong>
+      <div>Which clear steps solve the task?</div>
+    </div>
+  </div>
+  <div className="algorithm-flow-arrow">▼</div>
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">4</div>
+    <div>
+      <strong>Dry Run</strong>
+      <div>Can I test the steps on a small example?</div>
+    </div>
+  </div>
+  <div className="algorithm-flow-arrow">▼</div>
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">5</div>
+    <div>
+      <strong>Analyze Complexity</strong>
+      <div>How much time and space do the steps need?</div>
+    </div>
+  </div>
+  <div className="algorithm-flow-arrow">▼</div>
+  <div className="algorithm-flow-step">
+    <div className="algorithm-flow-badge">6</div>
+    <div>
+      <strong>Write Program</strong>
+      <div>Now translate the idea into code.</div>
+    </div>
+  </div>
+</div>
+
+<div style={{marginTop: '1rem'}}>
+  <p style={{marginBottom: 0}}>
+    The flow above is the simplest mental model for beginners.
+    First understand the data, then design the steps, then test them, then code them.
+  </p>
+</div>
+
+## Algorithm Representation
+
+An algorithm can be represented in more than one way.
+
+<div className="algorithm-representation" role="img" aria-label="Representation ladder from plain English to program">
+  <div className="algorithm-representation-step">
+    <div className="algorithm-representation-badge">A</div>
+    <div>
+      <strong>Plain English</strong>
+      <div>Describe the steps naturally.</div>
+    </div>
+  </div>
+  <div className="algorithm-representation-arrow">▼</div>
+  <div className="algorithm-representation-step">
+    <div className="algorithm-representation-badge">P</div>
+    <div>
+      <strong>Pseudocode</strong>
+      <div>Write the logic in a structured human form.</div>
+    </div>
+  </div>
+  <div className="algorithm-representation-arrow">▼</div>
+  <div className="algorithm-representation-step">
+    <div className="algorithm-representation-badge">F</div>
+    <div>
+      <strong>Flowchart</strong>
+      <div>Draw the decision path visually.</div>
+    </div>
+  </div>
+  <div className="algorithm-representation-arrow">▼</div>
+  <div className="algorithm-representation-step">
+    <div className="algorithm-representation-badge">C</div>
+    <div>
+      <strong>Program</strong>
+      <div>Implement the same idea in code.</div>
+    </div>
+  </div>
+</div>
+
+## Characteristics
+
+Good algorithms usually share a few core properties.
+
+<div className="algorithm-property-grid">
+  <div className="algorithm-property-card">
+    <div className="algorithm-property-icon">1</div>
+    <strong>Finite</strong>
+    <p style={{marginBottom: 0}}>The algorithm must stop after a limited number of steps.</p>
+  </div>
+  <div className="algorithm-property-card">
+    <div className="algorithm-property-icon">2</div>
+    <strong>Unambiguous</strong>
+    <p style={{marginBottom: 0}}>Each step must mean exactly one thing.</p>
+  </div>
+  <div className="algorithm-property-card">
+    <div className="algorithm-property-icon">3</div>
+    <strong>Input</strong>
+    <p style={{marginBottom: 0}}>It can accept data to work on.</p>
+  </div>
+  <div className="algorithm-property-card">
+    <div className="algorithm-property-icon">4</div>
+    <strong>Output</strong>
+    <p style={{marginBottom: 0}}>It must produce a result.</p>
+  </div>
+  <div className="algorithm-property-card">
+    <div className="algorithm-property-icon">5</div>
+    <strong>Effective</strong>
+    <p style={{marginBottom: 0}}>Every step should be simple enough to execute.</p>
+  </div>
+</div>
+
+## History
+
+Algorithms are not a new idea.
+Euclid used step-based methods for mathematics more than 2,000 years ago.
+The word algorithm comes from the name of Al-Khwarizmi, whose work influenced how ordered procedures were described in later mathematics.
+Modern computer science turned that old idea into the core of program design and analysis.
+
+## Step-by-Step Explanation
+
+Suppose you want an algorithm to find the largest number in a list.
+
+Step by step:
+
+1. Start with the first number as the current largest.
+2. Compare the next number with the current largest.
+3. If the next number is larger, replace the current largest.
+4. Repeat until you reach the end.
+5. Return the largest number.
+
+This is a good beginner algorithm because it is simple, clear, and easy to trace.
+
+If you want a refresher on the values the algorithm works with, go back to [What Is Data?](./data).
+If you want to see another common beginner structure after this page, move to [Arrays](./arrays).
+
+The same pattern appears in many problems:
+
+- scan data once,
+- keep track of the best value seen so far,
+- update it when needed,
+- stop at the end.
+
+## Dry Run
+
+Use this list:
+
+`[4, 7, 2, 9, 5]`
+
+We want the maximum value.
+
+<div className="dry-run-timeline" aria-label="Animated dry run for finding the maximum value">
+  <div className="dry-run-step"><strong>largest = 4</strong><div>Start with the first value.</div></div>
+  <div className="dry-run-arrow">▼</div>
+  <div className="dry-run-step"><strong>7 &gt; 4  ✓</strong><div>Update: largest = 7</div></div>
+  <div className="dry-run-arrow">▼</div>
+  <div className="dry-run-step"><strong>2 &gt; 7  ✗</strong><div>Keep: largest = 7</div></div>
+  <div className="dry-run-arrow">▼</div>
+  <div className="dry-run-step"><strong>9 &gt; 7  ✓</strong><div>Update: largest = 9</div></div>
+  <div className="dry-run-arrow">▼</div>
+  <div className="dry-run-step"><strong>5 &gt; 9  ✗</strong><div>Keep: largest = 9</div></div>
+  <div className="dry-run-arrow">▼</div>
+  <div className="dry-run-step"><strong>Result = 9</strong><div>The scan is complete.</div></div>
+</div>
+
+| Step | Current number | Current largest | Action |
+| --- | --- | --- | --- |
+| 1 | 4 | 4 | Start with the first value |
+| 2 | 7 | 7 | 7 is larger, so update |
+| 3 | 2 | 7 | Keep 7 |
+| 4 | 9 | 9 | 9 is larger, so update |
+| 5 | 5 | 9 | Keep 9 |
+
+Final answer: `9`
+
+That dry run shows the basic logic of the algorithm.
+You do not need to guess.
+You only compare, update, and move on.
+
+## Code
+
+Here is the same algorithm in three languages.
+
+<Tabs>
+<TabItem value="cpp" label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+using namespace std;
+
+int findMax(const vector<int>& nums) {
+    if (nums.empty()) {
+        throw invalid_argument("List must not be empty");
+    }
+
+    int best = nums[0];
+    for (size_t i = 1; i < nums.size(); ++i) {
+        if (nums[i] > best) {
+            best = nums[i];
+        }
+    }
+    return best;
+}
+
+int main() {
+    vector<int> nums = {4, 7, 2, 9, 5};
+    cout << findMax(nums) << '\n';
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+def find_max(nums):
+    if not nums:
+        raise ValueError("List must not be empty")
+
+    best = nums[0]
+    for value in nums[1:]:
+        if value > best:
+            best = value
+    return best
+
+
+nums = [4, 7, 2, 9, 5]
+print(find_max(nums))
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+public class Main {
+    static int findMax(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("List must not be empty");
+        }
+
+        int best = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > best) {
+                best = nums[i];
+            }
+        }
+        return best;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {4, 7, 2, 9, 5};
+        System.out.println(findMax(nums));
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+### What the code shows
+
+- The algorithm is the same in every language.
+- The data changes, but the steps stay the same.
+- The loop is the core of the algorithm.
+- Each value is compared once.
+
+## Complexity
+
+For the maximum-finding algorithm:
+
+<div className="algorithm-graph" role="img" aria-label="Linear complexity graph showing cost rising with input size">
+  <svg viewBox="0 0 360 220" width="100%" height="220" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="algoLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="var(--ifm-color-primary)" />
+        <stop offset="100%" stopColor="var(--ifm-color-primary-dark)" />
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="360" height="220" fill="transparent" />
+    <line x1="44" y1="170" x2="314" y2="170" stroke="currentColor" strokeOpacity="0.35" strokeWidth="2" />
+    <line x1="44" y1="170" x2="44" y2="26" stroke="currentColor" strokeOpacity="0.35" strokeWidth="2" />
+    <path d="M54 160 L104 130 L154 104 L204 82 L254 60 L304 36" fill="none" stroke="url(#algoLineGradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="54" cy="160" r="5" fill="var(--ifm-color-primary)" />
+    <circle cx="104" cy="130" r="5" fill="var(--ifm-color-primary)" />
+    <circle cx="154" cy="104" r="5" fill="var(--ifm-color-primary)" />
+    <circle cx="204" cy="82" r="5" fill="var(--ifm-color-primary)" />
+    <circle cx="254" cy="60" r="5" fill="var(--ifm-color-primary)" />
+    <circle cx="304" cy="36" r="5" fill="var(--ifm-color-primary)" />
+    <text x="18" y="24" fontSize="14" fill="currentColor">Complexity</text>
+    <text x="272" y="198" fontSize="14" fill="currentColor">Input Size</text>
+    <text x="70" y="184" fontSize="12" fill="currentColor">small</text>
+    <text x="274" y="184" fontSize="12" fill="currentColor">large</text>
+    <text x="12" y="58" fontSize="12" fill="currentColor">more work</text>
+    <text x="238" y="28" fontSize="12" fill="currentColor">O(n)</text>
+  </svg>
+</div>
+
+| Operation | Best | Average | Worst | Why |
+| --- | --- | --- | --- | --- |
+| Find the maximum in a non-empty list | `O(n)` | `O(n)` | `O(n)` | Every element must be checked at least once |
+| Extra space | `O(1)` | `O(1)` | `O(1)` | Only one variable is used for the current best value |
+
+### Intuition for complexity
+
+You cannot know the maximum without looking at the data.
+That is why the time grows linearly with the list size.
+
+For many algorithms, the key question is:
+
+- How many times do I scan the input?
+- Do I sort before searching?
+- Do I store extra information to save time later?
+
+:::caution
+The same problem can have many algorithms. A correct algorithm is not automatically a fast one.
+:::
+
+## Comparison Tables
+
+### Algorithm vs Program
+
+| Aspect | Algorithm | Program |
+| --- | --- | --- |
+| Meaning | A step-by-step method to solve a problem | Code written in a programming language |
+| Language dependence | Language-independent | Language-specific |
+| Form | Plain steps, pseudocode, flowchart, or code idea | Actual source code |
+| Goal | Describe the solution | Run the solution |
+| Example | "Compare each item and keep the largest" | A C++ or Python function that does it |
+
+### Algorithm vs Data Structure
+
+| Aspect | Algorithm | Data Structure |
+| --- | --- | --- |
+| Main focus | Steps and operations | Storage and organization |
+| Question it answers | "What do I do?" | "Where and how do I keep it?" |
+| Example | Linear search, merge sort, BFS | Array, stack, queue, tree, graph |
+| Trade-off | Time and logic | Access, insert, delete, and memory cost |
+
+### Algorithm vs Recipe
+
+| Aspect | Algorithm | Recipe |
+| --- | --- | --- |
+| Input | Problem data | Ingredients |
+| Steps | Clear computational actions | Cooking actions |
+| Output | Result or answer | Finished dish |
+| Important rule | Steps must be unambiguous | Steps must be followable |
+
+## Real Applications
+
+Algorithms are everywhere.
+
+- **Google Search** uses ranking and retrieval algorithms to decide what results to show first.
+- **Linux** uses scheduling, memory-management, and file-system algorithms inside the kernel.
+- **Databases** use indexing, query-planning, and join algorithms to answer requests efficiently.
+- **Browsers** use rendering, parsing, layout, and caching algorithms.
+- **Compilers** use parsing, optimization, register allocation, and code generation algorithms.
+- **AI** uses training, inference, search, and optimization algorithms.
+- **Robotics** uses path planning, control, and sensor-fusion algorithms.
+- **Cloud Computing** uses load balancing, replication, and scheduling algorithms.
+- **Operating Systems** use process scheduling, paging, and disk allocation algorithms.
+- **Games** use pathfinding, collision detection, AI decision trees, and physics algorithms.
+
+## Advantages
+
+- Algorithms make problem solving repeatable.
+- They help you separate logic from implementation.
+- They make debugging easier.
+- They let you compare efficiency before coding.
+- They can be written before choosing a programming language.
+
+## Limitations
+
+- A good algorithm still needs good input.
+- Some problems have no perfect exact solution.
+- A short algorithm is not always the fastest.
+- A correct algorithm can still use too much memory.
+- Real-world constraints can change the best choice.
+
+## Common Mistakes
+
+1. Writing steps that are too vague.
+2. Forgetting to define when the algorithm stops.
+3. Skipping edge cases like empty input.
+4. Confusing the algorithm with the programming language.
+5. Choosing code before understanding the problem.
+6. Ignoring time and space cost.
+7. Testing only one example instead of several.
+8. Assuming the first working idea is the best one.
+9. Mixing data storage decisions with step logic.
+10. Not explaining why each step exists.
+
+## Memory Tricks
+
+- **Algorithm = ordered actions**
+- **Recipe for a computer**
+- **Input in, output out**
+- **Clear steps, clear result**
+- **If a friend can follow it, it is probably an algorithm**
+
+## Interview Questions
+
+### Easy
+
+1. What is an algorithm?
+2. Why do we need algorithms in programming?
+3. What is the difference between an algorithm and a program?
+
+### Medium
+
+1. Why should an algorithm be finite?
+2. Why do we test an algorithm with small examples first?
+3. How does time complexity affect algorithm choice?
+
+### Hard
+
+1. How would you design an algorithm for a problem with many valid outputs?
+2. When is brute force acceptable, and when is it not?
+3. How do data structure choices change the algorithm you should use?
+
+## FAQs
+
+1. **What is an algorithm?** An algorithm is a clear, ordered set of steps for solving a problem.
+2. **Is an algorithm always code?** No. It can be described in words, pseudocode, flowcharts, or code.
+3. **Does every program contain an algorithm?** Yes. Any useful program uses one or more algorithms.
+4. **Can two programs use the same algorithm?** Yes. The implementation can change while the idea stays the same.
+5. **Can an algorithm be wrong?** Yes. It may solve the wrong problem or fail on some inputs.
+6. **Can an algorithm be slow but correct?** Yes. Correctness and efficiency are different questions.
+7. **Why should algorithms be finite?** Because a solution that never stops is not useful.
+8. **What does unambiguous mean?** Each step should have only one clear meaning.
+9. **What is a step-by-step procedure?** It is a sequence where each action follows the previous one.
+10. **Why do algorithms matter in DSA?** Because DSA combines data storage with problem-solving steps.
+11. **What is the input of an algorithm?** The input is the data the algorithm works on.
+12. **What is the output of an algorithm?** The output is the result the algorithm produces.
+13. **Can an algorithm have no input?** Yes. Some algorithms generate values or follow a fixed process.
+14. **Can an algorithm have more than one output?** Yes. Some problems return multiple values.
+15. **What is pseudocode?** Pseudocode is a human-friendly way to describe algorithm steps.
+16. **What is the simplest algorithm example?** Finding the largest value in a list is a common beginner example.
+17. **Why do we dry run algorithms?** To check logic before writing or running code.
+18. **What makes an algorithm good?** Clarity, correctness, and reasonable efficiency.
+19. **Can there be many algorithms for one problem?** Yes. Different algorithms can solve the same task in different ways.
+20. **Is the fastest algorithm always best?** No. Simpler algorithms may be better for small inputs.
+21. **What is brute force?** Brute force checks many or all possibilities directly.
+22. **What is an optimized algorithm?** It is an algorithm designed to do less work or use less memory.
+23. **Do algorithms use data structures?** Often yes, because the storage shape can speed up the steps.
+24. **What should I learn after algorithms?** Arrays are a natural next step because they are easy to use in examples.
+25. **Why do interviewers ask about algorithms?** They want to see how you think through a problem, not just whether you know syntax.
+
+## Practice Problems
+
+### Easy
+
+- Write the steps for making tea.
+- Write the steps for packing your school bag.
+- Write an algorithm to find the smaller of two numbers.
+
+### Medium
+
+- Design an algorithm to check whether a number is even or odd.
+- Write an algorithm to count how many times a word appears in a short sentence.
+- Trace the maximum-finding algorithm on your own list of numbers.
+
+### Hard
+
+- Design an algorithm to find the first non-repeating character in a string.
+- Explain how you would compare two algorithms for the same problem.
+- Write a step-by-step method for merging two sorted lists.
+
+### Challenge
+
+- Choose one daily task and describe three different algorithms for doing it.
+
+## Summary
+
+- An algorithm is a clear sequence of steps.
+- It solves a problem by turning input into output.
+- Good algorithms are finite, precise, and testable.
+- The same algorithm can be written in many programming languages.
+- Time and space complexity help you compare algorithms fairly.
+- In DSA, algorithms work together with data structures.
+
+## Read Next
+
+- [What Is Data?](./data)
+- [Arrays](./arrays)
+- [Searching](./searching)
+- [Sorting](./sorting)
+- [Stack and Queue](./stack-and-queue)
+- [Connected Data](./connected-data)
+- [Hash Map and Complexity](./hash-map-and-complexity)
+
+## Previous Lesson
+
+- [What Is Data?](./data)
+
+## Next Lesson
+
+- [Arrays](./arrays)
+
+## Related Articles
+
+- [What Is DSA?](./what-is-dsa)
+- [What Is Data?](./data)
+- [Arrays](./arrays)
+- [Searching](./searching)
+- [Sorting](./sorting)
+
+## Learning Path
+
+1. [DSA Foundations](./index)
+2. [What Is DSA?](./what-is-dsa)
+3. [What Is Data?](./data)
+4. Algorithm
+5. [Arrays](./arrays)
+6. [Strings](./strings)
+7. [Searching](./searching)
+8. [Sorting](./sorting)
+9. [Stack and Queue](./stack-and-queue)
+10. [Connected Data](./connected-data)
+11. [Hash Map and Complexity](./hash-map-and-complexity)
+
+## References
+
+- [MIT Press: Introduction to Algorithms, 4th Edition](https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/)
+- [MIT OpenCourseWare: 6.006 Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/)
+- [Princeton: Algorithms, 4th Edition](https://algs4.cs.princeton.edu/home/)

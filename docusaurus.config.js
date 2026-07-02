@@ -49,6 +49,42 @@ const config = {
       {
         redirects: [
           {
+            to: '/docs/dsa/foundations/data/',
+            from: ['/dsa/foundations/data/'],
+          },
+          {
+            to: '/docs/dsa/foundations/algorithm/',
+            from: ['/dsa/foundations/algorithm/'],
+          },
+          {
+            to: '/docs/dsa/foundations/arrays/',
+            from: ['/dsa/foundations/arrays/'],
+          },
+          {
+            to: '/docs/dsa/foundations/strings/',
+            from: ['/dsa/foundations/strings/'],
+          },
+          {
+            to: '/docs/dsa/foundations/searching/',
+            from: ['/dsa/foundations/searching/'],
+          },
+          {
+            to: '/docs/dsa/foundations/sorting/',
+            from: ['/dsa/foundations/sorting/'],
+          },
+          {
+            to: '/docs/dsa/foundations/stack-and-queue/',
+            from: ['/dsa/foundations/stack-and-queue/'],
+          },
+          {
+            to: '/docs/dsa/foundations/connected-data/',
+            from: ['/dsa/foundations/connected-data/'],
+          },
+          {
+            to: '/docs/dsa/foundations/hash-map-and-complexity/',
+            from: ['/dsa/foundations/hash-map-and-complexity/'],
+          },
+          {
             to: '/docs/compilers/clang-vs-gcc-vs-llvm/',
             from: [
               '/docs/compilers/gcc_vs_llvm/',
