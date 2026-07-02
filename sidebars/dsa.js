@@ -7,6 +7,10 @@ const dsa = {
       items: [
         {
           type: 'doc',
+          id: 'dsa/foundations/index',
+        },
+        {
+          type: 'doc',
           id: 'dsa/foundations/what-is-dsa',
         },
         {
@@ -18,6 +22,49 @@ const dsa = {
           type: 'link',
           label: 'Roadmap',
           href: '/dsa/roadmap/',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Foundations Lessons',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'dsa/foundations/data',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/algorithm',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/arrays',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/strings',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/searching',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/sorting',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/stack-and-queue',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/connected-data',
+        },
+        {
+          type: 'doc',
+          id: 'dsa/foundations/hash-map-and-complexity',
         },
       ],
     },

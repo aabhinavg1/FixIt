@@ -1,0 +1,78 @@
+---
+title: Hash Maps and Complexity
+slug: /dsa/foundations/hash-map-and-complexity/
+description: A beginner guide to hash maps as fast lookup structures and complexity as the study of how cost grows.
+displayed_sidebar: dsaSidebar
+---
+
+# Hash Maps and Complexity
+
+This page joins two beginner ideas that belong together:
+
+- hash maps help you find things quickly by key,
+- complexity tells you how the cost grows as the input gets bigger.
+
+## Hash maps in one line
+
+A hash map is a structure for fast lookup by key.
+
+## Real-life example
+
+A phone contact app lets you jump to one name quickly instead of reading every contact.
+
+## Study use case
+
+A hash map can help you store:
+
+- topic name -> score,
+- question text -> solved status,
+- subject name -> revision date.
+
+## Why it matters
+
+Hash maps are useful when the important question is, "Can I find this thing quickly?"
+
+They often trade a little extra space for faster lookup.
+
+## Complexity in one line
+
+Complexity asks how the cost changes when the data gets larger.
+
+## Real-life example
+
+A method that feels fast for 10 items may become slow for 10,000 items.
+
+Complexity is the habit of checking that growth early.
+
+## Study use case
+
+If you are comparing two ways to solve a problem, complexity helps you ask:
+
+- Which one is faster as the data grows?
+- Which one uses more memory?
+- Which one still works when the list becomes large?
+
+## What beginners should remember
+
+- Hash maps are about key-based lookup.
+- Complexity is about growth.
+- A good beginner solution is not just correct; it should also be reasonable at scale.
+
+## Common mistake
+
+Do not assume fast lookup automatically means the whole solution is optimal.
+
+You still need to ask about memory use, collisions, and how many times the lookup happens.
+
+## Try this
+
+Compare these two approaches:
+
+- scan a list every time you need one item,
+- or store the item in a key-value map.
+
+Then ask which one becomes better when you repeat the lookup many times.
+
+## Next step
+
+After this, move to [Problem Solving](/dsa/problem-solving/) and [Complexity](/dsa/complexity/).

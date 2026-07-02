@@ -2,54 +2,74 @@ export const DSA_MODULES = {
   "foundations": {
     "title": "Foundations",
     "route": "/dsa/foundations",
-    "description": "Computational thinking, state modeling, reasoning habits, and the base layer that makes DSA easier to learn.",
-    "lead": "This module starts with the mental model. It explains how to frame a problem, read the constraints, and identify the state before you choose a structure.",
+    "description": "A beginner-first route map for the core DSA ideas with separate deep-dive pages for each lesson.",
+    "lead": "This module starts with the plain-language mental model and then sends readers into focused pages for data, algorithms, arrays, strings, searching, sorting, stack and queue, connected data, and hash maps with complexity.",
     "heroBullets": [
-      "Start with the problem shape",
-      "Think in state and transitions",
-      "Use structure after the model is clear",
-      "Keep the process repeatable"
+      "Start with the plain meaning",
+      "Separate data from action",
+      "Use real-life examples first",
+      "Move through the lessons in order"
     ],
     "overviewCards": [
       {
         "title": "Why it exists",
-        "description": "To separate raw problem statements from the structure of a solution."
+        "description": "To turn DSA from a scary label into a set of small ideas beginners can learn one by one."
       },
       {
         "title": "What it teaches",
-        "description": "How to move from vague prompt to clear state, operations, and goals."
+        "description": "How to recognize data, algorithms, order, lookup, and growth in everyday tasks and coding problems."
       }
     ],
     "topics": [
       {
         "title": "What is DSA?",
-        "description": "The role DSA plays in organizing information and reasoning about cost.",
-        "route": "/docs/dsa/foundations/what-is-dsa/"
+        "description": "The plain-language meaning of the subject and why the two words belong together.",
+        "route": "/dsa/foundations/what-is-dsa/"
       },
       {
-        "title": "State modeling",
-        "description": "How to turn a problem into states, transitions, and outputs.",
-        "route": "/dsa/foundations/state-modeling"
+        "title": "Data",
+        "description": "What information a program stores and why the storage shape matters.",
+        "route": "/docs/dsa/foundations/data/"
       },
       {
-        "title": "Constraints and goals",
-        "description": "How bounds and objectives determine what a good solution looks like.",
-        "route": "/dsa/foundations/constraints-and-goals"
+        "title": "Algorithm",
+        "description": "A sequence of steps for solving a problem.",
+        "route": "/docs/dsa/foundations/algorithm/"
       },
       {
-        "title": "Input and output thinking",
-        "description": "How to restate the task in plain language before coding.",
-        "route": "/dsa/foundations/input-output-thinking"
+        "title": "Arrays",
+        "description": "A row of items kept in order.",
+        "route": "/docs/dsa/foundations/arrays/"
       },
       {
-        "title": "Choosing a structure",
-        "description": "Why the right container often decides the complexity.",
-        "route": "/dsa/foundations/choosing-a-structure"
+        "title": "Strings",
+        "description": "Text stored as a sequence of characters.",
+        "route": "/docs/dsa/foundations/strings/"
       },
       {
-        "title": "Practice patterns",
-        "description": "How to keep the thought process clean across many problems.",
-        "route": "/dsa/foundations/practice-patterns"
+        "title": "Searching",
+        "description": "Finding a target inside a collection.",
+        "route": "/docs/dsa/foundations/searching/"
+      },
+      {
+        "title": "Sorting",
+        "description": "Arranging items by a rule so later work gets easier.",
+        "route": "/docs/dsa/foundations/sorting/"
+      },
+      {
+        "title": "Stack and Queue",
+        "description": "Two beginner-friendly ways of controlling order.",
+        "route": "/docs/dsa/foundations/stack-and-queue/"
+      },
+      {
+        "title": "Connected Data",
+        "description": "Linked lists, trees, and graphs when items point to one another.",
+        "route": "/docs/dsa/foundations/connected-data/"
+      },
+      {
+        "title": "Hash Maps and Complexity",
+        "description": "Fast lookup by key and the cost of growing data.",
+        "route": "/docs/dsa/foundations/hash-map-and-complexity/"
       }
     ],
     "related": [
