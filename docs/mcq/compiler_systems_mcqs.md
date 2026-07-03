@@ -93,6 +93,11 @@ import Link from '@docusaurus/Link';
     <h3 style={{marginTop: '0.45rem', marginBottom: '0.45rem'}}>Compiler MCQs</h3>
     <p style={{marginBottom: 0, color: 'var(--ifm-color-emphasis-700)'}}>Compilers, LLVM, MLIR, AI in compilers, and compilers in AI, all under one master page.</p>
   </Link>
+  <Link to="/docs/mcq/daily" style={{display: 'block', padding: '1.1rem', borderRadius: '22px', textDecoration: 'none', border: '1px solid var(--ifm-color-emphasis-200)', background: 'linear-gradient(180deg, rgba(239, 68, 68, 0.12), rgba(15, 23, 42, 0.45))'}}>
+    <div style={{fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#fca5a5'}}>Daily</div>
+    <h3 style={{marginTop: '0.45rem', marginBottom: '0.45rem'}}>Daily Mixed MCQs</h3>
+    <p style={{marginBottom: 0, color: 'var(--ifm-color-emphasis-700)'}}>A 20-day rolling series that mixes C++, DSA, compiler design, OS, CPU, GPU, and systems questions.</p>
+  </Link>
 </div>
 
 ## Domain MCQ Sets

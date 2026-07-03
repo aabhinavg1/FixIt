@@ -128,6 +128,37 @@ const mcq = {
     },
   ],
 
+  dailyMcqSidebar: [
+    {
+      type: 'category',
+      label: 'Daily Mixed MCQ Series',
+      collapsed: false,
+      items: [
+        'mcq/daily/daily-mcq-home',
+        'mcq/daily/daily-mcq-day-01',
+        'mcq/daily/daily-mcq-day-02',
+        'mcq/daily/daily-mcq-day-03',
+        'mcq/daily/daily-mcq-day-04',
+        'mcq/daily/daily-mcq-day-05',
+        'mcq/daily/daily-mcq-day-06',
+        'mcq/daily/daily-mcq-day-07',
+        'mcq/daily/daily-mcq-day-08',
+        'mcq/daily/daily-mcq-day-09',
+        'mcq/daily/daily-mcq-day-10',
+        'mcq/daily/daily-mcq-day-11',
+        'mcq/daily/daily-mcq-day-12',
+        'mcq/daily/daily-mcq-day-13',
+        'mcq/daily/daily-mcq-day-14',
+        'mcq/daily/daily-mcq-day-15',
+        'mcq/daily/daily-mcq-day-16',
+        'mcq/daily/daily-mcq-day-17',
+        'mcq/daily/daily-mcq-day-18',
+        'mcq/daily/daily-mcq-day-19',
+        'mcq/daily/daily-mcq-day-20',
+      ],
+    },
+  ],
+
   reactMcqSidebar: [
     {
       type: 'category',

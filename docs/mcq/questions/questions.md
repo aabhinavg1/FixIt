@@ -78,6 +78,10 @@ This page is the master index for the actual question sets inside CompilerSutra.
 ### 🔵 Interview Question Sets
 - [C++ Interview MCQs](/docs/mcq/interview_question/cpp_interview_mcqs)
 
+### 🟠 Daily Mixed MCQ Series
+- [Daily Mixed MCQ Series](/docs/mcq/daily)
+- 20 days of mixed practice across C++, DSA, compiler design, OS, CPU, GPU, and systems topics.
+
 ## What You’ll Find Here
 
 - language-focused MCQ tracks for C++ from basic to advanced
