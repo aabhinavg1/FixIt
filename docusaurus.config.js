@@ -265,6 +265,7 @@ const config = {
                 label: 'Domain Specific MCQs',
                 to: '/docs/mcq/questions/domain',
               },
+              { label: 'Daily Mixed MCQs', to: '/docs/mcq/daily' },
               { label: 'Compiler, Systems and GPU MCQ', to: '/docs/mcq' },
             ],
           },
