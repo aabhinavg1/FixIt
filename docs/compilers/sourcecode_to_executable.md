@@ -131,6 +131,8 @@ keywords:
 In [Part 1: how computer works](https://www.compilersutra.com/docs/gpu/gpu_programming/how_computer_works/), we discussed **how hardware software interact with each other using a bridge called OS** .  
 Now, in **Part 2**, we explore the **journey of your source code** as it transforms into a **binary executable** that your CPU can run.
 
+Before that pipeline starts, read [What Is a Computer Program?](/docs/basic-terminology/what-is-a-computer-program) if you want the distinction between a program, its source code, and its final binary.
+
 import AdBanner from '@site/src/components/AdBanner';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
