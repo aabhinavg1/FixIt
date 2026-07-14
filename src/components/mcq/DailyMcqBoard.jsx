@@ -43,10 +43,10 @@ function DailyMcqBoardContent() {
           Daily MCQ series
         </p>
         <h1 style={{marginTop: '0.45rem', marginBottom: '0.85rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.05}}>
-          20 days of mixed C++, DSA, compiler, OS, CPU, and GPU MCQs
+          40 days of mixed systems practice and OOP MCQs
         </h1>
         <p style={{maxWidth: '800px', fontSize: '1.02rem', color: 'var(--ifm-color-emphasis-800)', marginBottom: '1rem'}}>
-          Each day unlocks at midnight UTC. New pages can be added ahead of time, but the site only surfaces the day that is currently live.
+          Days 1-20 cover C++, DSA, compiler, OS, CPU, and GPU topics. Days 21-40 shift into OOP concepts, and every page unlocks at midnight UTC.
         </p>
 
         <div style={{display: 'grid', gap: '0.75rem', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))'}}>

@@ -1,4 +1,5 @@
 import { ALL_MCQ_QUESTIONS } from './sourcePool';
+import { OOP_DAILY_QUESTION_BANK } from './oopDays';
 
 const DAY_SOURCE_PATTERNS = {
   1: ['docs/mcq/questions/basic/', 'docs/mcq/questions/intermediate/', 'docs/mcq/questions/advanced/', 'docs/mcq/questions/specialized/'],
@@ -59,6 +60,13 @@ function shuffle(items, seed) {
   return result;
 }
 
+function normalizeQuestionOptions(item, seed) {
+  return {
+    ...item,
+    options: shuffle(item.options, seed),
+  };
+}
+
 function questionKey(item) {
   return `${item.question}|||${item.answer}`;
 }
@@ -90,13 +98,16 @@ function buildBank() {
   const bank = {};
 
   for (const day of DAY_ORDER) {
-    bank[day] = selectQuestionsForDay(day, usedKeys);
+    bank[day] = selectQuestionsForDay(day, usedKeys).map((item, index) => normalizeQuestionOptions(item, `legacy-day-${day}-${index}-${item.question}`));
   }
 
   return bank;
 }
 
-export const DAILY_MCQ_QUESTION_BANK = buildBank();
+export const DAILY_MCQ_QUESTION_BANK = {
+  ...buildBank(),
+  ...OOP_DAILY_QUESTION_BANK,
+};
 
 export function getDailyMcqQuestions(day) {
   return DAILY_MCQ_QUESTION_BANK[day] || [];

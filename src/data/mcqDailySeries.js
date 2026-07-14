@@ -1,5 +1,5 @@
 const DAILY_MCQ_START_DATE = '2026-07-03';
-const DAILY_MCQ_LENGTH = 20;
+const DAILY_MCQ_LENGTH = 40;
 
 const DAILY_MCQ_THEMES = [
   {
@@ -121,6 +121,126 @@ const DAILY_MCQ_THEMES = [
     title: 'Day 20 - Final Mixed Revision',
     summary: 'A balanced last round across C++, DSA, compilers, OS, CPU, and GPU.',
     focus: ['C++', 'DSA', 'compiler', 'OS', 'CPU', 'GPU'],
+  },
+  {
+    topic: "OOP fundamentals",
+    title: "Day 21 - Class and Object Basics",
+    summary: "Classes, objects, members, and the first object lifecycle ideas.",
+    focus: ["class", "object", "members", "constructors"],
+  },
+  {
+    topic: "Access control",
+    title: "Day 22 - Encapsulation and Access Control",
+    summary: "Private, public, protected, and controlled access patterns.",
+    focus: ["encapsulation", "access control", "getters", "setters"],
+  },
+  {
+    topic: "Interfaces",
+    title: "Day 23 - Abstraction and Interfaces",
+    summary: "Abstract classes, pure virtual functions, and API contracts.",
+    focus: ["abstraction", "interfaces", "contracts", "abstract classes"],
+  },
+  {
+    topic: "Inheritance basics",
+    title: "Day 24 - Inheritance and Substitutability",
+    summary: "Base classes, derived classes, and is-a relationships.",
+    focus: ["inheritance", "base class", "derived class", "overriding"],
+  },
+  {
+    topic: "Polymorphism",
+    title: "Day 25 - Polymorphism and Dynamic Dispatch",
+    summary: "Virtual functions, vtables, and runtime binding behavior.",
+    focus: ["polymorphism", "virtual functions", "dynamic binding", "vtable"],
+  },
+  {
+    topic: "Overloading",
+    title: "Day 26 - Overloading and Operator Overload",
+    summary: "Function overloads, operators, and compile-time dispatch.",
+    focus: ["overloading", "operators", "resolution", "compile-time"],
+  },
+  {
+    topic: "Construction",
+    title: "Day 27 - Constructors and Initialization",
+    summary: "Default, parameterized, copy, and delegating constructors.",
+    focus: ["constructors", "initialization", "copying", "delegation"],
+  },
+  {
+    topic: "Destruction",
+    title: "Day 28 - Destructors and Resource Cleanup",
+    summary: "Destructors, RAII, and safe cleanup during stack unwinding.",
+    focus: ["destructors", "RAII", "cleanup", "exceptions"],
+  },
+  {
+    topic: "Object relationships",
+    title: "Day 29 - Composition and Aggregation",
+    summary: "Composition, aggregation, association, and dependency links.",
+    focus: ["composition", "aggregation", "association", "dependency"],
+  },
+  {
+    topic: "Class-level state",
+    title: "Day 30 - Static Members and this",
+    summary: "Shared class state, const member functions, and the this pointer.",
+    focus: ["static members", "this", "const methods", "mutable"],
+  },
+  {
+    topic: "Copy control",
+    title: "Day 31 - Copy Control and Ownership",
+    summary: "Shallow copy, deep copy, and the rule of three versus zero.",
+    focus: ["copy control", "ownership", "copying", "rule of zero"],
+  },
+  {
+    topic: "Move semantics",
+    title: "Day 32 - Move Semantics in Classes",
+    summary: "Move constructors, move assignment, and moved-from states.",
+    focus: ["move constructor", "move assignment", "rvalue references", "noexcept"],
+  },
+  {
+    topic: "Inheritance pitfalls",
+    title: "Day 33 - Multiple Inheritance and Diamond Shapes",
+    summary: "Multiple inheritance, virtual bases, and the diamond problem.",
+    focus: ["multiple inheritance", "virtual inheritance", "diamond problem", "ambiguity"],
+  },
+  {
+    topic: "Polymorphic copying",
+    title: "Day 34 - Abstract Types and Slicing",
+    summary: "Object slicing, runtime type checks, and polymorphic clones.",
+    focus: ["slicing", "runtime type", "factory methods", "clone"],
+  },
+  {
+    topic: "Controlled access",
+    title: "Day 35 - Friends and Controlled Access",
+    summary: "Friend functions, friend classes, and narrow access escapes.",
+    focus: ["friends", "access control", "helpers", "encapsulation"],
+  },
+  {
+    topic: "Static polymorphism",
+    title: "Day 36 - Templates and Static Polymorphism",
+    summary: "Generic programming, CRTP, and compile-time interfaces.",
+    focus: ["templates", "CRTP", "generic programming", "concepts"],
+  },
+  {
+    topic: "Design patterns",
+    title: "Day 37 - Design Patterns in OOP",
+    summary: "Singleton, factory, strategy, observer, and decorator patterns.",
+    focus: ["singleton", "factory", "strategy", "observer"],
+  },
+  {
+    topic: "Design principles",
+    title: "Day 38 - SOLID Principles",
+    summary: "SRP, OCP, LSP, ISP, and DIP for cleaner object design.",
+    focus: ["SRP", "OCP", "LSP", "DIP"],
+  },
+  {
+    topic: "RTTI and casting",
+    title: "Day 39 - RTTI and Safe Casting",
+    summary: "static_cast, dynamic_cast, typeid, and polymorphic checks.",
+    focus: ["RTTI", "casting", "typeid", "safety"],
+  },
+  {
+    topic: "Advanced class design",
+    title: "Day 40 - Pimpl, Lifetime, and Value Semantics",
+    summary: "Pimpl, copy elision, object lifetime, and aggregate initialization.",
+    focus: ["pimpl", "lifetime", "value semantics", "initialization"],
   },
 ];
 

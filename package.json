@@ -12,7 +12,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "clang-flags:generate": "node scripts/generate-clang-flags.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.5.2",
@@ -31,6 +32,7 @@
     "framer-motion": "^11.18.2",
     "js-cookie": "^3.0.5",
     "katex": "^0.16.21",
+    "lucide-react": "^1.24.0",
     "mermaid": "^11.3.0",
     "path": "^0.12.7",
     "prism-react-renderer": "^2.4.0",

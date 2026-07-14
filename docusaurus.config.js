@@ -182,6 +182,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/tools/clang-flags-explorer/',
+            label: 'Clang Flags',
+            position: 'left',
+          },
+          {
             to: '/docs/labs',
             label: 'Labs',
             position: 'left',
