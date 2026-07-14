@@ -80,7 +80,7 @@ This page is the master index for the actual question sets inside CompilerSutra.
 
 ### 🟠 Daily Mixed MCQ Series
 - [Daily Mixed MCQ Series](/docs/mcq/daily)
-- 20 days of mixed practice across C++, DSA, compiler design, OS, CPU, GPU, and systems topics.
+- 40 days of practice across mixed systems topics and OOP concepts.
 
 ## What You’ll Find Here
 
