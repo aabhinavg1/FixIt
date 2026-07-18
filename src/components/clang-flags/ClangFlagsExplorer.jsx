@@ -3,11 +3,27 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import { ChevronRight, Copy, ExternalLink, Layers3, ListFilter, Search, Sparkles } from 'lucide-react';
+import clsx from 'clsx';
+import {
+  BookOpenText,
+  Code2,
+  Copy,
+  ExternalLink,
+  Flame,
+  History,
+  ListFilter,
+  Menu,
+  Monitor,
+  Search,
+  Sparkles,
+  Target,
+  X,
+} from 'lucide-react';
 import SearchBar from './SearchBar';
 import FlagCard from './FlagCard';
 import Badge from './Badge';
 import RelatedFlags from './RelatedFlags';
+import { buildFlagArticlePath } from './flagRoutes';
 import { normalizeText, uniqueValues } from './utils';
 import styles from './clangFlags.module.css';
 
@@ -19,6 +35,7 @@ const RESULT_OVERSCAN = 5;
 const EXAMPLE_QUERIES = ['-O3', '-flto', '-fPIC', '-Weverything', '-fsanitize=address'];
 
 const QUICK_CHIPS = [
+  { label: 'Docs', type: 'landing', value: '/tools/clang-flags/' },
   { label: 'Optimization', type: 'category', value: 'Optimization' },
   { label: 'Warnings', type: 'category', value: 'Warning' },
   { label: 'Debugging', type: 'category', value: 'Debugging' },
@@ -89,7 +106,151 @@ function normalizeIncomingData(data) {
   if (!data || !Array.isArray(data.options)) {
     return { options: [], groups: [] };
   }
-  return data;
+  const optimizedPassText = ' passbuilder instcombine gvn licm looprotate loopvectorize slpvectorizer simplifycfg';
+  const stageTextByCategory = {
+    Optimization: ' optimization llvm ir code generation',
+    Warning: ' diagnostics frontend ast',
+    Sanitizer: ' sanitizer llvm ir code generation',
+    Preprocessor: ' frontend source',
+    Linker: ' linking',
+    Debugging: ' frontend llvm ir',
+    'Code Generation': ' code generation backend assembly',
+    'Target-Specific Code Generation': ' target backend assembly',
+  };
+
+  return {
+    ...data,
+    options: data.options.map((option) => ({
+      ...option,
+      searchText: normalizeText(`${option.searchText || ''}${option.category === 'Optimization' || /^-O/.test(option.flag) ? optimizedPassText : ''}${stageTextByCategory[option.category] || ''}`),
+    })),
+  };
+}
+
+const COMPILER_ICONS = {
+  Clang: Target,
+  GCC: Code2,
+  MSVC: Monitor,
+  Flang: Sparkles,
+  CC1: Copy,
+  Generic: Target,
+};
+
+function compilerTone(name) {
+  const normalized = String(name || '').toLowerCase();
+  if (normalized.includes('clang')) return 'compatibilityBadgeClang';
+  if (normalized.includes('gcc')) return 'compatibilityBadgeGcc';
+  if (normalized.includes('msvc') || normalized.includes('visual')) return 'compatibilityBadgeMsvc';
+  if (normalized.includes('flang')) return 'compatibilityBadgeFlang';
+  if (normalized.includes('cc1')) return 'compatibilityBadgeCc1';
+  return 'compatibilityBadgeGeneric';
+}
+
+function compilerNote(name) {
+  const normalized = String(name || 'Generic');
+  if (normalized === 'Clang') return 'This flag is recognized and documented for Clang.';
+  if (normalized === 'GCC') return 'Closest GCC-compatible behavior, where available.';
+  if (normalized === 'MSVC') return 'Closest MSVC-compatible behavior, where available.';
+  if (normalized === 'Flang') return 'Recognized by Flang compatibility surfaces when relevant.';
+  if (normalized === 'CC1') return 'This option reaches the cc1 layer directly.';
+  return `Compiler support note for ${normalized}.`;
+}
+function compilerBadgeTone(name) {
+  const normalized = String(name || '').toLowerCase();
+  if (normalized.includes('clang')) return 'info';
+  if (normalized.includes('gcc')) return 'success';
+  if (normalized.includes('msvc') || normalized.includes('visual')) return 'danger';
+  if (normalized.includes('flang')) return 'accent';
+  return 'neutral';
+}
+
+
+function buildSupportedTargets(flag) {
+  const names = uniqueValues((flag?.supportedCompilers?.length ? flag.supportedCompilers : ['Clang']).map((item) => String(item)));
+  return names.map((name) => ({
+    name,
+    Icon: COMPILER_ICONS[name] || COMPILER_ICONS.Generic,
+    toneClass: compilerTone(name),
+    badgeTone: compilerBadgeTone(name),
+    note: compilerNote(name),
+  }));
+}
+
+function buildRelatedFlags(flag, options) {
+  if (!flag || !options?.length) {
+    return [];
+  }
+
+  const groupLabel = flag.groupLabel || flag.group;
+  const visibility = new Set(flag.visibility || []);
+
+  return uniqueValues(
+    options
+      .filter((candidate) => candidate.flag !== flag.flag)
+      .map((candidate) => {
+        let score = 0;
+        if (candidate.category === flag.category) score += 4;
+        if (groupLabel && (candidate.groupLabel || candidate.group) === groupLabel) score += 3;
+        if (candidate.kind === flag.kind) score += 2;
+        if ((candidate.visibility || []).some((item) => visibility.has(item))) score += 1;
+        return { candidate, score };
+      })
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score || a.candidate.flag.localeCompare(b.candidate.flag))
+      .slice(0, 6)
+      .map(({ candidate }) => candidate.flag),
+  );
+}
+
+function buildEquivalentRows(flag) {
+  if (!flag) {
+    return [];
+  }
+
+  if (flag.category === 'Optimization' || /^-O/.test(flag.flag)) {
+    return [
+      { compiler: 'Clang', flag: flag.flag, note: 'Primary Clang spelling.' },
+      { compiler: 'GCC', flag: flag.flag, note: 'Comparable GNU optimization mode.' },
+      { compiler: 'MSVC', flag: '/O2', note: 'Closest general release optimization mode.' },
+    ];
+  }
+
+  if (flag.category === 'Warning') {
+    return [
+      { compiler: 'Clang', flag: flag.flag, note: 'Primary Clang warning spelling.' },
+      { compiler: 'GCC', flag: flag.flag, note: 'Many warnings map closely, but not always exactly.' },
+      { compiler: 'MSVC', flag: '/W4 or /WX', note: 'Microsoft warning levels differ from Clang groups.' },
+    ];
+  }
+
+  if (flag.category === 'Sanitizer') {
+    return [
+      { compiler: 'Clang', flag: flag.flag, note: 'Primary Clang sanitizer spelling.' },
+      { compiler: 'GCC', flag: 'varies', note: 'Compatibility depends on the sanitizer and target.' },
+      { compiler: 'MSVC', flag: 'varies', note: 'Support depends on the frontend and runtime model.' },
+    ];
+  }
+
+  return [
+    { compiler: 'Clang', flag: flag.flag, note: 'Native Clang spelling.' },
+    { compiler: 'GCC', flag: 'varies', note: 'Equivalent behavior depends on the target and driver.' },
+    { compiler: 'MSVC', flag: 'varies', note: 'Microsoft compilers use different switch families.' },
+  ];
+}
+
+function buildDocLinks(flag) {
+  if (!flag) {
+    return [];
+  }
+
+  return [
+    { label: 'Open article', href: buildFlagArticlePath(flag.flag), icon: BookOpenText },
+    flag.sourceUrl ? { label: 'View source', href: flag.sourceUrl, icon: ExternalLink, external: true } : null,
+  ].filter(Boolean);
+}
+
+function buildPopularFlags() {
+  return ['-O2', '-O3', '-fPIC', '-flto', '-fsanitize=address', '-Weverything'];
 }
 
 export default function ClangFlagsExplorer() {
@@ -102,6 +263,7 @@ export default function ClangFlagsExplorer() {
   const [recentSearches, setRecentSearches] = useState([]);
   const [resultsScrollTop, setResultsScrollTop] = useState(0);
   const [resultsViewportHeight, setResultsViewportHeight] = useState(0);
+  const [navOpen, setNavOpen] = useState(false);
   const resultsViewportRef = useRef(null);
   const searchInputRef = useRef(null);
   const detailRef = useRef(null);
@@ -166,6 +328,13 @@ export default function ClangFlagsExplorer() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
+  useEffect(() => {
+    const sync = () => setNavOpen(window.innerWidth >= 1024);
+    sync();
+    window.addEventListener('resize', sync);
+    return () => window.removeEventListener('resize', sync);
+  }, []);
+
   const options = data?.options ?? [];
   const optionByFlag = useMemo(() => new Map(options.map((option) => [option.flag, option])), [options]);
   const categories = useMemo(() => filterCategories(options), [options]);
@@ -227,6 +396,11 @@ export default function ClangFlagsExplorer() {
       return;
     }
 
+    if (item.action === 'landing') {
+      window.location.assign(item.value);
+      return;
+    }
+
     if (item.action === 'category') {
       setFilters({ category: item.value, kind: 'all', visibility: 'all' });
       setQuery('');
@@ -243,6 +417,11 @@ export default function ClangFlagsExplorer() {
   };
 
   const handleQuickChip = (chip) => {
+    if (chip.type === 'landing') {
+      window.location.assign(chip.value);
+      return;
+    }
+
     if (chip.type === 'category') {
       setFilters({ category: chip.value, kind: 'all', visibility: 'all' });
       setQuery('');
@@ -294,6 +473,12 @@ export default function ClangFlagsExplorer() {
   const topSpacer = visibleStart * RESULT_ROW_HEIGHT;
   const bottomSpacer = Math.max(0, filteredOptions.length - visibleEnd) * RESULT_ROW_HEIGHT;
 
+  const selectedSupport = useMemo(() => buildSupportedTargets(selectedOption), [selectedOption]);
+  const relatedFlags = useMemo(() => buildRelatedFlags(selectedOption, options), [selectedOption, options]);
+  const equivalentRows = useMemo(() => buildEquivalentRows(selectedOption), [selectedOption]);
+  const docLinks = useMemo(() => buildDocLinks(selectedOption), [selectedOption]);
+  const popularFlags = useMemo(() => buildPopularFlags(), []);
+
   const introBadges = [
     `${stats.total.toLocaleString()} flags`,
     `${stats.categoryCount} categories`,
@@ -302,6 +487,7 @@ export default function ClangFlagsExplorer() {
 
   const navigationItems = [
     { label: 'Search', action: 'focus', icon: Search, count: 0 },
+    { label: 'Doc Landing', action: 'landing', value: '/tools/clang-flags/', count: 0 },
     { label: 'Optimization', action: 'category', value: 'Optimization', count: options.filter((option) => option.category === 'Optimization').length },
     { label: 'Warnings', action: 'category', value: 'Warning', count: options.filter((option) => option.category === 'Warning').length },
     { label: 'Sanitizers', action: 'category', value: 'Sanitizer', count: options.filter((option) => option.category === 'Sanitizer').length },
@@ -314,29 +500,6 @@ export default function ClangFlagsExplorer() {
     { label: 'Experimental', action: 'category', value: 'Experimental', count: options.filter((option) => option.category === 'Experimental').length },
     { label: 'Deprecated', action: 'category', value: 'Deprecated', count: options.filter((option) => option.category === 'Deprecated').length },
   ];
-
-  const compatibilityBadges = selectedOption?.supportedCompilers?.length ? selectedOption.supportedCompilers : ['Clang'];
-  const sidebarGroups = selectedOption
-    ? [
-        { title: 'Aliases', flags: uniqueValues([selectedOption.aliasTargetFlag, selectedOption.alias].filter(Boolean)) },
-        { title: 'Opposite', flags: uniqueValues([selectedOption.negatedOption].filter(Boolean)) },
-        { title: 'Frequently Used Together', flags: (selectedOption.relatedFlags || []).slice(0, 4) },
-        { title: 'Alternative', flags: (selectedOption.relatedFlags || []).slice(4, 8) },
-      ].filter((group) => group.flags.length)
-    : [];
-
-
-  const handleCopyCommand = async () => {
-    if (!selectedOption?.exampleClang) {
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(selectedOption.exampleClang);
-    } catch {
-      // No-op: the UI remains unchanged if clipboard access is denied.
-    }
-  };
 
   return (
     <Layout
@@ -353,41 +516,26 @@ export default function ClangFlagsExplorer() {
       <main className={styles.pageShell}>
         <header className={styles.topBar}>
           <div className={styles.brandRow}>
-            <Link className={styles.brandLink} to="/">
-              CompilerSutra
-            </Link>
-            <span className={styles.brandDivider} />
-            <Link className={styles.brandLinkMuted} to="/docs/llvm/">
-              LLVM
-            </Link>
-            <ChevronRight size={14} strokeWidth={2} className={styles.topBarChevron} />
-            <span className={styles.brandCurrent}>Flags Explorer</span>
+            <Link className={styles.brandLink} to="/">CompilerSutra</Link>
+            <span className={styles.brandDivider}>/</span>
+            <Link className={styles.brandLinkMuted} to="/tools/clang-flags/">Clang Flags</Link>
+            <span className={styles.brandDivider}>/</span>
+            <span className={styles.brandCurrent}>Explorer</span>
           </div>
-
           <div className={styles.topBarMeta}>
-            <span className={styles.topBarHint}>
-              <Search size={14} strokeWidth={2} />
-              Press / to focus search
-            </span>
-            <span className={styles.topBarHint}>
-              <Layers3 size={14} strokeWidth={2} />
-              TableGen-derived data
-            </span>
+            <span className={styles.topBarHint}><Sparkles size={14} strokeWidth={2} /> LLVM snapshot</span>
+            <span className={styles.topBarHint}><Search size={14} strokeWidth={2} /> Search-first layout</span>
           </div>
         </header>
 
-        <section className={styles.heroPanel}>
-          <div className={styles.heroCopy}>
-            <div className={styles.heroEyebrow}>
-              <Sparkles size={13} strokeWidth={2} />
-              <span>Developer-first compiler reference</span>
-            </div>
-            <h1 className={styles.heroTitle}>Clang Flags Explorer</h1>
-            <p className={styles.heroSubtitle}>
+        <section className={styles.articleHero}>
+          <div className={styles.articleHeroCopy}>
+            <h1 className={styles.articleHeroTitle}>Clang Flags Explorer</h1>
+            <p className={styles.articleHeroSummary}>
               Search compiler flags extracted from LLVM TableGen, inspect the flag immediately, and trace how it
               moves from option definition to compiler pipeline.
             </p>
-            <div className={styles.heroMetaRow}>
+            <div className={styles.heroBadgeRow}>
               {introBadges.map((label) => (
                 <Badge key={label} tone="info" className={styles.heroPill}>
                   {label}
@@ -431,64 +579,81 @@ export default function ClangFlagsExplorer() {
 
         <section className={styles.workspace}>
           <aside className={styles.leftSidebar}>
-            <section className={styles.sidebarPanel}>
-              <div className={styles.sidebarHeader}>
-                <div>
-                  <div className={styles.sidebarKicker}>Compiler Navigation</div>
-                  <h2 className={styles.sidebarTitle}>Jump into a compiler area</h2>
-                </div>
-              </div>
-              <div className={styles.sidebarNav}>
-                {navigationItems.map((item) => {
-                  const active =
-                    item.action === 'focus'
-                      ? false
-                      : item.action === 'category'
-                        ? filters.category === item.value
-                        : item.action === 'visibility'
-                          ? filters.visibility === item.value
-                          : normalizeText(query) === normalizeText(item.value);
-                  return (
-                    <button
-                      key={item.label}
-                      type="button"
-                      className={active ? styles.sidebarNavButtonActive : styles.sidebarNavButton}
-                      onClick={() => handleSidebarSelect(item)}
-                    >
-                      <span className={styles.sidebarNavLabel}>{item.label}</span>
-                      <span className={styles.sidebarNavCount}>{item.count.toLocaleString()}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
+            <button
+              type="button"
+              className={styles.sidebarToggle}
+              onClick={() => setNavOpen((current) => !current)}
+              aria-expanded={navOpen}
+              aria-controls="clang-flags-navigation"
+            >
+              {navOpen ? <X size={14} strokeWidth={2} /> : <Menu size={14} strokeWidth={2} />}
+              <span>Navigation</span>
+              <span className={styles.sidebarToggleState}>{navOpen ? 'Hide' : 'Show'}</span>
+            </button>
 
-            <section className={styles.sidebarPanel}>
-              <div className={styles.sidebarHeader}>
-                <div>
-                  <div className={styles.sidebarKicker}>Current Scope</div>
-                  <h2 className={styles.sidebarTitle}>Filter summary</h2>
+            <div
+              id="clang-flags-navigation"
+              className={clsx(styles.sidebarDrawer, navOpen ? styles.sidebarDrawerOpen : styles.sidebarDrawerClosed)}
+            >
+              <section className={styles.sidebarPanel}>
+                <div className={styles.sidebarHeader}>
+                  <div>
+                    <div className={styles.sidebarKicker}>Compiler Navigation</div>
+                    <h2 className={styles.sidebarTitle}>Jump into a compiler area</h2>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.sidebarMetaList}>
-                <div>
-                  <div className={styles.metaLabel}>Matches</div>
-                  <div className={styles.sidebarMetaValue}>{stats.visible.toLocaleString()}</div>
+                <div className={styles.sidebarNav}>
+                  {navigationItems.map((item) => {
+                    const active =
+                      item.action === 'focus'
+                        ? false
+                        : item.action === 'category'
+                          ? filters.category === item.value
+                          : item.action === 'visibility'
+                            ? filters.visibility === item.value
+                            : normalizeText(query) === normalizeText(item.value);
+                    return (
+                      <button
+                        key={item.label}
+                        type="button"
+                        className={active ? styles.sidebarNavButtonActive : styles.sidebarNavButton}
+                        onClick={() => handleSidebarSelect(item)}
+                      >
+                        <span className={styles.sidebarNavLabel}>{item.label}</span>
+                        <span className={styles.sidebarNavCount}>{item.count.toLocaleString()}</span>
+                      </button>
+                    );
+                  })}
                 </div>
-                <div>
-                  <div className={styles.metaLabel}>Category</div>
-                  <div className={styles.sidebarMetaValue}>{filters.category === 'all' ? 'All' : filters.category}</div>
+              </section>
+
+              <section className={styles.sidebarPanel}>
+                <div className={styles.sidebarHeader}>
+                  <div>
+                    <div className={styles.sidebarKicker}>Current Scope</div>
+                    <h2 className={styles.sidebarTitle}>Filter summary</h2>
+                  </div>
                 </div>
-                <div>
-                  <div className={styles.metaLabel}>Kind</div>
-                  <div className={styles.sidebarMetaValue}>{filters.kind === 'all' ? 'All' : filters.kind}</div>
+                <div className={styles.sidebarMetaList}>
+                  <div>
+                    <div className={styles.metaLabel}>Matches</div>
+                    <div className={styles.sidebarMetaValue}>{stats.visible.toLocaleString()}</div>
+                  </div>
+                  <div>
+                    <div className={styles.metaLabel}>Category</div>
+                    <div className={styles.sidebarMetaValue}>{filters.category === 'all' ? 'All' : filters.category}</div>
+                  </div>
+                  <div>
+                    <div className={styles.metaLabel}>Kind</div>
+                    <div className={styles.sidebarMetaValue}>{filters.kind === 'all' ? 'All' : filters.kind}</div>
+                  </div>
+                  <div>
+                    <div className={styles.metaLabel}>Visibility</div>
+                    <div className={styles.sidebarMetaValue}>{filters.visibility === 'all' ? 'All' : filters.visibility}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className={styles.metaLabel}>Visibility</div>
-                  <div className={styles.sidebarMetaValue}>{filters.visibility === 'all' ? 'All' : filters.visibility}</div>
-                </div>
-              </div>
-            </section>
+              </section>
+            </div>
           </aside>
 
           <main className={styles.mainColumn}>
@@ -542,106 +707,147 @@ export default function ClangFlagsExplorer() {
           </main>
 
           <aside className={styles.rightSidebar}>
-            <section className={styles.sidebarPanel}>
-              <div className={styles.sidebarHeader}>
-                <div>
-                  <div className={styles.sidebarKicker}>Compiler Compatibility</div>
-                  <h2 className={styles.sidebarTitle}>Supported targets</h2>
-                </div>
-              </div>
-              <div className={styles.compatibilityBadges}>
-                {compatibilityBadges.map((compiler) => (
-                  <Badge key={compiler} tone="info">
-                    {compiler}
-                  </Badge>
-                ))}
-              </div>
-              <div className={styles.sidebarMetaList}>
-                <div>
-                  <div className={styles.metaLabel}>Kind</div>
-                  <div className={styles.sidebarMetaValue}>{selectedOption?.kind || 'None'}</div>
-                </div>
-                <div>
-                  <div className={styles.metaLabel}>Argument</div>
-                  <div className={styles.sidebarMetaValue}>{selectedOption?.takesArgument ? 'Yes' : 'No'}</div>
-                </div>
-                <div>
-                  <div className={styles.metaLabel}>Driver</div>
-                  <div className={styles.sidebarMetaValue}>{selectedOption?.driver ? 'Yes' : 'No'}</div>
-                </div>
-                <div>
-                  <div className={styles.metaLabel}>CC1</div>
-                  <div className={styles.sidebarMetaValue}>{selectedOption?.cc1 ? 'Yes' : 'No'}</div>
-                </div>
-              </div>
-            </section>
+            {selectedOption ? (
+              <>
+                <section className={clsx(styles.sidebarPanel, styles.supportedTargetsPanel)}>
+                  <div className={styles.sidebarHeader}>
+                    <div>
+                      <div className={styles.sidebarKicker}>Compiler Support</div>
+                      <h2 className={styles.supportedTargetsTitle}>Supported targets</h2>
+                    </div>
+                  </div>
+                  <p className={styles.supportedTargetsHint}>
+                    Recognized compiler families for this flag.
+                  </p>
+                  <div className={styles.compatibilityBadges}>
+                    {selectedSupport.map(({ name, Icon, badgeTone, toneClass, note }) => (
+                      <Badge
+                        key={name}
+                        tone={badgeTone}
+                        className={clsx(styles.compatibilityBadge, styles[toneClass])}
+                        title={note}
+                      >
+                        <Icon size={13} strokeWidth={2} className={styles.compatibilityBadgeIcon} />
+                        <span>{name}</span>
+                      </Badge>
+                    ))}
+                  </div>
+                </section>
 
-            {sidebarGroups.length > 0 ? (
+                <section className={styles.sidebarPanel}>
+                  <div className={styles.sidebarHeader}>
+                    <div>
+                      <div className={styles.sidebarKicker}>Related Flags</div>
+                      <h2 className={styles.sidebarTitle}>Close matches</h2>
+                    </div>
+                  </div>
+                  <RelatedFlags flags={relatedFlags} />
+                </section>
+
+                <section className={styles.sidebarPanel}>
+                  <div className={styles.sidebarHeader}>
+                    <div>
+                      <div className={styles.sidebarKicker}>Compiler Equivalents</div>
+                      <h2 className={styles.sidebarTitle}>GCC / MSVC</h2>
+                    </div>
+                  </div>
+                  <div className={styles.sidebarGroups}>
+                    {equivalentRows.map((row) => (
+                      <div key={`${row.compiler}-${row.flag}`} className={styles.sidebarGroup}>
+                        <div className={styles.sidebarGroupTitle}>{row.compiler}</div>
+                        <div className={styles.sidebarMetaValue}>{row.flag}</div>
+                        <p className={styles.supportedTargetsHint}>{row.note}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className={styles.sidebarPanel}>
+                  <div className={styles.sidebarHeader}>
+                    <div>
+                      <div className={styles.sidebarKicker}>Documentation Links</div>
+                      <h2 className={styles.sidebarTitle}>Quick actions</h2>
+                    </div>
+                  </div>
+                  <div className={styles.sidebarActions}>
+                    {docLinks.map((link) => {
+                      const Icon = link.icon;
+                      return link.external ? (
+                        <a key={link.label} className={styles.sidebarActionButton} href={link.href} target="_blank" rel="noreferrer">
+                          <Icon size={14} strokeWidth={2} />
+                          <span>{link.label}</span>
+                        </a>
+                      ) : (
+                        <Link key={link.label} className={styles.sidebarActionButton} to={link.href}>
+                          <Icon size={14} strokeWidth={2} />
+                          <span>{link.label}</span>
+                        </Link>
+                      );
+                    })}
+                    <button
+                      type="button"
+                      className={styles.sidebarActionButton}
+                      onClick={() => {
+                        if (selectedOption?.flag && navigator?.clipboard?.writeText) {
+                          navigator.clipboard.writeText(selectedOption.flag).catch(() => {});
+                        }
+                      }}
+                    >
+                      <Copy size={14} strokeWidth={2} />
+                      <span>Copy flag</span>
+                    </button>
+                  </div>
+                </section>
+
+                <section className={styles.sidebarPanel}>
+                  <div className={styles.sidebarHeader}>
+                    <div>
+                      <div className={styles.sidebarKicker}>Recently Viewed</div>
+                      <h2 className={styles.sidebarTitle}>Flags you opened</h2>
+                    </div>
+                  </div>
+                  {recentSearches.length ? (
+                    <div className={styles.sidebarRecentList}>
+                      {recentSearches.map((flag) => (
+                        <button key={flag} type="button" className={styles.sidebarRecentItem} onClick={() => handleSelectFlag(flag)}>
+                          {flag}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className={styles.supportedTargetsHint}>Recently viewed flags will appear here once you open them.</p>
+                  )}
+                </section>
+              </>
+            ) : (
               <section className={styles.sidebarPanel}>
                 <div className={styles.sidebarHeader}>
                   <div>
-                    <div className={styles.sidebarKicker}>Related Flags</div>
-                    <h2 className={styles.sidebarTitle}>Context</h2>
+                    <div className={styles.sidebarKicker}>Quick panel</div>
+                    <h2 className={styles.sidebarTitle}>Pick a flag</h2>
                   </div>
                 </div>
-                <div className={styles.sidebarGroups}>
-                  {sidebarGroups.map((group) => (
-                    <div key={group.title} className={styles.sidebarGroup}>
-                      <div className={styles.sidebarGroupTitle}>{group.title}</div>
-                      <RelatedFlags flags={group.flags} onPickFlag={handleSelectFlag} />
-                    </div>
-                  ))}
-                </div>
+                <p className={styles.supportedTargetsHint}>Select a flag from the results to populate compiler support, equivalents, and quick actions.</p>
               </section>
-            ) : null}
+            )}
 
             <section className={styles.sidebarPanel}>
               <div className={styles.sidebarHeader}>
                 <div>
-                  <div className={styles.sidebarKicker}>Recent Searches</div>
-                  <h2 className={styles.sidebarTitle}>Visited flags</h2>
+                  <div className={styles.sidebarKicker}>Popular Flags</div>
+                  <h2 className={styles.sidebarTitle}>Quick picks</h2>
                 </div>
               </div>
-              {recentSearches.length > 0 ? (
-                <div className={styles.sidebarRecentList}>
-                  {recentSearches.map((item) => (
-                    <button key={item} type="button" className={styles.sidebarRecentItem} onClick={() => handleSelectFlag(item)}>
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <p className={styles.emptyInline}>Flags you open will appear here.</p>
-              )}
-            </section>
-
-            <section className={styles.sidebarPanel}>
-              <div className={styles.sidebarHeader}>
-                <div>
-                  <div className={styles.sidebarKicker}>Quick Actions</div>
-                  <h2 className={styles.sidebarTitle}>Command surface</h2>
-                </div>
-              </div>
-              <div className={styles.sidebarActions}>
-                <button type="button" className={styles.sidebarActionButton} onClick={handleCopyCommand} disabled={!selectedOption}>
-                  <Copy size={14} strokeWidth={2} />
-                  <span>Copy command</span>
-                </button>
-                {selectedOption?.sourceUrl ? (
-                  <Link className={styles.sidebarActionButton} href={selectedOption.sourceUrl} target="_blank" rel="noreferrer">
-                    <ExternalLink size={14} strokeWidth={2} />
-                    <span>Open source</span>
-                  </Link>
-                ) : null}
-                {selectedOption?.sourceUrl ? (
-                  <Link className={styles.sidebarActionButton} href={selectedOption.sourceUrl} target="_blank" rel="noreferrer">
-                    <ExternalLink size={14} strokeWidth={2} />
-                    <span>GitHub</span>
-                  </Link>
-                ) : null}
+              <div className={styles.sidebarRecentList}>
+                {popularFlags.map((flag) => (
+                  <button key={flag} type="button" className={styles.sidebarRecentItem} onClick={() => handleQuickChip({ type: 'query', value: flag })}>
+                    {flag}
+                  </button>
+                ))}
               </div>
             </section>
           </aside>
+
         </section>
       </main>
     </Layout>

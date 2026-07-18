@@ -15,6 +15,10 @@ const FloatingWhatsApp = lazy(() => import("@site/src/components/FloatingWhatsAp
 export default function Layout(props) {
   const location = useLocation();
   const isReaderRoute = location.pathname.startsWith("/library/read");
+  const isClangFlagsArticleRoute =
+    location.pathname.startsWith("/tools/clang-flags/") &&
+    location.pathname !== "/tools/clang-flags/" &&
+    location.pathname !== "/tools/clang-flags-explorer/";
   const { siteConfig } = useDocusaurusContext();
   const siteUrl = siteConfig.url.replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}${location.pathname}`;
@@ -83,6 +87,7 @@ export default function Layout(props) {
         {...props}
         noNavbar={isReaderRoute || props.noNavbar}
         noFooter={isReaderRoute || props.noFooter}
+        wrapperClassName={isClangFlagsArticleRoute ? "clang-flags-article-layout" : props.wrapperClassName}
       />
       <SpeedInsights />
       {!isReaderRoute && (

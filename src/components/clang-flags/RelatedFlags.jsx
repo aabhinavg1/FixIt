@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from '@docusaurus/Link';
 import { ArrowRight } from 'lucide-react';
+import { buildFlagArticlePath } from './flagRoutes';
 import styles from './clangFlags.module.css';
 
 export default function RelatedFlags({ flags, onPickFlag }) {
@@ -10,15 +12,10 @@ export default function RelatedFlags({ flags, onPickFlag }) {
   return (
     <div className={styles.relatedWrap}>
       {flags.map((flag) => (
-        <button
-          key={flag}
-          type="button"
-          className={styles.relatedChip}
-          onClick={() => onPickFlag(flag, { clearFilters: true })}
-        >
+        <Link key={flag} to={buildFlagArticlePath(flag)} className={styles.relatedChip}>
           <ArrowRight size={13} strokeWidth={2} />
           <span>{flag}</span>
-        </button>
+        </Link>
       ))}
     </div>
   );
