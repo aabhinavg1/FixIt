@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
+import { buildFlagArticlePath } from './flagRoutes';
 import { BookOpenText, Check, Code2, ExternalLink, FileText, Layers3, ShieldAlert, Clock3 } from 'lucide-react';
 import Badge from './Badge';
 import CodeBlock from './CodeBlock';
@@ -200,6 +201,7 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
   }
 
   const summary = flag.help || flag.documentation || 'No help text available.';
+  const articleHref = buildFlagArticlePath(flag.flag);
   const titleParts = splitHighlightedText(flag.flag, query);
   const badges = [
     flag.category,
@@ -214,10 +216,9 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
 
   if (mode === 'compact') {
     return (
-      <button
-        type="button"
+      <Link
+        to={articleHref}
         className={clsx(styles.flagCard, styles.flagCardCompact, styles.flagCardButton, selected && styles.flagCardSelected)}
-        onClick={() => onPickFlag(flag)}
       >
         <div className={styles.flagCardTop}>
           <div className={styles.flagCardTitleBlock}>
@@ -259,7 +260,7 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
           <span className={styles.sourceText}>{sourceLabel}</span>
           <span className={styles.flagCardLink}>View</span>
         </div>
-      </button>
+      </Link>
     );
   }
 
@@ -275,15 +276,17 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
             ))}
           </div>
           <h2 className={styles.flagTitle}>
-            {titleParts.map((part, index) =>
-              part.highlighted ? (
-                <mark key={index} className={styles.searchMark}>
-                  {part.text}
-                </mark>
-              ) : (
-                <span key={index}>{part.text}</span>
-              ),
-            )}
+            <Link to={articleHref} className={styles.flagTitleLink}>
+              {titleParts.map((part, index) =>
+                part.highlighted ? (
+                  <mark key={index} className={styles.searchMark}>
+                    {part.text}
+                  </mark>
+                ) : (
+                  <span key={index}>{part.text}</span>
+                ),
+              )}
+            </Link>
           </h2>
           <p className={styles.flagSummary}>{summary}</p>
         </div>
