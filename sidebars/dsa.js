@@ -7,11 +7,11 @@ const dsa = {
       items: [
         {
           type: 'doc',
-          id: 'DSA/foundations/index',
+          id: 'dsa/foundations/index',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/what-is-dsa',
+          id: 'dsa/foundations/what-is-dsa',
         },
         {
           type: 'link',
@@ -32,39 +32,39 @@ const dsa = {
       items: [
         {
           type: 'doc',
-          id: 'DSA/foundations/data',
+          id: 'dsa/foundations/data',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/algorithm',
+          id: 'dsa/foundations/algorithm',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/arrays',
+          id: 'dsa/foundations/arrays',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/strings',
+          id: 'dsa/foundations/strings',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/searching',
+          id: 'dsa/foundations/searching',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/sorting',
+          id: 'dsa/foundations/sorting',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/stack-and-queue',
+          id: 'dsa/foundations/stack-and-queue',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/connected-data',
+          id: 'dsa/foundations/connected-data',
         },
         {
           type: 'doc',
-          id: 'DSA/foundations/hash-map-and-complexity',
+          id: 'dsa/foundations/hash-map-and-complexity',
         },
       ],
     },
