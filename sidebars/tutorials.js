@@ -301,6 +301,37 @@ const tutorials = {
           items: [
             'tvm/basics/installation',
             'tvm/basics/first-model',
+            'tvm/basics/autotuning',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Intermediate',
+          collapsed: true,
+          items: [
+            'tvm/intermediate/relay',
+            'tvm/intermediate/graph-optimizations',
+            'tvm/intermediate/schedule-tuning',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Deployment',
+          collapsed: true,
+          items: [
+            'tvm/deployment/runtime',
+            'tvm/deployment/cloud',
+            'tvm/deployment/edge',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced',
+          collapsed: true,
+          items: [
+            'tvm/advanced/meta-scheduler',
+            'tvm/advanced/custom-pass',
+            'tvm/advanced/hardware-targets',
           ],
         },
       ],
