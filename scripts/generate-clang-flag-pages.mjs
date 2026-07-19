@@ -54,7 +54,7 @@ import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
 function main() {
   const dataset = loadFlags();
   const flags = dataset.options;
-  fs.rmSync(targetDir, { recursive: true, force: true });
+  try { fs.rmSync(targetDir, { recursive: true, force: true }); } catch(e) {}
   fs.mkdirSync(targetDir, { recursive: true });
 
   for (const flag of flags) {

@@ -25,6 +25,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/aabhinavg1/FixIt/edit/main/',
+          tags: false,
         },
         sitemap: {
           ignorePatterns: [
