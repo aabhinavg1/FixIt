@@ -7,21 +7,21 @@ const dsa = {
       items: [
         {
           type: 'doc',
-          id: 'dsa/foundations/index',
+          id: 'DSA/foundations/index',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/what-is-dsa',
+          id: 'DSA/foundations/what-is-dsa',
         },
         {
           type: 'link',
           label: 'DSA Master Index',
-          href: '/dsa/',
+          href: '/DSA/',
         },
         {
           type: 'link',
           label: 'Roadmap',
-          href: '/dsa/roadmap/',
+          href: '/DSA/roadmap/',
         },
       ],
     },
@@ -32,39 +32,39 @@ const dsa = {
       items: [
         {
           type: 'doc',
-          id: 'dsa/foundations/data',
+          id: 'DSA/foundations/data',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/algorithm',
+          id: 'DSA/foundations/algorithm',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/arrays',
+          id: 'DSA/foundations/arrays',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/strings',
+          id: 'DSA/foundations/strings',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/searching',
+          id: 'DSA/foundations/searching',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/sorting',
+          id: 'DSA/foundations/sorting',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/stack-and-queue',
+          id: 'DSA/foundations/stack-and-queue',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/connected-data',
+          id: 'DSA/foundations/connected-data',
         },
         {
           type: 'doc',
-          id: 'dsa/foundations/hash-map-and-complexity',
+          id: 'DSA/foundations/hash-map-and-complexity',
         },
       ],
     },
@@ -76,37 +76,37 @@ const dsa = {
         {
           type: 'link',
           label: 'Binary Math',
-          href: '/dsa/binary-math/',
+          href: '/DSA/binary-math/',
         },
         {
           type: 'link',
           label: 'Mathematics',
-          href: '/dsa/mathematics/',
+          href: '/DSA/mathematics/',
         },
         {
           type: 'link',
           label: 'Complexity',
-          href: '/dsa/complexity/',
+          href: '/DSA/complexity/',
         },
         {
           type: 'link',
           label: 'Arrays',
-          href: '/dsa/arrays/',
+          href: '/DSA/arrays/',
         },
         {
           type: 'link',
           label: 'Binary Search',
-          href: '/dsa/binary-search/',
+          href: '/DSA/binary-search/',
         },
         {
           type: 'link',
           label: 'Hashing',
-          href: '/dsa/hashing/',
+          href: '/DSA/hashing/',
         },
         {
           type: 'link',
           label: 'Algorithms',
-          href: '/dsa/algorithms/',
+          href: '/DSA/algorithms/',
         },
       ],
     },
@@ -118,22 +118,22 @@ const dsa = {
         {
           type: 'link',
           label: 'Problem Solving',
-          href: '/dsa/problem-solving/',
+          href: '/DSA/problem-solving/',
         },
         {
           type: 'link',
           label: 'Practice',
-          href: '/dsa/practice/',
+          href: '/DSA/practice/',
         },
         {
           type: 'link',
           label: 'Visual Learning',
-          href: '/dsa/visual-learning/',
+          href: '/DSA/visual-learning/',
         },
         {
           type: 'link',
           label: 'Domain Usage',
-          href: '/dsa/domain-applications/',
+          href: '/DSA/domain-applications/',
         },
       ],
     },
