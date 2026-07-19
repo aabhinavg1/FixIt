@@ -1,0 +1,518 @@
+{
+  "id": "x86-sysv",
+  "name": "x86 System V ABI",
+  "architecture": "x86",
+  "convention": "System V",
+  "target": "i386-unknown-linux-gnu",
+  "version": "1.0",
+  "category": "calling-convention",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 32,
+    "wordSize": 32,
+    "endianness": "little-endian",
+    "abiName": "System V ABI for i386",
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "downward",
+    "alignment": 4,
+    "redZone": false,
+    "dynamicAlignment": false,
+    "notes": "Default stack alignment is 4 bytes (natural alignment for 32-bit). When SSE types are used, the ABI requires 16-byte alignment at function entry points. The stack grows downward; pushes decrement ESP, and local variables are allocated by subtracting from ESP. There is no red zone — the area below ESP is not guaranteed to be preserved across signal handlers or interrupts."
+  },
+  "callingConvention": {
+    "name": "cdecl (System V i386)",
+    "argumentRegisters": [],
+    "returnRegisters": ["EAX", "ST(0)"],
+    "callerSaved": ["EAX", "ECX", "EDX", "ST(1)", "ST(2)", "ST(3)", "ST(4)", "ST(5)", "ST(6)", "ST(7)"],
+    "calleeSaved": ["EBX", "EBP", "ESI", "EDI"],
+    "variadicRules": "All arguments are passed on the stack, which makes variadic functions simple: va_list is just a pointer into the stack frame. The caller pushes arguments right-to-left and the callee accesses them via offsets from the stack pointer. The <stdarg.h> implementation is straightforward — va_list is typically defined as char*. There is no fixed argument register to save, unlike x86_64.",
+    "tailCallSupport": "Possible via EAX register and stack cleanup by caller, but the callee cannot easily perform tail calls because the stack frame is cleaned up by the caller (cdecl). The caller adjusts ESP after the call returns, so if the callee were to jump to another function, the stack would be in an inconsistent state unless the callee itself pops the arguments — which changes the convention.",
+    "shadowSpace": 0,
+    "aggregatePassing": "Structs and aggregates up to 8 bytes are passed directly in integer registers if registers are available, but since the i386 System V ABI uses zero integer argument registers, ALL aggregates — regardless of size — are passed entirely on the stack. They are pushed as a contiguous sequence of 4-byte words. Aggregates larger than a single word are copied onto the stack, with each 4-byte chunk occupying one stack slot. The caller is responsible for pushing the entire aggregate.",
+    "simdRules": "XMM registers (XMM0–XMM7) can be used for floating-point and SSE argument passing in the i386 GNU/Linux convention, but their use is optional and primarily at the compiler's discretion for optimized code. The traditional ABI passes all floating-point arguments on the stack. When XMM registers are used for argument passing, the compiler follows register allocation heuristics, but this is not mandated by the base ABI."
+  },
+  "registers": [
+    {
+      "name": "EAX",
+      "width": 32,
+      "purpose": "Accumulator and return value register",
+      "aliases": ["AX", "AH", "AL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "EBX",
+      "width": 32,
+      "purpose": "General purpose (base register), callee-saved",
+      "aliases": ["BX", "BH", "BL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "ECX",
+      "width": 32,
+      "purpose": "Counter register for loops and string operations",
+      "aliases": ["CX", "CH", "CL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "EDX",
+      "width": 32,
+      "purpose": "Data register, used in multiply/divide and I/O",
+      "aliases": ["DX", "DH", "DL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "ESI",
+      "width": 32,
+      "purpose": "Source index for string operations, callee-saved",
+      "aliases": ["SI", "SIL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "EDI",
+      "width": 32,
+      "purpose": "Destination index for string operations, callee-saved",
+      "aliases": ["DI", "DIL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GR32",
+      "special": false
+    },
+    {
+      "name": "EBP",
+      "width": 32,
+      "purpose": "Frame pointer, points to the base of the current stack frame",
+      "aliases": ["BP", "BPL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GR32",
+      "special": true
+    },
+    {
+      "name": "ESP",
+      "width": 32,
+      "purpose": "Stack pointer, points to the top of the stack",
+      "aliases": ["SP", "SPL"],
+      "callerCallee": "special (callee-saved, but managed implicitly)",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GR32",
+      "special": true
+    },
+    {
+      "name": "EFLAGS",
+      "width": 32,
+      "purpose": "Status flags (ZF, CF, SF, OF, etc.)",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "flags",
+      "llvmRegisterClass": "CCR",
+      "special": true
+    },
+    {
+      "name": "ST(0)",
+      "width": 80,
+      "purpose": "x87 FPU stack top, used for floating-point return value and argument passing",
+      "aliases": ["ST0", "FP0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": "st(0)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(1)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #1",
+      "aliases": ["ST1", "FP1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(1)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(2)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #2",
+      "aliases": ["ST2", "FP2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(2)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(3)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #3",
+      "aliases": ["ST3", "FP3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(3)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(4)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #4",
+      "aliases": ["ST4", "FP4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(4)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(5)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #5",
+      "aliases": ["ST5", "FP5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(5)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(6)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #6",
+      "aliases": ["ST6", "FP6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(6)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "ST(7)",
+      "width": 80,
+      "purpose": "x87 FPU stack register #7 (bottom of FPU stack)",
+      "aliases": ["ST7", "FP7"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "st(7)",
+      "llvmRegisterClass": "RST",
+      "special": false
+    },
+    {
+      "name": "XMM0",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments and return values",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "xmm0",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM1",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": "xmm1",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM2",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "xmm2",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM3",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "xmm3",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM4",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "xmm4",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM5",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "xmm5",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM6",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "xmm6",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM7",
+      "width": 128,
+      "purpose": "SSE vector register, used for floating-point/SSE arguments",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "xmm7",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "arguments",
+        "label": "Incoming Arguments",
+        "color": "#4CAF50",
+        "description": "Arguments passed by the caller, located at positive offsets from EBP (or above ESP after the callee's prologue). Pushed right-to-left by the caller. The first argument is at [EBP+8] when EBP is used as the frame pointer."
+      },
+      {
+        "region": "return-address",
+        "label": "Return Address",
+        "color": "#FF9800",
+        "description": "The 4-byte return address pushed onto the stack by the CALL instruction. Located at [EBP+4] when EBP is the frame pointer."
+      },
+      {
+        "region": "saved-ebp",
+        "label": "Saved EBP",
+        "color": "#F44336",
+        "description": "The caller's frame pointer (EBP) saved by the callee in the function prologue. Located at [EBP+0]. Part of the standard frame pointer chain for stack unwinding and debugging."
+      },
+      {
+        "region": "local-variables",
+        "label": "Local Variables",
+        "color": "#2196F3",
+        "description": "Compiler-allocated space for local variables, located at negative offsets from EBP (e.g., [EBP-4], [EBP-8]). Includes automatic variables, arrays, and structs. Space is allocated by subtracting from ESP in the prologue."
+      },
+      {
+        "region": "saved-registers",
+        "label": "Saved Callee-Saved Registers",
+        "color": "#9C27B0",
+        "description": "Registers that the callee must preserve (EBX, ESI, EDI) are saved here before use and restored before return. Also includes any XMM registers the callee chooses to use. Pushed by the callee in the prologue."
+      },
+      {
+        "region": "function-local",
+        "label": "Dynamic Allocation / Alloca",
+        "color": "#795548",
+        "description": "Space allocated dynamically via alloca() or variable-length arrays. Located below the fixed locals area and may require stack alignment adjustments. Managed by adjusting ESP at runtime."
+      }
+    ],
+    "framePointerRequired": true,
+    "notes": "The i386 System V ABI typically requires EBP to be used as a frame pointer (EBP-frame). This creates a linked list of stack frames via [EBP] → saved EBP, making stack unwinding, debugging, and backtraces straightforward. While modern compilers can omit the frame pointer with -fomit-frame-pointer, the ABI default is to maintain it. Frame pointer omission is more aggressive on x86_64 but on 32-bit x86, the frame pointer is almost always present because there are only 8 general-purpose registers and using EBP as a frame pointer only loses one register. The stack is 4-byte aligned by default; SSE loads/stores require 16-byte alignment and the compiler must ensure this in the prologue when SSE types are used."
+  },
+  "examples": {
+    "simple": {
+      "title": "Integer Addition — Stack-Based Argument Passing",
+      "c": "int add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int result = add(3, 5);\n    return result;\n}",
+      "assembly": "; add(int, int) — cdecl: args on stack, return in EAX\n; Prologue\npush   %ebp                 ; save caller's frame pointer\nmov    %esp, %ebp           ; establish new frame pointer\n; Body\nmov    0x8(%ebp), %eax      ; load first arg 'a' from [EBP+8]\nadd    0xc(%ebp), %eax      ; add second arg 'b' from [EBP+12]\n; Epilogue\npop    %ebp                 ; restore caller's frame pointer\nret                         ; return, caller cleans up stack\n\n; main() calling add(3, 5)\npush   $5                   ; push second argument (right-to-left)\npush   $3                   ; push first argument\ncall   add                  ; call: pushes return address, jumps\nadd    $8, %esp             ; caller cleans up 2 args (2 × 4 bytes)\nmov    %eax, -4(%ebp)       ; store result in local variable",
+      "notes": "This is the canonical example of the i386 System V ABI. Both arguments are pushed onto the stack right-to-left (b first, then a). The caller is responsible for cleaning up the stack after the call returns (cdecl convention). The return value is in EAX. No registers are used for argument passing — all integer arguments go through memory. This is why the i386 ABI is called a 'stack-based' calling convention."
+    },
+    "complex": {
+      "title": "Struct Passing and Return — Large Aggregate on Stack",
+      "c": "typedef struct {\n    int x;\n    int y;\n    int z;\n} Point3D;\n\nPoint3D make_point(int x, int y, int z) {\n    Point3D p;\n    p.x = x;\n    p.y = y;\n    p.z = z;\n    return p;\n}\n\nint main() {\n    Point3D p = make_point(1, 2, 3);\n    return p.x + p.y + p.z;\n}",
+      "assembly": "; make_point(int, int, int) — returns struct on stack (hidden first arg)\n; Prologue\npush   %ebp\nmov    %esp, %ebp\nsub    $0x10, %esp          ; allocate 16 bytes for local struct + alignment\n; Body — copy arguments into local struct\nmov    0x8(%ebp), %eax      ; load x\nmov    %eax, -0x10(%ebp)    ; p.x = x\nmov    0xc(%ebp), %eax      ; load y\nmov    %eax, -0xc(%ebp)     ; p.y = y\nmov    0x10(%ebp), %eax     ; load z\nmov    %eax, -0x8(%ebp)     ; p.z = z\n; Return — copy struct to hidden caller-provided buffer (address in EAX)\n; (On some i386 SysV variants, the hidden pointer is passed as an\n;  invisible first argument at [EBP+8], and original args shift)\nmov    -0x10(%ebp), %eax    ; return via register or memory\n; ... actual return mechanism depends on implementation\npop    %ebp\nret\n\n; main() calling make_point(1, 2, 3)\npush   $3                   ; push third argument\npush   $2                   ; push second argument\npush   $1                   ; push first argument\ncall   make_point           ; call function\nadd    $12, %esp            ; caller cleans up 3 args (3 × 4 bytes)",
+      "notes": "Structs larger than 4 bytes are passed entirely on the stack in the i386 System V ABI. Since there are no integer argument registers, the entire 12-byte Point3D struct is copied to the stack. For returning large structs, the ABI may use a hidden first argument (pointer to caller-allocated buffer) or return via the stack — implementation-specific. The caller always cleans up the stack in cdecl. Each 4-byte member of the struct occupies exactly one stack slot. There is no splitting of aggregates across registers because there are simply no integer argument registers available."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/X86/X86CallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86CallingConv.td",
+      "description": "Defines CC_X86_32_C (the cdecl-like calling convention for i386) and related variants. Located around line 50 in the file. All arguments are passed on the stack (no integer argument registers). The return value is in EAX for integers and ST(0) for floating-point."
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/X86/X86ISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86ISelLowering.cpp",
+      "description": "Lowering logic for i386 function calls and returns. Implements CC_X86_32_C for argument lowering — pushes all arguments onto the stack. Handles struct decomposition for stack-based passing. Defines how return values are lowered to EAX/EDX (integer pairs) or XMM0/ST(0) (floating-point)."
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/X86/X86FrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86FrameLowering.cpp",
+      "description": "Implements stack frame layout for i386. Generates the standard prologue (push EBP, mov EBP,ESP, sub ESP,locals) and epilogue (leave or mov ESP,EBP, pop EBP, ret). Handles callee-saved register spilling to the stack and stack alignment for SSE."
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/X86/X86RegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86RegisterInfo.cpp",
+      "description": "Register allocation and save/restore information for i386. Defines EBX, EBP, ESI, EDI as callee-saved (must be preserved). EAX, ECX, EDX are caller-saved. Provides stack slot assignment for spilling and the frame index offsets used during prologue/epilogue generation."
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/i386/i386.md",
+    "callConvention": "gcc/config/i386/i386.c (TARGET_FUNCTION_ARG, TARGET_FUNCTION_VALUE)",
+    "notes": "GCC's i386 backend implements the cdecl/System V ABI. TARGET_FUNCTION_ARG always returns NULL_RTX for integer arguments, meaning all arguments are passed on the stack. TARGET_FUNCTION_VALUE returns EAX for integer returns and FP0 (ST(0)) for floating-point returns. The machine description (i386.md) defines the push, call, and return patterns. GCC supports -mregparm and __attribute__((regparm(N)) to optionally pass up to 3 integer arguments in EAX, ECX, EDX — this is an extension, not the default ABI."
+  },
+  "why": [
+    {
+      "question": "Why does the i386 System V ABI pass ALL arguments on the stack instead of using registers?",
+      "answer": "The i386 architecture was designed in the late 1970s with only 8 general-purpose registers, and several of these have dedicated architectural roles (ESP for stack, EBP for frame pointer, EAX for multiply/divide/returns, ECX for loops). This leaves very few registers available for general use. When the System V ABI for i386 was standardized, the conservative decision was to pass all arguments on the stack to ensure maximum compatibility across compilers and to avoid register pressure conflicts. Using registers for arguments would have forced aggressive spilling of other variables, potentially degrading performance overall. The stack-based approach also made the ABI trivially implementable: any compiler, assembler, or linker could interoperate without coordinating register allocation strategies."
+    },
+    {
+      "question": "Why is EBP required as a frame pointer in the i386 ABI when x86_64 makes it optional?",
+      "answer": "On i386, there are only 8 general-purpose registers total, and losing one (EBP) to the frame pointer is a much smaller proportion of the total register file compared to x86_64's 16 registers. More critically, the stack-based calling convention means that without EBP as a frame pointer, locating local variables and arguments requires tracking a dynamically changing ESP (which shifts during pushes/pops). On x86_64, the ABI mandates 16-byte stack alignment and the callee knows the exact alignment at entry, so the compiler can compute variable offsets from a known-aligned ESP without a frame pointer. On i386, the alignment is only 4 bytes and variadic functions may push additional data, making ESP-relative addressing unreliable. EBP provides a fixed anchor point within each stack frame, enabling reliable stack unwinding, debugging with tools like gdb, and crash reporting with backtrace generation."
+    },
+    {
+      "question": "Why does the caller clean up the stack (cdecl) instead of the callee?",
+      "answer": "The cdecl convention (caller cleans up) was chosen for the i386 ABI primarily to support variadic functions like printf. Since the caller knows the exact number and types of arguments at each call site, it can correctly adjust the stack after the call. If the callee cleaned up (as in the stdcall convention), variadic functions would be impossible because the callee doesn't know how many arguments were pushed. Additionally, cdecl allows the C language to implement functions like printf() and scanf() that accept a variable number of arguments. The trade-off is slightly larger code at each call site (an add ESP,N instruction after each call), but this was considered acceptable given the alternative of being unable to support variadic functions."
+    },
+    {
+      "question": "Why are there no red zones or shadow space in the i386 System V ABI?",
+      "answer": "The i386 ABI predates both concepts. Red zones (a reserved area below ESP that functions can use without adjusting the stack) require that signal handlers and interrupt frames save the full register context above the red zone, which adds overhead to the kernel's context switching. On 32-bit systems, memory was scarce and the kernel overhead of reserving red zones was not justified. Shadow space (the 32-byte area the caller must reserve before each call in the Windows x64 ABI) is a Microsoft innovation designed to give callees a known location to spill register arguments. Since the i386 System V ABI passes no arguments in registers, there is no need for shadow space — callees simply find all arguments at known offsets from EBP. The simplicity of the stack-only approach eliminated the need for either of these mechanisms."
+    },
+    {
+      "question": "Why does the i386 ABI use 4-byte stack alignment instead of 16-byte alignment like x86_64?",
+      "answer": "When the i386 ABI was designed, the natural alignment of all data types (int, pointer, float) was 4 bytes, and the x87 FPU (which uses 80-bit extended precision) only required 4-byte alignment for its operands. SSE and SSE2 were not yet available when the ABI was standardized. The 16-byte alignment requirement was introduced in x86_64 because SSE2 instructions (movaps, movapd) require 16-byte aligned operands, and modern code uses SSE heavily for both integer and floating-point vector operations. On i386, the x87 FPU stack-based architecture had no alignment constraints beyond 4 bytes, so 4-byte alignment was sufficient and minimized stack waste. When SSE2 is used on i386 (via compiler flags like -msse2), the compiler must dynamically ensure 16-byte alignment for specific stack slots used for SSE spills, but this is handled per-function rather than as a universal ABI requirement."
+    }
+  ],
+  "comparison": {
+    "x86_64_sysv": "x86_64 uses 6 integer argument registers (RDI, RSI, RDX, RCX, R8, R9) vs x86's zero. x86_64 has 16-byte stack alignment and a 128-byte red zone; x86 has 4-byte alignment and no red zone. x86_64 has 16 GPRs; x86 has 8. x86_64 frame pointer is optional; x86 requires it.",
+    "x86_win64": "Windows x64 uses 4 integer argument registers (RCX, RDX, R8, R9) with mandatory 32-byte shadow space. x86 SysV uses zero argument registers and no shadow space. Both use caller-cleaned stack.",
+    "x86_stdcall": "stdcall (Win32) passes the first N integer args in registers when regparm is used, but by default is stack-based like cdecl. The key difference: callee cleans the stack in stdcall (ret N), making it unsuitable for variadic functions. cdecl (SysV) lets the caller clean the stack.",
+    "arm32_aapcs": "ARM32 AAPCS passes the first 4 integer args in R0-R3 and up to 4 FP args in S0-S3. x86 SysV passes everything on the stack. ARM32 has a frame pointer that is optional; x86 requires it.",
+    "riscv32_ilp32": "RISC-V ILP32 passes integer args in a0-a7 (8 registers). x86 SysV has zero argument registers. RISC-V uses 4-byte natural alignment like x86 but reserves a10-byte red zone."
+  },
+  "clangFlags": {
+    "triple": "i386-unknown-linux-gnu",
+    "description": "Key Clang/LLVM flags for targeting the x86 (32-bit) System V ABI",
+    "flags": [
+      {
+        "flag": "--target=i386-unknown-linux-gnu",
+        "description": "Sets the compilation target to 32-bit x86. All arguments passed on stack (cdecl convention).",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-m32",
+        "description": "Generate 32-bit x86 code. Equivalent to --target=i386-*. Forces stack-based calling.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-march=i686",
+        "description": "Target Pentium Pro (i686) baseline. Enables CMOV, CMPXCHG, and FCMOV instructions.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mfpmath=387",
+        "description": "Use x87 FPU math. Default on 32-bit x86. Alternative: sse (with -msse2).",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mstack-alignment=16",
+        "description": "Set stack alignment to 16 bytes. Required for SSE instructions on 32-bit x86.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mpreferred-stack-boundary=4",
+        "description": "Align stack to 2^4 = 16 bytes. Matches -mstack-alignment=16.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mno-omit-frame-pointer",
+        "description": "Keep the frame pointer (EBP). Required by the 32-bit SysV ABI for debugging.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-mregparm=3",
+        "description": "Pass up to 3 arguments in registers (EAX, EDX, ECX). Non-standard extension.",
+        "kind": "Joined",
+        "category": "X86"
+      }
+    ],
+    "llcCommand": "llc -mtriple=i386-unknown-linux-gnu -mattr=+sse2 -mstack-alignment=16 -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=i386-unknown-linux-gnu -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=i386-unknown-linux-gnu -march=i686 -m32 -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/Gnu.cpp",
+        "description": "GNU toolchain: selects System V i386 ABI for 32-bit Linux targets"
+      },
+      {
+        "path": "llvm/lib/Target/X86/X86CallingConv.td",
+        "description": "TableGen definition of CC_X86_32_C (32-bit cdecl, all args on stack)"
+      }
+    ]
+  },
+  "searchText": "x86 32-bit System V ABI cdecl i386 calling convention stack-based arguments all arguments on stack no register arguments EAX return value EBX ESI EDI callee-saved ECX EDX caller-saved EBP frame pointer required x87 FPU ST0 floating point return varargs va_list char* 4-byte stack alignment no red zone no shadow space LLVM X86CallingConv.td CC_X86_32_C X86ISelLowering X86FrameLowering X86RegisterInfo GCC i386 machine description TARGET_FUNCTION_ARG"
+}

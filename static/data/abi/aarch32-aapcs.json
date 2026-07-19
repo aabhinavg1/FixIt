@@ -1,0 +1,1093 @@
+{
+  "id": "aarch32-aapcs",
+  "name": "ARM AArch32 AAPCS",
+  "architecture": "AArch32",
+  "convention": "ARM AAPCS (ARM IHI 0042)",
+  "target": "Linux, bare-metal, Android, embedded",
+  "version": "IHI0042J",
+  "category": "CPU",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 4,
+    "wordSize": 4,
+    "endianness": "little (bi-endian capable)",
+    "abiName": "AAPCS (ELF)",
+    "maxAlignment": 8
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 8,
+    "redZone": 0,
+    "dynamicAlignment": true,
+    "notes": "Stack must be 8-byte aligned at all public interfaces (function call boundaries). 16-byte alignment is required when VFP/NEON SIMD loads and stores are used for double-precision or vector data. Dynamic stack realignment is supported via __attribute__((aligned(N))) or variable-length arrays but requires saving the original SP and adds code overhead."
+  },
+  "callingConvention": {
+    "name": "AAPCS32",
+    "argumentRegisters": [
+      {
+        "register": "R0",
+        "position": 0,
+        "type": "integer"
+      },
+      {
+        "register": "R1",
+        "position": 1,
+        "type": "integer"
+      },
+      {
+        "register": "R2",
+        "position": 2,
+        "type": "integer"
+      },
+      {
+        "register": "R3",
+        "position": 3,
+        "type": "integer"
+      },
+      {
+        "register": "S0",
+        "position": 0,
+        "type": "floating-point"
+      },
+      {
+        "register": "S1",
+        "position": 1,
+        "type": "floating-point"
+      },
+      {
+        "register": "S2",
+        "position": 2,
+        "type": "floating-point"
+      },
+      {
+        "register": "S3",
+        "position": 3,
+        "type": "floating-point"
+      }
+    ],
+    "returnRegisters": [
+      {
+        "register": "R0",
+        "position": 0,
+        "type": "integer"
+      },
+      {
+        "register": "R1",
+        "position": 1,
+        "type": "integer"
+      },
+      {
+        "register": "S0",
+        "position": 0,
+        "type": "floating-point"
+      },
+      {
+        "register": "S1",
+        "position": 1,
+        "type": "floating-point"
+      }
+    ],
+    "callerSaved": [
+      "R0",
+      "R1",
+      "R2",
+      "R3",
+      "R12",
+      "R14",
+      "S0-S15"
+    ],
+    "calleeSaved": [
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11",
+      "R13",
+      "S16-S31"
+    ],
+    "variadicRules": {
+      "registerCount": 0,
+      "vaListType": "char *",
+      "notes": "All variadic arguments are passed on the stack, even if register argument slots are available. The named parameters before the variadic part follow the normal convention (R0-R3, S0-S15), but every argument after the named ones is placed sequentially on the stack. va_list is simply a char* pointer, making va_arg() trivial: load from the current pointer and advance it. This eliminates the need for the complex register save area that x86_64 uses."
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": {
+      "rule": "Aggregates of up to 4 words (<=16 bytes) are passed in R0-R3. Homogeneous Floating-Point Aggregates (HFA) of up to 4 elements are passed in S0-S3 (single-precision) or D0-D3 (double-precision). Homogeneous Vector Aggregates (HVA) of up to 4 elements are passed in D0-D3 or Q0-Q3.",
+      "memoryThreshold": "Aggregates larger than 4 words (>16 bytes) or non-HFA/HVA composites larger than 16 bytes are passed on the stack. HFAs with more than 4 elements are also reclassified as memory arguments."
+    },
+    "simdRules": {
+      "argumentRegisters": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "Q0",
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "returnRegisters": [
+        "S0",
+        "D0"
+      ],
+      "notes": "NEON Q registers Q0-Q3 (overlapping D0-D7 and S0-S15) are used for HVA arguments. Individual NEON vector types follow the same sequential S-register allocation as floats. Half-precision values are widened to single-precision for passing."
+    },
+    "hvaSupport": true,
+    "hvaRules": "Homogeneous Vector Aggregates of up to 4 short-vector elements are passed in D0-D3 (64-bit vectors) or Q0-Q3 (128-bit vectors). Larger HVAs are reclassified as memory arguments."
+  },
+  "registers": [
+    {
+      "name": "R0",
+      "width": 32,
+      "purpose": "1st integer argument register, 1st integer return value, scratch",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R1",
+      "width": 32,
+      "purpose": "2nd integer argument register, 2nd integer return value (64-bit returns), scratch",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "1",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R2",
+      "width": 32,
+      "purpose": "3rd integer argument register, scratch",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R3",
+      "width": 32,
+      "purpose": "4th integer argument register, scratch",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R4",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R5",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R6",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R7",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register, Thumb mode frame pointer",
+      "aliases": [
+        "FP"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R8",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "8",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R9",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register (platform-specific: static base in some older ABIs)",
+      "aliases": [
+        "SB",
+        "V6"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "9",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R10",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register",
+      "aliases": [
+        "SL"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "R11",
+      "width": 32,
+      "purpose": "Callee-saved general-purpose register, ARM mode frame pointer",
+      "aliases": [
+        "FP"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R12",
+      "width": 32,
+      "purpose": "Intra-procedure call scratch register (IP), may be modified by linker veneers",
+      "aliases": [
+        "IP"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "12",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R13",
+      "width": 32,
+      "purpose": "Stack pointer, callee-saved by convention (must be preserved across calls)",
+      "aliases": [
+        "SP"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "13",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R14",
+      "width": 32,
+      "purpose": "Link register, holds return address from BL/BLX call",
+      "aliases": [
+        "LR"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "14",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "R15",
+      "width": 32,
+      "purpose": "Program counter",
+      "aliases": [
+        "PC"
+      ],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "15",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "S0",
+      "width": 32,
+      "purpose": "1st single-precision FP argument, FP return value, lower 32 bits of D0",
+      "aliases": [
+        "D0_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S1",
+      "width": 32,
+      "purpose": "Upper 32 bits of D0 (double-precision), 2nd single-precision FP arg",
+      "aliases": [
+        "D0_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "1",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S2",
+      "width": 32,
+      "purpose": "3rd single-precision FP argument, lower 32 bits of D1",
+      "aliases": [
+        "D1_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S3",
+      "width": 32,
+      "purpose": "Upper 32 bits of D1 (double-precision), 4th single-precision FP arg",
+      "aliases": [
+        "D1_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S4",
+      "width": 32,
+      "purpose": "5th single-precision FP arg (for HFAs), lower 32 bits of D2",
+      "aliases": [
+        "D2_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S5",
+      "width": 32,
+      "purpose": "Upper 32 bits of D2 (double-precision), scratch",
+      "aliases": [
+        "D2_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S6",
+      "width": 32,
+      "purpose": "7th single-precision FP arg (for HFAs), lower 32 bits of D3",
+      "aliases": [
+        "D3_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S7",
+      "width": 32,
+      "purpose": "Upper 32 bits of D3 (double-precision), scratch",
+      "aliases": [
+        "D3_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S8",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, lower 32 bits of D4",
+      "aliases": [
+        "D4_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "8",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S9",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, upper 32 bits of D4",
+      "aliases": [
+        "D4_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "9",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S10",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, lower 32 bits of D5",
+      "aliases": [
+        "D5_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S11",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, upper 32 bits of D5",
+      "aliases": [
+        "D5_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S12",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, lower 32 bits of D6",
+      "aliases": [
+        "D6_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "12",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S13",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, upper 32 bits of D6",
+      "aliases": [
+        "D6_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "13",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S14",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, lower 32 bits of D7",
+      "aliases": [
+        "D7_lo"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "14",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S15",
+      "width": 32,
+      "purpose": "Caller-saved FP scratch, upper 32 bits of D7",
+      "aliases": [
+        "D7_hi"
+      ],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "15",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S16",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D8",
+      "aliases": [
+        "D8_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "16",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S17",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D8",
+      "aliases": [
+        "D8_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "17",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S18",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D9",
+      "aliases": [
+        "D9_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "18",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S19",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D9",
+      "aliases": [
+        "D9_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "19",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S20",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D10",
+      "aliases": [
+        "D10_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "20",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S21",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D10",
+      "aliases": [
+        "D10_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "21",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S22",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D11",
+      "aliases": [
+        "D11_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "22",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S23",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D11",
+      "aliases": [
+        "D11_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "23",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S24",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D12",
+      "aliases": [
+        "D12_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "24",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S25",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D12",
+      "aliases": [
+        "D12_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "25",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S26",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D13",
+      "aliases": [
+        "D13_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "26",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S27",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D13",
+      "aliases": [
+        "D13_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "27",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S28",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D14",
+      "aliases": [
+        "D14_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "28",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S29",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D14",
+      "aliases": [
+        "D14_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "29",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S30",
+      "width": 32,
+      "purpose": "Callee-saved FP register, lower 32 bits of D15",
+      "aliases": [
+        "D15_lo"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "30",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    },
+    {
+      "name": "S31",
+      "width": 32,
+      "purpose": "Callee-saved FP register, upper 32 bits of D15",
+      "aliases": [
+        "D15_hi"
+      ],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "31",
+      "llvmRegisterClass": "FPR32",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "higher-addresses",
+        "label": "Caller Frame",
+        "color": "#64748b",
+        "description": "Stack frame of the function that called this one"
+      },
+      {
+        "region": "incoming-args",
+        "label": "Incoming Arguments",
+        "color": "#3b82f6",
+        "description": "Stack-passed arguments from the caller (args beyond R0-R3 and S0-S3). SP points here on function entry."
+      },
+      {
+        "region": "saved-registers",
+        "label": "Saved Registers",
+        "color": "#f97316",
+        "description": "Callee-saved registers preserved in the prologue: R4-R11, LR (R14), and S16-S31 if VFP is used. LR is only saved if the function makes calls."
+      },
+      {
+        "region": "frame-pointer",
+        "label": "Frame Pointer (R11/R7)",
+        "color": "#8b5cf6",
+        "description": "If frame pointer is used: R11 in ARM mode, R7 in Thumb mode. Points to the saved FP value on the stack for easy access to locals and incoming arguments."
+      },
+      {
+        "region": "locals",
+        "label": "Local Variables",
+        "color": "#22c55e",
+        "description": "Automatic local variables declared in this function, allocated via SUB SP, SP, #imm in the prologue."
+      },
+      {
+        "region": "alignment-padding",
+        "label": "Alignment Padding",
+        "color": "#94a3b8",
+        "description": "Padding to maintain 8-byte stack alignment at function boundaries. 16-byte alignment when VFP/NEON operations are used."
+      },
+      {
+        "region": "outgoing-args",
+        "label": "Outgoing Arguments",
+        "color": "#3b82f6",
+        "description": "Space allocated for arguments passed to functions called by this function. Placed below SP for callee access via positive offsets from caller SP."
+      }
+    ],
+    "framePointerRequired": false,
+    "notes": "Frame pointer (R11 in ARM mode, R7 in Thumb mode) is optional with -fomit-frame-pointer. AAPCS32 does not push a return address onto the stack - BL puts it in LR (R14). Only non-leaf functions need to save LR. SP must always be restored to its entry value before BX LR or POP {PC}."
+  },
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "llvmIR": "define i32 @add(i32 %a, i32 %b) #0 {\nentry:\n  %add = add nsw i32 %a, %b\n  ret i32 %add\n}",
+      "assembly": "add r0, r0, r1\nbx lr",
+      "notes": "a in R0, b in R1. Return value in R0. Leaf function: no stack frame needed, no callee-saved registers used. Returns directly via BX LR (no push/pop). Two instructions total."
+    },
+    "complex": {
+      "title": "64-bit accumulation with 8 arguments (register + stack spilling)",
+      "c": "long long sum8(long long a, long b, int c, int d,\n                 int e, int f, int g, int h) {\n    return a + b + c + d + e + f + g + h;\n}",
+      "llvmIR": "define i64 @sum8(i64 %a, i64 %b, i64 %c, i64 %d,\n                 i64 %e, i64 %f, i64 %g, i64 %h) {\nentry:\n  %s1 = add i64 %a, %b\n  %s2 = add i64 %s1, %c\n  %s3 = add i64 %s2, %d\n  %s4 = add i64 %s3, %e\n  %s5 = add i64 %s4, %f\n  %s6 = add i64 %s5, %g\n  %s7 = add i64 %s6, %h\n  ret i64 %s7\n}",
+      "assembly": "push    {r4, lr}\nadds    r0, r0, r2\nadc     r1, r1, #0\nadds    r0, r0, r3\nadc     r1, r1, #0\nldr     r4, [sp, #8]\nadds    r0, r0, r4\nadc     r1, r1, #0\nldr     r4, [sp, #12]\nadds    r0, r0, r4\nadc     r1, r1, #0\nldr     r4, [sp, #16]\nadds    r0, r0, r4\nadc     r1, r1, #0\nldr     r4, [sp, #20]\nadds    r0, r0, r4\nadc     r1, r1, #0\nldr     r4, [sp, #24]\nadds    r0, r0, r4\nadc     r1, r1, #0\npop     {r4, pc}",
+      "notes": "a (64-bit) in R0:R1, b in R2, c in R3. d-h are on the stack (5 stack arguments). Uses push {r4, lr} to save callee-saved r4 and the link register. After push, stack args are at [sp+8] through [sp+24] (offset by 8 bytes for the 2 pushed registers). Returns via pop {r4, pc} which restores r4 and loads the saved LR into PC."
+    },
+    "variadic": {
+      "title": "Variadic sum function (all variadic args on stack)",
+      "c": "int sum_ints(int count, ...) {\n    va_list ap;\n    va_start(ap, count);\n    int total = 0;\n    for (int i = 0; i < count; i++)\n        total += va_arg(ap, int);\n    va_end(ap);\n    return total;\n}",
+      "llvmIR": "define i32 @sum_ints(i32 %count, ...) {\nentry:\n  %ap = alloca ptr, align 4\n  call void @llvm.va_start(ptr %ap)\n  ; ... loop using va_arg ...\n  call void @llvm.va_end(ptr %ap)\n  ret i32 %total\n}",
+      "assembly": "sum_ints:\n    push    {r4, lr}\n    sub     sp, sp, #8\n    mov     r4, sp\n    str     r4, [sp]\n    bl      __aeabi_va_start\n    ; ... va_arg loop: ldr r0, [r4], #4 ...\n    bl      __aeabi_va_end\n    pop     {r4, pc}",
+      "notes": "count in R0 (named parameter, normal convention). All variadic arguments are on the stack starting at the caller's outgoing argument area. va_list is just char* pointing to the first stack argument. va_arg() loads from [va_list] and advances the pointer by 4 bytes. Much simpler than x86_64's va_list struct with register save areas."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/ARM/ARMCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/ARM/ARMCallingConv.td",
+      "description": "CC_ARM_APCS: Defines the AAPCS32 calling convention with R0-R3 integer argument registers and S0-S15 VFP floating-point argument registers"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/ARM/ARMISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/ARM/ARMISelLowering.cpp",
+      "description": "LowerCall / LowerFormalArguments / LowerReturn: Implements AAPCS argument lowering, HFA/HVA aggregate passing, variadic handling, and 64-bit value splitting across register pairs"
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/ARM/ARMFrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/ARM/ARMFrameLowering.cpp",
+      "description": "emitPrologue / emitEpilogue: Stack frame layout, callee-saved register spilling (R4-R11, LR, S16-S31), frame pointer setup, dynamic stack alignment"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/ARM/ARMRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/ARM/ARMRegisterInfo.cpp",
+      "description": "getCalleeSavedRegs / getReservedRegs: Register definitions, caller/callee save lists for AAPCS32, reserved registers (SP, PC)"
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/arm/arm.md",
+    "callConvention": "gcc/config/arm/arm.cc",
+    "notes": "GCC implements AAPCS via the ArmEmbeddedABI and AAPCS calling conventions. The -mabi=aapcs flag selects the standard AAPCS32 convention. Thumb and ARM modes share the same register allocation but differ in frame pointer register (R7 vs R11)."
+  },
+  "why": [
+    {
+      "question": "Why does AAPCS only use 4 integer argument registers (R0-R3) instead of more?",
+      "answer": "ARM's fixed-width 32-bit instruction encoding uses 4-bit register fields (or 3-bit in Thumb short encodings). More argument registers would require either wider instruction encodings (increasing code size) or special encoding modes. Four registers strike a balance between reducing stack traffic and maintaining compact code, which is critical for ARM's embedded and mobile markets. Additionally, the original ARM1 (1985) had only 16 registers total, and keeping 4 for arguments while reserving others for SP, LR, and PC was a pragmatic architectural choice that has persisted through decades of backward-compatible evolution."
+    },
+    {
+      "question": "Why are all variadic arguments passed on the stack even when registers are available?",
+      "answer": "Passing all variadic arguments on the stack simplifies va_list to a plain char* pointer, making va_arg() implementation trivial: load from the current pointer and advance it. The caller does not need to determine which register slots are occupied by named parameters, and there is no need for the complex register save area struct that x86_64 uses. This design reduces code size and compiler complexity, aligning with ARM's focus on small, efficient code for embedded systems where every byte of code and data matters."
+    },
+    {
+      "question": "Why is there no red zone in AAPCS?",
+      "answer": "ARM processors can take interrupts at any instruction boundary, and in many ARM systems (especially bare-metal and RTOS environments) the interrupt handler uses the current stack pointer directly. A red zone would be clobbered by interrupt handlers unless the OS guarantees a separate interrupt stack. Unlike x86_64 SysV where operating systems typically provide this guarantee, AAPCS targets a much broader range of systems including bare-metal microcontrollers where such guarantees are not universal. The simplicity of 'SP always points to the bottom of usable stack' is more portable and predictable across the diverse ARM ecosystem."
+    },
+    {
+      "question": "Why does ARM use a link register (LR) instead of pushing the return address onto the stack?",
+      "answer": "The BL instruction automatically saves the return address in LR (R14) without any memory access. This avoids a stack store on every function call, which is faster and reduces stack memory traffic. Only functions that call other functions (non-leaf functions) need to save LR to the stack. Leaf functions can return directly via BX LR, which is a single instruction with no memory operations. This optimization is particularly valuable on ARM's typically memory-constrained embedded targets where minimizing memory accesses and stack usage is a primary design concern."
+    },
+    {
+      "question": "Why does AAPCS require only 8-byte stack alignment instead of 16-byte?",
+      "answer": "ARM's fundamental data types (int, pointer) are 4 bytes, and 64-bit types (long long, double) require 8-byte alignment. Eight-byte alignment satisfies all standard C type alignment requirements while minimizing stack usage on memory-constrained embedded systems with as little as a few kilobytes of RAM. The 16-byte alignment from x86_64 was driven by SSE/AVX alignment requirements. ARM's VFP/NEON extensions add a separate 16-byte alignment requirement for SIMD operations, but this is handled locally within functions that use SIMD rather than as a global ABI requirement, avoiding unnecessary stack waste for the majority of functions that never use SIMD."
+    }
+  ],
+  "comparison": {
+    "vsX86_64SysV": {
+      "keyDifferences": [
+        {
+          "feature": "Pointer Size",
+          "aarch32": "4 bytes (ILP32)",
+          "x86_64": "8 bytes (LP64)",
+          "impact": "AArch32 uses half the memory for pointers and longs"
+        },
+        {
+          "feature": "Integer Argument Registers",
+          "aarch32": "R0-R3 (4 registers)",
+          "x86_64": "RDI, RSI, RDX, RCX, R8, R9 (6 registers)",
+          "impact": "SysV passes more args in registers, fewer stack spills"
+        },
+        {
+          "feature": "FP Argument Registers",
+          "aarch32": "S0-S3 / D0-D3 (4 slots)",
+          "x86_64": "XMM0-XMM7 (8 registers)",
+          "impact": "SysV passes more float args in registers"
+        },
+        {
+          "feature": "Return Address",
+          "aarch32": "Link register (LR/R14)",
+          "x86_64": "Pushed on stack by CALL",
+          "impact": "ARM avoids stack memory access on every call"
+        },
+        {
+          "feature": "Red Zone",
+          "aarch32": "None (0 bytes)",
+          "x86_64": "128 bytes",
+          "impact": "SysV leaf functions can use stack without adjusting RSP"
+        },
+        {
+          "feature": "Shadow Space",
+          "aarch32": "None (0 bytes)",
+          "x86_64": "None (0 bytes)",
+          "impact": "Neither ABI requires shadow space"
+        },
+        {
+          "feature": "Stack Alignment",
+          "aarch32": "8 bytes",
+          "x86_64": "16 bytes",
+          "impact": "AArch32 uses less stack padding on memory-constrained systems"
+        },
+        {
+          "feature": "Variadic Handling",
+          "aarch32": "All variadics on stack, va_list is char*",
+          "x86_64": "Uses register save area, va_list is a struct",
+          "impact": "AAPCS variadic is much simpler but wastes register capacity"
+        }
+      ]
+    },
+    "vsAarch64": {
+      "keyDifferences": [
+        {
+          "feature": "Register Width",
+          "aarch32": "32-bit (R0-R15, S0-S31)",
+          "aarch64": "64-bit (X0-X30, V0-V31)",
+          "impact": "AArch64 doubles the data width per register"
+        },
+        {
+          "feature": "Integer Argument Registers",
+          "aarch32": "R0-R3 (4 registers)",
+          "aarch64": "X0-X7 (8 registers)",
+          "impact": "AArch64 passes twice as many integer args in registers"
+        },
+        {
+          "feature": "FP/SIMD Argument Registers",
+          "aarch32": "S0-S3 / D0-D3 (4 slots)",
+          "aarch64": "V0-V7 (8 registers, any width)",
+          "impact": "AArch64 has more FP/SIMD argument registers"
+        },
+        {
+          "feature": "Stack Alignment",
+          "aarch32": "8 bytes",
+          "aarch64": "16 bytes (always)",
+          "impact": "AArch64 mandates stricter alignment globally"
+        },
+        {
+          "feature": "Variadic Handling",
+          "aarch32": "All variadics on stack, char* va_list",
+          "aarch64": "Uses register save area, va_list is a struct",
+          "impact": "AArch64 variadic is more complex but uses registers more efficiently"
+        },
+        {
+          "feature": "Pointer Size",
+          "aarch32": "4 bytes",
+          "aarch64": "8 bytes",
+          "impact": "AArch32 limits addressable memory to 4 GB"
+        },
+        {
+          "feature": "Register Naming",
+          "aarch32": "R0-R15, S0-S31, D0-D15",
+          "aarch64": "X0-X30, SP, V0-V31",
+          "impact": "Different naming conventions, AArch64 unifies FP/SIMD under V registers"
+        }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "armv7-unknown-linux-gnueabihf",
+    "description": "Key Clang/LLVM flags for targeting the AArch32 AAPCS ABI",
+    "flags": [
+      {
+        "flag": "--target=armv7-unknown-linux-gnueabihf",
+        "description": "Sets the compilation target to ARM 32-bit with hard-float ABI. Uses AAPCS with 4 argument registers.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mfloat-abi=hard",
+        "description": "Use hardware floating-point calling convention. FP args passed in VFP registers (S0-S15).",
+        "kind": "Joined",
+        "category": "ARM"
+      },
+      {
+        "flag": "-mfloat-abi=soft",
+        "description": "Use software floating-point calling convention. All args (including float) passed in integer registers or stack.",
+        "kind": "Joined",
+        "category": "ARM"
+      },
+      {
+        "flag": "-mfpu=neon",
+        "description": "Select the FPU type. Options: vfp, neon, fpv5, auto. Affects which FP registers are available.",
+        "kind": "Joined",
+        "category": "ARM"
+      },
+      {
+        "flag": "-march=armv7-a",
+        "description": "Target ARMv7-A baseline. Extensions: +neon, +vfpv4, +crc, +crypto.",
+        "kind": "Joined",
+        "category": "ARM"
+      },
+      {
+        "flag": "-mtune=cortex-a9",
+        "description": "Tune code generation for a specific ARM CPU. Affects instruction scheduling.",
+        "kind": "Joined",
+        "category": "ARM"
+      },
+      {
+        "flag": "-mthumb",
+        "description": "Generate Thumb-2 instruction set code. Smaller code but slightly different calling convention for R7.",
+        "kind": "Flag",
+        "category": "ARM"
+      },
+      {
+        "flag": "-mapcs-frame",
+        "description": "Generate a stack frame that is compatible with the ARM Procedure Call Standard. Sets up frame pointer in R11.",
+        "kind": "Flag",
+        "category": "ARM"
+      }
+    ],
+    "llcCommand": "llc -mtriple=armv7-unknown-linux-gnueabihf -mfloat-abi=hard -mfpu=neon -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=armv7-unknown-linux-gnueabihf -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=armv7-unknown-linux-gnueabihf -march=armv7-a+neon -mfloat-abi=hard -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/ARM.cpp",
+        "description": "ARM toolchain: selects AAPCS ABI, float-abi, and FPU type for 32-bit ARM targets"
+      },
+      {
+        "path": "llvm/lib/Target/ARM/ARMCallingConv.td",
+        "description": "TableGen definition of CC_ARM_APCS (ARM calling convention with R0-R3 argument registers)"
+      }
+    ]
+  },
+  "searchText": "aarch32 arm aapcs calling convention r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 ip sp lr pc s0 s1 s2 s3 s4 s5 s6 s7 d0 d1 d2 d3 vfp neon thumb arm linux bare metal android embedded caller saved callee saved variadic va_list hfa hva aggregate passing homogeneous floating point frame pointer ilp32 return address link register bi-endian"
+}

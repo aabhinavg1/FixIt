@@ -1,0 +1,386 @@
+.container {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 24px;
+  background: var(--ifm-background-surface-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titleIcon {
+  color: var(--ifm-color-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.conventionBadge {
+  font-size: 12px;
+  padding: 4px 10px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border-radius: 6px;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.examplesBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+}
+
+.examplesLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.exampleChip {
+  padding: 4px 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.exampleChip:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.exampleChipActive {
+  background: var(--ifm-color-primary);
+  color: white;
+  border-color: var(--ifm-color-primary);
+}
+
+.inputSection {
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  margin-bottom: 12px;
+}
+
+.inputLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+}
+
+.argsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.argInput {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.argLabel {
+  font-size: 11px;
+  color: var(--ifm-color-emphasis-600);
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.argInputField {
+  padding: 8px 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 14px;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.argInputField:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.simulateButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.simulateButton:hover {
+  opacity: 0.9;
+}
+
+.resetButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.resetButton:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.results {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding-top: 20px;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.resultsTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stepCount {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.stepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.step {
+  display: flex;
+  gap: 12px;
+}
+
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.stepDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stepLine {
+  width: 2px;
+  flex: 1;
+  background: var(--ifm-color-emphasis-200);
+  min-height: 20px;
+}
+
+.stepContent {
+  flex: 1;
+  padding-bottom: 16px;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.stepNumber {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-500);
+  text-transform: uppercase;
+}
+
+.stepType {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stepAction {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ifm-font-color-base);
+  line-height: 1.5;
+}
+
+.stepRegister {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.registerName {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.registerValue {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.registerSummary,
+.stackSummary {
+  padding: 14px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.summaryTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.registerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.registerEntry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+}
+
+.regName {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+  color: #3b82f6;
+}
+
+.regVal {
+  font-size: 12px;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-emphasis-600);
+}
+
+.stackList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stackEntry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.stackOffset {
+  font-family: var(--ifm-font-family-monospace);
+  color: #f97316;
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.stackValue {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-emphasis-700);
+  min-width: 50px;
+}
+
+.stackParam {
+  color: var(--ifm-color-emphasis-500);
+}
+
+@media (max-width: 768px) {
+  .argsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .registerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -14,7 +14,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "clang-flags:generate": "node scripts/generate-clang-flags.mjs",
-    "clang-flags:generate-pages": "node scripts/generate-clang-flag-pages.mjs"
+    "clang-flags:generate-pages": "node scripts/generate-clang-flag-pages.mjs",
+    "abi:generate": "node scripts/generate-abi-data.mjs",
+    "abi:generate-pages": "node scripts/generate-abi-pages.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.5.2",

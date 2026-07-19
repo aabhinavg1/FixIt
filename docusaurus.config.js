@@ -187,6 +187,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/abi/',
+            label: 'ABI Explorer',
+            position: 'left',
+          },
+          {
             to: '/docs/labs',
             label: 'Labs',
             position: 'left',

@@ -1,0 +1,1019 @@
+{
+  "id": "riscv",
+  "name": "RISC-V RV64 ABI",
+  "architecture": "RISC-V",
+  "convention": "RISC-V ELF psABI",
+  "target": "Linux, Bare-metal",
+  "version": "1.0",
+  "category": "CPU",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 8,
+    "endianness": "little",
+    "abiName": "ELF",
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": false,
+    "notes": "Stack grows downward. 16-byte alignment required at public interfaces (function call boundaries). No red zone because asynchronous events (interrupts, exceptions) can occur at any time on bare-metal and must use a reliable stack pointer."
+  },
+  "callingConvention": {
+    "name": "RISC-V ELF psABI",
+    "argumentRegisters": [
+      { "register": "a0", "position": 0, "type": "integer" },
+      { "register": "a1", "position": 1, "type": "integer" },
+      { "register": "a2", "position": 2, "type": "integer" },
+      { "register": "a3", "position": 3, "type": "integer" },
+      { "register": "a4", "position": 4, "type": "integer" },
+      { "register": "a5", "position": 5, "type": "integer" },
+      { "register": "a6", "position": 6, "type": "integer" },
+      { "register": "a7", "position": 7, "type": "integer" },
+      { "register": "fa0", "position": 0, "type": "float" },
+      { "register": "fa1", "position": 1, "type": "float" },
+      { "register": "fa2", "position": 2, "type": "float" },
+      { "register": "fa3", "position": 3, "type": "float" },
+      { "register": "fa4", "position": 4, "type": "float" },
+      { "register": "fa5", "position": 5, "type": "float" },
+      { "register": "fa6", "position": 6, "type": "float" },
+      { "register": "fa7", "position": 7, "type": "float" }
+    ],
+    "returnRegisters": [
+      { "register": "a0", "position": 0, "type": "integer" },
+      { "register": "a1", "position": 1, "type": "integer" },
+      { "register": "fa0", "position": 0, "type": "float" },
+      { "register": "fa1", "position": 1, "type": "float" }
+    ],
+    "callerSaved": ["ra", "t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "ft0", "ft1", "ft2", "ft3", "ft4", "ft5", "ft6", "ft7", "ft8", "ft9", "ft10", "ft11", "fa0", "fa1", "fa2", "fa3", "fa4", "fa5", "fa6", "fa7"],
+    "calleeSaved": ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "fs0", "fs1", "fs2", "fs3", "fs4", "fs5", "fs6", "fs7", "fs8", "fs9", "fs10", "fs11"],
+    "variadicRules": {
+      "registerCount": 8,
+      "vaListType": "struct { void *__stack; }",
+      "notes": "Variadic functions conservatively spill all 8 integer argument registers (a0-a7) to the stack in the register save area. The va_list is a simple struct containing a pointer to the stack overflow area. Unlike x86_64 SysV, RISC-V does not track which registers have been consumed — it always spills every argument register."
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": {
+      "rule": "Structs ≤ 2×XLEN bytes (≤ 16 bytes on RV64) are passed in integer registers (if contain ints/pointers) or FP registers (if contain only floats/doubles)",
+      "memoryThreshold": "Structs > 2×XLEN bytes (16 bytes) or containing unaligned fields are passed on the stack"
+    },
+    "simdRules": {
+      "argumentRegisters": ["fa0", "fa1", "fa2", "fa3", "fa4", "fa5", "fa6", "fa7"],
+      "returnRegisters": ["fa0", "fa1"],
+      "notes": "With the V extension, vector registers (v0-v31) are used for SIMD arguments following the RVV calling convention. Vector arguments are passed in v8-v23 for non-tail-call, callee-saved v8-v9."
+    },
+    "hvaSupport": true,
+    "hvaRules": "Homogeneous vector aggregates are passed in consecutive vector registers (v8-v23) under the RVV extension"
+  },
+  "registers": [
+    {
+      "name": "x0",
+      "width": 64,
+      "purpose": "Hardwired zero — reads always return 0, writes are silently discarded",
+      "aliases": ["zero"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00000",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x1",
+      "width": 64,
+      "purpose": "Return address — holds the return address from a JAL/JALR call",
+      "aliases": ["ra"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00001",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x2",
+      "width": 64,
+      "purpose": "Stack pointer — points to the top of the stack",
+      "aliases": ["sp"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00010",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x3",
+      "width": 64,
+      "purpose": "Global pointer — points to the GP-relative data section for efficient PIC addressing",
+      "aliases": ["gp"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00011",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x4",
+      "width": 64,
+      "purpose": "Thread pointer — points to thread-local storage, used by TLS models",
+      "aliases": ["tp"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00100",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x5",
+      "width": 64,
+      "purpose": "Temporary register 0 — caller-saved scratch register",
+      "aliases": ["t0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00101",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x6",
+      "width": 64,
+      "purpose": "Temporary register 1 — caller-saved scratch register",
+      "aliases": ["t1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00110",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x7",
+      "width": 64,
+      "purpose": "Temporary register 2 — caller-saved scratch register",
+      "aliases": ["t2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00111",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x8",
+      "width": 64,
+      "purpose": "Frame pointer / callee-saved register 0 — used as frame pointer by convention",
+      "aliases": ["s0", "fp"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "01000",
+      "llvmRegisterClass": "GPR",
+      "special": true
+    },
+    {
+      "name": "x9",
+      "width": 64,
+      "purpose": "Callee-saved register 1 — preserved across function calls",
+      "aliases": ["s1"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "01001",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x10",
+      "width": 64,
+      "purpose": "1st argument register / return value 0",
+      "aliases": ["a0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "01010",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x11",
+      "width": 64,
+      "purpose": "2nd argument register / return value 1",
+      "aliases": ["a1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "01011",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x12",
+      "width": 64,
+      "purpose": "3rd argument register",
+      "aliases": ["a2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "01100",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x13",
+      "width": 64,
+      "purpose": "4th argument register",
+      "aliases": ["a3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "01101",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x14",
+      "width": 64,
+      "purpose": "5th argument register",
+      "aliases": ["a4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "01110",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x15",
+      "width": 64,
+      "purpose": "6th argument register",
+      "aliases": ["a5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "01111",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x16",
+      "width": 64,
+      "purpose": "7th argument register",
+      "aliases": ["a6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "10000",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x17",
+      "width": 64,
+      "purpose": "8th argument register",
+      "aliases": ["a7"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "10001",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x18",
+      "width": 64,
+      "purpose": "Callee-saved register 2",
+      "aliases": ["s2"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10010",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x19",
+      "width": 64,
+      "purpose": "Callee-saved register 3",
+      "aliases": ["s3"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10011",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x20",
+      "width": 64,
+      "purpose": "Callee-saved register 4",
+      "aliases": ["s4"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10100",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x21",
+      "width": 64,
+      "purpose": "Callee-saved register 5",
+      "aliases": ["s5"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10101",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x22",
+      "width": 64,
+      "purpose": "Callee-saved register 6",
+      "aliases": ["s6"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10110",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x23",
+      "width": 64,
+      "purpose": "Callee-saved register 7",
+      "aliases": ["s7"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10111",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x24",
+      "width": 64,
+      "purpose": "Callee-saved register 8",
+      "aliases": ["s8"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11000",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x25",
+      "width": 64,
+      "purpose": "Callee-saved register 9",
+      "aliases": ["s9"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11001",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x26",
+      "width": 64,
+      "purpose": "Callee-saved register 10",
+      "aliases": ["s10"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11010",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x27",
+      "width": 64,
+      "purpose": "Callee-saved register 11",
+      "aliases": ["s11"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11011",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x28",
+      "width": 64,
+      "purpose": "Temporary register 3",
+      "aliases": ["t3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11100",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x29",
+      "width": 64,
+      "purpose": "Temporary register 4",
+      "aliases": ["t4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11101",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x30",
+      "width": 64,
+      "purpose": "Temporary register 5",
+      "aliases": ["t5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11110",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "x31",
+      "width": 64,
+      "purpose": "Temporary register 6",
+      "aliases": ["t6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11111",
+      "llvmRegisterClass": "GPR",
+      "special": false
+    },
+    {
+      "name": "f0",
+      "width": 64,
+      "purpose": "FP temporary 0 — caller-saved scratch for floating-point computations",
+      "aliases": ["ft0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00000",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f1",
+      "width": 64,
+      "purpose": "FP temporary 1",
+      "aliases": ["ft1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00001",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f2",
+      "width": 64,
+      "purpose": "FP temporary 2",
+      "aliases": ["ft2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00010",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f3",
+      "width": 64,
+      "purpose": "FP temporary 3",
+      "aliases": ["ft3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00011",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f4",
+      "width": 64,
+      "purpose": "FP temporary 4",
+      "aliases": ["ft4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00100",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f5",
+      "width": 64,
+      "purpose": "FP temporary 5",
+      "aliases": ["ft5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00101",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f6",
+      "width": 64,
+      "purpose": "FP temporary 6",
+      "aliases": ["ft6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00110",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f7",
+      "width": 64,
+      "purpose": "FP temporary 7",
+      "aliases": ["ft7"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "00111",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f8",
+      "width": 64,
+      "purpose": "FP callee-saved 0 / FP frame pointer",
+      "aliases": ["fs0"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "01000",
+      "llvmRegisterClass": "FPR64",
+      "special": true
+    },
+    {
+      "name": "f9",
+      "width": 64,
+      "purpose": "FP callee-saved 1",
+      "aliases": ["fs1"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "01001",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f10",
+      "width": 64,
+      "purpose": "1st FP argument register / FP return value 0",
+      "aliases": ["fa0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "01010",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f11",
+      "width": 64,
+      "purpose": "2nd FP argument register / FP return value 1",
+      "aliases": ["fa1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "01011",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f12",
+      "width": 64,
+      "purpose": "3rd FP argument register",
+      "aliases": ["fa2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "01100",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f13",
+      "width": 64,
+      "purpose": "4th FP argument register",
+      "aliases": ["fa3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "01101",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f14",
+      "width": 64,
+      "purpose": "5th FP argument register",
+      "aliases": ["fa4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "01110",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f15",
+      "width": 64,
+      "purpose": "6th FP argument register",
+      "aliases": ["fa5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "01111",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f16",
+      "width": 64,
+      "purpose": "7th FP argument register",
+      "aliases": ["fa6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "10000",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f17",
+      "width": 64,
+      "purpose": "8th FP argument register",
+      "aliases": ["fa7"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "10001",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f18",
+      "width": 64,
+      "purpose": "FP callee-saved 2",
+      "aliases": ["fs2"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10010",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f19",
+      "width": 64,
+      "purpose": "FP callee-saved 3",
+      "aliases": ["fs3"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10011",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f20",
+      "width": 64,
+      "purpose": "FP callee-saved 4",
+      "aliases": ["fs4"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10100",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f21",
+      "width": 64,
+      "purpose": "FP callee-saved 5",
+      "aliases": ["fs5"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10101",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f22",
+      "width": 64,
+      "purpose": "FP callee-saved 6",
+      "aliases": ["fs6"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10110",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f23",
+      "width": 64,
+      "purpose": "FP callee-saved 7",
+      "aliases": ["fs7"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "10111",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f24",
+      "width": 64,
+      "purpose": "FP callee-saved 8",
+      "aliases": ["fs8"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11000",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f25",
+      "width": 64,
+      "purpose": "FP callee-saved 9",
+      "aliases": ["fs9"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11001",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f26",
+      "width": 64,
+      "purpose": "FP callee-saved 10",
+      "aliases": ["fs10"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11010",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f27",
+      "width": 64,
+      "purpose": "FP callee-saved 11",
+      "aliases": ["fs11"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11011",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f28",
+      "width": 64,
+      "purpose": "FP temporary 8",
+      "aliases": ["ft8"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11100",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f29",
+      "width": 64,
+      "purpose": "FP temporary 9",
+      "aliases": ["ft9"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11101",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f30",
+      "width": 64,
+      "purpose": "FP temporary 10",
+      "aliases": ["ft10"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11110",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    },
+    {
+      "name": "f31",
+      "width": 64,
+      "purpose": "FP temporary 11",
+      "aliases": ["ft11"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11111",
+      "llvmRegisterClass": "FPR64",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      { "region": "higher-addresses", "label": "Caller Frame", "color": "#64748b", "description": "Stack frame of the function that called this one" },
+      { "region": "outgoing-args", "label": "Outgoing Arguments", "color": "#3b82f6", "description": "Arguments for functions this function will call (spilled beyond a0-a7)" },
+      { "region": "return-address", "label": "Return Address (ra)", "color": "#ef4444", "description": "Saved in ra register and spilled to stack if this function calls another" },
+      { "region": "saved-registers", "label": "Saved Registers", "color": "#f97316", "description": "Callee-saved registers (s0-s11, fs0-fs11) preserved by this function" },
+      { "region": "frame-pointer", "label": "Frame Pointer (s0/fp)", "color": "#8b5cf6", "description": "Optional: points to saved s0/fp, used to access locals and args in functions with dynamic stack allocation" },
+      { "region": "locals", "label": "Local Variables", "color": "#22c55e", "description": "Automatic variables declared in this function" },
+      { "region": "alignment-padding", "label": "Alignment Padding", "color": "#94a3b8", "description": "Padding to maintain 16-byte stack alignment at call boundaries" }
+    ],
+    "framePointerRequired": false,
+    "notes": "RISC-V uses a convention-based frame pointer (s0/fp) rather than a hardware requirement. Leaf functions that do not modify the stack may omit frame pointer setup entirely. When used, the frame pointer points to the saved s0 value on the stack."
+  },
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition",
+      "c": "long add(long a, long b) {\n    return a + b;\n}",
+      "llvmIR": "define i64 @add(i64 %a, i64 %b) #0 {\nentry:\n  %a.addr = alloca i64, align 8\n  %b.addr = alloca i64, align 8\n  store i64 %a, ptr %a.addr, align 8\n  store i64 %b, ptr %b.addr, align 8\n  %0 = load i64, ptr %a.addr, align 8\n  %1 = load i64, ptr %b.addr, align 8\n  %add = add nsw i64 %0, %1\n  ret i64 %add\n}",
+      "assembly": "add     a0, a0, a1\nret",
+      "notes": "a in a0 (x10), b in a1 (x11). Return in a0. Single-instruction addition — the canonical RISC two-address operation. No stack frame needed for leaf functions."
+    },
+    "complex": {
+      "title": "Struct passing (aggregate in registers and stack)",
+      "c": "typedef struct { long x; long y; } Point;\n\nlong compute(Point p, long extra) {\n    return p.x * p.y + extra;\n}",
+      "llvmIR": "define i64 @compute(i64 %p.coerce0, i64 %p.coerce1, i64 %extra) #0 {\nentry:\n  %p.coerce0.addr = alloca i64, align 8\n  %p.coerce1.addr = alloca i64, align 8\n  %extra.addr = alloca i64, align 8\n  store i64 %p.coerce0, ptr %p.coerce0.addr, align 8\n  store i64 %p.coerce1, ptr %p.coerce1.addr, align 8\n  store i64 %extra, ptr %extra.addr, align 8\n  %0 = load i64, ptr %p.coerce0.addr, align 8\n  %1 = load i64, ptr %p.coerce1.addr, align 8\n  %mul = mul nsw i64 %0, %1\n  %2 = load i64, ptr %extra.addr, align 8\n  %add = add nsw i64 %mul, %2\n  ret i64 %add\n}",
+      "assembly": "mul     a0, a0, a1\nadd     a0, a0, a2\nret",
+      "notes": "Point is 16 bytes (2×XLEN), fits in two integer registers: p.x in a0, p.y in a1. extra in a2. The struct is flattened into registers — no memory indirection needed. Structs > 16 bytes would be passed on the stack."
+    },
+    "variadic": {
+      "title": "Variadic function (printf-like)",
+      "c": "long sum_ints(int count, ...) {\n    long total = 0;\n    __builtin_va_list ap;\n    __builtin_va_start(ap, count);\n    for (int i = 0; i < count; i++)\n        total += __builtin_va_arg(ap, long);\n    __builtin_va_end(ap);\n    return total;\n}",
+      "assembly": "sum_ints:\n        addi    sp, sp, -160\n        sd      ra, 152(sp)\n        sd      s0, 144(sp)\n        sd      s1, 136(sp)\n        sd      a0, 112(sp)\n        sd      a1, 120(sp)\n        sd      a2, 128(sp)\n        sd      a3, 136(sp)\n        sd      a4, 144(sp)\n        sd      a5, 152(sp)\n        sd      a6, 160(sp)\n        sd      a7, 168(sp)\n        addi    s0, sp, 160\n        mv      s1, zero\n        # ... loop loading from saved area ...\n        ld      ra, 152(sp)\n        ld      s0, 144(sp)\n        ld      s1, 136(sp)\n        addi    sp, sp, 160\n        ret",
+      "notes": "Variadic functions conservatively spill ALL 8 integer argument registers (a0-a7) to a register save area on the stack. The va_list struct { void *__stack } points to the overflow area past the saved registers. Unlike x86_64 SysV, there is no gp_offset/fp_offset tracking — every register is always spilled."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/RISCV/RISCVCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/RISCV/RISCVCallingConv.td#L30",
+      "description": "CC_RISCV_C: Defines the RISC-V C calling convention with a0-a7 integer argument registers, fa0-fa7 FP argument registers, and callee-saved s0-s11 / fs0-fs11 lists"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/RISCV/RISCVISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/RISCV/RISCVISelLowering.cpp",
+      "description": "LowerCall / LowerFormalArguments / LowerReturn: Implements argument lowering, aggregate flattening, variadic register spilling, and tail call optimization for RISC-V targets"
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/RISCV/RISCVFrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/RISCV/RISCVFrameLowering.cpp",
+      "description": "emitPrologue / emitEpilogue: Stack frame construction, callee-saved register spilling, frame pointer setup, and dynamic stack allocation (stackpointeradjustment)"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/RISCV/RISCVRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/RISCV/RISCVRegisterInfo.cpp",
+      "description": "getCalleeSavedRegs / getReservedRegs: Register class definitions, caller/callee-save lists, and identification of reserved registers (zero, sp, gp, tp)"
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/riscv/riscv.md",
+    "callConvention": "gcc/config/riscv/riscv.cc",
+    "notes": "GCC implements the RISC-V psABI in riscv.cc. It defines RISCV_CC_RISCV as the C calling convention and handles variadic calls by saving all argument registers to the stack unconditionally. Frame layout uses a variable-size frame with optional frame pointer."
+  },
+  "why": [
+    {
+      "question": "Why does RISC-V have a hardwired zero register (x0)?",
+      "answer": "The zero register eliminates many instructions that other ISAs need. Loading a constant zero is free (mv rd, x0). Comparisons against zero, unconditional jumps, and many other patterns become single instructions without needing an explicit constant load. This was a deliberate RISC design choice that simplified the hardware — the register file physically ties x0 to zero — and reduced code size for common idioms."
+    },
+    {
+      "question": "Why does RISC-V have no red zone?",
+      "answer": "RISC-V targets bare-metal and embedded systems where asynchronous interrupts and exceptions can occur at any instruction boundary. An interrupt handler must be able to use the stack immediately without first checking whether the interrupted function is in a red zone. Unlike x86_64 SysV where the OS guarantees no interrupts will touch the red zone (by setting up a separate interrupt stack), RISC-V makes no such guarantee — it keeps the ABI simple and portable across all environments from RTOS to Linux."
+    },
+    {
+      "question": "Why does RISC-V use 8 integer argument registers instead of 6?",
+      "answer": "RISC-V was designed from the start with 8 argument registers (a0-a7) to reduce stack traffic. The 8-register design was motivated by profiling showing that most functions have 8 or fewer arguments. Having 8 registers eliminates stack operations for the vast majority of function calls, improving performance on the simple, in-order cores that are RISC-V's primary targets. This is the same philosophy as AArch64 (which also has 8 integer argument registers) and is more generous than x86_64 SysV (6 registers)."
+    },
+    {
+      "question": "Why does the variadic calling convention spill all argument registers unconditionally?",
+      "answer": "Simplicity and correctness at the cost of a few stores. The RISC-V psABI defines va_list as a simple struct { void *__stack } — it contains no gp_offset or fp_offset fields like the x86_64 SysV va_list. Because variadic arguments may be any type and any count, and because the compiler cannot know at the ABI level which register types a particular argument uses, all 8 integer registers are always saved. This avoids complex tracking logic in the hardware and keeps the ABI specification minimal. The cost of 8 extra stores is negligible compared to the function call overhead."
+    },
+    {
+      "question": "Why is the return address stored in a register (ra) instead of pushed to the stack?",
+      "answer": "JAL and JALR instructions store the return address directly in the ra register (x1) rather than pushing it onto the stack. This eliminates a memory store on every function call. Only functions that themselves call other functions need to save ra to the stack (since a nested call will overwrite it). Leaf functions — which are extremely common — avoid the stack entirely. This is a classic RISC optimization that trades register pressure for reduced memory traffic."
+    },
+    {
+      "question": "Why does RISC-V use a convention-based frame pointer instead of requiring one?",
+      "answer": "RISC-V does not mandate a frame pointer — s0/fp is used by convention, not hardware requirement. Leaf functions and functions with small fixed-size frames can omit frame pointer setup entirely, freeing s0 as a general-purpose callee-saved register. This is important because RISC-V has only 12 callee-saved integer registers (s0-s11), and every one counts for register allocation. The optional frame pointer also simplifies simple debuggers and profilers — when present, the frame pointer chain provides a reliable stack walk; when absent, DWARF unwind info serves the same purpose."
+    }
+  ],
+  "comparison": {
+    "vsX86_64SysV": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "riscv": "a0-a7 (8 integer) + fa0-fa7 (8 FP)", "other": "RDI, RSI, RDX, RCX, R8, R9 (6 integer) + XMM0-XMM7 (8 XMM)", "impact": "RISC-V passes more integer args in registers, reducing stack spills" },
+        { "feature": "Red Zone", "riscv": "None (0 bytes)", "other": "128 bytes", "impact": "RISC-V requires stack adjustment for every local; x86_64 leaf functions can use 128 bytes below RSP for free" },
+        { "feature": "Return Address", "riscv": "Stored in ra register (JAL/JALR)", "other": "Pushed to stack by CALL instruction", "impact": "RISC-V leaf functions avoid all stack operations; x86_64 always consumes 8 bytes of stack per call" },
+        { "feature": "Zero Register", "riscv": "Hardwired x0 always reads zero", "other": "No equivalent — XOR reg, reg used instead", "impact": "RISC-V simplifies many patterns (zero-extend, compare, mov) into single instructions" },
+        { "feature": "Shadow Space", "riscv": "None (0 bytes)", "other": "None (0 bytes)", "impact": "Neither ABI reserves shadow space for register-passed arguments" },
+        { "feature": "Variadic va_list", "riscv": "struct { void *__stack } — always spills all 8 regs", "other": "struct { gp_offset, fp_offset, overflow_arg_area, reg_save_area } — tracks consumption", "impact": "RISC-V va_list is simpler but always spills; x86_64 is smarter but more complex" }
+      ]
+    },
+    "vsAarch64": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "riscv": "a0-a7 (8 integer) + fa0-fa7 (8 FP)", "other": "x0-x7 (8 integer) + v0-v7 (8 SIMD)", "impact": "Same number of argument registers; RISC-V uses dedicated FP regs, AArch64 uses vector regs for both FP and SIMD" },
+        { "feature": "Return Address", "riscv": "ra register (x1)", "other": "lr register (x30) — also saved/restored by hardware in some cases", "impact": "Similar convention; both use a single link register" },
+        { "feature": "Zero Register", "riscv": "xzr (x0) — hardwired zero", "other": "xzr (x31) — hardwired zero", "impact": "Both architectures have a zero register, a shared RISC heritage" },
+        { "feature": "Frame Pointer", "riscv": "Optional (s0/fp)", "other": "Optional (x29/fp)", "impact": "Both allow omitting the frame pointer; convention is similar" },
+        { "feature": "Red Zone", "riscv": "None", "other": "None", "impact": "Neither ABI defines a red zone" },
+        { "feature": "Instruction Encoding", "riscv": "Fixed 32-bit (or 16-bit compressed)", "other": "Fixed 32-bit (A64) or mixed (A32/T32)", "impact": "Both use fixed-width base ISA for simple decoding" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "riscv64-unknown-linux-gnu",
+    "description": "Key Clang/LLVM flags for targeting the RISC-V RV64 ELF psABI",
+    "flags": [
+      {
+        "flag": "--target=riscv64-unknown-linux-gnu",
+        "description": "Sets the compilation target to 64-bit RISC-V. Selects the ELF psABI with 8 argument registers.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-march=rv64gc",
+        "description": "Target RV64GC (Integer + Atomic + Multiply + Float + Double). Base 64-bit with standard extensions.",
+        "kind": "Joined",
+        "category": "RISC-V"
+      },
+      {
+        "flag": "-mabi=lp64d",
+        "description": "Select the RISC-V ABI: lp64d (64-bit, double-precision FP), lp64f (single-precision), lp64 (no FP).",
+        "kind": "Joined",
+        "category": "RISC-V"
+      },
+      {
+        "flag": "-msave-restore",
+        "description": "Use save/restore libcalls instead of inline register save/restore. Smaller code, slower.",
+        "kind": "Flag",
+        "category": "RISC-V"
+      },
+      {
+        "flag": "-mno-save-restore",
+        "description": "Use inline register save/restore instead of libcalls. Faster but larger code.",
+        "kind": "Flag",
+        "category": "RISC-V"
+      },
+      {
+        "flag": "-mriscv-v-vector-bits-min=128",
+        "description": "Set minimum RISC-V Vector register width. Affects ABI for vector arguments.",
+        "kind": "Joined",
+        "category": "RISC-V"
+      },
+      {
+        "flag": "-ffixed-x3",
+        "description": "Reserve register x3 (gp - global pointer). Used for PIC/position-independent code.",
+        "kind": "Joined",
+        "category": "Target-Specific Code Generation"
+      },
+      {
+        "flag": "-fomit-frame-pointer",
+        "description": "Omit the frame pointer (s0/fp). RISC-V ABI makes frame pointer optional.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      }
+    ],
+    "llcCommand": "llc -mtriple=riscv64-unknown-linux-gnu -mabi=lp64d -mattr=+v -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=riscv64-unknown-linux-gnu -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=riscv64-unknown-linux-gnu -march=rv64gcv -mabi=lp64d -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/RISCV.cpp",
+        "description": "RISC-V toolchain: selects ELF psABI, default march/mabi, and ABI register usage"
+      },
+      {
+        "path": "llvm/lib/Target/RISCV/RISCVCallingConv.td",
+        "description": "TableGen definition of CC_RISCV_C (calling convention with a0-a7 argument registers)"
+      }
+    ]
+  },
+  "searchText": "riscv risc-v rv64 lp64 calling convention a0 a1 a2 a3 a4 a5 a6 a7 fa0 fa1 fa2 fa3 fa4 fa5 fa6 fa7 x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 zero ra sp gp tp t0 t1 t2 s0 s1 a0 a1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 t3 t4 t5 t6 ft0 ft1 ft2 ft3 ft4 ft5 ft6 ft7 fs0 fs1 fa0 fa1 fa2 fa3 fa4 fa5 fa6 fa7 fs2 fs3 fs4 fs5 fs6 fs7 fs8 fs9 fs10 fs11 ft8 ft9 ft10 ft11 hardwired zero return address link register frame pointer callee saved caller saved variadic va_list aggregate struct passing bare metal linux elf psABI"
+}

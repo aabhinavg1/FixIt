@@ -1,0 +1,549 @@
+{
+  "id": "x86_64-sysv",
+  "name": "x86_64 System V ABI",
+  "architecture": "x86_64",
+  "convention": "System V AMD64 ABI",
+  "target": "Linux, macOS, BSD",
+  "version": "1.0",
+  "category": "CPU",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 8,
+    "endianness": "little",
+    "abiName": "ELF",
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 128,
+    "dynamicAlignment": false,
+    "notes": "Stack must be 16-byte aligned before CALL instruction. The CALL pushes 8-byte return address, so RSP is 8-byte aligned on function entry."
+  },
+  "callingConvention": {
+    "name": "System V AMD64",
+    "argumentRegisters": [
+      { "register": "RDI", "position": 0, "type": "integer" },
+      { "register": "RSI", "position": 1, "type": "integer" },
+      { "register": "RDX", "position": 2, "type": "integer" },
+      { "register": "RCX", "position": 3, "type": "integer" },
+      { "register": "R8", "position": 4, "type": "integer" },
+      { "register": "R9", "position": 5, "type": "integer" }
+    ],
+    "returnRegisters": [
+      { "register": "RAX", "position": 0, "type": "integer" },
+      { "register": "RDX", "position": 1, "type": "integer" }
+    ],
+    "callerSaved": ["RDI", "RSI", "RDX", "RCX", "R8", "R9", "R10", "R11"],
+    "calleeSaved": ["RBX", "RBP", "R12", "R13", "R14", "R15"],
+    "variadicRules": {
+      "registerCount": 6,
+      "vaListType": "struct { unsigned int gp_offset; unsigned int fp_offset; void *overflow_arg_area; void *reg_save_area; }",
+      "notes": "In variadic functions, XMM registers used for floating-point args. va_list is a struct that tracks which registers have been consumed."
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": {
+      "rule": "If size <= 16 bytes and 16-byte aligned: pass in 2 integer regs or 2 XMM regs",
+      "memoryThreshold": "structs > 16 bytes or not aligned passed on stack"
+    },
+    "simdRules": {
+      "argumentRegisters": ["XMM0", "XMM1", "XMM2", "XMM3", "XMM4", "XMM5", "XMM6", "XMM7"],
+      "returnRegisters": ["XMM0", "XMM1"]
+    },
+    "hvaSupport": true,
+    "hvaRules": "Homogeneous vector aggregates passed in consecutive XMM registers"
+  },
+  "registers": [
+    {
+      "name": "RAX",
+      "width": 64,
+      "purpose": "Return value, accumulator",
+      "aliases": ["EAX", "AX", "AH", "AL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RBX",
+      "width": 64,
+      "purpose": "Base register, callee-saved",
+      "aliases": ["EBX", "BX", "BH", "BL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RCX",
+      "width": 64,
+      "purpose": "4th argument register, counter",
+      "aliases": ["ECX", "CX", "CH", "CL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RDX",
+      "width": 64,
+      "purpose": "3rd argument register, 2nd return value",
+      "aliases": ["EDX", "DX", "DH", "DL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": 1,
+      "encoding": "2",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RBP",
+      "width": 64,
+      "purpose": "Frame pointer (optional with -fomit-frame-pointer)",
+      "aliases": ["EBP", "BP"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "RSI",
+      "width": 64,
+      "purpose": "2nd argument register, source index",
+      "aliases": ["ESI", "SI"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RDI",
+      "width": 64,
+      "purpose": "1st argument register, destination index",
+      "aliases": ["EDI", "DI"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R8",
+      "width": 64,
+      "purpose": "5th argument register",
+      "aliases": ["R8D", "R8W", "R8B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R9",
+      "width": 64,
+      "purpose": "6th argument register",
+      "aliases": ["R9D", "R9W", "R9B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R10",
+      "width": 64,
+      "purpose": "Static chain pointer, caller-saved",
+      "aliases": ["R10D", "R10W", "R10B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "R11",
+      "width": 64,
+      "purpose": "Scratch register, caller-saved",
+      "aliases": ["R11D", "R11W", "R11B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R12",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R12D", "R12W", "R12B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R13",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R13D", "R13W", "R13B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R14",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R14D", "R14W", "R14B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R15",
+      "width": 64,
+      "purpose": "Callee-saved, TLS base in some OSes",
+      "aliases": ["R15D", "R15W", "R15B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RSP",
+      "width": 64,
+      "purpose": "Stack pointer",
+      "aliases": ["ESP", "SP"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "XMM0",
+      "width": 128,
+      "purpose": "1st floating-point argument, 1st FP return",
+      "aliases": ["YMM0", "ZMM0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM1",
+      "width": 128,
+      "purpose": "2nd floating-point argument, 2nd FP return",
+      "aliases": ["YMM1", "ZMM1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "1",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM2",
+      "width": 128,
+      "purpose": "3rd floating-point argument",
+      "aliases": ["YMM2", "ZMM2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM3",
+      "width": 128,
+      "purpose": "4th floating-point argument",
+      "aliases": ["YMM3", "ZMM3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM4",
+      "width": 128,
+      "purpose": "5th floating-point argument",
+      "aliases": ["YMM4", "ZMM4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM5",
+      "width": 128,
+      "purpose": "6th floating-point argument",
+      "aliases": ["YMM5", "ZMM5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM6",
+      "width": 128,
+      "purpose": "7th floating-point argument",
+      "aliases": ["YMM6", "ZMM6"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM7",
+      "width": 128,
+      "purpose": "8th floating-point argument",
+      "aliases": ["YMM7", "ZMM7"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      { "region": "higher-addresses", "label": "Caller Frame", "color": "#64748b", "description": "Stack frame of the function that called this one" },
+      { "region": "outgoing-args", "label": "Outgoing Arguments", "color": "#3b82f6", "description": "Arguments for functions this function will call" },
+      { "region": "return-address", "label": "Return Address", "color": "#ef4444", "description": "Pushed by CALL instruction, points to instruction after call" },
+      { "region": "saved-registers", "label": "Saved Registers", "color": "#f97316", "description": "Callee-saved registers preserved by this function" },
+      { "region": "frame-pointer", "label": "Frame Pointer (RBP)", "color": "#8b5cf6", "description": "Optional: points to saved RBP, used to access locals and args" },
+      { "region": "locals", "label": "Local Variables", "color": "#22c55e", "description": "Automatic variables declared in this function" },
+      { "region": "alignment-padding", "label": "Alignment Padding", "color": "#94a3b8", "description": "Padding to maintain 16-byte stack alignment" },
+      { "region": "red-zone", "label": "Red Zone (128 bytes)", "color": "#fbbf24", "description": "Leaf functions can use without adjusting RSP" }
+    ],
+    "framePointerRequired": false,
+    "notes": "RBP is optional with -fomit-frame-pointer (default at -O2+). Frame pointer elimination frees RBP as a general-purpose register."
+  },
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "llvmIR": "define i32 @add(i32 %a, i32 %b) #0 {\nentry:\n  %a.addr = alloca i32, align 4\n  %b.addr = alloca i32, align 4\n  store i32 %a, ptr %a.addr, align 4\n  store i32 %b, ptr %b.addr, align 4\n  %0 = load i32, ptr %a.addr, align 4\n  %1 = load i32, ptr %b.addr, align 4\n  %add = add nsw i32 %0, %1\n  ret i32 %add\n}",
+      "assembly": "addl    %esi, %edi\nmovl    %edi, %eax\nret",
+      "notes": "a in %edi (RDI), b in %esi (RSI). Return in %eax (RAX). Single instruction addition."
+    },
+    "complex": {
+      "title": "Function with 8+ arguments (stack spilling)",
+      "c": "long calc(long a, long b, long c, long d,\n          long e, long f, long g, long h) {\n    return a*b + c*d + e*f + g*h;\n}",
+      "llvmIR": "define i64 @calc(i64 %a, i64 %b, i64 %c, i64 %d,\n                 i64 %e, i64 %f, i64 %g, i64 %h) {\nentry:\n  %mul = mul nsw i64 %a, %b\n  %mul1 = mul nsw i64 %c, %d\n  %add = add nsw i64 %mul, %mul1\n  %mul2 = mul nsw i64 %e, %f\n  %add3 = add nsw i64 %add, %mul2\n  %mul4 = mul nsw i64 %g, %h\n  %add5 = add nsw i64 %add3, %mul4\n  ret i64 %add5\n}",
+      "assembly": "imulq   %rsi, %rdi\nimulq   %rcx, %rdx\naddq    %rdx, %rdi\nimulq   %r9, %r8\nmovq    8(%rsp), %rax\naddq    %r8, %rdi\nimulq   %rax, %rcx\nmovq    16(%rsp), %rax\nimulq   %rax, %rcx\naddq    %rcx, %rdi\nmovq    %rdi, %rax\nret",
+      "notes": "a-g in registers, h pushed on stack (7th and 8th args on stack). Stack offsets 8(%rsp) and 16(%rsp) reference stack-passed arguments."
+    },
+    "variadic": {
+      "title": "Variadic function (printf-like)",
+      "c": "int sum_ints(int count, ...) {\n    va_list ap;\n    va_start(ap, count);\n    int total = 0;\n    for (int i = 0; i < count; i++)\n        total += va_arg(ap, int);\n    va_end(ap);\n    return total;\n}",
+      "llvmIR": "define i32 @sum_ints(i32 %count, ...) {\nentry:\n  %ap = alloca ptr, align 8\n  call void @llvm.va_start(ptr %ap)\n  ; ... loop using va_arg ...\n  call void @llvm.va_end(ptr %ap)\n  ret i32 %total\n}",
+      "assembly": "sum_ints:\n    pushq   %rbp\n    movq    %rsp, %rbp\n    subq    $32, %rsp\n    movl    %edi, -20(%rbp)\n    leaq    -16(%rbp), %rax\n    movq    %rax, %rdi\n    call    llvm_va_start\n    ; ... va_arg loop ...\n    call    llvm_va_end\n    movl    %eax, %eax\n    leave\n    ret",
+      "notes": "Variadic functions always use all 6 integer registers + 8 XMM registers. va_list is a struct tracking register consumption."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/X86/X86CallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86CallingConv.td#L366",
+      "description": "CC_X86_64_C: Defines System V AMD64 calling convention with RDI, RSI, RDX, RCX, R8, R9 argument registers"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/X86/X86ISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86ISelLowering.cpp#L3652",
+      "description": "LowerCall: Implements argument lowering, struct passing, variadic handling, and tail call optimization"
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/X86/X86FrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86FrameLowering.cpp#L117",
+      "description": "hasFPImpl: Stack frame layout, red zone handling, callee-saved register spilling"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/X86/X86RegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86RegisterInfo.cpp#L366",
+      "description": "getCalleeSavedRegs: Register definitions, caller/callee save lists, reserved registers"
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/i386/i386.md",
+    "callConvention": "gcc/config/i386/i386.cc",
+    "notes": "GCC uses X86_64_MS_ABI and X86_64_SYSV_ABI as separate calling conventions. The sysv ABI is the default on Linux/macOS."
+  },
+  "why": [
+    {
+      "question": "Why is RDI the first argument register?",
+      "answer": "Historical: System V i386 ABI used stack-based calling. When AMD designed AMD64, they chose registers for the first 6 integer args to avoid stack spills. RDI was chosen first because it is the destination index in x86 string operations (MOVS, CMPS, STOS), and the register assignment follows a logical order from the original 8086 register set. The order RDI, RSI, RDX, RCX, R8, R9 was chosen to match common argument patterns."
+    },
+    {
+      "question": "Why does SysV have a 128-byte Red Zone?",
+      "answer": "The Red Zone allows leaf functions to use 128 bytes below RSP without adjusting the stack pointer. This saves a SUB instruction and improves performance for small functions. It is safe because no signal handler or interrupt can preempt a leaf function without first setting up a new stack frame. The 128-byte size was chosen to accommodate typical leaf function local variables."
+    },
+    {
+      "question": "Why are some registers caller-saved?",
+      "answer": "Caller-saved registers are volatile: the callee can overwrite them without saving. This gives the callee more scratch registers and avoids unnecessary saves. The caller saves them only if it needs the values after the call. This design reduces save/restore overhead for functions that don't need many registers across calls."
+    },
+    {
+      "question": "Why does SysV use 6 integer argument registers instead of 4?",
+      "answer": "AMD64 was designed to improve on i386's stack-based calling. Using 6 registers (vs Windows' 4) reduces stack traffic for typical function calls. Most functions have fewer than 6 arguments, so they avoid stack operations entirely. The extra 2 registers (R8, R9) were added as new registers in AMD64 specifically to support this."
+    },
+    {
+      "question": "Why is the stack 16-byte aligned?",
+      "answer": "16-byte alignment is required for SSE/AVX instructions (MOVDQA, MOVAPS) which fault on misaligned access. It also improves cache line utilization and matches the x86-64 ABI specification. The ABI requires RSP to be 16-byte aligned before a CALL instruction, so on function entry RSP is 8-byte aligned (after the return address is pushed)."
+    }
+  ],
+  "comparison": {
+    "vsWindows": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "sysv": "RDI, RSI, RDX, RCX, R8, R9 (6)", "windows": "RCX, RDX, R8, R9 (4)", "impact": "SysV passes more args in registers" },
+        { "feature": "Shadow Space", "sysv": "None (0 bytes)", "windows": "32 bytes required", "impact": "Windows always allocates shadow space for register args" },
+        { "feature": "Red Zone", "sysv": "128 bytes", "windows": "None (0 bytes)", "impact": "SysV leaf functions can use stack without adjusting RSP" },
+        { "feature": "XMM Arguments", "sysv": "XMM0-XMM7 (8 registers)", "windows": "XMM0-XMM3 (4 registers)", "impact": "SysV passes more float args in registers" },
+        { "feature": "Variadic Handling", "sysv": "Always uses all registers", "windows": "Shadow space required", "impact": "Different va_list structure and register save strategy" }
+      ]
+    },
+    "vsAarch64": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "sysv": "6 integer + 8 XMM", "aarch64": "8 integer + 8 SIMD", "impact": "AArch64 has more integer argument registers" },
+        { "feature": "Red Zone", "sysv": "128 bytes", "aarch64": "None", "impact": "SysV leaf functions have more stack flexibility" },
+        { "feature": "Stack Alignment", "sysv": "16 bytes", "aarch64": "16 bytes (always)", "impact": "Both require 16-byte alignment" },
+        { "feature": "Register Width", "sysv": "64-bit (RAX, RBX, etc.)", "aarch64": "64-bit (X0-X30)", "impact": "Same width, different naming" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "x86_64-unknown-linux-gnu",
+    "description": "Key Clang/LLVM flags for targeting the x86_64 System V ABI",
+    "flags": [
+      {
+        "flag": "--target=x86_64-unknown-linux-gnu",
+        "description": "Sets the compilation target triple. Automatically selects the System V ABI on Linux/macOS.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mabi=sysv",
+        "description": "Explicitly selects the System V AMD64 ABI (default on Linux). Alternatives: ms (Windows ABI).",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-m64",
+        "description": "Generate 64-bit x86 code. Equivalent to --target=x86_64-*. Controls register width, calling convention, and ABI.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-march=x86-64",
+        "description": "Target a specific x86-64 microarchitecture level. Levels: x86-64, x86-64-v2, x86-64-v3, x86-64-v4.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mtune=generic",
+        "description": "Tune code generation for a specific CPU. Affects instruction scheduling and branch prediction.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-msse4.2",
+        "description": "Enable SSE4.2 instructions. Available on all x86-64 CPUs (part of the baseline ISA).",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mavx2",
+        "description": "Enable AVX2 instructions. Requires --target=x86_64-unknown-linux-gnu with appropriate -march.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-mavx512f",
+        "description": "Enable AVX-512 Foundation instructions. Requires -march=cannonlake or later.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-fomit-frame-pointer",
+        "description": "Omit the frame pointer (RBP) in non-leaf functions. Default at -O2+. Frees RBP as a general-purpose register.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-mred-zone",
+        "description": "Enable the 128-byte red zone. Leaf functions can use 128 bytes below RSP without adjusting the stack pointer.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-mno-red-zone",
+        "description": "Disable the red zone. Required for kernel code and functions that use interrupt handlers.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-mstack-alignment=16",
+        "description": "Set the stack alignment. The SysV ABI requires 16-byte alignment before CALL.",
+        "kind": "Joined",
+        "category": "X86"
+      }
+    ],
+    "llcCommand": "llc -mtriple=x86_64-unknown-linux-gnu -mabi=sysv -mattr=+sse4.2,+avx2 -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=x86_64-unknown-linux-gnu -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=x86_64-unknown-linux-gnu -mabi=sysv -march=x86-64 -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/Gnu.cpp",
+        "description": "GNU-compatible toolchain: selects System V ABI for x86_64 Linux targets"
+      },
+      {
+        "path": "clang/lib/Driver/ToolChains/CommonArgs.cpp",
+        "description": "Common argument handling: passes -mabi and -march to the backend"
+      },
+      {
+        "path": "llvm/lib/Target/X86/X86CallingConv.td",
+        "description": "TableGen definition of CC_X86_64_C (System V calling convention)"
+      }
+    ]
+  },
+  "searchText": "x86_64 sysv amd64 system v calling convention rdi rsi rdx rcx r8 r9 linux macos bsd elf red zone leaf functions caller saved callee saved variadic va_list xmm sse avx aggregate passing homogeneous vector"
+}

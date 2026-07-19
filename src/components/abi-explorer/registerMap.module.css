@@ -1,0 +1,305 @@
+.container {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 24px;
+  background: var(--ifm-background-surface-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titleIcon {
+  color: var(--ifm-color-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.filterSelect {
+  padding: 4px 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legendLabel {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}
+
+.registerGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categoryGroup {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.categoryDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.categoryLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.categoryCount {
+  font-size: 11px;
+  color: var(--ifm-color-emphasis-500);
+  background: var(--ifm-color-emphasis-200);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.registerCells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.registerCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+  border: 2px solid var(--reg-color);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 80px;
+}
+
+.registerCell:hover {
+  background: color-mix(in srgb, var(--reg-color) 10%, transparent);
+  transform: translateY(-1px);
+}
+
+.registerCellSelected {
+  background: color-mix(in srgb, var(--reg-color) 20%, transparent);
+  box-shadow: 0 0 0 2px var(--reg-color);
+}
+
+.registerCellHighlighted {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--reg-color); }
+  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--reg-color) 40%, transparent); }
+}
+
+.registerName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--reg-color);
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.registerWidth {
+  font-size: 10px;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 2px;
+}
+
+.registerBadge {
+  font-size: 9px;
+  padding: 1px 4px;
+  background: var(--reg-color);
+  color: white;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.detailSidebar {
+  position: sticky;
+  top: 20px;
+}
+
+.detailPanel {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  padding: 16px;
+  background: var(--ifm-background-color);
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.detailColorDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.detailTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.detailCategory {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.detailBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detailLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  font-size: 13px;
+  color: var(--ifm-font-color-base);
+}
+
+.emptyDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  color: var(--ifm-color-emphasis-500);
+  border: 1px dashed var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+}
+
+.emptyDetail p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.callingConventionBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.ccLabel {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ccValue {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detailSidebar {
+    position: static;
+  }
+
+  .legend {
+    gap: 10px;
+  }
+
+  .registerCells {
+    gap: 6px;
+  }
+
+  .registerCell {
+    min-width: 70px;
+    padding: 8px 10px;
+  }
+}

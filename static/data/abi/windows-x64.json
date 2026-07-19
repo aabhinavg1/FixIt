@@ -1,0 +1,621 @@
+{
+  "id": "windows-x64",
+  "name": "Windows x64 ABI",
+  "architecture": "x86_64",
+  "convention": "Microsoft x64 Calling Convention",
+  "target": "Windows",
+  "version": "1.0",
+  "category": "CPU",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 8,
+    "endianness": "little",
+    "abiName": "PE/COFF",
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": false,
+    "notes": "Stack must be 16-byte aligned before CALL instruction. The CALL pushes an 8-byte return address, so RSP is 8-byte aligned on function entry. No red zone exists; all stack usage must be within the function's own frame."
+  },
+  "callingConvention": {
+    "name": "Microsoft x64",
+    "argumentRegisters": [
+      { "register": "RCX", "position": 0, "type": "integer" },
+      { "register": "RDX", "position": 1, "type": "integer" },
+      { "register": "R8", "position": 2, "type": "integer" },
+      { "register": "R9", "position": 3, "type": "integer" }
+    ],
+    "returnRegisters": [
+      { "register": "RAX", "position": 0, "type": "integer" },
+      { "register": "XMM0", "position": 0, "type": "floating-point" }
+    ],
+    "callerSaved": ["RAX", "RCX", "RDX", "R8", "R9", "R10", "R11", "XMM0", "XMM1", "XMM2", "XMM3", "XMM4", "XMM5"],
+    "calleeSaved": ["RBX", "RBP", "RDI", "RSI", "R12", "R13", "R14", "R15", "XMM6", "XMM7", "XMM8", "XMM9", "XMM10", "XMM11", "XMM12", "XMM13", "XMM14", "XMM15"],
+    "variadicRules": {
+      "registerCount": 4,
+      "vaListType": "char*",
+      "notes": "Variadic functions must allocate at least 32 bytes of shadow space for the 4 register arguments. The callee must save all 4 integer argument registers (RCX, RDX, R8, R9) and all 4 XMM argument registers (XMM0-XMM3) into the shadow space before accessing variadic arguments. va_list is simply a pointer to the stack arguments."
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 32,
+    "aggregatePassing": {
+      "rule": "Structs ≤ 8 bytes passed in a single integer register; structs 9-16 bytes passed in two integer registers (if pointer-safe) or on stack",
+      "memoryThreshold": "Structs > 16 bytes, or structs containing non-pointer-safe members, are passed by pointer in the caller's shadow space"
+    },
+    "simdRules": {
+      "argumentRegisters": ["XMM0", "XMM1", "XMM2", "XMM3"],
+      "returnRegisters": ["XMM0"]
+    },
+    "hvaSupport": false,
+    "hvaRules": "Homogeneous vector aggregates are not specifically supported by the Microsoft x64 ABI. Float/double arguments use XMM registers directly but there is no formal HVA/HVX concept."
+  },
+  "registers": [
+    {
+      "name": "RAX",
+      "width": 64,
+      "purpose": "Return value, accumulator",
+      "aliases": ["EAX", "AX", "AH", "AL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RBX",
+      "width": 64,
+      "purpose": "Base register, callee-saved",
+      "aliases": ["EBX", "BX", "BH", "BL"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RCX",
+      "width": 64,
+      "purpose": "1st integer argument register",
+      "aliases": ["ECX", "CX", "CH", "CL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RDX",
+      "width": 64,
+      "purpose": "2nd integer argument register",
+      "aliases": ["EDX", "DX", "DH", "DL"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RBP",
+      "width": 64,
+      "purpose": "Frame pointer (optional with /Oy)",
+      "aliases": ["EBP", "BP"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "RSI",
+      "width": 64,
+      "purpose": "Source index, callee-saved",
+      "aliases": ["ESI", "SI"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RDI",
+      "width": 64,
+      "purpose": "Destination index, callee-saved",
+      "aliases": ["EDI", "DI"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R8",
+      "width": 64,
+      "purpose": "3rd integer argument register",
+      "aliases": ["R8D", "R8W", "R8B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R9",
+      "width": 64,
+      "purpose": "4th integer argument register",
+      "aliases": ["R9D", "R9W", "R9B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R10",
+      "width": 64,
+      "purpose": "Static chain pointer, scratch, caller-saved",
+      "aliases": ["R10D", "R10W", "R10B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "R11",
+      "width": 64,
+      "purpose": "Scratch register, caller-saved",
+      "aliases": ["R11D", "R11W", "R11B"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R12",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R12D", "R12W", "R12B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R13",
+      "width": 64,
+      "purpose": "Callee-saved, used as TLS base in Windows",
+      "aliases": ["R13D", "R13W", "R13B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "R14",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R14D", "R14W", "R14B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "R15",
+      "width": 64,
+      "purpose": "Callee-saved",
+      "aliases": ["R15D", "R15W", "R15B"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GR64",
+      "special": false
+    },
+    {
+      "name": "RSP",
+      "width": 64,
+      "purpose": "Stack pointer",
+      "aliases": ["ESP", "SP"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "GR64",
+      "special": true
+    },
+    {
+      "name": "XMM0",
+      "width": 128,
+      "purpose": "1st floating-point argument, 1st FP return",
+      "aliases": ["YMM0", "ZMM0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM1",
+      "width": 128,
+      "purpose": "2nd floating-point argument",
+      "aliases": ["YMM1", "ZMM1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM2",
+      "width": 128,
+      "purpose": "3rd floating-point argument",
+      "aliases": ["YMM2", "ZMM2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM3",
+      "width": 128,
+      "purpose": "4th floating-point argument",
+      "aliases": ["YMM3", "ZMM3"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM4",
+      "width": 128,
+      "purpose": "5th floating-point argument",
+      "aliases": ["YMM4", "ZMM4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM5",
+      "width": 128,
+      "purpose": "6th floating-point argument",
+      "aliases": ["YMM5", "ZMM5"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM6",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM6", "ZMM6"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM7",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM7", "ZMM7"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM8",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM8", "ZMM8"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM9",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM9", "ZMM9"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM10",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM10", "ZMM10"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM11",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM11", "ZMM11"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM12",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM12", "ZMM12"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM13",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM13", "ZMM13"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM14",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM14", "ZMM14"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    },
+    {
+      "name": "XMM15",
+      "width": 128,
+      "purpose": "Callee-saved (XMM)",
+      "aliases": ["YMM15", "ZMM15"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "VR128",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      { "region": "higher-addresses", "label": "Caller Frame", "color": "#64748b", "description": "Stack frame of the function that called this one" },
+      { "region": "outgoing-args", "label": "Outgoing Arguments", "color": "#3b82f6", "description": "Arguments for functions this function will call (shadow space + stack args)" },
+      { "region": "return-address", "label": "Return Address", "color": "#ef4444", "description": "Pushed by CALL instruction, points to instruction after call" },
+      { "region": "saved-registers", "label": "Saved Registers", "color": "#f97316", "description": "Callee-saved registers (RBX, RBP, RDI, RSI, R12-R15, XMM6-XMM15) preserved by this function" },
+      { "region": "frame-pointer", "label": "Frame Pointer (RBP)", "color": "#8b5cf6", "description": "Optional: points to saved RBP, used to access locals and args" },
+      { "region": "locals", "label": "Local Variables", "color": "#22c55e", "description": "Automatic variables declared in this function" },
+      { "region": "alignment-padding", "label": "Alignment Padding", "color": "#94a3b8", "description": "Padding to maintain 16-byte stack alignment" },
+      { "region": "shadow-space", "label": "Shadow Space (32 bytes)", "color": "#a855f7", "description": "Always allocated by caller for 4 register arguments. Callee can use as scratch space to spill register arguments." }
+    ],
+    "framePointerRequired": false,
+    "notes": "RBP is optional with /Oy (omit frame pointer). The shadow space is always allocated by the caller, even if the callee has fewer than 4 arguments. This shadow space allows the callee to have a uniform way to spill register arguments to the stack for debugging."
+  },
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "llvmIR": "define i32 @add(i32 %a, i32 %b) #0 {\nentry:\n  %a.addr = alloca i32, align 4\n  %b.addr = alloca i32, align 4\n  store i32 %a, ptr %a.addr, align 4\n  store i32 %b, ptr %b.addr, align 4\n  %0 = load i32, ptr %a.addr, align 4\n  %1 = load i32, ptr %b.addr, align 4\n  %add = add nsw i32 %0, %1\n  ret i32 %add\n}",
+      "assembly": "add     ecx, edx\nmov     eax, ecx\nret",
+      "notes": "a in RCX (1st arg), b in RDX (2nd arg). Return in RAX. Despite having only 2 args, the caller still allocates 32 bytes of shadow space before the call."
+    },
+    "complex": {
+      "title": "Function with 8+ arguments (shadow space + stack args)",
+      "c": "long calc(long a, long b, long c, long d,\n          long e, long f, long g, long h) {\n    return a*b + c*d + e*f + g*h;\n}",
+      "llvmIR": "define i64 @calc(i64 %a, i64 %b, i64 %c, i64 %d,\n                 i64 %e, i64 %f, i64 %g, i64 %h) {\nentry:\n  %mul = mul nsw i64 %a, %b\n  %mul1 = mul nsw i64 %c, %d\n  %add = add nsw i64 %mul, %mul1\n  %mul2 = mul nsw i64 %e, %f\n  %add3 = add nsw i64 %add, %mul2\n  %mul4 = mul nsw i64 %g, %h\n  %add5 = add nsw i64 %add3, %mul4\n  ret i64 %add5\n}",
+      "assembly": "calc:\n    sub     rsp, 56\n    mov     qword ptr [rsp + 32], r8\n    mov     qword ptr [rsp + 40], r9\n    mov     rax, qword ptr [rsp + 96]\n    imul    rax, rcx\n    mov     rcx, qword ptr [rsp + 104]\n    imul    rcx, rdx\n    add     rax, rcx\n    mov     rcx, qword ptr [rsp + 32]\n    imul    rcx, qword ptr [rsp + 48]\n    add     rax, rcx\n    mov     rcx, qword ptr [rsp + 40]\n    imul    rcx, qword ptr [rsp + 112]\n    add     rax, rcx\n    add     rsp, 56\n    ret",
+      "notes": "a-d in registers RCX, RDX, R8, R9. e-h on the stack (5th-8th args) above the caller's shadow space. The caller must allocate 32 bytes of shadow space + space for 4 stack arguments (32 bytes) = 64 bytes total. The callee spills R8 and R9 to its shadow space to free them for other use."
+    },
+    "variadic": {
+      "title": "Variadic function (printf-like)",
+      "c": "int printf(const char* fmt, ...) {\n    va_list ap;\n    va_start(ap, fmt);\n    int result = vfprintf(stdout, fmt, ap);\n    va_end(ap);\n    return result;\n}",
+      "llvmIR": "define i32 @printf(ptr %fmt, ...) {\nentry:\n  %ap = alloca ptr, align 8\n  call void @llvm.va_start(ptr %ap)\n  ; ... format processing ...\n  call void @llvm.va_end(ptr %ap)\n  ret i32 %result\n}",
+      "assembly": "printf:\n    sub     rsp, 56\n    mov     qword ptr [rsp + 32], rcx\n    mov     qword ptr [rsp + 40], rdx\n    mov     qword ptr [rsp + 48], r8\n    mov     qword ptr [rsp + 56], r9\n    movdqa  xmmword ptr [rsp + 64], xmm0\n    movdqa  xmmword ptr [rsp + 80], xmm1\n    movdqa  xmmword ptr [rsp + 96], xmm2\n    movdqa  xmmword ptr [rsp + 112], xmm3\n    ; ... va_arg processing ...\n    add     rsp, 56\n    ret",
+      "notes": "Variadic functions must save all 4 integer register args (RCX, RDX, R8, R9) and all 4 XMM register args (XMM0-XMM3) into the shadow space and adjacent stack space. va_list is just a char* pointer into the stack args area, unlike the complex struct used in SysV."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/X86/X86CallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86CallingConv.td#L462",
+      "description": "CC_X86_64_Win64_C: Defines Microsoft x64 calling convention with RCX, RDX, R8, R9 argument registers and 32-byte shadow space requirement"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/X86/X86ISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86ISelLowering.cpp#L8179",
+      "description": "LowerCall: Implements argument lowering with shadow space allocation, struct passing, variadic register saving, and tail call optimization for Win64"
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/X86/X86FrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86FrameLowering.cpp#L117",
+      "description": "hasFPImpl: Stack frame layout for Windows x64 without red zone, callee-saved register spilling, and proper alignment handling"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/X86/X86RegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86RegisterInfo.cpp#L540",
+      "description": "getCalleeSavedRegs: Windows x64 callee-saved register list including RBX, RBP, RDI, RSI, R12-R15, and XMM6-XMM15"
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/i386/i386.md",
+    "callConvention": "gcc/config/i386/i386.cc",
+    "notes": "GCC uses X86_64_MS_ABI for the Microsoft x64 calling convention. On Windows targets (MinGW, Cygwin), GCC defaults to this ABI. The MS ABI is distinct from X86_64_SYSV_ABI used on Linux/macOS."
+  },
+  "why": [
+    {
+      "question": "Why does Windows x64 use only 4 integer argument registers instead of 6?",
+      "answer": "Microsoft designed the ABI for compatibility with the Windows runtime and exception handling infrastructure. By using fewer argument registers (RCX, RDX, R8, R9), the ABI leaves more registers as callee-saved (RDI, RSI, R12-R15 are callee-saved on Windows but caller-saved on SysV). This was a deliberate trade-off: fewer argument registers mean more callee-saved registers, which benefits functions with many local variables that span across calls. It also simplified the Windows exception handling model since the unwinder needs to track fewer volatile registers."
+    },
+    {
+      "question": "Why is there no Red Zone on Windows x64?",
+      "answer": "Windows uses structured exception handling (SEH) which can unwind the stack at any point. A Red Zone would conflict with SEH because the unwinder must be able to restore the stack to a known state. Since Windows can deliver asynchronous exceptions (like Access Violation or Ctrl+C), the stack below RSP must always be considered invalid. SysV systems (Linux, macOS) handle signals differently: the OS sets up a new signal stack frame, so the Red Zone is safe as long as no code below RSP is executed between signal delivery and the signal handler's stack setup."
+    },
+    {
+      "question": "Why does Windows require 32 bytes of shadow space for every function call?",
+      "answer": "The shadow space (also called home space) is required even if the callee has fewer than 4 arguments. It serves three purposes: (1) It provides a uniform location for the callee to spill register arguments, making debugging easier since debuggers can always find arguments at predictable stack offsets. (2) It simplifies variadic function implementation because va_list can simply point to the shadow space. (3) It allows the callee to use its shadow space as scratch space, reducing the callee's own stack frame size. The 32-byte size exactly matches 4 register arguments × 8 bytes each."
+    },
+    {
+      "question": "Why are RDI and RSI callee-saved on Windows but caller-saved on SysV?",
+      "answer": "This is a key difference in ABI design philosophy. The Windows ABI was designed to maximize the number of callee-saved registers (8 GPRs + 10 XMMs) because many Windows API functions are small and simple. By making RDI and RSI callee-saved, functions that don't use them as scratch registers avoid save/restore overhead entirely. On SysV, RDI and RSI are the 1st and 2nd argument registers respectively, so they must be caller-saved since any function call will clobber them. The Windows approach trades fewer argument registers for more preserved registers across calls."
+    },
+    {
+      "question": "Why is the va_list type just a char pointer on Windows but a complex struct on SysV?",
+      "answer": "The Microsoft x64 ABI mandates that all variadic arguments be stored in the shadow space (for integer registers) and adjacent stack space (for XMM registers) by the callee. Since the layout is fixed and predictable, va_list is simply a pointer into this area. On SysV, the va_list struct is more complex because it must track multiple independent regions: gp_offset (current position in integer register save area), fp_offset (current position in XMM register save area), overflow_arg_area (stack args pointer), and reg_save_area (base of register save area). SysV's approach avoids forcing variadic functions to save all registers upfront, but at the cost of a more complex va_list implementation."
+    },
+    {
+      "question": "Why does Windows support tail call optimization differently than SysV?",
+      "answer": "Windows x64 supports tail calls, but with a critical restriction: the callee must have at least as much shadow space as the caller. This is because the caller must ensure the shadow space is large enough for the callee to spill its arguments. If the tail-called function expects more shadow space than the current frame provides, the tail call cannot be performed. SysV has no such restriction since it has no shadow space. Additionally, the Windows unwinder (used for exception handling) must be able to correctly unwind through tail-called frames, which adds constraints that SysV does not face."
+    }
+  ],
+  "comparison": {
+    "vsSysV": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "windows": "RCX, RDX, R8, R9 (4)", "sysv": "RDI, RSI, RDX, RCX, R8, R9 (6)", "impact": "SysV passes more args in registers, reducing stack traffic" },
+        { "feature": "Shadow Space", "windows": "32 bytes required on every call", "sysv": "None (0 bytes)", "impact": "Windows uses shadow space for debugging and variadic simplicity; SysV avoids this overhead" },
+        { "feature": "Red Zone", "windows": "None (0 bytes)", "sysv": "128 bytes", "impact": "SysV leaf functions can use stack without adjusting RSP; Windows cannot due to SEH" },
+        { "feature": "XMM Argument Registers", "windows": "XMM0-XMM3 (4 registers)", "sysv": "XMM0-XMM7 (8 registers)", "impact": "SysV passes more float args in registers" },
+        { "feature": "Callee-Saved GPRs", "windows": "RBX, RBP, RDI, RSI, R12-R15 (8)", "sysv": "RBX, RBP, R12-R15 (6)", "impact": "Windows preserves more registers across calls" },
+        { "feature": "Callee-Saved XMMs", "windows": "XMM6-XMM15 (10)", "sysv": "None (0, all caller-saved)", "impact": "Windows preserves XMM registers across calls at the cost of more save/restore" },
+        { "feature": "Variadic va_list", "windows": "char* (simple pointer)", "sysv": "struct { gp_offset, fp_offset, overflow_arg_area, reg_save_area }", "impact": "Windows variadic is simpler but less flexible" },
+        { "feature": "Exception Handling", "windows": "Structured Exception Handling (SEH) with unwind info", "sysv": "DWARF-based unwind tables", "impact": "Different unwinding mechanisms affect frame layout and debugging" },
+        { "feature": "Stack Alignment", "windows": "16 bytes before CALL", "sysv": "16 bytes before CALL", "impact": "Both ABIs require 16-byte alignment for SSE compatibility" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "x86_64-pc-windows-msvc",
+    "description": "Key Clang/LLVM flags for targeting the Windows x64 ABI (Microsoft x64 Calling Convention)",
+    "flags": [
+      {
+        "flag": "--target=x86_64-pc-windows-msvc",
+        "description": "Sets the compilation target to Windows x64 with MSVC ABI. Automatically selects shadow space, 4 arg registers, no red zone.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mabi=ms",
+        "description": "Explicitly selects the Microsoft x64 ABI. Uses RCX, RDX, R8, R9 for integer args, 32-byte shadow space.",
+        "kind": "Joined",
+        "category": "X86"
+      },
+      {
+        "flag": "-m64",
+        "description": "Generate 64-bit x86 code. Required for x86_64 target.",
+        "kind": "Flag",
+        "category": "X86"
+      },
+      {
+        "flag": "-fms-compatibility",
+        "description": "Enable Microsoft compatibility mode. Enables MS extensions and ABI differences.",
+        "kind": "Flag",
+        "category": "CL Compatibility"
+      },
+      {
+        "flag": "-fms-extensions",
+        "description": "Enable Microsoft language extensions (e.g., __declspec, __int64).",
+        "kind": "Flag",
+        "category": "CL Compatibility"
+      },
+      {
+        "flag": "-fms-runtime-lib=dynamic",
+        "description": "Select the MSVC runtime library. Options: static, dynamic.",
+        "kind": "Joined",
+        "category": "CL Compatibility"
+      },
+      {
+        "flag": "-fexceptions",
+        "description": "Enable exception handling. Windows uses table-based exceptions (SEH) unlike DWARF on Linux.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-fno-omit-frame-pointer",
+        "description": "Keep the frame pointer (RBP). Windows ABI typically keeps the frame pointer for debugging.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-mstack-alignment=16",
+        "description": "Set stack alignment. Windows x64 ABI requires 16-byte stack alignment.",
+        "kind": "Joined",
+        "category": "X86"
+      }
+    ],
+    "llcCommand": "llc -mtriple=x86_64-pc-windows-msvc -mabi=ms -mattr=+sse4.2 -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=x86_64-pc-windows-msvc -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=x86_64-pc-windows-msvc -fms-compatibility -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/MSVC.cpp",
+        "description": "MSVC toolchain: selects Microsoft x64 ABI and shadow space for Windows targets"
+      },
+      {
+        "path": "llvm/lib/Target/X86/X86CallingConv.td",
+        "description": "TableGen definition of CC_X86_64_Win64_C (Microsoft x64 calling convention)"
+      }
+    ]
+  },
+  "searchText": "windows x64 microsoft ms-abi calling convention rcx rdx r8 r9 shadow space home space variadic va_list xmm0 xmm3 callee-saved rbx rbp rdi rsi r12 r13 r14 r15 xmm6 xmm15 seh structured exception handling pe coff win64"
+}

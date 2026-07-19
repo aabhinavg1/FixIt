@@ -1,0 +1,1441 @@
+{
+  "id": "mips-n32",
+  "name": "MIPS N32 ABI",
+  "architecture": "mips",
+  "convention": "mips-n32",
+  "target": "mips*-*-linux*",
+  "version": "1.0",
+  "category": "System V",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 4,
+    "wordSize": 8,
+    "endianness": "big",
+
+    "abiName": "N32",
+
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 8,
+
+    "redZone": false,
+    "dynamicAlignment": false,
+    "notes": "Stack grows downward. 8-byte alignment enforced for N32. First argument is at offset 0 from $sp at entry. No red zone exists on MIPS. Each stack frame must be 8-byte aligned. The MIPS N32 ABI uses a 32-bit address space on a 64-bit CPU, so the stack pointer is 32 bits effective but 64-bit in registers."
+  },
+  "callingConvention": {
+    "name": "mips-n32",
+    "argumentRegisters": ["$a0", "$a1", "$a2", "$a3"],
+    "returnRegisters": ["$v0", "$v1", "$f0", "$f1"],
+    "callerSaved": [
+      "$v0", "$v1",
+      "$a0", "$a1", "$a2", "$a3",
+      "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7",
+      "$t8", "$t9",
+      "$f0", "$f1", "$f2", "$f3", "$f4", "$f5", "$f6", "$f7",
+      "$f8", "$f9", "$f10", "$f11", "$f12", "$f13", "$f14", "$f15",
+      "$f16", "$f17", "$f18", "$f19",
+      "$f20", "$f21", "$f22", "$f23", "$f24", "$f25", "$f26", "$f27",
+      "$f28", "$f29", "$f30", "$f31"
+    ],
+    "calleeSaved": [
+      "$s0", "$s1", "$s2", "$s3", "$s4", "$s5", "$s6", "$s7",
+      "$fp", "$ra",
+      "$f20", "$f21", "$f22", "$f23", "$f24", "$f25", "$f26", "$f27",
+      "$f28", "$f29", "$f30", "$f31"
+    ],
+    "variadicRules": "N32 uses the same variadic mechanism as N64. All integer arguments in $a0-$a3 are saved into the register save area (offset 0-$a3) at the top of the stack frame at function entry for variadic functions. The $f0-$f7 floating-point argument registers are NOT used for variadic arguments; instead, FP variadic arguments are passed entirely on the stack. va_list is a struct (typedef struct { char *__gp; char *__fp; char *__sp; char *__base; } va_list) with pointers into the register save area. The caller always builds a complete register save area for the full 4 GPR argument slots at the stack frame entry.",
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": "Small structs (up to 16 bytes) are passed in $a0-$a3 registers. Larger structs or structs containing FP members are passed indirectly (pointer in register or on stack). Aggregates larger than two 8-byte words are passed by invisible reference (caller allocates, passes pointer). Structs that fit in a single doubleword are passed in one register; those fitting in two doublewords use two registers.",
+    "simdRules": "MIPS SIMD is architecture-dependent (MIPS-3D, MDMX extensions). On standard N32, SIMD values follow the same rules as FP arguments for up to 8 registers ($f0-$f7). Paired single-precision values use the FP registers with appropriate alignment."
+  },
+  "registers": [
+    {
+      "name": "r0",
+      "width": 64,
+      "purpose": "Constant zero",
+      "aliases": ["$zero", "$0"],
+      "callerCallee": "fixed",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 0,
+      "llvmRegisterClass": "GPR64",
+      "special": "hardwired to zero, writes are discarded"
+    },
+    {
+      "name": "r1",
+      "width": 64,
+      "purpose": "Assembler temporary",
+      "aliases": ["$at"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 1,
+      "llvmRegisterClass": "GPR64",
+      "special": "reserved for pseudoinstruction expansion"
+    },
+    {
+      "name": "r2",
+      "width": 64,
+      "purpose": "Return value / argument 1",
+      "aliases": ["$v0"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": 0,
+      "encoding": 2,
+      "llvmRegisterClass": "GPR64",
+      "special": "integer return value"
+    },
+    {
+      "name": "r3",
+      "width": 64,
+      "purpose": "Return value / argument 2",
+      "aliases": ["$v1"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": 1,
+      "encoding": 3,
+      "llvmRegisterClass": "GPR64",
+      "special": "second integer return value"
+    },
+    {
+      "name": "r4",
+      "width": 64,
+      "purpose": "Argument 0",
+      "aliases": ["$a0"],
+      "callerCallee": "caller",
+      "argumentPosition": 0,
+      "returnPosition": -1,
+      "encoding": 4,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r5",
+      "width": 64,
+      "purpose": "Argument 1",
+      "aliases": ["$a1"],
+      "callerCallee": "caller",
+      "argumentPosition": 1,
+      "returnPosition": -1,
+      "encoding": 5,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r6",
+      "width": 64,
+      "purpose": "Argument 2",
+      "aliases": ["$a2"],
+      "callerCallee": "caller",
+      "argumentPosition": 2,
+      "returnPosition": -1,
+      "encoding": 6,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r7",
+      "width": 64,
+      "purpose": "Argument 3",
+      "aliases": ["$a3"],
+      "callerCallee": "caller",
+      "argumentPosition": 3,
+      "returnPosition": -1,
+      "encoding": 7,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r8",
+      "width": 64,
+      "purpose": "Temporary 0",
+      "aliases": ["$t0"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 8,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r9",
+      "width": 64,
+      "purpose": "Temporary 1",
+      "aliases": ["$t1"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 9,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r10",
+      "width": 64,
+      "purpose": "Temporary 2",
+      "aliases": ["$t2"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 10,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r11",
+      "width": 64,
+      "purpose": "Temporary 3",
+      "aliases": ["$t3"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 11,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r12",
+      "width": 64,
+      "purpose": "Temporary 4",
+      "aliases": ["$t4"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 12,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r13",
+      "width": 64,
+      "purpose": "Temporary 5",
+      "aliases": ["$t5"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 13,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r14",
+      "width": 64,
+      "purpose": "Temporary 6",
+      "aliases": ["$t6"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 14,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r15",
+      "width": 64,
+      "purpose": "Temporary 7",
+      "aliases": ["$t7"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 15,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r16",
+      "width": 64,
+      "purpose": "Saved 0",
+      "aliases": ["$s0"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 16,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r17",
+      "width": 64,
+      "purpose": "Saved 1",
+      "aliases": ["$s1"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 17,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r18",
+      "width": 64,
+      "purpose": "Saved 2",
+      "aliases": ["$s2"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 18,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r19",
+      "width": 64,
+      "purpose": "Saved 3",
+      "aliases": ["$s3"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 19,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r20",
+      "width": 64,
+      "purpose": "Saved 4",
+      "aliases": ["$s4"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 20,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r21",
+      "width": 64,
+      "purpose": "Saved 5",
+      "aliases": ["$s5"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 21,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r22",
+      "width": 64,
+      "purpose": "Saved 6",
+      "aliases": ["$s6"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 22,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r23",
+      "width": 64,
+      "purpose": "Saved 7",
+      "aliases": ["$s7"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 23,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r24",
+      "width": 64,
+      "purpose": "Temporary 8",
+      "aliases": ["$t8"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 24,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r25",
+      "width": 64,
+      "purpose": "Temporary 9",
+      "aliases": ["$t9"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 25,
+      "llvmRegisterClass": "GPR64",
+      "special": null
+    },
+    {
+      "name": "r26",
+      "width": 64,
+      "purpose": "Kernel reserved 0",
+      "aliases": ["$k0"],
+      "callerCallee": "fixed",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 26,
+      "llvmRegisterClass": "GPR64",
+      "special": "reserved for OS kernel, must not be used by user code"
+    },
+    {
+      "name": "r27",
+      "width": 64,
+      "purpose": "Kernel reserved 1",
+      "aliases": ["$k1"],
+      "callerCallee": "fixed",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 27,
+      "llvmRegisterClass": "GPR64",
+      "special": "reserved for OS kernel, must not be used by user code"
+    },
+    {
+      "name": "r28",
+      "width": 64,
+      "purpose": "Global pointer",
+      "aliases": ["$gp"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 28,
+      "llvmRegisterClass": "GPR64",
+      "special": "points to global data, managed by linker and runtime"
+    },
+    {
+      "name": "r29",
+      "width": 64,
+      "purpose": "Stack pointer",
+      "aliases": ["$sp"],
+      "callerCallee": "fixed",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 29,
+      "llvmRegisterClass": "GPR64",
+      "special": "callee must preserve or restore"
+    },
+    {
+      "name": "r30",
+      "width": 64,
+      "purpose": "Frame pointer",
+      "aliases": ["$fp", "$s8"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 30,
+      "llvmRegisterClass": "GPR64",
+      "special": "optional frame pointer, commonly used on MIPS"
+    },
+    {
+      "name": "r31",
+      "width": 64,
+      "purpose": "Return address",
+      "aliases": ["$ra"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 31,
+      "llvmRegisterClass": "GPR64",
+      "special": "set by JAL/JALR, callee must restore if itself calling"
+    },
+
+    {
+      "name": "f0",
+      "width": 64,
+      "purpose": "FP return value 0",
+      "aliases": ["$f0"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": 2,
+      "encoding": 32,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP return value"
+    },
+    {
+      "name": "f1",
+      "width": 64,
+      "purpose": "FP return value 1",
+      "aliases": ["$f1"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": 3,
+      "encoding": 33,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP return value"
+    },
+    {
+      "name": "f2",
+      "width": 64,
+      "purpose": "FP temporary 0",
+      "aliases": ["$f2"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 34,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f3",
+      "width": 64,
+      "purpose": "FP temporary 1",
+      "aliases": ["$f3"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 35,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f4",
+      "width": 64,
+      "purpose": "FP argument 0 / FP temporary 2",
+      "aliases": ["$f4"],
+      "callerCallee": "caller",
+      "argumentPosition": 4,
+      "returnPosition": -1,
+      "encoding": 36,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f5",
+      "width": 64,
+      "purpose": "FP argument 1 / FP temporary 3",
+      "aliases": ["$f5"],
+      "callerCallee": "caller",
+      "argumentPosition": 5,
+      "returnPosition": -1,
+      "encoding": 37,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f6",
+      "width": 64,
+      "purpose": "FP argument 2 / FP temporary 4",
+      "aliases": ["$f6"],
+      "callerCallee": "caller",
+      "argumentPosition": 6,
+      "returnPosition": -1,
+      "encoding": 38,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f7",
+      "width": 64,
+      "purpose": "FP argument 3 / FP temporary 5",
+      "aliases": ["$f7"],
+      "callerCallee": "caller",
+      "argumentPosition": 7,
+      "returnPosition": -1,
+      "encoding": 39,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f8",
+      "width": 64,
+      "purpose": "FP argument 4",
+      "aliases": ["$f8"],
+      "callerCallee": "caller",
+      "argumentPosition": 8,
+      "returnPosition": -1,
+      "encoding": 40,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f9",
+      "width": 64,
+      "purpose": "FP argument 5",
+      "aliases": ["$f9"],
+      "callerCallee": "caller",
+      "argumentPosition": 9,
+      "returnPosition": -1,
+      "encoding": 41,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f10",
+      "width": 64,
+      "purpose": "FP argument 6",
+      "aliases": ["$f10"],
+      "callerCallee": "caller",
+      "argumentPosition": 10,
+      "returnPosition": -1,
+      "encoding": 42,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f11",
+      "width": 64,
+      "purpose": "FP argument 7",
+      "aliases": ["$f11"],
+      "callerCallee": "caller",
+      "argumentPosition": 11,
+      "returnPosition": -1,
+      "encoding": 43,
+      "llvmRegisterClass": "FGR64",
+      "special": "FP argument register"
+    },
+    {
+      "name": "f12",
+      "width": 64,
+      "purpose": "FP temporary 6",
+      "aliases": ["$f12"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 44,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f13",
+      "width": 64,
+      "purpose": "FP temporary 7",
+      "aliases": ["$f13"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 45,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f14",
+      "width": 64,
+      "purpose": "FP temporary 8",
+      "aliases": ["$f14"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 46,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f15",
+      "width": 64,
+      "purpose": "FP temporary 9",
+      "aliases": ["$f15"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 47,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f16",
+      "width": 64,
+      "purpose": "FP temporary 10",
+      "aliases": ["$f16"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 48,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f17",
+      "width": 64,
+      "purpose": "FP temporary 11",
+      "aliases": ["$f17"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 49,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f18",
+      "width": 64,
+      "purpose": "FP temporary 12",
+      "aliases": ["$f18"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 50,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f19",
+      "width": 64,
+      "purpose": "FP temporary 13",
+      "aliases": ["$f19"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 51,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f20",
+      "width": 64,
+      "purpose": "FP saved 0",
+      "aliases": ["$f20"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 52,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f21",
+      "width": 64,
+      "purpose": "FP saved 1",
+      "aliases": ["$f21"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 53,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f22",
+      "width": 64,
+      "purpose": "FP saved 2",
+      "aliases": ["$f22"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 54,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f23",
+      "width": 64,
+      "purpose": "FP saved 3",
+      "aliases": ["$f23"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 55,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f24",
+      "width": 64,
+      "purpose": "FP saved 4",
+      "aliases": ["$f24"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 56,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f25",
+      "width": 64,
+      "purpose": "FP saved 5",
+      "aliases": ["$f25"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 57,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f26",
+      "width": 64,
+      "purpose": "FP saved 6",
+      "aliases": ["$f26"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 58,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f27",
+      "width": 64,
+      "purpose": "FP saved 7",
+      "aliases": ["$f27"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 59,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f28",
+      "width": 64,
+      "purpose": "FP saved 8",
+      "aliases": ["$f28"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 60,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f29",
+      "width": 64,
+      "purpose": "FP saved 9",
+      "aliases": ["$f29"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 61,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f30",
+      "width": 64,
+      "purpose": "FP saved 10",
+      "aliases": ["$f30"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 62,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f31",
+      "width": 64,
+      "purpose": "FP saved 11",
+      "aliases": ["$f31"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 63,
+      "llvmRegisterClass": "FGR64",
+      "special": null
+    },
+    {
+      "name": "f32",
+      "width": 64,
+      "purpose": "FP temporary 14 (64-bit FPU)",
+      "aliases": ["$f32"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 32,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f33",
+      "width": 64,
+      "purpose": "FP temporary 15 (64-bit FPU)",
+      "aliases": ["$f33"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 33,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f34",
+      "width": 64,
+      "purpose": "FP temporary 16 (64-bit FPU)",
+      "aliases": ["$f34"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 34,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f35",
+      "width": 64,
+      "purpose": "FP temporary 17 (64-bit FPU)",
+      "aliases": ["$f35"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 35,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f36",
+      "width": 64,
+      "purpose": "FP temporary 18 (64-bit FPU)",
+      "aliases": ["$f36"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 36,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f37",
+      "width": 64,
+      "purpose": "FP temporary 19 (64-bit FPU)",
+      "aliases": ["$f37"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 37,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f38",
+      "width": 64,
+      "purpose": "FP temporary 20 (64-bit FPU)",
+      "aliases": ["$f38"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 38,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f39",
+      "width": 64,
+      "purpose": "FP temporary 21 (64-bit FPU)",
+      "aliases": ["$f39"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 39,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f40",
+      "width": 64,
+      "purpose": "FP temporary 22 (64-bit FPU)",
+      "aliases": ["$f40"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 40,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f41",
+      "width": 64,
+      "purpose": "FP temporary 23 (64-bit FPU)",
+      "aliases": ["$f41"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 41,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f42",
+      "width": 64,
+      "purpose": "FP temporary 24 (64-bit FPU)",
+      "aliases": ["$f42"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 42,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f43",
+      "width": 64,
+      "purpose": "FP temporary 25 (64-bit FPU)",
+      "aliases": ["$f43"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 43,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f44",
+      "width": 64,
+      "purpose": "FP temporary 26 (64-bit FPU)",
+      "aliases": ["$f44"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 44,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f45",
+      "width": 64,
+      "purpose": "FP temporary 27 (64-bit FPU)",
+      "aliases": ["$f45"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 45,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f46",
+      "width": 64,
+      "purpose": "FP temporary 28 (64-bit FPU)",
+      "aliases": ["$f46"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 46,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f47",
+      "width": 64,
+      "purpose": "FP temporary 29 (64-bit FPU)",
+      "aliases": ["$f47"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 47,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f48",
+      "width": 64,
+      "purpose": "FP temporary 30 (64-bit FPU)",
+      "aliases": ["$f48"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 48,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f49",
+      "width": 64,
+      "purpose": "FP temporary 31 (64-bit FPU)",
+      "aliases": ["$f49"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 49,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f50",
+      "width": 64,
+      "purpose": "FP temporary 32 (64-bit FPU)",
+      "aliases": ["$f50"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 50,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f51",
+      "width": 64,
+      "purpose": "FP temporary 33 (64-bit FPU)",
+      "aliases": ["$f51"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 51,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f52",
+      "width": 64,
+      "purpose": "FP temporary 34 (64-bit FPU)",
+      "aliases": ["$f52"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 52,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f53",
+      "width": 64,
+      "purpose": "FP temporary 35 (64-bit FPU)",
+      "aliases": ["$f53"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 53,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f54",
+      "width": 64,
+      "purpose": "FP temporary 36 (64-bit FPU)",
+      "aliases": ["$f54"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 54,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f55",
+      "width": 64,
+      "purpose": "FP temporary 37 (64-bit FPU)",
+      "aliases": ["$f55"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 55,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f56",
+      "width": 64,
+      "purpose": "FP temporary 38 (64-bit FPU)",
+      "aliases": ["$f56"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 56,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f57",
+      "width": 64,
+      "purpose": "FP temporary 39 (64-bit FPU)",
+      "aliases": ["$f57"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 57,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f58",
+      "width": 64,
+      "purpose": "FP temporary 40 (64-bit FPU)",
+      "aliases": ["$f58"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 58,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f59",
+      "width": 64,
+      "purpose": "FP temporary 41 (64-bit FPU)",
+      "aliases": ["$f59"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 59,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f60",
+      "width": 64,
+      "purpose": "FP temporary 42 (64-bit FPU)",
+      "aliases": ["$f60"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 60,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f61",
+      "width": 64,
+      "purpose": "FP temporary 43 (64-bit FPU)",
+      "aliases": ["$f61"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 61,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f62",
+      "width": 64,
+      "purpose": "FP temporary 44 (64-bit FPU)",
+      "aliases": ["$f62"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 62,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    },
+    {
+      "name": "f63",
+      "width": 64,
+      "purpose": "FP temporary 45 (64-bit FPU)",
+      "aliases": ["$f63"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": 63,
+      "llvmRegisterClass": "AFGR64",
+      "special": "available only with 64-bit FPU, upper half pair"
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "high",
+        "label": "Register Save Area",
+        "color": "#f0f0ff",
+        "description": "Argument registers $a0-$a3 and FP arguments $f0-$f7 saved here for variadic functions. For variadic calls, the caller builds this area at entry. Offsets 0x00-0x1f from $sp."
+      },
+      {
+        "region": "high",
+        "label": "Back Chain / FP Save Area",
+        "color": "#f0f0ff",
+        "description": "Previous $fp saved here (offset 0x08 from saved $fp / 0x00 from $fp). Frame pointer points to this location. The back chain stores the caller's $sp value."
+      },
+      {
+        "region": "mid",
+        "label": "Local Variables",
+        "color": "#e0f0e0",
+        "description": "Local scalar and array variables. Allocated below the register save area. Accessed via $fp for variables needing address or via $sp for leaf functions."
+      },
+      {
+        "region": "mid",
+        "label": "Callee-Saved Register Save Area",
+        "color": "#fff0e0",
+        "description": "Callee-saved registers ($s0-$s7, $ra, $fp, $f20-$f31) saved here by the function if used. Placed between locals and outgoing arguments. Callee must save any callee-saved register it modifies."
+      },
+      {
+        "region": "low",
+        "label": "Outgoing Arguments",
+        "color": "#ffe0e0",
+        "description": "Arguments passed to callees are written here. Offset 0x10+ from $sp. Used for argument slots 5+ (first 4 in $a0-$a3, overflow to stack at 0x10($sp))."
+      },
+      {
+        "region": "low",
+        "label": "Dynamic Area",
+        "color": "#f0e0f0",
+        "description": "Space for dynamic allocations (alloca, variable-length arrays). Allocated by subtracting from $sp at runtime."
+      }
+    ],
+    "framePointerRequired": false,
+    "notes": "N32 uses an 8-byte aligned stack. The frame pointer ($fp/r30) points to the saved $fp in the back chain. Frame pointer is commonly used but not strictly required for leaf functions. The stack frame layout follows the classic MIPS convention: high addresses hold register save areas, then locals, then outgoing arguments at low addresses. The frame size must be a multiple of 8. Branch delay slots are filled with a nop or a useful instruction after every branch/jump."
+  },
+  "examples": {
+    "simple": {
+      "title": "Add two 32-bit integers and return result",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "assembly": "add:\n    addiu  $sp, $sp, -8\n    sw     $ra, 4($sp)\n    add    $v0, $a0, $a1\n    lw     $ra, 4($sp)\n    addiu  $sp, $sp, 8\n    jr     $ra\n    nop",
+      "notes": "Leaf function uses $a0 (r4) and $a1 (r5) as arguments. Result in $v0 (r2). Frame size is minimal (8 bytes) to maintain alignment. The nop in the branch delay slot is required. Note: a leaf function that doesn't call other functions could use a smaller or zero frame, but N32 alignment requires at least 8 bytes."
+    },
+    "complex": {
+      "title": "Variadic function with printf-like calling pattern",
+      "c": "void format(const char *fmt, int a, int b, ...) {\n    va_list args;\n    va_start(args, b);\n    // process variadic arguments using args\n    va_end(args);\n}",
+      "assembly": "format:\n    addiu  $sp, $sp, -48\n    sw     $ra, 44($sp)\n    sw     $fp, 40($sp)\n    addiu  $fp, $sp, 48\n    sw     $a0, 0($fp)\n    sw     $a1, 4($fp)\n    sw     $a2, 8($fp)\n    sw     $a3, 12($fp)\n    # fp0-fp7 saved to register save area for variadic\n    sdc1   $f0, 16($fp)\n    sdc1   $f2, 24($fp)\n    sdc1   $f4, 32($fp)\n    sdc1   $f6, 40($fp)\n    # Initialize va_list struct (pointers into save area)\n    addiu  $t0, $fp, 16\n    sw     $t0, 8($fp)\n    # ... variadic processing logic ...\n    lw     $ra, 44($sp)\n    lw     $fp, 40($sp)\n    addiu  $sp, $sp, 48\n    jr     $ra\n    nop",
+      "notes": "Variadic function prologue saves all argument registers ($a0-$a3) into the register save area at the top of the frame. FP arguments are NOT passed in $f0-$f7 for variadic; they go on the stack. The va_list is a struct containing pointers into the save area. The callee detects variadic mode and reads from the save area for early argument registers. The frame pointer ($fp) is used to reference the save area."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/MIPS/MipsCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/MIPS/MipsCallingConv.td",
+      "description": "Defines CC_MIPS_N32 around line 30, specifying N32-specific calling convention rules for argument/return register assignment. The N32 convention assigns the first 4 integer args to $a0-$a3 and allows 8 FP args in $f0-$f7."
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/MIPS/MipsISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/MIPS/MipsISelLowering.cpp",
+      "description": "Handles target-specific lowering for MIPS including N32 ABI. Manages function call lowering, argument marshalling, struct passing, and variadic function support for N32."
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/MIPS/MipsFrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/MIPS/MipsFrameLowering.cpp",
+      "description": "Manages MIPS stack frame layout including 8-byte alignment for N32, callee-saved register spills, stack pointer adjustments, and frame pointer setup."
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/MIPS/MipsRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/MIPS/MipsRegisterInfo.cpp",
+      "description": "Defines register classes, calling convention register assignments, and callee-saved register lists for MIPS N32. Includes all 32 GPR and 64 FPU registers."
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "GCC uses machine description files under gcc/config/mips/ with an 'n32' multilib. The N32 ABI is enabled with -mabi=n32 and -march=mips*64 (or compatible 64-bit ISA). GCC treats N32 as the default ABI on 64-bit MIPS Linux systems.",
+    "callConvention": "Defined in gcc/config/mips/mips.h and gcc/config/mips/mips.cc. N32 uses CC_MIPS_N32 with $a0-$a3 for the first 4 integer args and $f0-$f7 for the first 8 FP args. The stack alignment is 8 bytes. FP arguments for variadic functions are passed on the stack.",
+    "notes": "GCC supports -mabi=n32 for N32 and -mabi=n64 for N64 on 64-bit MIPS. N32 uses 32-bit pointers (ILP32 data model) on a 64-bit CPU. The default ABI for MIPS64 Linux is N32. GCC handles branch delay slots in the machine description and fills them with nop or scheduled instructions."
+  },
+  "why": [
+    {
+      "question": "Why does MIPS N32 use 32-bit pointers on a 64-bit CPU?",
+      "answer": "N32 provides ILP32 (32-bit int/long/pointer) data model on 64-bit hardware to maintain binary compatibility with existing 32-bit MIPS code while accessing 64-bit CPU performance. This allows programs with 32-bit address space requirements (which are sufficient for most applications) to run on 64-bit CPUs without code recompilation. The 32-bit pointer size reduces memory usage compared to N64's 64-bit pointers, which is important for pointer-heavy data structures. N32 also simplifies cross-compilation from 32-bit MIPS since the data model is identical. The tradeoff is a 4 GB address space limit, but this is rarely a problem for most embedded and desktop applications."
+    },
+    {
+      "question": "Why does MIPS N32 have branch delay slots, and how do they differ from other architectures?",
+      "answer": "Branch delay slots are a hardware feature of the MIPS pipeline architecture where the instruction immediately following a branch is always executed, regardless of whether the branch is taken. This is a consequence of the MIPS pipeline design where the branch decision is made in the decode stage, and the following instruction is already in the execute stage. The delay slot allows the compiler to schedule a useful instruction (like a load or arithmetic operation) instead of wasting a cycle. This is architecturally different from x86 or ARM which handle branch prediction and pipeline stalls in hardware. MIPS compilers typically fill delay slots with: (1) a nop if no useful instruction can be scheduled, (2) an instruction from before the branch, or (3) an instruction from the branch target. The delay slot adds complexity to the compiler but improves performance on simple pipelines without branch prediction."
+    },
+    {
+      "question": "Why are only 4 integer argument registers and 8 FP registers available in MIPS N32?",
+      "answer": "The 4 integer argument register limit ($a0-$a3) is a historical design decision from the original MIPS R2000/R3000 architecture, which had limited register pressure management. With only 32 GPRs total (and several reserved for special purposes like $zero, $at, $gp, $sp, $ra, $k0, $k1), the ABI reserved a modest number for arguments. The 8 FP argument registers ($f0-$f7) reflect the fact that FP registers are less constrained and were added later as coprocessor 1. This design forces overflow to the stack for functions with many arguments, which is the common case. The rationale is that most functions have few arguments, so using registers for common cases and falling back to stack for uncommon cases keeps the calling convention simple while being efficient in practice. More modern ABIs like x86_64 use more argument registers (6 on SysV, 4 on Windows) but MIPS retains this simpler design for backward compatibility."
+    },
+    {
+      "question": "Why does MIPS N32 not have a red zone, unlike x86_64?",
+      "answer": "MIPS N32 does not have a red zone because the MIPS architecture does not provide hardware support for it and the interrupt/exception handling model requires a predictable stack. The MIPS exception handler may save registers to the stack at any time (for example, on a TLB miss or syscall), and if a red zone existed, the exception handler would need to know the frame size to avoid clobbering user data, which complicates the kernel. Additionally, MIPS has a relatively simple pipeline compared to x86_64, so the benefit of a red zone (avoiding stack adjustments for small local variables) is less significant. The MIPS ABI instead uses a fixed frame pointer convention and stack alignment, which makes stack unwinding and debugging more straightforward at the cost of slightly larger frames."
+    },
+    {
+      "question": "What is the difference between MIPS O32, N32, and N64 ABIs?",
+      "answer": "The three MIPS ABIs differ primarily in pointer size and the size of registers used for argument passing: O32 uses 32-bit pointers and 32-bit registers (designed for 32-bit MIPS CPUs). N32 uses 32-bit pointers but 64-bit registers (designed for 64-bit MIPS CPUs with ILP32 data model). N64 uses 64-bit pointers and 64-bit registers (designed for 64-bit MIPS CPUs with LP64 data model). O32 is the original ABI for 32-bit MIPS and is still used for backward compatibility. N32 was introduced to allow 64-bit CPUs to run 32-bit-address programs efficiently. N64 is the native 64-bit ABI. Key differences: O32 passes the first 4 integer args in $a0-$a3 (32-bit), N32/N64 pass them in $a0-$a3 but as 64-bit values. N32 and N64 share much of the calling convention but differ in struct passing rules and pointer sizes. The choice of ABI affects binary portability, memory usage, and maximum addressable memory."
+    },
+    {
+      "question": "Why is the frame pointer ($fp) commonly used in MIPS N32 despite being optional?",
+      "answer": "The frame pointer ($fp, register $30/r30) is commonly used in MIPS N32 because MIPS code frequently uses stack-allocated local variables and the frame pointer simplifies access to them. Unlike x86 where the stack pointer can be used with variable offsets, MIPS uses a fixed-size prologue/epilogue model where $sp is adjusted once at function entry and once at exit. Without a frame pointer, accessing local variables at negative offsets from $sp would require knowing the exact frame size at compile time, which becomes complicated with dynamic allocations (alloca). The frame pointer provides a stable reference point: locals are at negative offsets from $fp, and the outgoing arguments are at positive offsets from $sp. Additionally, debuggers and stack unwinding tools rely on the frame pointer chain for walking the call stack. On MIPS N32, the frame pointer is saved in the back chain, allowing debuggers to reconstruct the full call stack even in optimized code."
+    },
+    {
+      "question": "Why does the MIPS N32 ABI save variadic arguments in a register save area rather than on the stack directly?",
+      "answer": "The MIPS N32 ABI uses a register save area at the top of the stack frame for variadic functions because the callee must be able to access all arguments sequentially through the va_list interface. When a function is variadic, the compiler does not know at compile time how many arguments will be passed in registers versus on the stack. By saving all argument registers ($a0-$a3 and potentially $f0-$f7) into a contiguous save area at function entry, the va_list can simply use an index to access argument N: if N < 4, read from the save area; if N >= 4, read from the outgoing argument area on the stack. This approach is simpler than the alternative of having the caller always push all arguments to the stack (which wastes register arguments), and it matches the design of other MIPS ABIs. The save area is always present for variadic functions even if the function doesn't actually use all argument registers, ensuring a uniform access pattern."
+    }
+  ],
+  "comparison": {
+    "x86_64_sysv": {
+      "name": "x86-64 SysV",
+      "keyDifferences": [
+        "x86_64 SysV has 6 integer argument registers (rdi, rsi, rdx, rcx, r8, r9) vs MIPS N32's 4 ($a0-$a3)",
+        "x86_64 SysV has a 128-byte red zone; MIPS N32 has no red zone",
+        "x86_64 SysV uses 16-byte stack alignment; MIPS N32 uses 8-byte alignment",
+        "x86_64 SysV has no branch delay slots; MIPS N32 requires nop or scheduled instructions after branches",
+        "x86_64 SysV uses shadow space (32 bytes) for Windows; MIPS N32 has no shadow space",
+        "x86_64 SysV has 16 general-purpose registers; MIPS N32 has 32 GPRs but many are reserved",
+        "x86_64 SysV passes aggregates up to 16 bytes in registers; MIPS N32 uses the same rule but with different register sizes",
+        "MIPS N32 supports variadic argument register save area; x86_64 SysV does not have this mechanism"
+      ]
+    },
+    "aapcs64": {
+      "name": "AAPCS64 (ARM64)",
+      "keyDifferences": [
+        "AAPCS64 has 8 integer argument registers (x0-x7) vs MIPS N32's 4 ($a0-$a3)",
+        "AAPCS64 has 8 FP argument registers (v0-v7) vs MIPS N32's 8 ($f0-$f7) — same count but different names",
+        "AAPCS64 has 16 callee-saved integer registers vs MIPS N32's 8 ($s0-$s7) plus $fp, $ra",
+        "AAPCS64 has 128-byte red zone; MIPS N32 has no red zone",
+        "AAPCS64 uses 16-byte stack alignment; MIPS N32 uses 8-byte alignment",
+        "AAPCS64 has no branch delay slots; MIPS N32 requires delay slot handling",
+        "AAPCS64 has dedicated zero register (xzr) but only 31 general-purpose registers vs MIPS N32's 32 with r0 hardwired to zero"
+      ]
+    },
+    "mips_o32": {
+      "name": "MIPS O32",
+      "keyDifferences": [
+        "O32 uses 32-bit registers and 32-bit pointers on 32-bit CPUs; N32 uses 64-bit registers with 32-bit pointers on 64-bit CPUs",
+        "O32 has the same 4 integer argument registers ($a0-$a3) but they are 32-bit in O32",
+        "O32 has 4 FP argument registers ($f0-$f3) vs N32's 8 ($f0-$f7)",
+        "O32 passes only the first 2 FP arguments in registers for variadic functions; N32 passes 8",
+        "O32 has a different struct passing convention for large aggregates",
+        "O32 uses a 4-byte stack alignment; N32 uses 8-byte alignment",
+        "O32 has a smaller register save area for variadic functions"
+      ]
+    },
+    "mips_n64": {
+      "name": "MIPS N64",
+      "keyDifferences": [
+        "N64 uses 64-bit pointers; N32 uses 32-bit pointers",
+        "N64 uses LP64 data model (64-bit long and pointer); N32 uses ILP32 (32-bit int, long, pointer)",
+        "N64 and N32 share the same calling convention with 4 integer and 8 FP argument registers",
+        "N64 struct passing rules differ slightly for large structs passed by invisible reference",
+        "N64 has a larger address space (64-bit); N32 is limited to 4 GB",
+        "N64 binaries are not compatible with O32; N32 binaries are also not compatible with O32 but share the same 32-bit pointer semantics",
+        "N64 va_list has 64-bit pointers; N32 va_list has 32-bit pointers in the struct"
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "mips64el-unknown-linux-gnuabin32",
+    "description": "Key Clang/LLVM flags for targeting the MIPS N32 ABI (32-bit pointers on 64-bit CPU)",
+    "flags": [
+      {
+        "flag": "--target=mips64el-unknown-linux-gnuabin32",
+        "description": "Sets the compilation target to MIPS64 little-endian with N32 ABI. 32-bit pointers on 64-bit CPU.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mabi=n32",
+        "description": "Select the N32 ABI: 32-bit pointers, 64-bit registers. Uses $a0-$a3 for first 4 integer args.",
+        "kind": "Joined",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-mabi=o32",
+        "description": "Select the O32 ABI: 32-bit pointers and registers. Older MIPS32 ABI. Not recommended for 64-bit CPUs.",
+        "kind": "Joined",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-mabi=n64",
+        "description": "Select the N64 ABI: 64-bit pointers and registers. Full 64-bit MIPS ABI.",
+        "kind": "Joined",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-march=mips64r6",
+        "description": "Target MIPS64 Release 6. Adds compact branches, removed branch delay slots.",
+        "kind": "Joined",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-march=mips32r2",
+        "description": "Target MIPS32 Release 2. Common embedded MIPS. Has branch delay slots.",
+        "kind": "Joined",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-msoft-float",
+        "description": "Use software floating-point. All FP args passed in integer registers ($a0-$a3).",
+        "kind": "Flag",
+        "category": "MIPS"
+      },
+      {
+        "flag": "-mno-abicalls",
+        "description": "Disable position-independent code (abicalls). Forces direct addressing for global symbols.",
+        "kind": "Flag",
+        "category": "MIPS"
+      }
+    ],
+    "llcCommand": "llc -mtriple=mips64el-unknown-linux-gnuabin32 -mabi=n32 -march=mips64r6 -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=mips64el-unknown-linux-gnuabin32 -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=mips64el-unknown-linux-gnuabin32 -mabi=n32 -march=mips64r6 -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/Mips.cpp",
+        "description": "MIPS toolchain: selects N32/N64/O32 ABI, endianness, and hardware/sfloat for MIPS targets"
+      },
+      {
+        "path": "llvm/lib/Target/MIPS/MipsCallingConv.td",
+        "description": "TableGen definition of CC_MIPS_N32 (N32 calling convention with $a0-$a3 argument registers)"
+      }
+    ]
+  },
+  "searchText": "MIPS N32 ABI calling convention 32-bit pointers 64-bit CPU register save area branch delay slots O32 N64 MIPS1 MIPS2 MIPS3 MIPS4 MIPS5 MIPS64 R2000 R3000 R4000 R8000 Aeon big-endian little-endian $a0 $a1 $a2 $a3 $v0 $v1 $f0 $f1 $s0 $s7 $fp $ra $sp $gp $k0 $k1 variadic va_list frame pointer stack frame red zone shadow space callee saved caller saved argument passing aggregate passing struct passing LLVM GCC clang MIPS calling convention ILP32 LP64"
+}

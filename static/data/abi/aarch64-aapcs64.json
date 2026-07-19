@@ -1,0 +1,1052 @@
+{
+  "id": "aarch64-aapcs64",
+  "name": "AArch64 AAPCS64",
+  "architecture": "aarch64",
+  "convention": "AAPCS64",
+  "target": "aarch64-*-linux-gnu, aarch64-*-linux-musl, aarch64-*-elf, aarch64-*-freebsd, aarch64-*-darwin, aarch64-*-windows",
+  "version": "2.0",
+  "category": "system-v-style",
+  "status": "stable",
+
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 8,
+    "endianness": "little",
+    "abiName": "AAPCS64",
+    "maxAlignment": 16
+  },
+
+  "stack": {
+    "direction": "downward",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": true,
+    "notes": "Stack grows downward. Stack pointer must be 16-byte aligned at all times (at function entry and exit). No red zone is provided by the ABI — the space below SP is not guaranteed to be preserved across signal handlers. Each function must ensure SP is 16-byte aligned before any instruction that accesses memory via SP."
+  },
+
+  "callingConvention": {
+    "name": "AAPCS64",
+    "argumentRegisters": ["X0", "X1", "X2", "X3", "X4", "X5", "X6", "X7"],
+    "returnRegisters": ["X0", "X1", "V0", "V1"],
+    "callerSaved": [
+      "X0", "X1", "X2", "X3", "X4", "X5", "X6", "X7",
+      "X8", "X9", "X10", "X11", "X12", "X13", "X14", "X15",
+      "X16", "X17", "X18", "V0", "V1", "V2", "V3", "V4",
+      "V5", "V6", "V7", "V16", "V17", "V18", "V19", "V20",
+      "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28",
+      "V29", "V30", "V31"
+    ],
+    "calleeSaved": [
+      "X19", "X20", "X21", "X22", "X23", "X24", "X25", "X26",
+      "X27", "X28", "X29", "X30", "V8", "V9", "V10", "V11",
+      "V12", "V13", "V14", "V15"
+    ],
+    "variadicRules": {
+      "description": "Variadic functions use a va_list of type struct { void *__stack; void *__gr_top; void *__vr_top; int __gr_offs; int __vr_offs; }. General-purpose variadic arguments are passed on the stack (not in registers). The va_start macro initializes __gr_offs and __vr_offs to negative offsets from __gr_top and __vr_top respectively. Each va_arg call adjusts the appropriate offset. Fixed arguments that precede variadic arguments may be passed in registers X0-X7 and V0-V7, but variadic arguments are always spilled to the stack.",
+      "vaListType": "struct { void *__stack; void *__gr_top; void *__vr_top; int __gr_offs; int __vr_offs; }",
+      "fixedArgsInRegisters": true,
+      "variadicArgsOnStack": true,
+      "minimumRegisterSaveSlots": 8
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": {
+      "description": "Aggregates up to 16 bytes are passed in general-purpose registers (X0-X7) or on the stack. Aggregates larger than 16 bytes are passed indirectly via a pointer. Aggregates are passed by value in registers when possible — the first 8 general-purpose registers handle the first 64 bytes of aggregate arguments (8 bytes each). Floating-point and vector aggregates use V0-V7.",
+      "maxRegisterAggregateSize": 16,
+      "indirectThreshold": 16,
+      "homogeneousAggregateSupport": true,
+      "homogeneousAggregateMaxElements": 4
+    },
+    "simdRules": {
+      "description": "Up to 8 SIMD/FP arguments are passed in V0-V7. Additional SIMD/FP arguments are passed on the stack. SIMD arguments narrower than 128 bits are zero-extended to 128 bits. V0-V7 are fully caller-saved. V8-V15 are callee-saved but only the lower 64 bits (D8-D15) need to be preserved — the upper 64 bits are caller-saved.",
+      "argumentRegisters": ["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7"],
+      "calleeSavedPartial": "V8-V15 lower 64 bits (D8-D15)"
+    },
+    "hvaSupport": true,
+    "hvaRules": {
+      "description": "Homogeneous Vector Aggregates (HVAs) are aggregates where all float members are the same type (e.g., __m256d with 4 doubles). HVAs are passed in SIMD registers V0-V7. Up to 4 vector elements are packed into a single register. HVAs larger than 64 bytes (4 × 128-bit vectors) are passed indirectly."
+    }
+  },
+
+  "registers": [
+    {
+      "name": "X0",
+      "width": 64,
+      "purpose": "Argument / return value",
+      "aliases": ["W0"],
+      "callerCallee": "caller",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0b00000",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X1",
+      "width": 64,
+      "purpose": "Argument / return value",
+      "aliases": ["W1"],
+      "callerCallee": "caller",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "0b00001",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X2",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W2"],
+      "callerCallee": "caller",
+      "argumentPosition": 2,
+      "returnPosition": -1,
+      "encoding": "0b00010",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X3",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W3"],
+      "callerCallee": "caller",
+      "argumentPosition": 3,
+      "returnPosition": -1,
+      "encoding": "0b00011",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X4",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W4"],
+      "callerCallee": "caller",
+      "argumentPosition": 4,
+      "returnPosition": -1,
+      "encoding": "0b00100",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X5",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W5"],
+      "callerCallee": "caller",
+      "argumentPosition": 5,
+      "returnPosition": -1,
+      "encoding": "0b00101",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X6",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W6"],
+      "callerCallee": "caller",
+      "argumentPosition": 6,
+      "returnPosition": -1,
+      "encoding": "0b00110",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X7",
+      "width": 64,
+      "purpose": "Argument",
+      "aliases": ["W7"],
+      "callerCallee": "caller",
+      "argumentPosition": 7,
+      "returnPosition": -1,
+      "encoding": "0b00111",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X8",
+      "width": 64,
+      "purpose": "Indirect result / scratch",
+      "aliases": ["W8"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01000",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "X9",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W9"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01001",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X10",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W10"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01010",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X11",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W11"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01011",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X12",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W12"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01100",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X13",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W13"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01101",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X14",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W14"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01110",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X15",
+      "width": 64,
+      "purpose": "Temporary",
+      "aliases": ["W15"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01111",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X16",
+      "width": 64,
+      "purpose": "IP0 — intra-procedure-call scratch register",
+      "aliases": ["W16"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10000",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "X17",
+      "width": 64,
+      "purpose": "IP1 — intra-procedure-call scratch register",
+      "aliases": ["W17"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10001",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "X18",
+      "width": 64,
+      "purpose": "Platform register (reserved by ABI on most platforms)",
+      "aliases": ["W18"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10010",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "X19",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W19"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10011",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X20",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W20"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10100",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X21",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W21"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10101",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X22",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W22"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10110",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X23",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W23"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10111",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X24",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W24"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11000",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X25",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W25"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11001",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X26",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W26"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11010",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X27",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W27"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11011",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X28",
+      "width": 64,
+      "purpose": "Callee-saved general purpose",
+      "aliases": ["W28"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11100",
+      "llvmRegisterClass": "GPR64",
+      "special": false
+    },
+    {
+      "name": "X29",
+      "width": 64,
+      "purpose": "Frame pointer (FP)",
+      "aliases": ["W29", "FP"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11101",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "X30",
+      "width": 64,
+      "purpose": "Link register (LR) — return address",
+      "aliases": ["W30", "LR"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11110",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "SP",
+      "width": 64,
+      "purpose": "Stack pointer",
+      "aliases": [],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11111",
+      "llvmRegisterClass": "GPR64",
+      "special": true
+    },
+    {
+      "name": "V0",
+      "width": 128,
+      "purpose": "SIMD/FP argument / return value",
+      "aliases": ["D0", "S0", "H0", "B0", "Q0"],
+      "callerCallee": "caller",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "0b00000",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V1",
+      "width": 128,
+      "purpose": "SIMD/FP argument / return value",
+      "aliases": ["D1", "S1", "H1", "B1", "Q1"],
+      "callerCallee": "caller",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "0b00001",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V2",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D2", "S2", "H2", "B2", "Q2"],
+      "callerCallee": "caller",
+      "argumentPosition": 2,
+      "returnPosition": -1,
+      "encoding": "0b00010",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V3",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D3", "S3", "H3", "B3", "Q3"],
+      "callerCallee": "caller",
+      "argumentPosition": 3,
+      "returnPosition": -1,
+      "encoding": "0b00011",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V4",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D4", "S4", "H4", "B4", "Q4"],
+      "callerCallee": "caller",
+      "argumentPosition": 4,
+      "returnPosition": -1,
+      "encoding": "0b00100",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V5",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D5", "S5", "H5", "B5", "Q5"],
+      "callerCallee": "caller",
+      "argumentPosition": 5,
+      "returnPosition": -1,
+      "encoding": "0b00101",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V6",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D6", "S6", "H6", "B6", "Q6"],
+      "callerCallee": "caller",
+      "argumentPosition": 6,
+      "returnPosition": -1,
+      "encoding": "0b00110",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V7",
+      "width": 128,
+      "purpose": "SIMD/FP argument",
+      "aliases": ["D7", "S7", "H7", "B7", "Q7"],
+      "callerCallee": "caller",
+      "argumentPosition": 7,
+      "returnPosition": -1,
+      "encoding": "0b00111",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V8",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D8", "S8", "H8", "B8", "Q8"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01000",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V9",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D9", "S9", "H9", "B9", "Q9"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01001",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V10",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D10", "S10", "H10", "B10", "Q10"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01010",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V11",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D11", "S11", "H11", "B11", "Q11"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01011",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V12",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D12", "S12", "H12", "B12", "Q12"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01100",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V13",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D13", "S13", "H13", "B13", "Q13"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01101",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V14",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D14", "S14", "H14", "B14", "Q14"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01110",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V15",
+      "width": 128,
+      "purpose": "Callee-saved SIMD (lower 64 bits only)",
+      "aliases": ["D15", "S15", "H15", "B15", "Q15"],
+      "callerCallee": "callee",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b01111",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V16",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D16", "S16", "H16", "B16", "Q16"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10000",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V17",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D17", "S17", "H17", "B17", "Q17"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10001",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V18",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D18", "S18", "H18", "B18", "Q18"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10010",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V19",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D19", "S19", "H19", "B19", "Q19"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10011",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V20",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D20", "S20", "H20", "B20", "Q20"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10100",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V21",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D21", "S21", "H21", "B21", "Q21"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10101",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V22",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D22", "S22", "H22", "B22", "Q22"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10110",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V23",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D23", "S23", "H23", "B23", "Q23"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b10111",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V24",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D24", "S24", "H24", "B24", "Q24"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11000",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V25",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D25", "S25", "H25", "B25", "Q25"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11001",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V26",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D26", "S26", "H26", "B26", "Q26"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11010",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V27",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D27", "S27", "H27", "B27", "Q27"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11011",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V28",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D28", "S28", "H28", "B28", "Q28"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11100",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V29",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D29", "S29", "H29", "B29", "Q29"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11101",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V30",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D30", "S30", "H30", "B30", "Q30"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11110",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    },
+    {
+      "name": "V31",
+      "width": 128,
+      "purpose": "SIMD/FP temporary",
+      "aliases": ["D31", "S31", "H31", "B31", "Q31"],
+      "callerCallee": "caller",
+      "argumentPosition": -1,
+      "returnPosition": -1,
+      "encoding": "0b11111",
+      "llvmRegisterClass": "FPR128",
+      "special": false
+    }
+  ],
+
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "caller frame",
+        "label": "High Address",
+        "color": "#90EE90",
+        "description": "Caller's stack frame. Contains arguments passed on the stack for this function call, and the caller's local variables."
+      },
+      {
+        "region": "saved registers",
+        "label": "FP → FP+16",
+        "color": "#FFB366",
+        "description": "Saved frame pointer (X29/FP) and link register (X30/LR) at [FP] and [FP+8]. The frame pointer chain forms a linked list for stack unwinding and debugging."
+      },
+      {
+        "region": "callee-saved GPRs",
+        "label": "X19-X28 spills",
+        "color": "#FFD699",
+        "description": "Spilled callee-saved registers X19-X28. Only registers actually used by the callee are saved. Saved at negative offsets from FP."
+      },
+      {
+        "region": "callee-saved SIMD",
+        "label": "V8-V15 spills",
+        "color": "#FFD699",
+        "description": "Spilled lower 64 bits of callee-saved SIMD registers V8-V15 (D8-D15). Only the lower 64 bits need saving; upper 64 bits are caller-saved."
+      },
+      {
+        "region": "local variables",
+        "label": "Dynamic",
+        "color": "#B3CFFF",
+        "description": "Callee's local variables, including spilled values and compiler-generated temporaries. The compiler decides exact layout."
+      },
+      {
+        "region": "outgoing arguments",
+        "label": "SP → FP",
+        "color": "#FFB3B3",
+        "description": "Space reserved for arguments passed to functions this callee calls. Always allocated even if not used, as the ABI requires 16-byte stack alignment."
+      },
+      {
+        "region": "Low Address",
+        "label": "SP",
+        "color": "#FF9999",
+        "description": "Current stack pointer. Must be 16-byte aligned at all times. No red zone below SP — content below SP may be clobbered by signals."
+      }
+    ],
+    "framePointerRequired": true,
+    "notes": "The frame pointer (FP = X29) is required by default in AAPCS64 and can only be omitted with -fomit-frame-pointer. FP points to the saved FP/LR pair, forming a chain for stack unwinding. SP must remain 16-byte aligned at all points where it is used to access memory. The standard prologue saves FP and LR at [SP] and [SP+8], then sets FP = SP."
+  },
+
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition — int add(int a, int b)",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "assembly": "// Function: add\n// Prototype: int add(int, int)\n//\n// Arguments: a in W0, b in W1 (32-bit int maps to W registers)\n// Return:    result in W0\n//\n// AAPCS64: W0-W7 are the lower 32 bits of X0-X7.\n//          For int (32-bit), the upper 32 bits are irrelevant.\n\nadd:\n    add     w0, w0, w1      // w0 = w0 + w1  (result in w0)\n    ret                      // return to caller (branch to X30/LR)\n\n// Prologue/epilogue: not needed — no callee-saved registers used,\n// no local variables, no stack frame created.\n// Total cost: 2 instructions.",
+      "notes": "This is the canonical minimal AArch64 function. The 32-bit W registers are used because int is 32 bits — this prevents false dependency on upper bits. The AAPCS64 requires that 32-bit operations zero-extend to 64 bits in the W register, so no explicit zeroing is needed. The `ret` instruction implicitly branches to the address in X30 (LR)."
+    },
+    "complex": {
+      "title": "Struct passing — passing and returning a struct with multiple fields",
+      "c": "struct Point {\n    double x;\n    double y;\n};\n\nstruct Point translate(struct Point p, double dx, double dy) {\n    p.x += dx;\n    p.y += dy;\n    return p;\n}",
+      "assembly": "// Function: translate\n// Prototype: struct Point translate(struct Point, double, double)\n//\n// AAPCS64 struct rules:\n//   - struct Point is 16 bytes (2 doubles)\n//   - ≤ 16 bytes: passed in registers\n//   - p.x in D0 (first FP register)\n//   - p.y in D1 (second FP register)\n//   - dx in D2, dy in D3\n//   - Return value: struct ≤ 16 bytes in D0, D1\n//\n// Callee-saved: none needed (V8-V15 not used)\n// Stack frame: not needed\n\ntranslate:\n    fadd    d0, d0, d2      // p.x = p.x + dx\n    fadd    d1, d1, d3      // p.y = p.y + dy\n    ret\n\n// If the struct were > 16 bytes, e.g.:\n// struct Large { double x, y, z, w; };  // 32 bytes\n//\n// Then it would be passed indirectly:\n//   - Caller passes pointer to struct in X0\n//   - Callee dereferences X0 to read fields\n//   - Return: caller allocates space, passes pointer in X8\n//\n// Example for large struct return:\n// large_translate:\n//     ldr     d0, [x0]            // load p.x\n//     ldr     d1, [x0, #8]        // load p.y\n//     ldr     d2, [x0, #16]       // load p.z\n//     ldr     d3, [x0, #24]       // load p.w\n//     fadd    d0, d0, d4          // p.x + dx\n//     fadd    d1, d1, d5          // p.y + dy\n//     fadd    d2, d2, d6          // p.z + dz\n//     fadd    d3, d3, d7          // p.w + dw\n//     str     d0, [x8]            // store to caller-provided buffer\n//     str     d1, [x8, #8]\n//     str     d2, [x8, #16]\n//     str     d3, [x8, #24]\n//     mov     x0, x8              // return pointer in x0\n//     ret",
+      "notes": "This example shows how AAPCS64 handles struct passing in SIMD registers. The 16-byte struct fits entirely in two D registers (D0, D1). The AAPCS64 allows homogeneous floating-point aggregates (HFAs) and homogeneous vector aggregates (HVAs) to be passed in SIMD registers. For structs > 16 bytes, indirect passing via pointer is used, and the indirect result location (X8) is used for returned large aggregates."
+    }
+  },
+
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/AArch64/AArch64CallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AArch64/AArch64CallingConv.td",
+      "description": "Defines all AArch64 calling conventions as TableGen patterns. CC_AArch64_AAPCS is the primary convention (around line 100+), specifying register assignments for i32/i64 in X0-X7, f32/f64 in V0-V7, aggregate passing, and variadic spilling rules. Also defines CC_AArch64_AAPCS_VarArg for variadic function handling."
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/AArch64/AArch64ISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AArch64/AArch64ISelLowering.cpp",
+      "description": "Implements the selection lowering for AArch64, including how function arguments and return values are assigned to registers or stack slots, HFA/HVA detection and splitting, lowering of va_arg intrinsics, and tail call optimization decisions."
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/AArch64/AArch64FrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AArch64/AArch64FrameLowering.cpp",
+      "description": "Implements stack frame layout, prologue/epilogue emission including FP/LR saves, callee-saved register spills (GPR and SIMD), stack alignment enforcement, and exception handling table generation ( .cfi directives)."
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/AArch64/AArch64RegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AArch64/AArch64RegisterInfo.cpp",
+      "description": "Defines register classes (GPR32, GPR64, FPR128, etc.), register aliases (W0 = lower 32 bits of X0), call-preserved/call-clobbered sets, and stack pointer adjustments for frame setup."
+    }
+  },
+
+  "gccImplementation": {
+    "machineDescription": "aarch64/aarch64.md — Main machine description for instruction patterns and costs",
+    "callConvention": "sysdeps/aarch64/nptl/sysdep.h and aarch64/aarch64.cc — Defines the AArch64 AAPCS64 calling convention for GCC's internal representation, including register allocation classes and argument passing rules",
+    "notes": "GCC implements AAPCS64 via the __aarch64__ target hooks. The variadic va_list type is defined in stdarg.h with the __stack/__gr_top/__vr_top/__gr_offs/__vr_offs fields. GCC supports the same aggregate passing rules and HFA/HVA optimization as Clang/LLVM. The frame pointer is required by default unless -fomit-frame-pointer is specified."
+  },
+
+  "why": [
+    {
+      "question": "Why does AAPCS64 have separate integer and SIMD register files for argument passing, unlike x86_64 SysV which mixes them?",
+      "answer": "AArch64 was designed with a clean separation between integer (GPR) and floating-point/SIMD (NEON) execution units. By providing 8 argument registers in each file independently, a function can receive up to 8 integer AND 8 SIMD arguments simultaneously — 16 total register arguments. x86_64 SysV, by contrast, uses a single shared set: XMM0-X7 for both float and vector arguments, with integer arguments in RDI, RSI, RDX, RCX, R8, R9. The AArch64 design eliminates the need to choose between integer and float argument slots, simplifying ABI compliance and improving register utilization for mixed-type function signatures."
+    },
+    {
+      "question": "Why does AAPCS64 have no red zone, while x86_64 SysV has a 128-byte red zone?",
+      "answer": "The AAPCS64 deliberately provides no red zone (the area below SP is not preserved) because AArch64 systems are commonly used in environments with asynchronous signal handlers and preemptive kernel scheduling. A red zone would be clobbered by signal handlers that use the stack, requiring the kernel to reserve additional space or the ABI to account for it. By requiring all stack usage to be explicitly allocated above SP, AAPCS64 keeps signal handling simpler and avoids a class of bugs where leaf functions assume the stack below SP is safe. The x86_64 SysV red zone optimization saves a few instructions in leaf functions but adds complexity for signal handlers and multi-threaded environments."
+    },
+    {
+      "question": "Why is the frame pointer (X29/FP) required by default in AAPCS64, when x86_64 SysV makes it optional?",
+      "answer": "AAPCS64 requires the frame pointer by default because it forms a linked list (FP → saved FP → saved FP → ...) that enables reliable stack unwinding for debugging, profiling, and exception handling. On AArch64, the link register (X30/LR) is not automatically saved on the stack — it only persists in X30 until a function prologue saves it. Without FP, stack unwinding requires DWARF unwind tables (which must be generated separately and can be large). The FP chain provides a lightweight, always-available mechanism for tools like gdb and perf to walk the call stack. x86_64 SysV can afford to make FP optional because the return address is on the stack (pushed by CALL) and DWARF unwinding is well-supported. Modern AArch64 compilers can still omit FP with -fomit-frame-pointer when DWARF unwind tables are used instead."
+    },
+    {
+      "question": "Why does AAPCS64 use X8 as an indirect result location register for large return values, rather than using a stack-based approach like x86_64 SysV?",
+      "answer": "Using X8 as the indirect result location avoids an extra pointer argument and keeps the ABI consistent. When a function returns a struct > 16 bytes, the caller allocates space and passes a pointer in X8 before the call. The callee writes the return value through this pointer and also places the pointer in X0 as the formal return value. This is cleaner than x86_64 SysV, which uses a hidden first argument (RDI) to pass the return buffer pointer, pushing all other arguments to different registers. The X8 approach means argument numbering is unaffected by return type — the first user-visible argument is always in X0, regardless of whether the function returns a large struct."
+    },
+    {
+      "question": "Why does AAPCS64 only require the lower 64 bits (D8-D15) of V8-V15 to be callee-saved, rather than the full 128 bits?",
+      "answer": "This is a deliberate trade-off between callee-saved register capacity and context switch cost. Saving the full 128 bits of each of 8 SIMD registers would require 128 bytes of stack spills per function call that uses them. By requiring only the lower 64 bits, the ABI reduces spill/fill overhead to 64 bytes. The upper 64 bits of V8-V15 are caller-saved, meaning functions that use 128-bit SIMD values in V8-V15 must save the full register themselves if they call other functions. This optimization reflects the common case: most functions use scalar floating-point (64-bit double) in V8-V15, while wide SIMD operations (128-bit vectors) are less frequent in typical function prologues. It also aligns with ARM's original AArch32 AAPCS legacy, where only 64-bit D registers were callee-saved."
+    },
+    {
+      "question": "Why does AAPCS64 mandate 16-byte stack alignment at all times, rather than just at function entry like some older ABIs?",
+      "answer": "16-byte stack alignment at all times (not just at function entry) ensures that any memory access via SP can use aligned load/store instructions without checking alignment. This is critical because AArch64's LDR/STR instructions for SIMD (LD1, ST1 with 128-bit registers) require 16-byte alignment for optimal performance, and unaligned accesses may fault or be significantly slower depending on the implementation. By keeping SP always 16-byte aligned, the compiler can safely use 128-bit SIMD loads/stores on stack-local data without runtime alignment checks. It also simplifies compiler code generation — there is no need to track whether SP is currently 8-byte or 16-byte aligned at each point in the function."
+    }
+  ],
+
+  "comparison": {
+    "vs_x86_64_sysv": {
+      "integerArgs": "AArch64: X0-X7 (8 regs); x86_64: RDI, RSI, RDX, RCX, R8, R9 (6 regs)",
+      "floatArgs": "AArch64: V0-V7 (8 regs, independent from integer); x86_64: XMM0-X7 (8 regs, shared set)",
+      "return": "AArch64: X0-X1 + V0-V1; x86_64: RAX + XMM0/XMM1",
+      "redZone": "AArch64: none; x86_64: 128 bytes",
+      "shadowSpace": "Neither has shadow space (both differ from Windows x64 which has 32-byte shadow space)",
+      "stackAlignment": "AArch64: 16 bytes always; x86_64: 16 bytes at call sites",
+      "framePointer": "AArch64: required by default; x86_64: optional",
+      "variadic": "AArch64: struct va_list with stack/gr_top/vr_top/offsets; x86_64: simple stack pointer only",
+      "structPassing": "AArch64: ≤16 bytes in regs, >16 indirect; x86_64: ≤16 bytes in regs, >16 on stack or indirect"
+    },
+    "vs_aarch64_win64": {
+      "argumentRegisters": "Same X0-X7 and V0-V7 for arguments",
+      "shadowSpace": "Win64 requires 32-byte shadow space; AAPCS64 does not",
+      "stackAlignment": "Both require 16-byte alignment",
+      "variadic": "Win64 uses __va_list with gp_save/fov_save arrays; AAPCS64 uses __stack/__gr_top/__vr_top with offsets",
+      "unwindInfo": "Win64 uses .pdata/.xdata tables; AAPCS64 uses .eh_frame / DWARF"
+    }
+  },
+
+  "clangFlags": {
+    "triple": "aarch64-unknown-linux-gnu",
+    "description": "Key Clang/LLVM flags for targeting the AArch64 AAPCS64 ABI",
+    "flags": [
+      {
+        "flag": "--target=aarch64-unknown-linux-gnu",
+        "description": "Sets the compilation target to AArch64. Selects AAPCS64 calling convention with 8 integer + 8 SIMD arg registers.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-march=armv8-a",
+        "description": "Target ARMv8-A baseline. Extensions: +crypto, +sve, +sve2, +dotprod, +fp16, etc.",
+        "kind": "Joined",
+        "category": "AARCH64"
+      },
+      {
+        "flag": "-mtune=cortex-a72",
+        "description": "Tune code generation for a specific AArch64 CPU. Affects instruction scheduling.",
+        "kind": "Joined",
+        "category": "AARCH64"
+      },
+      {
+        "flag": "-mabi=aapcs",
+        "description": "Use the ARM Architecture Procedure Call Standard. Default on Linux/Android/iOS.",
+        "kind": "Joined",
+        "category": "AARCH64"
+      },
+      {
+        "flag": "-mgeneral-regs-only",
+        "description": "Use only general-purpose registers for argument passing. Disables SIMD/FP argument passing.",
+        "kind": "Flag",
+        "category": "AARCH64"
+      },
+      {
+        "flag": "-ffixed-x19",
+        "description": "Reserve register X19 for inline assembly or special use. X19-X28 are callee-saved in AAPCS64.",
+        "kind": "Joined",
+        "category": "Target-Specific Code Generation"
+      },
+      {
+        "flag": "-fomit-frame-pointer",
+        "description": "Omit the frame pointer (X29). AAPCS64 requires frame pointer by default, but -O2+ can omit it.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-msve-vector-bits=256",
+        "description": "Set SVE scalable vector width. Affects ABI for SVE vector arguments.",
+        "kind": "Joined",
+        "category": "AARCH64"
+      }
+    ],
+    "llcCommand": "llc -mtriple=aarch64-unknown-linux-gnu -mabi=aapcs -mattr=+v8.2a,+dotprod -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=aarch64-unknown-linux-gnu -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=aarch64-unknown-linux-gnu -march=armv8.2-a+dotprod -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/AArch64.cpp",
+        "description": "AArch64 toolchain: selects AAPCS64 ABI and registers default features"
+      },
+      {
+        "path": "llvm/lib/Target/AArch64/AArch64CallingConv.td",
+        "description": "TableGen definition of CC_AArch64_AAPCS (calling convention rules)"
+      }
+    ]
+  },
+
+  "searchText": "aarch64 aapcs64 arm64 calling convention ABI registers x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 sp fp lr v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19 v20 v21 v22 v23 v24 v25 v26 v27 v28 v29 v30 v31 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 s0 s1 neon simd fp argument register return value caller saved callee saved variadic va_list tail call aggregate homogeneous hfa hva indirect result stack frame prologue epilogue AAPCS"
+}

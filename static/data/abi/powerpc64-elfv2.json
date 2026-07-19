@@ -1,0 +1,1408 @@
+{
+  "id": "powerpc64-elfv2",
+  "name": "PowerPC64 ELFv2 ABI",
+  "architecture": "PowerPC64",
+  "convention": "ELFv2 ABI",
+  "target": "Linux (ppc64le)",
+  "version": "1.0",
+  "category": "CPU",
+  "status": "stable",
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 8,
+    "endianness": "little",
+    "abiName": "ELFv2",
+    "maxAlignment": 16
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": false,
+    "notes": "Stack grows downward. The stack pointer (r1) must be 16-byte aligned at all times. On entry to a function, r1 is 16-byte aligned. There is no red zone — all stack space below r1 may be clobbered by interrupts and signals. A 48-byte parameter save area is always allocated by the caller at the top of the frame for saving register-passed arguments."
+  },
+  "callingConvention": {
+    "name": "ELFv2",
+    "argumentRegisters": [
+      { "register": "r3", "position": 0, "type": "integer" },
+      { "register": "r4", "position": 1, "type": "integer" },
+      { "register": "r5", "position": 2, "type": "integer" },
+      { "register": "r6", "position": 3, "type": "integer" },
+      { "register": "r7", "position": 4, "type": "integer" },
+      { "register": "r8", "position": 5, "type": "integer" },
+      { "register": "r9", "position": 6, "type": "integer" },
+      { "register": "r10", "position": 7, "type": "integer" },
+      { "register": "f1", "position": 0, "type": "floating-point" },
+      { "register": "f2", "position": 1, "type": "floating-point" },
+      { "register": "f3", "position": 2, "type": "floating-point" },
+      { "register": "f4", "position": 3, "type": "floating-point" },
+      { "register": "f5", "position": 4, "type": "floating-point" },
+      { "register": "f6", "position": 5, "type": "floating-point" },
+      { "register": "f7", "position": 6, "type": "floating-point" },
+      { "register": "f8", "position": 7, "type": "floating-point" },
+      { "register": "f9", "position": 8, "type": "floating-point" },
+      { "register": "f10", "position": 9, "type": "floating-point" },
+      { "register": "f11", "position": 10, "type": "floating-point" },
+      { "register": "f12", "position": 11, "type": "floating-point" },
+      { "register": "f13", "position": 12, "type": "floating-point" }
+    ],
+    "returnRegisters": [
+      { "register": "r3", "position": 0, "type": "integer" },
+      { "register": "r4", "position": 1, "type": "integer" },
+      { "register": "f1", "position": 0, "type": "floating-point" },
+      { "register": "f2", "position": 1, "type": "floating-point" }
+    ],
+    "callerSaved": ["r0", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12", "f13", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19"],
+    "calleeSaved": ["r1", "r14", "r15", "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23", "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31", "f14", "f15", "f16", "f17", "f18", "f19", "f20", "f21", "f22", "f23", "f24", "f25", "f26", "f27", "f28", "f29", "f30", "f31", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31"],
+    "variadicRules": {
+      "registerCount": 8,
+      "vaListType": "struct { unsigned long gpr; unsigned long fpr; void *overflow_arg_area; void *reg_save_area; }",
+      "notes": "For variadic functions, all 8 integer argument registers (r3-r10) and all 13 FP argument registers (f1-f13) are saved to the parameter save area. va_list.gpr tracks the next available GPR slot (in 8-byte units), va_list.fpr tracks the next available FPR slot (in 8-byte units). overflow_arg_area points to stack-passed arguments beyond the 8th GPR slot. reg_save_area points to the saved register area. All argument registers are used for variadic calls regardless of the declared parameter types."
+    },
+    "tailCallSupport": true,
+    "shadowSpace": 0,
+    "aggregatePassing": {
+      "rule": "Aggregates <= 8 bytes are passed in a single GPR (right-justified). Aggregates > 8 bytes and <= 16 bytes are passed in two consecutive GPRs. Aggregates > 16 bytes are passed via a hidden pointer (caller allocates and passes address in next available GPR). Homogeneous floating-point aggregates of up to 8 elements are passed in consecutive FPRs.",
+      "memoryThreshold": "structs > 16 bytes (or > 8 bytes for heterogeneous structs not fitting in registers) passed via hidden pointer"
+    },
+    "simdRules": {
+      "argumentRegisters": ["v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11", "v12", "v13"],
+      "returnRegisters": ["v2", "v3"],
+      "notes": "AltiVec/VMX vector arguments (128-bit) are passed in v2-v13 (analogous to f1-f13). Vector return values come back in v2-v3. VSX registers v0-v1 and v14-v19 are caller-saved but not used for argument passing."
+    },
+    "hvaSupport": true,
+    "hvaRules": "Homogeneous vector aggregates of up to 8 elements are passed in consecutive vector registers (v2-v13). Each element must be a vector type."
+  },
+  "registers": [
+    {
+      "name": "r0",
+      "width": 64,
+      "purpose": "Scratch register, function prologue/epilogue use, TOC offset calculations",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r1",
+      "width": 64,
+      "purpose": "Stack pointer (SP). Reserved — must be preserved across calls.",
+      "aliases": ["SP"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "r2",
+      "width": 64,
+      "purpose": "TOC (Table of Contents) pointer. Reserved — used for global data access via .toc section.",
+      "aliases": ["TOC"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "2",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "r3",
+      "width": 64,
+      "purpose": "1st integer argument register, 1st integer return value",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "3",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r4",
+      "width": 64,
+      "purpose": "2nd integer argument register, 2nd integer return value",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "4",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r5",
+      "width": 64,
+      "purpose": "3rd integer argument register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r6",
+      "width": 64,
+      "purpose": "4th integer argument register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r7",
+      "width": 64,
+      "purpose": "5th integer argument register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r8",
+      "width": 64,
+      "purpose": "6th integer argument register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "8",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r9",
+      "width": 64,
+      "purpose": "7th integer argument register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "9",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r10",
+      "width": 64,
+      "purpose": "8th integer argument register, static chain pointer for nested functions",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "10",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r11",
+      "width": 64,
+      "purpose": "Scratch register, environment pointer, intra-procedure call scratch register",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "11",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "r12",
+      "width": 64,
+      "purpose": "Scratch register, function address for call via TOC, exception handling glue",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "12",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "r13",
+      "width": 64,
+      "purpose": "Thread-local storage (TLS) base pointer. Reserved by the ABI.",
+      "aliases": [],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "13",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "r14",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "14",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r15",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "15",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r16",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "16",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r17",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "17",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r18",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "18",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r19",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "19",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r20",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "20",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r21",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "21",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r22",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "22",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r23",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "23",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r24",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "24",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r25",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "25",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r26",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "26",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r27",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "27",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r28",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "28",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r29",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "29",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r30",
+      "width": 64,
+      "purpose": "Callee-saved general purpose register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "30",
+      "llvmRegisterClass": "GPRC",
+      "special": false
+    },
+    {
+      "name": "r31",
+      "width": 64,
+      "purpose": "Frame pointer (optional) or callee-saved register",
+      "aliases": ["FP"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "31",
+      "llvmRegisterClass": "GPRC",
+      "special": true
+    },
+    {
+      "name": "f0",
+      "width": 64,
+      "purpose": "Scratch floating-point register, function prologue/epilogue use",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f1",
+      "width": 64,
+      "purpose": "1st floating-point argument, 1st FP return value",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "1",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f2",
+      "width": 64,
+      "purpose": "2nd floating-point argument, 2nd FP return value",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "2",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f3",
+      "width": 64,
+      "purpose": "3rd floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "3",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f4",
+      "width": 64,
+      "purpose": "4th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f5",
+      "width": 64,
+      "purpose": "5th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f6",
+      "width": 64,
+      "purpose": "6th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f7",
+      "width": 64,
+      "purpose": "7th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f8",
+      "width": 64,
+      "purpose": "8th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "8",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f9",
+      "width": 64,
+      "purpose": "9th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 8,
+      "returnPosition": null,
+      "encoding": "9",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f10",
+      "width": 64,
+      "purpose": "10th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 9,
+      "returnPosition": null,
+      "encoding": "10",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f11",
+      "width": 64,
+      "purpose": "11th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 10,
+      "returnPosition": null,
+      "encoding": "11",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f12",
+      "width": 64,
+      "purpose": "12th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 11,
+      "returnPosition": null,
+      "encoding": "12",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f13",
+      "width": 64,
+      "purpose": "13th floating-point argument",
+      "aliases": [],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 12,
+      "returnPosition": null,
+      "encoding": "13",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f14",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "14",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f15",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "15",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f16",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "16",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f17",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "17",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f18",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "18",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f19",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "19",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f20",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "20",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f21",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "21",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f22",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "22",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f23",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "23",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f24",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "24",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f25",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "25",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f26",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "26",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f27",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "27",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f28",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "28",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f29",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "29",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f30",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "30",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "f31",
+      "width": 64,
+      "purpose": "Callee-saved floating-point register",
+      "aliases": [],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "31",
+      "llvmRegisterClass": "F8RC",
+      "special": false
+    },
+    {
+      "name": "v0",
+      "width": 128,
+      "purpose": "VSX/VMX scratch register, caller-saved",
+      "aliases": ["vs32"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "0",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v1",
+      "width": 128,
+      "purpose": "VSX/VMX scratch register, caller-saved",
+      "aliases": ["vs33"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "1",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v2",
+      "width": 128,
+      "purpose": "1st vector argument register (AltiVec), caller-saved",
+      "aliases": ["vs34"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": 0,
+      "encoding": "2",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v3",
+      "width": 128,
+      "purpose": "2nd vector argument register, caller-saved",
+      "aliases": ["vs35"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": 1,
+      "encoding": "3",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v4",
+      "width": 128,
+      "purpose": "3rd vector argument register, caller-saved",
+      "aliases": ["vs36"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "4",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v5",
+      "width": 128,
+      "purpose": "4th vector argument register, caller-saved",
+      "aliases": ["vs37"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "5",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v6",
+      "width": 128,
+      "purpose": "5th vector argument register, caller-saved",
+      "aliases": ["vs38"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 4,
+      "returnPosition": null,
+      "encoding": "6",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v7",
+      "width": 128,
+      "purpose": "6th vector argument register, caller-saved",
+      "aliases": ["vs39"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 5,
+      "returnPosition": null,
+      "encoding": "7",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v8",
+      "width": 128,
+      "purpose": "7th vector argument register, caller-saved",
+      "aliases": ["vs40"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 6,
+      "returnPosition": null,
+      "encoding": "8",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v9",
+      "width": 128,
+      "purpose": "8th vector argument register, caller-saved",
+      "aliases": ["vs41"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 7,
+      "returnPosition": null,
+      "encoding": "9",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v10",
+      "width": 128,
+      "purpose": "9th vector argument register, caller-saved",
+      "aliases": ["vs42"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 8,
+      "returnPosition": null,
+      "encoding": "10",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v11",
+      "width": 128,
+      "purpose": "10th vector argument register, caller-saved",
+      "aliases": ["vs43"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 9,
+      "returnPosition": null,
+      "encoding": "11",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v12",
+      "width": 128,
+      "purpose": "11th vector argument register, caller-saved",
+      "aliases": ["vs44"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 10,
+      "returnPosition": null,
+      "encoding": "12",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v13",
+      "width": 128,
+      "purpose": "12th vector argument register, caller-saved",
+      "aliases": ["vs45"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 11,
+      "returnPosition": null,
+      "encoding": "13",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v14",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs46"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "14",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v15",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs47"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "15",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v16",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs48"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "16",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v17",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs49"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "17",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v18",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs50"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "18",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v19",
+      "width": 128,
+      "purpose": "VSX/VMX caller-saved register",
+      "aliases": ["vs51"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "19",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v20",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs52"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "20",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v21",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs53"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "21",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v22",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs54"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "22",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v23",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs55"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "23",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v24",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs56"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "24",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v25",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs57"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "25",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v26",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs58"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "26",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v27",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs59"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "27",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v28",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs60"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "28",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v29",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs61"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "29",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v30",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs62"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "30",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    },
+    {
+      "name": "v31",
+      "width": 128,
+      "purpose": "VSX/VMX callee-saved register",
+      "aliases": ["vs63"],
+      "callerCallee": "callee-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "31",
+      "llvmRegisterClass": "VRRC",
+      "special": false
+    }
+  ],
+  "stackFrame": {
+    "layout": [
+      { "region": "higher-addresses", "label": "Caller Frame", "color": "#64748b", "description": "Stack frame of the function that called this one" },
+      { "region": "parameter-save-area", "label": "Parameter Save Area (48 bytes)", "color": "#3b82f6", "description": "Mandatory 48-byte area at the top of the callee's frame. The caller allocates this space and saves r3-r10 (8x8=64 bytes, but only 48 used for the first 6 slots plus alignment) and f1-f13 here. Used for variadic argument saving and variadic function prologues." },
+      { "region": "linkage-area", "label": "Linkage Area (32 bytes)", "color": "#ef4444", "description": "Stores LR (at sp+16), TOC save area (at sp+40), and frame back chain pointer (at sp+0). The caller saves LR here when making a call. Required for stack unwinding and debugging." },
+      { "region": "saved-registers", "label": "Saved Registers", "color": "#f97316", "description": "Callee-saved GPRs (r14-r31), FPRs (f14-f31), and VSX registers (v20-v31) saved by this function. Aligned to 16 bytes." },
+      { "region": "frame-pointer", "label": "Frame Pointer (r31)", "color": "#8b5cf6", "description": "Optional: when -fno-omit-frame-pointer is used, r31 points to the saved frame pointer at the top of the stack frame. Allows deterministic stack unwinding." },
+      { "region": "locals", "label": "Local Variables", "color": "#22c55e", "description": "Automatic variables declared in this function. Allocated below saved registers." },
+      { "region": "alignment-padding", "label": "Alignment Padding", "color": "#94a3b8", "description": "Padding to maintain 16-byte stack pointer alignment before allocating the outgoing argument area" },
+      { "region": "outgoing-args", "label": "Outgoing Arguments", "color": "#06b6d4", "description": "Space for arguments passed to functions this function calls. The caller allocates this area above (at higher addresses than) its own frame." }
+    ],
+    "framePointerRequired": false,
+    "notes": "The stack frame always begins with a 48-byte parameter save area (for saving register arguments on entry) followed by a 32-byte linkage area (containing back chain, LR, and TOC). r31 is the optional frame pointer. The stack pointer must remain 16-byte aligned at all times. There is no red zone — the ABI guarantees nothing below sp is preserved across interrupts and signals."
+  },
+  "examples": {
+    "simple": {
+      "title": "Simple integer addition",
+      "c": "int add(int a, int b) {\n    return a + b;\n}",
+      "assembly": "add:\n    add     r3, r3, r4\n    blr",
+      "notes": "a in r3 (1st arg), b in r4 (2nd arg). Return value in r3. The blr instruction returns to the caller by branching to the address in the link register (LR). No stack frame needed for this leaf function."
+    },
+    "complex": {
+      "title": "Function with callee-saved registers and TOC access",
+      "c": "extern int table[100];\nlong compute(long a, long b, long c) {\n    long temp = table[a] + b;\n    table[c] = temp;\n    return temp * a;\n}",
+      "assembly": "compute:\n    stdu    r1, -48(r1)\n    std     r31, 40(r1)\n    addis   r31, r2, table@toc@ha\n    addi    r31, r31, table@toc@l\n    slwi    r0, r3, 2\n    lwzx    r0, r31, r0\n    add     r0, r0, r4\n    stwx    r0, r31, r5\n    mulld   r3, r0, r3\n    ld      r31, 40(r1)\n    addi    r1, r1, 48\n    blr",
+      "notes": "r31 is saved as callee-saved register. The TOC pointer (r2) is used to access the global table via addis/addi (high/low 16-bit decomposition of the TOC offset). The function allocates 48 bytes on the stack (parameter save area + linkage area). On exit, r31 is restored and the stack is deallocated."
+    },
+    "variadic": {
+      "title": "Variadic function (printf-like)",
+      "c": "int sum_ints(int count, ...) {\n    va_list ap;\n    va_start(ap, count);\n    int total = 0;\n    for (int i = 0; i < count; i++)\n        total += va_arg(ap, int);\n    va_end(ap);\n    return total;\n}",
+      "assembly": "sum_ints:\n    stdu    r1, -144(r1)\n    std     r0, 160(r1)\n    bl      _savegpr0_14\n    li      r0, 0\n    stw     r3, 112(r1)\n    addi    r9, r1, 48\n    addi    r10, r1, 160\n    std     r9, 40(r1)\n    std     r10, 32(r1)\n    std     r0, 24(r1)\n    std     r0, 16(r1)\n    ; ... va_arg loop using gpr/fpr counts ...",
+      "notes": "Variadic functions must save all 8 argument registers (r3-r10) and all 13 FP registers (f1-f13) to the parameter save area. The va_list struct is set up with gpr=0, fpr=0 (next available slot indices), reg_save_area pointing to the saved registers, and overflow_arg_area pointing to any stack-passed arguments."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/PowerPC/PPCCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/PowerPC/PPCCallingConv.td",
+      "description": "CC_PPC64_C: Defines ELFv2 calling convention with r3-r10 integer args, f1-f13 FP args, v2-v13 vector args, and the 48-byte parameter save area for variadic functions."
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/PowerPC/PPCISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/PowerPC/PPCISelLowering.cpp",
+      "description": "LowerCall/LowerFormalArguments/LowerReturn: Implements argument lowering, parameter save area management, TOC setup, aggregate passing, variadic handling, and tail call support for ELFv2."
+    },
+    "frameLowering": {
+      "path": "llvm/lib/Target/PowerPC/PPCFrameLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/PowerPC/PPCFrameLowering.cpp",
+      "description": "emitPrologue/emitEpilogue: Stack frame layout with 48-byte parameter save area, 32-byte linkage area, callee-saved register spilling, TOC save/restore, and dynamic alignment handling."
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/PowerPC/PPCRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/PowerPC/PPCRegisterInfo.cpp",
+      "description": "getCalleeSavedRegs: Defines caller-saved (r0, r3-r12, f0-f13, v0-v19) and callee-saved (r14-r31, f14-f31, v20-v31) register sets. Also defines reserved registers (r1, r2, r13)."
+    }
+  },
+  "gccImplementation": {
+    "machineDescription": "gcc/config/rs6000/rs6000.md",
+    "callConvention": "gcc/config/rs6000/rs6000.cc",
+    "notes": "GCC uses RS6000_ABI ELFv2 as the calling convention for ppc64le Linux. The rs6000 backend handles TOC management, parameter save area allocation, and the ELFv2 function descriptor format (though ELFv2 ABI minimizes descriptors compared to ELFv1)."
+  },
+  "why": [
+    {
+      "question": "Why does PowerPC64 ELFv2 use a TOC (Table of Contents) pointer in r2?",
+      "answer": "The TOC is a per-module data structure that holds pointers to global variables, function descriptors, and linkage information. Using a dedicated register (r2) allows position-independent code (PIC) to access global data efficiently through a single base register plus offset, rather than computing absolute addresses. This is critical for shared libraries where the runtime addresses of globals are unknown at compile time. The ELFv2 ABI designates r2 as the TOC pointer at all times, avoiding the ELFv1 requirement of loading the TOC on every function call and enabling more efficient intra-module calls."
+    },
+    {
+      "question": "Why does ELFv2 mandate a 48-byte parameter save area at the top of every stack frame?",
+      "answer": "The parameter save area provides a guaranteed location for variadic functions to spill their incoming register arguments. When a variadic function is called, the caller allocates this area and saves r3-r10 and f1-f13 so that va_arg can walk through them uniformly. Even non-variadic functions allocate it for consistency and to handle cases where the callee may need to spill arguments (e.g., when taking the address of a parameter). The 48-byte size accommodates the 8 GPR slots (with the first 6 used for the parameter save) and ensures proper alignment."
+    },
+    {
+      "question": "Why does ELFv2 have no red zone, unlike the x86-64 System V ABI?",
+      "answer": "PowerPC systems are commonly used in servers and embedded environments where interrupt and signal handlers execute on the same stack without first allocating a new stack frame. Any space below the stack pointer could be silently clobbered by an interrupt handler. The x86-64 red zone works because the OS guarantees that signal handlers always set up their own stack. On PowerPC, the hardware and OS do not provide this guarantee — the interrupt handler may use the caller's stack directly. Therefore, the ABI specifies that nothing below sp is preserved, and the compiler must always adjust sp before using any stack space."
+    },
+    {
+      "question": "Why does ELFv2 use 8 integer argument registers instead of the 6 used in x86-64 SysV?",
+      "answer": "PowerPC has a large register file (32 GPRs) and was designed for high-performance computing where function call overhead matters. Having 8 integer argument registers (r3-r10) means more arguments can be passed without touching the stack, which is especially beneficial for scientific and financial computing workloads with many parameters. The ELFv2 ABI also provides 13 FP argument registers (f1-f13), far more than x86-64's 8 XMM registers for floats. This abundance of argument registers reduces memory traffic and improves performance for complex functions."
+    },
+    {
+      "question": "Why does ELFv2 require 16-byte stack alignment?",
+      "answer": "Power ISA vector instructions (Altivec/VMX and VSX) require memory operands to be 16-byte aligned. Misaligned vector loads/stores either trap or cause performance penalties. By maintaining 16-byte alignment at all times, the compiler can generate vector load/store instructions without runtime alignment checks. Additionally, 16-byte alignment improves cache line utilization on modern Power processors which have 64-byte or 128-byte cache lines. The ABI requires sp to be 16-byte aligned on entry, and the caller must maintain this when allocating stack space."
+    },
+    {
+      "question": "Why does ELFv2 use function descriptors in ELFv1 but minimizes them in ELFv2?",
+      "answer": "In ELFv1, every function had a descriptor containing the function entry point, TOC value, and environment pointer. This enabled easy interposition and dynamic linking but added overhead to every call. ELFv2 eliminates function descriptors for locally-bound functions, allowing direct calls to the function entry point. TOC restoration happens inline in the caller's code rather than through an indirect load from a descriptor. This reduces call overhead and improves performance for LTO (Link-Time Optimization) and static linking scenarios. Global functions that may be interposed still use a minimal descriptor."
+    }
+  ],
+  "comparison": {
+    "vsX86_64SysV": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "powerpc64": "8 GPR (r3-r10) + 13 FPR (f1-f13)", "x86_64": "6 GPR (RDI,RSI,RDX,RCX,R8,R9) + 8 XMM", "impact": "PPC64 passes more arguments in registers, reducing stack traffic" },
+        { "feature": "TOC Register", "powerpc64": "r2 (mandatory)", "x86_64": "None (RIP-relative addressing)", "impact": "PPC64 uses TOC for global data access; x86-64 uses PC-relative loads" },
+        { "feature": "Red Zone", "powerpc64": "None (0 bytes)", "x86_64": "128 bytes", "impact": "PPC64 leaf functions must always adjust sp; x86-64 can use space below sp" },
+        { "feature": "Parameter Save Area", "powerpc64": "48 bytes mandatory", "x86_64": "None (use stack directly)", "impact": "PPC64 always allocates space for register argument spilling" },
+        { "feature": "Linkage Area", "powerpc64": "32 bytes (LR, TOC, back chain)", "x86_64": "8 bytes (return address only)", "impact": "PPC64 stores more metadata in the stack frame" },
+        { "feature": "Frame Pointer", "powerpc64": "r31 (optional)", "x86_64": "RBP (optional)", "impact": "Both optional, different register conventions" },
+        { "feature": "Stack Alignment", "powerpc64": "16 bytes", "x86_64": "16 bytes (before call)", "impact": "Both require 16-byte alignment for vector operations" }
+      ]
+    },
+    "vsAarch64": {
+      "keyDifferences": [
+        { "feature": "Argument Registers", "powerpc64": "8 GPR + 13 FPR + 12 vector", "aarch64": "8 GPR + 8 FP/SIMD", "impact": "PPC64 has more floating-point and vector argument registers" },
+        { "feature": "TOC Register", "powerpc64": "r2 (mandatory)", "aarch64": "None (literal pool/ADRP)", "impact": "PPC64 uses TOC for PIC; AArch64 uses PC-relative addressing" },
+        { "feature": "Linkage Area", "powerpc64": "32 bytes in stack frame", "aarch64": "16 bytes (LR + frame record)", "impact": "PPC64 linkage area is larger due to TOC save slot" },
+        { "feature": "Parameter Save Area", "powerpc64": "48 bytes mandatory", "aarch64": "None (use stack directly)", "impact": "PPC64 always reserves space for register spilling on entry" },
+        { "feature": "Vector Registers", "powerpc64": "64 (v0-v31 via VSX, 128-bit each)", "aarch64": "32 (V0-V31, 128-bit each)", "impact": "Both have similar vector register counts but different naming/overlapping" },
+        { "feature": "Red Zone", "powerpc64": "None", "aarch64": "None", "impact": "Neither ABI provides a red zone" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "powerpc64le-unknown-linux-gnu",
+    "description": "Key Clang/LLVM flags for targeting the PowerPC64 ELFv2 ABI",
+    "flags": [
+      {
+        "flag": "--target=powerpc64le-unknown-linux-gnu",
+        "description": "Sets the compilation target to 64-bit PowerPC (little-endian). Uses ELFv2 ABI with TOC-based addressing.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mabi=elfv2",
+        "description": "Select the ELFv2 ABI. Default on modern PowerPC64 Linux. Uses parameter save area and TOC.",
+        "kind": "Joined",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-mabi=elfv1",
+        "description": "Select the ELFv1 ABI. Older ABI using function descriptors. Not recommended for new code.",
+        "kind": "Joined",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-mcpu=power9",
+        "description": "Target a specific PowerPC CPU. Power9+ supports ELFv2 and VSX3.",
+        "kind": "Joined",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-mvsx",
+        "description": "Enable VSX (Vector Scalar Extension) instructions. Provides 128-bit vector registers.",
+        "kind": "Flag",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-maltivec",
+        "description": "Enable Altivec/VMX instructions. Provides 128-bit vector registers (v0-v31).",
+        "kind": "Flag",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-mno-toc",
+        "description": "Disable TOC (Table of Contents) usage. Forces direct addressing instead of r2-based TOC.",
+        "kind": "Flag",
+        "category": "PowerPC"
+      },
+      {
+        "flag": "-mlittle-endian",
+        "description": "Generate little-endian code. PowerPC64 LE is the default on modern Linux.",
+        "kind": "Flag",
+        "category": "PowerPC"
+      }
+    ],
+    "llcCommand": "llc -mtriple=powerpc64le-unknown-linux-gnu -mabi=elfv2 -mcpu=power9 -O2 input.ll -o output.s",
+    "optCommand": "opt -mtriple=powerpc64le-unknown-linux-gnu -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=powerpc64le-unknown-linux-gnu -mabi=elfv2 -mcpu=power9 -O2 -S input.c -o output.s",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/PPC.cpp",
+        "description": "PPC toolchain: selects ELFv2 ABI, TOC model, and CPU features for PowerPC64 targets"
+      },
+      {
+        "path": "llvm/lib/Target/PowerPC/PPCCallingConv.td",
+        "description": "TableGen definition of CC_PPC64_C (ELFv2 calling convention with r3-r10 argument registers)"
+      }
+    ]
+  },
+  "searchText": "powerpc64 ppc64 ppc64le elfv2 power isa powerpc calling convention r3 r4 r5 r6 r7 r8 r9 r10 f1 f13 toc table of contents r2 v2 v13 vsx altivec vmx linux callee saved caller saved variadic va_list parameter save area linkage area frame pointer r31 no red zone 16-byte alignment global data access position independent"
+}
