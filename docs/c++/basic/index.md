@@ -43,6 +43,8 @@ tags:
   - C++ Programming Essentials
 
 ---
+import AdBanner from '@site/src/components/AdBanner';
+
 # Basic C++ Topics
 
 
