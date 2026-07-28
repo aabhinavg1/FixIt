@@ -1,5 +1,4 @@
 ---
-id: parallel-computing
 title: Parallel Computing Curriculum
 description: A comprehensive parallel computing curriculum covering CPU fundamentals, OpenMP, MPI, GPU programming with CUDA/OpenCL/Vulkan/SYCL, and the current state of parallel hardware and software.
 keywords:
