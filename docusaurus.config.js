@@ -233,6 +233,7 @@ const config = {
               { label: 'OpenCL', to: '/docs/gpu/opencl' },
               { label: 'GPU Programming', to: '/docs/gpu/gpu_programming/gpu_programming_toc' },
               { label: 'Linux', to: '/docs/linux/intro_to_linux' },
+              { label: 'Parallel Computing', to: '/docs/parallel-computing/' },
             ],
           },
           {

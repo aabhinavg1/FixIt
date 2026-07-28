@@ -6,6 +6,7 @@ const mcq = require('./sidebars/mcq');
 const site = require('./sidebars/site');
 const benchmarking = require('./sidebars/benchmarking');
 const dsa = require('./sidebars/dsa');
+const parallelComputing = require('./sidebars/parallel-computing');
 
 module.exports = {
   ...tutorials,
@@ -15,4 +16,5 @@ module.exports = {
   ...site,
   ...benchmarking,
   ...dsa,
+  ...parallelComputing,
 };
