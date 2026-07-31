@@ -10,7 +10,6 @@ import { getSocialImageForPath, SOCIAL_IMAGE_VERSION } from "@site/src/utils/soc
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const FloatingSubscribe = lazy(() => import("@site/src/components/FloatingSubscribe"));
-const FloatingWhatsApp = lazy(() => import("@site/src/components/FloatingWhatsApp"));
 
 export default function Layout(props) {
   const location = useLocation();
@@ -96,7 +95,6 @@ export default function Layout(props) {
             <Suspense fallback={null}>
               {/* <AdSenseScript /> */}
               <GoogleAnalyticsScript />
-              <FloatingWhatsApp />
               <FloatingSubscribe />
             </Suspense>
           )}
