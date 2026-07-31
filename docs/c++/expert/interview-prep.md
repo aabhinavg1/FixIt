@@ -400,10 +400,10 @@ Focus on: data structure choices, memory layout, concurrency models, API design,
 
 ## Related Articles
 
-- [Smart Pointers](../advanced/smart-pointers.md)
-- [Move Semantics](../advanced/move-semantics.md)
-- [Threads](../advanced/threads.md)
-- [Mutexes and Locking](../advanced/mutexes-and-locking.md)
-- [Polymorphism](../advanced/polymorphism.md)
-- [Templates](../advanced/templates.md)
-- [STL Introduction](../advanced/stl-intro.md)
+- [Smart Pointers](/docs/c++/advanced/smart-pointers.md)
+- [Move Semantics](/docs/c++/advanced/move-semantics.md)
+- [Threads](/docs/c++/advanced/threads.md)
+- [Mutexes and Locking](/docs/c++/advanced/mutexes-and-locking.md)
+- [Polymorphism](/docs/c++/advanced/polymorphism.md)
+- [Templates](/docs/c++/advanced/templates.md)
+- [STL Introduction](/docs/c++/advanced/stl-intro.md)

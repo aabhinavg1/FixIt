@@ -247,4 +247,8 @@ No. They also matter in embedded systems, game networking, infrastructure toolin
 
 - [POSIX in C++ Workflows](./posix.md)
 - [File I/O](./file-io.md)
-- [Async and Futures](../advanced/async-and-futures.md)
+- [Async and Futures](/docs/c++/advanced/async-and-futures.md)
+
+## TCP and UDP design notes
+
+TCP provides an ordered byte stream, not messages; implement framing and handle partial reads and writes. UDP preserves datagram boundaries but permits loss, duplication, and reordering. A production client separates connection state, I/O timeouts, parsing, and shutdown. Use RAII for descriptors and test disconnects, malformed frames, and back-pressure.

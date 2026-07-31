@@ -109,7 +109,7 @@ It is a way to turn compiler output into a resource model you can reason about.
 ## Table of Contents
 
 1. [The Resource Model](#the-resource-model)
-2. [What The Compiler Reports](#what-the-compiler-reports)
+2. [LLVM and backend view](#llvm--backend-view)
 3. [A Practical Calculation](#a-practical-calculation)
 4. [What Occupancy Is Measuring](#what-occupancy-is-measuring)
 5. [Where The Formula Breaks Down](#where-the-formula-breaks-down)

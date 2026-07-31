@@ -1,6 +1,6 @@
 ---
 title: Mutexes and Locking in C++ - Synchronization, lock_guard and Shared State Safety
-description: Learn mutexes and locking in C++ with std::mutex and std::lock_guard. Understand synchronization, shared state protection, data races, critical sections, and common locking mistakes.
+description: "Learn mutexes and locking in C++ with std::mutex and std::lock_guard. Understand synchronization, shared state protection, data races, critical sections, and common locking mistakes."
 keywords:
   - mutex in c++
   - std mutex c++

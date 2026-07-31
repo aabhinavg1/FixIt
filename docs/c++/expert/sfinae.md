@@ -245,6 +245,10 @@ That is one of its biggest practical problems, yes.
 
 ## More Articles
 
-- [Templates](../advanced/templates.md)
+- [Templates](/docs/c++/advanced/templates.md)
 - [Concepts and Ranges](./concepts-and-ranges.md)
 - [constexpr](./constexpr.md)
+
+## Edge cases and migration
+
+SFINAE only removes candidates in immediate substitution contexts. Errors in a function body are normally hard errors. Prefer concepts for new interfaces, but recognize void_t, enable_if, and detection idioms in older libraries. Keep constraints near the template parameter list and test ambiguous overloads.

@@ -1,6 +1,6 @@
 ---
 title: Smart Pointers in C++ - unique_ptr, shared_ptr, weak_ptr and Ownership Explained
-description: Learn smart pointers in C++ with unique_ptr, shared_ptr, and weak_ptr. Understand ownership, lifetime, RAII, heap management, and how smart pointers replace many unsafe raw owning pointers.
+description: "Learn smart pointers in C++ with unique_ptr, shared_ptr, and weak_ptr. Understand ownership, lifetime, RAII, heap management, and how smart pointers replace many unsafe raw owning pointers."
 keywords:
   - smart pointers in c++
   - unique_ptr c++

@@ -341,4 +341,4 @@ Assuming file operations succeeded without checking the stream state.
 
 - [POSIX in C++ Workflows](./posix.md)
 - [Sockets in C++](./sockets.md)
-- [Async and Futures](../advanced/async-and-futures.md)
+- [Async and Futures](/docs/c++/advanced/async-and-futures.md)

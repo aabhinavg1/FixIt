@@ -109,7 +109,7 @@ The same `add` function becomes a useful teaching file because it shows the full
 5. [The Most Important Idea: SSA](#the-most-important-idea-ssa)
 6. [Why This Matters](#why-this-matters)
 7. [Read the File Line by Line](#read-the-file-line-by-line)
-8. [`-O0` vs `-O2`](#o0-vs-o2)
+8. [`-O0` vs `-O2`](#exact-command)
 9. [What to Read Next](#what-to-read-next)
 10. [References](#references)
 11. [Appendix: More IR Patterns](#appendix-more-ir-patterns)

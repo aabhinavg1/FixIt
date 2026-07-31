@@ -1,6 +1,6 @@
 ---
 title: Templates in C++ - Generic Programming, Function Templates and Class Templates
-description: Learn templates in C++ with detailed examples. Understand generic programming, function templates, class templates, type parameters, code reuse, compile-time polymorphism, and template design basics.
+description: "Learn templates in C++ with detailed examples. Understand generic programming, function templates, class templates, type parameters, code reuse, compile-time polymorphism, and template design basics."
 keywords:
   - templates in c++
   - generic programming c++

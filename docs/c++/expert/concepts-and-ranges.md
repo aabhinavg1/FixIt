@@ -305,6 +305,6 @@ They should learn the classic STL model first, then adopt concepts and ranges on
 
 ## More Articles
 
-- [Templates](../advanced/templates.md)
+- [Templates](/docs/c++/advanced/templates.md)
 - [SFINAE](./sfinae.md)
 - [constexpr](./constexpr.md)

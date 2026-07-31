@@ -1,6 +1,6 @@
 ---
 title: Async and Futures in C++
-description: Learn how std::async, std::future, std::promise, and shared futures structure asynchronous work in modern C++.
+description: "Learn how std::async, std::future, std::promise, and shared futures structure asynchronous work in modern C++."
 tags:
   - C++
   - Concurrency
@@ -345,4 +345,4 @@ No. `std::async` is a task-launching abstraction, not a general thread-pool fram
 
 - [Threads](./threads.md)
 - [Mutexes and Locking](./mutexes-and-locking.md)
-- [File I/O](../expert/file-io.md)
+- [File I/O](/docs/c++/expert/file-io.md)
