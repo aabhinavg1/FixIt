@@ -49,6 +49,7 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          { to: '/docs/c++/advanced/', from: ['/docs/c++/advance/', '/docs/c++/advance/index', '/docs/c++/advance/intro'] },
           {
             to: '/docs/dsa/foundations/data/',
             from: ['/dsa/foundations/data/'],
@@ -147,7 +148,6 @@ const config = {
       ],
 
       navbar: {
-        title: 'CompilerSutra',
         logo: {
           alt: 'CompilerSutra Logo',
           src: 'img/logo.svg',
@@ -283,8 +283,15 @@ const config = {
 
           {
             href: 'https://www.youtube.com/@compilersutra',
-            label: 'YouTube Channel',
             position: 'right',
+            className: 'header-icon-link header-youtube-link',
+            'aria-label': 'CompilerSutra YouTube channel',
+          },
+          {
+            href: 'https://chat.whatsapp.com/C5lBzje4CjvLTZBhS0O92x',
+            position: 'right',
+            className: 'header-icon-link header-whatsapp-link',
+            'aria-label': 'Join CompilerSutra WhatsApp community',
           },
           {
             href: 'https://compilersutra.quora.com',
@@ -319,6 +326,8 @@ const config = {
           {
             title: 'Community',
             items: [
+              { label: 'WhatsApp Community', href: 'https://chat.whatsapp.com/C5lBzje4CjvLTZBhS0O92x' },
+              { label: 'YouTube Channel', href: 'https://www.youtube.com/@compilersutra' },
               { label: 'LLVM Documentation', href: 'https://llvm.org/docs/' },
               { label: 'Twitter', href: 'https://twitter.com/CompilerSutra' },
             ],
