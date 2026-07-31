@@ -1,6 +1,6 @@
 ---
 title: Threads in C++ - std::thread, Concurrency Basics and Safe Thread Lifetime
-description: Learn multithreading in C++ with std::thread. Understand concurrent execution, thread creation, join, detach, data races, and the basics of writing safe threaded code.
+description: "Learn multithreading in C++ with std::thread. Understand concurrent execution, thread creation, join, detach, data races, and the basics of writing safe threaded code."
 keywords:
   - threads in c++
   - std thread c++

@@ -1,6 +1,6 @@
 ---
 title: STL Introduction in C++ - Containers, Iterators, Algorithms and Generic Design
-description: Learn the C++ Standard Template Library with a complete introduction to containers, iterators, algorithms, function objects, and why STL is one of the most important parts of modern C++.
+description: "Learn the C++ Standard Template Library with a complete introduction to containers, iterators, algorithms, function objects, and why STL is one of the most important parts of modern C++."
 keywords:
   - stl in c++
   - standard template library c++

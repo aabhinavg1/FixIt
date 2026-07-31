@@ -1,26 +1,29 @@
+---
+title: Contributing to Open-Source C++
+description: A practical beginner guide to open-source in C++, with concrete workflows, compiler behavior, and common mistakes.
+tags:
+  - C++
+  - Basic
+  - open-source
+sidebar_label: Open Source
+---
 
+# Contributing to Open-Source C++
 
-📩 Interested in deep dives like pipelines, cache, and compiler optimizations?
+## What problem this solves
 
-<div
-  style={{
-    width: '100%',
-    maxWidth: '900px',
-    margin: '1rem auto',
-  }}
->
-  <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform?embedded=true"
-    style={{
-      width: '100%',
-      minHeight: '620px',
-      border: '0',
-      borderRadius: '12px',
-      background: '#fff',
-    }}
-    loading="lazy"
-  >
-    Loading…
-  </iframe>
-</div>
+Read the contribution guide, license, supported compilers, formatting rules, and build instructions before editing. Build a clean checkout, reproduce the issue with a focused test, make one minimal change, and show exact test commands. Public headers can change ABI, object layout, exception guarantees, allocator behavior, and compile time. Prefer documentation, regression tests, warning fixes, and small reproducer reductions for first contributions.
 
+## How to practice
+
+Create the smallest reproducible example, compile with warnings, observe the compiler or tool output, and turn the result into a test or documented decision. Record the compiler version, standard mode, platform, and command.
+
+## Compiler and runtime view
+
+The compiler parses and type-checks source, resolves overloads and templates, and emits object code. The linker combines translation units. At runtime, the operating system provides memory, files, processes, and threads. Use the workflow above to inspect the boundary relevant to the bug.
+
+## Further reading
+
+- [C++ compiler workflow](/docs/c++/basic/c++_compilers)
+- [C++ testing concepts](/docs/c++/basic/testing)
+- [C++ resource hub](/docs/c++/resources/index)

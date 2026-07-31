@@ -468,6 +468,6 @@ Edit the version in your `conanfile.txt` or `conanfile.py`, then run `conan inst
 
 ## Related Articles
 
-- [CMake Tutorial](../basic/cpp_tutorial_with_cmake.md) — CMake fundamentals
+- [CMake Tutorial](/docs/c++/basic/cpp_tutorial_with_cmake.md) — CMake fundamentals
 - [Interview Preparation](./interview-prep.md) — C++ career guide
-- [Tools](../resources/tools.md) — Development tools overview
+- [Tools](/docs/c++/resources/tools.md) — Development tools overview

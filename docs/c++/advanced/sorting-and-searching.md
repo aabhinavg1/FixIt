@@ -1,6 +1,6 @@
 ---
 title: Sorting and Searching in C++ - STL Algorithms, Comparators and Practical Usage
-description: Learn sorting and searching in C++ with std::sort, std::find, std::binary_search, custom comparators, and STL algorithm design. Understand when and how to use standard algorithms correctly.
+description: "Learn sorting and searching in C++ with std::sort, std::find, std::binary_search, custom comparators, and STL algorithm design. Understand when and how to use standard algorithms correctly."
 keywords:
   - sorting in c++
   - std sort c++

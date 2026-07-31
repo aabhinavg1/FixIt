@@ -1,6 +1,6 @@
 ---
 title: Custom Allocators in C++
-description: Understand the allocator model in C++, when custom allocators help, and why most code should treat them as a specialized optimization tool.
+description: "Understand the allocator model in C++, when custom allocators help, and why most code should treat them as a specialized optimization tool."
 tags:
   - C++
   - Memory Management
@@ -255,4 +255,4 @@ No. They can help memory behavior, but they do not replace sound algorithm and d
 
 - [Vectors and Maps](./vectors-and-maps.md)
 - [Move Semantics](./move-semantics.md)
-- [File I/O](../expert/file-io.md)
+- [File I/O](/docs/c++/expert/file-io.md)

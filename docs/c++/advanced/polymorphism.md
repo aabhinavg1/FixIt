@@ -1,6 +1,6 @@
 ---
 title: Polymorphism in C++ - Virtual Functions, Override, Dynamic Dispatch and Design Guide
-description: Learn polymorphism in C++ with virtual functions, override, abstract classes, dynamic dispatch, and runtime behavior. Understand how one interface can represent multiple implementations.
+description: "Learn polymorphism in C++ with virtual functions, override, abstract classes, dynamic dispatch, and runtime behavior. Understand how one interface can represent multiple implementations."
 keywords:
   - polymorphism in c++
   - virtual function c++

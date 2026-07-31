@@ -160,4 +160,4 @@ If you already have some experience, skip to the topic where your understanding 
 
 ## After This Section
 
-Once you are comfortable with the basics, move to the [Intermediate](../intermediate/index.md) section where you will learn classes, constructors, destructors, and inheritance — the building blocks of object-oriented C++.
+Once you are comfortable with the basics, move to the [Intermediate](/docs/c++/intermediate/index.md) section where you will learn classes, constructors, destructors, and inheritance — the building blocks of object-oriented C++.

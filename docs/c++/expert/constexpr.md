@@ -258,6 +258,10 @@ Yes. It is one of the core ideas behind modern compile-time expressiveness.
 
 ## More Articles
 
-- [Templates](../advanced/templates.md)
+- [Templates](/docs/c++/advanced/templates.md)
 - [Concepts and Ranges](./concepts-and-ranges.md)
 - [SFINAE](./sfinae.md)
+
+## consteval and compile-time boundaries
+
+constexpr permits compile-time evaluation when inputs allow it; consteval requires an immediate invocation. The compiler may still emit runtime code for a constexpr function when called with runtime data. Compile-time computation can reduce startup work, but large tables increase object size and build time.

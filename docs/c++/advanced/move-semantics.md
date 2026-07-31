@@ -1,6 +1,6 @@
 ---
 title: Move Semantics in C++ - rvalue References, std::move and Ownership Transfer
-description: Learn move semantics in C++ with rvalue references, std::move, ownership transfer, copy vs move behavior, and why move semantics are central to modern C++ performance.
+description: "Learn move semantics in C++ with rvalue references, std::move, ownership transfer, copy vs move behavior, and why move semantics are central to modern C++ performance."
 keywords:
   - move semantics in c++
   - rvalue references c++

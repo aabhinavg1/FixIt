@@ -63,7 +63,7 @@ Think of it this way:
 5. [Processes and pipes](#processes-and-pipes)
 6. [Signals and process control](#signals-and-process-control)
 7. [Why wrappers matter in C++](#why-wrappers-matter-in-c)
-8. [Practical examples](#practical-examples)
+8. [Processes and pipes](#processes-and-pipes)
 9. [Common mistakes](#common-mistakes)
 10. [Best practices](#best-practices)
 11. [FAQ](#faq)
@@ -270,3 +270,7 @@ Because wrappers make ownership, cleanup, and error handling much safer than raw
 - [File I/O](./file-io.md)
 - [Sockets](./sockets.md)
 - [Interview Preparation](./interview-prep.md)
+
+## Processes and signals
+
+Use fork and exec as separate concepts: fork duplicates a process image, while exec replaces it. Always check waitpid results and close unused pipe ends. Signals are asynchronous notifications; handlers should do minimal work, usually setting an atomic flag or writing to a self-pipe. Avoid calling non-async-signal-safe library functions from a handler.

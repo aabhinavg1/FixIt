@@ -1,6 +1,6 @@
 ---
 title: Vectors and Maps in C++ - Choosing the Right STL Container for Real Code
-description: Learn std::vector, std::map, and std::unordered_map in C++ with practical examples, performance tradeoffs, iteration patterns, lookup strategies, and best practices for real-world STL usage.
+description: "Learn std::vector, std::map, and std::unordered_map in C++ with practical examples, performance tradeoffs, iteration patterns, lookup strategies, and best practices for real-world STL usage."
 keywords:
   - vector in c++
   - map in c++

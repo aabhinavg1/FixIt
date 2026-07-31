@@ -446,6 +446,6 @@ int main() {
 - [C++14](./c++14.md) — Refinement features
 - [C++17](./c++17.md) — Practical additions
 - [C++23](./c++23.md) — Latest standard features
-- [Concepts and Ranges](../expert/concepts-and-ranges.md) — C++20 features deep dive
-- [constexpr](../expert/constexpr.md) — Compile-time programming
-- [Templates](../advanced/templates.md) — Generic programming fundamentals
+- [Concepts and Ranges](/docs/c++/expert/concepts-and-ranges.md) — C++20 features deep dive
+- [constexpr](/docs/c++/expert/constexpr.md) — Compile-time programming
+- [Templates](/docs/c++/advanced/templates.md) — Generic programming fundamentals
