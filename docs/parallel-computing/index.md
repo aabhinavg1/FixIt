@@ -30,10 +30,12 @@ This curriculum takes you from the absolute fundamentals — what a process, thr
 
 | # | Topic | Status |
 |---|-------|--------|
-| 1 | What is Parallel Computing? (Flynn's Taxonomy, why parallelism matters) | Coming Soon |
-| 2 | Program, Process, Thread, Core — What Each One Is | Coming Soon |
-| 3 | Memory Models — Shared vs Distributed | Coming Soon |
-| 4 | Amdahl's Law, Gustafson's Law, and Speedup Limits | Coming Soon |
+| 1 | [What is Parallel Computing?](fundamentals/what-is-parallel-computing.md) — Flynn's Taxonomy, why parallelism matters, task vs data vs pipeline | ✅ Done |
+| 2 | [Program, Process, Thread, Core](fundamentals/program-process-thread-core.md) — OS scheduling, context switching, hardware threads | ✅ Done |
+| 3 | [Memory Models](fundamentals/memory-models.md) — Shared vs Distributed, UMA/NUMA, MESI, false sharing | ✅ Done |
+| 4 | [Amdahl's Law and Gustafson's Law](fundamentals/amdahls-and-gustafsons-law.md) — Speedup limits, strong vs weak scaling | ✅ Done |
+| 5 | [Parallel Hardware Overview](fundamentals/parallel-hardware-overview.md) — CPU cores, SIMD/AVX, GPU cores, accelerators, cache hierarchy | ✅ Done |
+| 6 | [Measuring Parallel Performance](fundamentals/measuring-parallel-performance.md) — Speedup, efficiency, scalability, overhead, load balancing | ✅ Done |
 
 ## 02 — CPU Shared-Memory Parallelism
 
