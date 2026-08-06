@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-flang-deprecated-no-hlfir"
 slug: "/tools/clang-flags/-flang-deprecated-no-hlfir/"
 description: "Do not use HLFIR lowering (deprecated)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flang-deprecated-no-hlfir" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flang-deprecated-no-hlfir">
+
+## What this flag actually does
+
+Do not use HLFIR lowering (deprecated)
+
+## When to use it
+
+- You have a concrete need for the behavior this Deprecated option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -flang-deprecated-no-hlfir main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Deprecated`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

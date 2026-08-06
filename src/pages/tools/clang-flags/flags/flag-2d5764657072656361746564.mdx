@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wdeprecated"
 slug: "/tools/clang-flags/-Wdeprecated/"
 description: "Enable warnings for deprecated constructs and define __DEPRECATED"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wdeprecated" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wdeprecated">
+
+## What this flag actually does
+
+Enable warnings for deprecated constructs and define __DEPRECATED
+
+
+
+It can be negated with -Wno-deprecated.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Wdeprecated -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Negated by**: `-Wno-deprecated`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

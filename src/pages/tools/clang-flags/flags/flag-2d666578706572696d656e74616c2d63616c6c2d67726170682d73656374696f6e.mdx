@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-call-graph-section"
 slug: "/tools/clang-flags/-fexperimental-call-graph-section/"
 description: "Emit a call graph section"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-call-graph-section" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-call-graph-section">
+
+## What this flag actually does
+
+Emit a call graph section
+
+
+
+It can be negated with -fno-experimental-call-graph-section.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fexperimental-call-graph-section -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-experimental-call-graph-section`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

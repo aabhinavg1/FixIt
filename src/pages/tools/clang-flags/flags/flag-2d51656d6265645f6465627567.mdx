@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Qembed_debug"
 slug: "/tools/clang-flags/-Qembed_debug/"
 description: "Embed PDB in shader container (ignored)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Qembed_debug" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Qembed_debug">
+
+## What this flag actually does
+
+Embed PDB in shader container (ignored)
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Qembed_debug -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

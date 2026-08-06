@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fvisibility-inlines-hidden-static-local-var"
 slug: "/tools/clang-flags/-fvisibility-inlines-hidden-static-local-var/"
 description: "When -fvisibility-inlines-hidden is enabled, static variables in inline C++ member functions will also be given hidden visibility by default"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fvisibility-inlines-hidden-static-local-var" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fvisibility-inlines-hidden-static-local-var">
+
+## What this flag actually does
+
+When -fvisibility-inlines-hidden is enabled, static variables in inline C++ member functions will also be given hidden visibility by default
+
+
+
+It can be negated with -fno-visibility-inlines-hidden-static-local-var.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fvisibility-inlines-hidden-static-local-var -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-visibility-inlines-hidden-static-local-var`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fgpu-rdc"
 slug: "/tools/clang-flags/-fgpu-rdc/"
 description: "Generate relocatable device code, also known as separate compilation mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fgpu-rdc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fgpu-rdc">
+
+## What this flag actually does
+
+Generate relocatable device code, also known as separate compilation mode
+
+
+
+It can be negated with -fno-gpu-rdc.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ -fgpu-rdc main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Common Offloading`
+- **Negated by**: `-fno-gpu-rdc`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

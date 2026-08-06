@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fnew-infallible"
 slug: "/tools/clang-flags/-fnew-infallible/"
 description: "Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fnew-infallible" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fnew-infallible">
+
+## What this flag actually does
+
+Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
+
+
+
+It can be negated with -fno-new-infallible.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fnew-infallible -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-new-infallible`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

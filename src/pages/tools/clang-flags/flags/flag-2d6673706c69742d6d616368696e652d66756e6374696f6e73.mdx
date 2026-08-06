@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsplit-machine-functions"
 slug: "/tools/clang-flags/-fsplit-machine-functions/"
 description: "Enable late function splitting using profile information (x86 and aarch64 ELF)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsplit-machine-functions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsplit-machine-functions">
+
+## What this flag actually does
+
+Enable late function splitting using profile information (x86 and aarch64 ELF)
+
+
+
+It can be negated with -fno-split-machine-functions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsplit-machine-functions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-split-machine-functions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

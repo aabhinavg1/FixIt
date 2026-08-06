@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-finstrument-functions"
 slug: "/tools/clang-flags/-finstrument-functions/"
 description: "Generate calls to instrument function entry and exit"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-finstrument-functions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-finstrument-functions">
+
+## What this flag actually does
+
+Generate calls to instrument function entry and exit
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -finstrument-functions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fprofile-instr-use="
 slug: "/tools/clang-flags/-fprofile-instr-use%3D/"
 description: "Use instrumentation data for profile-guided optimization"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fprofile-instr-use%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fprofile-instr-use%3D">
+
+## What this flag actually does
+
+Use instrumentation data for profile-guided optimization
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fprofile-instr-use= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

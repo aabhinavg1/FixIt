@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mrelax-all"
 slug: "/tools/clang-flags/-mrelax-all/"
 description: "(integrated-as) Relax all machine instructions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mrelax-all" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mrelax-all">
+
+## What this flag actually does
+
+(integrated-as) Relax all machine instructions
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mrelax-all -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

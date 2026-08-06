@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-common"
 slug: "/tools/clang-flags/-fno-common/"
 description: "Compile common globals like normal definitions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-common" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-common">
+
+## What this flag actually does
+
+Compile common globals like normal definitions
+
+
+
+It can be negated with -fcommon.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-common -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fcommon`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

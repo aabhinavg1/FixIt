@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdirect-access-external-data"
 slug: "/tools/clang-flags/-fdirect-access-external-data/"
 description: "Don't use GOT indirection to reference external data symbols"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdirect-access-external-data" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdirect-access-external-data">
+
+## What this flag actually does
+
+Don't use GOT indirection to reference external data symbols
+
+
+
+It can be negated with -fno-direct-access-external-data.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdirect-access-external-data -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-direct-access-external-data`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

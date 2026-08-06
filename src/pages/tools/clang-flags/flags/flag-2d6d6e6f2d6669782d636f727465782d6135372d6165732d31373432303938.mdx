@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-fix-cortex-a57-aes-1742098"
 slug: "/tools/clang-flags/-mno-fix-cortex-a57-aes-1742098/"
 description: "Don't work around Cortex-A57 Erratum 1742098 (ARM only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-fix-cortex-a57-aes-1742098" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-fix-cortex-a57-aes-1742098">
+
+## What this flag actually does
+
+Don't work around Cortex-A57 Erratum 1742098 (ARM only)
+
+## When to use it
+
+- You are targeting ARM and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting ARM.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mno-fix-cortex-a57-aes-1742098 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `ARM`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

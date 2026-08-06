@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-address-use-odr-indicator"
 slug: "/tools/clang-flags/-fsanitize-address-use-odr-indicator/"
 description: "Enable ODR indicator globals to avoid false ODR violation reports in partially sanitized programs at the cost of an increase in binary size"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-address-use-odr-indicator" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-address-use-odr-indicator">
+
+## What this flag actually does
+
+Enable ODR indicator globals to avoid false ODR violation reports in partially sanitized programs at the cost of an increase in binary size
+
+
+
+It can be negated with -fno-sanitize-address-use-odr-indicator.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-address-use-odr-indicator main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-sanitize-address-use-odr-indicator`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

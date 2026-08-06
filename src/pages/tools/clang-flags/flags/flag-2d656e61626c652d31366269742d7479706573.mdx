@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-enable-16bit-types"
 slug: "/tools/clang-flags/-enable-16bit-types/"
 description: "Enable 16-bit types and disable min precision types.Available in HLSL 2018 and shader model 6.2."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-enable-16bit-types" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-enable-16bit-types">
+
+## What this flag actually does
+
+Enable 16-bit types and disable min precision types.Available in HLSL 2018 and shader model 6.2.
+
+
+
+It is an alias for -fnative-half-type.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -enable-16bit-types main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-fnative-half-type`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

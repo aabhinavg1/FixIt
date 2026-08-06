@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fatomic-ignore-denormal-mode"
 slug: "/tools/clang-flags/-fatomic-ignore-denormal-mode/"
 description: "Allow atomic operations to ignore denormal mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fatomic-ignore-denormal-mode" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fatomic-ignore-denormal-mode">
+
+## What this flag actually does
+
+Allow atomic operations to ignore denormal mode
+
+
+
+It can be negated with -fno-atomic-ignore-denormal-mode.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fatomic-ignore-denormal-mode -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-atomic-ignore-denormal-mode`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

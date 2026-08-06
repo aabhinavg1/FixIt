@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "--cuda-noopt-device-debug"
 slug: "/tools/clang-flags/--cuda-noopt-device-debug/"
 description: "Enable device-side debug info generation. Disables ptxas optimizations."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--cuda-noopt-device-debug" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--cuda-noopt-device-debug">
+
+## What this flag actually does
+
+Enable device-side debug info generation. Disables ptxas optimizations.
+
+## When to use it
+
+- You are targeting CUDA options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting CUDA options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --cuda-noopt-device-debug main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `CUDA`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

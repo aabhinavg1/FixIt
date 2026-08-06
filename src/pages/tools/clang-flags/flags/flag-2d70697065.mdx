@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-pipe"
 slug: "/tools/clang-flags/-pipe/"
 description: "Use pipes between commands, when possible"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-pipe" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-pipe">
+
+## What this flag actually does
+
+Use pipes between commands, when possible
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -pipe main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

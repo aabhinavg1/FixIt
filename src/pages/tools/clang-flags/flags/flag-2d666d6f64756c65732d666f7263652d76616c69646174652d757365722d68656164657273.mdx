@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-force-validate-user-headers"
 slug: "/tools/clang-flags/-fmodules-force-validate-user-headers/"
 description: "Force validation of user headers when repeatedly loading a module file within single build session"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-force-validate-user-headers" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-force-validate-user-headers">
+
+## What this flag actually does
+
+Force validation of user headers when repeatedly loading a module file within single build session
+
+
+
+It can be negated with -fno-modules-force-validate-user-headers.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fmodules-force-validate-user-headers main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Linker`
+- **Negated by**: `-fno-modules-force-validate-user-headers`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mrecip="
 slug: "/tools/clang-flags/-mrecip%3D/"
-description: "Control use of approximate reciprocal and reciprocal square root instructions followed by &lt;n&gt; iterations of Newton-Raphson refinement. &lt;value&gt; = ( ['!'] ['vec-'] ('rcp'"
+description: "Control use of approximate reciprocal and reciprocal square root instructions followed by &lt;n&gt; iterations of Newton-Raphson refinement. &lt;value&gt; = ( ['!'] ['vec-'] ('rcp'|'sqrt') [('"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mrecip%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mrecip%3D">
+
+## What this flag actually does
+
+Control use of approximate reciprocal and reciprocal square root instructions followed by &lt;n> iterations of Newton-Raphson refinement. &lt;value> = ( ['!'] ['vec-'] ('rcp'|'sqrt') [('h'|'s'|'d')] [':'&lt;n>] ) | 'all' | 'default' | 'none'
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mrecip= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

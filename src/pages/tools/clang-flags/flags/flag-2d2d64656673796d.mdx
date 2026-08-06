@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "--defsym"
 slug: "/tools/clang-flags/--defsym/"
 description: "Define a value for a symbol"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--defsym" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--defsym">
+
+## What this flag actually does
+
+Define a value for a symbol
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ --defsym <arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: CC1AsOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

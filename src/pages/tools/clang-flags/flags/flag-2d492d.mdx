@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-I-"
 slug: "/tools/clang-flags/-I-/"
 description: "Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-I-" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-I-">
+
+## What this flag actually does
+
+Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -I- -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

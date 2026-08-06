@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-object-file-name="
 slug: "/tools/clang-flags/-object-file-name%3D/"
 description: "Set the output &lt;file&gt; for debug infos"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-object-file-name%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-object-file-name%3D">
+
+## What this flag actually does
+
+Set the output &lt;file> for debug infos
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -object-file-name= -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

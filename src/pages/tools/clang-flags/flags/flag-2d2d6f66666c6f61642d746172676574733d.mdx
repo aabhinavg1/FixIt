@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload-targets="
 slug: "/tools/clang-flags/--offload-targets%3D/"
 description: "Specify a list of target architectures to use for offloading."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload-targets%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload-targets%3D">
+
+## What this flag actually does
+
+Specify a list of target architectures to use for offloading.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ --offload-targets= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

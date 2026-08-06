@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload-host-device"
 slug: "/tools/clang-flags/--offload-host-device/"
 description: "Compile for both the offloading host and device (default)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload-host-device" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload-host-device">
+
+## What this flag actually does
+
+Compile for both the offloading host and device (default).
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ --offload-host-device main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

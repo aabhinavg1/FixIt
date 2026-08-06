@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mlamcas"
 slug: "/tools/clang-flags/-mlamcas/"
 description: "Enable amcas[_db].{b/h/w/d}"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mlamcas" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mlamcas">
+
+## What this flag actually does
+
+Enable amcas[_db].&#123;b/h/w/d&#125;
+
+## When to use it
+
+- You are targeting LoongArch and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting LoongArch.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mlamcas main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `LoongArch`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

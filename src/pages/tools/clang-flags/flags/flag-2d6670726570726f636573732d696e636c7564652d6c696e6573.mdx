@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fpreprocess-include-lines"
 slug: "/tools/clang-flags/-fpreprocess-include-lines/"
 description: "Flags controlling the behavior of the Clang preprocessor."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fpreprocess-include-lines" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fpreprocess-include-lines">
+
+## What this flag actually does
+
+Flags controlling the behavior of the Clang preprocessor.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -fpreprocess-include-lines -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

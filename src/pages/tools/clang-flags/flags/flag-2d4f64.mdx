@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Od"
 slug: "/tools/clang-flags/-Od/"
 description: "Disable optimization"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Od" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Od">
+
+## What this flag actually does
+
+Disable optimization
+
+
+
+It is an alias for -O.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Od main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption, DXCOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-O`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-ext="
 slug: "/tools/clang-flags/-cl-ext%3D/"
 description: "OpenCL only. Enable or disable OpenCL extensions/optional features. The argument is a comma-separated sequence of one or more extension names, each prefixed by '+' or '-'."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-ext%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-ext%3D">
+
+## What this flag actually does
+
+OpenCL only. Enable or disable OpenCL extensions/optional features. The argument is a comma-separated sequence of one or more extension names, each prefixed by '+' or '-'.
+
+## When to use it
+
+- You are targeting OpenCL options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-ext= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

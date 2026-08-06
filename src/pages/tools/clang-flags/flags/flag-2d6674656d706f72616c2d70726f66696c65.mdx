@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-ftemporal-profile"
 slug: "/tools/clang-flags/-ftemporal-profile/"
 description: "Generate instrumented code to collect temporal information"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ftemporal-profile" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ftemporal-profile">
+
+## What this flag actually does
+
+Generate instrumented code to collect temporal information
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ftemporal-profile -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

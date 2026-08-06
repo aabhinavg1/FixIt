@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffixed-line-length="
 slug: "/tools/clang-flags/-ffixed-line-length%3D/"
 description: "Set column after which characters are ignored in typical fixed-form lines in the source file"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffixed-line-length%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffixed-line-length%3D">
+
+## What this flag actually does
+
+Set column after which characters are ignored in typical fixed-form lines in the source file
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffixed-line-length= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

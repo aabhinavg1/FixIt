@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-WL"
 slug: "/tools/clang-flags/-WL/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-WL" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-WL">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -WL main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

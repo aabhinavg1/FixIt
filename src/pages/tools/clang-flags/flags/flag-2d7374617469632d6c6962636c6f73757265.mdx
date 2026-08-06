@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-static-libclosure"
 slug: "/tools/clang-flags/-static-libclosure/"
 description: "Generate code for statically linking libclosure (BlocksRuntime)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-static-libclosure" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-static-libclosure">
+
+## What this flag actually does
+
+Generate code for statically linking libclosure (BlocksRuntime)
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -static-libclosure main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

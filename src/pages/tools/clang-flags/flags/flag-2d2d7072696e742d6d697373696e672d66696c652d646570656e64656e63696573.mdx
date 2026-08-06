@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "--print-missing-file-dependencies"
 slug: "/tools/clang-flags/--print-missing-file-dependencies/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--print-missing-file-dependencies" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--print-missing-file-dependencies">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It is an alias for -MG.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --print-missing-file-dependencies main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-MG`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

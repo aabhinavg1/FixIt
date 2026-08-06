@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-ibuiltininc"
 slug: "/tools/clang-flags/-ibuiltininc/"
 description: "Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ibuiltininc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ibuiltininc">
+
+## What this flag actually does
+
+Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -ibuiltininc -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

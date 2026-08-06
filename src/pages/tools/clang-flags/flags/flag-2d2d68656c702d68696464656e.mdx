@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--help-hidden"
 slug: "/tools/clang-flags/--help-hidden/"
 description: "Display help for hidden options"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--help-hidden" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--help-hidden">
+
+## What this flag actually does
+
+Display help for hidden options
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ --help-hidden main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

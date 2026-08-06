@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-module-writer"
 slug: "/tools/clang-flags/-fdebug-module-writer/"
 description: "Enable debug messages while writing module files"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-module-writer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-module-writer">
+
+## What this flag actually does
+
+Enable debug messages while writing module files
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -fdebug-module-writer -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

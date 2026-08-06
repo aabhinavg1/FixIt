@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-instruction-threshold="
 slug: "/tools/clang-flags/-fxray-instruction-threshold%3D/"
 description: "Sets the minimum function size to instrument with XRay"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-instruction-threshold%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-instruction-threshold%3D">
+
+## What this flag actually does
+
+Sets the minimum function size to instrument with XRay
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-instruction-threshold= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

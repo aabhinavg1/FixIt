@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyzer-dump-egraph="
 slug: "/tools/clang-flags/-analyzer-dump-egraph%3D/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyzer-dump-egraph%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyzer-dump-egraph%3D">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -analyzer-dump-egraph.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyzer-dump-egraph= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Alias of**: `-analyzer-dump-egraph`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fminimize-whitespace"
 slug: "/tools/clang-flags/-fminimize-whitespace/"
 description: "Ignore the whitespace from the input file when emitting preprocessor output. It will only contain whitespace when necessary, e.g. to keep two minus signs from merging into to an in"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fminimize-whitespace" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fminimize-whitespace">
+
+## What this flag actually does
+
+Ignore the whitespace from the input file when emitting preprocessor output. It will only contain whitespace when necessary, e.g. to keep two minus signs from merging into to an increment operator. Useful with the -P option to normalize whitespace such that two files with only formatting changes are equal. Only valid with -E on C-like inputs and incompatible with -traditional-cpp.
+
+
+
+It can be negated with -fno-minimize-whitespace.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fminimize-whitespace -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-minimize-whitespace`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

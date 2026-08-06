@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-debug-trap-reasons"
 slug: "/tools/clang-flags/-fsanitize-debug-trap-reasons/"
 description: "Alias for -fsanitize-debug-trap-reasons=detailed"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-debug-trap-reasons" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-debug-trap-reasons">
+
+## What this flag actually does
+
+Alias for -fsanitize-debug-trap-reasons=detailed
+
+
+
+It can be negated with -fno-sanitize-debug-trap-reasons.
+
+
+
+It is an alias for -fsanitize-debug-trap-reasons=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-debug-trap-reasons main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Alias of**: `-fsanitize-debug-trap-reasons=`
+- **Negated by**: `-fno-sanitize-debug-trap-reasons`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

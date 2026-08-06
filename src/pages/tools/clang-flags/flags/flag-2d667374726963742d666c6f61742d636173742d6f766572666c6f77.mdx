@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fstrict-float-cast-overflow"
 slug: "/tools/clang-flags/-fstrict-float-cast-overflow/"
 description: "Assume that overflowing float-to-int casts are undefined (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fstrict-float-cast-overflow" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fstrict-float-cast-overflow">
+
+## What this flag actually does
+
+Assume that overflowing float-to-int casts are undefined (default)
+
+
+
+It can be negated with -fno-strict-float-cast-overflow.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fstrict-float-cast-overflow -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-strict-float-cast-overflow`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

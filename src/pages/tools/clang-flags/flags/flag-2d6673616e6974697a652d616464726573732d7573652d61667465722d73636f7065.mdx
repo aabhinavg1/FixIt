@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-address-use-after-scope"
 slug: "/tools/clang-flags/-fsanitize-address-use-after-scope/"
 description: "Enable use-after-scope detection in AddressSanitizer"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-address-use-after-scope" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-address-use-after-scope">
+
+## What this flag actually does
+
+Enable use-after-scope detection in AddressSanitizer
+
+
+
+It can be negated with -fno-sanitize-address-use-after-scope.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-address-use-after-scope main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-sanitize-address-use-after-scope`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mtocdata="
 slug: "/tools/clang-flags/-mtocdata%3D/"
 description: "Specifies a list of variables to which the TOC data transformation will be applied."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mtocdata%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mtocdata%3D">
+
+## What this flag actually does
+
+Specifies a list of variables to which the TOC data transformation will be applied.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mtocdata= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

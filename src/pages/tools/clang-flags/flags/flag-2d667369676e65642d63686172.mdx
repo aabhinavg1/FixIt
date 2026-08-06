@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsigned-char"
 slug: "/tools/clang-flags/-fsigned-char/"
 description: "char is signed"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsigned-char" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsigned-char">
+
+## What this flag actually does
+
+char is signed
+
+
+
+It can be negated with -fno-signed-char.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsigned-char -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-signed-char`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

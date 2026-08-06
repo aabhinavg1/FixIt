@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--no-offload-arch="
 slug: "/tools/clang-flags/--no-offload-arch%3D/"
 description: "Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--no-offload-arch%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--no-offload-arch%3D">
+
+## What this flag actually does
+
+Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ --no-offload-arch= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

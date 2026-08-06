@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-foffload-via-llvm"
 slug: "/tools/clang-flags/-foffload-via-llvm/"
 description: "Use LLVM/Offload as portable offloading runtime."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-foffload-via-llvm" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-foffload-via-llvm">
+
+## What this flag actually does
+
+Use LLVM/Offload as portable offloading runtime.
+
+
+
+It can be negated with -fno-offload-via-llvm.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ -foffload-via-llvm main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Common Offloading`
+- **Negated by**: `-fno-offload-via-llvm`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

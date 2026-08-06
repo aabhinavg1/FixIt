@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fobjc-arc-exceptions"
 slug: "/tools/clang-flags/-fobjc-arc-exceptions/"
 description: "Use EH-safe code when synthesizing retains and releases in -fobjc-arc"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fobjc-arc-exceptions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fobjc-arc-exceptions">
+
+## What this flag actually does
+
+Use EH-safe code when synthesizing retains and releases in -fobjc-arc
+
+
+
+It can be negated with -fno-objc-arc-exceptions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fobjc-arc-exceptions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-objc-arc-exceptions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

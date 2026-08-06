@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fembed-bitcode-marker"
 slug: "/tools/clang-flags/-fembed-bitcode-marker/"
 description: "Embed placeholder LLVM IR data as a marker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fembed-bitcode-marker" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fembed-bitcode-marker">
+
+## What this flag actually does
+
+Embed placeholder LLVM IR data as a marker
+
+
+
+It is an alias for -fembed-bitcode=.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fembed-bitcode-marker main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Linker`
+- **Alias of**: `-fembed-bitcode=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

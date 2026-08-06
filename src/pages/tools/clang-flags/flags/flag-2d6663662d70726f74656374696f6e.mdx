@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcf-protection"
 slug: "/tools/clang-flags/-fcf-protection/"
 description: "Enable cf-protection in 'full' mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcf-protection" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcf-protection">
+
+## What this flag actually does
+
+Enable cf-protection in 'full' mode
+
+
+
+It is an alias for -fcf-protection=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcf-protection -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Alias of**: `-fcf-protection=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

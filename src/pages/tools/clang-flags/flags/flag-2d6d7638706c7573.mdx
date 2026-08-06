@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mv8plus"
 slug: "/tools/clang-flags/-mv8plus/"
 description: "Enable V8+ mode, allowing use of 64-bit V9 instructions in 32-bit code"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mv8plus" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mv8plus">
+
+## What this flag actually does
+
+Enable V8+ mode, allowing use of 64-bit V9 instructions in 32-bit code
+
+## When to use it
+
+- You are targeting SPARC and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting SPARC.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mv8plus main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `SPARC`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-sanitize-hwaddress-experimental-aliasing"
 slug: "/tools/clang-flags/-fno-sanitize-hwaddress-experimental-aliasing/"
 description: "Disable aliasing mode in HWAddressSanitizer"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-sanitize-hwaddress-experimental-aliasing" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-sanitize-hwaddress-experimental-aliasing">
+
+## What this flag actually does
+
+Disable aliasing mode in HWAddressSanitizer
+
+
+
+It can be negated with -fsanitize-hwaddress-experimental-aliasing.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fno-sanitize-hwaddress-experimental-aliasing main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fsanitize-hwaddress-experimental-aliasing`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

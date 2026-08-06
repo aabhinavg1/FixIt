@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fbackslash"
 slug: "/tools/clang-flags/-fbackslash/"
 description: "Specify that backslash in string introduces an escape character"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fbackslash" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fbackslash">
+
+## What this flag actually does
+
+Specify that backslash in string introduces an escape character
+
+
+
+It can be negated with -fno-backslash.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fbackslash -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-backslash`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

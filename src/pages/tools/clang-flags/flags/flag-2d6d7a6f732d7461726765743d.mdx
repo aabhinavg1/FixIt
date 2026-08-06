@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-mzos-target="
 slug: "/tools/clang-flags/-mzos-target%3D/"
 description: "Set the z/OS release of the runtime environment"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mzos-target%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mzos-target%3D">
+
+## What this flag actually does
+
+Set the z/OS release of the runtime environment
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mzos-target= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

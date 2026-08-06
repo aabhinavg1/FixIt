@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-denorms-are-zero"
 slug: "/tools/clang-flags/-cl-denorms-are-zero/"
 description: "OpenCL only. Allow denormals to be flushed to zero."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-denorms-are-zero" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-denorms-are-zero">
+
+## What this flag actually does
+
+OpenCL only. Allow denormals to be flushed to zero.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -cl-denorms-are-zero main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

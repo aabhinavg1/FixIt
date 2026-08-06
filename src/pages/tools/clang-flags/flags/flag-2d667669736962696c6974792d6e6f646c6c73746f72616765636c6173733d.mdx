@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fvisibility-nodllstorageclass="
 slug: "/tools/clang-flags/-fvisibility-nodllstorageclass%3D/"
 description: "The visibility for definitions without an explicit DLL storage class. If Keep is specified the visibility is not adjusted [-fvisibility-from-dllstorageclass]"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fvisibility-nodllstorageclass%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fvisibility-nodllstorageclass%3D">
+
+## What this flag actually does
+
+The visibility for definitions without an explicit DLL storage class. If Keep is specified the visibility is not adjusted [-fvisibility-from-dllstorageclass]
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fvisibility-nodllstorageclass= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

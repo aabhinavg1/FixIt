@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodule-map-file-home-is-cwd"
 slug: "/tools/clang-flags/-fmodule-map-file-home-is-cwd/"
 description: "Use the current working directory as the home directory of module maps specified by -fmodule-map-file=&lt;FILE&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodule-map-file-home-is-cwd" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodule-map-file-home-is-cwd">
+
+## What this flag actually does
+
+Use the current working directory as the home directory of module maps specified by -fmodule-map-file=&lt;FILE>
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fmodule-map-file-home-is-cwd -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

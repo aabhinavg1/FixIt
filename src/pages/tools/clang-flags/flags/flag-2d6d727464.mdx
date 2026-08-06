@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mrtd"
 slug: "/tools/clang-flags/-mrtd/"
 description: "Make StdCall calling convention the default"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mrtd" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mrtd">
+
+## What this flag actually does
+
+Make StdCall calling convention the default
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mrtd -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

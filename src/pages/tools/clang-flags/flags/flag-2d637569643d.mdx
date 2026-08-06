@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-cuid="
 slug: "/tools/clang-flags/-cuid%3D/"
 description: "An ID for compilation unit, which should be the same for the same compilation unit but different for different compilation units. It is used to externalize device-side static varia"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cuid%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cuid%3D">
+
+## What this flag actually does
+
+An ID for compilation unit, which should be the same for the same compilation unit but different for different compilation units. It is used to externalize device-side static variables for single source offloading languages CUDA and HIP so that they can be accessed by the host code of the same compilation unit.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -cuid= main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

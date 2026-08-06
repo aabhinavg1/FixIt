@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fopenacc"
 slug: "/tools/clang-flags/-fopenacc/"
 description: "Enable OpenACC"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fopenacc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fopenacc">
+
+## What this flag actually does
+
+Enable OpenACC
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fopenacc -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption, CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

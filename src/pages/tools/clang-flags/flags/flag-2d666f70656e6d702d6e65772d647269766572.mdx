@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fopenmp-new-driver"
 slug: "/tools/clang-flags/-fopenmp-new-driver/"
 description: "Use the new driver for OpenMP offloading."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fopenmp-new-driver" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fopenmp-new-driver">
+
+## What this flag actually does
+
+Use the new driver for OpenMP offloading.
+
+
+
+It can be negated with -fno-openmp-new-driver.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fopenmp-new-driver main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fno-openmp-new-driver`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

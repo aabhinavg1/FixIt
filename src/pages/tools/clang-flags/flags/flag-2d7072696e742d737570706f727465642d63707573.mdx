@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-print-supported-cpus"
 slug: "/tools/clang-flags/-print-supported-cpus/"
 description: "Flags controlling the behavior of Clang during compilation. These flags have no effect during actions that do not perform compilation."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-print-supported-cpus" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-print-supported-cpus">
+
+## What this flag actually does
+
+Flags controlling the behavior of Clang during compilation. These flags have no effect during actions that do not perform compilation.
+
+## When to use it
+
+- Compilation-only workflows
+- Build pipelines that do not link immediately
+
+## When not to use it
+
+- Link-only operations
+- When the flag belongs in a later build phase
+
+## Usage example
+
+```bash
+clang++ -print-supported-cpus main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Compilation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

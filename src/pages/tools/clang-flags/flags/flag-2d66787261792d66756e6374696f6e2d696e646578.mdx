@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-function-index"
 slug: "/tools/clang-flags/-fxray-function-index/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-function-index" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-function-index">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-xray-function-index.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-function-index -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-xray-function-index`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

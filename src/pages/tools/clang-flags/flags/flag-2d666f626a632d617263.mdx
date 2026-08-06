@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fobjc-arc"
 slug: "/tools/clang-flags/-fobjc-arc/"
 description: "Synthesize retain and release calls for Objective-C pointers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fobjc-arc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fobjc-arc">
+
+## What this flag actually does
+
+Synthesize retain and release calls for Objective-C pointers
+
+
+
+It can be negated with -fno-objc-arc.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fobjc-arc -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-objc-arc`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wl,"
 slug: "/tools/clang-flags/-Wl%2C/"
 description: "Flags that are passed on to the linker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wl%2C" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wl%2C">
+
+## What this flag actually does
+
+Flags that are passed on to the linker
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Wl, main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

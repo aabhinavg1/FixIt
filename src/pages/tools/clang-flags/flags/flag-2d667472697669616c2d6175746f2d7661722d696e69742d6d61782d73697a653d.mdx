@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-ftrivial-auto-var-init-max-size="
 slug: "/tools/clang-flags/-ftrivial-auto-var-init-max-size%3D/"
 description: "Stop initializing trivial automatic stack variables if var size exceeds the specified number of instances (in bytes)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ftrivial-auto-var-init-max-size%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ftrivial-auto-var-init-max-size%3D">
+
+## What this flag actually does
+
+Stop initializing trivial automatic stack variables if var size exceeds the specified number of instances (in bytes)
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ftrivial-auto-var-init-max-size= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

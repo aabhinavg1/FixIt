@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fnative-half-type"
 slug: "/tools/clang-flags/-fnative-half-type/"
 description: "Use the native half type for __fp16 instead of promoting to float"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fnative-half-type" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fnative-half-type">
+
+## What this flag actually does
+
+Use the native half type for __fp16 instead of promoting to float
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fnative-half-type -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

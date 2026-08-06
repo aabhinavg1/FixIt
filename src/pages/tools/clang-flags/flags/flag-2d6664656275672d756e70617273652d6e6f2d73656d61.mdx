@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-unparse-no-sema"
 slug: "/tools/clang-flags/-fdebug-unparse-no-sema/"
 description: "Only run the parser, then unparse the parse-tree and output the generated Fortran source file. Semantic checks are disabled."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-unparse-no-sema" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-unparse-no-sema">
+
+## What this flag actually does
+
+Only run the parser, then unparse the parse-tree and output the generated Fortran source file. Semantic checks are disabled.
+
+## When to use it
+
+- You are targeting Actions and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Actions.
+
+## Usage example
+
+```bash
+clang++ -fdebug-unparse-no-sema main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Actions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

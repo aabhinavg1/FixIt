@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-rtlib-add-rpath"
 slug: "/tools/clang-flags/-fno-rtlib-add-rpath/"
 description: "Do not add -rpath with architecture-specific resource directory to the linker flags. When --hip-link is specified, do not add -rpath with HIP runtime library directory to the linke"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-rtlib-add-rpath" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-rtlib-add-rpath">
+
+## What this flag actually does
+
+Do not add -rpath with architecture-specific resource directory to the linker flags. When --hip-link is specified, do not add -rpath with HIP runtime library directory to the linker flags
+
+
+
+It can be negated with -frtlib-add-rpath.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fno-rtlib-add-rpath main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Linker`
+- **Negated by**: `-frtlib-add-rpath`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wsystem-headers-in-module="
 slug: "/tools/clang-flags/-Wsystem-headers-in-module%3D/"
 description: "Enable -Wsystem-headers when building &lt;module&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wsystem-headers-in-module%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wsystem-headers-in-module%3D">
+
+## What this flag actually does
+
+Enable -Wsystem-headers when building &lt;module>
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Wsystem-headers-in-module= main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

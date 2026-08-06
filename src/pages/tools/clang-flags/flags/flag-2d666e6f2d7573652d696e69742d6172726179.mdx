@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-use-init-array"
 slug: "/tools/clang-flags/-fno-use-init-array/"
 description: "Use .ctors/.dtors instead of .init_array/.fini_array"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-use-init-array" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-use-init-array">
+
+## What this flag actually does
+
+Use .ctors/.dtors instead of .init_array/.fini_array
+
+
+
+It can be negated with -fuse-init-array.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-use-init-array -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fuse-init-array`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

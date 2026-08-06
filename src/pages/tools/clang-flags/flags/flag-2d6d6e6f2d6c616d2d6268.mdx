@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-lam-bh"
 slug: "/tools/clang-flags/-mno-lam-bh/"
 description: "Disable amswap[_db].{b/h} and amadd[_db].{b/h}"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-lam-bh" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-lam-bh">
+
+## What this flag actually does
+
+Disable amswap[_db].&#123;b/h&#125; and amadd[_db].&#123;b/h&#125;
+
+## When to use it
+
+- You are targeting LoongArch and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting LoongArch.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mno-lam-bh main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `LoongArch`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

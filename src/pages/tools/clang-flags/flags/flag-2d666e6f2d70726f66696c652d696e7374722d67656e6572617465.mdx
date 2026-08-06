@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-profile-instr-generate"
 slug: "/tools/clang-flags/-fno-profile-instr-generate/"
 description: "Disable generation of profile instrumentation."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-profile-instr-generate" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-profile-instr-generate">
+
+## What this flag actually does
+
+Disable generation of profile instrumentation.
+
+
+
+It can be negated with -fprofile-instr-generate.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-profile-instr-generate -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fprofile-instr-generate`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

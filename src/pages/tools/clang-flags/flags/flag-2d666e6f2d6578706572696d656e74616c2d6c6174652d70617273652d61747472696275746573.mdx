@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-experimental-late-parse-attributes"
 slug: "/tools/clang-flags/-fno-experimental-late-parse-attributes/"
 description: "Disable experimental late parsing of attributes"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-experimental-late-parse-attributes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-experimental-late-parse-attributes">
+
+## What this flag actually does
+
+Disable experimental late parsing of attributes
+
+
+
+It can be negated with -fexperimental-late-parse-attributes.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-experimental-late-parse-attributes -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fexperimental-late-parse-attributes`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

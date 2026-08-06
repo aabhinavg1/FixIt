@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fpch-codegen"
 slug: "/tools/clang-flags/-fpch-codegen/"
 description: "Generate code for uses of this PCH that assumes an explicit object file will be built for the PCH"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fpch-codegen" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fpch-codegen">
+
+## What this flag actually does
+
+Generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
+
+
+
+It can be negated with -fno-pch-codegen.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fpch-codegen -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-pch-codegen`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

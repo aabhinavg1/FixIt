@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "--sycl-link"
 slug: "/tools/clang-flags/--sycl-link/"
 description: "Perform link through clang-sycl-linker via the target offloading toolchain."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--sycl-link" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--sycl-link">
+
+## What this flag actually does
+
+Perform link through clang-sycl-linker via the target offloading toolchain.
+
+## When to use it
+
+- You are targeting SYCL options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting SYCL options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --sycl-link main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `SYCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-isystem-after"
 slug: "/tools/clang-flags/-isystem-after/"
 description: "Add directory to end of the SYSTEM include search path"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-isystem-after" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-isystem-after">
+
+## What this flag actually does
+
+Add directory to end of the SYSTEM include search path
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -isystem-after=<arg> -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

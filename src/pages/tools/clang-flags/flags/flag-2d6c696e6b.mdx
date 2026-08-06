@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-link"
 slug: "/tools/clang-flags/-link/"
 description: "Forward options to the linker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-link" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-link">
+
+## What this flag actually does
+
+Forward options to the linker
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this remaining args joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this remaining args joined is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -link main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: REMAINING ARGS JOINED (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

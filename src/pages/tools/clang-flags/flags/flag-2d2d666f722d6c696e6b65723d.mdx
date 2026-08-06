@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "--for-linker="
 slug: "/tools/clang-flags/--for-linker%3D/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--for-linker%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--for-linker%3D">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -Xlinker.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ --for-linker= main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Linker`
+- **Alias of**: `-Xlinker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

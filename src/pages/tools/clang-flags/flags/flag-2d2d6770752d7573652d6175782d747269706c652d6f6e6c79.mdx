@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "--gpu-use-aux-triple-only"
 slug: "/tools/clang-flags/--gpu-use-aux-triple-only/"
 description: "Prepare '-aux-triple' only without populating '-aux-target-cpu' and '-aux-target-feature'."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--gpu-use-aux-triple-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--gpu-use-aux-triple-only">
+
+## What this flag actually does
+
+Prepare '-aux-triple' only without populating '-aux-target-cpu' and '-aux-target-feature'.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --gpu-use-aux-triple-only main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

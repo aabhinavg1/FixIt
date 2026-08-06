@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyze-function"
 slug: "/tools/clang-flags/-analyze-function/"
 description: "Run analysis on specific function (for C++ include parameters in name)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyze-function" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyze-function">
+
+## What this flag actually does
+
+Run analysis on specific function (for C++ include parameters in name)
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyze-function <arg> -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

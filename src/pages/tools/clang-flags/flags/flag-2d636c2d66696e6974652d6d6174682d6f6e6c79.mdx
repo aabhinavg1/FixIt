@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-finite-math-only"
 slug: "/tools/clang-flags/-cl-finite-math-only/"
 description: "OpenCL only. Allow floating-point optimizations that assume arguments and results are not NaNs or +-Inf."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-finite-math-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-finite-math-only">
+
+## What this flag actually does
+
+OpenCL only. Allow floating-point optimizations that assume arguments and results are not NaNs or +-Inf.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-finite-math-only main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-fast-real-mod"
 slug: "/tools/clang-flags/-fno-fast-real-mod/"
 description: "Disable optimization of MOD for REAL types in presence of -ffast-math"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-fast-real-mod" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-fast-real-mod">
+
+## What this flag actually does
+
+Disable optimization of MOD for REAL types in presence of -ffast-math
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-fast-real-mod -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

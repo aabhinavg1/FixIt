@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-hotpatch"
 slug: "/tools/clang-flags/-hotpatch/"
 description: "Create hotpatchable image"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-hotpatch" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-hotpatch">
+
+## What this flag actually does
+
+Create hotpatchable image
+
+
+
+It is an alias for -fms-hotpatch.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -hotpatch main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fms-hotpatch`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

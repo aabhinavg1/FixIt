@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-modules-error-recovery"
 slug: "/tools/clang-flags/-fno-modules-error-recovery/"
 description: "Do not automatically import modules for error recovery"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-modules-error-recovery" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-modules-error-recovery">
+
+## What this flag actually does
+
+Do not automatically import modules for error recovery
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fno-modules-error-recovery -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

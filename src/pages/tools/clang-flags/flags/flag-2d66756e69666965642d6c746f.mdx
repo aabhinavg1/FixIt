@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-funified-lto"
 slug: "/tools/clang-flags/-funified-lto/"
 description: "Use the unified LTO pipeline"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-funified-lto" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-funified-lto">
+
+## What this flag actually does
+
+Use the unified LTO pipeline
+
+
+
+It can be negated with -fno-unified-lto.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -funified-lto -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-unified-lto`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

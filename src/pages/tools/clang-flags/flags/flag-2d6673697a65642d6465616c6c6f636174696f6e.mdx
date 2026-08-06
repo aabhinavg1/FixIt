@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsized-deallocation"
 slug: "/tools/clang-flags/-fsized-deallocation/"
 description: "Enable C++14 sized global deallocation functions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsized-deallocation" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsized-deallocation">
+
+## What this flag actually does
+
+Enable C++14 sized global deallocation functions
+
+
+
+It can be negated with -fno-sized-deallocation.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsized-deallocation -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-sized-deallocation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

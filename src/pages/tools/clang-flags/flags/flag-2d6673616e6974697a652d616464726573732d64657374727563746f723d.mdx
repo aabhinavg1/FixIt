@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-address-destructor="
 slug: "/tools/clang-flags/-fsanitize-address-destructor%3D/"
 description: "Set the kind of module destructors emitted by AddressSanitizer instrumentation. These destructors are emitted to unregister instrumented global variables when code is unloaded (e.g"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-address-destructor%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-address-destructor%3D">
+
+## What this flag actually does
+
+Set the kind of module destructors emitted by AddressSanitizer instrumentation. These destructors are emitted to unregister instrumented global variables when code is unloaded (e.g. via `dlclose()`).
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-address-destructor= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

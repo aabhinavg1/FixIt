@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-fconst-strings"
 slug: "/tools/clang-flags/-fconst-strings/"
 description: "Use a const qualified type for string literals in C and ObjC"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fconst-strings" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fconst-strings">
+
+## What this flag actually does
+
+Use a const qualified type for string literals in C and ObjC
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-const-strings.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fconst-strings -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-const-strings`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

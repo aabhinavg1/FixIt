@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gstrict-dwarf"
 slug: "/tools/clang-flags/-gstrict-dwarf/"
 description: "Restrict DWARF features to those defined in the specified version, avoiding features from later versions."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gstrict-dwarf" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gstrict-dwarf">
+
+## What this flag actually does
+
+Restrict DWARF features to those defined in the specified version, avoiding features from later versions.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gstrict-dwarf -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

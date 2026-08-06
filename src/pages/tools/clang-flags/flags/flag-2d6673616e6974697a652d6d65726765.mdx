@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-merge"
 slug: "/tools/clang-flags/-fsanitize-merge/"
 description: "Allow compiler to merge handlers for all sanitizers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-merge" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-merge">
+
+## What this flag actually does
+
+Allow compiler to merge handlers for all sanitizers
+
+
+
+It can be negated with -fno-sanitize-merge.
+
+
+
+It is an alias for -fsanitize-merge=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-merge main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Alias of**: `-fsanitize-merge=`
+- **Negated by**: `-fno-sanitize-merge`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

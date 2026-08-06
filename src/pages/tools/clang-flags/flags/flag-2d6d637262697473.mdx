@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-mcrbits"
 slug: "/tools/clang-flags/-mcrbits/"
 description: "Control the CR-bit tracking feature on PowerPC. ``-mcrbits`` (the enablement of CR-bit tracking support) is the default for POWER8 and above, as well as for all other CPUs when opt"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mcrbits" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mcrbits">
+
+## What this flag actually does
+
+Control the CR-bit tracking feature on PowerPC. ``-mcrbits`` (the enablement of CR-bit tracking support) is the default for POWER8 and above, as well as for all other CPUs when optimization is applied (-O2 and above).
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -mcrbits main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

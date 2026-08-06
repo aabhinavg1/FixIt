@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdiagnostics-hotness-threshold="
 slug: "/tools/clang-flags/-fdiagnostics-hotness-threshold%3D/"
 description: "Prevent optimization remarks from being output if they do not have at least this profile count. Use 'auto' to apply the threshold from profile summary"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdiagnostics-hotness-threshold%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdiagnostics-hotness-threshold%3D">
+
+## What this flag actually does
+
+Prevent optimization remarks from being output if they do not have at least this profile count. Use 'auto' to apply the threshold from profile summary
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdiagnostics-hotness-threshold= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-link-deps"
 slug: "/tools/clang-flags/-fxray-link-deps/"
 description: "Link XRay runtime library when -fxray-instrument is specified (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-link-deps" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-link-deps">
+
+## What this flag actually does
+
+Link XRay runtime library when -fxray-instrument is specified (default)
+
+
+
+It can be negated with -fno-xray-link-deps.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-link-deps -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-xray-link-deps`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

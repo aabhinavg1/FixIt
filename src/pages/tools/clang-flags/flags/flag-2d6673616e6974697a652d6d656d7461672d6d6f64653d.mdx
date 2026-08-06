@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-memtag-mode="
 slug: "/tools/clang-flags/-fsanitize-memtag-mode%3D/"
 description: "Set default MTE mode to 'sync' (default) or 'async'"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-memtag-mode%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-memtag-mode%3D">
+
+## What this flag actually does
+
+Set default MTE mode to 'sync' (default) or 'async'
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-memtag-mode= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

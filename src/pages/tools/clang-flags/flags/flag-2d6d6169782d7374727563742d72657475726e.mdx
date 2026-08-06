@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-maix-struct-return"
 slug: "/tools/clang-flags/-maix-struct-return/"
 description: "Override the default ABI for 32-bit targets to return all structs in memory, as in the Power 32-bit ABI for Linux (2011), and on AIX and Darwin."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-maix-struct-return" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-maix-struct-return">
+
+## What this flag actually does
+
+Override the default ABI for 32-bit targets to return all structs in memory, as in the Power 32-bit ABI for Linux (2011), and on AIX and Darwin.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -maix-struct-return -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-finline-small-functions"
 slug: "/tools/clang-flags/-finline-small-functions/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-finline-small-functions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-finline-small-functions">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-inline-small-functions.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -finline-small-functions main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Optimization`
+- **Negated by**: `-fno-inline-small-functions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

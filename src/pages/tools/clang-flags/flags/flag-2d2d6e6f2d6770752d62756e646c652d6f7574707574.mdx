@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "--no-gpu-bundle-output"
 slug: "/tools/clang-flags/--no-gpu-bundle-output/"
 description: "Do not bundle output files of HIP device compilation"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--no-gpu-bundle-output" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--no-gpu-bundle-output">
+
+## What this flag actually does
+
+Do not bundle output files of HIP device compilation
+
+## When to use it
+
+- You are targeting HIP options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting HIP options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --no-gpu-bundle-output main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `HIP`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

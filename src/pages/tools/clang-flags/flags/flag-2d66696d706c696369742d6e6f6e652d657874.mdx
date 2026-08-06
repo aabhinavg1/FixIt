@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fimplicit-none-ext"
 slug: "/tools/clang-flags/-fimplicit-none-ext/"
 description: "No implicit externals allowed"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fimplicit-none-ext" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fimplicit-none-ext">
+
+## What this flag actually does
+
+No implicit externals allowed
+
+
+
+It can be negated with -fno-implicit-none-ext.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fimplicit-none-ext -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-implicit-none-ext`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

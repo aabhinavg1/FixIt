@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-mfix-cmse-cve-2021-35465"
 slug: "/tools/clang-flags/-mfix-cmse-cve-2021-35465/"
 description: "Work around VLLDM erratum CVE-2021-35465 (ARM only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mfix-cmse-cve-2021-35465" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mfix-cmse-cve-2021-35465">
+
+## What this flag actually does
+
+Work around VLLDM erratum CVE-2021-35465 (ARM only)
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -mfix-cmse-cve-2021-35465 main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

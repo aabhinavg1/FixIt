@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-debug-macro"
 slug: "/tools/clang-flags/-fno-debug-macro/"
 description: "Do not emit macro debug information"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-debug-macro" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-debug-macro">
+
+## What this flag actually does
+
+Do not emit macro debug information
+
+
+
+It can be negated with -fdebug-macro.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-debug-macro -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fdebug-macro`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

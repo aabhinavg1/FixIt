@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "--linker-option="
 slug: "/tools/clang-flags/--linker-option%3D/"
 description: "Add linker option"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--linker-option%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--linker-option%3D">
+
+## What this flag actually does
+
+Add linker option
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang --linker-option= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

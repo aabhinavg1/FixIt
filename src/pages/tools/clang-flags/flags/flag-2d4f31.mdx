@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-O1"
 slug: "/tools/clang-flags/-O1/"
 description: "Optimize for size (like /Og /Os /Oy /Ob2 /GF /Gy)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-O1" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-O1">
+
+## What this flag actually does
+
+Optimize for size (like /Og /Os /Oy /Ob2 /GF /Gy)
+
+
+
+It is an alias for -O.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -O1 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-O`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

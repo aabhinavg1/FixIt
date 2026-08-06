@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-dE"
 slug: "/tools/clang-flags/-dE/"
 description: "Flags allowing the state of the preprocessor to be dumped in various ways."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-dE" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-dE">
+
+## What this flag actually does
+
+Flags allowing the state of the preprocessor to be dumped in various ways.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Xclang -dE -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

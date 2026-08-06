@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fms-compatibility"
 slug: "/tools/clang-flags/-fms-compatibility/"
 description: "Enable full Microsoft Visual C++ compatibility"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fms-compatibility" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fms-compatibility">
+
+## What this flag actually does
+
+Enable full Microsoft Visual C++ compatibility
+
+
+
+It can be negated with -fno-ms-compatibility.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fms-compatibility -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-ms-compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

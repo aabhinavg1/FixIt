@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-Qstrip-rootsignature"
 slug: "/tools/clang-flags/-Qstrip-rootsignature/"
 description: "Omit the root signature from produced DXContainer"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Qstrip-rootsignature" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Qstrip-rootsignature">
+
+## What this flag actually does
+
+Omit the root signature from produced DXContainer
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -Qstrip-rootsignature main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

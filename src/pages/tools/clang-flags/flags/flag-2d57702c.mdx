@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wp,"
 slug: "/tools/clang-flags/-Wp%2C/"
 description: "Flags controlling the behavior of the Clang preprocessor."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wp%2C" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wp%2C">
+
+## What this flag actually does
+
+Flags controlling the behavior of the Clang preprocessor.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Wp, -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

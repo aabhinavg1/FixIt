@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-validator-version"
 slug: "/tools/clang-flags/-validator-version/"
 description: "Override validator version for module. Format: &lt;major.minor&gt;;Default: DXIL.dll version or current internal version"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-validator-version" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-validator-version">
+
+## What this flag actually does
+
+Override validator version for module. Format: &lt;major.minor>;Default: DXIL.dll version or current internal version
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this separate behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this separate is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -validator-version <arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: DXCOption, ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

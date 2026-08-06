@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gno-structor-decl-linkage-names"
 slug: "/tools/clang-flags/-gno-structor-decl-linkage-names/"
 description: "On some ABIs (e.g., Itanium), constructors and destructors may have multiple variants. Historically, when generating DWARF, Clang did not attach ``DW_AT_linkage_name`` to structor "
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gno-structor-decl-linkage-names" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gno-structor-decl-linkage-names">
+
+## What this flag actually does
+
+On some ABIs (e.g., Itanium), constructors and destructors may have multiple variants. Historically, when generating DWARF, Clang did not attach ``DW_AT_linkage_name`` to structor DIEs because there were multiple possible manglings (depending on the structor variant) that could be used. With ``-gstructor-decl-linkage-names``, for ABIs with structor variants, we attach a "unified" mangled name to structor declarations DIEs which debuggers can use to look up all the definitions for a structor declaration. E.g., a "unified" mangled name ``_ZN3FooC4Ev`` may have multiple definitions associated with it such as ``_ZN3FooC1Ev`` and ``_ZN3FooC2Ev``. Enabling this flag results in a better interactive debugging experience (both GDB and LLDB have support for understanding these "unified" linkage names). However, it comes with a significant increase in debug-info size (particularly the `.debug_str` section). As an escape hatch, users can disable this feature using ``-gno-structor-decl-linkage-names``.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gno-structor-decl-linkage-names -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

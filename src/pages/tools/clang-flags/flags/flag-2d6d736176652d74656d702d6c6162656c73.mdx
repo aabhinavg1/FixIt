@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-msave-temp-labels"
 slug: "/tools/clang-flags/-msave-temp-labels/"
 description: "Save temporary labels in the symbol table. Note this may change .s semantics and shouldn't generally be used on compiler-generated code."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-msave-temp-labels" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-msave-temp-labels">
+
+## What this flag actually does
+
+Save temporary labels in the symbol table. Note this may change .s semantics and shouldn't generally be used on compiler-generated code.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -msave-temp-labels -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

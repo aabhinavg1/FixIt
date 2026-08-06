@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-res-may-alias"
 slug: "/tools/clang-flags/-res-may-alias/"
 description: "Assume that UAVs/SRVs may alias"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-res-may-alias" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-res-may-alias">
+
+## What this flag actually does
+
+Assume that UAVs/SRVs may alias
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -res-may-alias main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption, ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

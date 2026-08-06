@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fkeep-persistent-storage-variables"
 slug: "/tools/clang-flags/-fkeep-persistent-storage-variables/"
 description: "Enable keeping all variables that have a persistent storage duration, including global, static and thread-local variables, to guarantee that they can be directly addressed"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fkeep-persistent-storage-variables" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fkeep-persistent-storage-variables">
+
+## What this flag actually does
+
+Enable keeping all variables that have a persistent storage duration, including global, static and thread-local variables, to guarantee that they can be directly addressed
+
+
+
+It can be negated with -fno-keep-persistent-storage-variables.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fkeep-persistent-storage-variables -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-keep-persistent-storage-variables`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

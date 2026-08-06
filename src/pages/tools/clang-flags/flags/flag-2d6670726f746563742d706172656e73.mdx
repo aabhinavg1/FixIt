@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fprotect-parens"
 slug: "/tools/clang-flags/-fprotect-parens/"
 description: "Determines whether the optimizer honors parentheses when floating-point expressions are evaluated"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fprotect-parens" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fprotect-parens">
+
+## What this flag actually does
+
+Determines whether the optimizer honors parentheses when floating-point expressions are evaluated
+
+
+
+It can be negated with -fno-protect-parens.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fprotect-parens -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-protect-parens`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

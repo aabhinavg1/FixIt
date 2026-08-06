@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-import-call-optimization"
 slug: "/tools/clang-flags/-import-call-optimization/"
 description: "Emit Import Call sections on supported targets that can be used by the Windows kernel to enable import call optimization"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-import-call-optimization" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-import-call-optimization">
+
+## What this flag actually does
+
+Emit Import Call sections on supported targets that can be used by the Windows kernel to enable import call optimization
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -Xclang -import-call-optimization -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

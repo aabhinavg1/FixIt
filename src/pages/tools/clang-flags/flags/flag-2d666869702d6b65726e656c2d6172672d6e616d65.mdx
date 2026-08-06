@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fhip-kernel-arg-name"
 slug: "/tools/clang-flags/-fhip-kernel-arg-name/"
 description: "Specify that kernel argument names are preserved (HIP only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fhip-kernel-arg-name" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fhip-kernel-arg-name">
+
+## What this flag actually does
+
+Specify that kernel argument names are preserved (HIP only)
+
+
+
+It can be negated with -fno-hip-kernel-arg-name.
+
+## When to use it
+
+- You are targeting HIP options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting HIP options.
+
+## Usage example
+
+```bash
+clang++ -fhip-kernel-arg-name main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `HIP`
+- **Negated by**: `-fno-hip-kernel-arg-name`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

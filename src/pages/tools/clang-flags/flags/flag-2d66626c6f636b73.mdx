@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fblocks"
 slug: "/tools/clang-flags/-fblocks/"
 description: "Enable the 'blocks' language feature"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fblocks" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fblocks">
+
+## What this flag actually does
+
+Enable the 'blocks' language feature
+
+
+
+It can be negated with -fno-blocks.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fblocks -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-blocks`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

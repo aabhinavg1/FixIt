@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-ppc-native-vector-element-order"
 slug: "/tools/clang-flags/-fno-ppc-native-vector-element-order/"
 description: "Specifies PowerPC non-native vector element order"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-ppc-native-vector-element-order" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-ppc-native-vector-element-order">
+
+## What this flag actually does
+
+Specifies PowerPC non-native vector element order
+
+
+
+It can be negated with -fppc-native-vector-element-order.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fno-ppc-native-vector-element-order main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fppc-native-vector-element-order`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

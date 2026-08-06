@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdelete-null-pointer-checks"
 slug: "/tools/clang-flags/-fdelete-null-pointer-checks/"
 description: "When enabled, treat null pointer dereference, creation of a reference to null, or passing a null pointer to a function parameter annotated with the \"nonnull\" attribute as undefined"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdelete-null-pointer-checks" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdelete-null-pointer-checks">
+
+## What this flag actually does
+
+When enabled, treat null pointer dereference, creation of a reference to null, or passing a null pointer to a function parameter annotated with the "nonnull" attribute as undefined behavior. (And, thus the optimizer may assume that any pointer used in such a way must not have been null and optimize away the branches accordingly.) On by default.
+
+
+
+It can be negated with -fno-delete-null-pointer-checks.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdelete-null-pointer-checks -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-delete-null-pointer-checks`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

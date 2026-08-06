@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-profile-instr-use"
 slug: "/tools/clang-flags/-fno-profile-instr-use/"
 description: "Disable using instrumentation data for profile-guided optimization"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-profile-instr-use" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-profile-instr-use">
+
+## What this flag actually does
+
+Disable using instrumentation data for profile-guided optimization
+
+
+
+It can be negated with -fprofile-instr-use.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-profile-instr-use -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fprofile-instr-use`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

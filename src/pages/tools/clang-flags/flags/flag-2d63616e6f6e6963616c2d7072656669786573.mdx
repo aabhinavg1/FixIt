@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-canonical-prefixes"
 slug: "/tools/clang-flags/-canonical-prefixes/"
 description: "Use absolute paths for invoking subcommands (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-canonical-prefixes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-canonical-prefixes">
+
+## What this flag actually does
+
+Use absolute paths for invoking subcommands (default)
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -canonical-prefixes main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-MQ"
 slug: "/tools/clang-flags/-MQ/"
 description: "Flags controlling generation of a dependency file for ``make``-like build systems."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-MQ" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-MQ">
+
+## What this flag actually does
+
+Flags controlling generation of a dependency file for ``make``-like build systems.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Dependency file generation and want this joinedorseparate behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting Dependency file generation.
+
+## Usage example
+
+```bash
+clang++ -MQ=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Dependency Files`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

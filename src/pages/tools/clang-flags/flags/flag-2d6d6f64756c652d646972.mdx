@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-module-dir"
 slug: "/tools/clang-flags/-module-dir/"
 description: "This option specifies where to put .mod files for compiled modules. It is also added to the list of directories to be searched by an USE statement. The default is the current direc"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-module-dir" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-module-dir">
+
+## What this flag actually does
+
+This option specifies where to put .mod files for compiled modules. It is also added to the list of directories to be searched by an USE statement. The default is the current directory.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -module-dir=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

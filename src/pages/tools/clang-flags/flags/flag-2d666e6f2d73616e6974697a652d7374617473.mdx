@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-sanitize-stats"
 slug: "/tools/clang-flags/-fno-sanitize-stats/"
 description: "Disable sanitizer statistics gathering."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-sanitize-stats" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-sanitize-stats">
+
+## What this flag actually does
+
+Disable sanitizer statistics gathering.
+
+
+
+It can be negated with -fsanitize-stats.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fno-sanitize-stats main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fsanitize-stats`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

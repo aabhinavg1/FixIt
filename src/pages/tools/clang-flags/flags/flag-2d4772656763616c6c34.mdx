@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-Gregcall4"
 slug: "/tools/clang-flags/-Gregcall4/"
 description: "Set __regcall4 as a default calling convention to respect __regcall ABI v.4"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Gregcall4" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Gregcall4">
+
+## What this flag actually does
+
+Set __regcall4 as a default calling convention to respect __regcall ABI v.4
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Gregcall4 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

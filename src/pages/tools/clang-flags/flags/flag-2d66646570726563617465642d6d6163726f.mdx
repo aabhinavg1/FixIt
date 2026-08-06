@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdeprecated-macro"
 slug: "/tools/clang-flags/-fdeprecated-macro/"
 description: "Defines the __DEPRECATED macro"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdeprecated-macro" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdeprecated-macro">
+
+## What this flag actually does
+
+Defines the __DEPRECATED macro
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-deprecated-macro.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Xclang -fdeprecated-macro -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Negated by**: `-fno-deprecated-macro`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

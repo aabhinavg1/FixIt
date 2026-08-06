@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-gnu-inline-asm"
 slug: "/tools/clang-flags/-fno-gnu-inline-asm/"
 description: "Disable GNU style inline asm"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-gnu-inline-asm" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-gnu-inline-asm">
+
+## What this flag actually does
+
+Disable GNU style inline asm
+
+
+
+It can be negated with -fgnu-inline-asm.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-gnu-inline-asm -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fgnu-inline-asm`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

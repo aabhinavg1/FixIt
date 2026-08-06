@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fvisibility-global-new-delete-hidden"
 slug: "/tools/clang-flags/-fvisibility-global-new-delete-hidden/"
 description: "Give global C++ operator new and delete declarations hidden visibility"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fvisibility-global-new-delete-hidden" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fvisibility-global-new-delete-hidden">
+
+## What this flag actually does
+
+Give global C++ operator new and delete declarations hidden visibility
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fvisibility-global-new-delete-hidden -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

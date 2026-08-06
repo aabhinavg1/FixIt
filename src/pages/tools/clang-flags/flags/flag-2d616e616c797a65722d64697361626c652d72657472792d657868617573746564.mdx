@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyzer-disable-retry-exhausted"
 slug: "/tools/clang-flags/-analyzer-disable-retry-exhausted/"
 description: "Do not re-analyze paths leading to exhausted nodes with a different strategy (may decrease code coverage)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyzer-disable-retry-exhausted" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyzer-disable-retry-exhausted">
+
+## What this flag actually does
+
+Do not re-analyze paths leading to exhausted nodes with a different strategy (may decrease code coverage)
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyzer-disable-retry-exhausted -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

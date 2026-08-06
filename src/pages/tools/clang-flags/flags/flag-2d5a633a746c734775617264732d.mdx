@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Zc:tlsGuards-"
 slug: "/tools/clang-flags/-Zc%3AtlsGuards-/"
 description: "Disable on-demand initialization of thread-local variables"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Zc%3AtlsGuards-" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Zc%3AtlsGuards-">
+
+## What this flag actually does
+
+Disable on-demand initialization of thread-local variables
+
+
+
+It is an alias for -fno-ms-tls-guards.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Zc:tlsGuards- main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fno-ms-tls-guards`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

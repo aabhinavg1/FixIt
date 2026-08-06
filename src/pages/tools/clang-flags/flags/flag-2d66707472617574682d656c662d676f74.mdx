@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fptrauth-elf-got"
 slug: "/tools/clang-flags/-fptrauth-elf-got/"
 description: "Enable authentication of pointers from GOT (ELF only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fptrauth-elf-got" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fptrauth-elf-got">
+
+## What this flag actually does
+
+Enable authentication of pointers from GOT (ELF only)
+
+
+
+It can be negated with -fno-ptrauth-elf-got.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fptrauth-elf-got -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-ptrauth-elf-got`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

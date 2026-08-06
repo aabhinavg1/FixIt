@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcuda-short-ptr"
 slug: "/tools/clang-flags/-fcuda-short-ptr/"
 description: "Use 32-bit pointers for accessing const/local/shared address spaces"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcuda-short-ptr" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcuda-short-ptr">
+
+## What this flag actually does
+
+Use 32-bit pointers for accessing const/local/shared address spaces
+
+
+
+It can be negated with -fno-cuda-short-ptr.
+
+## When to use it
+
+- You are targeting CUDA options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting CUDA options.
+
+## Usage example
+
+```bash
+clang++ -fcuda-short-ptr main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `CUDA`
+- **Negated by**: `-fno-cuda-short-ptr`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

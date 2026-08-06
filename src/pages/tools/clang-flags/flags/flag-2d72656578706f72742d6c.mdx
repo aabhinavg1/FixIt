@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-reexport-l"
 slug: "/tools/clang-flags/-reexport-l/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-reexport-l" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-reexport-l">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -reexport-l main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

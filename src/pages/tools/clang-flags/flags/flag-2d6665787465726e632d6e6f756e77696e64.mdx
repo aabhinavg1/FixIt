@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexternc-nounwind"
 slug: "/tools/clang-flags/-fexternc-nounwind/"
 description: "Assume all functions with C linkage do not unwind"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexternc-nounwind" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexternc-nounwind">
+
+## What this flag actually does
+
+Assume all functions with C linkage do not unwind
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -fexternc-nounwind -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

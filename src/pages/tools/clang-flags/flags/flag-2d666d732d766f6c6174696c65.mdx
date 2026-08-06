@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fms-volatile"
 slug: "/tools/clang-flags/-fms-volatile/"
 description: "Volatile loads and stores have acquire and release semantics"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fms-volatile" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fms-volatile">
+
+## What this flag actually does
+
+Volatile loads and stores have acquire and release semantics
+
+
+
+It can be negated with -fno-ms-volatile.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fms-volatile -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-ms-volatile`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

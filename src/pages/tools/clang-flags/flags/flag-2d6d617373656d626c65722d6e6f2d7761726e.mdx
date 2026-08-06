@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-massembler-no-warn"
 slug: "/tools/clang-flags/-massembler-no-warn/"
 description: "Make assembler not emit warnings"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-massembler-no-warn" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-massembler-no-warn">
+
+## What this flag actually does
+
+Make assembler not emit warnings
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Xclang -massembler-no-warn -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

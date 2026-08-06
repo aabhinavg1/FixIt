@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wlarge-by-value-copy"
 slug: "/tools/clang-flags/-Wlarge-by-value-copy/"
 description: "Warn if a function definition returns or accepts an object larger in bytes than a given value"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wlarge-by-value-copy" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wlarge-by-value-copy">
+
+## What this flag actually does
+
+Warn if a function definition returns or accepts an object larger in bytes than a given value
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -Wlarge-by-value-copy main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

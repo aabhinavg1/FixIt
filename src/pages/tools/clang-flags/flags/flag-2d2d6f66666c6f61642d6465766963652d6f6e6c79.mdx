@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload-device-only"
 slug: "/tools/clang-flags/--offload-device-only/"
 description: "Only compile for the offloading device."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload-device-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload-device-only">
+
+## What this flag actually does
+
+Only compile for the offloading device.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ --offload-device-only main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fropi"
 slug: "/tools/clang-flags/-fropi/"
 description: "Generate read-only position independent code (ARM only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fropi" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fropi">
+
+## What this flag actually does
+
+Generate read-only position independent code (ARM only)
+
+
+
+It can be negated with -fno-ropi.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fropi -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-ropi`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

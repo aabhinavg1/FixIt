@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-diagnostics:classic"
 slug: "/tools/clang-flags/-diagnostics%3Aclassic/"
 description: "Disable column and caret diagnostics"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-diagnostics%3Aclassic" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-diagnostics%3Aclassic">
+
+## What this flag actually does
+
+Disable column and caret diagnostics
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -diagnostics:classic main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

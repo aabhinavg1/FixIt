@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-openmp:experimental"
 slug: "/tools/clang-flags/-openmp%3Aexperimental/"
 description: "Enable OpenMP support with experimental SIMD support"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-openmp%3Aexperimental" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-openmp%3Aexperimental">
+
+## What this flag actually does
+
+Enable OpenMP support with experimental SIMD support
+
+
+
+It is an alias for -fopenmp.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -openmp:experimental main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fopenmp`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

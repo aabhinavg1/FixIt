@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-dump-parse-tree-no-sema"
 slug: "/tools/clang-flags/-fdebug-dump-parse-tree-no-sema/"
 description: "Run the Parser and then output the parse tree. Semantic checks are disabled."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-dump-parse-tree-no-sema" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-dump-parse-tree-no-sema">
+
+## What this flag actually does
+
+Run the Parser and then output the parse tree. Semantic checks are disabled.
+
+## When to use it
+
+- You are targeting Actions and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Actions.
+
+## Usage example
+
+```bash
+clang++ -fdebug-dump-parse-tree-no-sema main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Actions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

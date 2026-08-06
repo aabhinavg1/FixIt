@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-ignore-loops"
 slug: "/tools/clang-flags/-fxray-ignore-loops/"
 description: "Don't instrument functions with loops unless they also meet the minimum function size"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-ignore-loops" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-ignore-loops">
+
+## What this flag actually does
+
+Don't instrument functions with loops unless they also meet the minimum function size
+
+
+
+It can be negated with -fno-xray-ignore-loops.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-ignore-loops -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-xray-ignore-loops`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-constructor-aliases"
 slug: "/tools/clang-flags/-mno-constructor-aliases/"
 description: "Disable emitting complete constructors and destructors as aliases when possible"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-constructor-aliases" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-constructor-aliases">
+
+## What this flag actually does
+
+Disable emitting complete constructors and destructors as aliases when possible
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -mno-constructor-aliases -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

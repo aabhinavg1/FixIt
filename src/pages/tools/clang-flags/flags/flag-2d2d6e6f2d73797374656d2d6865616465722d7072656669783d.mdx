@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "--no-system-header-prefix="
 slug: "/tools/clang-flags/--no-system-header-prefix%3D/"
 description: "Treat all #include paths starting with &lt;prefix&gt; as not including a system header."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--no-system-header-prefix%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--no-system-header-prefix%3D">
+
+## What this flag actually does
+
+Treat all #include paths starting with &lt;prefix> as not including a system header.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ --no-system-header-prefix= -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

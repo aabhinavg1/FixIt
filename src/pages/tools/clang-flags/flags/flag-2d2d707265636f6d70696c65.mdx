@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--precompile"
 slug: "/tools/clang-flags/--precompile/"
 description: "The action to perform on the input."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--precompile" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--precompile">
+
+## What this flag actually does
+
+The action to perform on the input.
+
+## When to use it
+
+- You are targeting Actions and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Actions.
+
+## Usage example
+
+```bash
+clang++ --precompile main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Actions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

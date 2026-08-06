@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-building-pch-with-obj"
 slug: "/tools/clang-flags/-building-pch-with-obj/"
 description: "This compilation is part of building a PCH with corresponding object file."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-building-pch-with-obj" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-building-pch-with-obj">
+
+## What this flag actually does
+
+This compilation is part of building a PCH with corresponding object file.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -building-pch-with-obj -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

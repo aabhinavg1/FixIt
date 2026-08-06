@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-pch-through-header="
 slug: "/tools/clang-flags/-pch-through-header%3D/"
 description: "Stop PCH generation after including this file. When using a PCH, skip tokens until after this file is included."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-pch-through-header%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-pch-through-header%3D">
+
+## What this flag actually does
+
+Stop PCH generation after including this file. When using a PCH, skip tokens until after this file is included.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Xclang -pch-through-header= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

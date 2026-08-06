@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmsc-version="
 slug: "/tools/clang-flags/-fmsc-version%3D/"
 description: "Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmsc-version%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmsc-version%3D">
+
+## What this flag actually does
+
+Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmsc-version= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

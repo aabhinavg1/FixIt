@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-offload-lto"
 slug: "/tools/clang-flags/-fno-offload-lto/"
 description: "Disable LTO mode (default) for offload compilation"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-offload-lto" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-offload-lto">
+
+## What this flag actually does
+
+Disable LTO mode (default) for offload compilation
+
+
+
+It can be negated with -foffload-lto.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-offload-lto -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-foffload-lto`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

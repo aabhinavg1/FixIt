@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-object-file-name"
 slug: "/tools/clang-flags/-object-file-name/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-object-file-name" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-object-file-name">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -object-file-name=.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -object-file-name <arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Other`
+- **Alias of**: `-object-file-name=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

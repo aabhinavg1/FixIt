@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-d1reportAllClassLayout"
 slug: "/tools/clang-flags/-d1reportAllClassLayout/"
 description: "Dump record layout information"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-d1reportAllClassLayout" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-d1reportAllClassLayout">
+
+## What this flag actually does
+
+Dump record layout information
+
+
+
+It is an alias for -Xclang.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -d1reportAllClassLayout main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-Xclang`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

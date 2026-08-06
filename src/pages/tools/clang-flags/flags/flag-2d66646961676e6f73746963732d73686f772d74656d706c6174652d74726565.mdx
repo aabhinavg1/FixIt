@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdiagnostics-show-template-tree"
 slug: "/tools/clang-flags/-fdiagnostics-show-template-tree/"
 description: "Print a template comparison tree for differing templates"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdiagnostics-show-template-tree" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdiagnostics-show-template-tree">
+
+## What this flag actually does
+
+Print a template comparison tree for differing templates
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdiagnostics-show-template-tree -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

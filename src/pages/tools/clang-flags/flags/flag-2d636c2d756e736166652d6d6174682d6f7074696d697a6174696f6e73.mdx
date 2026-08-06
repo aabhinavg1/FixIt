@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-unsafe-math-optimizations"
 slug: "/tools/clang-flags/-cl-unsafe-math-optimizations/"
 description: "OpenCL only. Allow unsafe floating-point optimizations. Also implies -cl-no-signed-zeros and -cl-mad-enable."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-unsafe-math-optimizations" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-unsafe-math-optimizations">
+
+## What this flag actually does
+
+OpenCL only. Allow unsafe floating-point optimizations. Also implies -cl-no-signed-zeros and -cl-mad-enable.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-unsafe-math-optimizations main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

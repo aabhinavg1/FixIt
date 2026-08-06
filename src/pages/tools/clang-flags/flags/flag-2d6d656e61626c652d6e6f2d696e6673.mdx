@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-menable-no-infs"
 slug: "/tools/clang-flags/-menable-no-infs/"
 description: "Allow optimization to assume there are no infinities."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-menable-no-infs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-menable-no-infs">
+
+## What this flag actually does
+
+Allow optimization to assume there are no infinities.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -Xclang -menable-no-infs -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, FC1Option
+- **Stage**: cc1 (frontend), category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fintegrated-cc1"
 slug: "/tools/clang-flags/-fintegrated-cc1/"
 description: "Run cc1 in-process"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fintegrated-cc1" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fintegrated-cc1">
+
+## What this flag actually does
+
+Run cc1 in-process
+
+
+
+It can be negated with -fno-integrated-cc1.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fintegrated-cc1 -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-integrated-cc1`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

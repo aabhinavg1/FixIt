@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mtgsplit"
 slug: "/tools/clang-flags/-mtgsplit/"
 description: "Enable threadgroup split execution mode (AMDGPU only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mtgsplit" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mtgsplit">
+
+## What this flag actually does
+
+Enable threadgroup split execution mode (AMDGPU only)
+
+## When to use it
+
+- You are targeting AMDGPU and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting AMDGPU.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mtgsplit main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `AMDGPU`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

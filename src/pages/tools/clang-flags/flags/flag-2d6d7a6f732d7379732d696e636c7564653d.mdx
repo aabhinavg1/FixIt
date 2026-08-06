@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-mzos-sys-include="
 slug: "/tools/clang-flags/-mzos-sys-include%3D/"
 description: "Path to system headers on z/OS"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mzos-sys-include%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mzos-sys-include%3D">
+
+## What this flag actually does
+
+Path to system headers on z/OS
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -mzos-sys-include= -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

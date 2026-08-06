@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Qunused-arguments"
 slug: "/tools/clang-flags/-Qunused-arguments/"
 description: "Don't emit warning for unused driver arguments"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Qunused-arguments" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Qunused-arguments">
+
+## What this flag actually does
+
+Don't emit warning for unused driver arguments
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Qunused-arguments -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

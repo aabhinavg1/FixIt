@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffat-lto-objects"
 slug: "/tools/clang-flags/-ffat-lto-objects/"
 description: "Enable fat LTO object support"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffat-lto-objects" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffat-lto-objects">
+
+## What this flag actually does
+
+Enable fat LTO object support
+
+
+
+It can be negated with -fno-fat-lto-objects.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffat-lto-objects -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-fat-lto-objects`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

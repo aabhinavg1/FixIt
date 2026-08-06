@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-time"
 slug: "/tools/clang-flags/-time/"
 description: "Time individual commands"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-time" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-time">
+
+## What this flag actually does
+
+Time individual commands
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -time main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-single-precision-constant"
 slug: "/tools/clang-flags/-cl-single-precision-constant/"
 description: "OpenCL only. Treat double precision floating-point constant as single precision constant."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-single-precision-constant" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-single-precision-constant">
+
+## What this flag actually does
+
+OpenCL only. Treat double precision floating-point constant as single precision constant.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-single-precision-constant main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

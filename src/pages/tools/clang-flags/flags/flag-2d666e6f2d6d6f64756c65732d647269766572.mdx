@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-modules-driver"
 slug: "/tools/clang-flags/-fno-modules-driver/"
 description: "Disable support for driver managed module builds (experimental)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-modules-driver" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-modules-driver">
+
+## What this flag actually does
+
+Disable support for driver managed module builds (experimental)
+
+
+
+It can be negated with -fmodules-driver.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-modules-driver -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fmodules-driver`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

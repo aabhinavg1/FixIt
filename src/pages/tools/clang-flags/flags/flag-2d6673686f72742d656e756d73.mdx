@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fshort-enums"
 slug: "/tools/clang-flags/-fshort-enums/"
 description: "Allocate to an enum type only as many bytes as it needs for the declared range of possible values"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fshort-enums" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fshort-enums">
+
+## What this flag actually does
+
+Allocate to an enum type only as many bytes as it needs for the declared range of possible values
+
+
+
+It can be negated with -fno-short-enums.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fshort-enums -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-short-enums`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

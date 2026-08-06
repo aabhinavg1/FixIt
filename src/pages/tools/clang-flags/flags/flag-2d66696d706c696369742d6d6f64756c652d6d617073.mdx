@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fimplicit-module-maps"
 slug: "/tools/clang-flags/-fimplicit-module-maps/"
 description: "Implicitly search the file system for module map files."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fimplicit-module-maps" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fimplicit-module-maps">
+
+## What this flag actually does
+
+Implicitly search the file system for module map files.
+
+
+
+It can be negated with -fno-implicit-module-maps.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fimplicit-module-maps -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-implicit-module-maps`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

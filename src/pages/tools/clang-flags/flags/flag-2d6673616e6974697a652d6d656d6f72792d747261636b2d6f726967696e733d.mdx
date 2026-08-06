@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-memory-track-origins="
 slug: "/tools/clang-flags/-fsanitize-memory-track-origins%3D/"
 description: "Enable origins tracking in MemorySanitizer"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-memory-track-origins%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-memory-track-origins%3D">
+
+## What this flag actually does
+
+Enable origins tracking in MemorySanitizer
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-memory-track-origins= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

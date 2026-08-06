@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-mllvm="
 slug: "/tools/clang-flags/-mllvm%3D/"
 description: "Alias for -mllvm"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mllvm%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mllvm%3D">
+
+## What this flag actually does
+
+Alias for -mllvm
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -mllvm.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -mllvm= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-mllvm`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

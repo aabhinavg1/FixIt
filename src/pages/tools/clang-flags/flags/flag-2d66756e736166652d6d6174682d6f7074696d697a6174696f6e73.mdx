@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-funsafe-math-optimizations"
 slug: "/tools/clang-flags/-funsafe-math-optimizations/"
 description: "Allow unsafe floating-point math optimizations which may decrease precision"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-funsafe-math-optimizations" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-funsafe-math-optimizations">
+
+## What this flag actually does
+
+Allow unsafe floating-point math optimizations which may decrease precision
+
+
+
+It can be negated with -fno-unsafe-math-optimizations.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -funsafe-math-optimizations -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-unsafe-math-optimizations`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

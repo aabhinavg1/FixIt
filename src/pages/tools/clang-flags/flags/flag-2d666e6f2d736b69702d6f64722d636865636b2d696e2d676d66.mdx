@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-skip-odr-check-in-gmf"
 slug: "/tools/clang-flags/-fno-skip-odr-check-in-gmf/"
 description: "Perform ODR checks for decls in the global module fragment."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-skip-odr-check-in-gmf" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-skip-odr-check-in-gmf">
+
+## What this flag actually does
+
+Perform ODR checks for decls in the global module fragment.
+
+
+
+It can be negated with -fskip-odr-check-in-gmf.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-skip-odr-check-in-gmf -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fskip-odr-check-in-gmf`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

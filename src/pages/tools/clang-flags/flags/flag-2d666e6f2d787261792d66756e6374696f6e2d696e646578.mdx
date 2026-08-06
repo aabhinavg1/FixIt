@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-xray-function-index"
 slug: "/tools/clang-flags/-fno-xray-function-index/"
 description: "Omit function index section at the expense of single-function patching performance"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-xray-function-index" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-xray-function-index">
+
+## What this flag actually does
+
+Omit function index section at the expense of single-function patching performance
+
+
+
+It can be negated with -fxray-function-index.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-xray-function-index -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fxray-function-index`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

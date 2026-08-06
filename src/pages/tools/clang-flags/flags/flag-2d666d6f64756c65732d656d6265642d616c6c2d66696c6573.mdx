@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-embed-all-files"
 slug: "/tools/clang-flags/-fmodules-embed-all-files/"
 description: "Embed the contents of all files read by this compilation into the produced module file."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-embed-all-files" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-embed-all-files">
+
+## What this flag actually does
+
+Embed the contents of all files read by this compilation into the produced module file.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fmodules-embed-all-files main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

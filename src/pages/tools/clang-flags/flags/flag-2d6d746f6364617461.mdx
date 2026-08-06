@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mtocdata"
 slug: "/tools/clang-flags/-mtocdata/"
 description: "All suitable variables will have the TOC data transformation applied"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mtocdata" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mtocdata">
+
+## What this flag actually does
+
+All suitable variables will have the TOC data transformation applied
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mtocdata -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

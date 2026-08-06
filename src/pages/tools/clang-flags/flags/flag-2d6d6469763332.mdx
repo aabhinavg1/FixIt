@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mdiv32"
 slug: "/tools/clang-flags/-mdiv32/"
 description: "Use div.w[u] and mod.w[u] instructions with input not sign-extended."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mdiv32" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mdiv32">
+
+## What this flag actually does
+
+Use div.w[u] and mod.w[u] instructions with input not sign-extended.
+
+## When to use it
+
+- You are targeting LoongArch and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting LoongArch.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mdiv32 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `LoongArch`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "--analyzer-output"
 slug: "/tools/clang-flags/--analyzer-output/"
 description: "Static analyzer report output format (html|plist|plist-multi-file|plist-html|sarif|sarif-html|text)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--analyzer-output" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--analyzer-output">
+
+## What this flag actually does
+
+Static analyzer report output format (html|plist|plist-multi-file|plist-html|sarif|sarif-html|text).
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --analyzer-output=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-outline"
 slug: "/tools/clang-flags/-mno-outline/"
 description: "Disable function outlining (AArch64 only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-outline" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-outline">
+
+## What this flag actually does
+
+Disable function outlining (AArch64 only)
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -mno-outline -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

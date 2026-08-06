@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mmsa"
 slug: "/tools/clang-flags/-mmsa/"
 description: "Enable MSA ASE (MIPS only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mmsa" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mmsa">
+
+## What this flag actually does
+
+Enable MSA ASE (MIPS only)
+
+## When to use it
+
+- You are targeting MIPS and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting MIPS.
+
+## Usage example
+
+```bash
+clang++ -mmsa main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `MIPS`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

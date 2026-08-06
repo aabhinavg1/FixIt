@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fstack-size-section"
 slug: "/tools/clang-flags/-fstack-size-section/"
 description: "Emit section containing metadata on function stack sizes"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fstack-size-section" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fstack-size-section">
+
+## What this flag actually does
+
+Emit section containing metadata on function stack sizes
+
+
+
+It can be negated with -fno-stack-size-section.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fstack-size-section -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-stack-size-section`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

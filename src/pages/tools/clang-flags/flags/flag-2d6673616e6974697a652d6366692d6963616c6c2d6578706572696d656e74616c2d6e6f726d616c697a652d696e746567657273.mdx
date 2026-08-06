@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-cfi-icall-experimental-normalize-integers"
 slug: "/tools/clang-flags/-fsanitize-cfi-icall-experimental-normalize-integers/"
 description: "Normalize integers in CFI indirect call type signature checks"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-cfi-icall-experimental-normalize-integers" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-cfi-icall-experimental-normalize-integers">
+
+## What this flag actually does
+
+Normalize integers in CFI indirect call type signature checks
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-cfi-icall-experimental-normalize-integers main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

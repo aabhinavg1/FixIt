@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-version-loops-for-stride"
 slug: "/tools/clang-flags/-fno-version-loops-for-stride/"
 description: "Do not create unit-strided loops (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-version-loops-for-stride" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-version-loops-for-stride">
+
+## What this flag actually does
+
+Do not create unit-strided loops (default)
+
+
+
+It can be negated with -fversion-loops-for-stride.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fno-version-loops-for-stride main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fversion-loops-for-stride`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

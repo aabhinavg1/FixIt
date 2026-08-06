@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Wundef-prefix="
 slug: "/tools/clang-flags/-Wundef-prefix%3D/"
 description: "Enable warnings for undefined macros with a prefix in the comma separated list &lt;arg&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Wundef-prefix%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wundef-prefix%3D">
+
+## What this flag actually does
+
+Enable warnings for undefined macros with a prefix in the comma separated list &lt;arg>
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Wundef-prefix= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

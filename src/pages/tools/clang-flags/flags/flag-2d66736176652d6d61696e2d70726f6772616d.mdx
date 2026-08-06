@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsave-main-program"
 slug: "/tools/clang-flags/-fsave-main-program/"
 description: "Place all main program variables in static memory (otherwise scalars may be placed on the stack)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsave-main-program" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsave-main-program">
+
+## What this flag actually does
+
+Place all main program variables in static memory (otherwise scalars may be placed on the stack)
+
+
+
+It can be negated with -fno-save-main-program.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fsave-main-program main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fno-save-main-program`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-validate-system-headers"
 slug: "/tools/clang-flags/-fmodules-validate-system-headers/"
 description: "Validate the system headers that a module depends on when loading the module"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-validate-system-headers" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-validate-system-headers">
+
+## What this flag actually does
+
+Validate the system headers that a module depends on when loading the module
+
+
+
+It can be negated with -fno-modules-validate-system-headers.
+
+## When to use it
+
+- You are targeting &lt;i group> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;i group>.
+
+## Usage example
+
+```bash
+clang++ -fmodules-validate-system-headers main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-modules-validate-system-headers`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

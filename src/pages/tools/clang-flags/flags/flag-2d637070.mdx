@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-cpp"
 slug: "/tools/clang-flags/-cpp/"
 description: "Enable predefined and command line preprocessor macros"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cpp" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cpp">
+
+## What this flag actually does
+
+Enable predefined and command line preprocessor macros
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -cpp -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

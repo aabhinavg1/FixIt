@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Zc:char8_t-"
 slug: "/tools/clang-flags/-Zc%3Achar8_t-/"
 description: "Disable char8_t from c++2a"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Zc%3Achar8_t-" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Zc%3Achar8_t-">
+
+## What this flag actually does
+
+Disable char8_t from c++2a
+
+
+
+It is an alias for -fno-char8_t.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Zc:char8_t- main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fno-char8_t`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

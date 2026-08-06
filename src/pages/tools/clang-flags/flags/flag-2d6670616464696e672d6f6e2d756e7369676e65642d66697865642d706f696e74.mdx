@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-fpadding-on-unsigned-fixed-point"
 slug: "/tools/clang-flags/-fpadding-on-unsigned-fixed-point/"
 description: "Force each unsigned fixed point type to have an extra bit of padding to align their scales with those of signed fixed point types"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fpadding-on-unsigned-fixed-point" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fpadding-on-unsigned-fixed-point">
+
+## What this flag actually does
+
+Force each unsigned fixed point type to have an extra bit of padding to align their scales with those of signed fixed point types
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-padding-on-unsigned-fixed-point.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fpadding-on-unsigned-fixed-point -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-padding-on-unsigned-fixed-point`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

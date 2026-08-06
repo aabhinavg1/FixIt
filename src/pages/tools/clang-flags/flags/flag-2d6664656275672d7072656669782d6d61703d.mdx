@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-prefix-map="
 slug: "/tools/clang-flags/-fdebug-prefix-map%3D/"
 description: "For paths in debug info, remap directory &lt;old&gt; to &lt;new&gt;. If multiple options match a path, the last option wins"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-prefix-map%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-prefix-map%3D">
+
+## What this flag actually does
+
+For paths in debug info, remap directory &lt;old> to &lt;new>. If multiple options match a path, the last option wins
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdebug-prefix-map= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

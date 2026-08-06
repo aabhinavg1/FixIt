@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Zl"
 slug: "/tools/clang-flags/-Zl/"
 description: "Do not let object file auto-link default libraries"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Zl" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Zl">
+
+## What this flag actually does
+
+Do not let object file auto-link default libraries
+
+
+
+It is an alias for -fms-omit-default-lib.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Zl main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fms-omit-default-lib`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

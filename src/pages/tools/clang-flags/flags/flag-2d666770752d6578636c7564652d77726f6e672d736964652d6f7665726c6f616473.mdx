@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fgpu-exclude-wrong-side-overloads"
 slug: "/tools/clang-flags/-fgpu-exclude-wrong-side-overloads/"
 description: "Always exclude wrong side overloads in overloading resolution for CUDA/HIP"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fgpu-exclude-wrong-side-overloads" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fgpu-exclude-wrong-side-overloads">
+
+## What this flag actually does
+
+Always exclude wrong side overloads in overloading resolution for CUDA/HIP
+
+
+
+It can be negated with -fno-gpu-exclude-wrong-side-overloads.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ -fgpu-exclude-wrong-side-overloads main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Common Offloading`
+- **Negated by**: `-fno-gpu-exclude-wrong-side-overloads`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

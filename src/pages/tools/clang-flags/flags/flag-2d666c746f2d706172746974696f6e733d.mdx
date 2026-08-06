@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-flto-partitions="
 slug: "/tools/clang-flags/-flto-partitions%3D/"
 description: "Number of partitions to use for parallel full LTO codegen, ld.lld only."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flto-partitions%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flto-partitions%3D">
+
+## What this flag actually does
+
+Number of partitions to use for parallel full LTO codegen, ld.lld only.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -flto-partitions= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

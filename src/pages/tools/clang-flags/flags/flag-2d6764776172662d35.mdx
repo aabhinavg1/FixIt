@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gdwarf-5"
 slug: "/tools/clang-flags/-gdwarf-5/"
 description: "Generate source-level debug information with dwarf version 5"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gdwarf-5" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gdwarf-5">
+
+## What this flag actually does
+
+Generate source-level debug information with dwarf version 5
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gdwarf-5 -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

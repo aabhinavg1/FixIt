@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdwarf2-cfi-asm"
 slug: "/tools/clang-flags/-fdwarf2-cfi-asm/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdwarf2-cfi-asm" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdwarf2-cfi-asm">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-dwarf2-cfi-asm.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -fdwarf2-cfi-asm -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Debugging`
+- **Negated by**: `-fno-dwarf2-cfi-asm`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

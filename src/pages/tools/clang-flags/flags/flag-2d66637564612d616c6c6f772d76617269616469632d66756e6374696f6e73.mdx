@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcuda-allow-variadic-functions"
 slug: "/tools/clang-flags/-fcuda-allow-variadic-functions/"
 description: "Deprecated; Allow variadic functions in CUDA device code."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcuda-allow-variadic-functions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcuda-allow-variadic-functions">
+
+## What this flag actually does
+
+Deprecated; Allow variadic functions in CUDA device code.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fcuda-allow-variadic-functions -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Deprecated`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

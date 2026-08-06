@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fbasic-block-address-map"
 slug: "/tools/clang-flags/-fbasic-block-address-map/"
 description: "Emit the basic block address map section."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fbasic-block-address-map" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fbasic-block-address-map">
+
+## What this flag actually does
+
+Emit the basic block address map section.
+
+
+
+It can be negated with -fno-basic-block-address-map.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fbasic-block-address-map -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-basic-block-address-map`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

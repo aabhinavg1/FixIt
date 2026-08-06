@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-ftest-coverage"
 slug: "/tools/clang-flags/-ftest-coverage/"
 description: "Produce gcov notes files (*.gcno)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ftest-coverage" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ftest-coverage">
+
+## What this flag actually does
+
+Produce gcov notes files (*.gcno)
+
+
+
+It can be negated with -fno-test-coverage.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ftest-coverage -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-test-coverage`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

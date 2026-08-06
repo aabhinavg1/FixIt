@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "--all-warnings"
 slug: "/tools/clang-flags/--all-warnings/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--all-warnings" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--all-warnings">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It is an alias for -Wall.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ --all-warnings -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Warning`
+- **Alias of**: `-Wall`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

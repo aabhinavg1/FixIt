@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mrecip"
 slug: "/tools/clang-flags/-mrecip/"
 description: "Equivalent to '-mrecip=all'"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mrecip" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mrecip">
+
+## What this flag actually does
+
+Equivalent to '-mrecip=all'
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mrecip -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

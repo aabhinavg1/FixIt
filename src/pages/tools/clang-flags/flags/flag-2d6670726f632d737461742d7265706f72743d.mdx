@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fproc-stat-report="
 slug: "/tools/clang-flags/-fproc-stat-report%3D/"
 description: "Save subprocess statistics to the given file"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fproc-stat-report%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fproc-stat-report%3D">
+
+## What this flag actually does
+
+Save subprocess statistics to the given file
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fproc-stat-report= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

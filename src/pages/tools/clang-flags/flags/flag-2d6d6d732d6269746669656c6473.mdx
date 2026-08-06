@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mms-bitfields"
 slug: "/tools/clang-flags/-mms-bitfields/"
 description: "Set the default structure layout to be compatible with the Microsoft compiler standard"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mms-bitfields" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mms-bitfields">
+
+## What this flag actually does
+
+Set the default structure layout to be compatible with the Microsoft compiler standard
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mms-bitfields -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-no-canonical-prefixes"
 slug: "/tools/clang-flags/-no-canonical-prefixes/"
 description: "Use relative paths for invoking subcommands"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-no-canonical-prefixes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-no-canonical-prefixes">
+
+## What this flag actually does
+
+Use relative paths for invoking subcommands
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -no-canonical-prefixes main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

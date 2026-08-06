@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Zs"
 slug: "/tools/clang-flags/-Zs/"
 description: "Run the preprocessor, parser and semantic analysis stages"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Zs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Zs">
+
+## What this flag actually does
+
+Run the preprocessor, parser and semantic analysis stages
+
+
+
+It is an alias for -fsyntax-only.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Zs main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-fsyntax-only`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-static-libsan"
 slug: "/tools/clang-flags/-static-libsan/"
 description: "Statically link the sanitizer runtime (Not supported for ASan, TSan or UBSan on darwin)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-static-libsan" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-static-libsan">
+
+## What this flag actually does
+
+Statically link the sanitizer runtime (Not supported for ASan, TSan or UBSan on darwin)
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -static-libsan main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

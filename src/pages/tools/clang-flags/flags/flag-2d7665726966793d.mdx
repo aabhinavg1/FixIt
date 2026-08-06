@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-verify="
 slug: "/tools/clang-flags/-verify%3D/"
 description: "Verify diagnostic output using comment directives that start with prefixes in the comma-separated sequence &lt;prefixes&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-verify%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-verify%3D">
+
+## What this flag actually does
+
+Verify diagnostic output using comment directives that start with prefixes in the comma-separated sequence &lt;prefixes>
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Xclang -verify= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

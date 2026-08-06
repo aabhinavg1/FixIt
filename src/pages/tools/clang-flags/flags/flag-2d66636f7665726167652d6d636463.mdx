@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcoverage-mcdc"
 slug: "/tools/clang-flags/-fcoverage-mcdc/"
 description: "Enable MC/DC criteria when generating code coverage"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcoverage-mcdc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcoverage-mcdc">
+
+## What this flag actually does
+
+Enable MC/DC criteria when generating code coverage
+
+
+
+It can be negated with -fno-coverage-mcdc.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcoverage-mcdc -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-coverage-mcdc`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

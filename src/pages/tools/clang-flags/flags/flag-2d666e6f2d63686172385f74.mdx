@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-char8_t"
 slug: "/tools/clang-flags/-fno-char8_t/"
 description: "Disable C++ builtin type char8_t"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-char8_t" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-char8_t">
+
+## What this flag actually does
+
+Disable C++ builtin type char8_t
+
+
+
+It can be negated with -fchar8_t.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-char8_t -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fchar8_t`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

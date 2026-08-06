@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mseses"
 slug: "/tools/clang-flags/-mseses/"
 description: "Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mseses" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mseses">
+
+## What this flag actually does
+
+Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mseses -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

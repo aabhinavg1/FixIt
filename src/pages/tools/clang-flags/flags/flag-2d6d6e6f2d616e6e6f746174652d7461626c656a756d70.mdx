@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-annotate-tablejump"
 slug: "/tools/clang-flags/-mno-annotate-tablejump/"
 description: "Disable annotate table jump instruction to correlate it with the jump table."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-annotate-tablejump" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-annotate-tablejump">
+
+## What this flag actually does
+
+Disable annotate table jump instruction to correlate it with the jump table.
+
+## When to use it
+
+- You are targeting LoongArch and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting LoongArch.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mno-annotate-tablejump main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `LoongArch`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

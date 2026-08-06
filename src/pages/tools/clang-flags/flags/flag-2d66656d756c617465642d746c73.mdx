@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-femulated-tls"
 slug: "/tools/clang-flags/-femulated-tls/"
 description: "Use emutls functions to access thread_local variables"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-femulated-tls" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-femulated-tls">
+
+## What this flag actually does
+
+Use emutls functions to access thread_local variables
+
+
+
+It can be negated with -fno-emulated-tls.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -femulated-tls -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-emulated-tls`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

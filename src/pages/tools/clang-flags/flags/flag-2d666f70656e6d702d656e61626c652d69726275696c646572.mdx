@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fopenmp-enable-irbuilder"
 slug: "/tools/clang-flags/-fopenmp-enable-irbuilder/"
 description: "Use the experimental OpenMP-IR-Builder codegen path."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fopenmp-enable-irbuilder" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fopenmp-enable-irbuilder">
+
+## What this flag actually does
+
+Use the experimental OpenMP-IR-Builder codegen path.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fopenmp-enable-irbuilder -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

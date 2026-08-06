@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-O0"
 slug: "/tools/clang-flags/-O0/"
 description: "Flags controlling how much optimization should be performed."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-O0" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-O0">
+
+## What this flag actually does
+
+Flags controlling how much optimization should be performed.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -O0 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FC1Option, FlangOption
+- **Stage**: cc1 (frontend), category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

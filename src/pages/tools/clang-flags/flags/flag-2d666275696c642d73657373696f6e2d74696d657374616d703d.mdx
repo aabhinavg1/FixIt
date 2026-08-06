@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fbuild-session-timestamp="
 slug: "/tools/clang-flags/-fbuild-session-timestamp%3D/"
 description: "Time when the current build session started"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fbuild-session-timestamp%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fbuild-session-timestamp%3D">
+
+## What this flag actually does
+
+Time when the current build session started
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fbuild-session-timestamp= main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

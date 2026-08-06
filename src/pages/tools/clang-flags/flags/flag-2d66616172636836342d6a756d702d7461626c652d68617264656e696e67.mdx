@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-faarch64-jump-table-hardening"
 slug: "/tools/clang-flags/-faarch64-jump-table-hardening/"
 description: "Use hardened lowering for jump-table dispatch"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-faarch64-jump-table-hardening" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-faarch64-jump-table-hardening">
+
+## What this flag actually does
+
+Use hardened lowering for jump-table dispatch
+
+
+
+It can be negated with -fno-aarch64-jump-table-hardening.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -faarch64-jump-table-hardening -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-aarch64-jump-table-hardening`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

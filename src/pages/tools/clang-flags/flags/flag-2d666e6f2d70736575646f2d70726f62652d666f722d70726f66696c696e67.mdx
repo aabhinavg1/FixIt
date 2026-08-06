@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-pseudo-probe-for-profiling"
 slug: "/tools/clang-flags/-fno-pseudo-probe-for-profiling/"
 description: "Do not emit pseudo probes for sample profiling"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-pseudo-probe-for-profiling" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-pseudo-probe-for-profiling">
+
+## What this flag actually does
+
+Do not emit pseudo probes for sample profiling
+
+
+
+It can be negated with -fpseudo-probe-for-profiling.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-pseudo-probe-for-profiling -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fpseudo-probe-for-profiling`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

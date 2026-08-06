@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-c++-static-destructors"
 slug: "/tools/clang-flags/-fno-c%2B%2B-static-destructors/"
 description: "Disable C++ static destructor registration"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-c%2B%2B-static-destructors" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-c%2B%2B-static-destructors">
+
+## What this flag actually does
+
+Disable C++ static destructor registration
+
+
+
+It can be negated with -fc++-static-destructors.
+
+
+
+It is an alias for -fc++-static-destructors=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-c++-static-destructors -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Alias of**: `-fc++-static-destructors=`
+- **Negated by**: `-fc++-static-destructors`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

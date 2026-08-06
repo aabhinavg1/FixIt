@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcomment-block-commands="
 slug: "/tools/clang-flags/-fcomment-block-commands%3D/"
 description: "Treat each comma separated argument in &lt;arg&gt; as a documentation comment block command"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcomment-block-commands%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcomment-block-commands%3D">
+
+## What this flag actually does
+
+Treat each comma separated argument in &lt;arg> as a documentation comment block command
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcomment-block-commands= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

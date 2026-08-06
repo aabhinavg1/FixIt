@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-hwaddress-abi="
 slug: "/tools/clang-flags/-fsanitize-hwaddress-abi%3D/"
 description: "Select the HWAddressSanitizer ABI to target (interceptor or platform, default interceptor). This option is currently unused."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-hwaddress-abi%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-hwaddress-abi%3D">
+
+## What this flag actually does
+
+Select the HWAddressSanitizer ABI to target (interceptor or platform, default interceptor). This option is currently unused.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-hwaddress-abi= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

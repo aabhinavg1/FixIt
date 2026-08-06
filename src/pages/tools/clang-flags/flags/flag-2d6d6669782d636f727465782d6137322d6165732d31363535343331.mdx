@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-mfix-cortex-a72-aes-1655431"
 slug: "/tools/clang-flags/-mfix-cortex-a72-aes-1655431/"
 description: "Work around Cortex-A72 Erratum 1655431 (ARM only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mfix-cortex-a72-aes-1655431" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mfix-cortex-a72-aes-1655431">
+
+## What this flag actually does
+
+Work around Cortex-A72 Erratum 1655431 (ARM only)
+
+
+
+It is an alias for -mfix-cortex-a57-aes-1742098.
+
+## When to use it
+
+- You are targeting ARM and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting ARM.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mfix-cortex-a72-aes-1655431 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `ARM`
+- **Alias of**: `-mfix-cortex-a57-aes-1742098`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

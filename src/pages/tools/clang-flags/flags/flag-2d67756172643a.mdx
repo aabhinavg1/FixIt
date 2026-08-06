@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-guard:"
 slug: "/tools/clang-flags/-guard%3A/"
 description: "Enable Control Flow Guard with /guard:cf, or only the table with /guard:cf,nochecks. Enable EH Continuation Guard with /guard:ehcont"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-guard%3A" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-guard%3A">
+
+## What this flag actually does
+
+Enable Control Flow Guard with /guard:cf, or only the table with /guard:cf,nochecks. Enable EH Continuation Guard with /guard:ehcont
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -guard: main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

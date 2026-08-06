@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-split-dwarf-inlining"
 slug: "/tools/clang-flags/-fno-split-dwarf-inlining/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-split-dwarf-inlining" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-split-dwarf-inlining">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fsplit-dwarf-inlining.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-split-dwarf-inlining -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fsplit-dwarf-inlining`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

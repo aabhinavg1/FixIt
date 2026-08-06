@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-pedantic"
 slug: "/tools/clang-flags/-pedantic/"
 description: "Warn on language extensions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-pedantic" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-pedantic">
+
+## What this flag actually does
+
+Warn on language extensions
+
+## When to use it
+
+- You are targeting &lt;pedantic group> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;pedantic group>.
+
+## Usage example
+
+```bash
+clang++ -pedantic main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

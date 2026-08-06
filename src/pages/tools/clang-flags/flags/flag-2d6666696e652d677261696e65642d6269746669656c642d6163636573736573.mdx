@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffine-grained-bitfield-accesses"
 slug: "/tools/clang-flags/-ffine-grained-bitfield-accesses/"
 description: "Use separate accesses for consecutive bitfield runs with legal widths and alignments."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffine-grained-bitfield-accesses" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffine-grained-bitfield-accesses">
+
+## What this flag actually does
+
+Use separate accesses for consecutive bitfield runs with legal widths and alignments.
+
+
+
+It can be negated with -fno-fine-grained-bitfield-accesses.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffine-grained-bitfield-accesses -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-fine-grained-bitfield-accesses`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

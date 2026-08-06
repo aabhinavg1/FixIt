@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffixed-a2"
 slug: "/tools/clang-flags/-ffixed-a2/"
 description: "Reserve the a2 register (M68k only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffixed-a2" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffixed-a2">
+
+## What this flag actually does
+
+Reserve the a2 register (M68k only)
+
+## When to use it
+
+- You are targeting M68k and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting M68k.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -ffixed-a2 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `M68k`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-complete-member-pointers"
 slug: "/tools/clang-flags/-fno-complete-member-pointers/"
 description: "Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-complete-member-pointers" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-complete-member-pointers">
+
+## What this flag actually does
+
+Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
+
+
+
+It can be negated with -fcomplete-member-pointers.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-complete-member-pointers -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fcomplete-member-pointers`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

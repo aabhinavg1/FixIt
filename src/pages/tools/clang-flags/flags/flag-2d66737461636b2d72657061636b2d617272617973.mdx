@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fstack-repack-arrays"
 slug: "/tools/clang-flags/-fstack-repack-arrays/"
 description: "Controls whether the array temporaries created under **-frepack-arrays** are allocated on the stack or on the heap. By default, the heap is used. Allocations of polymorphic types a"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fstack-repack-arrays" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fstack-repack-arrays">
+
+## What this flag actually does
+
+Controls whether the array temporaries created under **-frepack-arrays** are allocated on the stack or on the heap. By default, the heap is used. Allocations of polymorphic types are always done on the heap, though this may change in future releases.
+
+
+
+It can be negated with -fno-stack-repack-arrays.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fstack-repack-arrays main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fno-stack-repack-arrays`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

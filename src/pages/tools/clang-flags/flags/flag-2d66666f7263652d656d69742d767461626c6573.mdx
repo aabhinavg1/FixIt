@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fforce-emit-vtables"
 slug: "/tools/clang-flags/-fforce-emit-vtables/"
 description: "In order to improve devirtualization, forces emitting of vtables even in modules where it isn't necessary. It causes more inline virtual functions to be emitted."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fforce-emit-vtables" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fforce-emit-vtables">
+
+## What this flag actually does
+
+In order to improve devirtualization, forces emitting of vtables even in modules where it isn't necessary. It causes more inline virtual functions to be emitted.
+
+
+
+It can be negated with -fno-force-emit-vtables.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fforce-emit-vtables -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-force-emit-vtables`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

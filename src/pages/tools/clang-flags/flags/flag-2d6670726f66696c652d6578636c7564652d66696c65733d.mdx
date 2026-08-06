@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fprofile-exclude-files="
 slug: "/tools/clang-flags/-fprofile-exclude-files%3D/"
 description: "Instrument only functions from files where names don't match all the regexes separated by a semi-colon"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fprofile-exclude-files%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fprofile-exclude-files%3D">
+
+## What this flag actually does
+
+Instrument only functions from files where names don't match all the regexes separated by a semi-colon
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fprofile-exclude-files= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-codegen"
 slug: "/tools/clang-flags/-fmodules-codegen/"
 description: "Generate code for uses of this module that assumes an explicit object file will be built for the module"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-codegen" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-codegen">
+
+## What this flag actually does
+
+Generate code for uses of this module that assumes an explicit object file will be built for the module
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fmodules-codegen -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

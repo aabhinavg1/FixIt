@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-mvscale-streaming-min="
 slug: "/tools/clang-flags/-mvscale-streaming-min%3D/"
 description: "Specify the vscale minimum. Defaults to \"1\". (AArch64 only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mvscale-streaming-min%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mvscale-streaming-min%3D">
+
+## What this flag actually does
+
+Specify the vscale minimum. Defaults to "1". (AArch64 only)
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -mvscale-streaming-min= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option, FC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

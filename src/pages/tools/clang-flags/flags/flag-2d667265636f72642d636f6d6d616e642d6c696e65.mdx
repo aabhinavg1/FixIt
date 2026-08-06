@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-frecord-command-line"
 slug: "/tools/clang-flags/-frecord-command-line/"
 description: "Generate a section named \".GCC.command.line\" containing the driver command-line. After linking, the section may contain multiple command lines, which will be individually terminate"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-frecord-command-line" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-frecord-command-line">
+
+## What this flag actually does
+
+Generate a section named ".GCC.command.line" containing the driver command-line. After linking, the section may contain multiple command lines, which will be individually terminated by null bytes. Separate arguments within a command line are combined with spaces; spaces and backslashes within an argument are escaped with backslashes. This format differs from the format of the equivalent section produced by GCC with the -frecord-gcc-switches flag. This option is currently only supported on ELF targets.
+
+
+
+It can be negated with -fno-record-command-line.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -frecord-command-line -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-record-command-line`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

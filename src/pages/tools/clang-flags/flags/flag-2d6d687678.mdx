@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mhvx"
 slug: "/tools/clang-flags/-mhvx/"
 description: "Enable Hexagon Vector eXtensions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mhvx" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mhvx">
+
+## What this flag actually does
+
+Enable Hexagon Vector eXtensions
+
+## When to use it
+
+- You are targeting Hexagon and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Hexagon.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mhvx main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Hexagon`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fplugin-arg-"
 slug: "/tools/clang-flags/-fplugin-arg-/"
 description: "Pass &lt;arg&gt; to plugin &lt;name&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fplugin-arg-" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fplugin-arg-">
+
+## What this flag actually does
+
+Pass &lt;arg> to plugin &lt;name>
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fplugin-arg-=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

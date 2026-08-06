@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-diagnostics-fixit-info"
 slug: "/tools/clang-flags/-fno-diagnostics-fixit-info/"
 description: "Do not include fixit information in diagnostics"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-diagnostics-fixit-info" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-diagnostics-fixit-info">
+
+## What this flag actually does
+
+Do not include fixit information in diagnostics
+
+
+
+It can be negated with -fdiagnostics-fixit-info.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-diagnostics-fixit-info -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fdiagnostics-fixit-info`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

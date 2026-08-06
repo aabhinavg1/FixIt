@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fintrinsic-modules-path"
 slug: "/tools/clang-flags/-fintrinsic-modules-path/"
 description: "This option specifies the location of pre-compiled intrinsic modules, if they are not in the default location expected by the compiler."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fintrinsic-modules-path" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fintrinsic-modules-path">
+
+## What this flag actually does
+
+This option specifies the location of pre-compiled intrinsic modules, if they are not in the default location expected by the compiler.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fintrinsic-modules-path <arg> -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

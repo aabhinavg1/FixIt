@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "--cuda-path="
 slug: "/tools/clang-flags/--cuda-path%3D/"
 description: "CUDA installation path"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--cuda-path%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--cuda-path%3D">
+
+## What this flag actually does
+
+CUDA installation path
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting CUDA options and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting CUDA options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --cuda-path= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `CUDA`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

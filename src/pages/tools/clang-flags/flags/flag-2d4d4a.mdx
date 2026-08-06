@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-MJ"
 slug: "/tools/clang-flags/-MJ/"
 description: "Flags controlling generation of a dependency file for ``make``-like build systems."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-MJ" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-MJ">
+
+## What this flag actually does
+
+Flags controlling generation of a dependency file for ``make``-like build systems.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Dependency file generation and want this joinedorseparate behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting Dependency file generation.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -MJ=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Dependency Files`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

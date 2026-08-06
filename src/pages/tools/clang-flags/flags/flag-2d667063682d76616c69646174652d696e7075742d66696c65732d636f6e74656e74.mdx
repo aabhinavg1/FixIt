@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fpch-validate-input-files-content"
 slug: "/tools/clang-flags/-fpch-validate-input-files-content/"
 description: "Validate PCH input files based on content if mtime differs"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fpch-validate-input-files-content" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fpch-validate-input-files-content">
+
+## What this flag actually does
+
+Validate PCH input files based on content if mtime differs
+
+
+
+It can be negated with -fno_pch-validate-input-files-content.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fpch-validate-input-files-content -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno_pch-validate-input-files-content`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-u"
 slug: "/tools/clang-flags/-u/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-u" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-u">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting &lt;u group> and want this joinedorseparate behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting &lt;u group>.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -u=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

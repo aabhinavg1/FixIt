@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fprofile-sample-accurate"
 slug: "/tools/clang-flags/-fprofile-sample-accurate/"
 description: "Specifies that the sample profile is accurate. If the sample profile is accurate, callsites without profile samples are marked as cold. Otherwise, treat callsites without profile s"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fprofile-sample-accurate" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fprofile-sample-accurate">
+
+## What this flag actually does
+
+Specifies that the sample profile is accurate. If the sample profile is accurate, callsites without profile samples are marked as cold. Otherwise, treat callsites without profile samples as if we have no profile
+
+
+
+It can be negated with -fno-profile-sample-accurate.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fprofile-sample-accurate -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-profile-sample-accurate`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gno-embed-source"
 slug: "/tools/clang-flags/-gno-embed-source/"
 description: "Restore the default behavior of not embedding source text in DWARF debug sections"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gno-embed-source" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gno-embed-source">
+
+## What this flag actually does
+
+Restore the default behavior of not embedding source text in DWARF debug sections
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gno-embed-source -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fobjc-avoid-heapify-local-blocks"
 slug: "/tools/clang-flags/-fobjc-avoid-heapify-local-blocks/"
 description: "Try to avoid heapifying local blocks"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fobjc-avoid-heapify-local-blocks" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fobjc-avoid-heapify-local-blocks">
+
+## What this flag actually does
+
+Try to avoid heapifying local blocks
+
+
+
+It can be negated with -fno-objc-avoid-heapify-local-blocks.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fobjc-avoid-heapify-local-blocks -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-objc-avoid-heapify-local-blocks`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-save-restore"
 slug: "/tools/clang-flags/-mno-save-restore/"
 description: "Disable using library calls for save and restore"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-save-restore" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-save-restore">
+
+## What this flag actually does
+
+Disable using library calls for save and restore
+
+## When to use it
+
+- You are targeting RISC-V and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting RISC-V.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mno-save-restore main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `RISC-V`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

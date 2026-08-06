@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-strict-floating-point"
 slug: "/tools/clang-flags/-fexperimental-strict-floating-point/"
 description: "Enables the use of non-default rounding modes and non-default exception handling on targets that are not currently ready."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-strict-floating-point" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-strict-floating-point">
+
+## What this flag actually does
+
+Enables the use of non-default rounding modes and non-default exception handling on targets that are not currently ready.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fexperimental-strict-floating-point -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

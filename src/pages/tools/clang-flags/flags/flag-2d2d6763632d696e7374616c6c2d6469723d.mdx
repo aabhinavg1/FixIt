@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "--gcc-install-dir="
 slug: "/tools/clang-flags/--gcc-install-dir%3D/"
 description: "Use GCC installation in the specified directory. The directory ends with path components like 'lib{,32,64}/gcc{,-cross}/$triple/$version'. Note: executables (e.g. ld) used by the c"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--gcc-install-dir%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--gcc-install-dir%3D">
+
+## What this flag actually does
+
+Use GCC installation in the specified directory. The directory ends with path components like 'lib&#123;,32,64&#125;/gcc&#123;,-cross&#125;/$triple/$version'. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ --gcc-install-dir= main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fapprox-func"
 slug: "/tools/clang-flags/-fapprox-func/"
 description: "Allow certain math function calls to be replaced with an approximately equivalent calculation"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fapprox-func" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fapprox-func">
+
+## What this flag actually does
+
+Allow certain math function calls to be replaced with an approximately equivalent calculation
+
+
+
+It can be negated with -fno-approx-func.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fapprox-func -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FC1Option, FlangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-approx-func`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

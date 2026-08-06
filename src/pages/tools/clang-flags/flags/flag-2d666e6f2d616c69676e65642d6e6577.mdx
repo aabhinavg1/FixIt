@@ -1,9 +1,47 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-aligned-new"
 slug: "/tools/clang-flags/-fno-aligned-new/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-aligned-new" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-aligned-new">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -faligned-new.
+
+
+
+It is an alias for -fno-aligned-allocation.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fno-aligned-new main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-fno-aligned-allocation`
+- **Negated by**: `-faligned-new`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

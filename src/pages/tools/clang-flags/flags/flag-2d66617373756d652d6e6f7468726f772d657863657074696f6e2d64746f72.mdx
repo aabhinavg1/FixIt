@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fassume-nothrow-exception-dtor"
 slug: "/tools/clang-flags/-fassume-nothrow-exception-dtor/"
 description: "Assume that exception objects' destructors are non-throwing"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fassume-nothrow-exception-dtor" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fassume-nothrow-exception-dtor">
+
+## What this flag actually does
+
+Assume that exception objects' destructors are non-throwing
+
+
+
+It can be negated with -fno-assume-nothrow-exception-dtor.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fassume-nothrow-exception-dtor -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-assume-nothrow-exception-dtor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

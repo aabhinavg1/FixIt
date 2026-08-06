@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-ms-tls-guards"
 slug: "/tools/clang-flags/-fno-ms-tls-guards/"
 description: "Do not emit code to perform on-demand initialization of thread-local variables"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-ms-tls-guards" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-ms-tls-guards">
+
+## What this flag actually does
+
+Do not emit code to perform on-demand initialization of thread-local variables
+
+
+
+It can be negated with -fms-tls-guards.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-ms-tls-guards -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fms-tls-guards`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

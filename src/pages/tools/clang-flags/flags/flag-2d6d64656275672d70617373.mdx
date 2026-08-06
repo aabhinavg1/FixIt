@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-mdebug-pass"
 slug: "/tools/clang-flags/-mdebug-pass/"
 description: "Enable additional debug output"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mdebug-pass" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mdebug-pass">
+
+## What this flag actually does
+
+Enable additional debug output
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Xclang -mdebug-pass <arg> -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

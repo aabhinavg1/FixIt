@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-fbfloat16-excess-precision="
 slug: "/tools/clang-flags/-fbfloat16-excess-precision%3D/"
 description: "Allows control over excess precision on targets where native support for BFloat16 precision types is not available. By default, excess precision is used to calculate intermediate r"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fbfloat16-excess-precision%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fbfloat16-excess-precision%3D">
+
+## What this flag actually does
+
+Allows control over excess precision on targets where native support for BFloat16 precision types is not available. By default, excess precision is used to calculate intermediate results following the rules specified in ISO C99.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -Xclang -fbfloat16-excess-precision= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

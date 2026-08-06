@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-Gis"
 slug: "/tools/clang-flags/-Gis/"
 description: "Enable IEEE strict mode (equivalent to -ffp-model=strict)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Gis" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Gis">
+
+## What this flag actually does
+
+Enable IEEE strict mode (equivalent to -ffp-model=strict)
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -Gis main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

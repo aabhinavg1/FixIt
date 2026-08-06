@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fprofile-remapping-file="
 slug: "/tools/clang-flags/-fprofile-remapping-file%3D/"
 description: "Use the remappings described in &lt;file&gt; to match the profile data against names in the program"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fprofile-remapping-file%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fprofile-remapping-file%3D">
+
+## What this flag actually does
+
+Use the remappings described in &lt;file> to match the profile data against names in the program
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fprofile-remapping-file= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

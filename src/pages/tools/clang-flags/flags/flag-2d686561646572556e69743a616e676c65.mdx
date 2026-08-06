@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-headerUnit:angle"
 slug: "/tools/clang-flags/-headerUnit%3Aangle/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-headerUnit%3Aangle" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-headerUnit%3Aangle">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this joinedorseparate behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -headerUnit:angle=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

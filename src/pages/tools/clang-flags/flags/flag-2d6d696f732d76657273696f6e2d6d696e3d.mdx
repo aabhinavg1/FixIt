@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-mios-version-min="
 slug: "/tools/clang-flags/-mios-version-min%3D/"
 description: "Set iOS deployment target"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mios-version-min%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mios-version-min%3D">
+
+## What this flag actually does
+
+Set iOS deployment target
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Target-dependent compilation options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mios-version-min= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

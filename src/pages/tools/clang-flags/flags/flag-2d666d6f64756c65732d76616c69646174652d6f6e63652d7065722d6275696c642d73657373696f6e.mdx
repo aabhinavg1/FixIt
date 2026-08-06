@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-validate-once-per-build-session"
 slug: "/tools/clang-flags/-fmodules-validate-once-per-build-session/"
 description: "Don't verify input files for the modules if the module has been successfully validated or loaded during this build session"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-validate-once-per-build-session" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-validate-once-per-build-session">
+
+## What this flag actually does
+
+Don't verify input files for the modules if the module has been successfully validated or loaded during this build session
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fmodules-validate-once-per-build-session main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

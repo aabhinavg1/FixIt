@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-function-groups="
 slug: "/tools/clang-flags/-fxray-function-groups%3D/"
 description: "Only instrument 1 of N groups"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-function-groups%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-function-groups%3D">
+
+## What this flag actually does
+
+Only instrument 1 of N groups
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-function-groups= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

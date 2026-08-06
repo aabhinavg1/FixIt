@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-Ofast"
 slug: "/tools/clang-flags/-Ofast/"
 description: "Flags controlling how much optimization should be performed."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Ofast" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Ofast">
+
+## What this flag actually does
+
+Flags controlling how much optimization should be performed.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -Ofast main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

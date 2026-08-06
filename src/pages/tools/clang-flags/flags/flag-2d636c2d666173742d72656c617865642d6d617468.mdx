@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-fast-relaxed-math"
 slug: "/tools/clang-flags/-cl-fast-relaxed-math/"
 description: "OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-fast-relaxed-math" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-fast-relaxed-math">
+
+## What this flag actually does
+
+OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-fast-relaxed-math main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

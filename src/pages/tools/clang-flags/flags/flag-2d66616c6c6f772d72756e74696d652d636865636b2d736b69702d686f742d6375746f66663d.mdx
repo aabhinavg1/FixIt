@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fallow-runtime-check-skip-hot-cutoff="
 slug: "/tools/clang-flags/-fallow-runtime-check-skip-hot-cutoff%3D/"
-description: "Exclude __builtin_allow_runtime_check for the top hottest code responsible for the given fraction of PGO counters (0.0 [default] = skip none; 1.0 = skip all). Argument format: &lt;"
+description: "Exclude __builtin_allow_runtime_check for the top hottest code responsible for the given fraction of PGO counters (0.0 [default] = skip none; 1.0 = skip all). Argument format: &lt;val"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fallow-runtime-check-skip-hot-cutoff%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fallow-runtime-check-skip-hot-cutoff%3D">
+
+## What this flag actually does
+
+Exclude __builtin_allow_runtime_check for the top hottest code responsible for the given fraction of PGO counters (0.0 [default] = skip none; 1.0 = skip all). Argument format: &lt;value>
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fallow-runtime-check-skip-hot-cutoff= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

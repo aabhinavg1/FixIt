@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-foffload-uniform-block"
 slug: "/tools/clang-flags/-foffload-uniform-block/"
 description: "Assume that kernels are launched with uniform block sizes (default true for CUDA/HIP and false otherwise)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-foffload-uniform-block" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-foffload-uniform-block">
+
+## What this flag actually does
+
+Assume that kernels are launched with uniform block sizes (default true for CUDA/HIP and false otherwise)
+
+
+
+It can be negated with -fno-offload-uniform-block.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -foffload-uniform-block -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-offload-uniform-block`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

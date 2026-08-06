@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-dwarf-ext-refs"
 slug: "/tools/clang-flags/-dwarf-ext-refs/"
 description: "Generate debug info with external references to clang modules or precompiled headers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-dwarf-ext-refs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-dwarf-ext-refs">
+
+## What this flag actually does
+
+Generate debug info with external references to clang modules or precompiled headers
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Xclang -dwarf-ext-refs -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-print-search-dirs"
 slug: "/tools/clang-flags/-print-search-dirs/"
 description: "Print the paths used for finding libraries and programs"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-print-search-dirs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-print-search-dirs">
+
+## What this flag actually does
+
+Print the paths used for finding libraries and programs
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -print-search-dirs main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

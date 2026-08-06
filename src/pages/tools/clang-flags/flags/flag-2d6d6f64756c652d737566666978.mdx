@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-module-suffix"
 slug: "/tools/clang-flags/-module-suffix/"
 description: "Use &lt;suffix&gt; as the suffix for module files (the default value is `.mod`)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-module-suffix" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-module-suffix">
+
+## What this flag actually does
+
+Use &lt;suffix> as the suffix for module files (the default value is `.mod`)
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -module-suffix <arg> -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

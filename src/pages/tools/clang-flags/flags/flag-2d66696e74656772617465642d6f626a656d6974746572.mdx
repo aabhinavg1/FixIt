@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fintegrated-objemitter"
 slug: "/tools/clang-flags/-fintegrated-objemitter/"
 description: "Use internal machine object code emitter."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fintegrated-objemitter" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fintegrated-objemitter">
+
+## What this flag actually does
+
+Use internal machine object code emitter.
+
+
+
+It can be negated with -fno-integrated-objemitter.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fintegrated-objemitter -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-integrated-objemitter`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

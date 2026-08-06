@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-dwarf-version="
 slug: "/tools/clang-flags/-dwarf-version%3D/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-dwarf-version%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-dwarf-version%3D">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Xclang -dwarf-version= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option, CC1AsOption, FC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

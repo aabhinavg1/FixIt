@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-atomic-fine-grained-memory"
 slug: "/tools/clang-flags/-fno-atomic-fine-grained-memory/"
 description: "Assume no atomic operations on fine-grained memory"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-atomic-fine-grained-memory" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-atomic-fine-grained-memory">
+
+## What this flag actually does
+
+Assume no atomic operations on fine-grained memory
+
+
+
+It can be negated with -fatomic-fine-grained-memory.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-atomic-fine-grained-memory -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fatomic-fine-grained-memory`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

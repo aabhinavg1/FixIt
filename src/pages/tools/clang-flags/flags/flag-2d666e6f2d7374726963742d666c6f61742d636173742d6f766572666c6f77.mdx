@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-strict-float-cast-overflow"
 slug: "/tools/clang-flags/-fno-strict-float-cast-overflow/"
 description: "Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-strict-float-cast-overflow" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-strict-float-cast-overflow">
+
+## What this flag actually does
+
+Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
+
+
+
+It can be negated with -fstrict-float-cast-overflow.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-strict-float-cast-overflow -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fstrict-float-cast-overflow`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

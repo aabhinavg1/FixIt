@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fhonor-infinities"
 slug: "/tools/clang-flags/-fhonor-infinities/"
 description: "Specify that floating-point optimizations are not allowed that assume arguments and results are not +-inf."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fhonor-infinities" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fhonor-infinities">
+
+## What this flag actually does
+
+Specify that floating-point optimizations are not allowed that assume arguments and results are not +-inf.
+
+
+
+It can be negated with -fno-honor-infinities.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fhonor-infinities -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-honor-infinities`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

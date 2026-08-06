@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fgpu-approx-transcendentals"
 slug: "/tools/clang-flags/-fgpu-approx-transcendentals/"
 description: "Use approximate transcendental functions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fgpu-approx-transcendentals" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fgpu-approx-transcendentals">
+
+## What this flag actually does
+
+Use approximate transcendental functions
+
+
+
+It can be negated with -fno-gpu-approx-transcendentals.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fgpu-approx-transcendentals -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-gpu-approx-transcendentals`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

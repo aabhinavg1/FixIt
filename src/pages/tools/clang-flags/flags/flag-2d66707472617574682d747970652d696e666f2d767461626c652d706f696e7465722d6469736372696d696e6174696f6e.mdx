@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fptrauth-type-info-vtable-pointer-discrimination"
 slug: "/tools/clang-flags/-fptrauth-type-info-vtable-pointer-discrimination/"
 description: "Enable type and address discrimination of vtable pointer of std::type_info"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fptrauth-type-info-vtable-pointer-discrimination" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fptrauth-type-info-vtable-pointer-discrimination">
+
+## What this flag actually does
+
+Enable type and address discrimination of vtable pointer of std::type_info
+
+
+
+It can be negated with -fno-ptrauth-type-info-vtable-pointer-discrimination.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fptrauth-type-info-vtable-pointer-discrimination -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-ptrauth-type-info-vtable-pointer-discrimination`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

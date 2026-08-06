@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-d1PP"
 slug: "/tools/clang-flags/-d1PP/"
 description: "Retain macro definitions in /E mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-d1PP" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-d1PP">
+
+## What this flag actually does
+
+Retain macro definitions in /E mode
+
+
+
+It is an alias for -dD.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -d1PP main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-dD`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

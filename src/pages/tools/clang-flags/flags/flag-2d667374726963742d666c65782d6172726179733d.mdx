@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fstrict-flex-arrays="
 slug: "/tools/clang-flags/-fstrict-flex-arrays%3D/"
-description: "If ``&lt;n&gt;`` is equal to 0, any trailing array member is considered a flexible array. If ``&lt;n&gt;`` is equal to 1, trailing array members of size 0, 1 or undefined are consi"
+description: "If ``&lt;n&gt;`` is equal to 0, any trailing array member is considered a flexible array. If ``&lt;n&gt;`` is equal to 1, trailing array members of size 0, 1 or undefined are considered flexib"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fstrict-flex-arrays%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fstrict-flex-arrays%3D">
+
+## What this flag actually does
+
+If ``&lt;n>`` is equal to 0, any trailing array member is considered a flexible array. If ``&lt;n>`` is equal to 1, trailing array members of size 0, 1 or undefined are considered flexible arrays. If ``&lt;n>`` is equal to 2, trailing array members of size 0 or undefined are considered flexible arrays. If ``&lt;n>`` is equal to 3, only trailing array members of undefined size are considered flexible arrays.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fstrict-flex-arrays= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

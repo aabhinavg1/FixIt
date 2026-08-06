@@ -183,7 +183,7 @@ const config = {
             position: 'left',
           },
           {
-            to: '/tools/clang-flags-explorer/',
+            to: '/tools/clang-flags/',
             label: 'Clang Flags',
             position: 'left',
           },

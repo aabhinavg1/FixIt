@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-hip-fp32-correctly-rounded-divide-sqrt"
 slug: "/tools/clang-flags/-fno-hip-fp32-correctly-rounded-divide-sqrt/"
 description: "Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-hip-fp32-correctly-rounded-divide-sqrt" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-hip-fp32-correctly-rounded-divide-sqrt">
+
+## What this flag actually does
+
+Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
+
+
+
+It can be negated with -fhip-fp32-correctly-rounded-divide-sqrt.
+
+## When to use it
+
+- You are targeting HIP options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting HIP options.
+
+## Usage example
+
+```bash
+clang++ -fno-hip-fp32-correctly-rounded-divide-sqrt main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `HIP`
+- **Negated by**: `-fhip-fp32-correctly-rounded-divide-sqrt`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

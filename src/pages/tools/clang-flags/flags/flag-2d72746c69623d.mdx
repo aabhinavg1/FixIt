@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-rtlib="
 slug: "/tools/clang-flags/-rtlib%3D/"
 description: "Compiler runtime library to use"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-rtlib%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-rtlib%3D">
+
+## What this flag actually does
+
+Compiler runtime library to use
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -rtlib= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption, FlangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

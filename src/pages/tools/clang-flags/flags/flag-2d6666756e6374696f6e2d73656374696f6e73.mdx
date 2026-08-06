@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffunction-sections"
 slug: "/tools/clang-flags/-ffunction-sections/"
 description: "Place each function in its own section"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffunction-sections" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffunction-sections">
+
+## What this flag actually does
+
+Place each function in its own section
+
+
+
+It can be negated with -fno-function-sections.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffunction-sections -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-function-sections`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

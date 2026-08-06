@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-memory-param-retval"
 slug: "/tools/clang-flags/-fsanitize-memory-param-retval/"
 description: "Enable detection of uninitialized parameters and return values"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-memory-param-retval" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-memory-param-retval">
+
+## What this flag actually does
+
+Enable detection of uninitialized parameters and return values
+
+
+
+It can be negated with -fno-sanitize-memory-param-retval.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-memory-param-retval main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-sanitize-memory-param-retval`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

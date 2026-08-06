@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-frecovery-ast-type"
 slug: "/tools/clang-flags/-frecovery-ast-type/"
 description: "Preserve the type for recovery expressions when possible"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-frecovery-ast-type" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-frecovery-ast-type">
+
+## What this flag actually does
+
+Preserve the type for recovery expressions when possible
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-recovery-ast-type.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -frecovery-ast-type -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-recovery-ast-type`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

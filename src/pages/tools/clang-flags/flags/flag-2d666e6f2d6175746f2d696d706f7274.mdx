@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-auto-import"
 slug: "/tools/clang-flags/-fno-auto-import/"
 description: "MinGW specific. Disable support for automatic dllimport in code generation and linking"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-auto-import" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-auto-import">
+
+## What this flag actually does
+
+MinGW specific. Disable support for automatic dllimport in code generation and linking
+
+
+
+It can be negated with -fauto-import.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-auto-import -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fauto-import`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

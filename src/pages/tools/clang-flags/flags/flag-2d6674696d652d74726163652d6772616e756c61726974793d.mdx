@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-ftime-trace-granularity="
 slug: "/tools/clang-flags/-ftime-trace-granularity%3D/"
 description: "Minimum time granularity (in microseconds) traced by time profiler"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ftime-trace-granularity%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ftime-trace-granularity%3D">
+
+## What this flag actually does
+
+Minimum time granularity (in microseconds) traced by time profiler
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ftime-trace-granularity= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

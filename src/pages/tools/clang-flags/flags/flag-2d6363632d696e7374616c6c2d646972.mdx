@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-ccc-install-dir"
 slug: "/tools/clang-flags/-ccc-install-dir/"
 description: "Simulate installation in the given directory"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ccc-install-dir" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ccc-install-dir">
+
+## What this flag actually does
+
+Simulate installation in the given directory
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -ccc-install-dir <arg> -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "--no-cuda-version-check"
 slug: "/tools/clang-flags/--no-cuda-version-check/"
 description: "Don't error out if the detected version of the CUDA install is too low for the requested CUDA gpu architecture."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--no-cuda-version-check" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--no-cuda-version-check">
+
+## What this flag actually does
+
+Don't error out if the detected version of the CUDA install is too low for the requested CUDA gpu architecture.
+
+## When to use it
+
+- You are targeting CUDA options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting CUDA options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --no-cuda-version-check main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `CUDA`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

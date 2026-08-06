@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-finstrument-functions-after-inlining"
 slug: "/tools/clang-flags/-finstrument-functions-after-inlining/"
 description: "Like -finstrument-functions, but insert the calls after inlining"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-finstrument-functions-after-inlining" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-finstrument-functions-after-inlining">
+
+## What this flag actually does
+
+Like -finstrument-functions, but insert the calls after inlining
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -finstrument-functions-after-inlining -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-annotate-debug-info"
 slug: "/tools/clang-flags/-fsanitize-annotate-debug-info/"
 description: "Allow compiler to annotate sanitizer instrumentation with extra debug info for all sanitizers, where supported"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-annotate-debug-info" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-annotate-debug-info">
+
+## What this flag actually does
+
+Allow compiler to annotate sanitizer instrumentation with extra debug info for all sanitizers, where supported
+
+
+
+It can be negated with -fno-sanitize-annotate-debug-info.
+
+
+
+It is an alias for -fsanitize-annotate-debug-info=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-annotate-debug-info main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Alias of**: `-fsanitize-annotate-debug-info=`
+- **Negated by**: `-fno-sanitize-annotate-debug-info`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

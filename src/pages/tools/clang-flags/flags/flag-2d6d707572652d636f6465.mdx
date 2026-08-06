@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-mpure-code"
 slug: "/tools/clang-flags/-mpure-code/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mpure-code" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mpure-code">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It is an alias for -mexecute-only.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mpure-code main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-mexecute-only`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

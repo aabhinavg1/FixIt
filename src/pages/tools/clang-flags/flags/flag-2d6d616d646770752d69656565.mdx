@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mamdgpu-ieee"
 slug: "/tools/clang-flags/-mamdgpu-ieee/"
 description: "Sets the IEEE bit in the expected default floating point mode register. Floating point opcodes that support exception flag gathering quiet and propagate signaling NaN inputs per IE"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mamdgpu-ieee" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mamdgpu-ieee">
+
+## What this flag actually does
+
+Sets the IEEE bit in the expected default floating point mode register. Floating point opcodes that support exception flag gathering quiet and propagate signaling NaN inputs per IEEE 754-2008. This option changes the ABI. (AMDGPU only)
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mamdgpu-ieee -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

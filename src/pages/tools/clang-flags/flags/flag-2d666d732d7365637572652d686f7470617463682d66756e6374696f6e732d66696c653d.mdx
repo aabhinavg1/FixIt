@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fms-secure-hotpatch-functions-file="
 slug: "/tools/clang-flags/-fms-secure-hotpatch-functions-file%3D/"
 description: "Path to a file that contains a list of mangled names of functions that should be hot-patched for Windows Secure Hot-Patching"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fms-secure-hotpatch-functions-file%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fms-secure-hotpatch-functions-file%3D">
+
+## What this flag actually does
+
+Path to a file that contains a list of mangled names of functions that should be hot-patched for Windows Secure Hot-Patching
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fms-secure-hotpatch-functions-file= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

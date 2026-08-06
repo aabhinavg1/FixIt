@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-nostdlib++"
 slug: "/tools/clang-flags/-nostdlib%2B%2B/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-nostdlib%2B%2B" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-nostdlib%2B%2B">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -nostdlib++ main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

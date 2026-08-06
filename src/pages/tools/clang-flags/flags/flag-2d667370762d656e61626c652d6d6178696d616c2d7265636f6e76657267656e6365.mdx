@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fspv-enable-maximal-reconvergence"
 slug: "/tools/clang-flags/-fspv-enable-maximal-reconvergence/"
 description: "Enables the MaximallyReconvergesKHR execution mode for this module. This ensures that control flow reconverges at well-defined merge points as defined by the Vulkan spec."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fspv-enable-maximal-reconvergence" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fspv-enable-maximal-reconvergence">
+
+## What this flag actually does
+
+Enables the MaximallyReconvergesKHR execution mode for this module. This ensures that control flow reconverges at well-defined merge points as defined by the Vulkan spec.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -fspv-enable-maximal-reconvergence main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, DXCOption
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

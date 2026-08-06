@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload-arch="
 slug: "/tools/clang-flags/--offload-arch%3D/"
 description: "Specify an offloading device architecture for CUDA, HIP, or OpenMP. (e.g. sm_35). If 'native' is used the compiler will detect locally installed architectures. For HIP offloading, "
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload-arch%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload-arch%3D">
+
+## What this flag actually does
+
+Specify an offloading device architecture for CUDA, HIP, or OpenMP. (e.g. sm_35). If 'native' is used the compiler will detect locally installed architectures. For HIP offloading, the device architecture can be followed by target ID features delimited by a colon (e.g. gfx908:xnack+:sramecc-). May be specified more than once.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting Common Offloading options.
+
+## Usage example
+
+```bash
+clang++ --offload-arch= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

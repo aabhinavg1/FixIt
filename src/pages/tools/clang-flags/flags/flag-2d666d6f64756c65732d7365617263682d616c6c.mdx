@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-search-all"
 slug: "/tools/clang-flags/-fmodules-search-all/"
 description: "Search even non-imported modules to resolve references"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-search-all" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-search-all">
+
+## What this flag actually does
+
+Search even non-imported modules to resolve references
+
+
+
+It can be negated with -fno-modules-search-all.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmodules-search-all -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-modules-search-all`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

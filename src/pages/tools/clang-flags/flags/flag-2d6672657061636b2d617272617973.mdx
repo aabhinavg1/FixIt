@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-frepack-arrays"
 slug: "/tools/clang-flags/-frepack-arrays/"
 description: "Create temporary copies of non-contiguous assumed shape dummy arrays in subprogram prologues, and destroy them in subprogram epilogues. The temporary copy is initialized with value"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-frepack-arrays" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-frepack-arrays">
+
+## What this flag actually does
+
+Create temporary copies of non-contiguous assumed shape dummy arrays in subprogram prologues, and destroy them in subprogram epilogues. The temporary copy is initialized with values from the original array in the prologue, if needed. In the epilogue, the current values in the temporary array are copied into the original array, if needed. Accessing the contiguous temporary in the program code may result in faster execution comparing to accessing elements of the original array, when they are sparse in memory. At the same time, the overhead of copying values between the original and the temporary arrays may be significant, which may slow down some programs. Enabling array repacking may also change the behavior of certain programs: * The copy actions may introduce a data race in valid OpenACC/OpenMP programs. For example, if different threads execute the same subprogram with a non-contiguous assumed shape dummy array, and the different threads access unrelated parts of the array, then the whole array copy made in each thread will cause a data race. * OpenACC/OpenMP offload programs may behave incorrectly with regards to the device data environment, due to the fact that the original array and the temporary may have different presence status on the device. * ``IS_CONTIGUOUS`` intrinsic may return ``TRUE`` with the array repacking enabled, whereas if would return ``FALSE`` with the repacking disabled. * The result of ``LOC`` intrinsic applied to an actual argument associated with a non-contiguous assumed shape dummy array, may be different from the result of ``LOC`` applied to the dummy array.
+
+
+
+It can be negated with -fno-repack-arrays.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -frepack-arrays main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fno-repack-arrays`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

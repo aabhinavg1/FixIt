@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-library"
 slug: "/tools/clang-flags/-fexperimental-library/"
 description: "Control whether unstable and experimental library features are enabled. This option enables various library features that are either experimental (also known as TSes), or have been"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-library" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-library">
+
+## What this flag actually does
+
+Control whether unstable and experimental library features are enabled. This option enables various library features that are either experimental (also known as TSes), or have been but are not stable yet in the selected Standard Library implementation. It is not recommended to use this option in production code, since neither ABI nor API stability are guaranteed. This is intended to provide a preview of features that will ship in the future for experimentation purposes
+
+
+
+It can be negated with -fno-experimental-library.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fexperimental-library -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-experimental-library`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

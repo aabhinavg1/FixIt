@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-mtp="
 slug: "/tools/clang-flags/-mtp%3D/"
 description: "Thread pointer access method. For AArch32: 'soft' uses a function call, or 'tpidrurw', 'tpidruro' or 'tpidrprw' use the three CP15 registers. 'cp15' is an alias for 'tpidruro'. For"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mtp%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mtp%3D">
+
+## What this flag actually does
+
+Thread pointer access method. For AArch32: 'soft' uses a function call, or 'tpidrurw', 'tpidruro' or 'tpidrprw' use the three CP15 registers. 'cp15' is an alias for 'tpidruro'. For AArch64: 'tpidr_el0', 'tpidr_el1', 'tpidr_el2', 'tpidr_el3' or 'tpidrro_el0' use the five system registers. 'elN' is an alias for 'tpidr_elN'.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting ARM and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting ARM.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mtp= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `ARM`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

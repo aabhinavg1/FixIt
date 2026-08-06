@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-I"
 slug: "/tools/clang-flags/-I/"
 description: "Add directory to include search path. For C++ inputs, if there are multiple -I options, these directories are searched in the order they are given before the standard system direct"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-I" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-I">
+
+## What this flag actually does
+
+Add directory to include search path. For C++ inputs, if there are multiple -I options, these directories are searched in the order they are given before the standard system directories are searched. If the same directory is in the SYSTEM include search paths, for example if also specified with -isystem, the -I option will be ignored
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -I=<arg> -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

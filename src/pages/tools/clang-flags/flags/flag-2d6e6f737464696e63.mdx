@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-nostdinc"
 slug: "/tools/clang-flags/-nostdinc/"
 description: "Flags controlling how ``#include``\\s are resolved to files."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-nostdinc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-nostdinc">
+
+## What this flag actually does
+
+Flags controlling how ``#include``\s are resolved to files.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -nostdinc -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

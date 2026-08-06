@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsystem-module"
 slug: "/tools/clang-flags/-fsystem-module/"
 description: "Build this module as a system module. Only used with -emit-module"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsystem-module" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsystem-module">
+
+## What this flag actually does
+
+Build this module as a system module. Only used with -emit-module
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fsystem-module main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

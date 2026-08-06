@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-unparse"
 slug: "/tools/clang-flags/-fdebug-unparse/"
 description: "Run the parser and the semantic checks. Then unparse the parse-tree and output the generated Fortran source file."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-unparse" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-unparse">
+
+## What this flag actually does
+
+Run the parser and the semantic checks. Then unparse the parse-tree and output the generated Fortran source file.
+
+## When to use it
+
+- You are targeting Actions and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Actions.
+
+## Usage example
+
+```bash
+clang++ -fdebug-unparse main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option
+- **Stage**: driver, category `Actions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

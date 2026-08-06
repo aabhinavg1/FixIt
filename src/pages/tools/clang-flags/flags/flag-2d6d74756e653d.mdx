@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-mtune="
 slug: "/tools/clang-flags/-mtune%3D/"
 description: "Only supported on AArch64, PowerPC, RISC-V, SPARC, SystemZ, and X86"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mtune%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mtune%3D">
+
+## What this flag actually does
+
+Only supported on AArch64, PowerPC, RISC-V, SPARC, SystemZ, and X86
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mtune= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

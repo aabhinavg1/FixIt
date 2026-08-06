@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-strength-reduce"
 slug: "/tools/clang-flags/-fno-strength-reduce/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-strength-reduce" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-strength-reduce">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fstrength-reduce.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -fno-strength-reduce main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Optimization`
+- **Negated by**: `-fstrength-reduce`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

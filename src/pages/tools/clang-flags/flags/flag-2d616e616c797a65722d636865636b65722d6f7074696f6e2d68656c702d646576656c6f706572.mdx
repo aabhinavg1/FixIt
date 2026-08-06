@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyzer-checker-option-help-developer"
 slug: "/tools/clang-flags/-analyzer-checker-option-help-developer/"
 description: "Display the list of checker and package options meant for development purposes only"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyzer-checker-option-help-developer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyzer-checker-option-help-developer">
+
+## What this flag actually does
+
+Display the list of checker and package options meant for development purposes only
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyzer-checker-option-help-developer -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-aapcs-bitfield-width"
 slug: "/tools/clang-flags/-fno-aapcs-bitfield-width/"
 description: "Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-aapcs-bitfield-width" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-aapcs-bitfield-width">
+
+## What this flag actually does
+
+Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
+
+
+
+It can be negated with -faapcs-bitfield-width.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -fno-aapcs-bitfield-width main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Negated by**: `-faapcs-bitfield-width`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

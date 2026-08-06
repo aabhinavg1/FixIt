@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fgpu-sanitize"
 slug: "/tools/clang-flags/-fgpu-sanitize/"
 description: "Enable sanitizer for supported offloading devices"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fgpu-sanitize" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fgpu-sanitize">
+
+## What this flag actually does
+
+Enable sanitizer for supported offloading devices
+
+
+
+It can be negated with -fno-gpu-sanitize.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fgpu-sanitize main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Sanitizer`
+- **Negated by**: `-fno-gpu-sanitize`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

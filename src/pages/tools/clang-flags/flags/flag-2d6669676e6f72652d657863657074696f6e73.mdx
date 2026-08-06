@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fignore-exceptions"
 slug: "/tools/clang-flags/-fignore-exceptions/"
 description: "Enable support for ignoring exception handling constructs"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fignore-exceptions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fignore-exceptions">
+
+## What this flag actually does
+
+Enable support for ignoring exception handling constructs
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fignore-exceptions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

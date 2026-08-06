@@ -1462,3 +1462,7 @@ html[data-theme='dark'] .cmp-chip--shared {
   width: 100% !important;
   max-width: 100% !important;
 }
+
+.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row > .col.col--2 {
+  display: none !important;
+}

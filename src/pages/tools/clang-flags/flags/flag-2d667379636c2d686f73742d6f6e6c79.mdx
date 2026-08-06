@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsycl-host-only"
 slug: "/tools/clang-flags/-fsycl-host-only/"
 description: "Compile SYCL code for host only. Has no effect on non-SYCL compilations"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsycl-host-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsycl-host-only">
+
+## What this flag actually does
+
+Compile SYCL code for host only. Has no effect on non-SYCL compilations
+
+
+
+It is an alias for --offload-host-only.
+
+## When to use it
+
+- You are targeting SYCL options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting SYCL options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fsycl-host-only main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `SYCL`
+- **Alias of**: `--offload-host-only`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

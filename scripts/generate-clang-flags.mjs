@@ -289,7 +289,7 @@ function buildWhenToUse(option) {
     'Code Generation': ['Code generation tuning', 'Frontend lowering experiments', 'Target-independent compilation control'],
     Compilation: ['Compilation-only workflows', 'Build pipelines that do not link immediately'],
   };
-  return byCategory[option.category] || ['When the flag matches the behavior you need'];
+  return byCategory[option.category] || [];
 }
 
 function buildWhenNotToUse(option) {
@@ -303,7 +303,7 @@ function buildWhenNotToUse(option) {
     'Code Generation': ['When you are only editing diagnostics or preprocessing', 'When the option does not affect your current build phase'],
     Compilation: ['Link-only operations', 'When the flag belongs in a later build phase'],
   };
-  return byCategory[option.category] || ['When the flag is not relevant to this build'];
+  return byCategory[option.category] || [];
 }
 
 function buildSearchText(option) {

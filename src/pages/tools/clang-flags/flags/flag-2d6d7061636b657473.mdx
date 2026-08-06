@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mpackets"
 slug: "/tools/clang-flags/-mpackets/"
 description: "Enable generation of instruction packets"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mpackets" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mpackets">
+
+## What this flag actually does
+
+Enable generation of instruction packets
+
+## When to use it
+
+- You are targeting Hexagon and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Hexagon.
+
+## Usage example
+
+```bash
+clang++ -mpackets main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Hexagon`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

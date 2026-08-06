@@ -1,9 +1,47 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-record-gcc-switches"
 slug: "/tools/clang-flags/-fno-record-gcc-switches/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-record-gcc-switches" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-record-gcc-switches">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -frecord-gcc-switches.
+
+
+
+It is an alias for -fno-record-command-line.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fno-record-gcc-switches main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-fno-record-command-line`
+- **Negated by**: `-frecord-gcc-switches`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

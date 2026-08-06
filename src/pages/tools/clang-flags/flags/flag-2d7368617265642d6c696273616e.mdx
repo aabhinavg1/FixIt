@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-shared-libsan"
 slug: "/tools/clang-flags/-shared-libsan/"
 description: "Dynamically link the sanitizer runtime"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-shared-libsan" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-shared-libsan">
+
+## What this flag actually does
+
+Dynamically link the sanitizer runtime
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -shared-libsan main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

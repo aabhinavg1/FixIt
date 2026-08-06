@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-vfsoverlay"
 slug: "/tools/clang-flags/-vfsoverlay/"
 description: "Overlay the virtual filesystem described by file over the real file system. Additionally, pass this overlay file to the linker if it supports it"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-vfsoverlay" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-vfsoverlay">
+
+## What this flag actually does
+
+Overlay the virtual filesystem described by file over the real file system. Additionally, pass this overlay file to the linker if it supports it
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -vfsoverlay=<arg> main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

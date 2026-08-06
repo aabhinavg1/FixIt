@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize="
 slug: "/tools/clang-flags/-fsanitize%3D/"
 description: "Turn on runtime checks for various forms of undefined or suspicious behavior. See user manual for available checks"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize%3D">
+
+## What this flag actually does
+
+Turn on runtime checks for various forms of undefined or suspicious behavior. See user manual for available checks
+
+
+
+It can be negated with -fno-sanitize=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-sanitize=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-msave-reg-params"
 slug: "/tools/clang-flags/-msave-reg-params/"
 description: "Save arguments passed by registers to ABI-defined stack positions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-msave-reg-params" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-msave-reg-params">
+
+## What this flag actually does
+
+Save arguments passed by registers to ABI-defined stack positions
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -msave-reg-params -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

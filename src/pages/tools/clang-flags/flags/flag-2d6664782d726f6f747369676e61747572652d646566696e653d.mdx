@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdx-rootsignature-define="
 slug: "/tools/clang-flags/-fdx-rootsignature-define%3D/"
 description: "Override entry function root signature with root signature at given macro name."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdx-rootsignature-define%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdx-rootsignature-define%3D">
+
+## What this flag actually does
+
+Override entry function root signature with root signature at given macro name.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -fdx-rootsignature-define= -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

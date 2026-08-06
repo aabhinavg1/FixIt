@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "-Xclang="
 slug: "/tools/clang-flags/-Xclang%3D/"
 description: "Flags controlling the behavior of Clang during compilation. These flags have no effect during actions that do not perform compilation."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Xclang%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Xclang%3D">
+
+## What this flag actually does
+
+Flags controlling the behavior of Clang during compilation. These flags have no effect during actions that do not perform compilation.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -Xclang.
+
+## When to use it
+
+- Compilation-only workflows
+- Build pipelines that do not link immediately
+
+## When not to use it
+
+- Link-only operations
+- When the flag belongs in a later build phase
+
+## Usage example
+
+```bash
+clang++ -Xclang= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Compilation`
+- **Alias of**: `-Xclang`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

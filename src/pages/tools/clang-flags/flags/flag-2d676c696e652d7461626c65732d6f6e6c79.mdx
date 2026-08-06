@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gline-tables-only"
 slug: "/tools/clang-flags/-gline-tables-only/"
 description: "Emit debug line number tables only"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gline-tables-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gline-tables-only">
+
+## What this flag actually does
+
+Emit debug line number tables only
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gline-tables-only -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

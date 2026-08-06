@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-seses"
 slug: "/tools/clang-flags/-mno-seses/"
 description: "Disable speculative execution side effect suppression (SESES)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-seses" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-seses">
+
+## What this flag actually does
+
+Disable speculative execution side effect suppression (SESES)
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mno-seses -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

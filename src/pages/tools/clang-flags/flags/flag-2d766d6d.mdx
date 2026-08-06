@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-vmm"
 slug: "/tools/clang-flags/-vmm/"
 description: "Set the default most-general representation to multiple inheritance"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-vmm" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-vmm">
+
+## What this flag actually does
+
+Set the default most-general representation to multiple inheritance
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -vmm main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

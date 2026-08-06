@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-execution-charset:"
 slug: "/tools/clang-flags/-execution-charset%3A/"
 description: "Set runtime encoding, supports only UTF-8"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-execution-charset%3A" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-execution-charset%3A">
+
+## What this flag actually does
+
+Set runtime encoding, supports only UTF-8
+
+
+
+It is an alias for -fexec-charset=.
+
+## When to use it
+
+- You are targeting &lt;clang-cl compile-only options> and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting &lt;clang-cl compile-only options>.
+
+## Usage example
+
+```bash
+clang++ -execution-charset: main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-fexec-charset=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

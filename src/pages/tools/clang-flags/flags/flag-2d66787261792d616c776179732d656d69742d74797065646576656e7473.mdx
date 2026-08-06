@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fxray-always-emit-typedevents"
 slug: "/tools/clang-flags/-fxray-always-emit-typedevents/"
 description: "Always emit __xray_typedevent(...) calls even if the containing function is not always instrumented"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fxray-always-emit-typedevents" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fxray-always-emit-typedevents">
+
+## What this flag actually does
+
+Always emit __xray_typedevent(...) calls even if the containing function is not always instrumented
+
+
+
+It can be negated with -fno-xray-always-emit-typedevents.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fxray-always-emit-typedevents -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-xray-always-emit-typedevents`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

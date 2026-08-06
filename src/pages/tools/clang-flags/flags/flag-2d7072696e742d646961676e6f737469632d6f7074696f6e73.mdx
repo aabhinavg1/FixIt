@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-print-diagnostic-options"
 slug: "/tools/clang-flags/-print-diagnostic-options/"
 description: "Print all of Clang's warning options"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-print-diagnostic-options" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-print-diagnostic-options">
+
+## What this flag actually does
+
+Print all of Clang's warning options
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -print-diagnostic-options -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

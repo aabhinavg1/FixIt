@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-frewrite-includes"
 slug: "/tools/clang-flags/-frewrite-includes/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-frewrite-includes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-frewrite-includes">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-rewrite-includes.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -frewrite-includes -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-rewrite-includes`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

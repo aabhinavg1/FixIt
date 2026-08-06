@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-openmp-extensions"
 slug: "/tools/clang-flags/-fno-openmp-extensions/"
 description: "Disable all Clang extensions for OpenMP directives and clauses"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-openmp-extensions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-openmp-extensions">
+
+## What this flag actually does
+
+Disable all Clang extensions for OpenMP directives and clauses
+
+
+
+It can be negated with -fopenmp-extensions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-openmp-extensions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fopenmp-extensions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

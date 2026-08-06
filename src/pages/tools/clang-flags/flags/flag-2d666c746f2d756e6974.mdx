@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-flto-unit"
 slug: "/tools/clang-flags/-flto-unit/"
 description: "Emit IR to support LTO unit features (CFI, whole program vtable opt)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flto-unit" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flto-unit">
+
+## What this flag actually does
+
+Emit IR to support LTO unit features (CFI, whole program vtable opt)
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-lto-unit.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -flto-unit -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-lto-unit`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

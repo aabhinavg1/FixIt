@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcrash-diagnostics"
 slug: "/tools/clang-flags/-fcrash-diagnostics/"
 description: "Enable crash diagnostic reporting (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcrash-diagnostics" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcrash-diagnostics">
+
+## What this flag actually does
+
+Enable crash diagnostic reporting (default)
+
+
+
+It can be negated with -fno-crash-diagnostics.
+
+
+
+It is an alias for -fcrash-diagnostics=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcrash-diagnostics -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Code Generation`
+- **Alias of**: `-fcrash-diagnostics=`
+- **Negated by**: `-fno-crash-diagnostics`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

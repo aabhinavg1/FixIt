@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-sanitize-ignorelist"
 slug: "/tools/clang-flags/-fno-sanitize-ignorelist/"
 description: "Don't use ignorelist file for sanitizers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-sanitize-ignorelist" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-sanitize-ignorelist">
+
+## What this flag actually does
+
+Don't use ignorelist file for sanitizers
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fno-sanitize-ignorelist main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

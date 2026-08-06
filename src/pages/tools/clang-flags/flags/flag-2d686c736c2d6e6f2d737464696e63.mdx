@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-hlsl-no-stdinc"
 slug: "/tools/clang-flags/-hlsl-no-stdinc/"
 description: "HLSL only. Disables all standard includes containing non-native compiler types and functions."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-hlsl-no-stdinc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-hlsl-no-stdinc">
+
+## What this flag actually does
+
+HLSL only. Disables all standard includes containing non-native compiler types and functions.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -hlsl-no-stdinc -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

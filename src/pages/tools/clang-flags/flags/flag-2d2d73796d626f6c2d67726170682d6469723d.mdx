@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "--symbol-graph-dir="
 slug: "/tools/clang-flags/--symbol-graph-dir%3D/"
 description: "Directory in which to emit symbol graphs."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--symbol-graph-dir%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--symbol-graph-dir%3D">
+
+## What this flag actually does
+
+Directory in which to emit symbol graphs.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ --symbol-graph-dir= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

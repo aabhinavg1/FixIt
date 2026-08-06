@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcodegen-data-generate"
 slug: "/tools/clang-flags/-fcodegen-data-generate/"
 description: "Emit codegen data into the object file. LLD for MachO (currently) merges them into default.cgdata."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcodegen-data-generate" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcodegen-data-generate">
+
+## What this flag actually does
+
+Emit codegen data into the object file. LLD for MachO (currently) merges them into default.cgdata.
+
+
+
+It is an alias for -fcodegen-data-generate=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcodegen-data-generate -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Alias of**: `-fcodegen-data-generate=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

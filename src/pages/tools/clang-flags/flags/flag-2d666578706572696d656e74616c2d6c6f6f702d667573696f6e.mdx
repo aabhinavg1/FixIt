@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-loop-fusion"
 slug: "/tools/clang-flags/-fexperimental-loop-fusion/"
 description: "EnableEnable the loop fusion pass"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-loop-fusion" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-loop-fusion">
+
+## What this flag actually does
+
+EnableEnable the loop fusion pass
+
+
+
+It can be negated with -fno-experimental-loop-fusion.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fexperimental-loop-fusion -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-experimental-loop-fusion`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdiagnostics-absolute-paths"
 slug: "/tools/clang-flags/-fdiagnostics-absolute-paths/"
 description: "Print absolute paths in diagnostics"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdiagnostics-absolute-paths" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdiagnostics-absolute-paths">
+
+## What this flag actually does
+
+Print absolute paths in diagnostics
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdiagnostics-absolute-paths -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

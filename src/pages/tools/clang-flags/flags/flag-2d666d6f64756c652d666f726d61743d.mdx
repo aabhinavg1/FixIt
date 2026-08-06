@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodule-format="
 slug: "/tools/clang-flags/-fmodule-format%3D/"
 description: "Select the container format for clang modules and PCH. Supported options are 'raw' and 'obj'."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodule-format%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodule-format%3D">
+
+## What this flag actually does
+
+Select the container format for clang modules and PCH. Supported options are 'raw' and 'obj'.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fmodule-format= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-modules-search-all"
 slug: "/tools/clang-flags/-fno-modules-search-all/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-modules-search-all" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-modules-search-all">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fmodules-search-all.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-modules-search-all -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fmodules-search-all`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

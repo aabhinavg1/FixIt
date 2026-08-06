@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-thread-memory-access"
 slug: "/tools/clang-flags/-fsanitize-thread-memory-access/"
 description: "Enable memory access instrumentation in ThreadSanitizer (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-thread-memory-access" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-thread-memory-access">
+
+## What this flag actually does
+
+Enable memory access instrumentation in ThreadSanitizer (default)
+
+
+
+It can be negated with -fno-sanitize-thread-memory-access.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-thread-memory-access main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-sanitize-thread-memory-access`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

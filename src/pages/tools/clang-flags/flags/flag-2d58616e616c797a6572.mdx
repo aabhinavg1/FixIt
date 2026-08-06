@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "-Xanalyzer"
 slug: "/tools/clang-flags/-Xanalyzer/"
 description: "Flags controlling the behavior of the Clang Static Analyzer."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Xanalyzer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Xanalyzer">
+
+## What this flag actually does
+
+Flags controlling the behavior of the Clang Static Analyzer.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Static analyzer options and want this separate behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this separate is accepted only when targeting Static analyzer options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -Xanalyzer <arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Static Analysis`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

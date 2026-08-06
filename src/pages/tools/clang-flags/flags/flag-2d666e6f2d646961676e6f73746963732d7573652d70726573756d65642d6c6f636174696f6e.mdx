@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-diagnostics-use-presumed-location"
 slug: "/tools/clang-flags/-fno-diagnostics-use-presumed-location/"
 description: "Ignore #line directives when displaying diagnostic locations"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-diagnostics-use-presumed-location" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-diagnostics-use-presumed-location">
+
+## What this flag actually does
+
+Ignore #line directives when displaying diagnostic locations
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Xclang -fno-diagnostics-use-presumed-location -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

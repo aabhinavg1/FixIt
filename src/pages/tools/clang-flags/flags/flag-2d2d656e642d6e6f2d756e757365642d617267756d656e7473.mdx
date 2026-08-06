@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "--end-no-unused-arguments"
 slug: "/tools/clang-flags/--end-no-unused-arguments/"
 description: "Start emitting warnings for unused driver arguments"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--end-no-unused-arguments" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--end-no-unused-arguments">
+
+## What this flag actually does
+
+Start emitting warnings for unused driver arguments
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ --end-no-unused-arguments -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

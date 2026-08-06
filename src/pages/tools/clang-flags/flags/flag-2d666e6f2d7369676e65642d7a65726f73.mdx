@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-signed-zeros"
 slug: "/tools/clang-flags/-fno-signed-zeros/"
 description: "Allow optimizations that ignore the sign of floating point zeros"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-signed-zeros" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-signed-zeros">
+
+## What this flag actually does
+
+Allow optimizations that ignore the sign of floating point zeros
+
+
+
+It can be negated with -fsigned-zeros.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-signed-zeros -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FC1Option, FlangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fsigned-zeros`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

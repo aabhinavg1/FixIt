@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyzer-checker-option-help-alpha"
 slug: "/tools/clang-flags/-analyzer-checker-option-help-alpha/"
 description: "Display the list of in development checker and package options. These are NOT considered safe, they are unstable and will emit incorrect reports. Enable ONLY FOR DEVELOPMENT purpos"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyzer-checker-option-help-alpha" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyzer-checker-option-help-alpha">
+
+## What this flag actually does
+
+Display the list of in development checker and package options. These are NOT considered safe, they are unstable and will emit incorrect reports. Enable ONLY FOR DEVELOPMENT purposes
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyzer-checker-option-help-alpha -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

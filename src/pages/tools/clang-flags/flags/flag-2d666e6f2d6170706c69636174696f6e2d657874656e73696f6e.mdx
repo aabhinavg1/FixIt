@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-application-extension"
 slug: "/tools/clang-flags/-fno-application-extension/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-application-extension" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-application-extension">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fapplication-extension.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-application-extension -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fapplication-extension`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

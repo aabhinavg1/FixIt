@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gline-directives-only"
 slug: "/tools/clang-flags/-gline-directives-only/"
 description: "Emit debug line info directives only"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gline-directives-only" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gline-directives-only">
+
+## What this flag actually does
+
+Emit debug line info directives only
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gline-directives-only -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

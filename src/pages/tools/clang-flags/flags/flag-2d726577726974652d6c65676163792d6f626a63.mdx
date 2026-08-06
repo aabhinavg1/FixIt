@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-rewrite-legacy-objc"
 slug: "/tools/clang-flags/-rewrite-legacy-objc/"
 description: "Rewrite Legacy Objective-C source to C++"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-rewrite-legacy-objc" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-rewrite-legacy-objc">
+
+## What this flag actually does
+
+Rewrite Legacy Objective-C source to C++
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -rewrite-legacy-objc main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

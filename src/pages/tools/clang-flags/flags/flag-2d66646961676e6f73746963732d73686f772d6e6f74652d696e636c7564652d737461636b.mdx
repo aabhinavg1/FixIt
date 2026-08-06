@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdiagnostics-show-note-include-stack"
 slug: "/tools/clang-flags/-fdiagnostics-show-note-include-stack/"
 description: "Display include stacks for diagnostic notes"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdiagnostics-show-note-include-stack" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdiagnostics-show-note-include-stack">
+
+## What this flag actually does
+
+Display include stacks for diagnostic notes
+
+
+
+It can be negated with -fno-diagnostics-show-note-include-stack.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdiagnostics-show-note-include-stack -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-diagnostics-show-note-include-stack`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

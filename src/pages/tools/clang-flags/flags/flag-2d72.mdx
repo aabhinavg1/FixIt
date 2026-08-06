@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-r"
 slug: "/tools/clang-flags/-r/"
 description: "Flags that are passed on to the linker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-r" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-r">
+
+## What this flag actually does
+
+Flags that are passed on to the linker
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -r main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

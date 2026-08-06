@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-flang-experimental-hlfir"
 slug: "/tools/clang-flags/-flang-experimental-hlfir/"
 description: "Use HLFIR lowering (experimental)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flang-experimental-hlfir" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flang-experimental-hlfir">
+
+## What this flag actually does
+
+Use HLFIR lowering (experimental)
+
+## When to use it
+
+- You have a concrete need for the behavior this Experimental option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -flang-experimental-hlfir main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Experimental`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

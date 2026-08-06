@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fforbid-guard-variables"
 slug: "/tools/clang-flags/-fforbid-guard-variables/"
 description: "Emit an error if a C++ static local initializer would need a guard variable"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fforbid-guard-variables" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fforbid-guard-variables">
+
+## What this flag actually does
+
+Emit an error if a C++ static local initializer would need a guard variable
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -fforbid-guard-variables -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

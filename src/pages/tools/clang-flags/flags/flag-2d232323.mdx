@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-###"
 slug: "/tools/clang-flags/-%23%23%23/"
 description: "Print (but do not run) the commands to run for this compilation"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-%23%23%23" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-%23%23%23">
+
+## What this flag actually does
+
+Print (but do not run) the commands to run for this compilation
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -### main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

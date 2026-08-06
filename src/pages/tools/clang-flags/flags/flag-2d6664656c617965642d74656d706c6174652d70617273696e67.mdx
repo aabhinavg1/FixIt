@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdelayed-template-parsing"
 slug: "/tools/clang-flags/-fdelayed-template-parsing/"
 description: "Parse templated function definitions at the end of the translation unit"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdelayed-template-parsing" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdelayed-template-parsing">
+
+## What this flag actually does
+
+Parse templated function definitions at the end of the translation unit
+
+
+
+It can be negated with -fno-delayed-template-parsing.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdelayed-template-parsing -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-delayed-template-parsing`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

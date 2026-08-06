@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-stack-protector"
 slug: "/tools/clang-flags/-fno-stack-protector/"
 description: "Disable the use of stack protectors"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-stack-protector" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-stack-protector">
+
+## What this flag actually does
+
+Disable the use of stack protectors
+
+
+
+It can be negated with -fstack-protector.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-stack-protector -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fstack-protector`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

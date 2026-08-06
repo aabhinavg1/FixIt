@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-merge-all-constants"
 slug: "/tools/clang-flags/-fno-merge-all-constants/"
 description: "Disallow merging of constants"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-merge-all-constants" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-merge-all-constants">
+
+## What this flag actually does
+
+Disallow merging of constants
+
+
+
+It can be negated with -fmerge-all-constants.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-merge-all-constants -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fmerge-all-constants`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

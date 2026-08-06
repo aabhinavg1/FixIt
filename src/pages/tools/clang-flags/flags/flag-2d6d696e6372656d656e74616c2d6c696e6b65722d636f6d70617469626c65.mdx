@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mincremental-linker-compatible"
 slug: "/tools/clang-flags/-mincremental-linker-compatible/"
 description: "(integrated-as) Emit an object file which can be used with an incremental linker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mincremental-linker-compatible" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mincremental-linker-compatible">
+
+## What this flag actually does
+
+(integrated-as) Emit an object file which can be used with an incremental linker
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mincremental-linker-compatible -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

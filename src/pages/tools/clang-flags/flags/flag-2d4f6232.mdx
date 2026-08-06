@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-Ob2"
 slug: "/tools/clang-flags/-Ob2/"
 description: "Inline functions as deemed beneficial by the compiler"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Ob2" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Ob2">
+
+## What this flag actually does
+
+Inline functions as deemed beneficial by the compiler
+
+
+
+It is an alias for -O.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -Ob2 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-O`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

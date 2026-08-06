@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-sanitize-metadata="
 slug: "/tools/clang-flags/-fexperimental-sanitize-metadata%3D/"
 description: "Specify the type of metadata to emit for binary analysis sanitizers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-sanitize-metadata%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-sanitize-metadata%3D">
+
+## What this flag actually does
+
+Specify the type of metadata to emit for binary analysis sanitizers
+
+
+
+It can be negated with -fno-experimental-sanitize-metadata=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fexperimental-sanitize-metadata= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fno-experimental-sanitize-metadata=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

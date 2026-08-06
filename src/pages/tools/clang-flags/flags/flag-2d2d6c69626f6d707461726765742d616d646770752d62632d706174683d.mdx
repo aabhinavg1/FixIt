@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "--libomptarget-amdgpu-bc-path="
 slug: "/tools/clang-flags/--libomptarget-amdgpu-bc-path%3D/"
 description: "Path to libomptarget-amdgcn bitcode library"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--libomptarget-amdgpu-bc-path%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--libomptarget-amdgpu-bc-path%3D">
+
+## What this flag actually does
+
+Path to libomptarget-amdgcn bitcode library
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting &lt;i group> and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting &lt;i group>.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --libomptarget-amdgpu-bc-path= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

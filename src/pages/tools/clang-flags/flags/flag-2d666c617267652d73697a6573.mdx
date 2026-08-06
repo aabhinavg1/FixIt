@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-flarge-sizes"
 slug: "/tools/clang-flags/-flarge-sizes/"
 description: "Use INTEGER(KIND=8) for the result type in size-related intrinsics"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flarge-sizes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flarge-sizes">
+
+## What this flag actually does
+
+Use INTEGER(KIND=8) for the result type in size-related intrinsics
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -flarge-sizes -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

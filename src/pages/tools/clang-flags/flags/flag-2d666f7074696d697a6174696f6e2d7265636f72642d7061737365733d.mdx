@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-foptimization-record-passes="
 slug: "/tools/clang-flags/-foptimization-record-passes%3D/"
 description: "Only include passes which match a specified regular expression in the generated optimization record (by default, include all passes)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-foptimization-record-passes%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-foptimization-record-passes%3D">
+
+## What this flag actually does
+
+Only include passes which match a specified regular expression in the generated optimization record (by default, include all passes)
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -foptimization-record-passes= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

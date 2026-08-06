@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-analyzer-checker-help-developer"
 slug: "/tools/clang-flags/-analyzer-checker-help-developer/"
 description: "Display the list of developer-only checkers such as modeling and debug checkers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-analyzer-checker-help-developer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-analyzer-checker-help-developer">
+
+## What this flag actually does
+
+Display the list of developer-only checkers such as modeling and debug checkers
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Xclang -analyzer-checker-help-developer -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

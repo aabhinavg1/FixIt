@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-realloc-lhs"
 slug: "/tools/clang-flags/-fno-realloc-lhs/"
 description: "An allocatable left-hand side of an intrinsic assignment is assumed to be allocated and match the shape/type of the right-hand side"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-realloc-lhs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-realloc-lhs">
+
+## What this flag actually does
+
+An allocatable left-hand side of an intrinsic assignment is assumed to be allocated and match the shape/type of the right-hand side
+
+
+
+It can be negated with -frealloc-lhs.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-realloc-lhs -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-frealloc-lhs`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

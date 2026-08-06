@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsplit-dwarf-inlining"
 slug: "/tools/clang-flags/-fsplit-dwarf-inlining/"
 description: "Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsplit-dwarf-inlining" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsplit-dwarf-inlining">
+
+## What this flag actually does
+
+Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
+
+
+
+It can be negated with -fno-split-dwarf-inlining.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsplit-dwarf-inlining -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-split-dwarf-inlining`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

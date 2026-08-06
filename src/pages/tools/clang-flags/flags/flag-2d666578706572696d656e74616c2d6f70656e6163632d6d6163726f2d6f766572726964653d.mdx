@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-openacc-macro-override="
 slug: "/tools/clang-flags/-fexperimental-openacc-macro-override%3D/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-openacc-macro-override%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-openacc-macro-override%3D">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -fexperimental-openacc-macro-override.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -fexperimental-openacc-macro-override= -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Alias of**: `-fexperimental-openacc-macro-override`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "--warning-suppression-mappings="
 slug: "/tools/clang-flags/--warning-suppression-mappings%3D/"
 description: "Flags controlling which warnings, errors, and remarks Clang will generate. See the :doc:`full list of warning and remark flags &lt;DiagnosticsReference&gt;`."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--warning-suppression-mappings%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--warning-suppression-mappings%3D">
+
+## What this flag actually does
+
+Flags controlling which warnings, errors, and remarks Clang will generate. See the :doc:`full list of warning and remark flags &lt;DiagnosticsReference>`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ --warning-suppression-mappings= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

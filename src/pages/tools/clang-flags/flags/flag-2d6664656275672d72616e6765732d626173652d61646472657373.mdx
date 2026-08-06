@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-ranges-base-address"
 slug: "/tools/clang-flags/-fdebug-ranges-base-address/"
 description: "Use DWARF base address selection entries in .debug_ranges"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-ranges-base-address" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-ranges-base-address">
+
+## What this flag actually does
+
+Use DWARF base address selection entries in .debug_ranges
+
+
+
+It can be negated with -fno-debug-ranges-base-address.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdebug-ranges-base-address -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-debug-ranges-base-address`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffixed-i3"
 slug: "/tools/clang-flags/-ffixed-i3/"
 description: "Reserve the I3 register (SPARC only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffixed-i3" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffixed-i3">
+
+## What this flag actually does
+
+Reserve the I3 register (SPARC only)
+
+## When to use it
+
+- You are targeting SPARC and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting SPARC.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -ffixed-i3 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `SPARC`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,47 @@
 ---
-title: "Clang Flag Reference"
+title: "-ftree-vectorize"
 slug: "/tools/clang-flags/-ftree-vectorize/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ftree-vectorize" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ftree-vectorize">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-tree-vectorize.
+
+
+
+It is an alias for -fvectorize.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -ftree-vectorize main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `-fvectorize`
+- **Negated by**: `-fno-tree-vectorize`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

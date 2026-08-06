@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-real-4-real-8"
 slug: "/tools/clang-flags/-fno-real-4-real-8/"
 description: "Flags that will be passed onto the ``gfortran`` compiler when Clang is given a Fortran input."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-real-4-real-8" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-real-4-real-8">
+
+## What this flag actually does
+
+Flags that will be passed onto the ``gfortran`` compiler when Clang is given a Fortran input.
+
+
+
+It can be negated with -freal-4-real-8.
+
+## When to use it
+
+- You are targeting Fortran compilation options and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Fortran compilation options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -fno-real-4-real-8 main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Fortran compilation`
+- **Negated by**: `-freal-4-real-8`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

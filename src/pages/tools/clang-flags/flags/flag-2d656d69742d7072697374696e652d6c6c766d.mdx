@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-emit-pristine-llvm"
 slug: "/tools/clang-flags/-emit-pristine-llvm/"
 description: "Emit pristine LLVM IR from the frontend by not running any LLVM passes at all.Same as -S + -emit-llvm + -disable-llvm-passes."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-emit-pristine-llvm" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-emit-pristine-llvm">
+
+## What this flag actually does
+
+Emit pristine LLVM IR from the frontend by not running any LLVM passes at all.Same as -S + -emit-llvm + -disable-llvm-passes.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -emit-pristine-llvm main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

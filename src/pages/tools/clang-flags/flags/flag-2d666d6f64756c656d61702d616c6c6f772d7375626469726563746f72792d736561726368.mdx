@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodulemap-allow-subdirectory-search"
 slug: "/tools/clang-flags/-fmodulemap-allow-subdirectory-search/"
 description: "Allow to search for module maps in subdirectories of search paths"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodulemap-allow-subdirectory-search" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodulemap-allow-subdirectory-search">
+
+## What this flag actually does
+
+Allow to search for module maps in subdirectories of search paths
+
+
+
+It can be negated with -fno-modulemap-allow-subdirectory-search.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmodulemap-allow-subdirectory-search -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-modulemap-allow-subdirectory-search`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,292 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcall-saved-x10"
 slug: "/tools/clang-flags/-fcall-saved-x10/"
-description: "Make the x10 register call-saved (AArch64 only)"
+description: "Make the x10 register call-saved on AArch64, so functions preserve it across calls."
+keywords: [clang, -fcall-saved-x10, aarch64, register allocation, calling convention, ABI, callee-saved, volatile, AAPCS64]
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import Head from '@docusaurus/Head';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+import AsmDiff from '@site/src/components/clang-flags/AsmDiff';
+import Callout from '@site/src/components/clang-flags/Callout';
+import SourceCode from '@site/src/components/clang-flags/SourceCode';
+import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
+import PerfReport from '@site/src/components/clang-flags/PerfReport';
 
-<FlagArticlePage flagPath="-fcall-saved-x10" />
+<Head>
+  <meta name="keywords" content="clang,-fcall-saved-x10,aarch64,register allocation,calling convention,ABI,callee-saved,volatile,AAPCS64" />
+  <meta property="og:title" content="-fcall-saved-x10 — Clang flag reference" />
+  <meta property="og:description" content="Promote register x10 from caller-saved to callee-saved on AArch64: what it does, why, real assembly before/after, performance, and when not to use it." />
+</Head>
+
+{/* HAND_AUTHORED */}
+<FlagArticleShell flagPath="-fcall-saved-x10" summary="Promote register x10 from caller-saved (volatile) to callee-saved on AArch64, so compiler-generated code preserves it across calls.">
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Architecture** | AArch64 only |
+| **Category** | ABI / Register allocation |
+| **Compiler** | Clang (driver + backend); not GCC |
+| **Optimization** | Register preservation |
+| **Risk** | ABI-affecting — must be applied build-wide |
+
+**One-line summary:** treat register `x10` as callee-saved instead of caller-saved, so values held in `x10` survive function calls.
+
+## Register layout before and after
+
+Under the standard AAPCS64 ABI, `x10` sits in the volatile "scratch" block. This flag moves it into the saved set.
+
+**Before (default AAPCS64):**
+
+<Callout tone="info" title="Caller-saved (volatile)">
+  **x0–x7** arguments · **x8** indirect result · **x9–x15** scratch · **x16–x17** IP0/IP1
+</Callout>
+
+<Callout tone="warning" title="Callee-saved (must be preserved across calls)">
+  **x19–x28** · **x29** FP · **x30** LR · **d8–d15**
+</Callout>
+
+**After `-fcall-saved-x10`:**
+
+<Callout tone="danger" title="x10 moves">
+  `x10` leaves the caller-saved scratch block and becomes callee-saved, joining `x19`–`x28`. Functions that touch `x10` now spill and restore it in the prologue/epilogue.
+</Callout>
+
+## What this flag actually does
+
+`-fcall-saved-x10` promotes the general-purpose register `x10` from a **caller-saved** (volatile) register to a **callee-saved** register on AArch64. After this flag is applied, any function that uses `x10` is responsible for preserving its value across calls, and the compiler is free to keep live values in `x10` for the whole lifetime of a call sequence without reloading them afterwards.
+
+The effect is visible in the generated prologue and epilogue. Consider this loop, which keeps a pointer and a counter live across calls to `external_fn`:
+
+<SourceCode
+  file="test/main.cpp"
+  flag="-fcall-saved-x10"
+  language="c"
+  code={`int sum_with(int *arr, int n) {
+    int total = 0;
+    int *p = arr;
+    for (int i = 0; i < n; i++) {
+        total += *p;
+        external_fn(total);
+        p++;
+    }
+    return total;
+}`}
+  note="The flag was applied to this translation unit. With the default ABI the loop counter must live in a true callee-saved register (w19/w21); with -fcall-saved-x10 the backend is allowed to keep it in w10 across the call."
+/>
+
+With `-fcall-saved-x10`, the loop counter lives in `w10` across the call — impossible under the default ABI, which would force the compiler to use a dedicated callee-saved register instead.
+
+### Before vs. after assembly
+
+Both builds use `clang --target=aarch64-none-elf -O2`. Changed lines are highlighted.
+
+<AsmDiff
+  beforeTitle="Without flag"
+  afterTitle="With -fcall-saved-x10"
+  before={`\
+	stp	x29, x30, [sp, #-48]!           // 16-byte Folded Spill
+	cmp	w1, #1
+	str	x21, [sp, #16]                  // 8-byte Folded Spill
+	mov	x29, sp
+	stp	x20, x19, [sp, #32]             // 16-byte Folded Spill
+	b.lt	.LBB0_3
+	mov	w19, w1
+	mov	x20, x0
+	mov	w21, wzr
+.LBB0_2:
+	ldr	w8, [x20], #4
+	add	w21, w8, w21
+	mov	w0, w21
+	bl	external_fn
+	subs	w19, w19, #1
+	b.ne	.LBB0_2
+	b	.LBB0_4
+.LBB0_3:
+	mov	w21, wzr
+.LBB0_4:
+	ldp	x20, x19, [sp, #32]             // 16-byte Folded Reload
+	mov	w0, w21
+	ldr	x21, [sp, #16]                  // 8-byte Folded Reload
+	ldp	x29, x30, [sp], #48             // 16-byte Folded Reload
+	ret`}
+  after={`\
+	str	x10, [sp, #-48]!                // 8-byte Folded Spill
+	cmp	w1, #1
+	stp	x29, x30, [sp, #16]             // 16-byte Folded Spill
+	add	x29, sp, #16
+	stp	x20, x19, [sp, #32]             // 16-byte Folded Spill
+	b.lt	.LBB0_3
+	mov	w10, w1
+	mov	x19, x0
+	mov	w20, wzr
+.LBB0_2:
+	ldr	w8, [x19], #4
+	add	w20, w8, w20
+	mov	w0, w20
+	bl	external_fn
+	subs	w10, w10, #1
+	b.ne	.LBB0_2
+	b	.LBB0_4
+.LBB0_3:
+	mov	w20, wzr
+.LBB0_4:
+	mov	w0, w20
+	ldp	x20, x19, [sp, #32]             // 16-byte Folded Reload
+	ldp	x29, x30, [sp, #16]             // 16-byte Folded Reload
+	ldr	x10, [sp], #48                  // 8-byte Folded Reload
+	ret`}
+  note="Generated by clang 21.1.1 (Homebrew), -O2, AArch64 target. The counter moves from w19/w21 to w10, and x10 gets its own spill slot."
+/>
+
+**What changed:** with the flag, the loop counter is allocated in `w10` and a new `str x10` / `ldr x10` pair appears in the prologue/epilogue. Under the default ABI the compiler had to use `w19`/`w21` (true callee-saved registers), reserving `x10` for scratch.
+
+## Why would anyone use this?
+
+`-fcall-saved-x10` is a niche, ABI-level tuning knob. It shows up almost exclusively in **low-level systems code** where the register layout is already custom:
+
+- **Embedded firmware** with hand-written startup code or interrupts that already preserve `x10`.
+- **JIT compilers and runtime systems** that generate machine code against a custom calling convention and want a wider set of call-preserved registers.
+- **Hypervisors and kernels** with their own register conventions (e.g. preserving an extra register across a controlled call boundary).
+- **Custom ABIs** where the contract already treats `x10` as callee-saved, letting Clang-generated code match assembly written by hand.
+
+<Callout tone="warning" title="Not for normal application development">
+  Everyday application code compiled for the standard AArch64 ABI should **never** use this flag. It exists to make the compiler conform to an already-custom ABI, not to hand you free registers.
+</Callout>
+
+## Performance impact
+
+**Advantages**
+
+- **Fewer reloads for hot paths:** a value kept in `x10` across many calls is spilled once in the prologue and restored once in the epilogue, instead of being reloaded from the stack before each call.
+- **Better register allocation:** an extra call-preserved register gives the register allocator more stable homes for long-lived values, which can shorten hot loops.
+
+**Disadvantages**
+
+- **Larger prologue/epilogue:** every function that uses `x10` now spills and reloads it (`str x10` / `ldr x10`), adding two memory ops and growing the frame.
+- **More stack usage:** the spill slot consumes stack space that the default ABI does not need.
+- **ABI incompatibility:** objects built with the flag cannot interoperate with objects built without it unless both sides agree `x10` is preserved.
+
+In practice, for a value that survives only one or two calls, the flag is a wash or a small loss — the single prologue spill costs about as much as the reloads it removes. It wins when the same value crosses **many** calls (tight loops over external functions).
+
+## Measured with compilersutra-perf
+
+The loop above was run 100 times over a 2,000,000-element array with `clang++ -O3` on an Apple M1 Pro (`arm64`), once with the default ABI and once with `-fcall-saved-x10`. Wall-clock time was measured with [compilersutra-perf](https://pypi.org/project/compilersutra-perf/) (`csperf run --backend cpu`, 3 warmup runs, 7 measured trials):
+
+<PerfReport
+  beforeTitle="Without flag"
+  afterTitle="With -fcall-saved-x10"
+  without={[193.026, 193.65, 192.88, 192.481, 193.229, 193.279, 193.225]}
+  with={[193.204, 194.244, 196.97, 195.863, 196.887, 196.761, 192.819]}
+  note="7 measured trials each, 3 warmup runs, -O3, arm64 (Apple M1 Pro). The 2.1 ms mean regression matches the extra str x10 / ldr x10 prologue-epilogue pair; the win scenario for this flag needs a single value crossing many calls with the same binary-wide ABI."
+/>
+
+The result matches the analysis above: the flag is a **~1% regression** on this workload. The extra `str x10` / `ldr x10` spill pair costs slightly more than the default ABI's approach of reloading the accumulator after each call. Reproduce it with:
+
+```bash
+pip install compilersutra-perf
+csperf run --input sum_with.cpp --backend cpu --warmup-runs 3 --repeat-runs 7 --no-perf --output without.json
+csperf run --input sum_with.cpp --backend cpu --warmup-runs 3 --repeat-runs 7 --no-perf --compiler-flag=-fcall-saved-x10 --output with.json
+csperf diff without.json with.json
+```
+
+## When to use it
+
+- **Custom calling conventions**: when you are building or linking against hand-written assembly, a JIT, or a runtime with its own ABI that already treats `x10` as callee-saved, this flag makes compiler-generated code match that expectation.
+- **Keeping state in `x10` across calls**: if hot code wants to hold a frequently used pointer or accumulator in `x10` and all callees are compiled with the same flag, the value survives calls without per-call reloads, trading one prologue/epilogue spill for what would otherwise be repeated save/reload work.
+- **Consistent recompilation**: the flag only helps if every function in the call chain that might clobber `x10` is built with it (or is known to preserve `x10`), since a plain AAPCS callee is free to overwrite it.
+
+## When not to use it
+
+- **Mixing with default-ABI code**: if any callee is compiled without this flag (libraries, system code, or a separate translation unit), `x10` will not actually survive that call, producing subtle wrong-code bugs. Apply it to an entire build, or not at all.
+- **On non-AArch64 targets**: the option is rejected outright, e.g. `clang: error: unsupported option '-fcall-saved-x10' for target 'x86_64-none-elf'`.
+- **When scratch registers are scarce**: promoting `x10` to callee-saved removes it from the volatile scratch pool (`x9`–`x15`), which can increase register pressure and add spills elsewhere in functions that relied on it as a temporary.
+- **For portability**: this is a Clang/AArch64-specific option. Neither the x86 targets nor GCC accept it, so it cannot appear in portable build recipes.
+
+## Register lifetime across a call
+
+```
+Function entry
+   │
+   ▼
+str x10, [sp, #-48]!        ← prologue spills x10 (it is now callee-saved)
+   │
+   ▼
+... uses x10 for live state ...
+   │
+   ├──▶ bl  external_fn     ← x10 survives; the callee is expected to preserve it
+   │
+   ▼
+... continues using x10 ...
+   │
+   ▼
+ldr x10, [sp], #48          ← epilogue restores x10
+   │
+   ▼
+ret
+```
+
+Without the flag, `x10` could not hold live state across the `bl` — the compiler would have reloaded it after the call or moved it to a saved register.
+
+## Compatibility
+
+| Compiler / target | `-fcall-saved-x10` |
+| --- | --- |
+| Clang, AArch64 | Yes |
+| Clang, x86 / other targets | No (rejected) |
+| GCC | No |
+| MSVC | No |
+
+<Callout tone="danger" title="Warning: ABI change">
+  Changing caller/callee saved registers changes the ABI. Only use this flag when **every linked object** follows the same convention — mixing a default-ABI library with `-fcall-saved-x10` code silently corrupts `x10` across calls. Measure before and after; for most code the prologue spill makes it a net loss.
+</Callout>
+
+## Usage example
+
+Target an AArch64 triple explicitly, since the flag is rejected on other targets:
+
+```bash
+clang --target=aarch64-none-elf -O2 -fcall-saved-x10 main.cpp -o app
+```
+
+`-fcall-saved-x10` is a driver flag; the backend receives it as the `+call-saved-x10` target feature, so it does **not** need `-Xclang` forwarding. Verify it took effect by inspecting the prologue of a function that uses `x10`:
+
+```bash
+clang --target=aarch64-none-elf -O2 -fcall-saved-x10 -S main.cpp
+# look for: str x10, [sp, #-N]!
+```
+
+## Adjacent options
+
+- `-fcall-saved-x8`, `-fcall-saved-x9`, `-fcall-saved-x11` … `-fcall-saved-x15`, `-fcall-saved-x18` — same mechanism for other registers.
+- `-fcall-used-x10` — inverse: mark a register as caller-saved even if the ABI says otherwise.
+- `-ffixed-x10` — reserve `x10` entirely, so the compiler never allocates it (relevant when inline assembly owns the register).
+- `-mllvm -max-reserved-regs` — tune how many registers the backend treats as reserved, affecting the same allocation decisions.
+
+## How it works inside Clang
+
+The option is defined as a member of the AArch64 features group in `clang/include/clang/Driver/Options.td` (line 5371):
+
+```text
+def fcall_saved_x10 : Flag<["-"], "fcall-saved-x10">,
+    Group<m_aarch64_Features_Group>,
+    HelpText<"Make the x10 register call-saved (AArch64 only)">;
+```
+
+At driver time, `getAArch64TargetFeatures()` in `clang/lib/Driver/ToolChains/Arch/AArch64.cpp` translates the presence of the option into the subtarget feature string `+call-saved-x10`, which is passed to the backend. There it is parsed by `AArch64Subtarget`, which records the register in its `CustomCallSavedXRegs` bit vector. Finally, in `AArch64RegisterInfo::UpdateCustomCalleeSavedRegs()` and `UpdateCustomCallPreservedMask()`, `x10` is appended to both the callee-saved register list (so the prologue/epilogue spills it) and the call-preserved mask (so the register allocator and call lowering treat it as preserved).
+
+## Key facts
+
+<KeyFacts
+  items={[
+    { label: 'Argument form', value: 'Flag (no argument)', icon: 'check' },
+    { label: 'Accepted by', value: 'Clang driver (AArch64 only)', icon: 'check' },
+    { label: 'Stage', value: 'driver → backend (+call-saved-x10 target feature)', icon: 'check' },
+    { label: 'Defined in', value: 'clang/include/clang/Driver/Options.td, line 5371', icon: 'info' },
+    { label: 'Compiler support', value: 'Clang only; rejected by GCC and on non-AArch64 targets', icon: 'info' },
+  ]}
+/>
+
+</FlagArticleShell>

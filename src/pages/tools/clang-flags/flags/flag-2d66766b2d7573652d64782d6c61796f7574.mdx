@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fvk-use-dx-layout"
 slug: "/tools/clang-flags/-fvk-use-dx-layout/"
 description: "Use DirectX memory layout for Vulkan resources."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fvk-use-dx-layout" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fvk-use-dx-layout">
+
+## What this flag actually does
+
+Use DirectX memory layout for Vulkan resources.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -fvk-use-dx-layout main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

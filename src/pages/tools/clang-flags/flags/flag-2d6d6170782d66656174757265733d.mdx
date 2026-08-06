@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mapx-features="
 slug: "/tools/clang-flags/-mapx-features%3D/"
 description: "Enable features of APX"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mapx-features%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mapx-features%3D">
+
+## What this flag actually does
+
+Enable features of APX
+
+## When to use it
+
+- You are targeting X86 and want this commajoined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this commajoined is accepted only when targeting X86.
+
+## Usage example
+
+```bash
+clang++ -mapx-features= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption, CLOption, FlangOption
+- **Stage**: driver, category `X86`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

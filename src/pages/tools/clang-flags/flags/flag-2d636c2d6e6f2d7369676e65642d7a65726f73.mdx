@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-cl-no-signed-zeros"
 slug: "/tools/clang-flags/-cl-no-signed-zeros/"
 description: "OpenCL only. Allow use of less precise no signed zeros computations in the generated binary."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-cl-no-signed-zeros" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-cl-no-signed-zeros">
+
+## What this flag actually does
+
+OpenCL only. Allow use of less precise no signed zeros computations in the generated binary.
+
+## When to use it
+
+- You are targeting OpenCL options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting OpenCL options.
+
+## Usage example
+
+```bash
+clang++ -cl-no-signed-zeros main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `OpenCL`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

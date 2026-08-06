@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gcodeview"
 slug: "/tools/clang-flags/-gcodeview/"
 description: "Generate CodeView debug information"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gcodeview" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gcodeview">
+
+## What this flag actually does
+
+Generate CodeView debug information
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gcodeview -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

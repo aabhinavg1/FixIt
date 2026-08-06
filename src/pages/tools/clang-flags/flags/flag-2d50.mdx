@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-P"
 slug: "/tools/clang-flags/-P/"
 description: "Flags controlling the behavior of the Clang preprocessor."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-P" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-P">
+
+## What this flag actually does
+
+Flags controlling the behavior of the Clang preprocessor.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -P -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

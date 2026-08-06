@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-msmall-data-limit"
 slug: "/tools/clang-flags/-msmall-data-limit/"
 description: "Put global and static data smaller than the limit into a special section"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-msmall-data-limit" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-msmall-data-limit">
+
+## What this flag actually does
+
+Put global and static data smaller than the limit into a special section
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -msmall-data-limit <arg> -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

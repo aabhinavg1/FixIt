@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-disable-lifetime-markers"
 slug: "/tools/clang-flags/-disable-lifetime-markers/"
 description: "Disable lifetime-markers emission even when optimizations are enabled"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-disable-lifetime-markers" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-disable-lifetime-markers">
+
+## What this flag actually does
+
+Disable lifetime-markers emission even when optimizations are enabled
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -Xclang -disable-lifetime-markers -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Optimization`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

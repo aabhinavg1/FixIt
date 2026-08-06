@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdefault-double-8"
 slug: "/tools/clang-flags/-fdefault-double-8/"
 description: "Set the default double precision kind to an 8 byte wide type"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdefault-double-8" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdefault-double-8">
+
+## What this flag actually does
+
+Set the default double precision kind to an 8 byte wide type
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdefault-double-8 -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

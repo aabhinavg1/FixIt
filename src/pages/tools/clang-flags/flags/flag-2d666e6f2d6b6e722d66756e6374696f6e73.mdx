@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-knr-functions"
 slug: "/tools/clang-flags/-fno-knr-functions/"
-description: "Disable support for K&R C function declarations"
+description: "Disable support for K&amp;R C function declarations"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-knr-functions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-knr-functions">
+
+## What this flag actually does
+
+Disable support for K&amp;R C function declarations
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-knr-functions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

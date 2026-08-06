@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-FI"
 slug: "/tools/clang-flags/-FI/"
 description: "Include file before parsing"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-FI" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-FI">
+
+## What this flag actually does
+
+Include file before parsing
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -include.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this joinedorseparate behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -FI=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-include`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fwrapv-pointer"
 slug: "/tools/clang-flags/-fwrapv-pointer/"
 description: "Treat pointer overflow as two's complement"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fwrapv-pointer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fwrapv-pointer">
+
+## What this flag actually does
+
+Treat pointer overflow as two's complement
+
+
+
+It can be negated with -fno-wrapv-pointer.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fwrapv-pointer -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-wrapv-pointer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

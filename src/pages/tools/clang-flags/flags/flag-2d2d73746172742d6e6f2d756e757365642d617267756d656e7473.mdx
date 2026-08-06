@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "--start-no-unused-arguments"
 slug: "/tools/clang-flags/--start-no-unused-arguments/"
 description: "Don't emit warnings about unused arguments for the following arguments"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--start-no-unused-arguments" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--start-no-unused-arguments">
+
+## What this flag actually does
+
+Don't emit warnings about unused arguments for the following arguments
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ --start-no-unused-arguments -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Warning`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-gsplit-dwarf="
 slug: "/tools/clang-flags/-gsplit-dwarf%3D/"
 description: "Set DWARF fission mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gsplit-dwarf%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gsplit-dwarf%3D">
+
+## What this flag actually does
+
+Set DWARF fission mode
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gsplit-dwarf= -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption, FlangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

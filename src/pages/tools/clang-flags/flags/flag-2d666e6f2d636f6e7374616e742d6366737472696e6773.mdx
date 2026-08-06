@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-constant-cfstrings"
 slug: "/tools/clang-flags/-fno-constant-cfstrings/"
 description: "Disable creation of CodeFoundation-type constant strings"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-constant-cfstrings" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-constant-cfstrings">
+
+## What this flag actually does
+
+Disable creation of CodeFoundation-type constant strings
+
+
+
+It can be negated with -fconstant-cfstrings.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-constant-cfstrings -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fconstant-cfstrings`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

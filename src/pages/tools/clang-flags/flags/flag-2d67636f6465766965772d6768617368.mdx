@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gcodeview-ghash"
 slug: "/tools/clang-flags/-gcodeview-ghash/"
 description: "Emit type record hashes in a .debug$H section"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gcodeview-ghash" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gcodeview-ghash">
+
+## What this flag actually does
+
+Emit type record hashes in a .debug$H section
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gcodeview-ghash -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-sanitize-alloc-token-extended"
 slug: "/tools/clang-flags/-fno-sanitize-alloc-token-extended/"
 description: "Disable extended coverage to custom allocation functions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-sanitize-alloc-token-extended" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-sanitize-alloc-token-extended">
+
+## What this flag actually does
+
+Disable extended coverage to custom allocation functions
+
+
+
+It can be negated with -fsanitize-alloc-token-extended.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fno-sanitize-alloc-token-extended main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fsanitize-alloc-token-extended`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

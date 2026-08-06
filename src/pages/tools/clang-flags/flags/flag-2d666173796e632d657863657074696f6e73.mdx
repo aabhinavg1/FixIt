@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fasync-exceptions"
 slug: "/tools/clang-flags/-fasync-exceptions/"
 description: "Enable EH Asynchronous exceptions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fasync-exceptions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fasync-exceptions">
+
+## What this flag actually does
+
+Enable EH Asynchronous exceptions
+
+
+
+It can be negated with -fno-async-exceptions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fasync-exceptions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-async-exceptions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

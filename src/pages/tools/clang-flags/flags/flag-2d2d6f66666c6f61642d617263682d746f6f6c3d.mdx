@@ -1,9 +1,43 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload-arch-tool="
 slug: "/tools/clang-flags/--offload-arch-tool%3D/"
 description: "Tool used for detecting offloading architectures in the system."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload-arch-tool%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload-arch-tool%3D">
+
+## What this flag actually does
+
+Tool used for detecting offloading architectures in the system.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Common Offloading options and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Common Offloading options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --offload-arch-tool= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Common Offloading`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

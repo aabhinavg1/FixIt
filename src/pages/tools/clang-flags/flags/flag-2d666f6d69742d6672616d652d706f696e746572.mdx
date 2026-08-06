@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fomit-frame-pointer"
 slug: "/tools/clang-flags/-fomit-frame-pointer/"
 description: "Omit the frame pointer from functions that don't need it. Some stack unwinding cases, such as profilers and sanitizers, may prefer specifying -fno-omit-frame-pointer. On many targe"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fomit-frame-pointer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fomit-frame-pointer">
+
+## What this flag actually does
+
+Omit the frame pointer from functions that don't need it. Some stack unwinding cases, such as profilers and sanitizers, may prefer specifying -fno-omit-frame-pointer. On many targets, -O1 and higher omit the frame pointer by default. -m[no-]omit-leaf-frame-pointer takes precedence for leaf functions
+
+
+
+It can be negated with -fno-omit-frame-pointer.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fomit-frame-pointer main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Sanitizer`
+- **Negated by**: `-fno-omit-frame-pointer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

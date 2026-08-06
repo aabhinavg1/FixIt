@@ -1,9 +1,48 @@
 ---
-title: "Clang Flag Reference"
+title: "--cuda-gpu-arch="
 slug: "/tools/clang-flags/--cuda-gpu-arch%3D/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--cuda-gpu-arch%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--cuda-gpu-arch%3D">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for --offload-arch=.
+
+## When to use it
+
+- You are targeting CUDA options and want this joined behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting CUDA options.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --cuda-gpu-arch= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `CUDA`
+- **Alias of**: `--offload-arch=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

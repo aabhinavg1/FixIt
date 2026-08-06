@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmemory-profile"
 slug: "/tools/clang-flags/-fmemory-profile/"
 description: "Enable heap memory profiling"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmemory-profile" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmemory-profile">
+
+## What this flag actually does
+
+Enable heap memory profiling
+
+
+
+It can be negated with -fno-memory-profile.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmemory-profile -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-memory-profile`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

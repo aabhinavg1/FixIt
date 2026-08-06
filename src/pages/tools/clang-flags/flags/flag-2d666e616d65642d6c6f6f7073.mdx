@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fnamed-loops"
 slug: "/tools/clang-flags/-fnamed-loops/"
 description: "Enable support for named loops"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fnamed-loops" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fnamed-loops">
+
+## What this flag actually does
+
+Enable support for named loops
+
+
+
+It can be negated with -fno-named-loops.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fnamed-loops -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, ClangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-named-loops`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

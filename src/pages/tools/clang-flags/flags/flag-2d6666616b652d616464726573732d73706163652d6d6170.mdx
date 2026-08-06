@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffake-address-space-map"
 slug: "/tools/clang-flags/-ffake-address-space-map/"
 description: "Use a fake address space map; OpenCL testing purposes only"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffake-address-space-map" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffake-address-space-map">
+
+## What this flag actually does
+
+Use a fake address space map; OpenCL testing purposes only
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -ffake-address-space-map -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

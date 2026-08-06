@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fasm-blocks"
 slug: "/tools/clang-flags/-fasm-blocks/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fasm-blocks" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fasm-blocks">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-asm-blocks.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fasm-blocks -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-asm-blocks`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

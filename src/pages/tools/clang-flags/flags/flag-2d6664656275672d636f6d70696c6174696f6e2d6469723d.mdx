@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdebug-compilation-dir="
 slug: "/tools/clang-flags/-fdebug-compilation-dir%3D/"
 description: "The compilation directory to embed in the debug info"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdebug-compilation-dir%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdebug-compilation-dir%3D">
+
+## What this flag actually does
+
+The compilation directory to embed in the debug info
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdebug-compilation-dir= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CC1AsOption, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

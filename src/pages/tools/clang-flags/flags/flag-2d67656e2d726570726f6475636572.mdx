@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-gen-reproducer"
 slug: "/tools/clang-flags/-gen-reproducer/"
 description: "Auto-generates preprocessed source files and a reproduction script"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gen-reproducer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gen-reproducer">
+
+## What this flag actually does
+
+Auto-generates preprocessed source files and a reproduction script
+
+
+
+It is an alias for -gen-reproducer=.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gen-reproducer -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Debugging`
+- **Alias of**: `-gen-reproducer=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

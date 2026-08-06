@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-x"
 slug: "/tools/clang-flags/-x/"
 description: "Treat subsequent input files as having type &lt;language&gt;"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-x" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-x">
+
+## What this flag actually does
+
+Treat subsequent input files as having type &lt;language>
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -x=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fextend-variable-liveness="
 slug: "/tools/clang-flags/-fextend-variable-liveness%3D/"
 description: "Extend the liveness of user variables through optimizations to prevent stale or optimized-out variable values when debugging."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fextend-variable-liveness%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fextend-variable-liveness%3D">
+
+## What this flag actually does
+
+Extend the liveness of user variables through optimizations to prevent stale or optimized-out variable values when debugging.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fextend-variable-liveness= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

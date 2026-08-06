@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-save-main-program"
 slug: "/tools/clang-flags/-fno-save-main-program/"
 description: "Allow placing main program variables on the stack (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-save-main-program" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-save-main-program">
+
+## What this flag actually does
+
+Allow placing main program variables on the stack (default)
+
+
+
+It can be negated with -fsave-main-program.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fno-save-main-program main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Other`
+- **Negated by**: `-fsave-main-program`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

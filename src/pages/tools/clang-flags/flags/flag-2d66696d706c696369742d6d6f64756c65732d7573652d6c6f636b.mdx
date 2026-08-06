@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "-fimplicit-modules-use-lock"
 slug: "/tools/clang-flags/-fimplicit-modules-use-lock/"
 description: "Use filesystem locks for implicit modules builds to avoid duplicating work in competing clang invocations."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fimplicit-modules-use-lock" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fimplicit-modules-use-lock">
+
+## What this flag actually does
+
+Use filesystem locks for implicit modules builds to avoid duplicating work in competing clang invocations.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-implicit-modules-use-lock.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -fimplicit-modules-use-lock -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Negated by**: `-fno-implicit-modules-use-lock`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

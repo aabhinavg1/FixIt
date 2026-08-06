@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-global-merge"
 slug: "/tools/clang-flags/-mno-global-merge/"
 description: "Disable merging of globals"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-global-merge" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-global-merge">
+
+## What this flag actually does
+
+Disable merging of globals
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mno-global-merge -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

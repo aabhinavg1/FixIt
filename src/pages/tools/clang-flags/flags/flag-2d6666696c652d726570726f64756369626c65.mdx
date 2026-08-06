@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffile-reproducible"
 slug: "/tools/clang-flags/-ffile-reproducible/"
 description: "Use the target's platform-specific path separator character when expanding the __FILE__ macro"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffile-reproducible" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffile-reproducible">
+
+## What this flag actually does
+
+Use the target's platform-specific path separator character when expanding the __FILE__ macro
+
+
+
+It can be negated with -fno-file-reproducible.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffile-reproducible -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-file-reproducible`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdigraphs"
 slug: "/tools/clang-flags/-fdigraphs/"
 description: "Enable alternative token representations '&lt;:', ':&gt;', '&lt;%', '%&gt;', '%:', '%:%:' (default)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdigraphs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdigraphs">
+
+## What this flag actually does
+
+Enable alternative token representations '&lt;:', ':>', '&lt;%', '%>', '%:', '%:%:' (default)
+
+
+
+It can be negated with -fno-digraphs.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fdigraphs -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-digraphs`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmacro-backtrace-limit="
 slug: "/tools/clang-flags/-fmacro-backtrace-limit%3D/"
 description: "Set the maximum number of entries to print in a macro expansion backtrace (0 = no limit)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmacro-backtrace-limit%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmacro-backtrace-limit%3D">
+
+## What this flag actually does
+
+Set the maximum number of entries to print in a macro expansion backtrace (0 = no limit)
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmacro-backtrace-limit= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

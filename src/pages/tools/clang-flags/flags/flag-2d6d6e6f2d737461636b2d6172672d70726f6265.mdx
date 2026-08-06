@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-stack-arg-probe"
 slug: "/tools/clang-flags/-mno-stack-arg-probe/"
 description: "Disable stack probes which are enabled by default"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-stack-arg-probe" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-stack-arg-probe">
+
+## What this flag actually does
+
+Disable stack probes which are enabled by default
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mno-stack-arg-probe -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

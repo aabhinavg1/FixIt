@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-gen-cdb-fragment-path"
 slug: "/tools/clang-flags/-gen-cdb-fragment-path/"
 description: "Emit a compilation database fragment to the specified directory"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gen-cdb-fragment-path" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gen-cdb-fragment-path">
+
+## What this flag actually does
+
+Emit a compilation database fragment to the specified directory
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gen-cdb-fragment-path <arg> -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

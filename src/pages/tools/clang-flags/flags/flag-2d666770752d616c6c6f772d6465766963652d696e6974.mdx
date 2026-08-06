@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fgpu-allow-device-init"
 slug: "/tools/clang-flags/-fgpu-allow-device-init/"
 description: "Allow device side init function in HIP (experimental)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fgpu-allow-device-init" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fgpu-allow-device-init">
+
+## What this flag actually does
+
+Allow device side init function in HIP (experimental)
+
+
+
+It can be negated with -fno-gpu-allow-device-init.
+
+## When to use it
+
+- You are targeting HIP options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting HIP options.
+
+## Usage example
+
+```bash
+clang++ -fgpu-allow-device-init main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `HIP`
+- **Negated by**: `-fno-gpu-allow-device-init`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

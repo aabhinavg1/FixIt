@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fpch-instantiate-templates"
 slug: "/tools/clang-flags/-fpch-instantiate-templates/"
 description: "Instantiate templates already while building a PCH"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fpch-instantiate-templates" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fpch-instantiate-templates">
+
+## What this flag actually does
+
+Instantiate templates already while building a PCH
+
+
+
+It can be negated with -fno-pch-instantiate-templates.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fpch-instantiate-templates -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-pch-instantiate-templates`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

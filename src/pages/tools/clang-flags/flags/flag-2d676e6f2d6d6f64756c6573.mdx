@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-gno-modules"
 slug: "/tools/clang-flags/-gno-modules/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gno-modules" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gno-modules">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -gno-modules -g -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

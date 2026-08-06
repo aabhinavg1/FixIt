@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-fspv-use-unknown-image-format"
 slug: "/tools/clang-flags/-fspv-use-unknown-image-format/"
 description: "For storage images and texel buffers, sets the default format to 'Unknown' when not specified via the `vk::image_format` attribute. If this option is not used, the format is inferr"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fspv-use-unknown-image-format" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fspv-use-unknown-image-format">
+
+## What this flag actually does
+
+For storage images and texel buffers, sets the default format to 'Unknown' when not specified via the `vk::image_format` attribute. If this option is not used, the format is inferred from the resource's data type.
+
+## When to use it
+
+- You are targeting clang-dxc options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting clang-dxc options.
+
+## Usage example
+
+```bash
+clang++ -fspv-use-unknown-image-format main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option, DXCOption
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

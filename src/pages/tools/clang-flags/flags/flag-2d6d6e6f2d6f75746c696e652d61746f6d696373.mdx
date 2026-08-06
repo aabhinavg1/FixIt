@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-outline-atomics"
 slug: "/tools/clang-flags/-mno-outline-atomics/"
 description: "Don't generate local calls to out-of-line atomic operations"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-outline-atomics" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-outline-atomics">
+
+## What this flag actually does
+
+Don't generate local calls to out-of-line atomic operations
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -mno-outline-atomics -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, FlangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-Xoffload-linker"
 slug: "/tools/clang-flags/-Xoffload-linker/"
 description: "Flags that are passed on to the linker"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-Xoffload-linker" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Xoffload-linker">
+
+## What this flag actually does
+
+Flags that are passed on to the linker
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xoffload-linker <arg> main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedAndSeparate (takes an argument)
+- **Accepted by**: ClangOption, FlangOption
+- **Stage**: driver, category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

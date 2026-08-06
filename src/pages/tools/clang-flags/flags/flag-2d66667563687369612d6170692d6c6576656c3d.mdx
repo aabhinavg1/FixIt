@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffuchsia-api-level="
 slug: "/tools/clang-flags/-ffuchsia-api-level%3D/"
 description: "Set Fuchsia API level"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffuchsia-api-level%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffuchsia-api-level%3D">
+
+## What this flag actually does
+
+Set Fuchsia API level
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -ffuchsia-api-level= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-resource-dir"
 slug: "/tools/clang-flags/-resource-dir/"
 description: "The directory which holds the compiler resource files"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-resource-dir" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-resource-dir">
+
+## What this flag actually does
+
+The directory which holds the compiler resource files
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -resource-dir <arg> main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption, FlangOption, FC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

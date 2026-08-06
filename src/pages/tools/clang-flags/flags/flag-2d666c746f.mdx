@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-flto"
 slug: "/tools/clang-flags/-flto/"
 description: "Enable LTO in 'full' mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-flto" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-flto">
+
+## What this flag actually does
+
+Enable LTO in 'full' mode
+
+
+
+It can be negated with -fno-lto.
+
+
+
+It is an alias for -flto=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -flto -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, CC1Option, FC1Option, FlangOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Alias of**: `-flto=`
+- **Negated by**: `-fno-lto`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

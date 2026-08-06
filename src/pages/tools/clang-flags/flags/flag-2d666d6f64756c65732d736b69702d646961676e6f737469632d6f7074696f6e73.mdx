@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-skip-diagnostic-options"
 slug: "/tools/clang-flags/-fmodules-skip-diagnostic-options/"
 description: "Disable writing diagnostic options"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-skip-diagnostic-options" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-skip-diagnostic-options">
+
+## What this flag actually does
+
+Disable writing diagnostic options
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fno-modules-skip-diagnostic-options.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -Xclang -fmodules-skip-diagnostic-options -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-modules-skip-diagnostic-options`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

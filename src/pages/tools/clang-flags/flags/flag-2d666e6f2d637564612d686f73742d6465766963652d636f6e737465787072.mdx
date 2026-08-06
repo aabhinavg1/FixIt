@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-cuda-host-device-constexpr"
 slug: "/tools/clang-flags/-fno-cuda-host-device-constexpr/"
 description: "Don't treat unattributed constexpr functions as __host__ __device__."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-cuda-host-device-constexpr" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-cuda-host-device-constexpr">
+
+## What this flag actually does
+
+Don't treat unattributed constexpr functions as __host__ __device__.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -fno-cuda-host-device-constexpr -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

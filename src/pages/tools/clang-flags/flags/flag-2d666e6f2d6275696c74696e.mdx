@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-builtin"
 slug: "/tools/clang-flags/-fno-builtin/"
 description: "Disable implicit builtin knowledge of functions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-builtin" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-builtin">
+
+## What this flag actually does
+
+Disable implicit builtin knowledge of functions
+
+
+
+It can be negated with -fbuiltin.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-builtin -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption, DXCOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fbuiltin`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

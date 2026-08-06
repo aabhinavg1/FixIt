@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fvisibility-from-dllstorageclass"
 slug: "/tools/clang-flags/-fvisibility-from-dllstorageclass/"
 description: "Override the visibility of globals based on their final DLL storage class."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fvisibility-from-dllstorageclass" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fvisibility-from-dllstorageclass">
+
+## What this flag actually does
+
+Override the visibility of globals based on their final DLL storage class.
+
+
+
+It can be negated with -fno-visibility-from-dllstorageclass.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fvisibility-from-dllstorageclass -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-visibility-from-dllstorageclass`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

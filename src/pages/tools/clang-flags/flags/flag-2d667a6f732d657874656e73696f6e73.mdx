@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fzos-extensions"
 slug: "/tools/clang-flags/-fzos-extensions/"
 description: "Accept some non-standard constructs supported by the z/OS compiler"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fzos-extensions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fzos-extensions">
+
+## What this flag actually does
+
+Accept some non-standard constructs supported by the z/OS compiler
+
+
+
+It can be negated with -fno-zos-extensions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fzos-extensions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-zos-extensions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,49 @@
 ---
-title: "Clang Flag Reference"
+title: "--undefine-macro"
 slug: "/tools/clang-flags/--undefine-macro/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--undefine-macro" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--undefine-macro">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -U.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ --undefine-macro <arg> -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Separate (takes an argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Preprocessor`
+- **Alias of**: `-U`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-optimize-sibling-calls"
 slug: "/tools/clang-flags/-fno-optimize-sibling-calls/"
 description: "Disable tail call optimization, keeping the call stack accurate"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-optimize-sibling-calls" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-optimize-sibling-calls">
+
+## What this flag actually does
+
+Disable tail call optimization, keeping the call stack accurate
+
+
+
+It can be negated with -foptimize-sibling-calls.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-optimize-sibling-calls -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-foptimize-sibling-calls`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

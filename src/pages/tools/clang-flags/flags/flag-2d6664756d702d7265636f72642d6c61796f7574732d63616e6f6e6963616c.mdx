@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fdump-record-layouts-canonical"
 slug: "/tools/clang-flags/-fdump-record-layouts-canonical/"
 description: "Dump record layout information with canonical field types"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fdump-record-layouts-canonical" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fdump-record-layouts-canonical">
+
+## What this flag actually does
+
+Dump record layout information with canonical field types
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -fdump-record-layouts-canonical -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmath-errno"
 slug: "/tools/clang-flags/-fmath-errno/"
 description: "Require math functions to indicate errors by setting errno"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmath-errno" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmath-errno">
+
+## What this flag actually does
+
+Require math functions to indicate errors by setting errno
+
+
+
+It can be negated with -fno-math-errno.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fmath-errno -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-math-errno`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

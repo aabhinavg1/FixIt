@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-dump-coverage-mapping"
 slug: "/tools/clang-flags/-dump-coverage-mapping/"
 description: "Dump the coverage mapping records, for testing"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-dump-coverage-mapping" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-dump-coverage-mapping">
+
+## What this flag actually does
+
+Dump the coverage mapping records, for testing
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- You are driving the frontend directly or forwarding the option with `-Xclang`, since the driver does not expose it.
+
+## When not to use it
+
+- You expect the option to work as a regular driver flag — it requires `-Xclang` forwarding or a direct `clang -cc1` invocation.
+
+## Usage example
+
+```bash
+clang++ -Xclang -dump-coverage-mapping -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

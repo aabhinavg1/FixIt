@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-gpu-defer-diag"
 slug: "/tools/clang-flags/-fno-gpu-defer-diag/"
 description: "Don't defer host/device related diagnostic messages for CUDA/HIP"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-gpu-defer-diag" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-gpu-defer-diag">
+
+## What this flag actually does
+
+Don't defer host/device related diagnostic messages for CUDA/HIP
+
+
+
+It can be negated with -fgpu-defer-diag.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -fno-gpu-defer-diag -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Warning`
+- **Negated by**: `-fgpu-defer-diag`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-tune:"
 slug: "/tools/clang-flags/-tune%3A/"
 description: "Set CPU for optimization without affecting instruction set"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-tune%3A" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-tune%3A">
+
+## What this flag actually does
+
+Set CPU for optimization without affecting instruction set
+
+
+
+It is an alias for -mtune=.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -tune: main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `Optimization`
+- **Alias of**: `-mtune=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

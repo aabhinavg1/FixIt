@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-std:"
 slug: "/tools/clang-flags/-std%3A/"
 description: "Set language version (c++14,c++17,c++20,c++23preview,c++latest,c11,c17)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-std%3A" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-std%3A">
+
+## What this flag actually does
+
+Set language version (c++14,c++17,c++20,c++23preview,c++latest,c11,c17)
+
+## When to use it
+
+- You are targeting &lt;clang-cl compile-only options> and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting &lt;clang-cl compile-only options>.
+
+## Usage example
+
+```bash
+clang++ -std: main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

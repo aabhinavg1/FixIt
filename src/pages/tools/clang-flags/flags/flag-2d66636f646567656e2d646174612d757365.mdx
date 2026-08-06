@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcodegen-data-use"
 slug: "/tools/clang-flags/-fcodegen-data-use/"
 description: "Use codegen data read from default.cgdata to optimize the binary"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcodegen-data-use" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcodegen-data-use">
+
+## What this flag actually does
+
+Use codegen data read from default.cgdata to optimize the binary
+
+
+
+It is an alias for -fcodegen-data-use=.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fcodegen-data-use -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption
+- **Stage**: driver, category `Code Generation`
+- **Alias of**: `-fcodegen-data-use=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

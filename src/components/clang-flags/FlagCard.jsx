@@ -6,6 +6,7 @@ import { BookOpenText, Check, Code2, ExternalLink, FileText, Layers3, ShieldAler
 import Badge from './Badge';
 import CodeBlock from './CodeBlock';
 import styles from './clangFlags.module.css';
+import { buildPipelineTrail, buildImplementationTrail, buildWhenToUse, buildWhenNotToUse } from './flagTrails';
 import { joinList, splitHighlightedText } from './utils';
 
 function statusTone(label) {
@@ -62,128 +63,6 @@ function ListBlock({ items, emptyLabel = 'No guidance available.' }) {
       ))}
     </ul>
   );
-}
-
-function buildPipelineTrail(flag) {
-  const steps = [
-    { title: 'Options.td', note: 'Driver option table entry' },
-    { title: 'Driver.cpp', note: 'Parse and validate spelling' },
-    { title: 'CompilerInvocation.cpp', note: 'Apply option state' },
-    { title: 'Frontend', note: 'Configure compilation phases' },
-    { title: 'LLVM IR', note: 'Lower the selected behavior' },
-    { title: 'Optimization', note: 'Transform the IR pipeline' },
-    { title: 'Backend', note: 'Select target lowering' },
-    { title: 'Object File', note: 'Emit machine code or metadata' },
-    { title: 'Executable', note: 'Link the final artifact' },
-  ];
-
-  if (flag.category === 'Sanitizer') {
-    steps[4] = { title: 'Instrumentation', note: 'Insert sanitizer checks' };
-    steps[5] = { title: 'Runtime', note: 'Bind sanitizer support' };
-  } else if (flag.category === 'Warning') {
-    steps[3] = { title: 'Diagnostics', note: 'Tune warning emission' };
-    steps[5] = { title: 'Report', note: 'Surface the diagnostic' };
-  }
-
-  return steps;
-}
-
-function buildImplementationTrail(flag) {
-  const trail = [
-    {
-      title: 'Options.td',
-      value: flag.sourcePath || 'clang/include/clang/Driver/Options.td',
-      note: 'The option is defined in the driver tables and emitted into the generated option database.',
-    },
-    {
-      title: 'Driver parsing',
-      value: 'Driver.cpp',
-      note: 'The driver resolves the spelling, validates arguments, and forwards the selected semantics.',
-    },
-    {
-      title: 'Invocation setup',
-      value: 'CompilerInvocation.cpp',
-      note: 'Clang turns command-line flags into structured invocation state for the frontend.',
-    },
-  ];
-
-  if (flag.category === 'Sanitizer') {
-    trail.push(
-      {
-        title: 'Sanitizer args',
-        value: 'SanitizerArgs.cpp',
-        note: 'Sanitizer-specific options are collected and normalized before instrumentation is enabled.',
-      },
-      {
-        title: 'Instrumentation',
-        value: 'AddressSanitizer / UBSan passes',
-        note: 'The compiler injects runtime checks and LLVM IR instrumentation based on the flag.',
-      },
-    );
-    return trail;
-  }
-
-  if (flag.category === 'Optimization') {
-    trail.push(
-      {
-        title: 'Pass selection',
-        value: 'PassBuilder.cpp',
-        note: 'Optimization level controls the pass pipeline and which transformations are scheduled.',
-      },
-      {
-        title: 'LLVM pipeline',
-        value: 'LLVM Pass Pipeline',
-        note: 'The selected pipeline shapes inlining, vectorization, codegen, and late simplification.',
-      },
-    );
-    return trail;
-  }
-
-  if (flag.category === 'Warning') {
-    trail.push(
-      {
-        title: 'Diagnostics',
-        value: 'DiagnosticOptions + DiagnosticsEngine',
-        note: 'Warning flags alter which diagnostics are enabled, promoted, or suppressed.',
-      },
-      {
-        title: 'Warning groups',
-        value: 'DiagnosticGroups.td',
-        note: 'Grouped warnings are expanded into fine-grained diagnostics during option processing.',
-      },
-    );
-    return trail;
-  }
-
-  if (flag.category === 'Preprocessor') {
-    trail.push(
-      {
-        title: 'Preprocessor config',
-        value: 'PreprocessorOptions',
-        note: 'Macro expansion, include paths, and conditional compilation are configured early.',
-      },
-      {
-        title: 'Frontend impact',
-        value: 'PPCallbacks / lexer setup',
-        note: 'Preprocessor toggles influence tokenization and how source is fed into the parser.',
-      },
-    );
-    return trail;
-  }
-
-  trail.push(
-    {
-      title: 'Code generation',
-      value: 'CodeGenOptions / TargetInfo',
-      note: 'The frontend lowers the option into codegen knobs that shape emitted IR and object code.',
-    },
-    {
-      title: 'Backend effect',
-      value: 'LLVM IR + target backend',
-      note: 'The backend consumes the invocation state when generating the final machine code.',
-    },
-  );
-  return trail;
 }
 
 function DetailMeta({ label, value }) {
@@ -326,11 +205,11 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
 
       <div className={styles.detailSplitGrid}>
         <Section icon={Clock3} title="When to use">
-          <ListBlock items={flag.whenToUse} />
+          <ListBlock items={buildWhenToUse(flag)} />
         </Section>
 
         <Section icon={ShieldAlert} title="Avoid when">
-          <ListBlock items={flag.whenNotToUse} />
+          <ListBlock items={buildWhenNotToUse(flag)} />
         </Section>
       </div>
 

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-register-global-dtors-with-atexit"
 slug: "/tools/clang-flags/-fno-register-global-dtors-with-atexit/"
 description: "Don't use atexit or __cxa_atexit to register global destructors"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-register-global-dtors-with-atexit" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-register-global-dtors-with-atexit">
+
+## What this flag actually does
+
+Don't use atexit or __cxa_atexit to register global destructors
+
+
+
+It can be negated with -fregister-global-dtors-with-atexit.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-register-global-dtors-with-atexit -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fregister-global-dtors-with-atexit`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

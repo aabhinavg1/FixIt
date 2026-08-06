@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-ffree-form"
 slug: "/tools/clang-flags/-ffree-form/"
 description: "Process source files in free form"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-ffree-form" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-ffree-form">
+
+## What this flag actually does
+
+Process source files in free form
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -ffree-form -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FC1Option, FlangOption
+- **Stage**: driver, category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

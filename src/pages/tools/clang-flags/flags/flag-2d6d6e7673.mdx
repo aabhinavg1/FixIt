@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-mnvs"
 slug: "/tools/clang-flags/-mnvs/"
 description: "Enable generation of new-value stores"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mnvs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mnvs">
+
+## What this flag actually does
+
+Enable generation of new-value stores
+
+## When to use it
+
+- You are targeting Hexagon and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Hexagon.
+
+## Usage example
+
+```bash
+clang++ -mnvs main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Hexagon`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

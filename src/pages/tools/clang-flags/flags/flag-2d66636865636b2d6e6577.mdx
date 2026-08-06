@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-fcheck-new"
 slug: "/tools/clang-flags/-fcheck-new/"
 description: "Do not assume C++ operator new may not return NULL"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fcheck-new" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fcheck-new">
+
+## What this flag actually does
+
+Do not assume C++ operator new may not return NULL
+
+
+
+It can be negated with -fno-check-new.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -fcheck-new main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Other`
+- **Negated by**: `-fno-check-new`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

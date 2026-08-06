@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-stats-file-append"
 slug: "/tools/clang-flags/-stats-file-append/"
 description: "If stats should be appended to stats-file instead of overwriting it"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-stats-file-append" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-stats-file-append">
+
+## What this flag actually does
+
+If stats should be appended to stats-file instead of overwriting it
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -Xclang -stats-file-append -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

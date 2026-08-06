@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-vd"
 slug: "/tools/clang-flags/-vd/"
 description: "Control vtordisp placement"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-vd" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-vd">
+
+## What this flag actually does
+
+Control vtordisp placement
+
+
+
+It is an alias for -vtordisp-mode=.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -vd main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-vtordisp-mode=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

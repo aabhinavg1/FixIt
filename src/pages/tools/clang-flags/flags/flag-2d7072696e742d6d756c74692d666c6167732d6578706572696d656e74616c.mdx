@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-print-multi-flags-experimental"
 slug: "/tools/clang-flags/-print-multi-flags-experimental/"
 description: "Print the flags used for selecting multilibs (experimental)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-print-multi-flags-experimental" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-print-multi-flags-experimental">
+
+## What this flag actually does
+
+Print the flags used for selecting multilibs (experimental)
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -print-multi-flags-experimental main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Experimental`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

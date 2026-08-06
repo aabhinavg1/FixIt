@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fkeep-system-includes"
 slug: "/tools/clang-flags/-fkeep-system-includes/"
 description: "Instead of expanding system headers when emitting preprocessor output, preserve the #include directive. Useful when producing preprocessed output for test case reduction. May produ"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fkeep-system-includes" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fkeep-system-includes">
+
+## What this flag actually does
+
+Instead of expanding system headers when emitting preprocessor output, preserve the #include directive. Useful when producing preprocessed output for test case reduction. May produce incorrect output if preprocessor symbols that control the included content (e.g. _XOPEN_SOURCE) are defined in the including source file. The portability of the resulting source to other compilation environments is not guaranteed. Only valid with -E.
+
+
+
+It can be negated with -fno-keep-system-includes.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fkeep-system-includes -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-keep-system-includes`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

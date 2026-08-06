@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-sanitize-address-poison-custom-array-cookie"
 slug: "/tools/clang-flags/-fno-sanitize-address-poison-custom-array-cookie/"
 description: "Enable \"poisoning\" array cookies when allocating arrays with a custom operator new\\[\\] in Address Sanitizer, preventing accesses to the cookies from user code. An array cookie is a"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-sanitize-address-poison-custom-array-cookie" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-sanitize-address-poison-custom-array-cookie">
+
+## What this flag actually does
+
+Enable "poisoning" array cookies when allocating arrays with a custom operator new\[\] in Address Sanitizer, preventing accesses to the cookies from user code. An array cookie is a small implementation-defined header added to certain array allocations to record metadata such as the length of the array. Accesses to array cookies from user code are technically allowed by the standard but are more likely to be the result of an out-of-bounds array access. An operator new\[\] is "custom" if it is not one of the allocation functions provided by the C++ standard library. Array cookies from non-custom allocation functions are always poisoned.
+
+
+
+It can be negated with -fsanitize-address-poison-custom-array-cookie.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fno-sanitize-address-poison-custom-array-cookie main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Negated by**: `-fsanitize-address-poison-custom-array-cookie`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

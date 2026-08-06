@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-modules-prune-non-affecting-module-map-files"
 slug: "/tools/clang-flags/-fno-modules-prune-non-affecting-module-map-files/"
 description: "Do not prune non-affecting module map files when writing module files"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-modules-prune-non-affecting-module-map-files" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-modules-prune-non-affecting-module-map-files">
+
+## What this flag actually does
+
+Do not prune non-affecting module map files when writing module files
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -Xclang -fno-modules-prune-non-affecting-module-map-files -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsingle-precision-constant"
 slug: "/tools/clang-flags/-fsingle-precision-constant/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsingle-precision-constant" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsingle-precision-constant">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fno-single-precision-constant.
+
+## When to use it
+
+- Release builds
+- Performance-critical code
+- When profiling shows a hot path
+
+## When not to use it
+
+- Debug builds
+- When compile time is more important than runtime speed
+
+## Usage example
+
+```bash
+clang++ -fsingle-precision-constant main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Optimization`
+- **Negated by**: `-fno-single-precision-constant`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-gno-codeview-ghash"
 slug: "/tools/clang-flags/-gno-codeview-ghash/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-gno-codeview-ghash" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-gno-codeview-ghash">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -gno-codeview-ghash main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CLOption, DXCOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

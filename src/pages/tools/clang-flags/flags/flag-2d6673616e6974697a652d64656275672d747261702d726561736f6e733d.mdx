@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-debug-trap-reasons="
 slug: "/tools/clang-flags/-fsanitize-debug-trap-reasons%3D/"
 description: "Set how trap reasons are emitted. `none` - Not emitted. This gives the smallest debug info; `basic` - Emit a fixed trap message per check type. This increases the debug info size b"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-debug-trap-reasons%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-debug-trap-reasons%3D">
+
+## What this flag actually does
+
+Set how trap reasons are emitted. `none` - Not emitted. This gives the smallest debug info; `basic` - Emit a fixed trap message per check type. This increases the debug info size but not as much as `detailed`; `detailed` - Emit a more detailed trap message. This increases the debug info size the most. Default is `detailed`.
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-debug-trap-reasons= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

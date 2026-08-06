@@ -1,9 +1,41 @@
 ---
-title: "Clang Flag Reference"
+title: "-mprintf-kind="
 slug: "/tools/clang-flags/-mprintf-kind%3D/"
 description: "Specify the printf lowering scheme (AMDGPU only), allowed values are \"hostcall\"(printing happens during kernel execution, this scheme relies on hostcalls which require system to su"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mprintf-kind%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mprintf-kind%3D">
+
+## What this flag actually does
+
+Specify the printf lowering scheme (AMDGPU only), allowed values are "hostcall"(printing happens during kernel execution, this scheme relies on hostcalls which require system to support pcie atomics) and "buffered"(printing happens after all kernel threads exit, this uses a printf buffer and does not rely on pcie atomic support)
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this joined behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joined is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -mprintf-kind= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

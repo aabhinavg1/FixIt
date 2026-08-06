@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsplit-lto-unit"
 slug: "/tools/clang-flags/-fsplit-lto-unit/"
 description: "Enables splitting of the LTO unit"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsplit-lto-unit" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsplit-lto-unit">
+
+## What this flag actually does
+
+Enables splitting of the LTO unit
+
+
+
+It can be negated with -fno-split-lto-unit.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsplit-lto-unit -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-split-lto-unit`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

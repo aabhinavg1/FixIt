@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "-QIntel-jcc-erratum"
 slug: "/tools/clang-flags/-QIntel-jcc-erratum/"
 description: "Align branches within 32-byte boundaries to mitigate the performance impact of the Intel JCC erratum."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-QIntel-jcc-erratum" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-QIntel-jcc-erratum">
+
+## What this flag actually does
+
+Align branches within 32-byte boundaries to mitigate the performance impact of the Intel JCC erratum.
+
+
+
+It is an alias for -mbranches-within-32B-boundaries.
+
+## When to use it
+
+- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+
+## Usage example
+
+```bash
+clang++ -QIntel-jcc-erratum main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CLOption
+- **Stage**: driver, category `CL Compatibility`
+- **Alias of**: `-mbranches-within-32B-boundaries`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

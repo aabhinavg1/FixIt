@@ -1,9 +1,50 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsanitize-trap"
 slug: "/tools/clang-flags/-fsanitize-trap/"
 description: "Enable trapping for all sanitizers"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsanitize-trap" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsanitize-trap">
+
+## What this flag actually does
+
+Enable trapping for all sanitizers
+
+
+
+It can be negated with -fno-sanitize-trap.
+
+
+
+It is an alias for -fsanitize-trap=.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -fsanitize-trap main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option, CLOption
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Alias of**: `-fsanitize-trap=`
+- **Negated by**: `-fno-sanitize-trap`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

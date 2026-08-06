@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-show-inst"
 slug: "/tools/clang-flags/-show-inst/"
 description: "Show internal instruction representation in transliterate mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-show-inst" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-show-inst">
+
+## What this flag actually does
+
+Show internal instruction representation in transliterate mode
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -show-inst main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1AsOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

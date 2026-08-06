@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-relative-c++-abi-vtables"
 slug: "/tools/clang-flags/-fexperimental-relative-c%2B%2B-abi-vtables/"
 description: "Use the experimental C++ class ABI for classes with virtual tables"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-relative-c%2B%2B-abi-vtables" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-relative-c%2B%2B-abi-vtables">
+
+## What this flag actually does
+
+Use the experimental C++ class ABI for classes with virtual tables
+
+
+
+It can be negated with -fno-experimental-relative-c++-abi-vtables.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fexperimental-relative-c++-abi-vtables -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-experimental-relative-c++-abi-vtables`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-dI"
 slug: "/tools/clang-flags/-dI/"
 description: "Flags allowing the state of the preprocessor to be dumped in various ways."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-dI" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-dI">
+
+## What this flag actually does
+
+Flags allowing the state of the preprocessor to be dumped in various ways.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -dI -E input.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

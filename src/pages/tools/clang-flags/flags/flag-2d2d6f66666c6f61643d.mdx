@@ -1,9 +1,42 @@
 ---
-title: "Clang Flag Reference"
+title: "--offload="
 slug: "/tools/clang-flags/--offload%3D/"
 description: "Specify comma-separated list of offloading target triples (CUDA and HIP only)"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="--offload%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="--offload%3D">
+
+## What this flag actually does
+
+Specify comma-separated list of offloading target triples (CUDA and HIP only)
+
+
+
+It is an alias for --offload-targets=.
+
+## When to use it
+
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ --offload= main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: COMMAJOINED (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Other`
+- **Alias of**: `--offload-targets=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fexperimental-sanitize-metadata=uar"
 slug: "/tools/clang-flags/-fexperimental-sanitize-metadata%3Duar/"
 description: "Emit PCs for start of functions that are subject for use-after-return checking."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fexperimental-sanitize-metadata%3Duar" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fexperimental-sanitize-metadata%3Duar">
+
+## What this flag actually does
+
+Emit PCs for start of functions that are subject for use-after-return checking.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Bug hunting
+- Test environments
+- When validating memory and UB safety
+
+## When not to use it
+
+- Shipping performance-critical binaries
+- When runtime overhead is unacceptable
+
+## Usage example
+
+```bash
+clang++ -Xclang -fexperimental-sanitize-metadata=uar -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Sanitizer`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-setup-static-analyzer"
 slug: "/tools/clang-flags/-setup-static-analyzer/"
 description: "Set up preprocessor for static analyzer (done automatically when static analyzer is run)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-setup-static-analyzer" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-setup-static-analyzer">
+
+## What this flag actually does
+
+Set up preprocessor for static analyzer (done automatically when static analyzer is run).
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Controlling macro expansion
+- Dependency generation
+- Include path management
+
+## When not to use it
+
+- Late codegen tuning
+- When you do not want preprocessing behavior changed
+
+## Usage example
+
+```bash
+clang++ -Xclang -setup-static-analyzer -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Preprocessor`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

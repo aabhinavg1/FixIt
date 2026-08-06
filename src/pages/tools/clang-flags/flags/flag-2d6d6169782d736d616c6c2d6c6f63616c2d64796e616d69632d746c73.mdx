@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-maix-small-local-dynamic-tls"
 slug: "/tools/clang-flags/-maix-small-local-dynamic-tls/"
 description: "Produce a faster access sequence for local-dynamic TLS variables where the offset from the TLS base is encoded as an immediate operand (AIX 64-bit only). This access sequence is no"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-maix-small-local-dynamic-tls" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-maix-small-local-dynamic-tls">
+
+## What this flag actually does
+
+Produce a faster access sequence for local-dynamic TLS variables where the offset from the TLS base is encoded as an immediate operand (AIX 64-bit only). This access sequence is not used for variables larger than 32KB.
+
+## When to use it
+
+- You are targeting PowerPC and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting PowerPC.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -maix-small-local-dynamic-tls main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `PowerPC`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

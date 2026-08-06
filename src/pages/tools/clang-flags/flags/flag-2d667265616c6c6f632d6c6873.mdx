@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-frealloc-lhs"
 slug: "/tools/clang-flags/-frealloc-lhs/"
 description: "If an allocatable left-hand side of an intrinsic assignment is unallocated or its shape/type does not match the right-hand side, then it is automatically (re)allocated"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-frealloc-lhs" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-frealloc-lhs">
+
+## What this flag actually does
+
+If an allocatable left-hand side of an intrinsic assignment is unallocated or its shape/type does not match the right-hand side, then it is automatically (re)allocated
+
+
+
+It can be negated with -fno-realloc-lhs.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -frealloc-lhs -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fno-realloc-lhs`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

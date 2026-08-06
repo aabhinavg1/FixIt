@@ -1,9 +1,46 @@
 ---
-title: "Clang Flag Reference"
+title: "-J"
 slug: "/tools/clang-flags/-J/"
 description: "Flags that will be passed onto the ``gfortran`` compiler when Clang is given a Fortran input."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-J" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-J">
+
+## What this flag actually does
+
+Flags that will be passed onto the ``gfortran`` compiler when Clang is given a Fortran input.
+
+
+
+This option expects an argument.
+
+
+
+It is an alias for -module-dir.
+
+## When to use it
+
+- You are targeting Fortran compilation options and want this joinedorseparate behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this joinedorseparate is accepted only when targeting Fortran compilation options.
+
+## Usage example
+
+```bash
+clang++ -J=<arg> main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: JoinedOrSeparate (takes an argument)
+- **Accepted by**: FlangOption, FC1Option
+- **Stage**: driver, category `Fortran compilation`
+- **Alias of**: `-module-dir`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

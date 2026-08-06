@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fmodules-debuginfo"
 slug: "/tools/clang-flags/-fmodules-debuginfo/"
 description: "Generate debug info for types in an object file built from this module and do not generate them elsewhere"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fmodules-debuginfo" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fmodules-debuginfo">
+
+## What this flag actually does
+
+Generate debug info for types in an object file built from this module and do not generate them elsewhere
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+## When to use it
+
+- Debug sessions
+- Crash investigation
+- When you need symbols or richer debug info
+
+## When not to use it
+
+- Release builds without a debugging need
+- When size or startup time matters more than observability
+
+## Usage example
+
+```bash
+clang++ -Xclang -fmodules-debuginfo -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Debugging`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

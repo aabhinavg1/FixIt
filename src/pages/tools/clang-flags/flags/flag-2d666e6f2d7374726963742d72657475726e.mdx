@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-strict-return"
 slug: "/tools/clang-flags/-fno-strict-return/"
 description: "Don't treat control flow paths that fall off the end of a non-void function as unreachable"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-strict-return" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-strict-return">
+
+## What this flag actually does
+
+Don't treat control flow paths that fall off the end of a non-void function as unreachable
+
+
+
+It can be negated with -fstrict-return.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-strict-return -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fstrict-return`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fsafe-buffer-usage-suggestions"
 slug: "/tools/clang-flags/-fsafe-buffer-usage-suggestions/"
 description: "Display suggestions to update code associated with -Wunsafe-buffer-usage warnings"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fsafe-buffer-usage-suggestions" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fsafe-buffer-usage-suggestions">
+
+## What this flag actually does
+
+Display suggestions to update code associated with -Wunsafe-buffer-usage warnings
+
+
+
+It can be negated with -fno-safe-buffer-usage-suggestions.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fsafe-buffer-usage-suggestions -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fno-safe-buffer-usage-suggestions`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

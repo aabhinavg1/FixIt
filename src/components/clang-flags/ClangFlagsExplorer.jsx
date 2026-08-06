@@ -295,6 +295,26 @@ export default function ClangFlagsExplorer() {
   }, [dataUrl]);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof URLSearchParams === 'undefined') {
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get('category');
+    const query = params.get('q');
+    const visibility = params.get('visibility');
+    if (category || query || visibility) {
+      setFilters((current) => ({
+        category: category || current.category,
+        kind: 'all',
+        visibility: visibility || 'all',
+      }));
+      if (query) {
+        setQuery(query);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     const handleSlash = (event) => {
       const target = event.target;
       const tagName = target && target.tagName ? target.tagName.toLowerCase() : '';
@@ -353,7 +373,7 @@ export default function ClangFlagsExplorer() {
     if (exact) {
       return exact;
     }
-    return filteredOptions.find((option) => option.flag === selectedFlag) || filteredOptions[0];
+    return filteredOptions.find((option) => option.flag === selectedFlag) || null;
   }, [filteredOptions, normalizedQuery, selectedFlag]);
 
   useEffect(() => {
@@ -465,6 +485,12 @@ export default function ClangFlagsExplorer() {
     const categoryCount = categories.length;
     return { total, visible, categoryCount };
   }, [options.length, filteredOptions.length, categories.length]);
+
+  const hasActiveScope =
+    normalizedQuery.length > 0 ||
+    filters.category !== 'all' ||
+    filters.kind !== 'all' ||
+    filters.visibility !== 'all';
 
   const visibleStart = resultsViewportHeight > 0 ? Math.max(0, Math.floor(resultsScrollTop / RESULT_ROW_HEIGHT) - RESULT_OVERSCAN) : 0;
   const visibleCount = resultsViewportHeight > 0 ? Math.ceil(resultsViewportHeight / RESULT_ROW_HEIGHT) + RESULT_OVERSCAN * 2 : 8;
@@ -675,32 +701,42 @@ export default function ClangFlagsExplorer() {
                   <h2 className={styles.panelTitle}>{stats.visible.toLocaleString()}</h2>
                 </div>
                 <div className={styles.panelMeta}>
-                  {query ? <Badge tone="accent">Search: {query}</Badge> : <Badge tone="neutral">Showing all flags</Badge>}
+                  {hasActiveScope ? (
+                    query ? <Badge tone="accent">Search: {query}</Badge> : <Badge tone="neutral">Showing filtered flags</Badge>
+                  ) : (
+                    <Badge tone="neutral">Waiting for search</Badge>
+                  )}
                 </div>
               </div>
 
-              {filteredOptions.length > 0 ? (
-                <div
-                  className={styles.resultsViewport}
-                  ref={resultsViewportRef}
-                  onScroll={(event) => setResultsScrollTop(event.currentTarget.scrollTop)}
-                >
-                  <div style={{ paddingTop: topSpacer, paddingBottom: bottomSpacer }}>
-                    {visibleResults.map((option) => (
-                      <FlagCard
-                        key={option.flag}
-                        flag={option}
-                        query={query}
-                        mode="compact"
-                        onPickFlag={handleSelectFlag}
-                        selected={option.flag === selectedOption?.flag}
-                      />
-                    ))}
+              {hasActiveScope ? (
+                filteredOptions.length > 0 ? (
+                  <div
+                    className={styles.resultsViewport}
+                    ref={resultsViewportRef}
+                    onScroll={(event) => setResultsScrollTop(event.currentTarget.scrollTop)}
+                  >
+                    <div style={{ paddingTop: topSpacer, paddingBottom: bottomSpacer }}>
+                      {visibleResults.map((option) => (
+                        <FlagCard
+                          key={option.flag}
+                          flag={option}
+                          query={query}
+                          mode="compact"
+                          onPickFlag={handleSelectFlag}
+                          selected={option.flag === selectedOption?.flag}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className={styles.resultsEmpty}>
+                    <p>No flags matched your current search.</p>
+                  </div>
+                )
               ) : (
                 <div className={styles.resultsEmpty}>
-                  <p>No flags matched your current search.</p>
+                  <p>Search for a flag or pick a category to see matching flags.</p>
                 </div>
               )}
             </section>

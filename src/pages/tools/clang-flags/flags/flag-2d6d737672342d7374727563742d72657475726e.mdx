@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-msvr4-struct-return"
 slug: "/tools/clang-flags/-msvr4-struct-return/"
 description: "Override the default ABI for 32-bit targets to return small structs in registers, as in the System V ABI (1995)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-msvr4-struct-return" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-msvr4-struct-return">
+
+## What this flag actually does
+
+Override the default ABI for 32-bit targets to return small structs in registers, as in the System V ABI (1995).
+
+## When to use it
+
+- You are targeting Target-dependent compilation options and want this flag behavior applied to the whole compilation.
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Target-dependent compilation options.
+
+## Usage example
+
+```bash
+clang++ -msvr4-struct-return -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Target-Specific Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

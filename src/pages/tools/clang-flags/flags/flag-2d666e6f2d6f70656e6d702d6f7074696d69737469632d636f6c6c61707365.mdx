@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-openmp-optimistic-collapse"
 slug: "/tools/clang-flags/-fno-openmp-optimistic-collapse/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-openmp-optimistic-collapse" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-openmp-optimistic-collapse">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fopenmp-optimistic-collapse.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-openmp-optimistic-collapse -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: Clang driver
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fopenmp-optimistic-collapse`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

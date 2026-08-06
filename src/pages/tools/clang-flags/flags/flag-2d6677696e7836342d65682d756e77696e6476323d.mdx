@@ -1,9 +1,44 @@
 ---
-title: "Clang Flag Reference"
+title: "-fwinx64-eh-unwindv2="
 slug: "/tools/clang-flags/-fwinx64-eh-unwindv2%3D/"
 description: "Generate unwind v2 (epilog) information for x64 Windows"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fwinx64-eh-unwindv2%3D" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fwinx64-eh-unwindv2%3D">
+
+## What this flag actually does
+
+Generate unwind v2 (epilog) information for x64 Windows
+
+
+
+This option expects an argument.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fwinx64-eh-unwindv2= -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

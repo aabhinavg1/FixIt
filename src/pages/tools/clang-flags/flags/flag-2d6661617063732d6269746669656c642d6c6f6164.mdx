@@ -1,9 +1,40 @@
 ---
-title: "Clang Flag Reference"
+title: "-faapcs-bitfield-load"
 slug: "/tools/clang-flags/-faapcs-bitfield-load/"
 description: "Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only)."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-faapcs-bitfield-load" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-faapcs-bitfield-load">
+
+## What this flag actually does
+
+Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
+
+## When to use it
+
+- Final link steps
+- When forwarding flags to the linker
+- Build systems that need linker-specific control
+
+## When not to use it
+
+- Pure compilation steps
+- When the linker should not see the option
+
+## Usage example
+
+```bash
+clang++ -faapcs-bitfield-load main.o -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Linker`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

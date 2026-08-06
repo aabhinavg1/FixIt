@@ -1,9 +1,39 @@
 ---
-title: "Clang Flag Reference"
+title: "-mno-hvx-qfloat"
 slug: "/tools/clang-flags/-mno-hvx-qfloat/"
 description: "Disable Hexagon HVX QFloat instructions"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-mno-hvx-qfloat" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-mno-hvx-qfloat">
+
+## What this flag actually does
+
+Disable Hexagon HVX QFloat instructions
+
+## When to use it
+
+- You are targeting Hexagon and want this flag behavior applied to the whole compilation.
+- You are compiling with Clang (the option is not accepted by other compilers).
+
+## When not to use it
+
+- Your build targets a different architecture — this flag is accepted only when targeting Hexagon.
+- You need the same behavior from GCC or another compiler that does not implement this option.
+
+## Usage example
+
+```bash
+clang++ -mno-hvx-qfloat main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Hexagon`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

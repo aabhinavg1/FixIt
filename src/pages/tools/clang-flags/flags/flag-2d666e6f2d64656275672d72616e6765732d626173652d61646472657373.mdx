@@ -1,9 +1,45 @@
 ---
-title: "Clang Flag Reference"
+title: "-fno-debug-ranges-base-address"
 slug: "/tools/clang-flags/-fno-debug-ranges-base-address/"
 description: "Reference entry for a Clang compiler flag."
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-fno-debug-ranges-base-address" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-debug-ranges-base-address">
+
+## What this flag actually does
+
+No help text is available in the imported LLVM metadata.
+
+
+
+It can be negated with -fdebug-ranges-base-address.
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -fno-debug-ranges-base-address -c main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption
+- **Stage**: driver, category `Code Generation`
+- **Negated by**: `-fdebug-ranges-base-address`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

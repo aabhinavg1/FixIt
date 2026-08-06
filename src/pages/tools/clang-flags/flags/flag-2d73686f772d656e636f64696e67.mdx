@@ -1,9 +1,37 @@
 ---
-title: "Clang Flag Reference"
+title: "-show-encoding"
 slug: "/tools/clang-flags/-show-encoding/"
 description: "Show instruction encoding information in transliterate mode"
 ---
 
-import FlagArticlePage from '@site/src/components/clang-flags/FlagArticlePage';
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
 
-<FlagArticlePage flagPath="-show-encoding" />
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-show-encoding">
+
+## What this flag actually does
+
+Show instruction encoding information in transliterate mode
+
+## When to use it
+
+- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+
+## When not to use it
+
+- The behavior enabled by this option does not apply to the code or target you are building.
+
+## Usage example
+
+```bash
+clang++ -show-encoding main.cpp -o app
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1AsOption
+- **Stage**: driver, category `Other`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>
