@@ -3,7 +3,7 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
-import { BookOpenText, Code2, ExternalLink, FileText, Layers3 } from 'lucide-react';
+import { BookOpenText, Check, ChevronDown, Code2, Copy, ExternalLink, FileText, Layers3, LayoutList } from 'lucide-react';
 import Badge from './Badge';
 import CodeBlock from './CodeBlock';
 import { resolveFlagPathValue, buildFlagArticlePath } from './flagRoutes';
@@ -184,6 +184,8 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
   const [error, setError] = useState('');
   const [tocItems, setTocItems] = useState([]);
   const [activeSection, setActiveSection] = useState('');
+  const [copiedFlag, setCopiedFlag] = useState(false);
+  const [mobileTocOpen, setMobileTocOpen] = useState(false);
   const dataUrl = useBaseUrl('/data/clang-flags.json');
   const requestedFlag = resolveFlagPathValue(flagPath);
   const articleRef = useRef(null);
@@ -348,6 +350,16 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
 
   const reportIssueUrl = buildReportIssueUrl(flag);
 
+  const copyFlag = async () => {
+    try {
+      await navigator.clipboard.writeText(flag.flag);
+      setCopiedFlag(true);
+      window.setTimeout(() => setCopiedFlag(false), 1400);
+    } catch {
+      setCopiedFlag(false);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -356,8 +368,19 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
 
       <main className={styles.articlePageShell}>
         <section className={styles.articleHero}>
+          <div className={styles.articleHeroTopline}>
+            <div className={styles.articleBreadcrumbs}>
+              <Link to="/tools/clang-flags/">Clang Flags</Link>
+              <span>/</span>
+              <span>ABI reference</span>
+            </div>
+            <span className={styles.articleHeroEyebrow}>Compiler option · {architecture}</span>
+          </div>
           <div className={styles.articleHeroCopy}>
-            <h1 className={styles.articleHeroTitle}>{flag.flag}</h1>
+            <div className={styles.articleHeroTitleRow}>
+              <div className={styles.articleHeroTitleMark} aria-hidden="true">$</div>
+              <h1 className={styles.articleHeroTitle}>{flag.flag}</h1>
+            </div>
             <p className={styles.articleHeroSummary}>{heroSummary}</p>
             <div className={styles.heroBadgeRow}>
               {heroBadges.map((badge) => (
@@ -378,6 +401,10 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
               ))}
             </div>
             <div className={styles.articleHeroActions}>
+              <button type="button" className={styles.heroActionButton + ' ' + styles.heroActionButtonPrimary} onClick={copyFlag}>
+                {copiedFlag ? <Check size={14} strokeWidth={2.25} /> : <Copy size={14} strokeWidth={2} />}
+                <span>{copiedFlag ? 'Copied flag' : 'Copy flag'}</span>
+              </button>
               {flag.sourceUrl ? (
                 <Link className={styles.heroActionButton + ' ' + styles.heroActionButtonSecondary} href={flag.sourceUrl} target="_blank" rel="noreferrer">
                   <ExternalLink size={14} strokeWidth={2} />
@@ -399,6 +426,48 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
 
         <div className={styles.articleLayout}>
           <article className={styles.articleMain} ref={articleRef}>
+            {tocItems.length > 0 ? (
+              <div className={styles.mobileToc}>
+                <button
+                  type="button"
+                  className={styles.mobileTocToggle}
+                  aria-expanded={mobileTocOpen}
+                  onClick={() => setMobileTocOpen((value) => !value)}
+                >
+                  <LayoutList size={15} strokeWidth={2.1} aria-hidden="true" />
+                  <span>On this page</span>
+                  <ChevronDown
+                    size={14}
+                    strokeWidth={2.2}
+                    className={clsx(styles.mobileTocChevron, mobileTocOpen && styles.mobileTocChevronOpen)}
+                    aria-hidden="true"
+                  />
+                </button>
+                {mobileTocOpen ? (
+                  <nav className={styles.mobileTocNav} aria-label="Page sections">
+                    {tocItems.map((item) => (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        className={clsx(
+                          styles.mobileTocLink,
+                          item.level === 3 && styles.mobileTocLinkSub,
+                          activeSection === item.id && styles.mobileTocLinkActive,
+                        )}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setMobileTocOpen(false);
+                          document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                      >
+                        {item.text}
+                      </a>
+                    ))}
+                  </nav>
+                ) : null}
+              </div>
+            ) : null}
+
             {flag.exampleClang || flag.exampleGCC ? (
               <ArticleSection icon={Code2} title="Quick usage" note="A runnable command that shows the flag in action.">
                 <div className={styles.quickUsageGrid}>
