@@ -1,25 +1,18 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import clsx from 'clsx';
+import { GitCompareArrows, Minus, Plus } from 'lucide-react';
 import styles from './clangFlags.module.css';
 
-function escapeHtml(value) {
-  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 function diffLines(before, after) {
-  const a = String(before ?? '').split('\n');
-  const b = String(after ?? '').split('\n');
+  const a = String(before ?? '').replace(/\n$/, '').split('\n');
+  const b = String(after ?? '').replace(/\n$/, '').split('\n');
   const aCount = a.length;
   const bCount = b.length;
 
   const lcs = Array.from({ length: aCount + 1 }, () => new Array(bCount + 1).fill(0));
   for (let i = aCount - 1; i >= 0; i--) {
     for (let j = bCount - 1; j >= 0; j--) {
-      if (a[i] === b[j]) {
-        lcs[i][j] = lcs[i + 1][j + 1] + 1;
-      } else {
-        lcs[i][j] = Math.max(lcs[i + 1][j], lcs[i][j + 1]);
-      }
+      lcs[i][j] = a[i] === b[j] ? lcs[i + 1][j + 1] + 1 : Math.max(lcs[i + 1][j], lcs[i][j + 1]);
     }
   }
 
@@ -48,61 +41,108 @@ function diffLines(before, after) {
     j += 1;
   }
 
-  return { a, b, aStatus, bStatus };
+  return {
+    a,
+    b,
+    aStatus,
+    bStatus,
+    removed: aStatus.filter((s) => s === 'removed').length,
+    added: bStatus.filter((s) => s === 'added').length,
+  };
 }
 
 function DiffPanel({ title, badge, lines, statuses, side }) {
   return (
-    <div className={styles.asmDiffPanel}>
+    <div className={clsx(styles.asmDiffPanel, side === 'after' ? styles.asmDiffPanelAfter : styles.asmDiffPanelBefore)}>
       <div className={styles.asmDiffHeader}>
-        <span className={styles.asmDiffTitle}>{title}</span>
-        <span className={clsx(styles.asmDiffBadge, side === 'after' ? styles.asmDiffBadgeAdd : styles.asmDiffBadgeRemove)}>{badge}</span>
+        <div className={styles.asmDiffHeaderLeft}>
+          <span className={styles.asmDiffTitle}>{title}</span>
+          <span className={clsx(styles.asmDiffBadge, side === 'after' ? styles.asmDiffBadgeAdd : styles.asmDiffBadgeRemove)}>
+            {badge}
+          </span>
+        </div>
+        <span className={styles.asmDiffLineCount}>{lines.length} lines</span>
       </div>
-      <pre className={styles.asmDiffPre}>
-        <code>
-          {lines.map((line, index) => {
-            const status = statuses[index];
-            const prefix = status === 'added' ? '+' : status === 'removed' ? '-' : ' ';
-            return (
-              <div
-                key={`${index}-${line}`}
-                className={clsx(
-                  styles.asmDiffLine,
-                  status === 'added' && styles.asmDiffLineAdd,
-                  status === 'removed' && styles.asmDiffLineRemove,
-                )}
-                dangerouslySetInnerHTML={{
-                  __html: `${escapeHtml(prefix + ' ' + line)}\n`,
-                }}
-              />
-            );
-          })}
-        </code>
-      </pre>
+      <div className={styles.asmDiffPreWrap}>
+        <pre className={styles.asmDiffPre}>
+          <code>
+            {lines.map((line, index) => {
+              const status = statuses[index];
+              const marker = status === 'added' ? '+' : status === 'removed' ? '−' : ' ';
+              return (
+                <div
+                  key={`${side}-${index}-${line}`}
+                  className={clsx(
+                    styles.asmDiffLine,
+                    status === 'added' && styles.asmDiffLineAdd,
+                    status === 'removed' && styles.asmDiffLineRemove,
+                    status === 'same' && styles.asmDiffLineSame,
+                  )}
+                >
+                  <span className={styles.asmDiffGutter}>{String(index + 1).padStart(2, ' ')}</span>
+                  <span className={styles.asmDiffMarker} aria-hidden="true">{marker}</span>
+                  <span className={styles.asmDiffCode}>{line || ' '}</span>
+                </div>
+              );
+            })}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 }
 
 export default function AsmDiff({ before, after, beforeTitle = 'Without flag', afterTitle = 'With flag', note }) {
-  const { a, b, aStatus, bStatus } = useMemo(() => diffLines(before, after), [before, after]);
+  const { a, b, aStatus, bStatus, removed, added } = useMemo(() => diffLines(before, after), [before, after]);
+  const [view, setView] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 720px)').matches ? 'after' : 'both'
+  ));
+  const afterBadge = afterTitle.replace(/^With\s+/, '') || 'flag';
 
   return (
     <div className={styles.asmDiff}>
-      <div className={styles.asmDiffGrid}>
-        <DiffPanel title={beforeTitle} badge="default ABI" lines={a} statuses={aStatus} side="before" />
-        <DiffPanel title={afterTitle} badge={`${afterTitle.replace(/^With\s+/, '')} applied`} lines={b} statuses={bStatus} side="after" />
+      <div className={styles.asmDiffTop}>
+        <div className={styles.asmDiffTopCopy}>
+          <GitCompareArrows size={16} strokeWidth={2.2} className={styles.asmDiffTopIcon} aria-hidden="true" />
+          <div>
+            <div className={styles.asmDiffTopTitle}>Assembly diff</div>
+            <div className={styles.asmDiffTopMeta}>
+              <span className={styles.asmDiffStatRemoved}><Minus size={12} strokeWidth={2.5} /> {removed} removed</span>
+              <span className={styles.asmDiffStatAdded}><Plus size={12} strokeWidth={2.5} /> {added} added</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.asmDiffToolbar} role="tablist" aria-label="Assembly comparison views">
+          {[
+            { key: 'before', label: 'Before' },
+            { key: 'after', label: 'After' },
+            { key: 'both', label: 'Compare' },
+          ].map((item) => (
+            <button
+              key={item.key}
+              type="button"
+              role="tab"
+              aria-selected={view === item.key}
+              className={clsx(styles.asmDiffTab, view === item.key && styles.asmDiffTabActive)}
+              onClick={() => setView(item.key)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className={styles.asmDiffLegend}>
-        <span className={styles.asmDiffLegendItem}>
-          <span className={styles.asmDiffSwatchRemove} />
-          removed
-        </span>
-        <span className={styles.asmDiffLegendItem}>
-          <span className={styles.asmDiffSwatchAdd} />
-          added
-        </span>
-        {note ? <span className={styles.asmDiffNote}>{note}</span> : null}
+
+      <div className={clsx(styles.asmDiffGrid, view !== 'both' && styles.asmDiffGridSingle)}>
+        {view === 'before' || view === 'both' ? (
+          <DiffPanel title={beforeTitle} badge="default ABI" lines={a} statuses={aStatus} side="before" />
+        ) : null}
+        {view === 'after' || view === 'both' ? (
+          <DiffPanel title={afterTitle} badge={`${afterBadge} applied`} lines={b} statuses={bStatus} side="after" />
+        ) : null}
       </div>
+
+      {note ? <p className={styles.asmDiffNote}>{note}</p> : null}
     </div>
   );
 }

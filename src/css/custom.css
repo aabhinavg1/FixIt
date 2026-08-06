@@ -1441,28 +1441,62 @@ html[data-theme='dark'] .cmp-chip--shared {
   border-color: #8a7330;
 }
 
+/* Clang flag articles: full-bleed page (no empty left sidebar / narrow col) */
+.main-wrapper.clang-flags-article-layout {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.main-wrapper.clang-flags-article-layout .theme-doc-sidebar-container,
+.main-wrapper.clang-flags-article-layout aside[class*='sidebar'],
+.main-wrapper.clang-flags-article-layout .docSidebarContainer,
+.main-wrapper.clang-flags-article-layout .theme-doc-toc-desktop,
+.main-wrapper.clang-flags-article-layout .theme-doc-toc-mobile,
+.main-wrapper.clang-flags-article-layout .table-of-contents {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.main-wrapper.clang-flags-article-layout .docPage,
+.main-wrapper.clang-flags-article-layout .docsWrapper,
+.main-wrapper.clang-flags-article-layout .docMainContainer,
+.main-wrapper.clang-flags-article-layout .docItemWrapper,
+.main-wrapper.clang-flags-article-layout .docItemContainer,
+.main-wrapper.clang-flags-article-layout .docItemCol,
+.main-wrapper.clang-flags-article-layout main,
+.main-wrapper.clang-flags-article-layout main.container,
 .main-wrapper.clang-flags-article-layout main.container.container--fluid {
   width: 100% !important;
   max-width: none !important;
-}
-
-.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row {
-  width: 100% !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-}
-
-.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row > .col {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  flex: 1 1 100% !important;
 }
 
-.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row > .col.col--8 {
-  flex: 0 0 100% !important;
+.main-wrapper.clang-flags-article-layout main > .row,
+.main-wrapper.clang-flags-article-layout main.container > .row,
+.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  display: block !important;
+}
+
+.main-wrapper.clang-flags-article-layout main .col,
+.main-wrapper.clang-flags-article-layout main [class*='col--'] {
+  flex: none !important;
   width: 100% !important;
   max-width: 100% !important;
-}
-
-.main-wrapper.clang-flags-article-layout main.container.container--fluid > .row > .col.col--2 {
-  display: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
 }
