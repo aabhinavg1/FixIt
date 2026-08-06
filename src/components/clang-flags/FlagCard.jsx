@@ -2,7 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import { buildFlagArticlePath } from './flagRoutes';
-import { BookOpenText, Check, Code2, ExternalLink, FileText, Layers3, ShieldAlert, Clock3 } from 'lucide-react';
+import { ArrowRight, BookOpenText, Check, Code2, ExternalLink, FileText, Layers3, ShieldAlert, Clock3 } from 'lucide-react';
 import Badge from './Badge';
 import CodeBlock from './CodeBlock';
 import styles from './clangFlags.module.css';
@@ -94,50 +94,78 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
   const implementationTrail = buildImplementationTrail(flag);
 
   if (mode === 'compact') {
+    const categoryTone = statusTone(flag.category);
+    // Trim the source path to just filename:line for compact display
+    const sourceFile = flag.sourcePath ? flag.sourcePath.split('/').pop() : null;
+    const sourceDisplay = sourceFile && flag.sourceLine
+      ? `${sourceFile}:${flag.sourceLine}`
+      : sourceFile || (flag.sourceLine ? `Line ${flag.sourceLine}` : null);
+
     return (
       <Link
         to={articleHref}
-        className={clsx(styles.flagCard, styles.flagCardCompact, styles.flagCardButton, selected && styles.flagCardSelected)}
+        className={clsx(
+          styles.flagCard,
+          styles.flagCardCompact,
+          styles.flagCardButton,
+          selected && styles.flagCardSelected,
+        )}
       >
-        <div className={styles.flagCardTop}>
-          <div className={styles.flagCardTitleBlock}>
-            <div className={styles.flagCardFlag}>
-              {titleParts.map((part, index) =>
-                part.highlighted ? (
-                  <mark key={index} className={styles.searchMark}>
-                    {part.text}
-                  </mark>
-                ) : (
-                  <span key={index}>{part.text}</span>
-                ),
-              )}
+        {/* left category colour strip */}
+        <span
+          className={clsx(styles.flagCardStrip, styles[`flagCardStrip_${categoryTone}`])}
+          aria-hidden="true"
+        />
+
+        <div className={styles.flagCardInner}>
+          <div className={styles.flagCardTop}>
+            <div className={styles.flagCardTitleBlock}>
+              <div className={styles.flagCardFlag}>
+                {titleParts.map((part, index) =>
+                  part.highlighted ? (
+                    <mark key={index} className={styles.searchMark}>{part.text}</mark>
+                  ) : (
+                    <span key={index}>{part.text}</span>
+                  ),
+                )}
+              </div>
+              <div className={styles.flagCardSummary}>{summary}</div>
             </div>
-            <div className={styles.flagCardSummary}>{summary}</div>
+            <div className={styles.flagCardArrow} aria-hidden="true">
+              <ArrowRight size={15} strokeWidth={2.2} />
+            </div>
           </div>
-          <div className={styles.flagCardArrow} aria-hidden="true">
-            <ExternalLink size={16} strokeWidth={2} />
+
+          <div className={styles.flagCardBadgeRow}>
+            <Badge tone={categoryTone}>{flag.category}</Badge>
+            {flag.deprecated ? <Badge tone="neutral">Deprecated</Badge> : null}
+            {flag.experimental ? <Badge tone="warning">Experimental</Badge> : null}
+            {flag.hidden ? <Badge tone="neutral">Hidden</Badge> : null}
           </div>
-        </div>
 
-        <div className={styles.flagCardBadgeRow}>
-          <Badge tone={statusTone(flag.category)}>{flag.category}</Badge>
-          {flag.hidden ? <Badge tone="neutral">Hidden</Badge> : null}
-          {flag.deprecated ? <Badge tone="neutral">Deprecated</Badge> : null}
-          {flag.experimental ? <Badge tone="warning">Experimental</Badge> : null}
-        </div>
+          <div className={styles.flagCardCompilerRow}>
+            {(flag.supportedCompilers || []).slice(0, 4).map((compiler) => (
+              <span key={`${flag.flag}-${compiler}`} className={styles.flagCardCompilerChip}>
+                {compiler}
+              </span>
+            ))}
+            {!flag.supportedCompilers?.length ? (
+              <span className={styles.flagCardCompilerChip}>Clang</span>
+            ) : null}
+          </div>
 
-        <div className={styles.flagCardCompilerRow}>
-          {(flag.supportedCompilers || []).slice(0, 3).map((compiler) => (
-            <span key={`${flag.flag}-${compiler}`} className={styles.flagCardCompilerChip}>
-              {compiler}
+          <div className={styles.flagCardFooter}>
+            {sourceDisplay ? (
+              <span className={styles.flagCardSource}>
+                <FileText size={11} strokeWidth={2} aria-hidden="true" />
+                {sourceDisplay}
+              </span>
+            ) : null}
+            <span className={styles.flagCardLink}>
+              View article
+              <ArrowRight size={11} strokeWidth={2.4} aria-hidden="true" />
             </span>
-          ))}
-          {!flag.supportedCompilers?.length ? <span className={styles.flagCardCompilerChip}>Clang</span> : null}
-        </div>
-
-        <div className={styles.flagCardFooter}>
-          <span className={styles.sourceText}>{sourceLabel}</span>
-          <span className={styles.flagCardLink}>View</span>
+          </div>
         </div>
       </Link>
     );
@@ -168,6 +196,10 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
             </Link>
           </h2>
           <p className={styles.flagSummary}>{summary}</p>
+          <Link to={articleHref} className={styles.detailViewLink}>
+            View full article
+            <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" />
+          </Link>
         </div>
       </div>
 

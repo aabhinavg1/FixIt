@@ -12,6 +12,7 @@ import Callout from '@site/src/components/clang-flags/Callout';
 import SourceCode from '@site/src/components/clang-flags/SourceCode';
 import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
 import PerfReport from '@site/src/components/clang-flags/PerfReport';
+import RegisterLayout from '@site/src/components/clang-flags/RegisterLayout';
 
 <Head>
   <meta name="keywords" content="clang,-fcall-saved-x10,aarch64,register allocation,calling convention,ABI,callee-saved,volatile,AAPCS64" />
@@ -38,17 +39,7 @@ import PerfReport from '@site/src/components/clang-flags/PerfReport';
 
 Under the standard AAPCS64 ABI, `x10` sits in the volatile "scratch" block. This flag moves it into the saved set.
 
-**Before (default AAPCS64):**
-
-<Callout tone="info" title="Caller-saved (volatile)">
-  **x0–x7** arguments · **x8** indirect result · **x9–x15** scratch · **x16–x17** IP0/IP1
-</Callout>
-
-<Callout tone="warning" title="Callee-saved (must be preserved across calls)">
-  **x19–x28** · **x29** FP · **x30** LR · **d8–d15**
-</Callout>
-
-**After `-fcall-saved-x10`:**
+<RegisterLayout register="x10" beforeTitle="Before (default AAPCS64)" afterTitle="After -fcall-saved-x10" />
 
 <Callout tone="danger" title="x10 moves">
   `x10` leaves the caller-saved scratch block and becomes callee-saved, joining `x19`–`x28`. Functions that touch `x10` now spill and restore it in the prologue/epilogue.

@@ -6,8 +6,10 @@ import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import {
   BookOpenText,
+  ChevronDown,
   Code2,
   Copy,
+  Database,
   ExternalLink,
   Flame,
   History,
@@ -16,8 +18,10 @@ import {
   Monitor,
   Search,
   Sparkles,
+  Tag,
   Target,
   X,
+  Zap,
 } from 'lucide-react';
 import SearchBar from './SearchBar';
 import FlagCard from './FlagCard';
@@ -35,15 +39,15 @@ const RESULT_OVERSCAN = 5;
 const EXAMPLE_QUERIES = ['-O3', '-flto', '-fPIC', '-Weverything', '-fsanitize=address'];
 
 const QUICK_CHIPS = [
-  { label: 'Docs', type: 'landing', value: '/tools/clang-flags/' },
-  { label: 'Optimization', type: 'category', value: 'Optimization' },
-  { label: 'Warnings', type: 'category', value: 'Warning' },
-  { label: 'Debugging', type: 'category', value: 'Debugging' },
-  { label: 'Sanitizers', type: 'category', value: 'Sanitizer' },
-  { label: 'Architecture', type: 'category', value: 'Target-Specific Code Generation' },
-  { label: 'Target', type: 'category', value: 'Code Generation' },
-  { label: 'OpenMP', type: 'query', value: 'openmp' },
-  { label: 'Modules', type: 'query', value: 'module' },
+  { label: 'Docs', type: 'landing', value: '/tools/clang-flags/', icon: BookOpenText },
+  { label: 'Optimization', type: 'category', value: 'Optimization', icon: Zap },
+  { label: 'Warnings', type: 'category', value: 'Warning', icon: Flame },
+  { label: 'Debugging', type: 'category', value: 'Debugging', icon: Code2 },
+  { label: 'Sanitizers', type: 'category', value: 'Sanitizer', icon: Target },
+  { label: 'Architecture', type: 'category', value: 'Target-Specific Code Generation', icon: Monitor },
+  { label: 'Code Gen', type: 'category', value: 'Code Generation', icon: Database },
+  { label: 'OpenMP', type: 'query', value: 'openmp', icon: Tag },
+  { label: 'Modules', type: 'query', value: 'module', icon: Tag },
 ];
 
 function scoreOption(option, query, tokens) {
@@ -554,21 +558,45 @@ export default function ClangFlagsExplorer() {
           </div>
         </header>
 
-        <section className={styles.articleHero}>
-          <div className={styles.articleHeroCopy}>
-            <h1 className={styles.articleHeroTitle}>Clang Flags Explorer</h1>
-            <p className={styles.articleHeroSummary}>
-              Search compiler flags extracted from LLVM TableGen, inspect the flag immediately, and trace how it
-              moves from option definition to compiler pipeline.
+        <section className={styles.explorerHero}>
+          <div className={styles.explorerHeroCopy}>
+            <h1 className={styles.explorerHeroTitle}>
+              <Sparkles size={26} strokeWidth={1.8} className={styles.explorerHeroIcon} aria-hidden="true" />
+              Clang &amp; Flang Flags Explorer
+            </h1>
+            <p className={styles.explorerHeroSubtitle}>
+              Search compiler flags extracted from LLVM TableGen, inspect them instantly, and trace their path
+              through the compiler pipeline — from driver option table to final machine code.
             </p>
-            <div className={styles.heroBadgeRow}>
-              {introBadges.map((label) => (
-                <Badge key={label} tone="info" className={styles.heroPill}>
-                  {label}
-                </Badge>
-              ))}
-            </div>
           </div>
+
+          {/* compact stats bar — only populated once data loads */}
+          {stats.total > 0 && (
+            <div className={styles.explorerStatsBar} aria-label="Dataset statistics">
+              <div className={styles.explorerStatItem}>
+                <span className={styles.explorerStatValue}>{stats.total.toLocaleString()}</span>
+                <span className={styles.explorerStatLabel}>Total flags</span>
+              </div>
+              <div className={styles.explorerStatDivider} aria-hidden="true" />
+              <div className={styles.explorerStatItem}>
+                <span className={styles.explorerStatValue}>{stats.categoryCount}</span>
+                <span className={styles.explorerStatLabel}>Categories</span>
+              </div>
+              <div className={styles.explorerStatDivider} aria-hidden="true" />
+              <div className={styles.explorerStatItem}>
+                <span className={styles.explorerStatValue}>LLVM</span>
+                <span className={styles.explorerStatLabel}>TableGen source</span>
+              </div>
+              <div className={styles.explorerStatDivider} aria-hidden="true" />
+              <div className={styles.explorerStatItem}>
+                <span className={clsx(styles.explorerStatValue, styles.explorerStatLive)}>
+                  <span className={styles.explorerStatDot} aria-hidden="true" />
+                  Live
+                </span>
+                <span className={styles.explorerStatLabel}>Real-time search</span>
+              </div>
+            </div>
+          )}
         </section>
 
         {error ? <div className={styles.errorBanner}>{error}</div> : null}
@@ -588,19 +616,34 @@ export default function ClangFlagsExplorer() {
 
         <section className={styles.quickChipRow} aria-label="Quick filters">
           {QUICK_CHIPS.map((chip) => {
-            const active = chip.type === 'category' ? filters.category === chip.value : normalizeText(query) === normalizeText(chip.value);
+            const active = chip.type === 'category'
+              ? filters.category === chip.value
+              : normalizeText(query) === normalizeText(chip.value);
+            const ChipIcon = chip.icon || ListFilter;
             return (
               <button
                 key={chip.label}
                 type="button"
                 className={active ? styles.quickChipActive : styles.quickChip}
                 onClick={() => handleQuickChip(chip)}
+                aria-pressed={active}
               >
-                <ListFilter size={13} strokeWidth={2} />
+                <ChipIcon size={12} strokeWidth={2.1} aria-hidden="true" />
                 <span>{chip.label}</span>
               </button>
             );
           })}
+          {(filters.category !== 'all' || filters.visibility !== 'all' || query) ? (
+            <button
+              type="button"
+              className={styles.quickChipClear}
+              onClick={() => { setFilters({ category: 'all', kind: 'all', visibility: 'all' }); setQuery(''); }}
+              aria-label="Clear all filters"
+            >
+              <X size={12} strokeWidth={2.4} aria-hidden="true" />
+              <span>Clear</span>
+            </button>
+          ) : null}
         </section>
 
         <section className={styles.workspace}>
@@ -612,9 +655,14 @@ export default function ClangFlagsExplorer() {
               aria-expanded={navOpen}
               aria-controls="clang-flags-navigation"
             >
-              {navOpen ? <X size={14} strokeWidth={2} /> : <Menu size={14} strokeWidth={2} />}
+              {navOpen ? <X size={14} strokeWidth={2.2} aria-hidden="true" /> : <Menu size={14} strokeWidth={2.2} aria-hidden="true" />}
               <span>Navigation</span>
-              <span className={styles.sidebarToggleState}>{navOpen ? 'Hide' : 'Show'}</span>
+              <ChevronDown
+                size={13}
+                strokeWidth={2.2}
+                className={clsx(styles.sidebarToggleChevron, navOpen && styles.sidebarToggleChevronOpen)}
+                aria-hidden="true"
+              />
             </button>
 
             <div
@@ -697,15 +745,27 @@ export default function ClangFlagsExplorer() {
             <section className={styles.resultsPanel}>
               <div className={styles.panelHeader}>
                 <div>
-                  <div className={styles.panelKicker}>Matching flags</div>
-                  <h2 className={styles.panelTitle}>{stats.visible.toLocaleString()}</h2>
+                  <div className={styles.panelKicker}>
+                    {query
+                      ? `Results for "${query}"`
+                      : filters.category !== 'all'
+                        ? filters.category
+                        : 'All flags'}
+                  </div>
+                  <h2 className={styles.panelTitle}>
+                    {stats.visible.toLocaleString()}
+                    {stats.visible !== stats.total && (
+                      <span className={styles.panelTitleSub}> / {stats.total.toLocaleString()}</span>
+                    )}
+                  </h2>
                 </div>
                 <div className={styles.panelMeta}>
-                  {hasActiveScope ? (
-                    query ? <Badge tone="accent">Search: {query}</Badge> : <Badge tone="neutral">Showing filtered flags</Badge>
-                  ) : (
-                    <Badge tone="neutral">Waiting for search</Badge>
-                  )}
+                  {query
+                    ? <Badge tone="accent"><Search size={11} strokeWidth={2.2} style={{ marginRight: '0.3em' }} aria-hidden="true" />{query}</Badge>
+                    : filters.category !== 'all'
+                      ? <Badge tone="info">{filters.category}</Badge>
+                      : <Badge tone="neutral">All</Badge>
+                  }
                 </div>
               </div>
 
@@ -839,19 +899,38 @@ export default function ClangFlagsExplorer() {
                   <div className={styles.sidebarHeader}>
                     <div>
                       <div className={styles.sidebarKicker}>Recently Viewed</div>
-                      <h2 className={styles.sidebarTitle}>Flags you opened</h2>
+                      <h2 className={styles.sidebarTitle}>
+                        <History size={14} strokeWidth={2} aria-hidden="true" />
+                        Flags you opened
+                      </h2>
                     </div>
+                    {recentSearches.length > 0 && (
+                      <button
+                        type="button"
+                        className={styles.sidebarClearButton}
+                        onClick={() => setRecentSearches([])}
+                        aria-label="Clear recently viewed"
+                      >
+                        <X size={12} strokeWidth={2.4} aria-hidden="true" />
+                      </button>
+                    )}
                   </div>
                   {recentSearches.length ? (
                     <div className={styles.sidebarRecentList}>
                       {recentSearches.map((flag) => (
-                        <button key={flag} type="button" className={styles.sidebarRecentItem} onClick={() => handleSelectFlag(flag)}>
-                          {flag}
+                        <button
+                          key={flag}
+                          type="button"
+                          className={clsx(styles.sidebarRecentItem, flag === selectedOption?.flag && styles.sidebarRecentItemActive)}
+                          onClick={() => handleSelectFlag(flag)}
+                        >
+                          <span className={styles.sidebarRecentFlag}>{flag}</span>
+                          <ChevronDown size={12} strokeWidth={2.2} className={styles.sidebarRecentArrow} aria-hidden="true" />
                         </button>
                       ))}
                     </div>
                   ) : (
-                    <p className={styles.supportedTargetsHint}>Recently viewed flags will appear here once you open them.</p>
+                    <p className={styles.supportedTargetsHint}>Flags you open will appear here.</p>
                   )}
                 </section>
               </>
@@ -871,15 +950,32 @@ export default function ClangFlagsExplorer() {
               <div className={styles.sidebarHeader}>
                 <div>
                   <div className={styles.sidebarKicker}>Popular Flags</div>
-                  <h2 className={styles.sidebarTitle}>Quick picks</h2>
+                  <h2 className={styles.sidebarTitle}>
+                    <Flame size={14} strokeWidth={2} aria-hidden="true" />
+                    Quick picks
+                  </h2>
                 </div>
               </div>
-              <div className={styles.sidebarRecentList}>
-                {popularFlags.map((flag) => (
-                  <button key={flag} type="button" className={styles.sidebarRecentItem} onClick={() => handleQuickChip({ type: 'query', value: flag })}>
-                    {flag}
-                  </button>
-                ))}
+              <div className={styles.popularFlagGrid}>
+                {popularFlags.map((flag) => {
+                  const opt = optionByFlag.get(flag);
+                  return (
+                    <button
+                      key={flag}
+                      type="button"
+                      className={clsx(
+                        styles.popularFlagItem,
+                        flag === selectedOption?.flag && styles.popularFlagItemActive,
+                      )}
+                      onClick={() => handleQuickChip({ type: 'query', value: flag })}
+                    >
+                      <span className={styles.popularFlagName}>{flag}</span>
+                      {opt?.category ? (
+                        <span className={styles.popularFlagCategory}>{opt.category}</span>
+                      ) : null}
+                    </button>
+                  );
+                })}
               </div>
             </section>
           </aside>

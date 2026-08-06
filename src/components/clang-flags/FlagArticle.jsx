@@ -1,30 +1,131 @@
-import React, { useMemo, useState } from 'react';
-        import Head from '@docusaurus/Head';
-        import Link from '@docusaurus/Link';import { BookOpenText, Check, Clock3, Code2, ExternalLink, FileText, Layers3, Sparkles, ShieldAlert } from 'lucide-react';
-        import Badge from './Badge';
-        import CodeBlock from './CodeBlock';
-                import { buildFlagArticlePath } from './flagRoutes';
-        import { joinList, uniqueValues } from './utils';
-        import styles from './clangFlags.module.css';
-        const OPTIMIZATION_PASSES = ['PassBuilder', 'InstCombine', 'GVN', 'LICM', 'LoopRotate', 'LoopVectorize', 'SLPVectorizer', 'SimplifyCFG'];
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
+import clsx from 'clsx';
+import {
+  ArrowLeft, BookOpenText, Check, ChevronDown, Clock3, Code2,
+  Copy, ExternalLink, FileText, Layers3, LayoutList, Sparkles, ShieldAlert,
+} from 'lucide-react';
+import Badge from './Badge';
+import CodeBlock from './CodeBlock';
+import { buildFlagArticlePath } from './flagRoutes';
+import { joinList, uniqueValues } from './utils';
+import styles from './clangFlags.module.css';
+const OPTIMIZATION_PASSES = ['PassBuilder', 'InstCombine', 'GVN', 'LICM', 'LoopRotate', 'LoopVectorize', 'SLPVectorizer', 'SimplifyCFG'];
 
-        function Section({ icon: Icon, title, children, subtle = false, note, id }) {
-          const sectionId = id || title.replace(/\s+/g, '-').toLowerCase();
-          return (
-            <section id={sectionId} className={subtle ? `${styles.articleSection} ${styles.articleSectionSubtle}` : styles.articleSection}>
-              <div className={styles.articleSectionHeader}>
-                <div className={styles.articleSectionTitleWrap}>
-                  {Icon ? <Icon size={16} strokeWidth={2} className={styles.sectionIcon} /> : null}
-                  <div>
-                    <h2 className={styles.articleSectionTitle}>{title}</h2>
-                    {note ? <p className={styles.articleSectionNote}>{note}</p> : null}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.articleSectionBody}>{children}</div>
-            </section>
-          );
-        }
+// ── Sticky mini-header that appears after scrolling past the hero ────────────
+function StickyHeader({ flagName, sourceUrl, reportUrl }) {
+  const [visible, setVisible] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 280);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleCopy = () => {
+    navigator.clipboard?.writeText(flagName).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1400);
+  };
+
+  return (
+    <div className={clsx(styles.stickyHeader, visible && styles.stickyHeaderVisible)} aria-hidden={!visible}>
+      <div className={styles.stickyHeaderInner}>
+        <Link to="/tools/clang-flags-explorer/" className={styles.stickyBack} aria-label="Back to explorer">
+          <ArrowLeft size={14} strokeWidth={2.2} />
+        </Link>
+        <code className={styles.stickyFlagName}>{flagName}</code>
+        <div className={styles.stickyActions}>
+          <button type="button" className={styles.stickyBtn} onClick={handleCopy} aria-label="Copy flag">
+            {copied ? <Check size={13} strokeWidth={2.4} /> : <Copy size={13} strokeWidth={2} />}
+            <span>{copied ? 'Copied' : 'Copy'}</span>
+          </button>
+          {sourceUrl && (
+            <a href={sourceUrl} target="_blank" rel="noreferrer" className={styles.stickyBtn}>
+              <ExternalLink size={13} strokeWidth={2} />
+              <span className={styles.stickyBtnLabel}>Source</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Mobile TOC drawer ────────────────────────────────────────────────────────
+const TOC_SECTIONS = [
+  { id: 'quick-usage', label: 'Quick Usage' },
+  { id: 'what-this-flag-actually-does', label: 'What it does' },
+  { id: 'internal-llvm-implementation', label: 'Implementation' },
+  { id: 'before-/-after-example', label: 'Before / After' },
+  { id: 'performance-impact', label: 'Performance' },
+  { id: 'advantages', label: 'Advantages' },
+  { id: 'limitations', label: 'Limitations' },
+  { id: 'best-use-cases', label: 'Use Cases' },
+  { id: 'compiler-equivalents', label: 'Equivalents' },
+  { id: 'common-mistakes', label: 'Mistakes' },
+  { id: 'related-flags', label: 'Related Flags' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'version-history', label: 'Version History' },
+];
+
+function TocDrawer() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={styles.tocDrawerWrap}>
+      <button
+        type="button"
+        className={styles.tocDrawerToggle}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label="Table of contents"
+      >
+        <LayoutList size={14} strokeWidth={2} aria-hidden="true" />
+        <span>On this page</span>
+        <ChevronDown size={13} strokeWidth={2.2} className={clsx(styles.tocChevron, open && styles.tocChevronOpen)} aria-hidden="true" />
+      </button>
+      {open && (
+        <nav className={styles.tocDrawerList} aria-label="Page sections">
+          {TOC_SECTIONS.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className={styles.tocDrawerItem}
+              onClick={() => setOpen(false)}
+            >
+              {s.label}
+            </a>
+          ))}
+        </nav>
+      )}
+    </div>
+  );
+}
+
+
+
+function Section({ icon: Icon, title, children, subtle = false, note, id }) {
+  const sectionId = id || title.replace(/\s+/g, '-').toLowerCase();
+  return (
+    <section id={sectionId} className={clsx(styles.articleSection, subtle && styles.articleSectionSubtle)}>
+      <div className={styles.articleSectionHeader}>
+        <div className={styles.articleSectionTitleWrap}>
+          {Icon ? <Icon size={16} strokeWidth={2} className={styles.sectionIcon} aria-hidden="true" /> : null}
+          <div>
+            <h2 className={styles.articleSectionTitle}>
+              <a href={`#${sectionId}`} className={styles.articleSectionAnchor} aria-label={`Link to ${title}`}>#</a>
+              {title}
+            </h2>
+            {note ? <p className={styles.articleSectionNote}>{note}</p> : null}
+          </div>
+        </div>
+      </div>
+      <div className={styles.articleSectionBody}>{children}</div>
+    </section>
+  );
+}
 
         function buildToolLabels(flag) {
           const labels = [];
@@ -601,32 +702,423 @@ ret`
             .slice(0, 6);
         }
 
-        function PerformanceRow({ metric, value, tone, note }) {
-          return (
-            <div className={styles.performanceRow}>
-              <div className={styles.performanceMetric}>{metric}</div>
-              <Badge tone={tone}>{value}</Badge>
-              <div className={styles.performanceNote}>{note}</div>
+function PerformanceRow({ metric, value, tone, note }) {
+  const [activePreview, setActivePreview] = useState('source');
+  const toolLabels = useMemo(() => buildToolLabels(flag), [flag]);
+  const sinceVersion = useMemo(() => buildSinceVersion(meta), [meta]);
+  const status = useMemo(() => buildStatus(flag), [flag]);
+  const implementationRows = useMemo(() => buildImplementationRows(flag, meta), [flag, meta]);
+  const quickExamples = useMemo(() => buildQuickExamples(flag), [flag]);
+  const what = useMemo(() => buildWhatItDoes(flag), [flag]);
+  const performance = useMemo(() => buildPerformance(flag), [flag]);
+  const advantages = useMemo(() => buildAdvantages(flag), [flag]);
+  const limitations = useMemo(() => buildLimitations(flag), [flag]);
+  const useCases = useMemo(() => buildUseCases(flag), [flag]);
+  const heroSummaryItems = useMemo(() => buildHeroSummaryItems(flag, what, useCases, limitations), [flag, what, useCases, limitations]);
+  const equivalents = useMemo(() => buildEquivalents(flag), [flag]);
+  const mistakes = useMemo(() => buildCommonMistakes(flag), [flag]);
+  const faq = useMemo(() => buildFaq(flag), [flag]);
+  const versionHistory = useMemo(() => buildVersionHistory(flag, meta), [flag, meta]);
+  const passes = useMemo(() => buildPasses(flag), [flag]);
+  const related = useMemo(() => buildRelatedArticleFlags(flag, allFlags), [flag, allFlags]);
+  const example = useMemo(() => buildRepresentativeExample(flag), [flag]);
+  const heroSummary = useMemo(() => buildHeroSummary(flag, buildWhatItDoes(flag)), [flag]);
+  const heroBadges = useMemo(() => buildHeroBadges(flag, status), [flag, status]);
+  const heroMetaCards = useMemo(() => buildHeroMetaCards(flag, meta, status), [flag, meta, status]);
+  const reportIssueUrl = useMemo(() => buildReportIssueUrl(flag), [flag]);
+
+  const description = heroSummary;
+
+  return (
+    <>
+      <Head>
+        <meta name="description" content={description} />
+      </Head>
+
+      {/* ── sticky mini-header (appears on scroll) ── */}
+      <StickyHeader flagName={flag.flag} sourceUrl={flag.sourceUrl} reportUrl={reportIssueUrl} />
+
+      <main className={styles.articlePageShell}>
+
+        {/* ── breadcrumb ── */}
+        <nav className={styles.articleBreadcrumb} aria-label="Breadcrumb">
+          <Link to="/" className={styles.breadcrumbLink}>CompilerSutra</Link>
+          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
+          <Link to="/tools/clang-flags/" className={styles.breadcrumbLink}>Clang Flags</Link>
+          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
+          <Link to="/tools/clang-flags-explorer/" className={styles.breadcrumbLink}>Explorer</Link>
+          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
+          <span className={styles.breadcrumbCurrent} aria-current="page">{flag.flag}</span>
+        </nav>
+
+        {/* ── hero ── */}
+        <section className={styles.articleHero}>
+          <div className={styles.articleHeroCopy}>
+            <h1 className={styles.articleHeroTitle}>{flag.flag}</h1>
+            <p className={styles.articleHeroSummary}>{description}</p>
+
+            <div className={styles.heroBadgeRow}>
+              {heroBadges.map((badge) => (
+                <Badge
+                  key={badge}
+                  tone={badge === 'LLVM Snapshot' ? 'accent' : badge === 'Stable' ? 'success' : badge === 'Backend' || badge === 'ABI' ? 'info' : 'neutral'}
+                >
+                  {badge}
+                </Badge>
+              ))}
             </div>
-          );
-        }
 
-        function RelatedFlagCard({ flag }) {
-          const summary = flag.help || flag.documentation || 'No help text available.';
-          const href = buildFlagArticlePath(flag.flag);
-          return (
-            <Link className={styles.relatedArticleCard} to={href}>
-              <div className={styles.relatedArticleTop}>
-                <div className={styles.relatedArticleFlag}>{flag.flag}</div>
-                <Badge tone="info">{flag.category}</Badge>
+            {/* meta grid — 4 cols on desktop, 2 on tablet, 1 on mobile */}
+            <div className={styles.articleHeroMetaGrid}>
+              {heroMetaCards.map((item) => (
+                <div key={item.label} className={styles.articleHeroMetaCard}>
+                  <div className={styles.articleHeroMetaLabel}>{item.label}</div>
+                  <div className={styles.articleHeroMetaValue}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* action buttons */}
+            <div className={styles.articleHeroActions}>
+              {/* copy flag — primary CTA on mobile */}
+              <button
+                type="button"
+                className={clsx(styles.heroActionButton, styles.heroActionButtonPrimary)}
+                onClick={() => {
+                  navigator.clipboard?.writeText(flag.flag).catch(() => {});
+                  onCopyFlag?.();
+                }}
+              >
+                <Copy size={14} strokeWidth={2} aria-hidden="true" />
+                <span>Copy flag</span>
+              </button>
+
+              {flag.sourceUrl ? (
+                <Link
+                  className={clsx(styles.heroActionButton, styles.heroActionButtonSecondary)}
+                  href={flag.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ExternalLink size={14} strokeWidth={2} aria-hidden="true" />
+                  <span>View Source</span>
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className={clsx(styles.heroActionButton, styles.heroActionButtonSecondary)}
+                  disabled
+                >
+                  <ExternalLink size={14} strokeWidth={2} aria-hidden="true" />
+                  <span>View Source</span>
+                </button>
+              )}
+
+              <Link
+                className={clsx(styles.heroActionButton, styles.heroActionButtonDanger)}
+                href={reportIssueUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FileText size={14} strokeWidth={2} aria-hidden="true" />
+                <span>Report Issue</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── hero summary cards ── */}
+        <section className={styles.heroSummaryCard}>
+          <div className={styles.heroSummaryGrid}>
+            {heroSummaryItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.label} className={styles.heroSummaryItem}>
+                  <div className={styles.heroSummaryHeading}>
+                    <Icon size={14} strokeWidth={2.4} className={styles.heroSummaryIcon} aria-hidden="true" />
+                    <span>{item.label}</span>
+                  </div>
+                  <p className={styles.heroSummaryText}>{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ── mobile TOC ── */}
+        <TocDrawer />
+
+        {/* ── article body ── */}
+        <div className={styles.articleLayout}>
+          <article className={styles.articleMain}>
+
+            <Section icon={Code2} title="Quick Usage" note="The exact command lines engineers actually run.">
+              <div className={styles.quickUsageGrid}>
+                {quickExamples.map((sample) => (
+                  <CodeBlock key={sample.title} title={sample.title} language={sample.language} code={sample.code} />
+                ))}
               </div>
-              <div className={styles.relatedArticleSummary}>{summary}</div>
-              <div className={styles.relatedArticleMeta}>{flag.kind} · {joinList(flag.visibility) || 'ClangOption'}</div>
-            </Link>
-          );
-        }
+            </Section>
 
-        export default function FlagArticle({ flag, meta, allFlags, onCopyFlag }) {
+            <Section icon={BookOpenText} title="What this flag actually does" note="Effect first — not just the help text.">
+              <p className={styles.bodyCopy}>{what.summary}</p>
+              <p className={styles.bodyCopy}>{what.body}</p>
+              <div className={styles.calloutRow}>
+                {what.callouts.map((item) => (
+                  <div key={item} className={styles.calloutCard}>{item}</div>
+                ))}
+              </div>
+            </Section>
+
+            <Section icon={FileText} title="Internal LLVM Implementation" note="Files most closely tied to how this flag is parsed and consumed.">
+              <div className={styles.dataTableWrap}>
+                <table className={styles.dataTable}>
+                  <thead>
+                    <tr>
+                      <th>LLVM component</th>
+                      <th>Relevant source files</th>
+                      <th>Why it matters</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {implementationRows.map((row) => (
+                      <tr key={row.component}>
+                        <td>{row.component}</td>
+                        <td>
+                          <div className={styles.inlineLinkList}>
+                            {row.files.map((file) => (
+                              <a key={file.url} href={file.url} target="_blank" rel="noreferrer">{file.label}</a>
+                            ))}
+                          </div>
+                        </td>
+                        <td>{row.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </Section>
+
+            <Section icon={Code2} title="Before / After Example" note="Representative outputs — exact results vary by source and target.">
+              {/* improved tab bar */}
+              <div className={styles.tabsRow} role="tablist" aria-label="Code views">
+                {[
+                  { key: 'source', label: 'Source', icon: Code2 },
+                  { key: 'ir', label: 'LLVM IR', icon: Layers3 },
+                  { key: 'asm', label: 'Assembly', icon: FileText },
+                  { key: 'diff', label: 'Diff', icon: BookOpenText },
+                ].map(({ key, label, icon: TabIcon }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    role="tab"
+                    aria-selected={activePreview === key}
+                    className={clsx(styles.tabButton, activePreview === key && styles.tabButtonActive)}
+                    onClick={() => setActivePreview(key)}
+                  >
+                    <TabIcon size={13} strokeWidth={2} aria-hidden="true" />
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              <div className={styles.previewPane} role="tabpanel">
+                {activePreview === 'source' && <CodeBlock title="Input code" language="cpp" code={example.source} />}
+                {activePreview === 'ir' && <CodeBlock title="Generated LLVM IR" language="llvm" code={example.ir} />}
+                {activePreview === 'asm' && <CodeBlock title="Generated Assembly" language="asm" code={example.asm} />}
+                {activePreview === 'diff' && (
+                  <div className={styles.diffCard}>
+                    {example.diff.map((line, i) => (
+                      <div key={i} className={clsx(styles.diffLine, line.startsWith('Before') && styles.diffLineBefore, line.startsWith('After') && styles.diffLineAfter)}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Section>
+
+            <div className={styles.twoColumnSection}>
+              <Section icon={Layers3} title="Optimization Passes" note="Only populated for flags that drive the optimization pipeline.">
+                {passes.length > 0 ? (
+                  <div className={styles.passChipGrid}>
+                    {passes.map((pass) => <Badge key={pass} tone="success">{pass}</Badge>)}
+                  </div>
+                ) : (
+                  <p className={styles.bodyCopy}>This flag does not directly enumerate an optimization pass list in the current metadata.</p>
+                )}
+              </Section>
+
+              <Section icon={Layers3} title="Visual Pass Pipeline" note="Canonical optimization sequence for optimization-level flags.">
+                {passes.length > 0 ? (
+                  <div className={styles.passPipeline}>
+                    {['PassBuilder', ...passes.slice(1)].map((item, index) => (
+                      <React.Fragment key={item}>
+                        <div className={styles.passNode}>{item}</div>
+                        {index < passes.length - 1 ? <div className={styles.passArrow} aria-hidden="true">↓</div> : null}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ) : (
+                  <p className={styles.bodyCopy}>No canonical pass pipeline is associated with this flag.</p>
+                )}
+              </Section>
+            </div>
+
+            <Section icon={Sparkles} title="Performance Impact" note="Qualitative summary — no numbers, just direction.">
+              <div className={styles.performanceList}>
+                {performance.map((row) => <PerformanceRow key={row.metric} {...row} />)}
+              </div>
+            </Section>
+
+            <div className={styles.twoColumnSection}>
+              <Section icon={Check} title="Advantages">
+                <ul className={styles.bulletList}>
+                  {advantages.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </Section>
+
+              <Section icon={ShieldAlert} title="Limitations">
+                <ul className={styles.bulletList}>
+                  {limitations.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </Section>
+            </div>
+
+            <Section icon={Clock3} title="Best Use Cases" note="Environments where this flag earns its place.">
+              <div className={styles.chipGrid}>
+                {useCases.map((item) => <Badge key={item} tone="info">{item}</Badge>)}
+              </div>
+            </Section>
+
+            <Section icon={Layers3} title="Compiler Equivalents" note="Similar switches in other toolchains — behavior is rarely identical.">
+              <div className={styles.dataTableWrap}>
+                <table className={styles.dataTable}>
+                  <thead>
+                    <tr>
+                      <th>Compiler</th>
+                      <th>Equivalent</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {equivalents.map((row) => (
+                      <tr key={row.compiler}>
+                        <td>{row.compiler}</td>
+                        <td><code>{row.flag}</code></td>
+                        <td>{row.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </Section>
+
+            <Section icon={ShieldAlert} title="Common Mistakes" note="Patterns that cause confusion in reviews and build systems.">
+              <ul className={styles.bulletList}>
+                {mistakes.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </Section>
+
+            <Section icon={FileText} title="Related Flags" note="Adjacent flags in the same category.">
+              {related.length > 0 ? (
+                <div className={styles.relatedGrid}>
+                  {related.map((item) => <RelatedFlagCard key={item.flag} flag={item} />)}
+                </div>
+              ) : (
+                <p className={styles.bodyCopy}>No adjacent flags were identified in the current dataset.</p>
+              )}
+            </Section>
+
+            <Section icon={Sparkles} title="Benchmarks" note="Scaffold ready for real benchmark data ingestion.">
+              <div className={styles.benchmarkGrid}>
+                {[
+                  { label: 'Execution time', baseline: '62%', alt: flag.category === 'Optimization' ? '84%' : '60%' },
+                  { label: 'Compile time', baseline: '58%', alt: flag.category === 'Optimization' ? '76%' : '52%' },
+                ].map(({ label, baseline, alt }) => (
+                  <div key={label} className={styles.benchmarkCard}>
+                    <div className={styles.benchmarkLabel}>{label}</div>
+                    <div className={styles.benchmarkBars}>
+                      <div className={styles.benchmarkBar}>
+                        <span className={styles.benchmarkBarLabel}>Baseline</span>
+                        <div className={styles.benchmarkTrack}>
+                          <div className={styles.benchmarkFill} style={{ width: baseline }} />
+                        </div>
+                        <span className={styles.benchmarkBarValue}>{baseline}</span>
+                      </div>
+                      <div className={styles.benchmarkBar}>
+                        <span className={styles.benchmarkBarLabel}>{flag.flag}</span>
+                        <div className={styles.benchmarkTrack}>
+                          <div className={styles.benchmarkFillAlt} style={{ width: alt }} />
+                        </div>
+                        <span className={styles.benchmarkBarValue}>{alt}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className={styles.articleSectionNote}>Chart scaffold — ready for real benchmark data ingestion.</p>
+            </Section>
+
+            <Section icon={BookOpenText} title="Source References" note="Provenance links for this article.">
+              <div className={styles.referenceList}>
+                {flag.sourceUrl ? <a href={flag.sourceUrl} target="_blank" rel="noreferrer">LLVM source for this option</a> : null}
+                {meta?.sourceBaseUrl ? <a href={meta.sourceBaseUrl} target="_blank" rel="noreferrer">LLVM source snapshot</a> : null}
+                <a href="https://llvm.org/docs/" target="_blank" rel="noreferrer">LLVM documentation</a>
+                <a href="/tools/clang-flags-explorer/">CompilerSutra flags explorer</a>
+              </div>
+            </Section>
+
+            <Section icon={BookOpenText} title="FAQ">
+              <div className={styles.faqList}>
+                {faq.map((item) => (
+                  <details key={item.q} className={styles.faqItem}>
+                    <summary className={styles.faqSummary}>
+                      <span>{item.q}</span>
+                      <ChevronDown size={14} strokeWidth={2.2} className={styles.faqChevron} aria-hidden="true" />
+                    </summary>
+                    <p className={styles.faqAnswer}>{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </Section>
+
+            <Section icon={Code2} title="Interactive Playground" note="Future-ready scaffold for live code, IR, and assembly comparison.">
+              <div className={styles.playgroundPane}>
+                <div className={styles.playgroundEditor}>
+                  <div className={styles.playgroundEditorHeader}>
+                    <span>input.cpp</span>
+                    <span className={styles.playgroundEditorBadge}>Read-only preview</span>
+                  </div>
+                  <pre className={styles.playgroundCode}><code>{example.source}</code></pre>
+                </div>
+                <div className={styles.playgroundActions}>
+                  <button type="button" className={clsx(styles.playgroundBtn, styles.playgroundBtnDisabled)} disabled>Run IR</button>
+                  <button type="button" className={clsx(styles.playgroundBtn, styles.playgroundBtnDisabled)} disabled>Show assembly</button>
+                  <button type="button" className={clsx(styles.playgroundBtn, styles.playgroundBtnDisabled)} disabled>Compare outputs</button>
+                </div>
+                <p className={styles.articleSectionNote}>Interaction stubbed — the article can evolve into a live playground later.</p>
+              </div>
+            </Section>
+
+            <Section icon={Clock3} title="Version History" note="Timeline — can be backed by release metadata later.">
+              <div className={styles.timelineList}>
+                {versionHistory.map((item) => (
+                  <div key={item.label} className={styles.timelineItemAlt}>
+                    <div className={styles.timelineItemLabel}>{item.label}</div>
+                    <div className={styles.timelineItemValue}>{item.value}</div>
+                    <div className={styles.timelineItemNote}>{item.note}</div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+          </article>
+        </div>
+      </main>
+    </>
+  );
+}
           const [activePreview, setActivePreview] = useState('source');
           const toolLabels = useMemo(() => buildToolLabels(flag), [flag]);
           const sinceVersion = useMemo(() => buildSinceVersion(meta), [meta]);
