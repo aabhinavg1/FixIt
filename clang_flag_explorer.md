@@ -22,8 +22,12 @@ Requirements:
    - **What this flag actually does**: explain mechanics, defaults, interactions, and semantic limits; avoid marketing language.
    - **Minimal realistic example**: use `SourceCode`; make the compiler-visible effect clear.
    - **Before vs. after assembly**: use real `clang -S` or `objdump` output; state compiler version, optimization level, target triple, and relevant source/command.
+   - Do not use identical or illustrative before/after assembly as a placeholder. If the flag acts in preprocessing, diagnostics, language selection, or debug metadata, show the appropriate observable artifact (`-E`, diagnostics, `-###`, IR, or object sections) and explain why machine instructions are unchanged.
+   - Keep `SourceCode` examples genuinely multiline and readable in the rendered page; do not pass a long one-line JSX string when formatted source is required.
    - **Why use it / when not to use it**: include ABI, portability, correctness, and build-consistency warnings where relevant.
    - **Performance impact**: explain qualitative tradeoffs. Use `PerfReport` only with real measurements obtained by actually running the [CompilerSutra Perf tool](https://github.com/CompilerSutra/CompilerSutraPerfTool) or its documented CLI. Include the without/with arrays, workload, machine, compiler, trial setup, limitations, and exact reproduction commands. Run the commands in the workspace before reporting any numbers; never invent, estimate, or copy placeholder measurements. If the tool or workload cannot be run, say so and omit `PerfReport` data.
+   - Link the `CompilerSutra Perf` name to https://pypi.org/project/compilersutra-perf/ whenever measurements are reported.
+   - Format reproduction commands for mobile and desktop: wrap commands line-by-line, avoid repeating long absolute paths, and use tabs or separate compact blocks for comparison variants.
    - **Compatibility**: table covering Clang, GCC, MSVC where relevant, language modes, and target restrictions.
    - **Usage example**: exact, copy-pasteable Clang command lines; include `-###` or IR inspection when useful.
    - **Adjacent options**: siblings, inverse/negative form, related optimization controls, and internal options only when clearly labeled.
@@ -32,6 +36,8 @@ Requirements:
 6. Implementation/source-link requirements:
    - Link directly to the current upstream LLVM source on GitHub, not just plain file paths.
    - Include concrete symbols and line-numbered links where possible. For this flag family, check the current upstream locations for `clang/include/clang/Options/Options.td`, `clang/lib/Driver/ToolChains/Clang.cpp`, `clang/lib/Frontend/CompilerInvocation.cpp`, `clang/lib/CodeGen/CodeGenTBAA.cpp`, and relevant LLVM documentation.
+   - For optimization-level articles, include an Implementation subsection with a stage table naming current line-linked symbols for option definition, driver parsing, invocation setup, CodeGenOptions, BackendUtil/PassBuilder pipeline selection, LLVM pass behavior, target backend, and linker; verify every line range against upstream before publishing.
+   - For non-optimization flags, make the same table mechanism-specific: identify the actual frontend, diagnostic, preprocessor, target, sanitizer, debug-info, runtime, or linker symbols instead of copying an optimization pipeline. Do not describe a stage as consuming the flag if it only receives transformed state.
    - Verify line numbers against the current upstream source before writing them; do not guess stale locations.
    - Use a Mermaid flowchart for multi-stage driver/frontend/IR/backend pipelines whenever the article explains three or more dependent compilation stages. Keep labels concise and technically accurate; do not use Mermaid as decoration.
 7. SEO and page metadata are required:
@@ -54,6 +60,8 @@ Requirements:
 11. Keep CSS/components as-is unless a small prop/CSS fix is required for this flag’s content.
 12. After writing, sanity-check:
    - the exact generated page path and slug;
+   - responsive rendering of long commands and comparison blocks on mobile and desktop;
+   - performance claims link to the CompilerSutra Perf package when measurements are used;
    - `{/* HAND_AUTHORED */}` is still present;
    - all links and source paths are correct;
    - Mermaid/MDX syntax is valid;

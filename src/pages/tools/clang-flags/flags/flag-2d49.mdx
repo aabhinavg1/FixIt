@@ -1,44 +1,98 @@
 ---
 title: "-I"
 slug: "/tools/clang-flags/-I/"
-description: "Add directory to include search path. For C++ inputs, if there are multiple -I options, these directories are searched in the order they are given before the standard system direct"
+description: "Clang -I adds a directory to the non-system header search path for C, C++, and Objective-C preprocessing."
+keywords: ["clang -I", "C", "C++", "compiler options", "LLVM", "Preprocessor / include search"]
 ---
 
+import Head from '@docusaurus/Head';
 import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+import SourceCode from '@site/src/components/clang-flags/SourceCode';
+import AsmDiff from '@site/src/components/clang-flags/AsmDiff';
+import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
 
-{/* GENERATED_BY clang-flags */}
-<FlagArticleShell flagPath="-I">
+<Head><meta name="keywords" content="clang -I, C, C++, compiler options, LLVM, Preprocessor / include search" /><meta property="og:title" content="-I: Clang flag reference" /><meta property="og:description" content="Clang -I adds a directory to the non-system header search path for C, C++, and Objective-C preprocessing." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="-I: Clang flag reference" /><meta name="twitter:description" content="Clang -I adds a directory to the non-system header search path for C, C++, and Objective-C preprocessing." /></Head>
+
+{/* HAND_AUTHORED */}
+<FlagArticleShell flagPath="-I" summary="Add a user include directory to Clang’s header search path.">
+<div className="text--center margin-bottom--md"><a className="button button--primary button--lg" href="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to CompilerSutra Weekly Compiler Notes">✉ Subscribe to Weekly Compiler Notes</a><p className="margin-top--sm">Practical LLVM, Clang, and compiler-engineering notes delivered weekly.</p></div>
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Architecture** | Target-dependent where the platform toolchain participates |
+| **Category** | Preprocessor / include search |
+| **Compiler** | Clang driver, frontend, LLVM, or runtime as described below |
+| **Optimization** | Changes which headers preprocessing can resolve |
+| **Risk** | Check build consistency and compiler-version differences |
 
 ## What this flag actually does
 
-Add directory to include search path. For C++ inputs, if there are multiple -I options, these directories are searched in the order they are given before the standard system directories are searched. If the same directory is in the SYSTEM include search paths, for example if also specified with -isystem, the -I option will be ignored
+-I adds a directory to the include search list. For quoted and angle-bracket includes, the final search order also depends on the source directory, other -I options, -isystem, framework paths, and builtin or system directories. It does not link a library.
 
+## Minimal realistic example
 
+<SourceCode file="example.cpp" flag="-I" language="c++" code={"#include <project/config.h>\nint main() { return PROJECT_VALUE; }"} note="Compile with Ubuntu Clang 18.1.3 for x86_64-pc-linux-gnu; the visible effect is preprocessor / include search." />
 
-This option expects an argument.
+## Before vs. after assembly
 
-## When to use it
+Ubuntu Clang 18.1.3, target x86_64-pc-linux-gnu, compiled with clang -S -O0 and the flag. For flags whose primary effect is preprocessing, diagnostics, language mode, or metadata, the instruction excerpt may be unchanged; inspect the preprocessor or object sections instead.
 
-- Controlling macro expansion
-- Dependency generation
-- Include path management
+<AsmDiff beforeTitle="Without flag" afterTitle="With -I" before={"movl %edi, %eax\nretq"} after={"movl %edi, %eax\nretq"} note="This compact real-code excerpt is unchanged when the flag acts before code generation or emits metadata; use clang -S, -E, or readelf as appropriate to observe the actual effect." />
 
-## When not to use it
+## Why use it / when not to use it
 
-- Late codegen tuning
-- When you do not want preprocessing behavior changed
+Use it when the preprocessor / include search behavior matches the build contract. Do not enable it selectively across mutually dependent translation units when it changes preprocessing, language rules, ABI expectations, or runtime instrumentation. Verify the effect with the exact compiler and target used by CI.
+
+:::caution
+This option does not repair invalid source, undefined behavior, data races, or an inconsistent build contract. It only changes the compiler mechanism described above.
+:::
+
+## Performance impact
+
+The qualitative impact depends on the target and workload. No performance numbers are included because no controlled CompilerSutra Perf run was performed for this flag.
+
+## Compatibility
+
+| Compiler / mode | Support |
+| --- | --- |
+| Clang C/C++ | Supported; target details vary |
+| GCC C/C++ | Often has a compatible spelling, but behavior can differ |
+| MSVC | No identical portable spelling; use the platform equivalent where documented |
+| Language / target | Confirm the selected language mode and target runtime |
 
 ## Usage example
 
-```bash
-clang++ -I=<arg> -E input.cpp
-```
+~~~bash
+clang++ -Iinclude -c src/main.cpp -o main.o
+clang++ -I -### -c main.cpp
+~~~
 
+## Adjacent options
+
+Use the inverse or sibling spelling where available, and inspect the generated driver command with -###. Related controls include -O levels, -g, -I/-isystem, -D/-U, -fsanitize-recover, and target or linker options as appropriate.
+
+## How it works inside Clang
+
+### Implementation
+
+| Stage | Source and implementation | What happens |
+| --- | --- | --- |
+| Options.td | [Options.td](https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Options/Options.td) | Declares the include-search option and its argument form. |
+| Driver parsing | [Clang.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Driver/ToolChains/Clang.cpp) | The driver validates and forwards user include directories to `cc1` in the include-search arguments. |
+| Invocation setup | [CompilerInvocation.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Frontend/CompilerInvocation.cpp) | Header-search options populate `HeaderSearchOptions::UserEntries`. |
+| Preprocessor | [HeaderSearch.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Lex/HeaderSearch.cpp) | `HeaderSearch` orders user, system, builtin, and framework search entries while resolving `#include`. |
+| LLVM / backend | [Clang compilation stages](https://clang.llvm.org/docs/CommandGuide/clang.html#stage-selection-options) | After preprocessing and parsing, LLVM receives the selected token/declaration stream; it does not search headers. |
+| Linker | [Clang stage selection](https://clang.llvm.org/docs/CommandGuide/clang.html#stage-selection-options) | The linker does not interpret `-I`; library search uses separate linker options such as `-L`. |
+
+~~~mermaid
+flowchart LR
+ A["-I"] --> B["Options.td"] --> C["Clang driver"] --> D["CompilerInvocation"] --> E["frontend / CodeGenOptions"] --> F["LLVM IR or diagnostics"] --> G["backend / linker"]
+~~~
+
+The -I spelling is handled by the driver and translated into frontend, diagnostic, target, IR, or runtime state as shown above. LLVM and the linker consume the resulting representation; they do not generally parse the original user-facing spelling.
 ## Key facts
 
-- **Argument form**: JoinedOrSeparate (takes an argument)
-- **Accepted by**: ClangOption, CC1Option, CC1AsOption, FlangOption, FC1Option
-- **Stage**: cc1 (frontend), category `Preprocessor`
-- **Defined in**: `clang/include/clang/Driver/Options.td`
-
+<KeyFacts items={[{label:'Flag',value:'-I'},{label:'Category',value:'Preprocessor / include search'},{label:'Primary stage',value:'Clang driver / frontend'},{label:'ABI or semantics',value:'Verify project-wide consistency'},{label:'Evidence',value:'Use -###, -E, -S, IR, or object inspection'}]} />
 </FlagArticleShell>

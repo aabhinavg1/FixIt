@@ -1,37 +1,116 @@
 ---
 title: "-pthread"
 slug: "/tools/clang-flags/-pthread/"
-description: "Support POSIX threads in generated code"
+description: "Clang -pthread enables the platform’s thread-related compile and link behavior for C and C++ programs."
+keywords: ["clang -pthread", "C", "C++", "compiler options", "LLVM", "Threading / driver"]
 ---
 
+import Head from '@docusaurus/Head';
 import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+import SourceCode from '@site/src/components/clang-flags/SourceCode';
+import AsmDiff from '@site/src/components/clang-flags/AsmDiff';
+import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
 
-{/* GENERATED_BY clang-flags */}
-<FlagArticleShell flagPath="-pthread">
+<Head><meta name="keywords" content="clang -pthread, C, C++, compiler options, LLVM, Threading / driver" /><meta property="og:title" content="-pthread: Clang flag reference" /><meta property="og:description" content="Clang -pthread enables the platform’s thread-related compile and link behavior for C and C++ programs." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="-pthread: Clang flag reference" /><meta name="twitter:description" content="Clang -pthread enables the platform’s thread-related compile and link behavior for C and C++ programs." /></Head>
+
+{/* HAND_AUTHORED */}
+<FlagArticleShell flagPath="-pthread" summary="Request the platform thread model and pass the corresponding thread configuration through compilation and linking.">
+<div className="text--center margin-bottom--md"><a className="button button--primary button--lg" href="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to CompilerSutra Weekly Compiler Notes">✉ Subscribe to Weekly Compiler Notes</a><p className="margin-top--sm">Practical LLVM, Clang, and compiler-engineering notes delivered weekly.</p></div>
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Architecture** | Target-dependent where the platform toolchain participates |
+| **Category** | Threading / driver |
+| **Compiler** | Clang driver, frontend, LLVM, or runtime as described below |
+| **Optimization** | May define thread-model macros and arrange thread-related linker behavior |
+| **Risk** | Check build consistency and compiler-version differences |
 
 ## What this flag actually does
 
-Support POSIX threads in generated code
+-pthread is a driver option whose exact effects are target and runtime dependent. On Unix-like targets it commonly enables thread-related compile definitions and link inputs; it does not make unsynchronized accesses data-race-free and does not replace the C++ memory model.
 
-## When to use it
+## Minimal realistic example
 
-- You have a concrete need for the behavior this Other option enables and have verified it applies to your build.
+<SourceCode file="example.cpp" flag="-pthread" language="c++" code={String.raw`#include <thread>
 
-## When not to use it
+void work() {}
 
-- The behavior enabled by this option does not apply to the code or target you are building.
+int main() {
+  std::thread worker(work);
+  worker.join();
+}`} note="This complete program starts one thread and waits for it. Compile and link it with -pthread so the platform thread configuration is applied consistently." />
+
+## Before vs. after driver command
+
+Ubuntu Clang 18.1.3, target x86_64-pc-linux-gnu. For -pthread, the important observable difference is the driver’s forwarded compile and link arguments, not a guaranteed change to a small function’s assembly.
+
+~~~text
+$ clang++ -### -pthread -c example.cpp
+... -pthread ...
+
+$ clang++ -### -pthread example.cpp -o app
+... -pthread ...
+... -lpthread ...
+~~~
+
+On this Linux toolchain, -pthread reaches cc1 and adds -lpthread to the final link command. The exact runtime-library spelling is platform-dependent.
+
+## Why use it / when not to use it
+
+Use it when the threading / driver behavior matches the build contract. Do not enable it selectively across mutually dependent translation units when it changes preprocessing, language rules, ABI expectations, or runtime instrumentation. Verify the effect with the exact compiler and target used by CI.
+
+:::caution
+This option does not repair invalid source, undefined behavior, data races, or an inconsistent build contract. It only changes the compiler mechanism described above.
+:::
+
+## Performance impact
+
+-pthread does not promise faster application code. Its main cost is link/runtime integration and, where the target uses it, thread-model code-generation or TLS behavior. The flag is required for a correct platform build contract, not as an optimization switch.
+
+CompilerSutra Perf measures runtime behavior, so it is useful only for a real multithreaded workload. No PerfReport is included here because no controlled multithreaded CompilerSutra Perf run was performed for this flag. Benchmark thread creation, synchronization, and workload scaling separately, with the same flag applied consistently to every translation unit and the final link.
+
+## Compatibility
+
+| Compiler / mode | Support |
+| --- | --- |
+| Clang C/C++ | Supported; target details vary |
+| GCC C/C++ | Often has a compatible spelling, but behavior can differ |
+| MSVC | No identical portable spelling; use the platform equivalent where documented |
+| Language / target | Confirm the selected language mode and target runtime |
 
 ## Usage example
 
-```bash
-clang++ -pthread main.cpp -o app
-```
+~~~bash
+clang++ -pthread -O2 example.cpp -o app
+clang++ -pthread -### example.cpp -o app
+~~~
 
+## Adjacent options
+
+Use the inverse or sibling spelling where available, and inspect the generated driver command with -###. Related controls include -O levels, -g, -I/-isystem, -D/-U, -fsanitize-recover, and target or linker options as appropriate.
+
+## How it works inside Clang
+
+### Implementation
+
+| Stage | Source and implementation | What happens |
+| --- | --- | --- |
+| Options.td | [Options.td](https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Options/Options.td) | Declares the thread-model driver option and its inverse where the target supports it. |
+| Driver parsing | [Clang.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Driver/ToolChains/Clang.cpp) | The driver records the requested thread model and passes target/runtime-specific compile and link arguments. |
+| Invocation setup | [CompilerInvocation.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Frontend/CompilerInvocation.cpp) | The effective thread model is stored in target and language invocation state where applicable. |
+| Frontend / codegen | [TargetOptions](https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Basic/TargetOptions.h) | Target-specific predefined macros, TLS lowering, and thread-related code-generation decisions consult the selected platform model. |
+| LLVM / backend | [LLVM target infrastructure](https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target) | LLVM lowers the resulting target state; it does not parse the portable driver spelling `-pthread`. |
+| Linker | [Clang.cpp](https://github.com/llvm/llvm-project/blob/main/clang/lib/Driver/ToolChains/Clang.cpp) | The driver adds platform-specific thread runtime/library behavior to the link command where required. |
+
+~~~mermaid
+flowchart LR
+ A["-pthread"] --> B["Options.td"] --> C["Clang driver"] --> D["CompilerInvocation"] --> E["frontend / CodeGenOptions"] --> F["LLVM IR or diagnostics"] --> G["backend / linker"]
+~~~
+
+The -pthread spelling is handled by the driver and translated into frontend, diagnostic, target, IR, or runtime state as shown above. LLVM and the linker consume the resulting representation; they do not generally parse the original user-facing spelling.
 ## Key facts
 
-- **Argument form**: Flag (no argument)
-- **Accepted by**: ClangOption, CC1Option, FlangOption, FC1Option
-- **Stage**: cc1 (frontend), category `Other`
-- **Defined in**: `clang/include/clang/Driver/Options.td`
-
+<KeyFacts items={[{label:'Flag',value:'-pthread'},{label:'Category',value:'Threading / driver'},{label:'Primary stage',value:'Clang driver / frontend'},{label:'ABI or semantics',value:'Verify project-wide consistency'},{label:'Evidence',value:'Use -###, -E, -S, IR, or object inspection'}]} />
 </FlagArticleShell>

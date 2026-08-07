@@ -1,42 +1,180 @@
 ---
 title: "-O2"
 slug: "/tools/clang-flags/-O2/"
-description: "Optimize for speed (like /Og /Oi /Ot /Oy /Ob2 /GF /Gy)"
+description: "Clang -O2 enables the standard moderate LLVM optimization pipeline for C and C++, balancing runtime performance, code size, and compile time."
+keywords: ["clang -O2", "C", "C++", "compiler options", "LLVM", "Optimization level"]
 ---
 
+import Head from '@docusaurus/Head';
 import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+import SourceCode from '@site/src/components/clang-flags/SourceCode';
+import AsmDiff from '@site/src/components/clang-flags/AsmDiff';
+import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
+import PerfReport from '@site/src/components/clang-flags/PerfReport';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-{/* GENERATED_BY clang-flags */}
-<FlagArticleShell flagPath="-O2">
+<Head><meta name="keywords" content="clang -O2, C, C++, compiler options, LLVM, Optimization level" /><meta property="og:title" content="-O2: Clang flag reference" /><meta property="og:description" content="Clang -O2 enables the standard moderate LLVM optimization pipeline for C and C++, balancing runtime performance, code size, and compile time." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="-O2: Clang flag reference" /><meta name="twitter:description" content="Clang -O2 enables the standard moderate LLVM optimization pipeline for C and C++, balancing runtime performance, code size, and compile time." /></Head>
+
+{/* HAND_AUTHORED */}
+<FlagArticleShell flagPath="-O2" summary="Select Clang’s moderate optimization pipeline, usually the release baseline for C and C++ code.">
+<div className="text--center margin-bottom--md"><a className="button button--primary button--lg" href="https://docs.google.com/forms/d/e/1FAIpQLSebP1JfLFDp0ckTxOhODKPNVeI1e21rUqMJ0fbBwJoaa-i4Yw/viewform" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to CompilerSutra Weekly Compiler Notes">✉ Subscribe to Weekly Compiler Notes</a><p className="margin-top--sm">Practical LLVM, Clang, and compiler-engineering notes delivered weekly.</p></div>
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Architecture** | Target-dependent where the platform toolchain participates |
+| **Category** | Optimization level |
+| **Compiler** | Clang driver, frontend, LLVM, or runtime as described below |
+| **Optimization** | Moderate inlining, simplification, loop and interprocedural passes |
+| **Risk** | Check build consistency and compiler-version differences |
 
 ## What this flag actually does
 
-Optimize for speed (like /Og /Oi /Ot /Oy /Ob2 /GF /Gy)
+Clang maps -O2 to frontend and code-generation defaults and asks LLVM PassBuilder for its O2 pipeline. It enables more transformations than -O0 while avoiding some of the more expensive or code-size-heavy choices associated with -O3. It does not change C or C++ language rules: undefined behavior remains undefined.
 
+## Minimal realistic example
 
+<SourceCode file="example.cpp" flag="-O2" language="c++" code={String.raw`int sum(const int *a, int n) {
+  int s = 0;
+  for (int i = 0; i < n; ++i)
+    s += a[i];
+  return s;
+}`} note="Compile with Ubuntu Clang 18.1.3 for x86_64-pc-linux-gnu; the visible effect is optimization level." />
 
-It is an alias for -O.
+## Before vs. after assembly
 
-## When to use it
+Ubuntu Clang 18.1.3, target x86_64-pc-linux-gnu, compiled with clang -S -O0 and the flag. For flags whose primary effect is preprocessing, diagnostics, language mode, or metadata, the instruction excerpt may be unchanged; inspect the preprocessor or object sections instead.
 
-- You are targeting &lt;clang-cl options> and want this flag behavior applied to the whole compilation.
+<AsmDiff
+  beforeTitle="-O0"
+  afterTitle="-O2"
+  before={String.raw`movq -120(%rbp), %rax
+movq %rax, -128(%rbp)
+callq _ZNKSt6vectorIiSaIiEE4sizeEv
+movq -128(%rbp), %rax
+cmpq %rcx, %rax
+jae .LBB0_8
+movq -120(%rbp), %rsi
+subq $1, %rsi
+callq _ZNSt6vectorIiSaIiEEixEm
+movl (%rax), %eax
+andl $7, %eax`}
+  after={String.raw`movups %xmm0, -112(%rbx,%rax,4)
+movups %xmm0, -96(%rbx,%rax,4)
+addq $32, %rax
+cmpq $4194332, %rax
+jne .LBB0_1
+andl $7, %ecx
+addl -8(%rbx,%rdx,4), %ecx
+movl %ecx, -8(%rbx,%rdx,4)
+addq $3, %rdx
+jne .LBB0_4`}
+  note="Real excerpts from clang++ 18.1.3, -std=c++17, -S, target x86_64-pc-linux-gnu, using the prefix_sum.cpp workload. -O0 repeatedly calls vector accessors and spills loop state; -O2 vectorizes initialization and unrolls the dependent update loop." />
+## Why use it / when not to use it
 
-## When not to use it
+Use it when the optimization level behavior matches the build contract. Do not enable it selectively across mutually dependent translation units when it changes preprocessing, language rules, ABI expectations, or runtime instrumentation. Verify the effect with the exact compiler and target used by CI.
 
-- Your build targets a different architecture — this flag is accepted only when targeting &lt;clang-cl options>.
+:::caution
+This option does not repair invalid source, undefined behavior, data races, or an inconsistent build contract. It only changes the compiler mechanism described above.
+:::
+
+## Performance impact
+
+The following measurements were produced with [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) on the prefix_sum.cpp workload using Ubuntu clang 18.1.3, x86_64-pc-linux-gnu, CPU affinity 0, one warmup run, five measured trials, with profiling disabled:
+
+<PerfReport
+  beforeTitle="Clang -O0"
+  afterTitle="Clang -O2"
+  without={[157.126, 156.857, 157.58, 157.631, 162.783]}
+  with={[30.758, 30.982, 30.673, 30.398, 30.99]}
+  note="Mean wall time: 158.3954 ms at -O0 versus 30.7602 ms at -O2. This is one CPU, one workload, and five trials; it demonstrates this workload’s optimization sensitivity, not a universal speedup."
+/>
+
+Reproduce it with the same workload and trial configuration. Set up the two paths once:
+
+~~~bash
+PERF_TOOL=/home/aitr/projects/CompilerSutraPerfTool
+INPUT=/home/aitr/compilersutra/FixIt_Compilersutra/docs/articles/gcc_vs_clang_cases/prefix_sum.cpp
+cd "$PERF_TOOL"
+export PYTHONPATH=src
+~~~
+
+<Tabs>
+  <TabItem value="o0" label="-O0">
+
+~~~bash
+python3 -m csperf.cli run \
+  --input "$INPUT" \
+  --backend cpu \
+  --cpu-affinity 0 \
+  --warmup-runs 1 \
+  --repeat-runs 5 \
+  --compiler-flag=-O0 \
+  --no-perf \
+  --output /tmp/clang-o0.json
+~~~
+
+  </TabItem>
+  <TabItem value="o2" label="-O2">
+
+~~~bash
+python3 -m csperf.cli run \
+  --input "$INPUT" \
+  --backend cpu \
+  --cpu-affinity 0 \
+  --warmup-runs 1 \
+  --repeat-runs 5 \
+  --compiler-flag=-O2 \
+  --no-perf \
+  --output /tmp/clang-o2.json
+~~~
+
+  </TabItem>
+</Tabs>
+
+## Compatibility
+
+| Compiler / mode | Support |
+| --- | --- |
+| Clang C/C++ | Supported; target details vary |
+| GCC C/C++ | Often has a compatible spelling, but behavior can differ |
+| MSVC | No identical portable spelling; use the platform equivalent where documented |
+| Language / target | Confirm the selected language mode and target runtime |
 
 ## Usage example
 
-```bash
-clang++ -O2 main.cpp -o app
-```
+~~~bash
+clang++ -O2 -DNDEBUG -c main.cpp -o main.o
+clang++ -O2 -### -c main.cpp
+~~~
 
+## Adjacent options
+
+Use the inverse or sibling spelling where available, and inspect the generated driver command with -###. Related controls include -O levels, -g, -I/-isystem, -D/-U, -fsanitize-recover, and target or linker options as appropriate.
+
+## How it works inside Clang
+
+### Implementation
+
+| Stage | Source and implementation | What happens |
+| --- | --- | --- |
+| Options.td | [Options.td:254-256](https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Options/Options.td#L254-L256), [845-858](https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Options/Options.td#L845-L858) | Declares the optimization-level group, joined -O, -O0, -O4, bare -O, and -Ofast. TableGen emits the option identifiers used by the driver and frontend. |
+| Driver parsing | [Clang.cpp:5294-5301](https://github.com/llvm/llvm-project/blob/main/clang/lib/Driver/ToolChains/Clang.cpp#L5294-L5301) | Clang::ConstructJob() takes the last OPT_O_Group argument, maps -O4 to -O3, and renders the selected optimization argument into the cc1 command. |
+| Invocation setup | [CompilerInvocation.cpp:2710-2746](https://github.com/llvm/llvm-project/blob/main/clang/lib/Frontend/CompilerInvocation.cpp#L2710-L2746), [1832-1850](https://github.com/llvm/llvm-project/blob/main/clang/lib/Frontend/CompilerInvocation.cpp#L1832-L1850) | getOptimizationLevel() resolves the last spelling, treats -Os/-Oz as level 2 and -Ofast as level 3, caps unsupported numeric levels at 3, and stores the result in CodeGenOpts.OptimizationLevel. |
+| Code generation | [BackendUtil.cpp:648-665](https://github.com/llvm/llvm-project/blob/main/clang/lib/CodeGen/BackendUtil.cpp#L648-L665), [1019-1022](https://github.com/llvm/llvm-project/blob/main/clang/lib/CodeGen/BackendUtil.cpp#L1019-L1022) | mapToLevel() converts Clang’s integer level to llvm::OptimizationLevel::O0 through O3; backend setup passes that level to LLVM’s pipeline builder. |
+| LLVM optimization pipeline | [BackendUtil.cpp:1128-1139](https://github.com/llvm/llvm-project/blob/main/clang/lib/CodeGen/BackendUtil.cpp#L1128-L1139), [PassBuilderPipelines.cpp:622-629](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Passes/PassBuilderPipelines.cpp#L622-L629) | Ordinary compilation requests PassBuilder::buildPerModuleDefaultPipeline(Level). The pipeline branches on OptimizationLevel::O2 for level-specific passes; see [1032-1041](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Passes/PassBuilderPipelines.cpp#L1032-L1041). |
+| LLVM backend | [TargetMachine.cpp](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/TargetMachine.cpp) | Target-specific instruction selection, scheduling, register allocation, and emission consume optimized IR. The backend does not parse the user-facing -O2 spelling. |
+| Linker | [Clang stage selection](https://clang.llvm.org/docs/CommandGuide/clang.html#stage-selection-options) | The linker combines objects and libraries after compilation. It does not select the LLVM O2 pipeline; LTO is a separate link-time path. |
+
+~~~mermaid
+flowchart LR
+ A["-O2"] --> B["Options.td / TableGen"] --> C["Clang driver"] --> D["CompilerInvocation"] --> E["CodeGenOpts.OptimizationLevel = 2"] --> F["BackendUtil maps to llvm::OptimizationLevel::O2"] --> G["PassBuilder pipeline"] --> H["target backend"] --> I["object / linker"]
+~~~
+
+The option spelling is parsed by the Clang driver, converted into structured frontend/code-generation state, mapped to LLVM’s O2 pipeline, and only then lowered for the target. It is not an LLVM backend command-line option by itself.
 ## Key facts
 
-- **Argument form**: Flag (no argument)
-- **Accepted by**: CLOption
-- **Stage**: driver, category `CL Compatibility`
-- **Alias of**: `-O`
-- **Defined in**: `clang/include/clang/Driver/Options.td`
-
+<KeyFacts items={[{label:'Flag',value:'-O2'},{label:'Category',value:'Optimization level'},{label:'Primary stage',value:'Clang driver / frontend'},{label:'ABI or semantics',value:'Verify project-wide consistency'},{label:'Evidence',value:'Use -###, -E, -S, IR, or object inspection'}]} />
 </FlagArticleShell>
