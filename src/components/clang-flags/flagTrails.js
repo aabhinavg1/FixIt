@@ -84,6 +84,36 @@ export function buildPipelineTrail(flag) {
 }
 
 export function buildImplementationTrail(flag) {
+  if (flag.flag === "-fno-strict-aliasing" || flag.flag === "-fstrict-aliasing") {
+    return [
+      {
+        title: "Options.td",
+        value: flag.sourcePath || "clang/include/clang/Driver/Options.td",
+        note: "Defines the public aliasing flag and the internal -relaxed-aliasing cc1 option through TableGen marshalling.",
+      },
+      {
+        title: "Driver forwarding",
+        value: "ToolChains/Clang.cpp",
+        note: "Resolves -fstrict-aliasing versus -fno-strict-aliasing and forwards -relaxed-aliasing to cc1 when strict aliasing is disabled.",
+      },
+      {
+        title: "Invocation setup",
+        value: "CompilerInvocation.cpp",
+        note: "Parses the cc1 option into CodeGenOpts.RelaxedAliasing using generated option marshalling.",
+      },
+      {
+        title: "TBAA code generation",
+        value: "CodeGenTBAA.cpp",
+        note: "Suppresses strict type-based alias metadata where relaxed aliasing requires conservative memory-dependence assumptions.",
+      },
+      {
+        title: "LLVM pipeline",
+        value: "Alias analysis → target backend",
+        note: "LLVM optimization passes consume the reduced alias information before lowering IR to machine code.",
+      },
+    ];
+  }
+
   const trail = [
     {
       title: 'Options.td',
