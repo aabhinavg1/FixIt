@@ -7,7 +7,7 @@ import Badge from './Badge';
 import CodeBlock from './CodeBlock';
 import styles from './clangFlags.module.css';
 import { buildPipelineTrail, buildImplementationTrail, buildWhenToUse, buildWhenNotToUse } from './flagTrails';
-import { joinList, splitHighlightedText } from './utils';
+import { getPublicFlag, joinList, splitHighlightedText } from './utils';
 
 function statusTone(label) {
   switch (label) {
@@ -80,8 +80,9 @@ export default function FlagCard({ flag, query, mode = 'detail', onPickFlag, sel
   }
 
   const summary = flag.help || flag.documentation || 'No help text available.';
-  const articleHref = buildFlagArticlePath(flag.flag);
-  const titleParts = splitHighlightedText(flag.flag, query);
+  const displayFlag = getPublicFlag(flag);
+  const articleHref = buildFlagArticlePath(displayFlag);
+  const titleParts = splitHighlightedText(displayFlag, query);
   const badges = [
     flag.category,
     flag.hidden ? 'Hidden' : null,

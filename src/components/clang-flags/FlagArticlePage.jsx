@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import FlagArticle from '@site/src/components/clang-flags/FlagArticle';
 import { resolveFlagPathValue } from '@site/src/components/clang-flags/flagRoutes';
+import { findFlagOption } from '@site/src/components/clang-flags/utils';
 
 function normalizeIncomingData(data) {
   if (!data || !Array.isArray(data.options)) {
@@ -44,7 +45,7 @@ export default function FlagArticlePage({ flagPath }) {
 
   const options = data?.options ?? [];
   const selectedFlag = useMemo(
-    () => options.find((option) => option.flag === requestedFlag) || null,
+    () => findFlagOption(options, requestedFlag),
     [options, requestedFlag],
   );
 

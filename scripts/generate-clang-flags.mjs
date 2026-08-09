@@ -309,6 +309,7 @@ function buildWhenNotToUse(option) {
 function buildSearchText(option) {
   return normalizeText([
     option.flag,
+    option.publicFlag,
     option.alias,
     option.aliasTarget,
     option.aliasTargetFlag,
@@ -394,7 +395,15 @@ function main() {
   }
 
   const sourceIndex = buildSourceIndex(llvmSrc);
-  const optionsTd = path.join(llvmSrc, 'clang', 'include', 'clang', 'Driver', 'Options.td');
+  const optionsTdCandidates = [
+    path.join(llvmSrc, 'clang', 'include', 'clang', 'Driver', 'Options.td'),
+    path.join(llvmSrc, 'clang', 'include', 'clang', 'Options', 'Options.td'),
+  ];
+  const optionsTd = optionsTdCandidates.find((candidate) => fs.existsSync(candidate));
+  if (!optionsTd) {
+    console.error(`Options.td not found under ${llvmSrc}/clang/include/clang`);
+    process.exit(1);
+  }
   const includeArgs = ['-I', path.join(llvmSrc, 'clang', 'include'), '-I', path.join(llvmSrc, 'llvm', 'include')];
   const tblgenResult = spawnSync(tblgen, ['--dump-json', ...includeArgs, optionsTd], {
     encoding: 'utf8',
@@ -468,6 +477,7 @@ function main() {
       enumValues,
       aliasArgs,
       searchAliases: [],
+      publicFlag: null,
       takesArgument: false,
       cc1: visibility.includes('CC1Option'),
       driver: visibility.includes('ClangOption') || visibility.includes('CLOption') || visibility.includes('DXCOption') || visibility.includes('FlangOption'),
@@ -517,6 +527,40 @@ function main() {
     }
     if (option.flag === '-W') {
       option.searchAliases = ['-Werror', '-Wall', '-Wextra'];
+    }
+    if (option.flag === '-fexperimental-bounds-safety') {
+      option.searchAliases = ['-fbounds-safety'];
+      option.publicFlag = '-fbounds-safety';
+      option.sourcePath = 'clang/include/clang/Options/Options.td';
+      option.source = option.sourcePath;
+      option.sourceLine = 2070;
+      option.sourceUrl =
+        'https://github.com/compilersutra/llvm-project/blob/debad8323724adb0682eb3d9cb0940b137b24e8a/clang/include/clang/Options/Options.td#L2070-L2076';
+      option.documentation =
+        'Public name: -fbounds-safety (https://clang.llvm.org/docs/BoundsSafety.html). CC1-only today; forward with -Xclang -fexperimental-bounds-safety on preview Clang builds.';
+      option.exampleClang = 'clang -std=c11 -Xclang -fexperimental-bounds-safety -fsyntax-only main.c';
+      option.whenToUse = [
+        'Adopting the C bounds-safety model (__counted_by, __sized_by) file-by-file',
+        'When you want stricter semantic checks than the default warning-only behavior',
+        'Preview Clang builds that ship SemaBoundsSafety',
+      ];
+      option.whenNotToUse = [
+        'C++ translation units (bounds safety is C-only today)',
+        'Release builds on stock distro Clang without bounds-safety support',
+        'Mixed builds where some translation units include annotated headers without the flag',
+      ];
+    }
+    if (option.flag === '-fno-experimental-bounds-safety') {
+      option.searchAliases = ['-fno-bounds-safety'];
+      option.publicFlag = '-fno-bounds-safety';
+      option.sourcePath = 'clang/include/clang/Options/Options.td';
+      option.source = option.sourcePath;
+      option.sourceLine = 2070;
+      option.sourceUrl =
+        'https://github.com/compilersutra/llvm-project/blob/debad8323724adb0682eb3d9cb0940b137b24e8a/clang/include/clang/Options/Options.td#L2070-L2076';
+      option.documentation =
+        'Public negated name: -fno-bounds-safety. CC1-only; forward with -Xclang -fno-experimental-bounds-safety.';
+      option.exampleClang = 'clang -std=c11 -Xclang -fno-experimental-bounds-safety -fsyntax-only main.c';
     }
     option.negatedOption = findCounterpart(option, optionsByFlag);
     option.deprecated = isDeprecated(option);

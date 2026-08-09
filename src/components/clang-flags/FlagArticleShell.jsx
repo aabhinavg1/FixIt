@@ -8,7 +8,7 @@ import Badge from './Badge';
 import CodeBlock from './CodeBlock';
 import { resolveFlagPathValue, buildFlagArticlePath } from './flagRoutes';
 import { buildPipelineTrail, buildImplementationTrail } from './flagTrails';
-import { joinList, uniqueValues } from './utils';
+import { findFlagOption, getPublicFlag, joinList, uniqueValues } from './utils';
 import styles from './clangFlags.module.css';
 
 function buildHeadingId(text, index) {
@@ -167,11 +167,12 @@ function buildRisk(flag) {
 }
 
 function buildReportIssueUrl(flag) {
-  const title = encodeURIComponent('Clang flag article: ' + flag.flag);
+  const displayFlag = getPublicFlag(flag);
+  const title = encodeURIComponent('Clang flag article: ' + displayFlag);
   const body = encodeURIComponent([
-    'Flag: ' + flag.flag,
+    'Flag: ' + displayFlag,
     'Source: ' + (flag.sourceUrl || 'Not available'),
-    'Article: ' + buildFlagArticlePath(flag.flag),
+    'Article: ' + buildFlagArticlePath(displayFlag),
     '',
     'Describe the issue here.',
   ].join('\n'));
@@ -219,7 +220,7 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
   const options = data?.options ?? [];
   const meta = data ?? {};
   const flag = useMemo(
-    () => options.find((option) => option.flag === requestedFlag) || null,
+    () => findFlagOption(options, requestedFlag),
     [options, requestedFlag],
   );
 
@@ -294,11 +295,13 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
   const risk = useMemo(() => (flag ? buildRisk(flag) : 'Low'), [flag]);
   const pipelineTrail = useMemo(() => (flag ? buildPipelineTrail(flag) : []), [flag]);
   const implementationTrail = useMemo(() => (flag ? buildImplementationTrail(flag) : []), [flag]);
-  const sourceLabel = useMemo(
-    () =>
-      flag?.sourcePath && flag?.sourceLine ? `${flag.sourcePath}:${flag.sourceLine}` : flag?.sourcePath || 'Unknown source',
-    [flag],
-  );
+  const sourceLabel = useMemo(() => {
+    if (!flag?.sourcePath) return 'Unknown source';
+    if (flag.flag === '-fexperimental-bounds-safety' || flag.flag === '-fno-experimental-bounds-safety') {
+      return `${flag.sourcePath}:2070–2076 (commit debad832)`;
+    }
+    return flag.sourceLine ? `${flag.sourcePath}:${flag.sourceLine}` : flag.sourcePath;
+  }, [flag]);
 
   const heroBadges = useMemo(() => {
     if (!flag) return [];
@@ -349,10 +352,16 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
   }
 
   const reportIssueUrl = buildReportIssueUrl(flag);
+  const displayFlag = getPublicFlag(flag);
+  const sourcePreviewFlag = flag.publicFlag && flag.publicFlag !== flag.flag ? flag.flag : displayFlag;
+  const sourcePreviewLine =
+    flag.flag === '-fexperimental-bounds-safety' || flag.flag === '-fno-experimental-bounds-safety'
+      ? '2070–2076'
+      : flag.sourceLine;
 
   const copyFlag = async () => {
     try {
-      await navigator.clipboard.writeText(flag.flag);
+      await navigator.clipboard.writeText(displayFlag);
       setCopiedFlag(true);
       window.setTimeout(() => setCopiedFlag(false), 1400);
     } catch {
@@ -379,7 +388,7 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
           <div className={styles.articleHeroCopy}>
             <div className={styles.articleHeroTitleRow}>
               <div className={styles.articleHeroTitleMark} aria-hidden="true">$</div>
-              <h1 className={styles.articleHeroTitle}>{flag.flag}</h1>
+              <h1 className={styles.articleHeroTitle}>{displayFlag}</h1>
             </div>
             <p className={styles.articleHeroSummary}>{heroSummary}</p>
             <div className={styles.heroBadgeRow}>
@@ -506,10 +515,10 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
                 <div className={styles.sourcePreview}>
                   <div className={styles.sourcePreviewHeader}>
                     <span>{flag.sourcePath || 'Options.td'}</span>
-                    {flag.sourceLine ? <span>Line {flag.sourceLine}</span> : null}
+                    {sourcePreviewLine ? <span>Lines {sourcePreviewLine}</span> : null}
                   </div>
                   <div className={styles.sourcePreviewBody}>
-                    <code>{flag.flag}</code>
+                    <code>{sourcePreviewFlag}</code>
                     <span>Open the GitHub source to inspect the surrounding definition and implementation context.</span>
                   </div>
                 </div>
@@ -545,16 +554,19 @@ export default function FlagArticleShell({ flagPath, children, summary }) {
               <ArticleSection icon={BookOpenText} title="Related Flags" note="Move through adjacent flags without losing the article context.">
                 {related.length > 0 ? (
                   <div className={styles.relatedGrid}>
-                    {related.map((item) => (
-                      <Link key={item.flag} className={styles.relatedArticleCard} to={buildFlagArticlePath(item.flag)}>
+                    {related.map((item) => {
+                      const relatedDisplayFlag = getPublicFlag(item);
+                      return (
+                      <Link key={item.flag} className={styles.relatedArticleCard} to={buildFlagArticlePath(relatedDisplayFlag)}>
                         <div className={styles.relatedArticleTop}>
-                          <div className={styles.relatedArticleFlag}>{item.flag}</div>
+                          <div className={styles.relatedArticleFlag}>{relatedDisplayFlag}</div>
                           <Badge tone="info">{item.category}</Badge>
                         </div>
                         <div className={styles.relatedArticleSummary}>{item.help || item.documentation || 'No help text available.'}</div>
                         <div className={styles.relatedArticleMeta}>{item.kind} · {joinList(item.visibility) || 'ClangOption'}</div>
                       </Link>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : (
                   <p className={styles.bodyCopy}>No adjacent flags were identified in the current dataset.</p>

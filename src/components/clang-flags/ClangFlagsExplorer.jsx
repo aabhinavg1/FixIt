@@ -28,7 +28,7 @@ import FlagCard from './FlagCard';
 import Badge from './Badge';
 import RelatedFlags from './RelatedFlags';
 import { buildFlagArticlePath } from './flagRoutes';
-import { normalizeText, uniqueValues } from './utils';
+import { getFlagSearchNames, getPublicFlag, normalizeText, scoreFlagOption, uniqueValues } from './utils';
 import styles from './clangFlags.module.css';
 
 const DEFAULT_PLACEHOLDER = 'Search compiler flags...';
@@ -50,31 +50,6 @@ const QUICK_CHIPS = [
   { label: 'Modules', type: 'query', value: 'module', icon: Tag },
 ];
 
-function scoreOption(option, query, tokens) {
-  if (!query) {
-    return 0;
-  }
-
-  const haystack = option.searchText;
-  let score = 0;
-  const flag = option.flag.toLowerCase();
-  const names = [option.flag, ...(option.spellings || []), option.aliasTargetFlag, option.alias]
-    .filter(Boolean)
-    .map((item) => String(item).toLowerCase());
-
-  if (names.includes(query)) score += 200;
-  if (flag === query) score += 190;
-  if (flag.startsWith(query)) score += 110;
-  if (haystack.includes(query)) score += 75;
-  if (tokens.length && tokens.every((token) => haystack.includes(token))) score += 50;
-  if (option.category.toLowerCase().includes(query)) score += 18;
-  if (option.kind.toLowerCase().includes(query)) score += 12;
-  if (option.groupLabel && option.groupLabel.toLowerCase().includes(query)) score += 10;
-  if (option.help && option.help.toLowerCase().includes(query)) score += 8;
-  if (!score) score = haystack.includes(query) ? 4 : 0;
-  return score;
-}
-
 function matchesFilters(option, filters) {
   const { category, kind, visibility } = filters;
   if (category !== 'all' && option.category !== category) return false;
@@ -88,7 +63,7 @@ function selectBestOption(options, query, filters) {
   const tokens = normalizedQuery.split(' ').filter(Boolean);
   const scored = options
     .filter((option) => matchesFilters(option, filters))
-    .map((option) => ({ option, score: scoreOption(option, normalizedQuery, tokens) }))
+    .map((option) => ({ option, score: scoreFlagOption(option, normalizedQuery, tokens) }))
     .filter(({ score }) => score > 0 || !normalizedQuery)
     .sort((a, b) => b.score - a.score || a.option.category.localeCompare(b.option.category) || a.option.flag.localeCompare(b.option.flag));
   return scored.map(({ option }) => option);
@@ -248,7 +223,7 @@ function buildDocLinks(flag) {
   }
 
   return [
-    { label: 'Open article', href: buildFlagArticlePath(flag.flag), icon: BookOpenText },
+    { label: 'Open article', href: buildFlagArticlePath(getPublicFlag(flag)), icon: BookOpenText },
     flag.sourceUrl ? { label: 'View source', href: flag.sourceUrl, icon: ExternalLink, external: true } : null,
   ].filter(Boolean);
 }
@@ -373,7 +348,7 @@ export default function ClangFlagsExplorer() {
     if (!filteredOptions.length) {
       return null;
     }
-    const exact = filteredOptions.find((option) => normalizeText(option.flag) === normalizedQuery);
+    const exact = filteredOptions.find((option) => getFlagSearchNames(option).includes(normalizedQuery));
     if (exact) {
       return exact;
     }
@@ -396,7 +371,7 @@ export default function ClangFlagsExplorer() {
 
   const handleSelectFlag = (selected, options = {}) => {
     const option = typeof selected === 'string' ? optionByFlag.get(selected) : selected;
-    const flag = option?.flag || (typeof selected === 'string' ? selected : '');
+    const flag = option ? getPublicFlag(option) : (typeof selected === 'string' ? selected : '');
     if (!flag) {
       return;
     }
@@ -406,7 +381,7 @@ export default function ClangFlagsExplorer() {
     }
 
     setQuery(flag);
-    setSelectedFlag(flag);
+    setSelectedFlag(option?.flag || flag);
     setRecentSearches((current) => [flag, ...current.filter((item) => item !== flag)].slice(0, 6));
     setActiveSuggestionIndex(0);
     window.requestAnimationFrame(() => {

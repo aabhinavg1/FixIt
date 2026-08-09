@@ -21,7 +21,7 @@ import {
 import Badge from '@site/src/components/clang-flags/Badge';
 import SearchBar from '@site/src/components/clang-flags/SearchBar';
 import { buildFlagArticlePath } from '@site/src/components/clang-flags/flagRoutes';
-import { normalizeText } from '@site/src/components/clang-flags/utils';
+import { getPublicFlag, getFlagSearchNames, normalizeText, scoreFlagOption } from '@site/src/components/clang-flags/utils';
 import styles from '@site/src/components/clang-flags/clangFlags.module.css';
 
 const POPULAR_FLAGS = ['-O3', '-flto', '-fPIC', '-Weverything', '-fsanitize=address'];
@@ -38,22 +38,6 @@ const NAV_AREAS = [
 ];
 
 const MAX_SUGGESTIONS = 8;
-
-function scoreOption(option, query) {
-  if (!query) {
-    return 0;
-  }
-  const haystack = option.searchText || '';
-  const flag = String(option.flag || '').toLowerCase();
-  let score = 0;
-  if (flag === query) score += 190;
-  if (flag.startsWith(query)) score += 110;
-  if (haystack.includes(query)) score += 75;
-  if (String(option.category || '').toLowerCase().includes(query)) score += 18;
-  if (String(option.kind || '').toLowerCase().includes(query)) score += 12;
-  if (option.help && option.help.toLowerCase().includes(query)) score += 8;
-  return score;
-}
 
 function normalizeIncomingData(data) {
   if (!data || !Array.isArray(data.options)) {
@@ -120,7 +104,7 @@ export default function ClangFlagsLandingPage() {
       return [];
     }
     return options
-      .map((option) => ({ option, score: scoreOption(option, normalizedQuery) }))
+      .map((option) => ({ option, score: scoreFlagOption(option, normalizedQuery) }))
       .filter(({ score }) => score > 0)
       .sort((a, b) => b.score - a.score || a.option.flag.localeCompare(b.option.flag))
       .slice(0, MAX_SUGGESTIONS)
@@ -132,7 +116,7 @@ export default function ClangFlagsLandingPage() {
   }, [query]);
 
   const handleSelectFlag = (option) => {
-    const flag = option?.flag || (typeof option === 'string' ? option : '');
+    const flag = getPublicFlag(option) || (typeof option === 'string' ? option : '');
     if (!flag) {
       return;
     }

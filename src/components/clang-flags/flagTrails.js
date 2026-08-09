@@ -59,7 +59,23 @@ export function buildWhenNotToUse(flag) {
   return items.length ? items : ['No specific guidance available.'];
 }
 
+const BOUNDS_SAFETY_FLAGS = new Set([
+  '-fexperimental-bounds-safety',
+  '-fno-experimental-bounds-safety',
+]);
+
 export function buildPipelineTrail(flag) {
+  if (BOUNDS_SAFETY_FLAGS.has(flag.flag)) {
+    return [
+      { title: '-fexperimental-bounds-safety', note: 'CC1 option — verified entry point on debad832' },
+      { title: 'Option marshalling', note: 'Expected cc1 option-processing path (not individually traced on this page)' },
+      { title: 'LangOpts.BoundsSafety', note: 'Language option set by the cc1 flag' },
+      { title: 'SemaBoundsSafety', note: 'Verified effect: semantic checks and warning→error promotion' },
+      { title: 'AST / attributed types', note: 'Bounds annotations in the frontend type system' },
+      { title: 'CodeGen / runtime checks', note: 'Evolving — not demonstrated by the diagnostic experiment on this page' },
+    ];
+  }
+
   const steps = [
     { title: 'Options.td', note: 'Driver option table entry' },
     { title: 'Driver.cpp', note: 'Parse and validate spelling' },
@@ -84,6 +100,31 @@ export function buildPipelineTrail(flag) {
 }
 
 export function buildImplementationTrail(flag) {
+  if (BOUNDS_SAFETY_FLAGS.has(flag.flag)) {
+    return [
+      {
+        title: 'Options.td',
+        value: 'clang/include/clang/Options/Options.td:2070–2076',
+        note: 'defm bounds_safety / experimental-bounds-safety → LangOpts.BoundsSafety (CC1Option only; commit debad832).',
+      },
+      {
+        title: 'LangOptions.def',
+        value: 'clang/include/clang/Basic/LangOptions.def:523',
+        note: 'LANGOPT(BoundsSafety, …) — bounds-safety language mode toggle.',
+      },
+      {
+        title: 'SemaBoundsSafety.cpp',
+        value: 'clang/lib/Sema/SemaBoundsSafety.cpp',
+        note: 'Verified on this page: FAM + __counted_by layout checks; warning→error when BoundsSafety is on (~L157–176).',
+      },
+      {
+        title: 'CodeGen (design target)',
+        value: 'clang/lib/CodeGen/CodeGenFunction.cpp',
+        note: 'Not verified by the -fsyntax-only diagnostic experiment on this page.',
+      },
+    ];
+  }
+
   if (flag.flag === "-fno-strict-aliasing" || flag.flag === "-fstrict-aliasing") {
     return [
       {

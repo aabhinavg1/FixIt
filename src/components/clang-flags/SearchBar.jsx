@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { ChevronRight, Command, Hash, Keyboard, Search, X } from 'lucide-react';
 import styles from './clangFlags.module.css';
-import { splitHighlightedText } from './utils';
+import { getPublicFlag, splitHighlightedText } from './utils';
 
 // Cycles the placeholder text through example queries so users see what they can type
 function useCyclingPlaceholder(examples, base) {
@@ -164,6 +164,7 @@ export default function SearchBar({
           <ul className={styles.suggestionList}>
             {suggestions.map((item, index) => {
               const compilerText = (item.supportedCompilers || []).join(' ');
+              const displayFlag = getPublicFlag(item);
               const isActive = index === activeIndex;
               const accent = categoryAccent(item.category);
               return (
@@ -187,7 +188,7 @@ export default function SearchBar({
                     <div className={styles.suggestionContent}>
                       <div className={styles.suggestionTopRow}>
                         <span className={styles.suggestionFlag}>
-                          {splitHighlightedText(item.flag, query).map((part, partIndex) =>
+                          {splitHighlightedText(displayFlag, query).map((part, partIndex) =>
                             part.highlighted ? (
                               <mark key={partIndex} className={styles.searchMark}>{part.text}</mark>
                             ) : (
