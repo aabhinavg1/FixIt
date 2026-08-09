@@ -2946,9 +2946,372 @@
 
 .asmDiffNote {
   margin: 0;
+  color: var(--cf-text-2);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.diagnosticCompare {
+  gap: 1rem;
+}
+
+.diagnosticTakeaway {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--cf-primary) 18%, var(--cf-border));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--cf-primary-soft) 28%, var(--cf-surface));
+  color: var(--cf-text);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.diagnosticGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.diagnosticGridCompare {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.diagnosticGridSingle {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.diagnosticBridge {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0 0.15rem;
   color: var(--cf-text-3);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1101px) {
+  .diagnosticGridCompare .diagnosticBridge {
+    display: flex;
+  }
+}
+
+@media (max-width: 1100px) {
+  .diagnosticGrid,
+  .diagnosticGridCompare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diagnosticBridge {
+    display: none !important;
+  }
+}
+
+.diagnosticPanel {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-width: 0;
+  border: 1px solid var(--cf-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--cf-surface);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.diagnosticPanelWarning {
+  border-top: 3px solid #f59e0b;
+}
+
+.diagnosticPanelError {
+  border-top: 3px solid #e11d48;
+}
+
+.diagnosticPanelHeader {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--cf-border);
+  background: linear-gradient(180deg, var(--cf-surface-2) 0%, var(--cf-surface) 100%);
+}
+
+.diagnosticPanelHeaderMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.diagnosticPanelTitle {
+  color: var(--cf-text);
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.diagnosticPanelBadge {
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.diagnosticPanelBadgeWarning {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.diagnosticPanelBadgeError {
+  background: rgba(225, 29, 72, 0.12);
+  color: #be123c;
+  border: 1px solid rgba(225, 29, 72, 0.24);
+}
+
+.diagnosticBody {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.85rem 0.9rem 0.95rem;
+  min-width: 0;
+}
+
+.diagnosticMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.diagnosticSeverityChip {
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.diagnosticSeverityWarning {
+  background: rgba(245, 158, 11, 0.16);
+  color: #92400e;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.diagnosticSeverityError {
+  background: rgba(225, 29, 72, 0.12);
+  color: #be123c;
+  border: 1px solid rgba(225, 29, 72, 0.22);
+}
+
+.diagnosticLocation {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--cf-text);
+  font-weight: 700;
+}
+
+.diagnosticLocationSep {
+  color: var(--cf-text-3);
+  padding: 0 0.05rem;
+}
+
+.diagnosticGroup {
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.diagnosticMessage {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--cf-text);
+}
+
+.diagnosticMessageWarning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+}
+
+.diagnosticMessageError {
+  background: rgba(225, 29, 72, 0.08);
+  border: 1px solid rgba(225, 29, 72, 0.18);
+}
+
+.diagnosticSnippet {
+  border: 1px solid #334155;
+  border-radius: 12px;
+  overflow: auto;
+  background: #020617;
+  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.08);
+}
+
+.diagnosticSnippetRow {
+  display: grid;
+  grid-template-columns: 2.4rem 1rem minmax(0, 1fr);
+  gap: 0.35rem;
+  align-items: start;
+  padding: 0.35rem 0.85rem 0.35rem 0.55rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.82rem;
-  line-height: 1.5;
+  line-height: 1.65;
+  color: #e2e8f0;
+}
+
+.diagnosticSnippetRow + .diagnosticSnippetRow {
+  padding-top: 0;
+  padding-bottom: 0.55rem;
+}
+
+.diagnosticSnippetRowCaret {
+  color: #93c5fd;
+}
+
+.diagnosticLineNo {
+  text-align: right;
+  color: #64748b;
+  user-select: none;
+}
+
+.diagnosticLineBar {
+  color: #475569;
+  user-select: none;
+}
+
+.diagnosticLineCode {
+  display: block;
+  min-width: 0;
+  white-space: pre;
+  overflow-x: auto;
+  color: #f8fafc;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.diagnosticCaretMarker {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+.diagnosticCommandWrap {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.55);
+  background: #0f172a;
+}
+
+.diagnosticCommandLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.diagnosticCommandHint {
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px dashed rgba(100, 116, 139, 0.45);
+  color: #cbd5e1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.diagnosticSummary {
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.diagnosticSummaryWarning {
+  background: rgba(134, 239, 172, 0.12);
+  color: #15803d;
+}
+
+.diagnosticSummaryError {
+  background: rgba(253, 164, 175, 0.12);
+  color: #be123c;
+}
+
+.diagnosticCommand {
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.85);
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.diagnosticBadgeWarning {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+}
+
+.diagnosticBadgeError {
+  background: rgba(225, 29, 72, 0.12);
+  color: #be123c;
+}
+
+.diagnosticStatWarning {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.diagnosticLineWarning .asmDiffCode {
+  color: #fcd34d;
+}
+
+.diagnosticLineError .asmDiffCode {
+  color: #fda4af;
+}
+
+.diagnosticLineSource .asmDiffCode {
+  color: #e2e8f0;
+}
+
+.diagnosticLineCaret .asmDiffCode {
+  color: #93c5fd;
+}
+
+.diagnosticLineSummary .asmDiffCode {
+  color: #86efac;
+  font-weight: 600;
 }
 
 /* Perf report */
@@ -3328,13 +3691,16 @@
 }
 
 .calloutBody {
+  display: grid;
+  gap: 0.65rem;
   color: var(--cf-text-2);
   font-size: 0.93rem;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .calloutBody p {
   margin: 0.35rem 0;
+  line-height: 1.55;
 }
 
 .calloutBody p:first-child {
@@ -3343,6 +3709,56 @@
 
 .calloutBody p:last-child {
   margin-bottom: 0;
+}
+
+.calloutBody code {
+  display: inline;
+  vertical-align: baseline;
+  line-height: 1.45;
+  padding: 0.06rem 0.32rem;
+  border-radius: 5px;
+  border: 1px solid var(--cf-border);
+  background: color-mix(in srgb, var(--cf-surface) 82%, var(--cf-surface-2));
+  font-size: 0.84em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: nowrap;
+}
+
+.calloutBody > table {
+  width: 100%;
+  margin: 0.15rem 0 0;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.calloutBody > table th,
+.calloutBody > table td {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--cf-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.calloutBody > table th {
+  background: color-mix(in srgb, var(--cf-surface) 88%, var(--cf-primary-soft));
+  color: var(--cf-text);
+  font-weight: 700;
+}
+
+.calloutBody > table td code {
+  font-size: 0.82em;
+}
+
+.calloutBody > pre,
+.calloutBody :global(.language-bash) {
+  margin: 0.35rem 0 0;
+}
+
+.calloutBody ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
 }
 
 .calloutInfo {
@@ -4014,6 +4430,7 @@
 .articleMain .codeBlock,
 .articleMain .sourceCodeBlock,
 .articleMain .asmDiff,
+.articleMain .diagnosticCompare,
 .articleMain .regLayout,
 .articleMain .perfReport {
   max-width: 100%;

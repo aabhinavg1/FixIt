@@ -1,0 +1,58 @@
+---
+title: "-fno-bounds-safety"
+slug: "/tools/clang-flags/-fno-bounds-safety/"
+description: "Public negated name: -fno-bounds-safety. CC1-only; forward with -Xclang -fno-experimental-bounds-safety."
+---
+
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-fno-bounds-safety">
+
+## What this flag actually does
+
+Public negated name: -fno-bounds-safety. CC1-only; forward with -Xclang -fno-experimental-bounds-safety.
+
+
+
+This is a `-cc1` (internal frontend) option. The Clang driver does not accept it directly, so it must be forwarded with `-Xclang`.
+
+
+
+It can be negated with -fbounds-safety.
+
+
+
+LLVM documents the public name `-fno-bounds-safety`; the cc1 spelling is `-fno-experimental-bounds-safety`.
+
+
+
+Preview builds enable the mode with `-Xclang -fexperimental-bounds-safety` (public name `-fbounds-safety` per [BoundsSafety.html](https://clang.llvm.org/docs/BoundsSafety.html)).
+
+## When to use it
+
+- Code generation tuning
+- Frontend lowering experiments
+- Target-independent compilation control
+
+## When not to use it
+
+- When you are only editing diagnostics or preprocessing
+- When the option does not affect your current build phase
+
+## Usage example
+
+```bash
+clang++ -Xclang -fno-experimental-bounds-safety -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: CC1Option
+- **Stage**: cc1 (frontend), category `Code Generation`
+- **Negated by**: `-fbounds-safety`
+- **LLVM spelling**: `-fno-experimental-bounds-safety`
+- **Defined in**: `clang/include/clang/Options/Options.td`
+
+</FlagArticleShell>
