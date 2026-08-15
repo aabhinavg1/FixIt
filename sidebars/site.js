@@ -217,6 +217,7 @@ const site = {
           collapsed: false,
           items: [
             'articles/rust-vs-modern-cpp-memory-safety-beyond-the-hype',
+            'articles/rust-claims-a-reality-check',
             'articles/rustc-pipeline-vs-cpp-compilation-pipeline',
           ],
         },
