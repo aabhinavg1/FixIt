@@ -59,7 +59,7 @@ The two pipelines look similar at a distance because both frontends eventually l
 For C++, the compiler mostly checks syntax and type correctness, then enforces a mix of language rules and library-level ownership patterns before handing off to the backend. For Rust, those guarantees are part of the compilation model itself: ownership, borrowing, and lifetimes are validated before code generation, and Rust often passes through multiple IRs before it ever reaches LLVM.
 
 :::note
-Both pipelines eventually reach native machine code, but the important difference is where each compiler enforces program invariants.
+Both pipelines eventually reach native machine code, but the important difference is where each compiler enforces program invariants. For the slogan those checks get sold as, see [Rust Claims, a Reality Check](/docs/articles/rust-claims-a-reality-check).
 :::
 
 ## Key Takeaway

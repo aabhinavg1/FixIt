@@ -60,6 +60,10 @@ Roadmap: Traditional C++ -> memory bugs -> sanitizers and safer APIs -> modern C
 Bug index: [use-after-free](#4-use-after-free), [buffer overflow](#5-buffer-overflow), [null pointer dereference](#6-null-pointer-dereference), [data race](#7-data-race), [memory leak](#memory-leak-vs-use-after-free)
 :::
 
+:::note
+Related: [Rust Claims, a Reality Check](/docs/articles/rust-claims-a-reality-check) covers the slogan after the comparison: what safe Rust actually proves, which 2015 tool complaints remain, and the 2023 systems-language thread.
+:::
+
 ## 0. Abstract
 
 This article compares Rust and modern C++ on one concrete system: a concurrent in-memory cache with a background eviction thread. It measures the kinds of failures that matter in native code, not raw speed: [use-after-free](#4-use-after-free), [buffer overflow](#5-buffer-overflow), [null pointer dereference](#6-null-pointer-dereference), and [data races](#7-data-race). For each case, it shows the bug in traditional C++, the kind of signal a sanitizer can give you, the modern C++ fix, and the Rust shape that often prevents the bug from compiling in safe code. The article does not claim that Rust eliminates all bugs, that modern C++ cannot be made safer, or that one language always wins. It is meant to help the reader decide when compile-time enforcement is worth the migration cost, when toolchain hardening is enough, and when the safer default should be a language choice rather than a build flag.

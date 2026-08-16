@@ -178,6 +178,15 @@ No article has been published from the Jenkins queue yet.
 
 </tr>
 
+<tr>
+<td>Rust Claims</td>
+<td>A Reality Check: Safety, Tools, and Systems Programming</td>
+<td><a href="./rust-claims-a-reality-check">Article</a></td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
   </tbody>
 </table>
 
