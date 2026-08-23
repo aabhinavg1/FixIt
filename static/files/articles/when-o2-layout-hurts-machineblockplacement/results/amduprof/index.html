@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMD uProf artifacts</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+    th { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>AMD uProf 5.2 artifacts</h1>
+  <p><a href="../">← all artifacts</a> · <a href="README.md">README.md</a> · <a href="highlights.json">highlights.json</a></p>
+
+  <h2>Same story as perf / csperf?</h2>
+  <p>
+    <strong>Yes.</strong> On the <code>strtoll</code> hotspot, branch-mispredict PTI is ~4.55× higher at
+    <code>-O2</code> than <code>-O1</code>; <code>-disable-block-placement</code> returns near <code>-O1</code>.
+  </p>
+
+  <table>
+    <tr><th>Build</th><th>br_misp PTI (strtoll)</th><th>misp %</th><th>CPI</th></tr>
+    <tr><td>O1</td><td>0.585</td><td>0.205</td><td>0.206</td></tr>
+    <tr><td>O2</td><td><strong>2.661</strong></td><td><strong>0.956</strong></td><td>0.268</td></tr>
+    <tr><td>O2np</td><td>0.639</td><td>0.228</td><td>0.208</td></tr>
+  </table>
+
+  <h2>Files</h2>
+  <ul>
+    <li><a href="cli_branch_loop/O1_report.csv">cli_branch_loop/O1_report.csv</a></li>
+    <li><a href="cli_branch_loop/O2_report.csv">cli_branch_loop/O2_report.csv</a></li>
+    <li><a href="cli_branch_loop/O2np_report.csv">cli_branch_loop/O2np_report.csv</a></li>
+    <li><a href="summary.json">summary.json</a></li>
+    <li><a href="sys_core_loop/O1_core.csv">sys_core_loop/O1_core.csv</a> (and O2 / O2np)</li>
+  </ul>
+</body>
+</html>

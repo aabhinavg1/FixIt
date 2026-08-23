@@ -1,0 +1,64 @@
+{
+  "compiler": "/home/aitr/osc/llvm-project/build-stage1/bin/clang",
+  "version": "clang version 24.0.0git (https://github.com/compilersutra/llvm-project.git 196786fa5fe4225539678fc7904a383eca05374e)",
+  "machine": "AMD Ryzen 7 9700X",
+  "reps": 120,
+  "args": "1048576",
+  "csv": "results/clang24_stage1/w11_r120.csv",
+  "detail": "results/clang24_stage1/w11_r120_summary.json",
+  "prior_n30": "see git history / earlier medians time O2_vs_O1 +7.54%",
+  "medians": {
+    "O0": {
+      "sec": 0.067381,
+      "insn": 2054991738,
+      "br_miss": 665315,
+      "ipc": 5.636
+    },
+    "O1": {
+      "sec": 0.063339,
+      "insn": 1995134473,
+      "br_miss": 657345,
+      "ipc": 5.799
+    },
+    "O2": {
+      "sec": 0.069853,
+      "insn": 1981610496,
+      "br_miss": 1729938,
+      "ipc": 5.222
+    },
+    "O3": {
+      "sec": 0.069755,
+      "insn": 1981717951,
+      "br_miss": 1728273,
+      "ipc": 5.232
+    },
+    "O2_disable_block_placement": {
+      "sec": 0.063345,
+      "insn": 1981532267,
+      "br_miss": 656550,
+      "ipc": 5.765
+    }
+  },
+  "O2_vs_O1_pct": {
+    "time": 10.285,
+    "insn": -0.678,
+    "br_miss": 163.17,
+    "br_miss_ratio": 2.632,
+    "ipc": -9.942
+  },
+  "O2np_vs_O1_pct": {
+    "time": 0.01,
+    "br_miss": -0.121
+  },
+  "robustness": {
+    "paired_O1_faster_than_O2": "119/120",
+    "O2_brm_always_gt_O1": true,
+    "O1_brm_max": 671841,
+    "O2_brm_min": 1721254,
+    "time_p05_p95": {
+      "O1": [0.06194, 0.065543],
+      "O2": [0.068456, 0.073702],
+      "O2np": [0.061975, 0.065921]
+    }
+  }
+}

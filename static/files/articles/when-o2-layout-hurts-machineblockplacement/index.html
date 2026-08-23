@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MachineBlockPlacement parse-loop artifacts</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; }
+    h1 { font-size: 1.35rem; }
+    code, a { word-break: break-word; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f4f4f4; }
+    .note { color: #444; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>MachineBlockPlacement parse-loop artifacts</h1>
+  <p class="note">
+    Companion files for the CompilerSutra article
+    <em>When Clang -O2 Gets Slower: A MachineBlockPlacement Case Study</em>.
+    Static hosting has no directory listing, so use this page as the index.
+  </p>
+
+  <h2>Start here</h2>
+  <ul>
+    <li><a href="README.md">README.md</a> — what is in this bundle</li>
+    <li><a href="highlights.json">highlights.json</a> — one-page O1 / O2 / O2np numbers</li>
+    <li><a href="source/machine_block_placement_csv_parse.c">source/machine_block_placement_csv_parse.c</a> — full testcase</li>
+  </ul>
+
+  <h2>Experiments</h2>
+  <table>
+    <tr><th>Experiment</th><th>Files</th></tr>
+    <tr>
+      <td>A — Linux <code>perf</code> (n=100)</td>
+      <td>
+        <a href="results/perf/summary.json">summary.json</a> ·
+        <a href="results/perf/perf_r100.csv">perf_r100.csv</a>
+      </td>
+    </tr>
+    <tr>
+      <td>B — CompilerSutra Perf / <code>csperf</code> (n=100)</td>
+      <td>
+        <a href="results/csperf/summary.json">summary.json</a> ·
+        <a href="results/csperf/testcase_O1_vs_O2.csv">O1 vs O2 diff</a>
+      </td>
+    </tr>
+    <tr>
+      <td>C — AMD uProf 5.2 (40× loop)</td>
+      <td>
+        <a href="results/amduprof/README.md">README</a> ·
+        <a href="results/amduprof/highlights.json">highlights.json</a> ·
+        <a href="results/amduprof/cli_branch_loop/O1_report.csv">O1 report</a> ·
+        <a href="results/amduprof/cli_branch_loop/O2_report.csv">O2 report</a> ·
+        <a href="results/amduprof/cli_branch_loop/O2np_report.csv">O2np report</a>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Do they agree?</h2>
+  <p>
+    Yes on <strong>direction</strong>: <code>-O2</code> raises branch-mispredict pressure vs <code>-O1</code>;
+    <code>-O2 -mllvm -disable-block-placement</code> moves back toward <code>-O1</code>.
+    Absolute instruction totals differ across runners; do not merge them.
+  </p>
+  <ul>
+    <li><code>perf</code>: O2 vs O1 time +10.7%, branch misses ~2.63×</li>
+    <li><code>csperf</code>: O2 vs O1 time +7.7%, branch misses ~2.62×</li>
+    <li>AMD uProf CLI (<code>strtoll</code> hotspot): O2 vs O1 branch-mispred PTI ~4.55×; O2np ≈ O1</li>
+  </ul>
+
+  <h2>Other</h2>
+  <ul>
+    <li><a href="configs/">configs/</a> — open individual JSON files:
+      <a href="configs/testcase_O1.json">O1</a>,
+      <a href="configs/testcase_O2.json">O2</a>,
+      <a href="configs/testcase_O2np.json">O2np</a>
+    </li>
+    <li><a href="scripts/run_mbb_parse.sh">scripts/run_mbb_parse.sh</a></li>
+    <li><a href="machine_block_placement_csv_parse.c">machine_block_placement_csv_parse.c</a> (root copy of source)</li>
+  </ul>
+</body>
+</html>

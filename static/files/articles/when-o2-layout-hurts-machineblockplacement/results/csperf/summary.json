@@ -1,0 +1,46 @@
+{
+  "tool": "csperf",
+  "package": "compilersutra-perf",
+  "pypi": "https://pypi.org/project/compilersutra-perf/",
+  "reps": 100,
+  "warmup": 3,
+  "N": 1048576,
+  "compiler": "/home/aitr/osc/llvm-project/build-stage1/bin/clang",
+  "source": "testcases/machine_block_placement_csv_parse.c",
+  "medians": {
+    "O0": {
+      "time_ms": 70.922,
+      "instructions": 1999460225,
+      "branch_mispredictions": 700602,
+      "ipc": 5.5033
+    },
+    "O1": {
+      "time_ms": 65.852,
+      "instructions": 1844983941,
+      "branch_mispredictions": 628398,
+      "ipc": 5.2808
+    },
+    "O2": {
+      "time_ms": 70.927,
+      "instructions": 1889797245,
+      "branch_mispredictions": 1647290,
+      "ipc": 5.1564
+    },
+    "O2np": {
+      "time_ms": 65.869,
+      "instructions": 1876152054,
+      "branch_mispredictions": 639884,
+      "ipc": 5.258
+    }
+  },
+  "O2_vs_O1": {
+    "time_pct": 7.707,
+    "insn_pct": 2.429,
+    "br_miss_ratio": 2.621,
+    "ipc_pct": -2.356
+  },
+  "O2np_vs_O1": {
+    "time_pct": 0.027,
+    "br_miss_ratio": 1.018
+  }
+}

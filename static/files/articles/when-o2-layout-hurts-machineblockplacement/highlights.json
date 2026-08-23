@@ -1,0 +1,108 @@
+{
+  "testcase": "machine_block_placement_csv_parse.c",
+  "machine": "AMD Ryzen 7 9700X (Zen 5)",
+  "input_N": 1048576,
+  "seed": 29,
+  "expected_sum": 15723844160,
+  "compiler": "Clang 24.0.0git stage1 (196786fa\u2026)",
+  "experiment_A_perf_n100": {
+    "O1": {
+      "time_s": 0.06489,
+      "instructions": 1993000000,
+      "branch_misses": 657000,
+      "note": "see results/perf/summary.json"
+    },
+    "O2": {
+      "time_s": 0.07185,
+      "instructions": 1976000000,
+      "branch_misses": 1730000
+    },
+    "O2np": {
+      "time_s": 0.06632,
+      "instructions": 1976000000,
+      "branch_misses": 660000
+    },
+    "O2_vs_O1": {
+      "O2_vs_O1": {
+        "time_pct": 10.736,
+        "insn_pct": -0.835,
+        "br_miss_pct": 163.338,
+        "br_miss_ratio": 2.633,
+        "ipc_pct": -10.744
+      },
+      "O2np_vs_O1": {
+        "time_pct": 2.213,
+        "br_miss_pct": 0.441
+      },
+      "paired_O1_faster": "97/100",
+      "O2_brm_always_gt_O1": true,
+      "correctness": "PASS all configs x {1,10,100,1000,1048576}"
+    },
+    "medians": {
+      "O1": {
+        "time_s": 0.064888,
+        "instructions": 1992989947.5,
+        "branch_misses": 656889.0,
+        "ipc": 5.769142
+      },
+      "O2": {
+        "time_s": 0.071854,
+        "instructions": 1976345554.0,
+        "branch_misses": 1729837.0,
+        "ipc": 5.149295
+      },
+      "O2np": {
+        "time_s": 0.066324,
+        "instructions": 1976287520.0,
+        "branch_misses": 659789.0,
+        "ipc": 5.613694
+      },
+      "O0": {
+        "time_s": 0.070737,
+        "instructions": 2055489497.0,
+        "branch_misses": 668970.5,
+        "ipc": 5.508167
+      },
+      "O3": {
+        "time_s": 0.071705,
+        "instructions": 1977002808.5,
+        "branch_misses": 1729858.0,
+        "ipc": 5.15574
+      }
+    }
+  },
+  "experiment_B_csperf_n100": {
+    "time_pct": 7.707,
+    "insn_pct": 2.429,
+    "br_miss_ratio": 2.621,
+    "ipc_pct": -2.356
+  },
+  "csperf_medians": {
+    "O0": {
+      "time_ms": 70.922,
+      "instructions": 1999460225,
+      "branch_mispredictions": 700602,
+      "ipc": 5.5033
+    },
+    "O1": {
+      "time_ms": 65.852,
+      "instructions": 1844983941,
+      "branch_mispredictions": 628398,
+      "ipc": 5.2808
+    },
+    "O2": {
+      "time_ms": 70.927,
+      "instructions": 1889797245,
+      "branch_mispredictions": 1647290,
+      "ipc": 5.1564
+    },
+    "O2np": {
+      "time_ms": 65.869,
+      "instructions": 1876152054,
+      "branch_mispredictions": 639884,
+      "ipc": 5.258
+    }
+  },
+  "smoking_gun": "-O2 -mllvm -disable-block-placement",
+  "pass": "MachineBlockPlacement (Branch Probability Basic Block Placement)"
+}
