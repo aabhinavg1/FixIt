@@ -86,7 +86,7 @@ function StackGrowthIndicator({ direction }) {
   );
 }
 
-export default function StackFrameVisualizer({ stackData = {}, stackFrame = {} }) {
+export default function StackFrameVisualizer({ stackData = {}, stackFrame = {}, title = 'Stack Frame Layout' }) {
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
@@ -104,7 +104,7 @@ export default function StackFrameVisualizer({ stackData = {}, stackFrame = {} }
       <div className={styles.header}>
         <div className={styles.titleBlock}>
           <Layers size={18} className={styles.titleIcon} />
-          <h3 className={styles.title}>Stack Frame Layout</h3>
+          <h3 className={styles.title}>{title}</h3>
         </div>
         <div className={styles.headerMeta}>
           <span className={styles.metaBadge}>{direction}</span>

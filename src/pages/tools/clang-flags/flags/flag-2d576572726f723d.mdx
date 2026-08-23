@@ -1,0 +1,49 @@
+---
+title: "-Werror="
+slug: "/tools/clang-flags/-Werror%3D/"
+description: "Promotes a single warning group to an error, e.g. -Werror=switch."
+---
+
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Werror%3D">
+
+## What this flag actually does
+
+Promotes a single warning group to an error, e.g. -Werror=switch.
+
+
+
+This option expects an argument.
+
+
+
+It can be negated with -Wno-error=.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Werror= -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Joined (takes an argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Negated by**: `-Wno-error=`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

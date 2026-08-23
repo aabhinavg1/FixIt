@@ -1,5 +1,6 @@
 import { ALL_MCQ_QUESTIONS } from './sourcePool';
 import { OOP_DAILY_QUESTION_BANK } from './oopDays';
+import { EXTENDED_DAILY_QUESTION_BANK } from './days41to100';
 
 const DAY_SOURCE_PATTERNS = {
   1: ['docs/mcq/questions/basic/', 'docs/mcq/questions/intermediate/', 'docs/mcq/questions/advanced/', 'docs/mcq/questions/specialized/'],
@@ -107,6 +108,7 @@ function buildBank() {
 export const DAILY_MCQ_QUESTION_BANK = {
   ...buildBank(),
   ...OOP_DAILY_QUESTION_BANK,
+  ...EXTENDED_DAILY_QUESTION_BANK,
 };
 
 export function getDailyMcqQuestions(day) {
