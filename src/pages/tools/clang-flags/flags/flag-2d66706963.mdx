@@ -1,45 +1,274 @@
 ---
 title: "-fpic"
 slug: "/tools/clang-flags/-fpic/"
-description: "Reference entry for a Clang compiler flag."
+description: "Generate position-independent code (small PIC model) so object files can load at any address — required for shared libraries on Linux x86_64."
+keywords: [clang, -fpic, position independent code, PIC, shared library, GOT, ASLR, code generation, x86_64]
 ---
 
+import Head from '@docusaurus/Head';
 import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+import AsmDiff from '@site/src/components/clang-flags/AsmDiff';
+import Callout from '@site/src/components/clang-flags/Callout';
+import SourceCode from '@site/src/components/clang-flags/SourceCode';
+import KeyFacts from '@site/src/components/clang-flags/KeyFacts';
+import PerfReport from '@site/src/components/clang-flags/PerfReport';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-{/* GENERATED_BY clang-flags */}
-<FlagArticleShell flagPath="-fpic">
+<Head>
+  <meta name="keywords" content="clang,-fpic,position independent code,PIC,shared library,GOT,ASLR,x86_64" />
+  <meta property="og:title" content="-fpic — Clang flag reference" />
+  <meta property="og:description" content="Generate position-independent code for shared libraries: GOT indirection, before/after assembly, -fpic vs -fPIC vs -fPIE, and when to use it." />
+</Head>
+
+{/* HAND_AUTHORED */}
+<FlagArticleShell flagPath="-fpic" summary="Emit position-independent code (small PIC model) so text and data references work when the load address is unknown — the usual compile flag for .so shared libraries.">
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Architecture** | Primarily ELF targets (Linux, BSD); behavior varies by triple |
+| **Category** | Code generation / linking model |
+| **Compiler** | Clang driver (also Flang); GCC has the same spelling |
+| **Effect** | Access globals and extern symbols through GOT / PC-relative sequences |
+| **Risk** | Tiny runtime cost vs absolute addressing; wrong model breaks shared-library linking |
+
+**One-line summary:** compile so the resulting `.o` can be linked into a shared library and relocated when loaded at an arbitrary base address.
 
 ## What this flag actually does
 
-No help text is available in the imported LLVM metadata.
+`-fpic` asks Clang to emit **position-independent code** using the **small PIC** model on ELF x86_64. Instead of baking in absolute addresses for globals and external symbols, the compiler generates instructions that locate data through the **Global Offset Table (GOT)** or PC-relative fixups that the dynamic linker can adjust at load time.
 
+That matters because a shared library (`.so`) can be mapped at **different virtual addresses** in different processes (ASLR) and even move between runs. Code compiled without PIC often contains absolute relocations that cannot be dropped into a shared object.
 
+<Callout tone="info" title="Not the same as -fPIE">
+  **`-fpic`** → position-independent code for **shared objects** (`.so`). You typically pair compiled objects with `-shared` when linking the library.
+  **`-fPIE`** → position-independent code for **executables**; link with **`-pie`** to get a PIE binary. Both enable ASLR-friendly output, but the link step differs.
+</Callout>
 
-It can be negated with -fno-pic.
+## Minimal example
+
+A function that touches a global variable is enough to see the codegen change:
+
+<SourceCode
+  file="pic_demo.c"
+  flag="-fpic"
+  language="c"
+  code={`int counter = 42;
+
+int bump(void) {
+  return ++counter;
+}`}
+  note="Compiled with clang -O2 on x86_64-linux-gnu. Without -fpic the backend can use a direct RIP-relative load/store to counter; with -fpic it routes through the GOT."
+/>
+
+### Before vs. after assembly
+
+Both builds use `clang -O2 -S` on x86_64 Linux. Changed lines are highlighted.
+
+<AsmDiff
+  beforeTitle="Without -fpic (direct addressing)"
+  afterTitle="With -fpic (GOT indirection)"
+  before={`\
+bump:
+\tmovl\tcounter(%rip), %eax
+\tincl\t%eax
+\tmovl\t%eax, counter(%rip)
+\tretq`}
+  after={`\
+bump:
+\tmovq\tcounter@GOTPCREL(%rip), %rcx
+\tmovl\t(%rcx), %eax
+\tincl\t%eax
+\tmovl\t%eax, (%rcx)
+\tretq`}
+  note="Clang 18, x86_64-pc-linux-gnu, -O2. -fpic adds a GOT lookup (movq counter@GOTPCREL) and accesses memory through %rcx. Extra instruction and one memory indirection vs direct counter(%rip)."
+/>
+
+**What changed:** the non-PIC build uses `%rip`-relative addressing straight to `counter`. The PIC build loads a GOT slot first, then reads/writes through that pointer — relocatable at load time.
+
+## `-fpic` vs `-fPIC` vs `-fPIE`
+
+| Flag | Typical output | Link with | Use case |
+| --- | --- | --- | --- |
+| **`-fpic`** | Small PIC | `-shared` | Shared libraries on x86_64 (default choice) |
+| **`-fPIC`** | Large / fully PIC | `-shared` | When small PIC limits are hit (some archs / huge data) |
+| **`-fPIE`** | PIC for executables | **`-pie`** | Hardened binaries, ASLR for main program |
+| **`-fno-pic`** | Absolute / non-PIC | (static or fixed base) | Kernel code, firmware, or when you know the load address |
+
+On **x86_64 Linux**, `-fpic` and `-fPIC` often produce similar code for simple examples; the distinction matters more on architectures with stricter PIC models.
+
+## Why would anyone use this?
+
+- **Building shared libraries** (`.so`): `-fpic -shared` is the standard recipe on Linux.
+- **ASLR / security hardening**: PIC lets the loader place mappings at random bases without relinking.
+- **Plugins and dlopen**: code loaded at runtime must not assume fixed addresses.
+- **Distributable SDKs**: one `.so` binary works across processes regardless of load address.
+
+<Callout tone="warning" title="Build the whole DSO with PIC">
+  Every object linked into a shared library should be compiled with `-fpic` (or `-fPIC`). Mixing PIC and non-PIC objects into one `.so` fails at link time or produces subtle relocation errors.
+</Callout>
+
+## Performance impact
+
+PIC is usually a **small** cost — but the cost shows up in **instructions first**, not always in wall time.
+
+**Mechanism (from the assembly above):**
+
+- **Extra instructions** for GOT setup on global accesses (`movq counter@GOTPCREL` + load through pointer).
+- **One extra memory indirection** vs direct `%rip` addressing.
+- **Not an optimization-level change** — combine freely with `-O2`, `-O3`, LTO, etc.
+
+### Measured with CompilerSutra Perf
+
+The following measurements were produced with [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) on the `pic_bench.c` workload using Ubuntu clang 18.1.3, x86_64-pc-linux-gnu, CPU affinity 0, one warmup run, five measured trials, with profiling disabled:
+
+<PerfReport
+  beforeTitle="Clang -O2 (no PIC)"
+  afterTitle="Clang -O2 -fpic"
+  without={[51.569, 51.559, 52.908, 41.294, 46.451]}
+  with={[56.311, 42.768, 41.066, 41.222, 41.118]}
+  note="Mean wall time: 48.76 ms without -fpic versus 44.50 ms with -fpic (50M-iteration global bump loop). Variance is high at this runtime; a separate perf-enabled csperf run on the same workload shows +12.8% instructions at -fpic with nearly identical time (~41.6 ms)."
+/>
+
+With **perf counters enabled** (one csperf trial each, same workload):
+
+| Build | Time | Instructions | IPC |
+| --- | ---: | ---: | ---: |
+| `-O2 -fno-pic` | 41.6 ms | 436.7M | 2.07 |
+| `-O2 -fpic` | 41.4 ms | 492.5M (**+12.8%**) | 2.30 |
+
+**Read:** PIC shows up clearly as **extra retired instructions** (GOT indirection per `bump()`). Wall time on this Zen 5 box was **not** a large regression at 50M iterations — profile global-heavy shared-library code on your target either way.
+
+Reproduce with the same workload and trial configuration:
+
+~~~bash
+PERF_TOOL=/home/aitr/projects/CompilerSutraPerfTool
+INPUT=/home/aitr/compilersutra/FixIt_Compilersutra/docs/tools/clang-flags-workloads/pic_bench.c
+cd "$PERF_TOOL"
+export PYTHONPATH=src
+~~~
+
+<Tabs>
+  <TabItem value="nopic" label="-O2 -fno-pic">
+
+~~~bash
+python3 -m csperf.cli run \
+  --input "$INPUT" \
+  --backend cpu \
+  --cpu-affinity 0 \
+  --warmup-runs 1 \
+  --repeat-runs 5 \
+  --compiler-flag=-O2 \
+  --compiler-flag=-fno-pic \
+  --no-perf \
+  --output /tmp/clang-fpic-nopic.json
+~~~
+
+  </TabItem>
+  <TabItem value="fpic" label="-O2 -fpic">
+
+~~~bash
+python3 -m csperf.cli run \
+  --input "$INPUT" \
+  --backend cpu \
+  --cpu-affinity 0 \
+  --warmup-runs 1 \
+  --repeat-runs 5 \
+  --compiler-flag=-O2 \
+  --compiler-flag=-fpic \
+  --no-perf \
+  --output /tmp/clang-fpic-pic.json
+~~~
+
+  </TabItem>
+</Tabs>
+
+Compare:
+
+~~~bash
+python3 -m csperf.cli diff /tmp/clang-fpic-nopic.json /tmp/clang-fpic-pic.json
+~~~
 
 ## When to use it
 
-- Code generation tuning
-- Frontend lowering experiments
-- Target-independent compilation control
+- Compiling **object files** that will be linked into a **shared library**.
+- Any translation unit that ends up in a `.so`, including static archives (`.a`) later linked into a shared object.
+- Security-sensitive Linux packages that ship shared modules loaded by `dlopen`.
 
 ## When not to use it
 
-- When you are only editing diagnostics or preprocessing
-- When the option does not affect your current build phase
+- **Single static executable** with no PIC requirement — many distros default to `-fPIE` for executables instead; use the right model for the link step.
+- **Freestanding / kernel** code with a fixed link address — often `-fno-pic` or platform-specific flags.
+- **Mixing models** in one shared library — keep PIC consistent across all objects.
 
-## Usage example
+## Typical usage
+
+**Shared library (two-step):**
 
 ```bash
-clang++ -fpic -c main.cpp
+clang -fpic -O2 -c libfoo.c -o libfoo.o
+clang -shared -o libfoo.so libfoo.o
 ```
+
+**See what the driver passes:**
+
+```bash
+clang -fpic -O2 -### -c libfoo.c
+```
+
+**Contrast with PIE executable:**
+
+```bash
+clang -fPIE -O2 -c main.c -o main.o
+clang -pie -o app main.o
+```
+
+Negate with **`-fno-pic`** when you need to force non-PIC code generation (platform-dependent defaults apply).
+
+## How it works inside Clang
+
+The driver option is declared in `clang/include/clang/Driver/Options.td` (around line 6507) as part of the target-independent `f_Group` code-generation flags. When `-fpic` is present, the driver sets the relocation / code-model state passed to `clang -cc1` and the backend so that:
+
+1. Global and external variable references emit **GOT-relative** or PC-relative relocations.
+2. The object file contains relocation entries the **static or dynamic linker** can apply when the segment is mapped.
+3. Text remains valid regardless of the final load bias.
+
+Inspect the chosen model with:
+
+```bash
+clang -fpic -O2 -### -c file.c 2>&1 | rg 'pic|relocation|code-model'
+```
+
+## Compatibility
+
+| Compiler / context | `-fpic` |
+| --- | --- |
+| Clang / Flang on Linux x86_64 | Yes — standard for `.so` |
+| GCC | Same spelling, same general meaning |
+| MSVC Windows | Different mechanism (`/MD`, DLL import libs) |
+| macOS | Often `-fPIC` for dylibs; check platform docs |
+
+## Adjacent options
+
+- **`-fPIC`** — large PIC model when small PIC is insufficient.
+- **`-fPIE` / `-pie`** — PIC for executables, not shared libraries.
+- **`-fno-pic`** — disable PIC code generation.
+- **`-shared`** — linker flag to produce a shared object (used after `-fpic` compile).
+- **`-fvisibility=hidden`** — often combined with shared libraries to trim exported symbols.
 
 ## Key facts
 
-- **Argument form**: Flag (no argument)
-- **Accepted by**: ClangOption, FlangOption
-- **Stage**: driver, category `Code Generation`
-- **Negated by**: `-fno-pic`
-- **Defined in**: `clang/include/clang/Driver/Options.td`
+<KeyFacts
+  items={[
+    { label: 'Argument form', value: 'Flag (no argument)', icon: 'check' },
+    { label: 'Accepted by', value: 'Clang driver, Flang driver', icon: 'check' },
+    { label: 'Stage', value: 'driver → cc1 → codegen (relocation model)', icon: 'check' },
+    { label: 'Negated by', value: '-fno-pic', icon: 'info' },
+    { label: 'Defined in', value: 'clang/include/clang/Driver/Options.td (~L6507)', icon: 'info' },
+    { label: 'Typical pair', value: 'compile -fpic, link -shared', icon: 'check' },
+  ]}
+/>
 
 </FlagArticleShell>

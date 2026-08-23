@@ -1,0 +1,45 @@
+---
+title: "-Werror"
+slug: "/tools/clang-flags/-Werror/"
+description: "Promotes every compiler warning to an error. Implemented by the Clang diagnostic engine, not by the TableGen option table."
+---
+
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Werror">
+
+## What this flag actually does
+
+Promotes every compiler warning to an error. Implemented by the Clang diagnostic engine, not by the TableGen option table.
+
+
+
+It can be negated with -Wno-error.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Werror -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Negated by**: `-Wno-error`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>

@@ -1,0 +1,45 @@
+---
+title: "-Wno-error"
+slug: "/tools/clang-flags/-Wno-error/"
+description: "Keeps warnings as warnings even when -Werror or a -Werror= override is active. Negated form of -Werror."
+---
+
+import FlagArticleShell from '@site/src/components/clang-flags/FlagArticleShell';
+
+{/* GENERATED_BY clang-flags */}
+<FlagArticleShell flagPath="-Wno-error">
+
+## What this flag actually does
+
+Keeps warnings as warnings even when -Werror or a -Werror= override is active. Negated form of -Werror.
+
+
+
+It can be negated with -Werror.
+
+## When to use it
+
+- CI builds
+- When you want stricter diagnostics
+- When you need to catch regressions early
+
+## When not to use it
+
+- If you are intentionally suppressing noisy third-party warnings
+- When you are not ready to fix all warnings
+
+## Usage example
+
+```bash
+clang++ -Wno-error -fsyntax-only main.cpp
+```
+
+## Key facts
+
+- **Argument form**: Flag (no argument)
+- **Accepted by**: ClangOption, CC1Option
+- **Stage**: cc1 (frontend), category `Warning`
+- **Negated by**: `-Werror`
+- **Defined in**: `clang/include/clang/Driver/Options.td`
+
+</FlagArticleShell>
