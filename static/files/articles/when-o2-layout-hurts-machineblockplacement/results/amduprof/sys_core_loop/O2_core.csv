@@ -1,0 +1,411 @@
+AMDuProfSys Version,5.2.606 (PUBLIC)
+Performance Analysis Report
+
+SYSTEM DETAILS
+CPU Details:,"Family(0x1a), Model(0x44)"
+System Name:,aitr
+Operating System:,Linux-7.0.0-29-generic-x86_64-with-glibc2.39
+BIOS Version:,1.90
+Number of active NUMA Nodes:,1
+Number of maximum NUMA Nodes:,1
+Number of Sockets:,1
+Number of CCXs:,1
+Number of cpu per Socket:,16
+Number of active CPUs:,16
+Maximum CPUs:,16
+
+Hypervisor Info:
+Hypervisor Enabled:,False
+
+PROFILE DETAILS
+Profile Type:,CORE
+Collector:,AMD Driver
+Core Mask:,'0'
+Multiplexing Interval (ms):,16
+Sampling Interval (ms):,688
+Profiled Application (launched using AMDuProfSys):,/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/scripts/run_loop.sh /home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 1048576 40
+Core Affinity:,'0'
+Time Elapsed during Collection (seconds):,4
+Collect Command:,'--config core -C 0 --affinity 0 --force -o /home/aitr/reaserch/technical/compilers/llvm/results/amduprof/sys_core_loop/O2 -f csv /home/aitr/reaserch/technical/compilers/llvm/results/amduprof/scripts/run_loop.sh /home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 1048576 40'
+Raw File:,/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/sys_core_loop/O2/O2.core
+
+EVENT DEFINITION (INI) FILES USED
+INI file name,Version
+nv_core_include_pipeutil.public.8.ini,5.1.0
+nv_core_include_ipc.public.8.ini,5.1.0
+nv_core_include_de.public.8.ini,5.1.4
+nv_core_include_bp.public.8.ini,5.1.7
+nv_core_include_IcOc.public.8.ini,5.1.7
+nv_core_include_ex.public.8.ini,5.1.6
+nv_core_include_fp.public.8.ini,5.1.5
+nv_core_include_ls.public.8.ini,5.1.13
+nv_core_include_ms.public.8.ini,5.1.0
+nv_core_include_l2.public.8.ini,5.1.2
+
+
+PROFILE DATA
+#core,cpu:0
+
+
+
+
+Pipeline Utilization Analysis,
+
+Frontend Bound (% slots),59.385
+... latency (% slots),48.480
+... BW (% slots),10.905
+Bad Speculation (% slots),0
+... Mispredicts (% slots),0
+... Pipeline Restarts (% slots),0
+Backend Bound (unadjusted) (% slots),35.931
+Backend Bound (adjusted) (% slots),36.038
+... Memory (% slots),34.855
+... CPU (% slots),1.183
+Retiring (% slots),16.403
+... Light ops (fastpath) (%slots),14.202
+... Heavy ops (microcode) (%slots),2.201
+SMT contention (unadjusted) (% slots),2.975
+SMT contention (adjusted) (% slots),2.868
+Top Down All Level 1,114.694
+
+C1. IPC AND PROCESSOR UTILIZATION,
+
+Avg IPC (w/ halt),0.107
+Avg UPC (w/ halt),0.094
+Avg CPI (w/ halt),9.383
+Avg CPU (w/ halt),10.622
+Avg IPC (w/o halt),1.426
+Avg UPC (w/o halt),1.260
+Avg CPI (w/o halt),0.701
+Avg CPU (w/o halt),0.794
+User IPC,0.493
+User UPC,0.770
+System IPC,0.674
+System UPC,0.750
+User CPI,2.029
+User CPU,1.299
+System CPI,1.483
+System CPU,1.333
+Total inst (M),1024.734
+Total uops (M),1497.220
+User inst (%),77.444
+System inst (%),22.556
+User time (%),-
+System time (%),28.847
+Overall utilization (%),7.473
+CPU effective (Mhz),5301.250
+Total clocks (M),11399.950
+Unhalted P0 freq clocks (M),1393.427
+Total microcode inst (M),8.140
+... % of all inst,0.794
+Total microcode uops (M),83.550
+... % of all uops,5.580
+Avg Uop / Microcode-inst,10.264
+
+GUEST AND HOST INSTRUCTIONS AND CYCLES,
+
+Guest user IPC,-
+Guest system IPC,-
+Host user IPC,0.796
+Host system IPC,0.549
+Guest user inst (%),0
+Guest system inst (%),0
+Host user inst (%),48.442
+Host system inst (%),10.458
+Guest user time (%),0
+Guest system time (%),0
+Host user time (%),86.748
+Host system time (%),27.166
+
+C4. DE,
+
+clks with no dispatch token stalled taken branch buffer,0.205
+clks with no dispatch token stalled ldQ,2.276
+clks with no dispatch token stalled stQ,54.889
+clks with no dispatch token stalled int prf,97.023
+DSP IPC (w/o halt),1.426
+DSP COP PER CCLK (w/o halt),1.018
+clks per 1000 instr,701.124
+clks per 1000 cop,982.337
+clks with no dispatch token stalled int frf  AL tok,91.896
+clks with no dispatch token stalled int frf  AG tok,9.828
+clks with no dispatch token stalled int frf  SCEX Flush tok,0
+Micro-ops Dispatched,713.730
+... integer ops,658.096
+... Fp SIMD ops,55.634
+Total SPEC instr (M),1108.246
+Instr wr to UopQ,653.823
+Instr wr to UopQ DE (%),29.699
+Instr wr to UopQ Uop$ (%),70.301
+Ops dispatched (slots/cycles),0.890
+Empty Dispatch Slots (slots/cycles),4.751
+
+C2. BP,
+
+Branches Retired,107.178
+... mispred,1.641
+... ... %,1.531
+... taken,50.811
+... ... mispred,2.646
+... not-taken,56.366
+... ... mispred,0
+... conditional,74.786
+... ... mispred,2.910
+... far-ctrl-trnsfr,0.032
+... dir jmp/call,42.687
+... indirect jump,3.746
+... ... mispred,0.178
+... near return,26.621
+... ... mispred,0.529
+... uncond indirect br mispred,0.707
+Branches Fused,77.168
+IF Total Redirect/Fixups ITTAGE Hit,0.153
+IF Bytes/ Decoded Instr Inst In OC Mode,459.644
+IF Bytes/ Decoded Instr Inst In DE Mode,194.178
+EX Redirect(PTI),1.283
+Resync(PTI),0.004
+
+C3. IC and TLB,
+
+IC MAB req L2 fill,239.970
+IC MAB req L3/Mem fill,9.075
+L1I fetch req (32B),341.753
+.. hit (32B),306.133
+.. miss (64B),35.620
+Itlb Req,341.753
+...Hit,298.071
+...Miss,43.682
+...... L2 Itlb Hit,43.447
+...... L2 Itlb Miss,0.235
+...... ...4K,0.223
+...... ...4K+,0.013
+...... ...2M,0.0
+...... ...1G,0
+RETURN Inst Retired,26.621
+OC instr/1000-ret-instr,459.644
+OC Full Miss,66.092
+OC Miss Ratio,0.310
+OC Miss,66.092
+L2 Access from L1 IC Miss,28.482
+Itlb flow and L1 hit(% cycles),-
+
+C5. EX,
+
+EX DIV Ops,0.664
+... lat (CCLKs),4.987
+FP Instr Retired,128.566
+... avx/sse,128.566
+... mmx,0
+... x87,0
+Retired uops(ops per cycle),1.312
+Retired Ops(% cycle),48.187
+Cycles with no instructions retired(% cycle) Retire empty/nothing to retire(% cycle),0.376
+Cycles with no instructions retired(% cycle) Retire Not complete self(% cycle),2.299
+Cycles with no instructions retired(% cycle) Other Retire Stall (breaks/traps/faults/etc)(% cycle),0.197
+Cycles with no instructions retired(% cycle) No Retire due to SMT contention(% cycle),0.012
+IBS Tagged Ops,0
+IBS Tagged Ops Retired,0
+IBS Count Rollover,0
+
+C6 - FP,
+
+Mixed SSE/AVX Stalls,0.001
+FP Spill/Fill Faults,0.033
+FLOP per instr,0
+FLOP per cclk,0
+FLOPs (GFLOPs),0
+... % add or sub,-
+... % mul,-
+... % div,-
+... % fmac,-
+FP Uops (int/fp),151.421
+... fp,49.739
+... ... scal,31.647
+... ... vect,18.093
+... int/ld/st,101.682
+... ... mmx,0.022
+... ... sse/avx,101.660
+ADD f-simd uop scal,5.844
+ADD f-simd uop 128,2.470
+ADD f-simd uop 256,0.001
+SUB f-simd uop scal,0.409
+SUB f-simd uop 128,1.555
+SUB f-simd uop 256,0.001
+BLND f-simd uop 128,0
+BLND f-simd uop 256,0.001
+MUL f-simd uop scal,1.962
+MUL f-simd uop 128,0.194
+MUL f-simd uop 256,0.001
+MAC f-simd uop scal,0.022
+MAC f-simd uop 128,0
+MAC f-simd uop 256,0.001
+SHUF f-simd uop 128,2.921
+SHUF f-simd uop 256,0.024
+DIV f-simd uop scal,0.019
+DIV f-simd uop 128,0.0
+DIV f-simd uop 256,0
+SQRT f-simd uop scal,0.0
+SQRT f-simd uop 128,0
+SQRT f-simd uop 256,0
+PACK f-simd uop 128,0
+PACK f-simd uop 256,0
+CMP f-simd uop scal,0.033
+CMP f-simd uop 128,0.002
+CMP f-simd uop 256,0.001
+CNVT f-simd uop scal,4.214
+CNVT f-simd uop 128,0.660
+CNVT f-simd uop 256,0.001
+LOG f-simd uop 128,1.570
+LOG f-simd uop 256,0.001
+FpCountRet512 (PMC_008),7.691
+ADD i-simd uop 128,0.059
+ADD i-simd uop 256,0
+SUB i-simd uop 128,0.012
+SUB i-simd uop 256,0
+MUL i-simd uop 128,0
+MUL i-simd uop 256,0
+MAC i-simd uop 128,0
+MAC i-simd uop 256,0
+CMP i-simd uop 128,0.027
+CMP i-simd uop 256,0.029
+SHUF i-simd uop 128,0.206
+SHUF i-simd uop 256,0
+PACK i-simd uop 128,0
+PACK i-simd uop 256,0
+LOG i-simd uop 128,0.026
+LOG i-simd uop 256,0.005
+AES simd uop,0
+... 128,0
+... 256,0
+CLM simd uop,0.015
+... 128,0.015
+... 256,0
+LD/ST/MovElim simd uop 128,6.387
+LD/ST/MovElim simd uop 256,0.093
+MOV simd uop 128,0.250
+MOV simd uop 256,0.003
+SHFT i-simd uop 128,0.360
+SHFT i-simd uop 256,0
+SHA i-simd uop 128,0
+SHA i-simd uop 256,0
+FpRetx87FpOps,0
+... AddSubOps,0
+... MulOps,0
+... DivSqrROps,0
+
+C7. LS_1,
+
+LS uop disp,501.169
+... Ld,468.133
+... St,30.784
+... Ld-Op-St,2.252
+CPUID Instruction,0.0
+CLFLUSH Instruction,0
+DTLB Req,501.169
+...Hit,500.272
+...Miss,0.897
+...... L2 DTLB Hit,0.736
+...... ... 4K,0.525
+...... ... 4K+,0.112
+...... ... 2M,0.097
+...... ... 1G,0.002
+...... L2 DTLB Miss,0.161
+...... ... 4K,0.137
+...... ... 4K+,0.013
+...... ... 2M,0.010
+...... ... 1G,0.001
+Interrupts (pti),0.003
+... (inst per),334718.724
+... (per sec w/halt),1688.018
+St commit cncl Older St Visible,0.013
+LS Pick No HwPf Ld misalign,1.001
+Sw Pf Instr T0/T1/T2/W,0.168
+Sw Pf Instr Ld NTA,0
+Sw Pf Ineff,0.122
+... Dc Hit,0.112
+... Mab Hit,0.009
+STLI incomplete overlap,1.606
+MAB Alloc,4.380
+... demand,3.512
+... hw pf,0.867
+Ave MAB lat (CCLKS),75.469
+... ... ... (ns),14.236
+Ave MAB busy time %,47.143
+DC Fill any,4.528
+... from memory or IO,0.479
+... ... local,0.479
+... ... remote,0
+... local L2,2.528
+... other cache (same ccx),1.521
+... other cache in same NUMA node,0
+... other cache in other NUMA node,0
+DC Fill demand only,4.502
+... local L2,2.603
+... other cache (same ccx),1.629
+... local mem or IO,0.271
+... other cache in same NUMA node,0
+... other cache in other NUMA node,0
+... remote mem or IO,0
+DC Fill hardware prefetch,1.514
+... local L2,0.982
+... other cache (same ccx),0.322
+... local mem or IO,0.210
+... other cache in same NUMA node,0
+... other cache in other NUMA node,0
+... remote mem or IO,0
+DC Fill software prefetch,0.047
+... local L2,0.020
+... other cache (same ccx),0.014
+... local mem or IO,0.009
+... other cache in same NUMA node,0
+... other cache in other NUMA node,0
+... remote mem or IO,0
+DC Fill from CXL,0
+... demand,0
+... hwpf,0
+... swpf,0
+LS Scb close all bytes written,1.513
+64B lines written per WCB close,21.654
+SMI Received,0
+Os Locks,1.618
+... bus lock,0
+Usr Locks,1.520
+... bus lock,0
+STLF,62.205
+
+C10. L2 - Overall L2 Hit statistics (PTI),
+
+All L2 accesses,33.048
+All L2 hits,22.239
+All L2 misses,7.096
+DC Accesses (demand+PF),7.927
+... L2 Hits,5.130
+IF Accesses (demand+PF),28.482
+... L2 Hits,15.059
+PF Accesses,3.568
+... Hit L2,2.051
+... Hit L3,1.063
+... Miss L3,0.454
+L2 Req from L1 DC Miss,7.358
+... LS RdBlkL,6.069
+... LS RdBlkX,0.704
+... LS RdBlkC or S,0.585
+SW & L1 HW Pf to L2,0.0
+L2 HW prefetch,3.277
+IF cacheable reqs,28.482
+WCB closees,0.070
+LS RdblkC or S hit,0.353
+LS RdBlkL hit X,3.061
+LS RdBlkL hit S,1.175
+RdBlkX or ChgtoX hit X,0.453
+LS fill miss,2.940
+IC fill hit X,0
+IC fill hit S,23.747
+IC fill miss,3.535
+Effective CPU frequency,396.143
+Local Cache (L3 or L1/L2 same CCX),6.423
+Remote Cache w/ Local CS,0
+Remote Cache w/ Far CS,0
+Local DRAM,2.761
+Remote DRAM,0
+Storage Class Memory,0

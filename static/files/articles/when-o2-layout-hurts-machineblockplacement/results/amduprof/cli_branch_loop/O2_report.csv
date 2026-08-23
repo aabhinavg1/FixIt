@@ -1,0 +1,103 @@
+
+"AMD uProf (Version:5.2.606.0)"
+PERFORMANCE ANALYSIS REPORT
+
+EXECUTION
+Target Path:,"/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/scripts/run_loop.sh"
+Command Line Arguments:,"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 1048576 40 "
+Working Directory:,"/home/aitr/reaserch/technical/compilers/llvm"
+Environment Variables:
+CPU Details:,"Family(0x1a), Model(0x44), Number of Cores(16)"
+Operating System:,"Linux Ubuntu 24.04.4 LTS-64 Kernel:7.0.0-29-generic"
+Collect Command:,"./AMDuProfCLI collect --config branch -o /home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O2 --affinity 0 /home/aitr/reaserch/technical/compilers/llvm/results/amduprof/scripts/run_loop.sh /home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 1048576 40"
+Report Command:,"./AMDuProfCLI report -i /home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O2/AMDuProf-run_loop-EBP_Aug-23-2026_11-06-37"
+
+PROFILE DETAILS
+Profile Session Type:,"Investigate Branching"
+Profile Scope:,"Single Application"
+CPU Mask:,"0-15"
+CPU Affinity Mask:,"0"
+Profile Start Time:,"Sun Aug 23 11:06:37 2026"
+Profile End Time:,"Sun Aug 23 11:06:41 2026"
+Profile Duration:,"3.755 seconds"
+Data Folder:,"/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O2/AMDuProf-run_loop-EBP_Aug-23-2026_11-06-37"
+Virtual Machine:,"No"
+Call Stack Sampling:,"False"
+Selected View:,"Branch"
+
+MONITORED EVENTS
+PMC Events:,Name,Interval,Unitmask,Countmask,Invert Countmask,User,OS,Description
+,"CYCLES_NOT_IN_HALT (PMCx076)",250000,0x00,0x00,False,True,True,"The number of cpu cycles when the thread is not in halt state."
+,"RETIRED_INST (PMCx0C0)",250000,0x00,0x00,False,True,True,"The number of instructions retired from execution. This count includes exceptions and interrupts. Each exception or interrupt is counted as one instruction."
+,"RETIRED_BR_INST (PMCx0C2)",25000,0x00,0x00,False,True,True,"The number of branch instructions retired. This includes all types of architectural control flow changes, including exceptions and interrupts.
+            "
+,"RETIRED_BR_INST_MISP (PMCx0C3)",25000,0x00,0x00,False,True,True,"The number of retired branch instructions, that were mispredicted.Note that only EX direct mispredicts and indirect target mispredicts are counted.
+            "
+,"ExRetBrnTkn (PMCx0C4)",25000,0x00,0x00,False,True,True,"The number of taken branches that were retired. This includes all types of architectural control flow changes, including exceptions and interrupts."
+,"ExRetBrnTknMisp (PMCx0C5)",25000,0x00,0x00,False,True,True,"The number of retired taken branch instructions that were mispredicted. Note that only EX mispredicts are counted."
+,"ExRetNearRet (PMCx0C8)",25000,0x00,0x00,False,True,True,"The number of near return instructions (RET [C3] or RET Iw [C2]) retired."
+,"ExRetNearRetMispred (PMCx0C9)",25000,0x00,0x00,False,True,True,"The number of near returns retired that were not correctly predicted by the return address predictor. Each such mispredict incurs the same penalty as a mispredicted conditional branch instruction. Note that only EX mispredicts are counted ."
+,"ExRetBrnIndMisp (PMCx0CA)",25000,0x00,0x00,False,True,True,"The number of indirect branches retired that were not correctly predicted. Each such mispredict incurs the same penalty as a mispredicted conditional branch instruction. Note that only EX mispredicts are counted ."
+
+
+DERIVED METRICS
+Metric Name,Expression,Description
+"CPI","CYCLES_NOT_IN_HALT / RETIRED_INST","The average number of CPU cycles consumed to retire an instruction. This metric is computed as the ratio of CYCLES_NOT_IN_HALT to RETIRED_INST event. The higher values means the application consumes more CPU cycles to retire an instruction due to high cache misses, branch mispredictions, pipeline stalls, I/O or any other bottlenecks. If the CPI values exceeds a threshold value, it will be highlighted in pink."
+"RETIRED_BR_INST (PTI)","( RETIRED_BR_INST * 1000 ) / RETIRED_INST","The number of retired branch instructions per thousand retired instructions."
+"RETIRED_BR_INST_MISP (PTI)","( RETIRED_BR_INST_MISP * 1000 ) / RETIRED_INST","The number of retired mispredicted branches per thousand retired instructions. Branch mispredictions incur significant performance penalty and this metric value should be reduced."
+"RETIRED_BR_INST_MISP_RATIO","RETIRED_BR_INST_MISP / RETIRED_BR_INST","This metric is computed as retired mispredicted branches divided by the total number of retired branch instructions."
+"%RETIRED_BR_INST_MISP","( RETIRED_BR_INST_MISP * 100 ) / RETIRED_BR_INST","The percentage of retired mispredicted branches with respect to the total number of retired branches."
+"RETIRED_BR_INST_RATE","RETIRED_BR_INST / RETIRED_INST","The number of retired branch instructions rate. This metric is computed as retired branches divided by the total number of retired instructions."
+"RETIRED_BR_INST_MISP_RATE","RETIRED_BR_INST_MISP / RETIRED_INST","This metric is computed as retired mispredicted branches divided by the total number of retired instructions."
+
+
+APPLICATION PERFORMANCE SNAPSHOT
+Number Of Threads,"41"
+
+
+"10 HOTTEST FUNCTIONS (Sort Event - CYCLES_NOT_IN_HALT)"
+FUNCTION,"CYCLES_NOT_IN_HALT","RETIRED_INST","CPI","RETIRED_BR_INST (PTI)","RETIRED_BR_INST_MISP (PTI)","RETIRED_BR_INST_MISP_RATIO","%RETIRED_BR_INST_MISP","RETIRED_BR_INST_RATE","RETIRED_BR_INST_MISP_RATE",Module
+"__memmove_avx512_unaligned_erms",8529.0000,37738.0000,0.2260,201.1977,0.2782,0.0014,0.1383,0.2012,0.0003,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"__GI_____strtoll_l_internal",3369.0000,12551.0000,0.2684,278.4161,2.6611,0.0096,0.9558,0.2784,0.0027,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"__printf_buffer",3137.0000,12875.0000,0.2437,192.6524,0.3806,0.0020,0.1975,0.1927,0.0004,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"main",1134.0000,4422.0000,0.2564,282.2479,1.4021,0.0050,0.4968,0.2822,0.0014,"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2"
+"_itoa_word",406.0000,1245.0000,0.3261,193.0120,0.4819,0.0025,0.2497,0.1930,0.0005,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"strtol",300.0000,1059.0000,0.2833,266.1001,2.3607,0.0089,0.8872,0.2661,0.0024,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"__printf_buffer_write",290.0000,869.0000,0.3337,195.8573,0.1151,0.0006,0.0588,0.1959,0.0001,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"zap_present_ptes.constprop.0",105.0000,96.0000,1.0938,155.2083,0.0000,0.0000,0.0000,0.1552,0.0000,"[kernel.kallsyms]_text"
+"__strchrnul_evex",90.0000,262.0000,0.3435,147.3282,0.0000,0.0000,0.0000,0.1473,0.0000,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"[PLT] strtol",83.0000,305.0000,0.2721,251.1475,0.6557,0.0026,0.2611,0.2511,0.0007,"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2"
+
+"10 HOTTEST PROCESSES (Sort Event - CYCLES_NOT_IN_HALT)"
+PROCESS,"CYCLES_NOT_IN_HALT","RETIRED_INST","CPI","RETIRED_BR_INST (PTI)","RETIRED_BR_INST_MISP (PTI)","RETIRED_BR_INST_MISP_RATIO","%RETIRED_BR_INST_MISP","RETIRED_BR_INST_RATE","RETIRED_BR_INST_MISP_RATE"
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225794)",559.0000,1997.0000,0.2799,216.7752,0.8012,0.0037,0.3696,0.2168,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225827)",552.0000,2014.0000,0.2741,216.7329,0.7944,0.0037,0.3666,0.2167,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225786)",539.0000,1968.0000,0.2739,218.6484,0.8130,0.0037,0.3718,0.2186,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225829)",513.0000,1928.0000,0.2661,218.0498,0.8299,0.0038,0.3806,0.2180,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225807)",506.0000,1906.0000,0.2655,217.0514,0.7870,0.0036,0.3626,0.2171,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225830)",497.0000,1874.0000,0.2652,216.3287,0.8004,0.0037,0.3700,0.2163,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225798)",494.0000,1889.0000,0.2615,217.6813,0.7941,0.0036,0.3648,0.2177,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225751)",480.0000,1868.0000,0.2570,218.3619,0.8030,0.0037,0.3677,0.2184,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225805)",461.0000,1829.0000,0.2521,218.6987,0.8201,0.0037,0.3750,0.2187,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2 (PID:225732)",457.0000,1830.0000,0.2497,217.4317,0.7650,0.0035,0.3518,0.2174,0.0008
+
+"10 HOTTEST MODULES (Sort Event - CYCLES_NOT_IN_HALT)"
+MODULE,"CYCLES_NOT_IN_HALT","RETIRED_INST","CPI","RETIRED_BR_INST (PTI)","RETIRED_BR_INST_MISP (PTI)","RETIRED_BR_INST_MISP_RATIO","%RETIRED_BR_INST_MISP","RETIRED_BR_INST_RATE","RETIRED_BR_INST_MISP_RATE"
+"/usr/lib/x86_64-linux-gnu/libc.so.6",16303.0000,67104.0000,0.2430,214.4716,0.7764,0.0036,0.3620,0.2145,0.0008
+"/home/aitr/reaserch/technical/compilers/llvm/testcases/build/parse.O2",1222.0000,4744.0000,0.2576,279.6585,1.3491,0.0048,0.4824,0.2797,0.0013
+"[kernel.kallsyms]_text",854.0000,1141.0000,0.7485,174.1455,0.3506,0.0020,0.2013,0.1741,0.0004
+"/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",31.0000,17.0000,1.8235,188.2353,0.0000,0.0000,0.0000,0.1882,0.0000
+"/usr/bin/bash",18.0000,1.0000,18.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+
+"10 HOTTEST THREADS (Sort Event - CYCLES_NOT_IN_HALT)"
+THREAD,"CYCLES_NOT_IN_HALT","RETIRED_INST","CPI","RETIRED_BR_INST (PTI)","RETIRED_BR_INST_MISP (PTI)","RETIRED_BR_INST_MISP_RATIO","%RETIRED_BR_INST_MISP","RETIRED_BR_INST_RATE","RETIRED_BR_INST_MISP_RATE",THREAD ID
+"parse.O2 (PID:225794)",559.0000,1997.0000,0.2799,216.7752,0.8012,0.0037,0.3696,0.2168,0.0008,"225794"
+"parse.O2 (PID:225827)",552.0000,2014.0000,0.2741,216.7329,0.7944,0.0037,0.3666,0.2167,0.0008,"225827"
+"parse.O2 (PID:225786)",539.0000,1968.0000,0.2739,218.6484,0.8130,0.0037,0.3718,0.2186,0.0008,"225786"
+"parse.O2 (PID:225829)",513.0000,1928.0000,0.2661,218.0498,0.8299,0.0038,0.3806,0.2180,0.0008,"225829"
+"parse.O2 (PID:225807)",506.0000,1906.0000,0.2655,217.0514,0.7870,0.0036,0.3626,0.2171,0.0008,"225807"
+"parse.O2 (PID:225830)",497.0000,1874.0000,0.2652,216.3287,0.8004,0.0037,0.3700,0.2163,0.0008,"225830"
+"parse.O2 (PID:225798)",494.0000,1889.0000,0.2615,217.6813,0.7941,0.0036,0.3648,0.2177,0.0008,"225798"
+"parse.O2 (PID:225751)",480.0000,1868.0000,0.2570,218.3619,0.8030,0.0037,0.3677,0.2184,0.0008,"225751"
+"parse.O2 (PID:225805)",461.0000,1829.0000,0.2521,218.6987,0.8201,0.0037,0.3750,0.2187,0.0008,"225805"
+"parse.O2 (PID:225732)",457.0000,1830.0000,0.2497,217.4317,0.7650,0.0035,0.3518,0.2174,0.0008,"225732"

@@ -170,6 +170,13 @@ const FIRST_READS = [
     tag: 'Best First Read',
   },
   {
+    title: 'When Clang -O2 Gets Slower: From Perf Counters to MachineBlockPlacement',
+    description:
+      'Counters, csperf, AMD uProf, one backend flag, and opt-bisect pin a parse-loop regression on MachineBlockPlacement.',
+    to: '/docs/articles/when-o2-layout-hurts-machineblockplacement',
+    tag: 'Best First Read',
+  },
+  {
     title: 'How Modern Processors Execute Code',
     description: 'See how sequential, pipelined, speculative, SIMD, and multicore execution fit together.',
     to: '/docs/coa/types_of_execution',

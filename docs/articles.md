@@ -187,6 +187,15 @@ No article has been published from the Jenkins queue yet.
 <td>Coming Soon</td>
 </tr>
 
+<tr>
+<td>Rust Supply Chain</td>
+<td>arrayref Attack: What Happened and What to Check</td>
+<td><a href="./rust-arrayref-supply-chain-attack">Article</a></td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
   </tbody>
 </table>
 
@@ -210,7 +219,7 @@ No article has been published from the Jenkins queue yet.
   <tbody>
 
 <tr>
-<td rowspan="10">Compiler Engineering</td>
+<td rowspan="11">Compiler Engineering</td>
 <td>What Happens When You Compile Code</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
@@ -262,6 +271,15 @@ No article has been published from the Jenkins queue yet.
 <tr>
 <td>GCC vs Clang: Which Compiler Is Faster? (Real Benchmarks 2026)</td>
 <td><a href="./gcc_vs_clang_real_benchmarks_2026_reporter">Article</a></td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
+<tr>
+<td>When Clang -O2 Gets Slower: From Perf Counters to MachineBlockPlacement</td>
+<td>Perf counters → MBP layout → branch misses (parse loop)</td>
+<td><a href="./when-o2-layout-hurts-machineblockplacement">Article</a></td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>

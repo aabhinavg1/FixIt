@@ -209,6 +209,7 @@ const site = {
         'articles/gcc_vs_clang_assembly_part2a',
         'articles/gcc_vs_clang_stencil_ir_passes_part2b',
         'articles/where_gcc_and_clang_diverge_stencil_pass_trace',
+        'articles/when-o2-layout-hurts-machineblockplacement',
         'articles/hft_stdlib_restrictions',
         'articles/language_energy_efficiency_validation',
         {
@@ -219,6 +220,7 @@ const site = {
             'articles/rust-vs-modern-cpp-memory-safety-beyond-the-hype',
             'articles/rust-claims-a-reality-check',
             'articles/rustc-pipeline-vs-cpp-compilation-pipeline',
+            'articles/rust-arrayref-supply-chain-attack',
           ],
         },
         {

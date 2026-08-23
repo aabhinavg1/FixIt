@@ -1,0 +1,99 @@
+{
+  "tool": "AMD uProf 5.2.606",
+  "AMDuProfSys": "/opt/AMDuProf_5.2-606/bin/AMDPerf/AMDuProfSys",
+  "AMDuProfCLI": "/opt/AMDuProf_5.2-606/bin/AMDuProfCLI",
+  "cpu": "AMD Ryzen 7 9700X (Zen 5, Family 0x1a Model 0x44)",
+  "workload": "machine_block_placement_csv_parse.c",
+  "method": "40x loop wrapper; AMDuProfCLI collect --config branch --affinity 0",
+  "cli_branch_hotspots": {
+    "O1": {
+      "duration_s": 3.555,
+      "strtoll": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 2074.0,
+        "inst": 10087.0,
+        "cpi": 0.2056,
+        "br_misp_pti": 0.5849,
+        "br_misp_pct": 0.2052
+      },
+      "main": {
+        "fn": "main",
+        "cycles": 416.0,
+        "inst": 1988.0,
+        "cpi": 0.2093,
+        "br_misp_pti": 0.6539,
+        "br_misp_pct": 0.2377
+      },
+      "strtol": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 2074.0,
+        "inst": 10087.0,
+        "cpi": 0.2056,
+        "br_misp_pti": 0.5849,
+        "br_misp_pct": 0.2052
+      }
+    },
+    "O2": {
+      "duration_s": 3.755,
+      "strtoll": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 3369.0,
+        "inst": 12551.0,
+        "cpi": 0.2684,
+        "br_misp_pti": 2.6611,
+        "br_misp_pct": 0.9558
+      },
+      "main": {
+        "fn": "main",
+        "cycles": 1134.0,
+        "inst": 4422.0,
+        "cpi": 0.2564,
+        "br_misp_pti": 1.4021,
+        "br_misp_pct": 0.4968
+      },
+      "strtol": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 3369.0,
+        "inst": 12551.0,
+        "cpi": 0.2684,
+        "br_misp_pti": 2.6611,
+        "br_misp_pct": 0.9558
+      }
+    },
+    "O2np": {
+      "duration_s": 3.555,
+      "strtoll": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 2283.0,
+        "inst": 10956.0,
+        "cpi": 0.2084,
+        "br_misp_pti": 0.6389,
+        "br_misp_pct": 0.2278
+      },
+      "main": {
+        "fn": "main",
+        "cycles": 288.0,
+        "inst": 1301.0,
+        "cpi": 0.2214,
+        "br_misp_pti": 0.4612,
+        "br_misp_pct": 0.1802
+      },
+      "strtol": {
+        "fn": "__GI_____strtoll_l_internal",
+        "cycles": 2283.0,
+        "inst": 10956.0,
+        "cpi": 0.2084,
+        "br_misp_pti": 0.6389,
+        "br_misp_pct": 0.2278
+      }
+    }
+  },
+  "ratios": {
+    "strtoll_br_misp_pti_O2_vs_O1": 4.55,
+    "strtoll_br_misp_pti_O2np_vs_O1": 1.092,
+    "main_br_misp_pti_O2_vs_O1": 2.144,
+    "main_br_misp_pti_O2np_vs_O1": 0.705
+  },
+  "sys_core_note": "AMDuProfSys --config core also ran; branch PTI/% available in sys_core_loop/*_core.csv. Top-down Bad Speculation slots can be unreliable on multiplexed short windows; prefer CLI Investigate Branching ratios here.",
+  "verdict": "Same direction as Linux perf / compilersutra-perf: O2 raises branch-mispredict pressure vs O1; -disable-block-placement (O2np) returns near O1 on the strtoll/main hotspots."
+}

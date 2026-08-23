@@ -1,0 +1,186 @@
+{
+  "tool": "AMD uProf 5.2.606",
+  "paths": {
+    "AMDuProfCLI": "/opt/AMDuProf_5.2-606/bin/AMDuProfCLI",
+    "AMDuProfSys": "/opt/AMDuProf_5.2-606/bin/AMDPerf/AMDuProfSys"
+  },
+  "cpu": "AMD Ryzen 7 9700X (Family 0x1a Model 0x44)",
+  "workload": "machine_block_placement_csv_parse.c",
+  "method_note": "Primary numbers below use a 40x loop wrapper so the short ~60ms binary fills the collection window. AMDuProfSys used AMD driver + --force (NMI watchdog still on). CLI branch is sampling (Investigate Branching).",
+  "experiment_C_AMDuProfSys_core_40x": {
+    "O1": {
+      "elapsed_s": 4.0,
+      "frontend_bound": 50.814,
+      "bad_speculation": 4.49,
+      "mispredicts_slots": 4.446,
+      "backend_bound_adj": 34.421,
+      "retiring": 14.295,
+      "ipc_wo_halt": 1.787,
+      "user_ipc": 0.569,
+      "branches_retired": 337.526,
+      "branch_mispred": 3.859,
+      "branch_mispred_rate": 0.011433193294738775
+    },
+    "O2": {
+      "elapsed_s": 4.0,
+      "frontend_bound": 59.385,
+      "bad_speculation": 0.0,
+      "mispredicts_slots": 0.0,
+      "backend_bound_adj": 36.038,
+      "retiring": 16.403,
+      "ipc_wo_halt": 1.426,
+      "user_ipc": 0.493,
+      "branches_retired": 107.178,
+      "branch_mispred": 1.641,
+      "branch_mispred_rate": 0.015310977999216258
+    },
+    "O2np": {
+      "elapsed_s": 4.0,
+      "frontend_bound": 47.921,
+      "bad_speculation": 6.869,
+      "mispredicts_slots": 6.784,
+      "backend_bound_adj": 18.475,
+      "retiring": 12.752,
+      "ipc_wo_halt": 1.713,
+      "user_ipc": 0.509,
+      "branches_retired": 30.589,
+      "branch_mispred": 1.737,
+      "branch_mispred_rate": 0.05678511883356763
+    }
+  },
+  "experiment_D_AMDuProfCLI_branch_40x": {
+    "O1": {
+      "duration_s": 3.555,
+      "interesting": [
+        {
+          "fn": "__GI_____strtoll_l_internal",
+          "cycles": 2074.0,
+          "inst": 10087.0,
+          "cpi": 0.2056,
+          "br_misp_pti": 0.5849,
+          "br_misp_pct": 0.2052
+        },
+        {
+          "fn": "main",
+          "cycles": 416.0,
+          "inst": 1988.0,
+          "cpi": 0.2093,
+          "br_misp_pti": 0.6539,
+          "br_misp_pct": 0.2377
+        },
+        {
+          "fn": "strtol",
+          "cycles": 163.0,
+          "inst": 788.0,
+          "cpi": 0.2069,
+          "br_misp_pti": 0.3807,
+          "br_misp_pct": 0.1456
+        }
+      ],
+      "report": "/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O1/AMDuProf-run_loop-EBP_Aug-23-2026_11-06-27/report.csv"
+    },
+    "O2": {
+      "duration_s": 3.755,
+      "interesting": [
+        {
+          "fn": "__GI_____strtoll_l_internal",
+          "cycles": 3369.0,
+          "inst": 12551.0,
+          "cpi": 0.2684,
+          "br_misp_pti": 2.6611,
+          "br_misp_pct": 0.9558
+        },
+        {
+          "fn": "main",
+          "cycles": 1134.0,
+          "inst": 4422.0,
+          "cpi": 0.2564,
+          "br_misp_pti": 1.4021,
+          "br_misp_pct": 0.4968
+        },
+        {
+          "fn": "strtol",
+          "cycles": 300.0,
+          "inst": 1059.0,
+          "cpi": 0.2833,
+          "br_misp_pti": 2.3607,
+          "br_misp_pct": 0.8872
+        },
+        {
+          "fn": "[PLT] strtol",
+          "cycles": 83.0,
+          "inst": 305.0,
+          "cpi": 0.2721,
+          "br_misp_pti": 0.6557,
+          "br_misp_pct": 0.2611
+        }
+      ],
+      "report": "/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O2/AMDuProf-run_loop-EBP_Aug-23-2026_11-06-37/report.csv"
+    },
+    "O2np": {
+      "duration_s": 3.555,
+      "interesting": [
+        {
+          "fn": "__GI_____strtoll_l_internal",
+          "cycles": 2283.0,
+          "inst": 10956.0,
+          "cpi": 0.2084,
+          "br_misp_pti": 0.6389,
+          "br_misp_pct": 0.2278
+        },
+        {
+          "fn": "main",
+          "cycles": 288.0,
+          "inst": 1301.0,
+          "cpi": 0.2214,
+          "br_misp_pti": 0.4612,
+          "br_misp_pct": 0.1802
+        },
+        {
+          "fn": "strtol",
+          "cycles": 159.0,
+          "inst": 739.0,
+          "cpi": 0.2152,
+          "br_misp_pti": 0.5413,
+          "br_misp_pct": 0.1973
+        }
+      ],
+      "report": "/home/aitr/reaserch/technical/compilers/llvm/results/amduprof/cli_branch_loop/O2np/AMDuProf-run_loop-EBP_Aug-23-2026_11-06-47/report.csv"
+    }
+  },
+  "ratios": {
+    "sys_branch_mispred_O2_vs_O1": 0.425,
+    "sys_branch_mispred_O2np_vs_O1": 0.45,
+    "sys_mispred_rate_O2_vs_O1": 1.339,
+    "sys_badspec_slots_O2_vs_O1": null,
+    "cli_strtoll_br_misp_pti_O2_vs_O1": 4.55,
+    "cli_strtoll_br_misp_pti_O2np_vs_O1": 1.092
+  },
+  "cli_strtoll": {
+    "O1": {
+      "fn": "__GI_____strtoll_l_internal",
+      "cycles": 2074.0,
+      "inst": 10087.0,
+      "cpi": 0.2056,
+      "br_misp_pti": 0.5849,
+      "br_misp_pct": 0.2052
+    },
+    "O2": {
+      "fn": "__GI_____strtoll_l_internal",
+      "cycles": 3369.0,
+      "inst": 12551.0,
+      "cpi": 0.2684,
+      "br_misp_pti": 2.6611,
+      "br_misp_pct": 0.9558
+    },
+    "O2np": {
+      "fn": "__GI_____strtoll_l_internal",
+      "cycles": 2283.0,
+      "inst": 10956.0,
+      "cpi": 0.2084,
+      "br_misp_pti": 0.6389,
+      "br_misp_pct": 0.2278
+    }
+  },
+  "verdict": "AMD uProf agrees with perf/csperf on direction: O2 increases branch-mispredict pressure vs O1; O2 -disable-block-placement moves back toward O1. Prefer Sys branch PTI / CLI hotspot ratios over short-run top-down slot % when multiplexing."
+}

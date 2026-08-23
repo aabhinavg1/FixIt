@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source": "/home/aitr/reaserch/technical/compilers/llvm/testcases/machine_block_placement_csv_parse.c",
+  "backend": "cpu",
+  "compiler": "/home/aitr/osc/llvm-project/build-stage1/bin/clang",
+  "compiler_flags": ["-std=c11", "-O2", "-mllvm", "-disable-block-placement"],
+  "program_args": ["1048576"],
+  "warmup_runs": 3,
+  "repeat_runs": 100,
+  "use_perf": true,
+  "build_dir": "/home/aitr/reaserch/technical/compilers/llvm/build/csperf_testcase_O2np"
+}
