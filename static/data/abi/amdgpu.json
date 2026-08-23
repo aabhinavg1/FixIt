@@ -1,0 +1,461 @@
+{
+  "id": "amdgpu",
+  "name": "AMDGPU ABI (LLVM Target Family)",
+  "architecture": "AMDGPU / amdgcn",
+  "convention": "HSA Kernel ABI + per-GFX ISA (LLVM CC_AMDGPU_KERNEL)",
+  "target": "ROCm, OpenCL, HIP, Vulkan (SPIR-V → AMDGPU)",
+  "version": "1.1",
+  "category": "GPU",
+  "status": "complete",
+  "description": "Not one GPU — one LLVM backend (amdgcn-amd-amdhsa) targeting many GFX IPs. CDNA, RDNA, and legacy GCN share kernarg, address spaces, and SGPR/VGPR rules; wave size, ISA, and register limits are selected with -mcpu=gfx….",
+  "dataModel": {
+    "pointerSize": 8,
+    "wordSize": 32,
+    "endianness": "little",
+    "abiName": "AMDGPU ELF / HSA (per-GFX code object)",
+    "maxAlignment": 16,
+    "wavefrontSize": "32 or 64 depending on -mcpu and -wavefrontsize64/32",
+    "executionModel": "SIMD wavefront — wave64 on CDNA; wave32 default on RDNA (wave64 optional)"
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": true,
+    "notes": "GPUs do not use a CPU-style call stack for kernels. Per-work-item state lives in scratch (private) memory; workgroup data uses LDS; kernel arguments arrive in the kernarg segment and are loaded into SGPRs by the loader/hardware. Host-side device functions on AMDGPU follow a separate HSA calling convention when compiled for the host target."
+  },
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "global-memory",
+        "label": "Global Memory",
+        "description": "Device-visible buffers (.global / FLAT). Kernel outputs and large inputs live here; addressed via 64-bit flat pointers in SGPR pairs or VGPR offsets.",
+        "color": "#3b82f6"
+      },
+      {
+        "region": "kernarg-segment",
+        "label": "Kernarg Segment",
+        "description": "Read-only argument block for the kernel launch. The dispatch packet points here; the prologue loads scalars into SGPRs and pointer pairs for buffer resources.",
+        "color": "#8b5cf6"
+      },
+      {
+        "region": "lds",
+        "label": "LDS (Local Data Share)",
+        "description": "Workgroup-local memory (up to 64 KiB typical). Shared by all waves in a workgroup; declared as .lds or address space(3) in LLVM IR.",
+        "color": "#22c55e"
+      },
+      {
+        "region": "scratch",
+        "label": "Scratch (Private)",
+        "description": "Per-lane private memory for spills, alloca, and dynamic indexing. Sized per work-item; hardware indexes via flat_scratch (SGPR pair) + lane offset.",
+        "color": "#f97316"
+      },
+      {
+        "region": "registers",
+        "label": "SGPR / VGPR File",
+        "description": "Scalar GPRs (uniform across the wave) and Vector GPRs (one value per lane). Register pressure is the primary occupancy limiter.",
+        "color": "#fbbf24"
+      }
+    ]
+  },
+  "callingConvention": {
+    "name": "AMDGPU Kernel ABI (LLVM CC_AMDGPU_KERNEL)",
+    "executionModel": "Grid → workgroups → wavefronts (32 or 64 lanes per -mcpu) → work-items (lanes)",
+    "argumentRegisters": [
+      { "register": "kernarg SGPR block", "position": 0, "type": "kernel-metadata", "notes": "Scalar kernel args loaded from kernarg segment into consecutive SGPRs" },
+      { "register": "s[4:5]", "position": 0, "type": "pointer", "notes": "Dispatch pointer / kernarg base (hardware-provided)" },
+      { "register": "s[6:7]", "position": 1, "type": "pointer", "notes": "Queue pointer (AQL)" },
+      { "register": "s[8:9]", "position": 2, "type": "integer", "notes": "Workgroup ID (Y/Z packed in companion SGPRs on some gens)" }
+    ],
+    "returnRegisters": [],
+    "callerSaved": ["VGPRs (all)", "SGPRs not marked reserved/callee-saved"],
+    "calleeSaved": ["SGPRs reserved for ABI (flat_scratch, dispatch IDs)", "s[34:37] typical callee-saved SGPR range in device code"],
+    "variadicRules": {
+      "registerCount": 0,
+      "notes": "Kernel launches do not support C-style variadics. All kernel parameters are fixed at compile time and laid out in the kernarg segment by the runtime (HIP/ROCr/OpenCL)."
+    },
+    "tailCallSupport": false,
+    "shadowSpace": 0,
+    "kernelLaunch": {
+      "gridDimensions": ["blockIdx.x/y/z × blockDim + threadIdx.x/y/z"],
+      "hardwareIds": "Workgroup ID in SGPRs; work-item ID computed into VGPRs (v0–v2 typical for x/y/z)",
+      "memorySpaces": ["global (1)", "lds/group (3)", "private/scratch (5)", "constant (4)", "flat (0)"]
+    },
+    "aggregatePassing": {
+      "rule": "Structs and buffers passed as pointers in kernarg or as flattened scalar fields per HSA metadata",
+      "memoryThreshold": "Large structures passed by pointer; small scalars inlined in kernarg layout"
+    }
+  },
+  "registers": [
+    {
+      "name": "s0",
+      "width": 32,
+      "purpose": "Reserved / null SGPR — hardware and ABI reserved",
+      "aliases": ["sgpr0"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "sgpr0",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s2",
+      "width": 32,
+      "purpose": "Private segment buffer base (scratch) — low 32 bits",
+      "aliases": ["flat_scratch_lo"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "sgpr2",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s3",
+      "width": 32,
+      "purpose": "Private segment buffer base (scratch) — high 32 bits / size",
+      "aliases": ["flat_scratch_hi"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "sgpr3",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s4",
+      "width": 32,
+      "purpose": "Dispatch/kernarg pointer (low) — entry SGPR for kernel prologue",
+      "aliases": ["dispatch_ptr_lo"],
+      "callerCallee": "reserved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": "sgpr4",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s5",
+      "width": 32,
+      "purpose": "Dispatch/kernarg pointer (high)",
+      "aliases": ["dispatch_ptr_hi"],
+      "callerCallee": "reserved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": "sgpr5",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s6",
+      "width": 32,
+      "purpose": "Workgroup ID X (or packed IDs depending on generation)",
+      "aliases": ["workgroup_id_x"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "sgpr6",
+      "llvmRegisterClass": "SGPR_32",
+      "special": true
+    },
+    {
+      "name": "s8",
+      "width": 32,
+      "purpose": "First user kernel argument SGPR (after fixed ABI SGPRs)",
+      "aliases": ["kernarg0"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": "sgpr8",
+      "llvmRegisterClass": "SGPR_32",
+      "special": false
+    },
+    {
+      "name": "s9",
+      "width": 32,
+      "purpose": "Second user kernel argument SGPR",
+      "aliases": ["kernarg1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 2,
+      "returnPosition": null,
+      "encoding": "sgpr9",
+      "llvmRegisterClass": "SGPR_32",
+      "special": false
+    },
+    {
+      "name": "s10",
+      "width": 32,
+      "purpose": "Third user kernel argument SGPR",
+      "aliases": ["kernarg2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 3,
+      "returnPosition": null,
+      "encoding": "sgpr10",
+      "llvmRegisterClass": "SGPR_32",
+      "special": false
+    },
+    {
+      "name": "v0",
+      "width": 32,
+      "purpose": "Work-item ID X (lane-varying) — typical first VGPR after prologue",
+      "aliases": ["workitem_id_x"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr0",
+      "llvmRegisterClass": "VGPR_32",
+      "special": true
+    },
+    {
+      "name": "v1",
+      "width": 32,
+      "purpose": "Work-item ID Y",
+      "aliases": ["workitem_id_y"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr1",
+      "llvmRegisterClass": "VGPR_32",
+      "special": true
+    },
+    {
+      "name": "v2",
+      "width": 32,
+      "purpose": "Work-item ID Z",
+      "aliases": ["workitem_id_z"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr2",
+      "llvmRegisterClass": "VGPR_32",
+      "special": true
+    },
+    {
+      "name": "v4",
+      "width": 32,
+      "purpose": "General vector register — per-lane computation",
+      "aliases": ["vgpr4"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr4",
+      "llvmRegisterClass": "VGPR_32",
+      "special": false
+    },
+    {
+      "name": "v8",
+      "width": 32,
+      "purpose": "Vector accumulator / return lane data for reductions",
+      "aliases": ["vgpr8"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": "vgpr8",
+      "llvmRegisterClass": "VGPR_32",
+      "special": false
+    },
+    {
+      "name": "v16",
+      "width": 32,
+      "purpose": "Mid-range VGPR — common spill boundary on GFX9+",
+      "aliases": ["vgpr16"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr16",
+      "llvmRegisterClass": "VGPR_32",
+      "special": false
+    },
+    {
+      "name": "v255",
+      "width": 32,
+      "purpose": "High VGPR — register pressure directly reduces occupancy",
+      "aliases": ["vgpr255"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "vgpr255",
+      "llvmRegisterClass": "VGPR_32",
+      "special": false
+    }
+  ],
+  "examples": {
+    "simple": {
+      "title": "Vector add kernel (HIP-style)",
+      "c": "__global__ void vector_add(const float *a, const float *b, float *c, int n) {\n    int i = blockIdx.x * blockDim.x + threadIdx.x;\n    if (i < n) c[i] = a[i] + b[i];\n}",
+      "llvmIR": "define amdgpu_kernel void @vector_add(\n    ptr addrspace(1) nocapture readonly %a,\n    ptr addrspace(1) nocapture readonly %b,\n    ptr addrspace(1) nocapture writeonly %c,\n    i32 %n) #0 {\nentry:\n  ; work-item ID computed into VGPRs; pointers in SGPR pairs from kernarg\n  ; ... load a[i], b[i], fadd, store c[i]\n  ret void\n}",
+      "assembly": "; AMDGPU kernel prologue (conceptual)\n; s[4:5] = kernarg/dispatch pointer\n; v0 = workitem_id.x (lane)\n; kernarg loads: s[8:9]=a, s[10:11]=b, s[12:13]=c, s14=n\nv_add_f32 v4, v2, v3          ; per-lane add\nbuffer_store_dword v4, s[12:13], 0 offen\ns_endpgm",
+      "notes": "Kernel args arrive via kernarg segment → SGPRs. Per-lane index in VGPRs. Memory ops use buffer/flat instructions with resource descriptors in SGPR pairs."
+    },
+    "complex": {
+      "title": "Workgroup reduction with LDS",
+      "c": "__global__ void reduce(__shared__ float *smem, const float *in, float *out, int n) {\n    int tid = threadIdx.x;\n    int i = blockIdx.x * blockDim.x + tid;\n    smem[tid] = (i < n) ? in[i] : 0;\n    __syncthreads();\n    // tree reduction in LDS ...\n}",
+      "assembly": "ds_write_b32 v0, v4 offset:0    ; store to LDS (group)\ns_barrier                       ; workgroup sync\nds_read_b32 v5, v0 offset:0     ; load from LDS\n; wave shuffle / LDS reduction continues\ns_endpgm",
+      "notes": "LDS is address space 3 (.lds). Barriers synchronize waves within a workgroup, not the entire grid."
+    },
+    "wave": {
+      "title": "Wave-aware ballot (64 lanes)",
+      "c": "unsigned long long active = __ballot(predicate);",
+      "assembly": "v_cmp_ne_u32_e64 s[0:1], v2, 0\nv_readlane_b32 s2, v4, 0\n; exec mask s[0:1] holds 64-bit lane mask (wave64)",
+      "notes": "Wave64 executes 64 work-items in lockstep. Exec mask (SCC/SGPR pair) determines active lanes; divergent branches serialize lanes."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/AMDGPU/AMDGPUCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AMDGPU/AMDGPUCallingConv.td",
+      "description": "CC_AMDGPU, CC_AMDGPU_KERNEL, CC_AMDGPU_CS — kernel vs shader vs compute calling conventions"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/AMDGPU/SIISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AMDGPU/SIISelLowering.cpp",
+      "description": "Lowers kernel arguments, address spaces, and wave/wave32 subtargets"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/AMDGPU/SIRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AMDGPU/SIRegisterInfo.cpp",
+      "description": "SGPR/VGPR allocation, reserved ABI registers, scratch lowering"
+    },
+    "notes": "Clang compiles HIP/OpenCL to LLVM IR with amdgpu_kernel functions. LLD links AMDGPU ELF objects; ROCm loader consumes kernarg metadata from the code object."
+  },
+  "targetVariants": {
+    "intro": "AMDGPU in CompilerSutra is documented as one ABI page because LLVM uses a single amdgcn backend — but you always compile for a specific GFX IP via -mcpu. CDNA (MI series) and RDNA (Radeon) differ in default wave size, ISA features, and occupancy; the kernel calling convention and memory spaces stay the same family-wide.",
+    "families": [
+      {
+        "id": "cdna",
+        "name": "CDNA — Compute Data Center",
+        "llvmCpus": "gfx908, gfx90a, gfx942, …",
+        "products": "MI100 (gfx908), MI250 (gfx90a), MI300 (gfx942)",
+        "wavefrontSize": "64 (wave64 default)",
+        "focus": "HPC, AI training/inference, ROCm compute",
+        "abiNotes": "Large register files, matrix cores (MFMA) on newer IPs. Compiler defaults to wave64 unless overridden."
+      },
+      {
+        "id": "rdna",
+        "name": "RDNA — Radeon Graphics",
+        "llvmCpus": "gfx1030 (RDNA2), gfx1100 (RDNA3), gfx1200 (RDNA4), …",
+        "products": "Radeon RX 6000/7000/9000 series",
+        "wavefrontSize": "32 default (wave32); -wavefrontsize64 for wave64",
+        "focus": "Graphics, gaming, general-purpose GPU compute",
+        "abiNotes": "WGP-based scheduling, different occupancy tables. Same kernarg/LDS/scratch model, different instruction latencies and limits."
+      },
+      {
+        "id": "gcn",
+        "name": "GCN / Legacy GFX9",
+        "llvmCpus": "gfx900, gfx906, gfx1010, …",
+        "products": "Vega, early Navi, older Instinct",
+        "wavefrontSize": "64 typical",
+        "focus": "Legacy ROCm and OpenCL deployments",
+        "abiNotes": "Still amdgcn triple; older buffer/global instruction forms. Kernarg and address-space rules unchanged."
+      }
+    ],
+    "sharedAcrossAll": [
+      "Triple amdgcn-amd-amdhsa",
+      "Kernarg segment → SGPR kernel args",
+      "Address spaces: global, constant, group/LDS, private/scratch, flat",
+      "CC_AMDGPU_KERNEL calling convention",
+      "HIP / OpenCL / HSA queue dispatch (AQL)",
+      "Separate SGPR (uniform) vs VGPR (per-lane) register files"
+    ],
+    "variesByMcpu": [
+      "Wave size (32 vs 64)",
+      "VGPR / SGPR limits and occupancy",
+      "ISA instructions (GFX9 vs GFX10 vs GFX11 vs CDNA3)",
+      "LDS size cap per workgroup",
+      "Fixed ABI SGPR layout details (generation-specific)",
+      "Code object metadata version"
+    ]
+  },
+  "why": [
+    {
+      "question": "Why does CompilerSutra show one AMDGPU page instead of one per GFX IP?",
+      "answer": "LLVM exposes one AMDGPU target with -mcpu selecting the hardware generation. The portable kernel ABI — kernarg, address spaces, SGPR/VGPR roles, HSA dispatch — is shared. What's not shared is the instruction set and wave defaults, which is why this page separates 'family ABI' from CDNA/RDNA/GCN variants above."
+    },
+    {
+      "question": "Why split SGPR and VGPR instead of one register file?",
+      "answer": "Scalar values (pointers, workgroup IDs, loop counters uniform across a wave) should not be replicated in every lane. SGPRs are shared by all 64 lanes; VGPRs hold per-lane data. This cuts register file pressure and power versus duplicating uniform state in every lane."
+    },
+    {
+      "question": "Why are kernel arguments in a kernarg segment instead of registers?",
+      "answer": "The host runtime launches kernels asynchronously with varying argument sizes and counts. A memory-backed kernarg block lets the driver copy a fixed layout once per dispatch without recompiling shaders. Hardware and the AMDGPU prologue then load scalars into SGPRs — the number of user SGPRs is bounded by occupancy limits."
+    },
+    {
+      "question": "Why wave64 (64 lanes) on CDNA but wave32 on some RDNA gaming paths?",
+      "answer": "CDNA targets throughput compute where wider waves amortize control overhead. RDNA gaming workloads often have more divergence; wave32 improves occupancy and latency hiding on those chips. LLVM selects wave size via -wavefrontsize64 / subtarget features."
+    },
+    {
+      "question": "Why LDS instead of only global memory for sharing?",
+      "answer": "LDS is on-chip, orders of magnitude faster than global memory, and supports efficient workgroup barriers. It is sized per workgroup (typically ≤64 KiB), forcing explicit tiling — a deliberate tradeoff for bandwidth and latency."
+    }
+  ],
+  "comparison": {
+    "vsNvidiaPtx": {
+      "keyDifferences": [
+        { "feature": "Execution unit", "amdgpu": "Wavefront (64 lanes default)", "nvidiaPtx": "Warp (32 threads)", "impact": "Different divergence and occupancy math" },
+        { "feature": "Scalar vs vector regs", "amdgpu": "Separate SGPR + VGPR banks", "nvidiaPtx": "Unified .reg per thread", "impact": "AMD explicitly models uniform vs per-lane state" },
+        { "feature": "Kernel arguments", "amdgpu": "Kernarg segment → SGPR loads", "nvidiaPtx": ".param / .kern .param space", "impact": "Both use memory-backed launch params, different metadata" },
+        { "feature": "Workgroup shared", "amdgpu": "LDS (address space 3)", "nvidiaPtx": ".shared / shared memory", "impact": "Same role, different ISA and size limits" },
+        { "feature": "Private spills", "amdgpu": "Scratch via flat_scratch SGPRs", "nvidiaPtx": ".local + automatic local memory", "impact": "Both spill to per-lane private memory" },
+        { "feature": "SIMD model", "amdgpu": "Explicit wave/wave32 in ISA", "nvidiaPtx": "SIMT hides warps in PTX", "impact": "AMDGCN assembly exposes wave ops (ballot, shuffle)" },
+        { "feature": "Return values", "amdgpu": "Via global memory (kernels void)", "nvidiaPtx": "Via global memory (kernels void)", "impact": "Neither GPU kernel ABI returns scalars like CPU functions" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "amdgcn-amd-amdhsa",
+    "description": "Key Clang/LLVM flags for AMDGPU compute (HIP/ROCm and OpenCL)",
+    "flags": [
+      {
+        "flag": "--target=amdgcn-amd-amdhsa",
+        "description": "AMD GPU compute target for HSA/ROCm code objects.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-mcpu=gfx942",
+        "description": "Select GPU ISA (gfx906, gfx90a, gfx942, etc.). Controls instructions and wave defaults.",
+        "kind": "Joined",
+        "category": "AMDGPU"
+      },
+      {
+        "flag": "-wavefrontsize64",
+        "description": "Force 64-wide wavefronts (CDNA default). Omit or use -wavefrontsize32 for RDNA wave32.",
+        "kind": "Flag",
+        "category": "AMDGPU"
+      },
+      {
+        "flag": "-O3",
+        "description": "Aggressive optimization including VGPR/SGPR coalescing and LDS allocation.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-cl-std=CL2.0",
+        "description": "OpenCL language standard when compiling .cl to amdgcn.",
+        "kind": "Joined",
+        "category": "OpenCL"
+      },
+      {
+        "flag": "-x hip",
+        "description": "Treat input as HIP C++ source for AMDGPU device compilation.",
+        "kind": "Joined",
+        "category": "HIP"
+      }
+    ],
+    "llcCommand": "llc -mtriple=amdgcn-amd-amdhsa -mcpu=gfx942 -O2 input.ll -o kernel.s",
+    "optCommand": "opt -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang --target=amdgcn-amd-amdhsa -mcpu=gfx942 -O2 -c kernel.hip -o kernel.o",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/AMDGPU.cpp",
+        "description": "AMDGPU toolchain: selects amdgcn triple, GPU arch, and ROCm device linking"
+      },
+      {
+        "path": "llvm/lib/Target/AMDGPU/AMDGPUCallingConv.td",
+        "description": "TableGen kernel and shader calling conventions"
+      }
+    ]
+  },
+  "searchText": "amdgpu amd gpu rocm hip opencl hsa sgpr vgpr wavefront wave64 wave32 kernarg lds scratch flat global memory workgroup work-item lane simd cdna rdna gcn gfx900 gfx906 gfx908 gfx90a gfx942 gfx1030 gfx1100 gfx1200 mi100 mi250 mi300 radeon instinct buffer_store ds_write s_barrier address space amdgpu_kernel CC_AMDGPU_KERNEL occupancy register pressure mcpu target family"
+}

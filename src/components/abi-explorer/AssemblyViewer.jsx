@@ -78,6 +78,34 @@ const ASSEMBLY_EXAMPLES = {
       registerMap: { 'a0': 'a / return', 'a1': 'b', 'ra': 'return address' },
     },
   },
+  'amdgpu': {
+    'add': {
+      title: 'Vector Add Kernel (wave64)',
+      c: '__global__ void vector_add(const float *a, const float *b, float *c, int n) {\n    int i = blockIdx.x * blockDim.x + threadIdx.x;\n    if (i < n) c[i] = a[i] + b[i];\n}',
+      asm: '; kernarg -> s[8:13]: a,b,c,n\n; v0 = work-item ID (lane)\nv_add_f32 v4, v2, v3      # per-lane add\nbuffer_store_dword v4, s[12:13], 0 offen\ns_endpgm',
+      annotations: [
+        { line: 0, type: 'calling-convention', text: 'Kernel args via kernarg segment → SGPR pairs' },
+        { line: 1, type: 'register', text: 'v0 = work-item ID (VGPR, per-lane)' },
+        { line: 2, type: 'register', text: 'v_add_f32 — SIMD op across 64 lanes' },
+        { line: 3, type: 'stack', text: 'buffer_store uses SGPR resource descriptor' },
+      ],
+      registerMap: { 'v0': 'threadIdx.x (lane)', 'v2': 'a[i]', 'v3': 'b[i]', 'v4': 'result', 's[8:9]': 'ptr a', 's[12:13]': 'ptr c' },
+    },
+  },
+  'nvidia-ptx': {
+    'add': {
+      title: 'Vector Add Kernel (SIMT)',
+      c: '__global__ void vector_add(const float *a, const float *b, float *c, int n) {\n    int i = blockIdx.x * blockDim.x + threadIdx.x;\n    if (i < n) c[i] = a[i] + b[i];\n}',
+      asm: 'mov.u32 %r1, %tid.x;\nmov.u32 %r2, %ctaid.x;\nmov.u32 %r3, %ntid.x;\nmad.lo.s32 %r1, %r2, %r3, %r1;   # global index\nld.param.u64 %rd1, [vector_add_param_0];\nadd.f32 %f2, %f1, %f3;\nst.global.f32 [%rd3], %f2;\nret;',
+      annotations: [
+        { line: 0, type: 'calling-convention', text: '%tid/%ctaid/%ntid — special registers' },
+        { line: 3, type: 'register', text: 'i = blockIdx * blockDim + threadIdx' },
+        { line: 4, type: 'stack', text: 'ld.param loads kernel arg from .param space' },
+        { line: 5, type: 'register', text: 'add.f32 — per-thread float add' },
+      ],
+      registerMap: { '%r1': 'thread index i', '%rd1': 'ptr a (.param)', '%f1': 'a[i]', '%f2': 'result', '%rd3': 'ptr c' },
+    },
+  },
 };
 
 // Fill in real assembly for architectures not explicitly listed
@@ -234,7 +262,7 @@ export default function AssemblyViewer({ arch }) {
             <div className={styles.asmCodePanel}>
               <div className={styles.asmCodeLabel}>Assembly Output</div>
               <pre className={styles.asmCode}>
-                {result.asm.split('\n').map((line, i) => {
+                {result.asm?.split('\n').map((line, i) => {
                   const annotation = result.annotations.find((a) => a.line === i);
                   return (
                     <div key={i} className={styles.asmLine}>

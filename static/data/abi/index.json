@@ -124,33 +124,35 @@
     },
     {
       "id": "amdgpu",
-      "name": "AMDGPU ABI",
-      "architecture": "AMDGPU",
-      "convention": "AMDGPU Kernel Calling Convention",
+      "name": "AMDGPU ABI (Target Family)",
+      "architecture": "AMDGPU / amdgcn",
+      "convention": "HSA Kernel ABI + per-GFX ISA",
       "target": "ROCm, OpenCL, HIP",
       "category": "GPU",
-      "status": "planned",
+      "status": "complete",
       "dataFile": "amdgpu.json",
       "argumentRegisters": 0,
       "returnRegisters": 0,
       "hasRedZone": false,
       "hasShadowSpace": false,
-      "description": "AMD GPU kernel ABI with SGPR/VGPR registers, wavefront model, and memory hierarchy."
+      "gpuFeatures": ["CDNA/RDNA", "Wave32/64", "Kernarg", "LDS"],
+      "description": "LLVM amdgcn family — many GFX IPs (CDNA, RDNA, GCN). Shared kernel ABI; pick exact chip with -mcpu=gfx…."
     },
     {
       "id": "nvidia-ptx",
       "name": "NVIDIA PTX ABI",
       "architecture": "PTX",
-      "convention": "PTX Calling Convention",
+      "convention": "PTX / CUDA Kernel Calling Convention",
       "target": "CUDA",
       "category": "GPU",
-      "status": "planned",
+      "status": "complete",
       "dataFile": "nvidia-ptx.json",
       "argumentRegisters": 0,
       "returnRegisters": 0,
       "hasRedZone": false,
       "hasShadowSpace": false,
-      "description": "NVIDIA PTX parallel thread execution ABI with .param, .shared, .local memory spaces."
+      "gpuFeatures": [".param", "Warp32", ".shared", "SIMT"],
+      "description": "NVIDIA PTX SIMT ABI: .param kernel args, 32-thread warps, and .global/.shared/.local address spaces."
     },
     {
       "id": "spir-v",

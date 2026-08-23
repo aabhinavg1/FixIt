@@ -1,0 +1,384 @@
+{
+  "id": "nvidia-ptx",
+  "name": "NVIDIA PTX ABI",
+  "architecture": "PTX",
+  "convention": "PTX / CUDA Kernel Calling Convention",
+  "target": "CUDA, NVPTX LLVM backend",
+  "version": "1.0",
+  "category": "GPU",
+  "status": "complete",
+  "dataModel": {
+    "pointerSize": 64,
+    "wordSize": 32,
+    "endianness": "little",
+    "abiName": "PTX ISA / CUDA ABI",
+    "maxAlignment": 16,
+    "warpSize": 32,
+    "executionModel": "SIMT — single instruction, multiple threads grouped in warps"
+  },
+  "stack": {
+    "direction": "down",
+    "alignment": 16,
+    "redZone": 0,
+    "dynamicAlignment": true,
+    "notes": "PTX kernels do not use a CPU call stack. Per-thread private state uses .local memory (spills, alloca). Shared data uses .shared. Kernel parameters are declared in .param space and loaded by the generated prologue. The CUDA driver JIT-compiles PTX to SASS for the specific SM."
+  },
+  "stackFrame": {
+    "layout": [
+      {
+        "region": "global-memory",
+        "label": "Global Memory (.global)",
+        "description": "Device-visible arrays and pointer arguments. 64-bit generic addressing via ld/st.global or cvta.to.global.",
+        "color": "#3b82f6"
+      },
+      {
+        "region": "param-space",
+        "label": "Parameter Space (.param)",
+        "description": "Kernel formal parameters and launch-bound values. .param .u64 for pointers; .param .align N .b8 arrays for structs.",
+        "color": "#8b5cf6"
+      },
+      {
+        "region": "shared-memory",
+        "label": "Shared Memory (.shared)",
+        "description": "Block-scoped shared memory (__shared__). Fast on-chip storage shared by all threads in a thread block.",
+        "color": "#22c55e"
+      },
+      {
+        "region": "local-memory",
+        "label": "Local Memory (.local)",
+        "description": "Per-thread private memory for register spills and large stack frames. High latency compared to registers.",
+        "color": "#f97316"
+      },
+      {
+        "region": "registers",
+        "label": "Registers (.reg)",
+        "description": "Per-thread predicate (.pred), integer (.b32/.b64), and floating (.f32/.f64) registers. Register count limits occupancy.",
+        "color": "#fbbf24"
+      }
+    ]
+  },
+  "callingConvention": {
+    "name": "PTX Kernel ABI (LLVM nvvm_kernel / CUDA)",
+    "executionModel": "Grid → thread blocks → warps (32 threads) → threads",
+    "argumentRegisters": [
+      { "register": ".param", "position": 0, "type": "kernel-metadata", "notes": "All kernel parameters declared in .param space; no CPU-style arg registers" },
+      { "register": "%tid.x/y/z", "position": 0, "type": "special", "notes": "Special registers — thread index within block" },
+      { "register": "%ctaid.x/y/z", "position": 1, "type": "special", "notes": "Special registers — block index within grid" },
+      { "register": "%ntid.x/y/z", "position": 2, "type": "special", "notes": "Block dimension (threads per block)" }
+    ],
+    "returnRegisters": [],
+    "callerSaved": [".reg r*", ".reg f*", ".reg p* (predicates)"],
+    "calleeSaved": ["None for pure kernels — no nested calls on device in basic CUDA"],
+    "variadicRules": {
+      "registerCount": 0,
+      "notes": "CUDA __global__ kernels have fixed signatures. Device-side function calls use .param passing for arguments per PTX ABI for device functions."
+    },
+    "tailCallSupport": false,
+    "shadowSpace": 0,
+    "kernelLaunch": {
+      "gridDimensions": ["blockIdx × blockDim + threadIdx (CUDA builtins)"],
+      "hardwareIds": "%tid, %ctaid, %ntid, %nctaid special registers",
+      "memorySpaces": [".global", ".shared", ".local", ".const", ".param"]
+    },
+    "aggregatePassing": {
+      "rule": "Small structs in .param with alignment; pointers passed as .param .u64",
+      "memoryThreshold": "Large or variable structures passed by pointer in .param"
+    }
+  },
+  "registers": [
+    {
+      "name": "%tid.x",
+      "width": 32,
+      "purpose": "Thread index within block — X dimension (read-only special register)",
+      "aliases": ["threadIdx.x"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "special",
+      "llvmRegisterClass": "Special",
+      "special": true
+    },
+    {
+      "name": "%tid.y",
+      "width": 32,
+      "purpose": "Thread index within block — Y dimension",
+      "aliases": ["threadIdx.y"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "special",
+      "llvmRegisterClass": "Special",
+      "special": true
+    },
+    {
+      "name": "%ctaid.x",
+      "width": 32,
+      "purpose": "Block index within grid — X dimension",
+      "aliases": ["blockIdx.x"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "special",
+      "llvmRegisterClass": "Special",
+      "special": true
+    },
+    {
+      "name": "%ntid.x",
+      "width": 32,
+      "purpose": "Block dimension — threads per block in X",
+      "aliases": ["blockDim.x"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": "special",
+      "llvmRegisterClass": "Special",
+      "special": true
+    },
+    {
+      "name": "r1",
+      "width": 32,
+      "purpose": "General-purpose 32-bit integer register (.reg .b32)",
+      "aliases": ["%r1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": ".reg .b32",
+      "llvmRegisterClass": "Int32",
+      "special": false
+    },
+    {
+      "name": "r2",
+      "width": 32,
+      "purpose": "Second integer register — often holds computed global index",
+      "aliases": ["%r2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": ".reg .b32",
+      "llvmRegisterClass": "Int32",
+      "special": false
+    },
+    {
+      "name": "rd1",
+      "width": 64,
+      "purpose": "64-bit integer / pointer register (.reg .b64)",
+      "aliases": ["%rd1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": ".reg .b64",
+      "llvmRegisterClass": "Int64",
+      "special": false
+    },
+    {
+      "name": "rd2",
+      "width": 64,
+      "purpose": "Second 64-bit register — pointer arithmetic",
+      "aliases": ["%rd2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": ".reg .b64",
+      "llvmRegisterClass": "Int64",
+      "special": false
+    },
+    {
+      "name": "f1",
+      "width": 32,
+      "purpose": "32-bit float register (.reg .f32)",
+      "aliases": ["%f1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": 0,
+      "encoding": ".reg .f32",
+      "llvmRegisterClass": "Float32",
+      "special": false
+    },
+    {
+      "name": "f2",
+      "width": 32,
+      "purpose": "Second float register — typical operand",
+      "aliases": ["%f2"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": ".reg .f32",
+      "llvmRegisterClass": "Float32",
+      "special": false
+    },
+    {
+      "name": "p1",
+      "width": 1,
+      "purpose": "Predicate register (.reg .pred) — guards conditional execution",
+      "aliases": ["%p1"],
+      "callerCallee": "caller-saved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": ".reg .pred",
+      "llvmRegisterClass": "Predicate",
+      "special": true
+    },
+    {
+      "name": "param0",
+      "width": 64,
+      "purpose": "First kernel parameter — .param .u64 pointer (conceptual)",
+      "aliases": [".param _Z4argv"],
+      "callerCallee": "reserved",
+      "argumentPosition": 0,
+      "returnPosition": null,
+      "encoding": ".param",
+      "llvmRegisterClass": "Param",
+      "special": true
+    },
+    {
+      "name": "param1",
+      "width": 64,
+      "purpose": "Second kernel parameter — .param .u64",
+      "aliases": [],
+      "callerCallee": "reserved",
+      "argumentPosition": 1,
+      "returnPosition": null,
+      "encoding": ".param",
+      "llvmRegisterClass": "Param",
+      "special": true
+    },
+    {
+      "name": "smem0",
+      "width": 32,
+      "purpose": "Shared memory symbol — .shared .align 4 .b8 smem[]",
+      "aliases": ["__shared__"],
+      "callerCallee": "reserved",
+      "argumentPosition": null,
+      "returnPosition": null,
+      "encoding": ".shared",
+      "llvmRegisterClass": "Shared",
+      "special": true
+    }
+  ],
+  "examples": {
+    "simple": {
+      "title": "Vector add kernel (CUDA → PTX)",
+      "c": "__global__ void vector_add(const float *a, const float *b, float *c, int n) {\n    int i = blockIdx.x * blockDim.x + threadIdx.x;\n    if (i < n) c[i] = a[i] + b[i];\n}",
+      "llvmIR": "define ptx_kernel void @vector_add(\n    ptr addrspace(1) nocapture readonly %a,\n    ptr addrspace(1) nocapture readonly %b,\n    ptr addrspace(1) nocapture writeonly %c,\n    i32 %n) #0 {\nentry:\n  ; NVPTX lowers to PTX with .param and special registers\n  ret void\n}",
+      "assembly": ".visible .entry vector_add(\n    .param .u64 vector_add_param_0,\n    .param .u64 vector_add_param_1,\n    .param .u64 vector_add_param_2,\n    .param .u32 vector_add_param_3)\n{\n    .reg .b32 %r<4>;\n    .reg .b64 %rd<4>;\n    .reg .f32 %f<4>;\n    .reg .pred %p<2>;\n    mov.u32 %r1, %tid.x;\n    mov.u32 %r2, %ctaid.x;\n    mov.u32 %r3, %ntid.x;\n    mad.lo.s32 %r1, %r2, %r3, %r1;    // i = blockIdx*blockDim + threadIdx\n    ld.param.u64 %rd1, [vector_add_param_0];\n    ld.param.u32 %r4, [vector_add_param_3];\n    setp.lt.s32 %p1, %r1, %r4;\n    @%p1 bra BODY;\n    ret;\nBODY:\n    mul.wide.s32 %rd2, %r1, 4;\n    add.s64 %rd1, %rd1, %rd2;\n    ld.global.f32 %f1, [%rd1];\n    add.f32 %f2, %f1, %f3;\n    st.global.f32 [%rd3], %f2;\n    ret;\n}",
+      "notes": "Parameters live in .param space and are loaded with ld.param. Thread index uses %tid/%ctaid/%ntid specials. Predicated branches (@%p1) handle the bounds check without CPU-style call stack."
+    },
+    "complex": {
+      "title": "Shared memory tile",
+      "c": "__global__ void tile(__shared__ float smem[256], const float *in) {\n    int tid = threadIdx.x;\n    smem[tid] = in[tid];\n    __syncthreads();\n}",
+      "assembly": ".shared .align 4 .b8 smem[1024];\n    mov.u32 %r1, %tid.x;\n    mul.wide.u32 %rd1, %r1, 4;\n    ld.global.f32 %f1, [%rd2];\n    st.shared.f32 [smem+%rd1], %f1;\n    bar.sync 0;",
+      "notes": ".shared is block-scoped. bar.sync is the block barrier — analogous to __syncthreads()."
+    },
+    "warp": {
+      "title": "Warp shuffle reduction",
+      "c": "float val = __shfl_down_sync(0xffffffff, x, 16);",
+      "assembly": "shfl.sync.down.b32 %f2, %f1, 16, 0x1f;\n    ; 32-lane warp — mask 0xffffffff",
+      "notes": "PTX exposes warp collective ops explicitly. Hardware executes 32 threads in lockstep per warp; divergence is handled via predication and reconvergence."
+    }
+  },
+  "llvmImplementation": {
+    "callingConvFile": {
+      "path": "llvm/lib/Target/NVPTX/NVPTXCallingConv.td",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/NVPTX/NVPTXCallingConv.td",
+      "description": "NVVM kernel and device function calling conventions"
+    },
+    "targetLowering": {
+      "path": "llvm/lib/Target/NVPTX/NVPTXISelLowering.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/NVPTX/NVPTXISelLowering.cpp",
+      "description": "Lowers address spaces, kernel metadata, and parameter passing to PTX"
+    },
+    "registerInfo": {
+      "path": "llvm/lib/Target/NVPTX/NVPTXRegisterInfo.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/NVPTX/NVPTXRegisterInfo.cpp",
+      "description": "PTX virtual register classes and allocation constraints"
+    },
+    "notes": "Clang CUDA mode emits NVVM IR; llc -march=nvptx64 produces PTX consumed by ptxas (driver JIT) or nvcc pipeline."
+  },
+  "why": [
+    {
+      "question": "Why .param space instead of passing arguments in registers like CPU ABIs?",
+      "answer": "Kernel launches are driven by the CUDA driver with varying parameter lists and sizes. .param gives a stable, documented layout the driver and JIT can populate without re-specializing the shader. The PTX prologue loads params into .reg files — similar in spirit to AMDGPU kernarg → SGPR loads."
+    },
+    {
+      "question": "Why SIMT with 32-thread warps?",
+      "answer": "NVIDIA hardware schedules warps as the atomic execution unit — one program counter per warp, 32 lanes. SIMT lets programmers write thread-oriented code while hardware executes warp-oriented instructions. The warp size (32) is fixed across generations for binary and performance model consistency."
+    },
+    {
+      "question": "Why separate .shared, .local, and .global address spaces?",
+      "answer": "Each space maps to different hardware with different latency, scope, and capacity. Explicit spaces let the compiler place data optimally: registers first, then shared, then local spills, with global for bulk data. LLVM NVPTX encodes these as address spaces 1–5 in IR."
+    },
+    {
+      "question": "Why predicate registers (.pred)?",
+      "answer": "GPUs lack traditional branch prediction for divergent control flow. Predicated execution and @%p guarded instructions let both paths execute selectively without serializing the entire warp in many cases. PTX makes predicates first-class."
+    }
+  ],
+  "comparison": {
+    "vsAmdgpu": {
+      "keyDifferences": [
+        { "feature": "Execution unit", "nvidiaPtx": "Warp (32 threads)", "amdgpu": "Wavefront (64 lanes default)", "impact": "Different divergence and occupancy math" },
+        { "feature": "Scalar vs vector regs", "nvidiaPtx": "Unified .reg per thread", "amdgpu": "Separate SGPR + VGPR banks", "impact": "AMD explicitly models uniform vs per-lane state" },
+        { "feature": "Kernel arguments", "nvidiaPtx": ".param / .kern .param space", "amdgpu": "Kernarg segment → SGPR loads", "impact": "Both use memory-backed launch params, different metadata" },
+        { "feature": "Workgroup shared", "nvidiaPtx": ".shared memory", "amdgpu": "LDS (address space 3)", "impact": "Same role, different ISA and size limits" },
+        { "feature": "Private spills", "nvidiaPtx": ".local memory", "amdgpu": "Scratch via flat_scratch SGPRs", "impact": "Both spill to per-lane private memory" },
+        { "feature": "SIMD model", "nvidiaPtx": "SIMT hides warps in PTX", "amdgpu": "Explicit wave/wave32 in ISA", "impact": "AMDGCN exposes wave ops directly in assembly" },
+        { "feature": "Return values", "nvidiaPtx": "Via global memory (kernels void)", "amdgpu": "Via global memory (kernels void)", "impact": "Neither GPU kernel ABI returns scalars like CPU functions" }
+      ]
+    }
+  },
+  "clangFlags": {
+    "triple": "nvptx64-nvidia-cuda",
+    "description": "Key Clang/LLVM flags for CUDA device code via NVPTX",
+    "flags": [
+      {
+        "flag": "--target=nvptx64-nvidia-cuda",
+        "description": "64-bit PTX target for CUDA device compilation.",
+        "kind": "Joined",
+        "category": "Target"
+      },
+      {
+        "flag": "-march=sm_90",
+        "description": "CUDA architecture (sm_80, sm_89, sm_90, …). Passed to ptxas for SASS generation.",
+        "kind": "Joined",
+        "category": "NVPTX"
+      },
+      {
+        "flag": "-x cuda",
+        "description": "Compile input as CUDA C++ (host + device separation).",
+        "kind": "Joined",
+        "category": "CUDA"
+      },
+      {
+        "flag": "--cuda-device-only",
+        "description": "Emit device-side code only (PTX/object), skip host pass.",
+        "kind": "Flag",
+        "category": "CUDA"
+      },
+      {
+        "flag": "-O3",
+        "description": "Optimize register usage and memory space selection.",
+        "kind": "Flag",
+        "category": "Code Generation"
+      },
+      {
+        "flag": "-fcuda-rdc",
+        "description": "Relocatable device code — enables device linking across TUs.",
+        "kind": "Flag",
+        "category": "CUDA"
+      }
+    ],
+    "llcCommand": "llc -mtriple=nvptx64-nvidia-cuda -mcpu=sm_90 -O2 input.ll -o kernel.ptx",
+    "optCommand": "opt -passes='default<O2>' -S input.ll -o output.ll",
+    "clangCommand": "clang++ --target=nvptx64-nvidia-cuda -march=sm_90 -O2 --cuda-device-only -c kernel.cu -o kernel.ptx",
+    "sourceFiles": [
+      {
+        "path": "clang/lib/Driver/ToolChains/Cuda.cpp",
+        "description": "CUDA driver integration: nvptx triple, ptxas, fatbinary"
+      },
+      {
+        "path": "llvm/lib/Target/NVPTX/NVPTXCallingConv.td",
+        "description": "TableGen NVVM kernel calling convention"
+      }
+    ]
+  },
+  "searchText": "nvidia ptx cuda nvptx nvvm simt warp thread block grid param shared local global const kernel launch ld.param st.global bar.sync shfl sync ballot predicate special register tid ctaid ntid nctaid sm_80 sm_90 occupancy register spilling address space CC_NVVM_KERNEL"
+}

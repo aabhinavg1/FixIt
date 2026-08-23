@@ -245,6 +245,55 @@
   gap: 1.1rem;
 }
 
+.selectedArchBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 12px;
+  background: var(--abi-primary-soft);
+}
+
+.selectedArchBarCopy {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.selectedArchBarLabel {
+  color: var(--abi-text-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.selectedArchBarName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--abi-text);
+}
+
+.selectedArchBarButton {
+  flex-shrink: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--abi-border);
+  border-radius: 999px;
+  background: var(--abi-surface);
+  color: var(--abi-text-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.selectedArchBarButton:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: var(--abi-hover);
+}
+
 .sidebarPanel {
   padding: 1rem;
   border: 1px solid var(--abi-border);
@@ -780,6 +829,118 @@
 @keyframes whyFadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   GFX Target Variants (AMDGPU family)
+   ========================================== */
+
+.variantSection {
+  display: grid;
+  gap: 1rem;
+}
+
+.variantGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.variantCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--abi-border);
+  border-radius: 12px;
+  background: var(--abi-surface-2);
+}
+
+.variantCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.variantCardTitle {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--abi-text);
+}
+
+.variantBadge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--abi-primary-soft);
+  color: var(--abi-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.variantMetaList {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.variantMetaRow {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.variantMetaLabel {
+  color: var(--abi-text-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.variantMetaValue {
+  color: var(--abi-text-2);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.variantNotes {
+  margin: 0;
+  color: var(--abi-text-2);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.variantSplitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.variantListBlock {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--abi-border);
+  border-radius: 12px;
+  background: var(--abi-surface);
+}
+
+.variantListTitle {
+  color: var(--abi-text);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.variantList {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--abi-text-2);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.variantList li + li {
+  margin-top: 0.25rem;
 }
 
 /* ==========================================
@@ -1599,6 +1760,9 @@
     grid-template-columns: 1fr;
   }
   .resultsGrid {
+    grid-template-columns: 1fr;
+  }
+  .variantSplitGrid {
     grid-template-columns: 1fr;
   }
   .llvmGrid {

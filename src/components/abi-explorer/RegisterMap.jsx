@@ -76,7 +76,7 @@ function RegisterDetail({ reg }) {
         </div>
         <div className={styles.detailRow}>
           <span className={styles.detailLabel}>Aliases</span>
-          <span className={styles.detailValue}>{reg.aliases.join(', ')}</span>
+          <span className={styles.detailValue}>{reg.aliases?.join(', ') || '—'}</span>
         </div>
         <div className={styles.detailRow}>
           <span className={styles.detailLabel}>Encoding</span>

@@ -13,6 +13,7 @@ import {
   FileCode,
   Filter,
   GitBranch,
+  Layers,
   Monitor,
   Rocket,
   Search,
@@ -49,11 +50,13 @@ const CATEGORY_ICONS = {
 const EXAMPLE_QUERIES = [
   'x86_64 SysV',
   'AAPCS64',
+  'AMDGPU',
+  'NVIDIA PTX',
+  'Kernarg',
   'Shadow Space',
   'Red Zone',
-  'RDI',
-  'Tail Call',
-  'Caller Saved',
+  'Warp',
+  'Wave64',
 ];
 
 const LLVM_FILE_ICONS = {
@@ -106,6 +109,8 @@ function WhySection({ items }) {
 }
 
 function LLVMImplCard({ name, impl }) {
+  if (!impl || typeof impl !== 'object' || !impl.path) return null;
+
   const Icon = getLLVMFileIcon(name);
   const basename = impl.path.split('/').pop();
 
@@ -194,7 +199,69 @@ function ExampleSection({ example, index }) {
   );
 }
 
+function TargetVariantsSection({ variants }) {
+  if (!variants) return null;
+
+  return (
+    <div className={styles.variantSection}>
+      {variants.intro && <p className={styles.bodyCopy}>{variants.intro}</p>}
+
+      {variants.families?.length > 0 && (
+        <div className={styles.variantGrid}>
+          {variants.families.map((family) => (
+            <div key={family.id} className={styles.variantCard}>
+              <div className={styles.variantCardHeader}>
+                <h3 className={styles.variantCardTitle}>{family.name}</h3>
+                <span className={styles.variantBadge}>{family.wavefrontSize}</span>
+              </div>
+              <div className={styles.variantMetaList}>
+                <div className={styles.variantMetaRow}>
+                  <span className={styles.variantMetaLabel}>LLVM -mcpu</span>
+                  <span className={styles.variantMetaValue}>{family.llvmCpus}</span>
+                </div>
+                <div className={styles.variantMetaRow}>
+                  <span className={styles.variantMetaLabel}>Products</span>
+                  <span className={styles.variantMetaValue}>{family.products}</span>
+                </div>
+                <div className={styles.variantMetaRow}>
+                  <span className={styles.variantMetaLabel}>Focus</span>
+                  <span className={styles.variantMetaValue}>{family.focus}</span>
+                </div>
+              </div>
+              <p className={styles.variantNotes}>{family.abiNotes}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className={styles.variantSplitGrid}>
+        {variants.sharedAcrossAll?.length > 0 && (
+          <div className={styles.variantListBlock}>
+            <span className={styles.variantListTitle}>Shared across all GFX targets</span>
+            <ul className={styles.variantList}>
+              {variants.sharedAcrossAll.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {variants.variesByMcpu?.length > 0 && (
+          <div className={styles.variantListBlock}>
+            <span className={styles.variantListTitle}>Varies by -mcpu (specific chip)</span>
+            <ul className={styles.variantList}>
+              {variants.variesByMcpu.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const ABI_SECTIONS = [
+  { id: 'abi-target-variants', label: 'GFX Variants' },
   { id: 'abi-calling-convention', label: 'Calling Convention' },
   { id: 'abi-stack-frame', label: 'Stack Frame' },
   { id: 'abi-register-map', label: 'Register Map' },
@@ -219,17 +286,35 @@ function normalizeArchData(data) {
   };
 }
 
+function scoreFieldMatch(field, token, weight) {
+  if (!field || !token) return 0;
+  const t = normalizeText(token);
+  const words = normalizeText(field).split(/[\s,/_-]+/).filter(Boolean);
+  let best = 0;
+  for (const word of words) {
+    if (word === t) best = Math.max(best, weight);
+    else if (word.startsWith(t)) {
+      const rest = word.slice(t.length);
+      best = Math.max(best, /^\d+$/.test(rest) ? weight * 0.15 : weight * 0.95);
+    } else if (t.length >= 4 && word.includes(t)) {
+      best = Math.max(best, weight * 0.45);
+    }
+  }
+  return best;
+}
+
 function scoreOption(arch, query) {
   if (!query) return 0;
   const normalized = normalizeText(query);
   const tokens = normalized.split(' ').filter(Boolean);
   let score = 0;
 
-  if (arch.id === normalized) score += 200;
-  if (arch.name.toLowerCase().includes(normalized)) score += 100;
-  if (arch.architecture.toLowerCase().includes(normalized)) score += 80;
-  if (arch.convention.toLowerCase().includes(normalized)) score += 70;
-  if (arch.target.toLowerCase().includes(normalized)) score += 50;
+  if (arch.id === normalized || arch.id.replace(/-/g, '') === normalized.replace(/\s/g, '')) score += 200;
+  score += scoreFieldMatch(arch.id, normalized, 110);
+  score += scoreFieldMatch(arch.name, normalized, 100);
+  score += scoreFieldMatch(arch.architecture, normalized, 80);
+  score += scoreFieldMatch(arch.convention, normalized, 70);
+  score += scoreFieldMatch(arch.target, normalized, 50);
   if ((arch.searchText || '').includes(normalized)) score += 40;
   if (tokens.length && tokens.every((t) => (arch.searchText || '').includes(t))) score += 30;
 
@@ -244,6 +329,11 @@ function selectArchitectures(architectures, query, filters) {
     .filter(({ score }) => score > 0 || !normalized)
     .sort((a, b) => b.score - a.score || a.arch.name.localeCompare(b.arch.name))
     .map(({ arch }) => arch);
+}
+
+function formatRegisterList(regs, fallback = 'Stack-based') {
+  if (!regs?.length) return fallback;
+  return regs.map((r) => (typeof r === 'string' ? r : r.register)).join(', ');
 }
 
 function ArchitectureCard({ arch, isSelected, onSelect }) {
@@ -272,8 +362,14 @@ function ArchitectureCard({ arch, isSelected, onSelect }) {
           <span className={styles.archCardTarget}>{arch.target}</span>
         </div>
         <div className={styles.archCardRegisters}>
-          {arch.argumentRegisters > 0 && (
-            <span className={styles.archCardRegCount}>{arch.argumentRegisters} arg regs</span>
+          {arch.category === 'GPU' && arch.gpuFeatures?.length > 0 ? (
+            arch.gpuFeatures.slice(0, 3).map((feat) => (
+              <span key={feat} className={styles.archCardFeature}>{feat}</span>
+            ))
+          ) : (
+            arch.argumentRegisters > 0 && (
+              <span className={styles.archCardRegCount}>{arch.argumentRegisters} arg regs</span>
+            )
           )}
           {arch.hasRedZone && <span className={styles.archCardFeature}>Red Zone</span>}
           {arch.hasShadowSpace && <span className={styles.archCardFeature}>Shadow</span>}
@@ -356,6 +452,7 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
   const CategoryIcon = CATEGORY_ICONS[arch.category] || Cpu;
 
   const activeTocSections = ABI_SECTIONS.filter((s) => {
+    if (s.id === 'abi-target-variants' && !arch.targetVariants) return false;
     if (s.id === 'abi-calling-convention' && !arch.callingConvention) return false;
     if (s.id === 'abi-stack-frame' && !arch.stack) return false;
     if (s.id === 'abi-register-map' && (!arch.registers || arch.registers.length === 0)) return false;
@@ -398,7 +495,27 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
           <span className={styles.metaLabel}>Category</span>
           <span className={styles.metaValue}>{arch.category}</span>
         </div>
+        {arch.dataModel?.executionModel && (
+          <div className={styles.metaItem}>
+            <span className={styles.metaLabel}>Execution</span>
+            <span className={styles.metaValue}>{arch.dataModel.executionModel}</span>
+          </div>
+        )}
       </div>
+
+      {arch.targetVariants && (
+        <div id="abi-target-variants" className={styles.sectionCard}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionTitleWrap}>
+              <Layers size={16} className={styles.sectionIcon} />
+              <h2 className={styles.sectionHeading}>GFX Target Variants</h2>
+            </div>
+          </div>
+          <div className={styles.sectionBody}>
+            <TargetVariantsSection variants={arch.targetVariants} />
+          </div>
+        </div>
+      )}
 
       {arch.callingConvention && (
         <div id="abi-calling-convention" className={styles.sectionCard}>
@@ -409,17 +526,28 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
             </div>
           </div>
           <div className={styles.sectionBody}>
+            {arch.callingConvention.executionModel && (
+              <p className={styles.bodyCopy}>{arch.callingConvention.executionModel}</p>
+            )}
             <div className={styles.detailSplitGrid}>
               <div className={styles.definitionBlock}>
-                <span className={styles.definitionLabel}>Argument Registers</span>
+                <span className={styles.definitionLabel}>
+                  {arch.category === 'GPU' ? 'Kernel Arguments' : 'Argument Registers'}
+                </span>
                 <span className={styles.definitionValue}>
-                  {arch.callingConvention.argumentRegisters?.map((r) => r.register).join(', ') || 'Stack-based'}
+                  {formatRegisterList(
+                    arch.callingConvention.argumentRegisters,
+                    arch.category === 'GPU' ? 'Kernarg / .param space' : 'Stack-based'
+                  )}
                 </span>
               </div>
               <div className={styles.definitionBlock}>
                 <span className={styles.definitionLabel}>Return Registers</span>
                 <span className={styles.definitionValue}>
-                  {arch.callingConvention.returnRegisters?.map((r) => r.register).join(', ') || 'RAX'}
+                  {formatRegisterList(
+                    arch.callingConvention.returnRegisters,
+                    arch.category === 'GPU' ? 'N/A (void kernels)' : 'RAX'
+                  )}
                 </span>
               </div>
               <div className={styles.definitionBlock}>
@@ -454,7 +582,9 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
           <div className={styles.sectionHeader}>
             <div className={styles.sectionTitleWrap}>
               <Monitor size={16} className={styles.sectionIcon} />
-              <h2 className={styles.sectionHeading}>Stack Frame</h2>
+              <h2 className={styles.sectionHeading}>
+                {arch.category === 'GPU' ? 'Memory Hierarchy' : 'Stack Frame'}
+              </h2>
             </div>
           </div>
           <div className={styles.sectionBody}>
@@ -476,7 +606,11 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
               <p className={styles.bodyCopy}>{arch.stack.notes}</p>
             )}
             {arch.stackFrame && (
-              <StackFrameVisualizer stackData={arch.stack} stackFrame={arch.stackFrame} />
+              <StackFrameVisualizer
+                stackData={arch.stack}
+                stackFrame={arch.stackFrame}
+                title={arch.category === 'GPU' ? 'Memory Hierarchy Layout' : 'Stack Frame Layout'}
+              />
             )}
           </div>
         </div>
@@ -508,7 +642,11 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
             </div>
           </div>
           <div className={styles.sectionBody}>
-            <AbiComparisonTool comparisonData={arch.comparison} />
+            <AbiComparisonTool
+              comparisonData={arch.comparison}
+              defaultArch1={arch.id === 'nvidia-ptx' ? 'nvidiaPtx' : arch.id === 'amdgpu' ? 'amdgpu' : 'sysv'}
+              defaultArch2={arch.category === 'GPU' ? (arch.id === 'amdgpu' ? 'nvidiaPtx' : 'amdgpu') : 'windows'}
+            />
           </div>
         </div>
       )}
@@ -536,10 +674,15 @@ function DetailPanel({ arch, allArchs, onNavigate, loading, selectedArchId }) {
             </div>
           </div>
           <div className={styles.sectionBody}>
+            {typeof arch.llvmImplementation.notes === 'string' && (
+              <p className={styles.bodyCopy}>{arch.llvmImplementation.notes}</p>
+            )}
             <div className={styles.llvmGrid}>
-              {Object.entries(arch.llvmImplementation).map(([key, impl]) => (
-                <LLVMImplCard key={key} name={key} impl={impl} />
-              ))}
+              {Object.entries(arch.llvmImplementation)
+                .filter(([, impl]) => impl && typeof impl === 'object' && impl.path)
+                .map(([key, impl]) => (
+                  <LLVMImplCard key={key} name={key} impl={impl} />
+                ))}
             </div>
           </div>
         </div>
@@ -662,6 +805,41 @@ export default function AbiExplorer() {
   const categories = data?.categories || {};
   const filteredArchs = useMemo(() => selectArchitectures(architectures, query, filters), [architectures, query, filters]);
   const groups = useMemo(() => groupByCategory(filteredArchs), [filteredArchs]);
+  const showResultsGrid = !selectedArch && filteredArchs.length > 0;
+  const prevQueryRef = useRef('');
+
+  useEffect(() => {
+    const q = query.trim();
+    if (!filteredArchs.length) {
+      if (q) setSelectedArch('');
+      return;
+    }
+
+    if (q && q !== prevQueryRef.current) {
+      setSelectedArch(filteredArchs[0].id);
+      prevQueryRef.current = q;
+      return;
+    }
+
+    if (!q) {
+      prevQueryRef.current = '';
+      if (selectedArch && !filteredArchs.some((a) => a.id === selectedArch)) {
+        setSelectedArch('');
+      }
+    }
+  }, [query, filteredArchs, selectedArch]);
+
+  const mergedArchData = useMemo(() => {
+    if (!selectedArchData) return null;
+    const indexEntry = architectures.find((a) => a.id === selectedArchData.id);
+    if (!indexEntry) return selectedArchData;
+    return {
+      ...indexEntry,
+      ...selectedArchData,
+      description: selectedArchData.description || indexEntry.description,
+      gpuFeatures: selectedArchData.gpuFeatures || indexEntry.gpuFeatures,
+    };
+  }, [selectedArchData, architectures]);
 
   const handleSelectArch = (archId) => {
     setSelectedArch(archId);
@@ -754,18 +932,35 @@ export default function AbiExplorer() {
                 <p>No architectures match your search or filters.</p>
               </div>
             )}
-            <div className={styles.resultsGrid}>
-              {filteredArchs.map((arch) => (
-                <ArchitectureCard
-                  key={arch.id}
-                  arch={arch}
-                  isSelected={selectedArch === arch.id}
-                  onSelect={handleSelectArch}
-                />
-              ))}
-            </div>
+            {showResultsGrid && (
+              <div className={styles.resultsGrid}>
+                {filteredArchs.map((arch) => (
+                  <ArchitectureCard
+                    key={arch.id}
+                    arch={arch}
+                    isSelected={selectedArch === arch.id}
+                    onSelect={handleSelectArch}
+                  />
+                ))}
+              </div>
+            )}
+            {selectedArch && mergedArchData && (
+              <div className={styles.selectedArchBar}>
+                <div className={styles.selectedArchBarCopy}>
+                  <span className={styles.selectedArchBarLabel}>Viewing</span>
+                  <span className={styles.selectedArchBarName}>{mergedArchData.name}</span>
+                </div>
+                <button
+                  className={styles.selectedArchBarButton}
+                  onClick={() => setSelectedArch('')}
+                  type="button"
+                >
+                  Browse all
+                </button>
+              </div>
+            )}
             <DetailPanel
-              arch={selectedArchData}
+              arch={mergedArchData}
               allArchs={architectures}
               onNavigate={handleSelectArch}
               loading={loadingArch}
