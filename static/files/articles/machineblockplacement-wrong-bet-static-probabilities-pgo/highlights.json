@@ -1,0 +1,68 @@
+{
+  "validated": "2026-08-28",
+  "machine": "AMD Ryzen 7 9700X (Zen 5)",
+  "testcase": "when-o2-layout-hurts-machineblockplacement/source/machine_block_placement_csv_parse.c",
+  "N": 1048576,
+  "reps": 100,
+  "correctness": "PASS all builds x 1048576 sum=15723844160",
+  "part1_historical_stage1": {
+    "note": "Bundled in part 1 bundle; Clang 24 stage1 commit 196786fa…, same machine, n=100",
+    "O1": { "time_ms": 64.9, "branch_misses": 657000 },
+    "O2": { "time_ms": 71.9, "branch_misses": 1730000, "br_miss_ratio_vs_O1": 2.633 },
+    "O2np": { "time_ms": 66.3, "branch_misses": 660000 }
+  },
+  "revalidated_clang18_18.1.3_n100": {
+    "compiler": "Ubuntu clang 18.1.3",
+    "O1": { "time_ms": 63.991, "branch_misses": 654264, "ipc": 5.7671 },
+    "O2": {
+      "time_ms": 69.309,
+      "branch_misses": 1724217,
+      "ipc": 5.2617,
+      "time_pct_vs_O1": 8.311,
+      "br_miss_ratio_vs_O1": 2.635,
+      "insn_pct_vs_O1": -1.102,
+      "layout": "backward je to shared inc (parse.O2_c18.asm)"
+    },
+    "O2np": {
+      "time_ms": 63.744,
+      "branch_misses": 654019,
+      "br_miss_ratio_vs_O1": 1.0,
+      "layout": "forward je + fall-through inc"
+    },
+    "O2_pgo": {
+      "time_ms": 63.303,
+      "branch_misses": 652959,
+      "br_miss_ratio_vs_O1": 0.998,
+      "layout": "forward je + fall-through inc (MBP on)"
+    },
+    "O2_pgo_np": {
+      "time_ms": 63.696,
+      "branch_misses": 654108,
+      "br_miss_ratio_vs_O1": 1.0
+    }
+  },
+  "revalidated_stage1_b7dc8e35_n100": {
+    "compiler": "Clang 24.0.0git stage1 b7dc8e356b89",
+    "note": "Current stage1 tip on this machine — regression NOT reproduced",
+    "O1": { "time_ms": 63.702, "branch_misses": 654602 },
+    "O2": {
+      "time_ms": 63.556,
+      "branch_misses": 653910,
+      "br_miss_ratio_vs_O1": 0.999,
+      "layout": "forward je + fall-through inc (regression fixed upstream)"
+    },
+    "O2np": { "time_ms": 63.637, "branch_misses": 654150 }
+  },
+  "ir_checks": {
+    "no_pgo_branch_weights_on_separator_switch": true,
+    "pgo_branch_weights": "!59 = !{!\"branch_weights\", i32 0, i32 2097152, i32 1048576}"
+  },
+  "pgo_switch_weights": {
+    "comma": 2097152,
+    "newline": 1048576,
+    "default_neither": 0,
+    "total_separator_checks": 3145728,
+    "comma_pct": 66.67,
+    "newline_pct": 33.33
+  }
+}
