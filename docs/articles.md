@@ -278,8 +278,15 @@ No article has been published from the Jenkins queue yet.
 
 <tr>
 <td>When Clang -O2 Gets Slower: From Perf Counters to MachineBlockPlacement</td>
-<td>Perf counters → MBP layout → branch misses (parse loop)</td>
 <td><a href="./when-o2-layout-hurts-machineblockplacement">Article</a></td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
+<tr>
+<td>Why MachineBlockPlacement Made the Wrong Bet: Static Probabilities, Fall-Through, and PGO</td>
+<td><a href="./machineblockplacement-wrong-bet-static-probabilities-pgo">Article</a></td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>
 <td>Coming Soon</td>

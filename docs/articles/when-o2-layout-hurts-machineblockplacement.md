@@ -172,7 +172,7 @@ MachineBlockPlacement
 block order → fall-through / taken branches → machine code
 ```
 
-The follow-up article asks what probabilities LLVM assigns to `,`, `\n`, and “neither,” and whether that explains the shared-increment layout at `-O2`.
+The follow-up article — [**Why MachineBlockPlacement Made the Wrong Bet**](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo) — documents what probabilities LLVM assigns with and without PGO, and whether that explains the shared-increment layout at `-O2`.
 
 Full file with expected-sum checks: <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/source/machine_block_placement_csv_parse.c" target="_blank" rel="noopener">machine_block_placement_csv_parse.c</a>. All measured data is in the <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/" target="_blank" rel="noopener">artifact index</a>. A minimal pasteable `main` is also in the appendix below.
 
@@ -476,8 +476,8 @@ Follow-up: why MachineBlockPlacement chose the wrong layout **without** profile 
 
 **What this suggests:** without PGO, static probabilities → bad layout → high misses. With PGO, layout is good whether MBP is on or off. Still open: exact `,` / `\n` / neither probabilities in BranchProbabilityInfo, and stage1 n=100 confirmation.
 
-:::tip Coming next on CompilerSutra
-**Why MachineBlockPlacement Made the Wrong Bet: Static Probabilities, Fall-Through, and PGO**
+:::tip Part 2 — now published
+**[Why MachineBlockPlacement Made the Wrong Bet: Static Probabilities, Fall-Through, and PGO](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo)** — workload branch mix, missing `branch_weights`, PGO matrix, and the layout fix.
 :::
 
 ## Appendix: pasteable testcase
@@ -539,7 +539,7 @@ Expected sum for `1048576` / seed `29`: `15723844160` (asserted in the full kit 
 - Upstream report: [llvm/llvm-project#218248](https://github.com/llvm/llvm-project/issues/218248)
 - [`opt-bisect-limit`](https://llvm.org/docs/CommandGuide/opt.html) (same knob via `clang -mllvm`)
 - [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) (`pip install compilersutra-perf`)
-- Related: [GCC vs Clang real benchmarks](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter), [stencil pass trace](/docs/articles/where_gcc_and_clang_diverge_stencil_pass_trace)
+- Related: [Part 2 — static probabilities, PGO, and layout](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo), [GCC vs Clang real benchmarks](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter), [stencil pass trace](/docs/articles/where_gcc_and_clang_diverge_stencil_pass_trace)
 
 :::note Lab note
 Primary: Clang 24 stage1, Experiment A/B on <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/source/machine_block_placement_csv_parse.c" target="_blank" rel="noopener">machine_block_placement_csv_parse.c</a>. Bundled public artifacts: <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/" target="_blank" rel="noopener">artifact index</a>. Secondary: Clang 18.1.3.
