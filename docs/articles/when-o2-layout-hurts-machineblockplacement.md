@@ -31,6 +31,8 @@ On the same parser, on the same Zen 5 CPU (AMD Ryzen 7 9700X), Clang **`-O2` exe
 
 That is the contradiction this article investigates. We re-checked it on **Clang 24 stage1** (`build-stage1/bin/clang`, commit `196786fa…`) and first saw it on Clang 18.1.3.
 
+A follow-on screen of **329** llvm-test-suite and HPC benchmarks found the same MBP signature in **~1.2%** of programs — not every parser, not every `-O2` build. See [Part 3 — prevalence and upstream fix](/docs/articles/machineblockplacement-329-benchmark-prevalence-and-fix).
+
 :::info Investigation in 30 seconds
 
 <pre>
@@ -539,7 +541,7 @@ Expected sum for `1048576` / seed `29`: `15723844160` (asserted in the full kit 
 - Upstream report: [llvm/llvm-project#218248](https://github.com/llvm/llvm-project/issues/218248)
 - [`opt-bisect-limit`](https://llvm.org/docs/CommandGuide/opt.html) (same knob via `clang -mllvm`)
 - [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) (`pip install compilersutra-perf`)
-- Related: [Part 2 — static probabilities, PGO, and layout](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo), [GCC vs Clang real benchmarks](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter), [stencil pass trace](/docs/articles/where_gcc_and_clang_diverge_stencil_pass_trace)
+- Related: [Part 2 — static probabilities, PGO, and layout](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo), [Part 3 — 329-benchmark prevalence and LLVM fix](/docs/articles/machineblockplacement-329-benchmark-prevalence-and-fix), [GCC vs Clang real benchmarks](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter), [stencil pass trace](/docs/articles/where_gcc_and_clang_diverge_stencil_pass_trace)
 
 :::note Lab note
 Primary: Clang 24 stage1, Experiment A/B on <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/source/machine_block_placement_csv_parse.c" target="_blank" rel="noopener">machine_block_placement_csv_parse.c</a>. Bundled public artifacts: <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/" target="_blank" rel="noopener">artifact index</a>. Secondary: Clang 18.1.3.

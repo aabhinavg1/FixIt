@@ -211,6 +211,7 @@ const site = {
         'articles/where_gcc_and_clang_diverge_stencil_pass_trace',
         'articles/when-o2-layout-hurts-machineblockplacement',
         'articles/machineblockplacement-wrong-bet-static-probabilities-pgo',
+        'articles/machineblockplacement-329-benchmark-prevalence-and-fix',
         'articles/hft_stdlib_restrictions',
         'articles/language_energy_efficiency_validation',
         {

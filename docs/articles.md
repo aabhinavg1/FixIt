@@ -293,6 +293,14 @@ No article has been published from the Jenkins queue yet.
 </tr>
 
 <tr>
+<td>How Often Does MachineBlockPlacement Regress Branch Prediction? A 329-Benchmark Screen</td>
+<td><a href="./machineblockplacement-329-benchmark-prevalence-and-fix">Article</a></td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+<td>Coming Soon</td>
+</tr>
+
+<tr>
 <td>std::byte vs unsigned char: Do Modern Compilers Optimize Them Differently?</td>
 <td><a href="./std-byte-vs-unsigned-char">Article</a></td>
 <td>Coming Soon</td>
