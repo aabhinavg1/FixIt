@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MachineBlockPlacement wrong-bet follow-up artifacts</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; }
+    h1 { font-size: 1.35rem; }
+    code, a { word-break: break-word; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f4f4f4; }
+    .note { color: #444; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>MachineBlockPlacement “wrong bet” follow-up artifacts</h1>
+  <p class="note">
+    Companion files for
+    <em>Why MachineBlockPlacement Made the Wrong Bet: Static Probabilities, Fall-Through, and PGO</em>
+    (part 2 of the parse-loop case study).
+    <a href="../when-o2-layout-hurts-machineblockplacement/">Part 1 bundle</a>.
+  </p>
+
+  <h2>Start here</h2>
+  <ul>
+    <li><a href="README.md">README.md</a></li>
+    <li><a href="highlights.json">highlights.json</a> — PGO matrix + switch weights</li>
+    <li><a href="source/machine_block_placement_csv_parse.c">source/machine_block_placement_csv_parse.c</a></li>
+  </ul>
+
+  <h2>IR and assembly</h2>
+  <table>
+    <tr><th>File</th><th>Notes</th></tr>
+    <tr><td><a href="ir/parse.O2.ll">ir/parse.O2.ll</a></td><td>Stage1 <code>-O2</code>, no <code>branch_weights</code></td></tr>
+    <tr><td><a href="ir/parse.O2_pgo.ll">ir/parse.O2_pgo.ll</a></td><td>PGO <code>-O2</code>, switch <code>!prof</code> metadata</td></tr>
+    <tr><td><a href="asm/parse.O2_c18.asm">asm/parse.O2_c18.asm</a></td><td>Backward shared increment (bad)</td></tr>
+    <tr><td><a href="asm/parse.O2_pgo.asm">asm/parse.O2_pgo.asm</a></td><td>Forward fall-through increment (PGO)</td></tr>
+    <tr><td><a href="asm/parse.O2np.asm">asm/parse.O2np.asm</a></td><td>No MBP — good layout</td></tr>
+  </table>
+
+  <h2>Results</h2>
+  <ul>
+    <li><a href="results/perf/pgo_matrix_summary.json">results/perf/pgo_matrix_summary.json</a></li>
+    <li><a href="results/pgo/default.profdata">results/pgo/default.profdata</a> (binary profile)</li>
+    <li><a href="scripts/run_pgo_matrix.sh">scripts/run_pgo_matrix.sh</a></li>
+  </ul>
+</body>
+</html>

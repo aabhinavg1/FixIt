@@ -210,6 +210,7 @@ const site = {
         'articles/gcc_vs_clang_stencil_ir_passes_part2b',
         'articles/where_gcc_and_clang_diverge_stencil_pass_trace',
         'articles/when-o2-layout-hurts-machineblockplacement',
+        'articles/machineblockplacement-wrong-bet-static-probabilities-pgo',
         'articles/hft_stdlib_restrictions',
         'articles/language_energy_efficiency_validation',
         {
