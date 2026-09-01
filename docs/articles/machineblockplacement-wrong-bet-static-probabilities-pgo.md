@@ -29,6 +29,8 @@ What part 1 did **not** show is **what branch probabilities MachineBlockPlacemen
 
 That is what this article traces: workload counts → IR metadata → layout → misses, with and without PGO.
 
+How often this shows up outside the lab repro: [Part 3 — 329-benchmark prevalence screen](/docs/articles/machineblockplacement-329-benchmark-prevalence-and-fix) (~**1.2%** hit rate in llvm-test-suite + HPC externals).
+
 :::info Mechanism in 30 seconds
 
 <pre>
@@ -267,6 +269,7 @@ grep -A5 'cmp.*0x2c' asm/parse.O2_pgo.asm
 ## References
 
 - [Part 1: When Clang `-O2` Gets Slower](/docs/articles/when-o2-layout-hurts-machineblockplacement)  
+- [Part 3: 329-benchmark prevalence and LLVM fix](/docs/articles/machineblockplacement-329-benchmark-prevalence-and-fix)  
 - LLVM [MachineBlockPlacement](https://llvm.org/doxygen/MachineBlockPlacement_8cpp.html) · [BranchProbabilityInfo](https://llvm.org/doxygen/classllvm_1_1BranchProbabilityInfo.html)  
 - [llvm/llvm-project#218248](https://github.com/llvm/llvm-project/issues/218248)  
 - <a href="/files/articles/machineblockplacement-wrong-bet-static-probabilities-pgo/" target="_blank" rel="noopener">Part 2 artifacts</a> · <a href="/files/articles/when-o2-layout-hurts-machineblockplacement/" target="_blank" rel="noopener">Part 1 artifacts</a>
