@@ -50,8 +50,9 @@ const config = {
       {
         redirects: [
           {
-            to: '/docs/project/cpp-project-ideas',
-            from: ['/docs/project/Project', '/docs/project/Project/'],
+            // trailingSlash:true — only one `from` form; both slash variants write the same file and EEXIST on Vercel
+            to: '/docs/project/cpp-project-ideas/',
+            from: '/docs/project/Project/',
           },
           { to: '/docs/c++/advanced/', from: ['/docs/c++/advance/', '/docs/c++/advance/index', '/docs/c++/advance/intro'] },
           {
