@@ -164,7 +164,7 @@ In practice, for a value that survives only one or two calls, the flag is a wash
 
 ## Measured with compilersutra-perf
 
-The loop above was run 100 times over a 2,000,000-element array with `clang++ -O3` on an Apple M1 Pro (`arm64`), once with the default ABI and once with `-fcall-saved-x10`. Wall-clock time was measured with [compilersutra-perf](https://pypi.org/project/compilersutra-perf/) (`csperf run --backend cpu`, 3 warmup runs, 7 measured trials):
+The loop above was run 100 times over a 2,000,000-element array with `clang++ -O3` on an Apple M1 Pro (`arm64`), once with the default ABI and once with `-fcall-saved-x10`. Wall-clock time was measured with [CompilerSutraPerf](/docs/project/compilersutra-perf/) ([PyPI](https://pypi.org/project/compilersutra-perf/)) (`csperf run --backend cpu`, 3 warmup runs, 7 measured trials):
 
 <PerfReport
   beforeTitle="Without flag"

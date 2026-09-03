@@ -314,7 +314,7 @@ If **`-O2` is slower than `-O1`** on branchy text/parse code:
 4. **Do not ship** with placement globally disabled — other loops benefit from fall-through layout.
 5. **PGO** may supply missing `branch_weights` on char switches ([part 2](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo)).
 
-Structured harness alternative: [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) (`pip install compilersutra-perf`) with manifests like `configs/testcase_O{1,2,2np}.json` in the part 1 bundle.
+Structured harness alternative: [CompilerSutraPerf](/docs/project/compilersutra-perf/) ([PyPI](https://pypi.org/project/compilersutra-perf/)) (`pip install compilersutra-perf`) with manifests like `configs/testcase_O{1,2,2np}.json` in the part 1 bundle.
 
 ## 9. What we do not claim
 
@@ -337,7 +337,7 @@ Structured harness alternative: [CompilerSutra Perf](https://pypi.org/project/co
 - [Part 2: Static Probabilities, Fall-Through, and PGO](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo)
 - [LLVM PR #219126](https://github.com/llvm/llvm-project/pull/219126) · [Issue #218248](https://github.com/llvm/llvm-project/issues/218248)
 - [MachineBlockPlacement](https://llvm.org/doxygen/MachineBlockPlacement_8cpp.html) · [`opt-bisect-limit`](https://llvm.org/docs/CommandGuide/opt.html)
-- [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/)
+- [CompilerSutraPerf](/docs/project/compilersutra-perf/) · [PyPI](https://pypi.org/project/compilersutra-perf/)
 
 :::note Lab note
 Prevalence CSVs: research kit `results/testsuite_singlesource_mbp_sweep.csv`, `testsuite_multisource_mbp_sweep.csv`, `hpc_external_mbp_sweep.csv`, `text_scan_mbp_sweep.csv`, `parser_mbp_sweep.csv`, `sci_calc_mbp_sweep.csv`, `parallel_mbp_sweep.csv`, `oss_apps_mbp_sweep.csv` (Aug–Sep 2026 sweeps). Unfixed Clang: `/home/aitr/osc/llvm_project_without_change/llvm-project/build/bin/clang` (24.0.0git). Lab repro numbers: part 1/2 artifact bundles. CPU: AMD Ryzen 7 9700X.

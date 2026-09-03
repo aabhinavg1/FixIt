@@ -69,7 +69,7 @@ This option does not repair invalid source, undefined behavior, data races, or a
 
 -pthread does not promise faster application code. Its main cost is link/runtime integration and, where the target uses it, thread-model code-generation or TLS behavior. The flag is required for a correct platform build contract, not as an optimization switch.
 
-CompilerSutra Perf measures runtime behavior, so it is useful only for a real multithreaded workload. No PerfReport is included here because no controlled multithreaded CompilerSutra Perf run was performed for this flag. Benchmark thread creation, synchronization, and workload scaling separately, with the same flag applied consistently to every translation unit and the final link.
+CompilerSutraPerf measures runtime behavior, so it is useful only for a real multithreaded workload. No PerfReport is included here because no controlled multithreaded CompilerSutraPerf run was performed for this flag. Benchmark thread creation, synchronization, and workload scaling separately, with the same flag applied consistently to every translation unit and the final link.
 
 ## Compatibility
 

@@ -10,7 +10,7 @@ Everything needed to reproduce and inspect the article numbers lives in this fol
 | [highlights.json](highlights.json) | One-page numbers: O1 / O2 / O2np |
 | [results/perf/summary.json](results/perf/summary.json) | Experiment A: raw `perf`, n=100 |
 | [results/perf/perf_r100.csv](results/perf/perf_r100.csv) | Experiment A: all reps |
-| [results/csperf/summary.json](results/csperf/summary.json) | Experiment B: CompilerSutra Perf medians |
+| [results/csperf/summary.json](results/csperf/summary.json) | Experiment B: CompilerSutraPerf medians |
 | [results/csperf/testcase_O1_vs_O2.csv](results/csperf/testcase_O1_vs_O2.csv) | `csperf diff` O1 vs O2 |
 | [configs/](configs/) | `csperf` manifests (O0/O1/O2/O2np) |
 | [scripts/run_mbb_parse.sh](scripts/run_mbb_parse.sh) | Build + correctness helper |
@@ -41,7 +41,8 @@ clang -O2 -mllvm -disable-block-placement -o parse.O2np \
 perf stat -e cycles,instructions,branch-misses -- ./parse.O2 1048576
 ```
 
-CompilerSutra Perf: https://pypi.org/project/compilersutra-perf/
+CompilerSutraPerf: https://pypi.org/project/compilersutra-perf/
+Docs: https://www.compilersutra.com/docs/project/compilersutra-perf/
 
 ```bash
 pip install compilersutra-perf
@@ -57,4 +58,4 @@ csperf run --manifest configs/testcase_O1.json --output /tmp/o1.json
 
 See [results/amduprof/](results/amduprof/) (`AMDuProfCLI --config branch`, 40× loop).
 
-On the `strtoll` hotspot, branch-mispredict PTI is ~**4.6×** higher at `-O2` than `-O1`; `-disable-block-placement` returns near `-O1`. Same direction as Linux `perf` / CompilerSutra Perf.
+On the `strtoll` hotspot, branch-mispredict PTI is ~**4.6×** higher at `-O2` than `-O1`; `-disable-block-placement` returns near `-O1`. Same direction as Linux `perf` / CompilerSutraPerf.

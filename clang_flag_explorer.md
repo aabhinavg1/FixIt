@@ -25,8 +25,8 @@ Requirements:
    - Do not use identical or illustrative before/after assembly as a placeholder. If the flag acts in preprocessing, diagnostics, language selection, or debug metadata, show the appropriate observable artifact (`-E`, diagnostics, `-###`, IR, or object sections) and explain why machine instructions are unchanged.
    - Keep `SourceCode` examples genuinely multiline and readable in the rendered page; do not pass a long one-line JSX string when formatted source is required.
    - **Why use it / when not to use it**: include ABI, portability, correctness, and build-consistency warnings where relevant.
-   - **Performance impact**: explain qualitative tradeoffs. Use `PerfReport` only with real measurements obtained by actually running the [CompilerSutra Perf tool](https://github.com/CompilerSutra/CompilerSutraPerfTool) or its documented CLI. Include the without/with arrays, workload, machine, compiler, trial setup, limitations, and exact reproduction commands. Run the commands in the workspace before reporting any numbers; never invent, estimate, or copy placeholder measurements. If the tool or workload cannot be run, say so and omit `PerfReport` data.
-   - Link the `CompilerSutra Perf` name to https://pypi.org/project/compilersutra-perf/ whenever measurements are reported.
+   - **Performance impact**: explain qualitative tradeoffs. Use `PerfReport` only with real measurements obtained by actually running [CompilerSutraPerf](https://www.compilersutra.com/docs/project/compilersutra-perf/) (`csperf`, [PyPI](https://pypi.org/project/compilersutra-perf/)) or its documented CLI. Include the without/with arrays, workload, machine, compiler, trial setup, limitations, and exact reproduction commands. Run the commands in the workspace before reporting any numbers; never invent, estimate, or copy placeholder measurements. If the tool or workload cannot be run, say so and omit `PerfReport` data.
+   - Link the `CompilerSutraPerf` name to the in-site docs and https://pypi.org/project/compilersutra-perf/ whenever measurements are reported.
    - Format reproduction commands for mobile and desktop: wrap commands line-by-line, avoid repeating long absolute paths, and use tabs or separate compact blocks for comparison variants.
    - **Compatibility**: table covering Clang, GCC, MSVC where relevant, language modes, and target restrictions.
    - **Usage example**: exact, copy-pasteable Clang command lines; include `-###` or IR inspection when useful.
@@ -61,7 +61,7 @@ Requirements:
 12. After writing, sanity-check:
    - the exact generated page path and slug;
    - responsive rendering of long commands and comparison blocks on mobile and desktop;
-   - performance claims link to the CompilerSutra Perf package when measurements are used;
+   - performance claims link to CompilerSutraPerf docs and PyPI when measurements are used;
    - `{/* HAND_AUTHORED */}` is still present;
    - all links and source paths are correct;
    - Mermaid/MDX syntax is valid;

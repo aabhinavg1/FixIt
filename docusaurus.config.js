@@ -49,6 +49,10 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            to: '/docs/project/cpp-project-ideas',
+            from: ['/docs/project/Project', '/docs/project/Project/'],
+          },
           { to: '/docs/c++/advanced/', from: ['/docs/c++/advance/', '/docs/c++/advance/index', '/docs/c++/advance/intro'] },
           {
             to: '/docs/dsa/foundations/data/',
