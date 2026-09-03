@@ -179,7 +179,15 @@ export default function PerfReport({
       <div className={styles.perfFooter}>
         <div className={styles.perfFooterMeta}>
           <Timer size={15} strokeWidth={2} className={styles.perfFooterIcon} />
-          <span className={styles.perfFooterTitle}>Measured with compilersutra-perf</span>
+          <span className={styles.perfFooterTitle}>
+            Measured with{' '}
+            <a href="/docs/project/compilersutra-perf/">CompilerSutraPerf</a>
+            {' '}(
+            <a href="https://pypi.org/project/compilersutra-perf/" rel="noopener noreferrer">
+              PyPI
+            </a>
+            )
+          </span>
         </div>
         {note ? <p className={styles.perfNote}>{note}</p> : null}
       </div>

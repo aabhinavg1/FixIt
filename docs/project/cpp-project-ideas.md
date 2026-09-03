@@ -1,81 +1,35 @@
 ---
 title: "C++ Project Ideas: Domain-Specific"
-description: "Explore the best C++ project ideas for all levels—beginner, intermediate, and advanced—across different domains like system programming, AI, game development, networking, and more."
-keywords: 
-- C++ projects
-- beginner C++
-- advanced C++
-- LLVM
-- system programming
-- game development
-- AI projects
-- networking
-- C++ programming
-- data structures
-- algorithms
-- multithreading
-- cloud computing
-- blockchain
-- cybersecurity
-- embedded systems
-- compiler development
-- game AI
-- machine learning
-- deep learning
-- robotics
-- IoT projects
-- performance optimization
-- GPU programming
-- real-time systems
-- operating systems
-- high-performance computing
-- parallel computing
-- numerical computing
-- database systems
-- financial software
-- automotive software
-- scientific computing
-- autonomous systems
-- cloud security
-- ethical hacking
-- C++ frameworks
-- natural language processing
-- quantum computing
-- DevOps with C++
-- microservices in C++
-- cryptography
-
+description: "Explore C++ project ideas for beginner, intermediate, and advanced levels across systems, AI, games, networking, compilers, and more."
+displayed_sidebar: projectSidebar
+keywords:
+  - C++ projects
+  - beginner C++
+  - advanced C++
+  - LLVM
+  - system programming
+  - game development
+  - AI projects
+  - networking
+  - compiler development
+  - GPU programming
+  - embedded systems
 tags:
-- C++Projects
-- LLVM
-- Game Development
-- Networking
-- System Programming
-- AI
-- Compiler
-- Data Structures
-- Multithreading
-- Blockchain
-- Cybersecurity
-- Cloud Computing
-- Embedded Systems
-- Game AI
-- Robotics
-- IoT
-- Machine Learning
-- Deep Learning
-- GPU Programming
-- Quantum Computing
-- High-Performance Computing
-- Cryptography
-- Database Systems
-- Financial Software
-- Autonomous Systems
-- Ethical Hacking
-
+  - C++Projects
+  - LLVM
+  - Game Development
+  - Networking
+  - System Programming
+  - AI
+  - Compiler
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::note Part of the project catalogue
+This page is one catalogue entry. For all projects (CompilerSutraPerf, LLVM, automation, and more), start at [Projects](./index).
+:::
 
 # 💻 C++ Project Ideas by Domain
 
@@ -1273,29 +1227,8 @@ Here are some projects to build expertise in compiler development:
 :::
 ---
 
+## Back to the catalogue
 
+Looking for other projects (CompilerSutraPerf, LLVM / VELOX, Python automation)?
 
-## LLVM Projects
-
-If you want a guided LLVM project hub, start here:
-
-- [LLVM Projects](./llvm)
-
-The main project in that folder is:
-
-- [VELOX Compiler Project](./llvm/VELOX/)
-
-This series covers:
-
-- compiler theory and architecture
-- a custom frontend for `VELOX`
-- lowering to LLVM IR
-- optimization passes
-- a RISC-V backend
-
----
-
-## 🚀 Get Started!
-Choose a project that interests you and start building! Each project offers an opportunity to apply your C++ knowledge and explore various domains.
-
-Happy Coding! 🎯
+- [Projects catalogue](./index)

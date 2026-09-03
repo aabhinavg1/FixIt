@@ -187,7 +187,7 @@ We run **three separate experiments** with distinct roles. Absolute counter valu
 | Role | Tool | Why it is here |
 |------|------|----------------|
 | **Primary evidence** | Linux `perf` | Direct `perf stat` on the binary; headline table for this article |
-| **Independent benchmark harness** | [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) (`csperf`) | Same builds, different runner — confirms the regression is not a `perf` artifact |
+| **Independent benchmark harness** | [CompilerSutraPerf](/docs/project/compilersutra-perf/) ([PyPI](https://pypi.org/project/compilersutra-perf/)) (`csperf`) | Same builds, different runner — confirms the regression is not a `perf` artifact |
 | **Microarchitectural corroboration** | AMD uProf 5.2 | Branch-hotspot view on Zen 5; checks the story at frame level |
 
 ### Experiment A — Primary evidence: Linux `perf`
@@ -204,7 +204,7 @@ Paired: O1 faster in **97/100** runs. Every O2 run has more branch misses than e
 
 `-O0` / `-O3` are not the investigation. For completeness: `-O3` ≈ `-O2` here; `-O0` is slower than `-O1` and is not needed to name the pass.
 
-### Experiment B — Independent benchmark harness: CompilerSutra Perf (`csperf`)
+### Experiment B — Independent benchmark harness: CompilerSutraPerf (`csperf`)
 
 Same source, same `N`, same stage1 Clang. Manifests live under `configs/csperf/testcase_*.json` (warmup 3, repeat 100). Install: `pip install compilersutra-perf`.
 
@@ -538,7 +538,7 @@ Expected sum for `1048576` / seed `29`: `15723844160` (asserted in the full kit 
 - LLVM [MachineBlockPlacement](https://llvm.org/doxygen/MachineBlockPlacement_8cpp.html) (“Branch Probability Basic Block Placement”)
 - Upstream report: [llvm/llvm-project#218248](https://github.com/llvm/llvm-project/issues/218248)
 - [`opt-bisect-limit`](https://llvm.org/docs/CommandGuide/opt.html) (same knob via `clang -mllvm`)
-- [CompilerSutra Perf](https://pypi.org/project/compilersutra-perf/) (`pip install compilersutra-perf`)
+- [CompilerSutraPerf](/docs/project/compilersutra-perf/) · [PyPI](https://pypi.org/project/compilersutra-perf/) (`pip install compilersutra-perf`)
 - Related: [Part 2 — static probabilities, PGO, and layout](/docs/articles/machineblockplacement-wrong-bet-static-probabilities-pgo), [GCC vs Clang real benchmarks](/docs/articles/gcc_vs_clang_real_benchmarks_2026_reporter), [stencil pass trace](/docs/articles/where_gcc_and_clang_diverge_stencil_pass_trace)
 
 :::note Lab note

@@ -17,6 +17,10 @@ import TabItem from '@theme/TabItem';
 
 # LLVM Projects
 
+:::note Project catalogue
+This is one entry in the [Projects catalogue](../index). See also [CompilerSutraPerf](../compilersutra-perf/) ([PyPI](https://pypi.org/project/compilersutra-perf/)) and other workspaces there.
+:::
+
 If you want to build real compiler projects on top of LLVM, this is the right place to start.
 
 This folder is organized around one main idea:

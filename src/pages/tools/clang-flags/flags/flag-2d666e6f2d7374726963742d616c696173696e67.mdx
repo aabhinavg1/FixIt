@@ -177,7 +177,7 @@ Avoid using it as a general fix for a miscompiled program:
 
 The flag has no useful universal speedup: it removes information from the optimizer. The cost depends on how many memory operations could otherwise be proven independent. Small functions may show no difference; pointer-heavy loops can retain reloads, lose vectorization, or execute more conservatively.
 
-Runtime data was collected with [compilersutra-perf 0.1.2](https://pypi.org/project/compilersutra-perf/) from the local CompilerSutraPerfTool repository. The workload processes separate `int` and `float` arrays for 100 repetitions, using Ubuntu Clang 18.1.3 on an AMD Ryzen 7 9700X under Linux. Each build used 3 warmup runs and 7 measured CPU trials; perf counters were disabled.
+Runtime data was collected with [CompilerSutraPerf 0.1.2](/docs/project/compilersutra-perf/releases/0.1.2/) ([PyPI](https://pypi.org/project/compilersutra-perf/)). The workload processes separate `int` and `float` arrays for 100 repetitions, using Ubuntu Clang 18.1.3 on an AMD Ryzen 7 9700X under Linux. Each build used 3 warmup runs and 7 measured CPU trials; perf counters were disabled.
 
 The exact testcase used for validation and timing was:
 

@@ -21,18 +21,115 @@ const site = {
     },
   ],
 
+  csperfSidebar: [
+    {
+      type: 'category',
+      label: 'CompilerSutraPerf',
+      collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'project/compilersutra-perf/index',
+      },
+      items: [
+        {
+          type: 'category',
+          label: 'Releases',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'project/compilersutra-perf/releases/index',
+          },
+          items: [
+            'project/compilersutra-perf/releases/0.2.0',
+            'project/compilersutra-perf/releases/0.1.2',
+            'project/compilersutra-perf/releases/0.1.1',
+            'project/compilersutra-perf/releases/0.1.0',
+          ],
+        },
+        'project/compilersutra-perf/tutorial',
+        'project/compilersutra-perf/getting-started',
+        'project/compilersutra-perf/usage',
+        'project/compilersutra-perf/methodology',
+        'project/compilersutra-perf/observatory',
+        'project/compilersutra-perf/architecture',
+        'project/compilersutra-perf/energy-and-reports',
+        'project/compilersutra-perf/troubleshooting',
+      ],
+    },
+  ],
+
   projectSidebar: [
     {
       type: 'category',
-      label: 'Project',
+      label: 'Projects',
       collapsed: false,
-      items: ['project/Project'],
-    },
-    {
-      type: 'category',
-      label: 'LLVM Projects',
-      collapsed: false,
-      items: ['project/llvm/index'],
+      link: {
+        type: 'doc',
+        id: 'project/index',
+      },
+      items: [
+        {
+          type: 'category',
+          label: 'CompilerSutraPerf',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'project/compilersutra-perf/index',
+          },
+          items: [
+            {
+              type: 'category',
+              label: 'Releases',
+              collapsed: false,
+              link: {
+                type: 'doc',
+                id: 'project/compilersutra-perf/releases/index',
+              },
+              items: [
+                'project/compilersutra-perf/releases/0.2.0',
+                'project/compilersutra-perf/releases/0.1.2',
+                'project/compilersutra-perf/releases/0.1.1',
+                'project/compilersutra-perf/releases/0.1.0',
+              ],
+            },
+            'project/compilersutra-perf/tutorial',
+            'project/compilersutra-perf/getting-started',
+            'project/compilersutra-perf/usage',
+            'project/compilersutra-perf/methodology',
+            'project/compilersutra-perf/observatory',
+            'project/compilersutra-perf/architecture',
+            'project/compilersutra-perf/energy-and-reports',
+            'project/compilersutra-perf/troubleshooting',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'LLVM Projects',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'project/llvm/index',
+          },
+          items: [
+            'project/llvm/VELOX/index',
+            'project/llvm/VELOX/v1-language-spec',
+            'project/llvm/VELOX/creating-your-first-llvm-based-compiler',
+          ],
+        },
+        'project/cpp-project-ideas',
+        {
+          type: 'category',
+          label: 'Python Automation',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'project/python_automation/python_automation',
+          },
+          items: [
+            'project/python_automation/automate_boring_stuff/system-specs-collector/system_spec_collector',
+          ],
+        },
+      ],
     },
   ],
 

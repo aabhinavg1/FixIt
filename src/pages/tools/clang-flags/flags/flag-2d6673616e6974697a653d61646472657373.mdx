@@ -77,7 +77,7 @@ This option does not repair invalid source, undefined behavior, data races, or a
 
 AddressSanitizer adds shadow-memory checks, redzones, runtime initialization, and diagnostic reporting. These increase memory use and can materially slow a workload, so ASan builds are for testing, fuzzing, and debugging rather than normal production performance comparisons.
 
-The overhead depends on allocation rate, memory-access density, optimization level, and workload shape. No PerfReport is included because no controlled CompilerSutra Perf run was performed for this page; a valid measurement would need to compare the same workload with and without ASan on the same machine and compiler, while keeping the sanitizer runtime and failure behavior under control.
+The overhead depends on allocation rate, memory-access density, optimization level, and workload shape. No PerfReport is included because no controlled CompilerSutraPerf run was performed for this page; a valid measurement would need to compare the same workload with and without ASan on the same machine and compiler, while keeping the sanitizer runtime and failure behavior under control.
 
 ## Compatibility
 
