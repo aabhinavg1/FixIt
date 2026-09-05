@@ -214,6 +214,37 @@ const tutorials = {
         'gpu/what_is_gpu',
       ],
     },
+    {
+      type: 'category',
+      label: 'Platforms',
+      collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'gpu/platforms/index',
+      },
+      items: [
+        'gpu/platforms/index',
+        {
+          type: 'category',
+          label: 'Android',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'gpu/platforms/android/index',
+          },
+          items: [
+            'gpu/platforms/android/index',
+            'gpu/platforms/android/learn-parallel-on-phone',
+            'gpu/opencl/basic/detecting_opencl_gpu_on_android',
+          ],
+        },
+        'gpu/platforms/cuda',
+        'gpu/platforms/rocm',
+        'gpu/platforms/mac',
+        'gpu/platforms/vulkan',
+        'gpu/platforms/other',
+      ],
+    },
   ],
 
   llvmTutorialSidebar: [
